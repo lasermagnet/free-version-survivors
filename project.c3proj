@@ -217,8 +217,7 @@
 			"Mouse",
 			"UI_TextSF_Start",
 			"UI_TextSF_GameOver",
-			"Cooldowns",
-			"TMP"
+			"Cooldowns"
 		],
 		"subfolders": []
 	},
@@ -535,7 +534,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "33",
+		"version": "34",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

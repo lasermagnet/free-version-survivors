@@ -51,6 +51,7 @@
 					"id": "createProbabilityTableFromJSON",
 					"objectClass": "AdvancedRandom",
 					"sid": 522703065808419,
+					"disabled": true,
 					"parameters": {
 						"name": "PT_Enemies",
 						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Enemies)"
@@ -59,19 +60,20 @@
 				{
 					"id": "createProbabilityTableFromJSON",
 					"objectClass": "AdvancedRandom",
-					"sid": 621677751769992,
+					"sid": 108957093600224,
+					"disabled": true,
 					"parameters": {
-						"name": "PT_Upgrades",
-						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Upgrades)"
+						"name": "PT_Items",
+						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Items)"
 					}
 				},
 				{
 					"id": "createProbabilityTableFromJSON",
 					"objectClass": "AdvancedRandom",
-					"sid": 108957093600224,
+					"sid": 524116706696208,
 					"parameters": {
-						"name": "PT_Items",
-						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Items)"
+						"name": "PT_Upgrades",
+						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Upgrades)"
 					}
 				},
 				{
@@ -329,6 +331,15 @@
 				}
 			],
 			"actions": [
+				{
+					"type": "comment",
+					"text": "Start first wave"
+				},
+				{
+					"customAction": "updateWave",
+					"objectClass": "Player",
+					"sid": 673850154595990
+				},
 				{
 					"type": "comment",
 					"text": "Update devinfo UI"

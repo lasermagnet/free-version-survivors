@@ -1,4 +1,5 @@
 export const Pools = {
+/*
     "Items": [
         //[10, "Heal1"],
         //[1, "Heal2"],
@@ -7,7 +8,8 @@ export const Pools = {
         [1, "Revolver"],
         [1, "Myst"],
     ],
-
+*/
+    // todo_maybe move to  waves, make "additive"?
     "Upgrades": [
         // Healing items
         [1, "HealMax"],
@@ -41,14 +43,14 @@ export const Pools = {
 
     // todo upgrade banning (no more item drop / level up upgrade option)
 
-    // todo enemy amount based spawning instaed of pool/chance based
+    /*
     "Enemies": [
         [0.5, "HealingCrate"],
         [40, "Slime"],
         [20, "Rat"],
         [5, "Crab"],
         [5, "Snake"],
-/*
+
         [1, "Werewolf"],
         [1, "Ent"],
         [1, "Tentacle"],
@@ -57,6 +59,6 @@ export const Pools = {
         [1, "Ogre"],
         [1, "Cultist"],
         [1, "Beholder"],
-*/
     ]
+    */
 }

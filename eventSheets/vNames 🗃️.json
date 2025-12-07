@@ -577,6 +577,90 @@
 		},
 		{
 			"eventType": "comment",
+			"text": "todo_now"
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Waves",
+			"type": "string",
+			"initialValue": "Waves",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 990734374298228
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Name",
+			"type": "string",
+			"initialValue": "Name",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 781226614114543
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawnCycles",
+			"type": "string",
+			"initialValue": "EnemySpawnCycles",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 811271427753221
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawnCooldown",
+			"type": "string",
+			"initialValue": "EnemySpawnCooldown",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 699916574354927
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawnPerCycle",
+			"type": "string",
+			"initialValue": "EnemySpawnPerCycle",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 668164995478999
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawnFixed",
+			"type": "string",
+			"initialValue": "EnemySpawnFixed",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 811464329393027
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawnPool",
+			"type": "string",
+			"initialValue": "EnemySpawnPool",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 589427454342132
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_ItemSpawnPool",
+			"type": "string",
+			"initialValue": "ItemSpawnPool",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 606304246897228
+		},
+		{
+			"eventType": "comment",
 			"text": "Loops"
 		},
 		{
@@ -784,6 +868,26 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 631897334080321
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Wave",
+			"type": "string",
+			"initialValue": "Wave",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 313021126891210
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_WaveCycle",
+			"type": "string",
+			"initialValue": "WaveCycle",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 520331853285767
 		},
 		{
 			"eventType": "comment",

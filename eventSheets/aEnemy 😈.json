@@ -459,6 +459,7 @@
 									"id": "log",
 									"objectClass": "Browser",
 									"sid": 988057123335795,
+									"disabled": true,
 									"parameters": {
 										"type": "log",
 										"message": "\"Projectile #\" & Weapon.UID & \" has pierced \" & tokencount(trim(Weapon.piercedUIDs_SSV), SPACE) & \" enemies, destroying.\""
@@ -766,11 +767,7 @@
 								},
 								{
 									"type": "comment",
-									"text": "todo_now add experience/healing bonus here instead of on pickup"
-								},
-								{
-									"type": "comment",
-									"text": "todo_now change drop animation frame based on its value"
+									"text": "todo_maybe add experience/healing bonus here instead of on pickup"
 								},
 								{
 									"id": "spawn-another-object",
@@ -817,6 +814,15 @@
 									"sid": 793572563336753,
 									"parameters": {
 										"frame-number": "min(floor(max(Self.experience, Self.healing) / C_Drop_ValueToLevelDivider), Self.AnimationFrameCount - 1)"
+									}
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 481906987333590,
+									"parameters": {
+										"type": "log",
+										"message": "\"Enemy died & gonna spawn an item: \" & Rules.Get(KEY_Queues & DOT & KEY_Items & DOT & 0)"
 									}
 								}
 							],

@@ -690,10 +690,6 @@
 					"text": "Mirror player based on its movement angle"
 				},
 				{
-					"type": "comment",
-					"text": "todo_now"
-				},
-				{
 					"id": "set-width",
 					"objectClass": "Player",
 					"sid": 634033339959857,
@@ -802,20 +798,53 @@
 					"text": "When the enemy spawn cooldown expires, reset it & add enemy amount to the spawn queue"
 				},
 				{
+					"eventType": "comment",
+					"text": "todo_now"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
 							"id": "compare-value",
 							"objectClass": "Cooldowns",
 							"sid": 383748768843449,
+							"disabled": true,
 							"parameters": {
 								"path": "KEY_Spawns & DOT & KEY_Enemies",
 								"cmp": 0,
 								"value": "0"
 							}
+						},
+						{
+							"id": "is-timer-running",
+							"objectClass": "Player",
+							"sid": 178554304329498,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_WaveCycle"
+							},
+							"isInverted": true
 						}
 					],
 					"actions": [
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 752514346566554,
+							"parameters": {
+								"type": "log",
+								"message": "\"Spawn cycle!\""
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 613390079745651,
+							"parameters": {
+								"variable": "cycle",
+								"value": "1"
+							}
+						},
 						{
 							"type": "comment",
 							"text": "Reset enemy spawn cooldown"
@@ -824,9 +853,21 @@
 							"id": "set-value",
 							"objectClass": "Cooldowns",
 							"sid": 696458896079350,
+							"disabled": true,
 							"parameters": {
 								"path": "KEY_Spawns & DOT & KEY_Enemies",
 								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
+							}
+						},
+						{
+							"id": "start-timer",
+							"objectClass": "Player",
+							"sid": 645688189130252,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCooldown)",
+								"type": "once",
+								"tag": "TIMER_WaveCycle"
 							}
 						},
 						{
@@ -844,55 +885,6 @@
 						}
 					],
 					"sid": 884938568296906
-				},
-				{
-					"eventType": "comment",
-					"text": "When the item spawn cooldown expires, reset it & add an item to the spawn queue"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-value",
-							"objectClass": "Cooldowns",
-							"sid": 485675764215928,
-							"parameters": {
-								"path": "KEY_Spawns & DOT & KEY_Items",
-								"cmp": 0,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Reset items spawn cooldown"
-						},
-						{
-							"id": "set-value",
-							"objectClass": "Cooldowns",
-							"sid": 423696215753317,
-							"parameters": {
-								"path": "KEY_Spawns & DOT & KEY_Items",
-								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Items & DOT & KEY_Cooldown)"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Add a (weighted) random item to the spawn queue"
-						},
-						{
-							"id": "push-value",
-							"objectClass": "Rules",
-							"sid": 882009730037582,
-							"parameters": {
-								"where": "back",
-								"path": "KEY_Queues & DOT & KEY_Items",
-								"value": "AdvancedRandom.WeightedByName(PT_Items)"
-							}
-						}
-					],
-					"sid": 416805021167430
 				},
 				{
 					"eventType": "comment",
@@ -2040,6 +2032,193 @@
 				}
 			],
 			"sid": 266788838218702
+		},
+		{
+			"eventType": "comment",
+			"text": "todo_now"
+		},
+		{
+			"aceType": "action",
+			"aceName": "updateWave",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "is-timer-running",
+					"objectClass": "Player",
+					"sid": 896283728470302,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_Wave"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "todo check wave count first"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 354139982860080,
+					"parameters": {
+						"variable": "cycle",
+						"value": "0"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 847961068914298,
+					"parameters": {
+						"variable": "wave",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 686546903501601,
+					"parameters": {
+						"variable": "wave",
+						"value": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_Name) = 0 ? 0 : wave"
+					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 883852951812457,
+					"parameters": {
+						"type": "log",
+						"message": "\"Wave #\" & wave & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool)"
+					}
+				},
+				{
+					"id": "createProbabilityTableFromJSON",
+					"objectClass": "AdvancedRandom",
+					"sid": 563817216794692,
+					"parameters": {
+						"name": "PT_Enemies",
+						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool)"
+					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 263947699746162,
+					"parameters": {
+						"type": "log",
+						"message": "\"Wave #\" & wave & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & wave & DOT & KEY_ItemSpawnPool)"
+					}
+				},
+				{
+					"id": "createProbabilityTableFromJSON",
+					"objectClass": "AdvancedRandom",
+					"sid": 929665451432000,
+					"parameters": {
+						"name": "PT_Items",
+						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & wave & DOT & KEY_ItemSpawnPool)"
+					}
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Player",
+					"sid": 845017664020528,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCooldown) * Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCycles)",
+						"type": "once",
+						"tag": "TIMER_Wave"
+					}
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Player",
+					"sid": 429310889580532,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCooldown)",
+						"type": "once",
+						"tag": "TIMER_WaveCycle"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "todo spawn cycle"
+				},
+				{
+					"type": "comment",
+					"text": "Spawn item"
+				},
+				{
+					"id": "push-value",
+					"objectClass": "Rules",
+					"sid": 210749285864622,
+					"parameters": {
+						"where": "back",
+						"path": "KEY_Queues & DOT & KEY_Items",
+						"value": "AdvancedRandom.WeightedByName(PT_Items)"
+					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 165933742969490,
+					"parameters": {
+						"type": "log",
+						"message": "\"Fake spawning \" & AdvancedRandom.WeightedByName(PT_Items)"
+					}
+				}
+			],
+			"sid": 656671393076444,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Spawn fixed enemies at wave start"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "Rules",
+							"sid": 919392068197452,
+							"parameters": {
+								"path": "KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnFixed"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 467816786197969,
+							"parameters": {
+								"type": "log",
+								"message": "\"Spawning \" & Rules.CurrentValue & \" \" & Rules.CurrentKey & \" enemies.\""
+							}
+						},
+						{
+							"customAction": "spawnFromQueue",
+							"objectClass": "Enemy",
+							"sid": 685676196464256,
+							"parameters": [
+								"Rules.CurrentKey",
+								"Rules.CurrentValue"
+							]
+						}
+					],
+					"sid": 876141430989688
+				}
+			]
 		}
 	],
 	"sid": 562729237747902

@@ -81,7 +81,7 @@
 			"eventType": "variable",
 			"name": "C_Distance_Item_Spawn_Min",
 			"type": "number",
-			"initialValue": "70",
+			"initialValue": "35",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,

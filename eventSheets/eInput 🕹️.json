@@ -217,6 +217,31 @@
 			],
 			"sid": 894833612974342,
 			"isOrBlock": true
+		},
+		{
+			"eventType": "comment",
+			"text": "todo_remove"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 500934329022801,
+					"parameters": {
+						"key": 76
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "updateWave",
+					"objectClass": "Player",
+					"sid": 398291286998004
+				}
+			],
+			"sid": 591824155855345
 		}
 	],
 	"sid": 909767790016851
