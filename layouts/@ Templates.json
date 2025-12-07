@@ -163,15 +163,16 @@
 					"sid": 667473189291264,
 					"tags": "",
 					"instanceVariables": {
+						"damageTakenRecently": 0,
 						"health": 0,
 						"damage": 0,
 						"experience": 0,
 						"healing": 0,
-						"damageTakenRecently": 0,
 						"isDead": 0,
+						"isContainer": 0,
 						"isMovementBlocked": 0,
 						"movementSpeed": 0,
-						"isContainer": 0
+						"movementAngle": -1
 					},
 					"behaviors": {
 						"Physics": {
@@ -304,8 +305,8 @@
 					"world": {
 						"x": 57,
 						"y": 102,
-						"width": 13.5,
-						"height": 13.5,
+						"width": 12,
+						"height": 12,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -334,8 +335,8 @@
 						"level": 1,
 						"experience": 0,
 						"isDead": 0,
-						"lastMovingAngle": 0,
 						"isHurt": 0,
+						"lastMovingAngle": 0,
 						"IN_Vector_X": 0,
 						"IN_Vector_Y": 0,
 						"IN_Movement_Active": 0,

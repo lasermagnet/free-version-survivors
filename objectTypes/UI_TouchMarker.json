@@ -1,0 +1,137 @@
+{
+	"name": "UI_TouchMarker",
+	"plugin-id": "Sprite",
+	"sid": 981850099634022,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 32,
+						"height": 32,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9166798,
+						"collisionPoly": {
+							"points": [
+								0.21875,
+								0.9375,
+								0.0625,
+								0.78125,
+								0,
+								0.625,
+								0,
+								0.375,
+								0.0625,
+								0.21875,
+								0.21875,
+								0.0625,
+								0.375,
+								0,
+								0.625,
+								0,
+								0.78125,
+								0.0625,
+								0.9375,
+								0.21875,
+								1,
+								0.375,
+								1,
+								0.625,
+								0.9375,
+								0.78125,
+								0.78125,
+								0.9375,
+								0.625,
+								1,
+								0.375,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 237614948579574,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 32,
+						"height": 32,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9835743,
+						"collisionPoly": {
+							"points": [
+								0.21875,
+								0.9375,
+								0.0625,
+								0.78125,
+								0,
+								0.625,
+								0,
+								0.375,
+								0.0625,
+								0.21875,
+								0.21875,
+								0.0625,
+								0.375,
+								0,
+								0.625,
+								0,
+								0.78125,
+								0.0625,
+								0.9375,
+								0.21875,
+								1,
+								0.375,
+								1,
+								0.625,
+								0.9375,
+								0.78125,
+								0.78125,
+								0.9375,
+								0.625,
+								1,
+								0.375,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 815167333300870,
+				"name": "Arrow",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

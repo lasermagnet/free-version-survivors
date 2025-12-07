@@ -224,7 +224,8 @@
 			"UI_TextSF_Pause",
 			"UI_TextSF_Time",
 			"UI_Background_Health",
-			"UI_TextSF_Stats"
+			"UI_TextSF_Stats",
+			"UI_TouchMarker"
 		],
 		"subfolders": []
 	},
@@ -557,7 +558,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "50",
+		"version": "51",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

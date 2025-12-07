@@ -66,6 +66,16 @@
 			"sid": 162284789806155
 		},
 		{
+			"eventType": "variable",
+			"name": "ANIM_Arrow",
+			"type": "string",
+			"initialValue": "Arrow",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 207307893479022
+		},
+		{
 			"eventType": "comment",
 			"text": "Audio"
 		},
@@ -574,6 +584,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 546371766937255
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_MovementAngle",
+			"type": "string",
+			"initialValue": "MovementAngle",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 676520396723900
 		},
 		{
 			"eventType": "variable",

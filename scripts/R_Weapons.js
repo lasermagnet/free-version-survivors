@@ -1,5 +1,5 @@
-export const Weapons = {
-    "_Template": {
+const _template = {
+    "": {
         "BlockMovement": 1,
         "Cooldown": 2,
         "Amount": 0,
@@ -18,7 +18,10 @@ export const Weapons = {
         "PositionRandom2": 0,
         "RotationSpeed": 0,
         "FreezeTime": 0,
-    },
+    }
+}
+
+export const Weapons = {
     "Axe": {
         "BlockMovement": 1,
         "Cooldown": 1.5,

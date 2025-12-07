@@ -3,10 +3,6 @@
 	"events": [
 		{
 			"eventType": "comment",
-			"text": "todo touch input?"
-		},
-		{
-			"eventType": "comment",
 			"text": "Level up UI"
 		},
 		{
@@ -290,7 +286,8 @@
 					}
 				}
 			],
-			"sid": 650745842861088
+			"sid": 650745842861088,
+			"disabled": true
 		},
 		{
 			"eventType": "block",
@@ -338,7 +335,8 @@
 					]
 				}
 			],
-			"sid": 275142110073853
+			"sid": 275142110073853,
+			"disabled": true
 		},
 		{
 			"eventType": "block",
@@ -363,7 +361,8 @@
 					}
 				}
 			],
-			"sid": 591824155855345
+			"sid": 591824155855345,
+			"disabled": true
 		},
 		{
 			"eventType": "block",
@@ -388,7 +387,8 @@
 					}
 				}
 			],
-			"sid": 217108654786040
+			"sid": 217108654786040,
+			"disabled": true
 		},
 		{
 			"eventType": "block",
@@ -413,7 +413,8 @@
 					}
 				}
 			],
-			"sid": 498991757643061
+			"sid": 498991757643061,
+			"disabled": true
 		},
 		{
 			"eventType": "block",
@@ -437,7 +438,8 @@
 					]
 				}
 			],
-			"sid": 420276749749146
+			"sid": 420276749749146,
+			"disabled": true
 		}
 	],
 	"sid": 909767790016851

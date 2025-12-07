@@ -3,7 +3,7 @@ export const Pools = {
     "Upgrades": [
 
         // One-off
-        [1, "HealMax"],
+        [1*100, "HealAll"],
 
         //  Weapons
         [1, "Axe"],

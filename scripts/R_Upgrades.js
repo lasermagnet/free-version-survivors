@@ -6,8 +6,8 @@ const _template = {
 }
 
 export const Upgrades = {
-    "HealMax": {
-        "Modifiers_Infinite": ["HealMax"],
+    "HealAll": {
+        "Modifiers_Infinite": ["HealAll"],
     },
 
     // Weapons

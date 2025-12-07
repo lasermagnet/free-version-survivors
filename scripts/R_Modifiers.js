@@ -32,24 +32,24 @@ export const Modifiers = {
         "Icon": "Experience",
         "Rule_Value": "Player.Bonus_Experience_Multiplier",
         "Multiply": 1,
-        "Add": 0.1
+        "Add": 0.1,
     },
     "HealingBonus": {
         "Label": "Healing bonus",
         "Description": "Health drops worth 10% more.",
-        "Icon": "HeartBlack",
+        "Icon": "Heal",
         "Rule_Value": "Player.Bonus_Healing_Multiplier",
         "Multiply": 1,
-        "Add": 0.1
+        "Add": 0.1,
     },
-    "HealMax": {
+    "HealAll": {
         "Label": "Heal to 100%",
         "Description": "Heal completely.",
         "Icon": "Heal",
         "Rule_Value": "Player.Health",
         "Rule_Max": "Player.Health_Max",
         "Multiply": 1,
-        "Add": 100000
+        "Add": 1000000, // todo Infnity
     },
     "MaxHealth": {
         "Label": "Max health up",
@@ -57,7 +57,7 @@ export const Modifiers = {
         "Icon": "HealthMax",
         "Rule_Value": "Player.Health_Max",
         "Multiply": 1.1,
-        "Add": 0
+        "Add": 0,
     },
     "MovementSpeed": {
         "Label": "Speed up",
@@ -65,7 +65,7 @@ export const Modifiers = {
         "Icon": "MoveSpeed",
         "Rule_Value": "Player.MovementSpeed",
         "Multiply": 1,
-        "Add": 5
+        "Add": 5,
     },
     "PickupDistance": {
         "Label": "Bigger pickup zone",
@@ -73,7 +73,7 @@ export const Modifiers = {
         "Icon": "PickupDistance",
         "Rule_Value": "Player.PickupDistance",
         "Multiply": 1,
-        "Add": 10
+        "Add": 10,
     },
     "WeaponDamage": {
         "Label": "All damage up",

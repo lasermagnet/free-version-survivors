@@ -470,8 +470,17 @@
 					"id": "set-width",
 					"objectClass": "UI_Bar_Experience",
 					"sid": 272227564943345,
+					"disabled": true,
 					"parameters": {
 						"width": "lerp(Self.Width, min(Player.experience / Rules.Get(KEY_Player & DOT & KEY_Experience_Target) * Self.initWidth, Self.initWidth), 0.05)"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "UI_Bar_Experience",
+					"sid": 501704119198524,
+					"parameters": {
+						"width": "lerp(Self.Width, min(Rules.Get(KEY_Player & DOT & KEY_Experience) / Rules.Get(KEY_Player & DOT & KEY_Experience_Target) * Self.initWidth, Self.initWidth), 0.05)"
 					}
 				},
 				{

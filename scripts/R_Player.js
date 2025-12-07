@@ -3,6 +3,7 @@ export const Player = {
     "Health": 300,
     "Health_Max": 300,
     // XP
+    "Experience": 0,
     "Experience_Target": 40,
     "Experience_Target_Multiplier": 1.2,
     // Movement

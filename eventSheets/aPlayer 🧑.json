@@ -116,6 +116,10 @@
 			],
 			"actions": [
 				{
+					"type": "comment",
+					"text": "Reset player input IVs"
+				},
+				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
 					"sid": 954428231497829,
@@ -140,6 +144,66 @@
 					"parameters": {
 						"instance-variable": "IN_Vector_Y",
 						"value": "0"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Process touch input (virtual analog)"
+				},
+				{
+					"type": "comment",
+					"text": "Update touch marker position if a new touch is in progress"
+				},
+				{
+					"id": "set-position",
+					"objectClass": "UI_TouchMarker",
+					"sid": 240126968222626,
+					"parameters": {
+						"x": "Self.Opacity = 0 & Touch.TouchCount > 0 ? Touch.XAt(0, LAYER_UI) : Self.X",
+						"y": "Self.Opacity = 0 & Touch.TouchCount > 0 ? Touch.YAt(0, LAYER_UI) : Self.Y"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_TouchMarker",
+					"sid": 362974513022887,
+					"parameters": {
+						"opacity": "Touch.TouchCount > 0 ? 100 : 0"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 519892987291122,
+					"parameters": {
+						"instance-variable": "IN_Movement_Active",
+						"value": "Touch.TouchCount > 0 & distance(UI_TouchMarker.X, UI_TouchMarker.Y, Touch.XAt(0, LAYER_UI), Touch.YAt(0, LAYER_UI)) > UI_TouchMarker.Width * 0.5 ? YES : NO"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 645690472933423,
+					"parameters": {
+						"instance-variable": "IN_Movement_Angle",
+						"value": "Touch.TouchCount > 0 & distance(UI_TouchMarker.X, UI_TouchMarker.Y, Touch.XAt(0, LAYER_UI), Touch.YAt(0, LAYER_UI)) > UI_TouchMarker.Width * 0.5 ?\nangle(UI_TouchMarker.X, UI_TouchMarker.Y, Touch.XAt(0, LAYER_UI), Touch.YAt(0, LAYER_UI)) :\nSelf.IN_Movement_Angle"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "UI_TouchMarker",
+					"sid": 255546664704000,
+					"parameters": {
+						"angle": "Touch.TouchCount >0 & distance(UI_TouchMarker.X, UI_TouchMarker.Y, Touch.XAt(0, LAYER_UI), Touch.YAt(0, LAYER_UI)) > UI_TouchMarker.Width * 0.5 ? Player.IN_Movement_Angle : Self.Angle"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "UI_TouchMarker",
+					"sid": 904259989300354,
+					"parameters": {
+						"animation": "distance(UI_TouchMarker.X, UI_TouchMarker.Y, Touch.XAt(0, LAYER_UI), Touch.YAt(0, LAYER_UI)) > UI_TouchMarker.Width * 0.5 ? ANIM_Arrow : ANIM_Default",
+						"from": "beginning"
 					}
 				}
 			],
@@ -458,6 +522,10 @@
 					"isOrBlock": true
 				},
 				{
+					"eventType": "comment",
+					"text": "Mouse (move to cursor)"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -673,14 +741,14 @@
 				},
 				{
 					"type": "comment",
-					"text": "Mirror player based on its movement angle"
+					"text": "Mirror player based on its movement angle (if movement is active)"
 				},
 				{
 					"id": "set-width",
 					"objectClass": "Player",
-					"sid": 634033339959857,
+					"sid": 503290649060390,
 					"parameters": {
-						"width": "anglediff(180, Self.IN_Movement_Angle) < 80 ?\r\n-abs(Self.Width) :\r\n(\r\nanglediff(0, Self.IN_Movement_Angle) < 80 ? abs(Self.Width) : Self.Width\r\n)"
+						"width": "Self.IN_Movement_Active = YES ?\n(\n  anglediff(180, Self.IN_Movement_Angle) < 80 ?\r\n  -abs(Self.Width) :\r\n  (\r\n    anglediff(0, Self.IN_Movement_Angle) < 80 ? abs(Self.Width) : Self.Width\r\n  )\n) :\nSelf.Width"
 					}
 				},
 				{
@@ -816,16 +884,6 @@
 							}
 						},
 						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 472174858355285,
-							"disabled": true,
-							"parameters": {
-								"type": "log",
-								"message": "\"Wave cycle #\" & waveCycle"
-							}
-						},
-						{
 							"id": "start-timer",
 							"objectClass": "Player",
 							"sid": 869475259618861,
@@ -880,14 +938,8 @@
 					],
 					"actions": [
 						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 550811228631696,
-							"disabled": true,
-							"parameters": {
-								"type": "log",
-								"message": "\"Picked up item: \" & Item.modifier"
-							}
+							"type": "comment",
+							"text": "Update \"picked up\" state"
 						},
 						{
 							"id": "set-instvar-value",
@@ -1000,7 +1052,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "Activate drop"
+							"text": "Pick up drop"
 						},
 						{
 							"eventType": "block",
@@ -1020,7 +1072,7 @@
 								{
 									"customAction": "playSFX",
 									"objectClass": "Audio",
-									"sid": 484443249184409,
+									"sid": 872692223509739,
 									"parameters": [
 										"SFX_Drop_ & Drop.AnimationName",
 										"0",
@@ -1028,9 +1080,13 @@
 									]
 								},
 								{
+									"type": "comment",
+									"text": "Set \"picked up\" state & destroy drop"
+								},
+								{
 									"id": "set-instvar-value",
 									"objectClass": "Drop",
-									"sid": 701635499251847,
+									"sid": 421921849484374,
 									"parameters": {
 										"instance-variable": "isCollected",
 										"value": "YES"
@@ -1042,16 +1098,6 @@
 									"sid": 975610977138803
 								},
 								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 801408382415971,
-									"disabled": true,
-									"parameters": {
-										"type": "log",
-										"message": "StringSub(\"Drop pickup: {0} health, {1} experience\", Drop.healing, Drop.experience)"
-									}
-								},
-								{
 									"type": "comment",
 									"text": "Player: collect experience (with bonus applied)"
 								},
@@ -1059,9 +1105,19 @@
 									"id": "set-instvar-value",
 									"objectClass": "Player",
 									"sid": 224969977370347,
+									"disabled": true,
 									"parameters": {
 										"instance-variable": "experience",
 										"value": "Drop.experience > 0 ? Self.experience + round(Drop.experience * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : Self.experience"
+									}
+								},
+								{
+									"id": "add-to",
+									"objectClass": "Rules",
+									"sid": 550631592040703,
+									"parameters": {
+										"path": "KEY_Player & DOT & KEY_Experience",
+										"value": "Drop.experience > 0 ? round(Drop.experience * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : 0"
 									}
 								},
 								{
@@ -1151,9 +1207,20 @@
 							"id": "compare-instance-variable",
 							"objectClass": "Player",
 							"sid": 196602343613844,
+							"disabled": true,
 							"parameters": {
 								"instance-variable": "experience",
 								"comparison": 5,
+								"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
+							}
+						},
+						{
+							"id": "compare-value",
+							"objectClass": "Rules",
+							"sid": 413438640669039,
+							"parameters": {
+								"path": "KEY_Player & DOT & KEY_Experience",
+								"cmp": 5,
 								"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
 							}
 						}
@@ -1243,6 +1310,18 @@
 							"parameters": {
 								"object": "UI_TextSF_Wave",
 								"time-scale": "0"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Hide touch marker"
+						},
+						{
+							"id": "set-opacity",
+							"objectClass": "UI_TouchMarker",
+							"sid": 746201348440196,
+							"parameters": {
+								"opacity": "0"
 							}
 						},
 						{
@@ -1917,8 +1996,18 @@
 					"id": "subtract-from-instvar",
 					"objectClass": "Player",
 					"sid": 164427102917643,
+					"disabled": true,
 					"parameters": {
 						"instance-variable": "experience",
+						"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
+					}
+				},
+				{
+					"id": "subtract-from",
+					"objectClass": "Rules",
+					"sid": 172350394201615,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Experience",
 						"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
 					}
 				},
@@ -2376,7 +2465,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "todo spawn one, reuse, use \"message queue\""
+					"text": "todo_maybe spawn one at start / add to layout, reuse, use \"message queue\""
 				},
 				{
 					"id": "create-object",

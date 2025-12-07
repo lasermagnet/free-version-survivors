@@ -1,13 +1,24 @@
+const _template = {
+    "": {
+        "Container": 0, // containers don't spawn items (only drops)
+        "Health": 1,
+        "Damage": 0,
+        "Healing": 0, // healing drop value
+        "Experience": 0, // experience drop value
+        "MovementSpeed": 0,
+        "MovementAngle": null, // if specified, enemy will move in this angle; -1 value is not supported
+    }
+}
+
 export const Enemies = {
-    // todo _template
     "HealingCrate": {
-        "Container": 1, // containers don't spawn items (only drops)
+        "Container": 1,
         "Health": 3,
         "Healing": 100,
     },
     "MagnetCrate": {
         "Container": 1,
-        "Health": 0,
+        "Health": 3,
     },
     "Slime": {
         "Health": 3,
@@ -19,8 +30,8 @@ export const Enemies = {
         "Health": 50,
         "Damage": 20,
         "Experience": 50,
-        "MovementSpeed": 10,
-        "Scale": 4,
+        "MovementSpeed": 0.7,
+        "Scale": 3,
     },
     "Rat": {
         "Health": 5,

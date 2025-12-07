@@ -27,18 +27,18 @@
 			"sid": 216679022523564
 		},
 		{
-			"name": "lastMovingAngle",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 131043624706321
-		},
-		{
 			"name": "isHurt",
 			"type": "number",
 			"desc": "",
 			"show": true,
 			"sid": 481484818498935
+		},
+		{
+			"name": "lastMovingAngle",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 131043624706321
 		},
 		{
 			"name": "IN_Vector_X",

@@ -6,6 +6,13 @@
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [
 		{
+			"name": "damageTakenRecently",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 598713301505426
+		},
+		{
 			"name": "health",
 			"type": "number",
 			"desc": "",
@@ -34,18 +41,18 @@
 			"sid": 193660718648048
 		},
 		{
-			"name": "damageTakenRecently",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 598713301505426
-		},
-		{
 			"name": "isDead",
 			"type": "number",
 			"desc": "",
 			"show": true,
 			"sid": 414852239883857
+		},
+		{
+			"name": "isContainer",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 273883652881775
 		},
 		{
 			"name": "isMovementBlocked",
@@ -62,11 +69,11 @@
 			"sid": 863815777907208
 		},
 		{
-			"name": "isContainer",
+			"name": "movementAngle",
 			"type": "number",
 			"desc": "",
 			"show": true,
-			"sid": 273883652881775
+			"sid": 209990879486126
 		}
 	],
 	"behaviorTypes": [

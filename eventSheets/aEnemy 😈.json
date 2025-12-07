@@ -169,6 +169,23 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Set fixed moving angle if specified"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 838597607628485,
+					"parameters": {
+						"instance-variable": "movementAngle",
+						"value": "Rules.Type(KEY_Enemies & DOT & Enemy & DOT & KEY_MovementAngle) = NULL ? NOTHING : Rules.Get(KEY_Enemies & DOT & Enemy & DOT & KEY_MovementAngle)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set to immovable by default (containers will stay immovable)"
+				},
+				{
 					"id": "set-immovable",
 					"objectClass": "Enemy",
 					"sid": 495389953480134,
@@ -253,9 +270,9 @@
 				{
 					"id": "set-default-color",
 					"objectClass": "Enemy",
-					"sid": 771909031736053,
+					"sid": 338487326379787,
 					"parameters": {
-						"color": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500) :\n(\n  Player.Timer.CurrentTime(TIMER_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Freeze) = 0 ?\n  rgbEx(100, 100, 100) :\n  rgbEx(100, 100, 200)\n)\n"
+						"color": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500) :\n(\n  Player.Timer.CurrentTime(TIMER_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Freeze) = 0 ?\n  rgbEx(100, 100, 100) :\n  rgbEx(50, 50, 200)\n)\n"
 					}
 				},
 				{
@@ -353,7 +370,6 @@
 					"text": "Enemy getting damaged"
 				},
 				{
-					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -481,10 +497,6 @@
 								"type": "once",
 								"tag": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_FreezeTime) > 0 &\nSelf.Timer.CurrentTime(TIMER_Freeze) = 0 ?\nTIMER_Freeze :\nEMPTY"
 							}
-						},
-						{
-							"type": "comment",
-							"text": "todo stop properly if blocked/frozen"
 						},
 						{
 							"type": "comment",
@@ -1198,23 +1210,13 @@
 							}
 						},
 						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 584886164493083,
-							"parameters": {
-								"type": "log",
-								"message": "\"Moving enemies\""
-							}
-						},
-						{
-							"id": "apply-force-towards-position",
+							"id": "apply-force-at-angle",
 							"objectClass": "Enemy",
-							"sid": 503204183871614,
+							"sid": 842939501639174,
 							"behaviorType": "Physics",
 							"parameters": {
-								"force": "Self.movementSpeed",
-								"x": "Player.X",
-								"y": "Player.Y",
+								"force": "Self.movementSpeed * Self.Physics.Mass",
+								"angle": "Self.movementAngle = NOTHING ? angle(Self.X, Self.Y, Player.X, Player.Y) : Self.movementAngle",
 								"image-point": "0"
 							}
 						}
