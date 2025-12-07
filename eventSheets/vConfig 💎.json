@@ -2,8 +2,106 @@
 	"name": "vConfig 💎",
 	"events": [
 		{
+			"eventType": "comment",
+			"text": "Arrow"
+		},
+		{
 			"eventType": "variable",
-			"name": "C_GroundMap_Cell_Size",
+			"name": "C_Arrow_Opacity",
+			"type": "number",
+			"initialValue": "50",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 372647874704680
+		},
+		{
+			"eventType": "comment",
+			"text": "Colors"
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Color_Brown",
+			"type": "number",
+			"initialValue": "-205065445271551",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 219675152407655
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Color_Green",
+			"type": "number",
+			"initialValue": "-65981670426623",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 236147893585269
+		},
+		{
+			"eventType": "comment",
+			"text": "Damage flash"
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Damage_Flash_Interval",
+			"type": "number",
+			"initialValue": "0.08",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 414869139275636
+		},
+		{
+			"eventType": "comment",
+			"text": "Enemy"
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Enemy_Mirror_Threshold",
+			"type": "number",
+			"initialValue": "5",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 889640586185657
+		},
+		{
+			"eventType": "comment",
+			"text": "Input"
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Input_Gamepad_Analog_Threshold",
+			"type": "number",
+			"initialValue": "50",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 910881760947431
+		},
+		{
+			"eventType": "comment",
+			"text": "Item"
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Item_Spawn_Distance_Min",
+			"type": "number",
+			"initialValue": "70",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 605678625295526
+		},
+		{
+			"eventType": "comment",
+			"text": "Map"
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Map_Cell_Size",
 			"type": "number",
 			"initialValue": "20",
 			"comment": "",
@@ -13,7 +111,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "C_GroundMap_Decorations_Per_Cell",
+			"name": "C_Map_Decorations_Per_Cell",
 			"type": "number",
 			"initialValue": "10",
 			"comment": "",
@@ -23,7 +121,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "C_GroundMap_Obstacles_Per_Cell",
+			"name": "C_Map_Obstacles_Per_Cell",
 			"type": "number",
 			"initialValue": "2",
 			"comment": "",
@@ -33,7 +131,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "C_GroundMap_TileId_Decorations_First",
+			"name": "C_Map_TileId_Decorations_First",
 			"type": "number",
 			"initialValue": "1",
 			"comment": "",
@@ -43,7 +141,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "C_GroundMap_TileId_Decorations_Last",
+			"name": "C_Map_TileId_Decorations_Last",
 			"type": "number",
 			"initialValue": "2",
 			"comment": "",
@@ -53,7 +151,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "C_GroundMap_TileId_Obstacles_First",
+			"name": "C_Map_TileId_Obstacles_First",
 			"type": "number",
 			"initialValue": "3",
 			"comment": "",
@@ -63,13 +161,31 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "C_GroundMap_TileId_Obstacless_Last",
+			"name": "C_Map_TileId_Obstacless_Last",
 			"type": "number",
 			"initialValue": "13",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 173892089957236
+		},
+		{
+			"eventType": "comment",
+			"text": "UI"
+		},
+		{
+			"eventType": "variable",
+			"name": "C_UI_LevelUp_Tween_Time",
+			"type": "number",
+			"initialValue": "0.7",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 956253461214367
+		},
+		{
+			"eventType": "comment",
+			"text": "Wall"
 		},
 		{
 			"eventType": "variable",
@@ -80,60 +196,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 418104587859054
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Input_Gamepad_Analog_Threshold",
-			"type": "number",
-			"initialValue": "50",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 174991595870129
-		},
-		{
-			"eventType": "comment",
-			"text": "todo 70"
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Item_Spawn_Distance_Min",
-			"type": "number",
-			"initialValue": "20",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 100238732808406
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Enemy_Mirror_Threshold",
-			"type": "number",
-			"initialValue": "5",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 295044313391476
-		},
-		{
-			"eventType": "variable",
-			"name": "C_UI_LevelUp_Tween_Time",
-			"type": "number",
-			"initialValue": "0.7",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 255623351048611
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Arrow_Opacity",
-			"type": "number",
-			"initialValue": "50",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 224697067758987
 		}
 	],
 	"sid": 900977153576648

@@ -68,7 +68,7 @@
 							"parameters": {
 								"name": "LOOP_Cell_X",
 								"start-index": "0",
-								"end-index": "Map.MapDisplayWidth / C_GroundMap_Cell_Size"
+								"end-index": "Map.MapDisplayWidth / C_Map_Cell_Size"
 							}
 						},
 						{
@@ -78,7 +78,7 @@
 							"parameters": {
 								"name": "LOOP_Cell_Y",
 								"start-index": "0",
-								"end-index": "Map.MapDisplayHeight / C_GroundMap_Cell_Size"
+								"end-index": "Map.MapDisplayHeight / C_Map_Cell_Size"
 							}
 						},
 						{
@@ -88,7 +88,7 @@
 							"parameters": {
 								"name": "LOOP_Decorations_Per_Cell",
 								"start-index": "0",
-								"end-index": "C_GroundMap_Decorations_Per_Cell"
+								"end-index": "C_Map_Decorations_Per_Cell"
 							}
 						}
 					],
@@ -98,9 +98,9 @@
 							"objectClass": "Map",
 							"sid": 470684030057121,
 							"parameters": {
-								"tile-x": "loopindex(LOOP_Cell_X) * C_GroundMap_Cell_Size + int(random(0, C_GroundMap_Cell_Size))",
-								"tile-y": "loopindex(LOOP_Cell_Y) * C_GroundMap_Cell_Size + int(random(0, C_GroundMap_Cell_Size))",
-								"tile": "int(random(C_GroundMap_TileId_Decorations_First, C_GroundMap_TileId_Decorations_Last + 1))",
+								"tile-x": "loopindex(LOOP_Cell_X) * C_Map_Cell_Size + int(random(0, C_Map_Cell_Size))",
+								"tile-y": "loopindex(LOOP_Cell_Y) * C_Map_Cell_Size + int(random(0, C_Map_Cell_Size))",
+								"tile": "int(random(C_Map_TileId_Decorations_First, C_Map_TileId_Decorations_Last + 1))",
 								"state": "normal"
 							}
 						}
@@ -121,7 +121,7 @@
 							"parameters": {
 								"name": "LOOP_Cell_X",
 								"start-index": "0",
-								"end-index": "Map.MapDisplayWidth / C_GroundMap_Cell_Size"
+								"end-index": "Map.MapDisplayWidth / C_Map_Cell_Size"
 							}
 						},
 						{
@@ -131,7 +131,7 @@
 							"parameters": {
 								"name": "LOOP_Cell_Y",
 								"start-index": "0",
-								"end-index": "Map.MapDisplayHeight / C_GroundMap_Cell_Size"
+								"end-index": "Map.MapDisplayHeight / C_Map_Cell_Size"
 							}
 						},
 						{
@@ -141,7 +141,7 @@
 							"parameters": {
 								"name": "LOOP_Obstacles_Per_Cell",
 								"start-index": "0",
-								"end-index": "C_GroundMap_Obstacles_Per_Cell"
+								"end-index": "C_Map_Obstacles_Per_Cell"
 							}
 						}
 					],
@@ -151,9 +151,9 @@
 							"objectClass": "Map",
 							"sid": 117754017457456,
 							"parameters": {
-								"tile-x": "loopindex(LOOP_Cell_X) * C_GroundMap_Cell_Size + int(random(0, C_GroundMap_Cell_Size))",
-								"tile-y": "loopindex(LOOP_Cell_Y) * C_GroundMap_Cell_Size + int(random(0, C_GroundMap_Cell_Size))",
-								"tile": "int(random(C_GroundMap_TileId_Obstacles_First, C_GroundMap_TileId_Obstacless_Last + 1))",
+								"tile-x": "loopindex(LOOP_Cell_X) * C_Map_Cell_Size + int(random(0, C_Map_Cell_Size))",
+								"tile-y": "loopindex(LOOP_Cell_Y) * C_Map_Cell_Size + int(random(0, C_Map_Cell_Size))",
+								"tile": "int(random(C_Map_TileId_Obstacles_First, C_Map_TileId_Obstacless_Last + 1))",
 								"state": "normal"
 							}
 						}

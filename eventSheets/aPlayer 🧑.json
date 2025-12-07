@@ -64,10 +64,6 @@
 				},
 				{
 					"type": "comment",
-					"text": "~~todo_maybe remove all cooldown IVs and keep data in Rules~~"
-				},
-				{
-					"type": "comment",
 					"text": "todo use Timer JSON, randomize first cooldown between 0 and cooldown param"
 				},
 				{
@@ -290,14 +286,19 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Weapon",
-									"sid": 459545277625584,
+									"sid": 754110901370187,
 									"parameters": [
 										"Rules.CurrentKey",
 										"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
 										"Player.lastMovingAngle",
 										"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
 										"Rules.Get(DOT & KEY_PositionRandom1)",
-										"Rules.Get(DOT & KEY_PositionRandom2)"
+										"Rules.Get(DOT & KEY_PositionRandom2)",
+										"Rules.Get(DOT & KEY_MovementSpeed)",
+										"Rules.Get(DOT & KEY_MovementAcceleration)",
+										"Rules.Get(DOT & KEY_Damage)",
+										"Rules.Get(DOT & KEY_Timeout)",
+										"Rules.Get(DOT & KEY_BlockMovement)"
 									]
 								}
 							],
@@ -334,32 +335,12 @@
 							}
 						},
 						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 317499462563761,
-							"disabled": true,
-							"parameters": {
-								"type": "log",
-								"message": "\"Adding \" & Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Amount) & \" enemies to the spawn queue.\""
-							}
-						},
-						{
 							"id": "add-to",
 							"objectClass": "Rules",
 							"sid": 232278523205720,
 							"parameters": {
 								"path": "KEY_Queues & DOT & KEY_Enemies",
 								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Amount)"
-							}
-						},
-						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 650407931225055,
-							"disabled": true,
-							"parameters": {
-								"type": "log",
-								"message": "\"Enemy spawn queue size: \" & Rules.Get(KEY_Queues & DOT & KEY_Enemies)"
 							}
 						}
 					],
@@ -401,16 +382,6 @@
 								"where": "back",
 								"path": "KEY_Queues & DOT & KEY_Items",
 								"value": "AdvancedRandom.WeightedByName(PT_Items)"
-							}
-						},
-						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 263380193314445,
-							"disabled": true,
-							"parameters": {
-								"type": "log",
-								"message": "\"A \" & Rules.Get(KEY_Queues & DOT & KEY_Items & DOT & \"0\") & \" will spawn soon...\""
 							}
 						}
 					],
@@ -710,6 +681,14 @@
 							"text": "Show & reset level up UI"
 						},
 						{
+							"id": "set-default-color",
+							"objectClass": "UI_Button9P_Upgrade",
+							"sid": 862382384060389,
+							"parameters": {
+								"color": "C_Color_Brown"
+							}
+						},
+						{
 							"id": "stop-all-tweens",
 							"objectClass": "UI_Border_LevelUp",
 							"sid": 533770999747504,
@@ -794,11 +773,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "This is not the most elegant solution to the problem that we have multiple (ideally 3) unique upgrade options, which should be chosen based on their weight"
-						},
-						{
-							"eventType": "comment",
-							"text": "todo mn 100"
+							"text": "This is an inelegant solution to the problem that we need multiple (ideally 3) unique upgrade options, which should be chosen based on their weight"
 						},
 						{
 							"eventType": "block",
@@ -1161,7 +1136,7 @@
 		},
 		{
 			"aceType": "action",
-			"aceName": "levelUpUpgrade",
+			"aceName": "onSelectUpgrade",
 			"objectClass": "Player",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -1238,6 +1213,28 @@
 			],
 			"actions": [
 				{
+					"customAction": "playSFX",
+					"objectClass": "Audio",
+					"sid": 584988801382287,
+					"parameters": [
+						"SFX_UpgradeSelected",
+						"0",
+						"1"
+					]
+				},
+				{
+					"type": "comment",
+					"text": "Highlight selected upgrade button"
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "UI_Button9P_Upgrade",
+					"sid": 553291891492677,
+					"parameters": {
+						"color": "C_Color_Green"
+					}
+				},
+				{
 					"type": "comment",
 					"text": "Spend experience"
 				},
@@ -1252,19 +1249,19 @@
 				},
 				{
 					"type": "comment",
-					"text": "Tween out level upUI"
+					"text": "Tween out level up UI"
 				},
 				{
 					"id": "tween-one-property",
 					"objectClass": "UI_Border_LevelUp",
-					"sid": 411269398563607,
+					"sid": 837566822749427,
 					"behaviorType": "Tween",
 					"parameters": {
 						"tags": "TWEEN_LevelUp_FadeOut",
 						"property": "offsetOpacity",
 						"end-value": "0",
 						"time": "1",
-						"ease": "easeoutquint",
+						"ease": "easeinexpo",
 						"destroy-on-complete": "no",
 						"loop": "no",
 						"ping-pong": "no",

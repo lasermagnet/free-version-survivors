@@ -12,7 +12,7 @@ export const Pools = {
         // Healing items
         [1, "Heal1"],
         [1, "Heal2"],
-        
+
         // Player upgrades & bonuses
         [1, "MaxHealth"],
         [1, "MovementSpeed"],
@@ -28,6 +28,7 @@ export const Pools = {
         // Weapons & their upgrades
         [1, "Sword"],
         [1, "Sword_Damage"],
+        [1, "Sword_PierceLimit"],
         [1, "Flame"],
         [1, "Flame_Timeout"],
         [1, "Revolver"],
@@ -45,14 +46,14 @@ export const Pools = {
         [20, "Rat"],
         [5, "Crab"],
         [5, "Snake"],
-  /*
-        [1, "Werewolf"],
-        [1, "Ent"],
-        [1, "Tentacle"],
-        [1, "Dwarf"],
-        [1, "Golem"],
-        [1, "Ogre"],
-        [1, "Cultist"],
-        [1, "Beholder"],*/
+        /*
+              [1, "Werewolf"],
+              [1, "Ent"],
+              [1, "Tentacle"],
+              [1, "Dwarf"],
+              [1, "Golem"],
+              [1, "Ogre"],
+              [1, "Cultist"],
+              [1, "Beholder"],*/
     ]
 }

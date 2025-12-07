@@ -7,6 +7,10 @@
 		},
 		{
 			"eventType": "comment",
+			"text": "todo: on screen touch buttons that appear on first (real) touch"
+		},
+		{
+			"eventType": "comment",
 			"text": "todo_maybe: analog input (gamepad, mouse, touch?) - maybe with variable speed below a threshold"
 		},
 		{
@@ -57,6 +61,14 @@
 						"axis": "right-analog-y-axis",
 						"comparison": 2,
 						"value": "-C_Input_Gamepad_Analog_Threshold"
+					}
+				},
+				{
+					"id": "is-touching-object",
+					"objectClass": "Touch",
+					"sid": 751075478741327,
+					"parameters": {
+						"object": "UI_Touch_Up"
 					}
 				}
 			],
@@ -145,6 +157,14 @@
 						"comparison": 4,
 						"value": "C_Input_Gamepad_Analog_Threshold"
 					}
+				},
+				{
+					"id": "is-touching-object",
+					"objectClass": "Touch",
+					"sid": 351146171805557,
+					"parameters": {
+						"object": "UI_Touch_Down"
+					}
 				}
 			],
 			"actions": [
@@ -231,6 +251,14 @@
 						"axis": "right-analog-x-axis",
 						"comparison": 2,
 						"value": "-C_Input_Gamepad_Analog_Threshold"
+					}
+				},
+				{
+					"id": "is-touching-object",
+					"objectClass": "Touch",
+					"sid": 274052398813002,
+					"parameters": {
+						"object": "UI_Touch_Left"
 					}
 				}
 			],
@@ -327,6 +355,14 @@
 						"comparison": 4,
 						"value": "C_Input_Gamepad_Analog_Threshold"
 					}
+				},
+				{
+					"id": "is-touching-object",
+					"objectClass": "Touch",
+					"sid": 215394975172953,
+					"parameters": {
+						"object": "UI_Touch_Right"
+					}
 				}
 			],
 			"actions": [
@@ -384,27 +420,11 @@
 					"id": "on-any-key-pressed",
 					"objectClass": "Keyboard",
 					"sid": 737310711360810
-				}
-			],
-			"actions": [
-				{
-					"customAction": "levelUpUpgrade",
-					"objectClass": "Player",
-					"sid": 259653661931330,
-					"parameters": [
-						"int(Keyboard.TypedKey)"
-					]
-				}
-			],
-			"sid": 382725593248600
-		},
-		{
-			"eventType": "block",
-			"conditions": [
+				},
 				{
 					"id": "on-tap-object",
 					"objectClass": "Touch",
-					"sid": 912301770821748,
+					"sid": 485924114506189,
 					"parameters": {
 						"object": "UI_Button9P_Upgrade"
 					}
@@ -412,15 +432,16 @@
 			],
 			"actions": [
 				{
-					"customAction": "levelUpUpgrade",
+					"customAction": "onSelectUpgrade",
 					"objectClass": "Player",
-					"sid": 290858056116010,
+					"sid": 975914007558871,
 					"parameters": [
-						"UI_Button9P_Upgrade.option"
+						"UI_Button9P_Upgrade.PickedCount = 1 ?  UI_Button9P_Upgrade.option : int(Keyboard.TypedKey)"
 					]
 				}
 			],
-			"sid": 446650543785782
+			"sid": 382725593248600,
+			"isOrBlock": true
 		},
 		{
 			"eventType": "comment",
@@ -518,35 +539,6 @@
 			],
 			"sid": 988978364115935,
 			"isOrBlock": true
-		},
-		{
-			"eventType": "comment",
-			"text": "todo_remove"
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 445813615887471,
-					"parameters": {
-						"key": 75
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "set-value",
-					"objectClass": "Rules",
-					"sid": 672545148097167,
-					"parameters": {
-						"path": "KEY_Player & DOT & KEY_Health",
-						"value": "0"
-					}
-				}
-			],
-			"sid": 681916389816662
 		}
 	],
 	"sid": 909767790016851

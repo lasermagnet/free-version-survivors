@@ -1,4 +1,4 @@
-import { rules } from "./rules.js"
+import { rules } from "./_rules.js"
 
 console.log("Default rules:", rules)
 

@@ -206,7 +206,11 @@
 			"PlayerHurtbox",
 			"UI_Button9P_Start",
 			"Arrow",
-			"Audio"
+			"Audio",
+			"UI_Touch_Up",
+			"UI_Touch_Down",
+			"UI_Touch_Left",
+			"UI_Touch_Right"
 		],
 		"subfolders": []
 	},
@@ -247,7 +251,7 @@
 		"script": {
 			"items": [
 				{
-					"name": "importsforevents.js",
+					"name": "_importsforevents.js",
 					"type": "application/javascript",
 					"sid": 540848896340855,
 					"script-info": {
@@ -255,7 +259,7 @@
 					}
 				},
 				{
-					"name": "main.js",
+					"name": "_main.js",
 					"type": "application/javascript",
 					"sid": 364512063500660,
 					"script-info": {
@@ -263,7 +267,7 @@
 					}
 				},
 				{
-					"name": "rules.js",
+					"name": "_rules.js",
 					"type": "application/javascript",
 					"sid": 658997198896662,
 					"script-info": {
@@ -322,14 +326,6 @@
 					"name": "R_Weapons.js",
 					"type": "application/javascript",
 					"sid": 500156935729654,
-					"script-info": {
-						"purpose": "none"
-					}
-				},
-				{
-					"name": "_todo.js",
-					"type": "application/javascript",
-					"sid": 298280437881765,
 					"script-info": {
 						"purpose": "none"
 					}
@@ -415,6 +411,14 @@
 					"name": "PlayerDead.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 614025687851715,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "UpgradeSelected.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 942013476790222,
 					"file-info": {
 						"purpose": "none"
 					}
@@ -515,7 +519,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "21",
+		"version": "22",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

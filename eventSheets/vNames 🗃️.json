@@ -752,6 +752,30 @@
 			"sid": 332482984239385
 		},
 		{
+			"eventType": "variable",
+			"name": "SFX_UpgradeSelected",
+			"type": "string",
+			"initialValue": "UpgradeSelected",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 315200725405928
+		},
+		{
+			"eventType": "comment",
+			"text": "Timers"
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Enemy_Flash",
+			"type": "string",
+			"initialValue": "Flash",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 773465413025330
+		},
+		{
 			"eventType": "comment",
 			"text": "Tweens"
 		},
@@ -925,20 +949,6 @@
 					"isStatic": false,
 					"isConstant": true,
 					"sid": 891747630377562
-				},
-				{
-					"eventType": "comment",
-					"text": "Timers"
-				},
-				{
-					"eventType": "variable",
-					"name": "TIMER_Timer1",
-					"type": "string",
-					"initialValue": "Timer1",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": true,
-					"sid": 374849012863121
 				}
 			],
 			"sid": 667959762832484

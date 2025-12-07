@@ -155,6 +155,18 @@
 						"instance-variable": "isMovementBlocked",
 						"value": "NO"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Flash / unflash enemy according to the flash timer"
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "Enemy",
+					"sid": 392452988354691,
+					"parameters": {
+						"color": "Self.Timer.CurrentTime(TIMER_Enemy_Flash) > 0 ? rgbEx(500, 500, 500) : rgbEx(100, 100, 100)"
+					}
 				}
 			],
 			"sid": 323244324797060,
@@ -164,7 +176,6 @@
 					"text": "Enemy getting damaged"
 				},
 				{
-					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -197,16 +208,12 @@
 							"text": "Set movement block if needed"
 						},
 						{
-							"type": "comment",
-							"text": "todo_now"
-						},
-						{
 							"id": "set-instvar-value",
 							"objectClass": "Enemy",
-							"sid": 393868468966729,
+							"sid": 380783636454798,
 							"parameters": {
 								"instance-variable": "isMovementBlocked",
-								"value": "KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_BlockMovement"
+								"value": "Weapon.isMovementBlocker"
 							}
 						},
 						{
@@ -233,14 +240,17 @@
 						},
 						{
 							"type": "comment",
-							"text": "Show damage flash"
+							"text": "Start damage flash timer if it's not running yet (note the ugly workaround in order to spare an event :D)"
 						},
 						{
-							"id": "set-default-color",
+							"id": "start-timer",
 							"objectClass": "Enemy",
-							"sid": 485879420803582,
+							"sid": 190731174826152,
+							"behaviorType": "Timer",
 							"parameters": {
-								"color": "rgbEx(500, 500, 500)"
+								"duration": "C_Damage_Flash_Interval",
+								"type": "once",
+								"tag": "Self.Timer.CurrentTime(TIMER_Enemy_Flash) > 0 ? EMPTY : TIMER_Enemy_Flash"
 							}
 						},
 						{
@@ -307,12 +317,54 @@
 								},
 								{
 									"type": "comment",
-									"text": "todo tween etc"
+									"text": "Stop weapon"
 								},
 								{
-									"id": "destroy",
+									"id": "set-speed",
 									"objectClass": "Weapon",
-									"sid": 452669270812600
+									"sid": 125895672334683,
+									"behaviorType": "Orbit",
+									"parameters": {
+										"speed": "0"
+									}
+								},
+								{
+									"id": "set-speed",
+									"objectClass": "Weapon",
+									"sid": 707124144412964,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"speed": "0"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "Flash & fade out weapon"
+								},
+								{
+									"id": "set-default-color",
+									"objectClass": "Weapon",
+									"sid": 978441568313677,
+									"parameters": {
+										"color": "rgbEx(500, 500, 500)"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "Weapon",
+									"sid": 803814591045713,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "offsetOpacity",
+										"end-value": "0",
+										"time": "0.5",
+										"ease": "easeoutquint",
+										"destroy-on-complete": "yes",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
 								}
 							],
 							"sid": 728908823243223
@@ -343,6 +395,10 @@
 							],
 							"actions": [
 								{
+									"type": "comment",
+									"text": "todo keep updating existing damage numbers after enemy takes more damage"
+								},
+								{
 									"customAction": "playSFX",
 									"objectClass": "Audio",
 									"sid": 746673726225653,
@@ -363,10 +419,6 @@
 										"create-hierarchy": false,
 										"template-name": "\"\""
 									}
-								},
-								{
-									"type": "comment",
-									"text": "todo bugfix: zero out damage taken after text is spawned"
 								},
 								{
 									"id": "set-x",
@@ -472,6 +524,15 @@
 							],
 							"actions": [
 								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 535727323171775,
+									"parameters": {
+										"variable": "enemiesKilled",
+										"value": "1"
+									}
+								},
+								{
 									"id": "set-instvar-value",
 									"objectClass": "Enemy",
 									"sid": 402986492608939,
@@ -531,7 +592,6 @@
 							"sid": 158259314566033,
 							"children": [
 								{
-									"bookmark": true,
 									"eventType": "comment",
 									"text": "Spawn an item from the queue (if enemy is far enough from the player and within layout bounds)"
 								},
@@ -750,6 +810,7 @@
 					"text": "Move enemies that are not blocked by the weapon"
 				},
 				{
+					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -784,21 +845,10 @@
 								"y": "Player.Y",
 								"image-point": "0"
 							}
-						},
-						{
-							"type": "comment",
-							"text": "todo set linear damping after setting speed?"
-						},
-						{
-							"id": "set-default-color",
-							"objectClass": "Enemy",
-							"sid": 928884212976278,
-							"parameters": {
-								"color": "rgbEx(100, 100, 100)"
-							}
 						}
 					],
-					"sid": 403949667641976
+					"sid": 403949667641976,
+					"isOrBlock": true
 				},
 				{
 					"eventType": "comment",
@@ -857,33 +907,6 @@
 						}
 					],
 					"sid": 894429956563491
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 222801899404332,
-							"parameters": {
-								"instance-variable": "isMovementBlocked",
-								"comparison": 0,
-								"value": "YES"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 218060331233019,
-							"parameters": {
-								"type": "log",
-								"message": "\"Enemies with movement blocked: \" & Enemy.PickedCount"
-							}
-						}
-					],
-					"sid": 250292561153445
 				}
 			]
 		}

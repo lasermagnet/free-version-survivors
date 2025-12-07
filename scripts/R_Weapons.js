@@ -21,7 +21,7 @@ export const Weapons = {
         "Cooldown": 1.5,
         "Amount": 1,
         "Damage": 15,
-        "PierceLimit": 5,
+        "PierceLimit": 2,
         "Scale": 1,
         "Timeout": 4,
         "MovementSpeed": 85,
@@ -68,3 +68,4 @@ export const Weapons = {
 }
 
 // todo move timers out of weapon/other rules and into a Timers JSON object
+// todo remove * and + stuff (added for testing)

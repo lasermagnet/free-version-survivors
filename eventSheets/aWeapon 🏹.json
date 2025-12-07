@@ -52,6 +52,41 @@
 					"initialValue": "0",
 					"comment": "",
 					"sid": 665538211913658
+				},
+				{
+					"name": "bulletSpeed",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 635732062937968
+				},
+				{
+					"name": "bulletAcceleration",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 581881872636391
+				},
+				{
+					"name": "damage",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 905515065786839
+				},
+				{
+					"name": "timeout",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 989317783080672
+				},
+				{
+					"name": "isMovementBlocker",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 212053427248699
 				}
 			],
 			"eventType": "custom-ace-block",
@@ -68,10 +103,6 @@
 				}
 			],
 			"actions": [
-				{
-					"type": "comment",
-					"text": "todo remove Rules.Get stuff, use parameters"
-				},
 				{
 					"type": "comment",
 					"text": "Spawn projectile"
@@ -121,19 +152,19 @@
 				{
 					"id": "set-speed",
 					"objectClass": "Weapon",
-					"sid": 654757644910132,
+					"sid": 362559078799455,
 					"behaviorType": "Bullet",
 					"parameters": {
-						"speed": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_MovementSpeed)"
+						"speed": "bulletSpeed"
 					}
 				},
 				{
 					"id": "set-acceleration",
 					"objectClass": "Weapon",
-					"sid": 998288389943659,
+					"sid": 817302815704405,
 					"behaviorType": "Bullet",
 					"parameters": {
-						"acceleration": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_MovementAcceleration)"
+						"acceleration": "bulletAcceleration"
 					}
 				},
 				{
@@ -155,10 +186,19 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Weapon",
-					"sid": 439078326474503,
+					"sid": 303111533965803,
 					"parameters": {
 						"instance-variable": "damage",
-						"value": "Rules.Get(KEY_Weapons & DOT & weapon & DOT & KEY_Damage)"
+						"value": "damage"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Weapon",
+					"sid": 761030576107267,
+					"parameters": {
+						"instance-variable": "isMovementBlocker",
+						"value": "isMovementBlocker"
 					}
 				},
 				{
@@ -168,28 +208,18 @@
 				{
 					"id": "tween-one-property",
 					"objectClass": "Weapon",
-					"sid": 954323146863235,
+					"sid": 756080571815686,
 					"behaviorType": "Tween",
 					"parameters": {
 						"tags": "TWEEN_Projectile_Opacity_Lifetime",
 						"property": "offsetOpacity",
 						"end-value": "0",
-						"time": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_Timeout)",
+						"time": "timeout",
 						"ease": "easeinexpo",
 						"destroy-on-complete": "yes",
 						"loop": "no",
 						"ping-pong": "no",
 						"repeat-count": "1"
-					}
-				},
-				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 904420723027911,
-					"disabled": true,
-					"parameters": {
-						"type": "log",
-						"message": "StringSub(\"Weapon spawn: {0}, DMG {1}\", weapon, Weapon.damage)"
 					}
 				}
 			],

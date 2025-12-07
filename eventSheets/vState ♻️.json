@@ -60,6 +60,16 @@
 			"sid": 169323888444903
 		},
 		{
+			"eventType": "variable",
+			"name": "enemiesKilled",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 543485991026452
+		},
+		{
 			"eventType": "comment",
 			"text": "Data"
 		},

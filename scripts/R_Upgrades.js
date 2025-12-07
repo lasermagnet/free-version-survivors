@@ -114,6 +114,15 @@ export const Upgrades = {
         "Multiply": 1,
         "Add": 2,
     },
+    "Sword_PierceLimit": {
+        "WeaponRequirement": "Sword",
+        "Label": "Sword: +1 piercing",
+        "Description": "Go through one more enemy.",
+        "Icon": "Sword",
+        "Rule_Value": "Weapons.Sword.PierceLimit",
+        "Multiply": 1,
+        "Add": 1,
+    },
     "Flame": {
         "Label": "+1 Flame",
         "Description": "Cooks nearby enemies.",

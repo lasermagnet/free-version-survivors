@@ -85,6 +85,7 @@
 					"tags": "",
 					"instanceVariables": {
 						"damage": 0,
+						"isMovementBlocker": 0,
 						"isDestroyed": 0,
 						"piercedUIDs_SSV": ""
 					},

@@ -2,19 +2,15 @@ export const Player = {
     // HP
     "Health": 500,
     "Health_Max": 500,
-    
     // XP
     "Experience_Target": 40,
     "Experience_Target_Multiplier": 1.2,
-
     // Movement
     "MovementAcceleration": 2000,
     "MovementDeceleration": 2000,
     "MovementSpeed": 60,
-
     // Misc
     "PickupDistance": 30,
-
     // Bonuses
     // todo heal bonus
     "Bonus_Heal_Amount_Multiplier": 1,
