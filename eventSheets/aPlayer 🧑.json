@@ -103,7 +103,18 @@
 			"functionIsAsync": false,
 			"functionParameters": [],
 			"eventType": "custom-ace-block",
-			"conditions": [],
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 844885624716234,
+					"parameters": {
+						"variable": "isLeveling",
+						"comparison": 0,
+						"value": "NO"
+					}
+				}
+			],
 			"actions": [
 				{
 					"id": "set-instvar-value",
@@ -135,6 +146,10 @@
 			],
 			"sid": 823782812326942,
 			"children": [
+				{
+					"eventType": "comment",
+					"text": "Keyboard & gamepad D-pad (digital)"
+				},
 				{
 					"eventType": "block",
 					"conditions": [
@@ -185,16 +200,6 @@
 							"parameters": {
 								"instance-variable": "IN_Vector_Y",
 								"value": "1"
-							}
-						},
-						{
-							"id": "simulate-control",
-							"objectClass": "Player",
-							"sid": 625055331408129,
-							"disabled": true,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "up"
 							}
 						}
 					],
@@ -251,16 +256,6 @@
 							"parameters": {
 								"instance-variable": "IN_Vector_Y",
 								"value": "1"
-							}
-						},
-						{
-							"id": "simulate-control",
-							"objectClass": "Player",
-							"sid": 970375632912931,
-							"disabled": true,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "down"
 							}
 						}
 					],
@@ -320,19 +315,10 @@
 							}
 						},
 						{
-							"id": "simulate-control",
-							"objectClass": "Player",
-							"sid": 444905633219251,
-							"disabled": true,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "left"
-							}
-						},
-						{
 							"id": "set-mirrored",
 							"objectClass": "Player",
 							"sid": 767699884217055,
+							"disabled": true,
 							"parameters": {
 								"state": "mirrored"
 							}
@@ -394,19 +380,10 @@
 							}
 						},
 						{
-							"id": "simulate-control",
-							"objectClass": "Player",
-							"sid": 549848122392855,
-							"disabled": true,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "right"
-							}
-						},
-						{
 							"id": "set-mirrored",
 							"objectClass": "Player",
 							"sid": 678338974065388,
+							"disabled": true,
 							"parameters": {
 								"state": "not-mirrored"
 							}
@@ -417,7 +394,11 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Gamepad"
+					"text": "Gamepad (analog)"
+				},
+				{
+					"eventType": "comment",
+					"text": "todo: player mirroring based on vector_x, do it in Player.tick"
 				},
 				{
 					"eventType": "block",
@@ -498,6 +479,40 @@
 					],
 					"sid": 975737648800403,
 					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 643420804898053,
+							"parameters": {
+								"mouse-button": "left"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 231995645554363,
+							"parameters": {
+								"instance-variable": "IN_Movement_Active",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 298749149706691,
+							"parameters": {
+								"instance-variable": "IN_Movement_Angle",
+								"value": "angle(Self.X, Self.Y, Mouse.X, Mouse.Y)"
+							}
+						}
+					],
+					"sid": 345144455692634
 				}
 			]
 		},
@@ -668,6 +683,22 @@
 					"parameters": {
 						"animation": "Self.IN_Movement_Active = YES ? ANIM_Walking : ANIM_Idle",
 						"from": "current-frame"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Mirror player based on its movement angle"
+				},
+				{
+					"type": "comment",
+					"text": "todo_now"
+				},
+				{
+					"id": "set-width",
+					"objectClass": "Player",
+					"sid": 634033339959857,
+					"parameters": {
+						"width": "anglediff(180, Self.IN_Movement_Angle) < 80 ?\r\n-abs(Self.Width) :\r\n(\r\nanglediff(0, Self.IN_Movement_Angle) < 80 ? abs(Self.Width) : Self.Width\r\n)"
 					}
 				}
 			],
@@ -1049,17 +1080,18 @@
 									"sid": 975610977138803
 								},
 								{
-									"type": "comment",
-									"text": "Player: collect experience (with bonus applied)"
-								},
-								{
 									"id": "log",
 									"objectClass": "Browser",
-									"sid": 892986239831999,
+									"sid": 801408382415971,
+									"disabled": true,
 									"parameters": {
 										"type": "log",
 										"message": "StringSub(\"Drop pickup: {0} health, {1} experience\", Drop.healing, Drop.experience)"
 									}
+								},
+								{
+									"type": "comment",
+									"text": "Player: collect experience (with bonus applied)"
 								},
 								{
 									"id": "set-instvar-value",

@@ -231,9 +231,9 @@
 				{
 					"id": "set-width",
 					"objectClass": "Enemy",
-					"sid": 684960018964039,
+					"sid": 391161352384051,
 					"parameters": {
-						"width": "Self.X < Player.X - C_Enemy_Mirror_Threshold ?\nabs(Self.Width) :\n(\n  Self.X > Player.X + C_Enemy_Mirror_Threshold ?\n  -abs(Self.Width) :\n  Self.Width\n)"
+						"width": "Self.X < Player.X - 5 ?\nabs(Self.Width) :\n(\n  Self.X > Player.X + 5 ?\n  -abs(Self.Width) :\n  Self.Width\n)"
 					}
 				}
 			],
@@ -352,15 +352,15 @@
 					"actions": [
 						{
 							"type": "comment",
-							"text": "Set movement block if needed"
+							"text": "If weapon is a movement blocker and enemy is a moving one, block its movement (temporarily)"
 						},
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Enemy",
-							"sid": 380783636454798,
+							"sid": 927528857589538,
 							"parameters": {
 								"instance-variable": "isMovementBlocked",
-								"value": "Weapon.isMovementBlocker"
+								"value": "Self.movementSpeed = 0 ? YES : Weapon.isMovementBlocker"
 							}
 						},
 						{

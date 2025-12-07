@@ -89,20 +89,6 @@
 		},
 		{
 			"eventType": "comment",
-			"text": "Enemy"
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Enemy_Mirror_Threshold",
-			"type": "number",
-			"initialValue": "5",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 889640586185657
-		},
-		{
-			"eventType": "comment",
 			"text": "Map"
 		},
 		{

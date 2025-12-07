@@ -7,6 +7,6 @@ export const Spawns = {
     // Enemy spawns
     "Enemies": {
         "Cooldown": 3,
-        "Amount": 20,
+        "Amount": 15,
     },
 }
