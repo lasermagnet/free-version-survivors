@@ -569,7 +569,7 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "todo_now"
+					"text": "Initialize health bar if needed"
 				},
 				{
 					"id": "set-instvar-value",
@@ -1482,7 +1482,7 @@
 									"disabled": true,
 									"parameters": {
 										"type": "log",
-										"message": "\"Weapon requirement for \" & upgradeCandidate & \": \" & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement)"
+										"message": "\"Weapon requirement for \" & upgradeCandidate & \": \" & Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement)"
 									}
 								},
 								{
@@ -1491,7 +1491,7 @@
 									"sid": 714268585606491,
 									"parameters": {
 										"variable": "upgradeCandidate",
-										"value": "Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) = NO ? upgradeCandidate : (Rules.Get(KEY_Weapons & DOT & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) & DOT & KEY_Amount) > 0 ? upgradeCandidate : EMPTY)"
+										"value": "Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) = NO ? upgradeCandidate : (Rules.Get(KEY_Weapons & DOT & Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) & DOT & KEY_Amount) > 0 ? upgradeCandidate : EMPTY)"
 									}
 								},
 								{
@@ -1522,7 +1522,7 @@
 									"objectClass": "Icon",
 									"sid": 439449580852157,
 									"parameters": {
-										"animation": "Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Icon)",
+										"animation": "Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_Icon)",
 										"from": "beginning"
 									}
 								},
@@ -1531,7 +1531,7 @@
 									"objectClass": "UI_TextSF_Upgrade",
 									"sid": 585831293527480,
 									"parameters": {
-										"text": "(upgradeCandidate = EMPTY ? EMPTY : \"[scale=0.2]\" & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Label) & \"[/scale]\" & newline & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Description))"
+										"text": "(upgradeCandidate = EMPTY ? EMPTY : \"[scale=0.2]\" & Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_Label) & \"[/scale]\" & newline & Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_Description))"
 									}
 								},
 								{
@@ -2086,8 +2086,8 @@
 					"objectClass": "Rules",
 					"sid": 438822248656384,
 					"parameters": {
-						"path": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Multiply)"
+						"path": "Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Multiply)"
 					}
 				},
 				{
@@ -2099,8 +2099,8 @@
 					"objectClass": "Rules",
 					"sid": 781287846172329,
 					"parameters": {
-						"path": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Add)"
+						"path": "Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Add)"
 					}
 				},
 				{
@@ -2112,8 +2112,8 @@
 					"objectClass": "Rules",
 					"sid": 999042333458569,
 					"parameters": {
-						"path": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Max)))"
+						"path": "Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Max)))"
 					}
 				},
 				{
@@ -2126,7 +2126,7 @@
 					"sid": 347921085058366,
 					"behaviorType": "Timer",
 					"parameters": {
-						"tag": "TIMER_Weapon_Attack_ & Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Weapon)"
+						"tag": "TIMER_Weapon_Attack_ & Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Weapon)"
 					}
 				},
 				{

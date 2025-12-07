@@ -506,6 +506,20 @@
 			"sid": 923828765477710
 		},
 		{
+			"eventType": "comment",
+			"text": "todo_now"
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Modifier",
+			"type": "string",
+			"initialValue": "Modifier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 207160904831020
+		},
+		{
 			"eventType": "variable",
 			"name": "KEY_MovementSpeed",
 			"type": "string",
@@ -727,9 +741,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Upgrades",
+			"name": "KEY_Modifiers",
 			"type": "string",
-			"initialValue": "Upgrades",
+			"initialValue": "Modifiers",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,

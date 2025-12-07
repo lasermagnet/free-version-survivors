@@ -343,6 +343,14 @@
 					"script-info": {
 						"purpose": "none"
 					}
+				},
+				{
+					"name": "R_Modifiers.js",
+					"type": "application/javascript",
+					"sid": 435653835336776,
+					"script-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []
@@ -533,7 +541,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "45",
+		"version": "46",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

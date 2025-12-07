@@ -938,7 +938,7 @@
 									"objectClass": "Icon",
 									"sid": 390892621667584,
 									"parameters": {
-										"animation": "Rules.Get(KEY_Upgrades & DOT & Item.upgrade & DOT & KEY_Icon)",
+										"animation": "Rules.Get(KEY_Modifiers & DOT & Item.upgrade & DOT & KEY_Icon)",
 										"from": "beginning"
 									}
 								},

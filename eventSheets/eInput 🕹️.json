@@ -389,6 +389,55 @@
 				}
 			],
 			"sid": 217108654786040
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 626404855373322,
+					"parameters": {
+						"key": 56
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 500801554112144,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Health",
+						"value": "20"
+					}
+				}
+			],
+			"sid": 498991757643061
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 266417238029725,
+					"parameters": {
+						"key": 57
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "applyUpgrade",
+					"objectClass": "Player",
+					"sid": 177500258081648,
+					"parameters": [
+						"\"HealMax\""
+					]
+				}
+			],
+			"sid": 420276749749146
 		}
 	],
 	"sid": 909767790016851
