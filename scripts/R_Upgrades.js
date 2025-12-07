@@ -58,7 +58,7 @@ export const Upgrades = {
         "Add": 5
     },
     "PickupDistance": {
-        "Label": "Pickup zone up",
+        "Label": "Bigger pickup zone",
         "Description": "Attract drops from further.",
         "Icon": "Experience",
         "Rule_Value": "Player.PickupDistance",
@@ -120,5 +120,22 @@ export const Upgrades = {
         "Rule_Value": "Weapons.Revolver.Amount",
         "Multiply": 1,
         "Add": 1,
+    },
+    "Myst": {
+        "Label": "Myst / density",
+        "Description": "Creates a damaging zone.",
+        "Icon": "Myst",
+        "Rule_Value": "Weapons.Myst.Amount",
+        "Multiply": 1,
+        "Add": 5,
+    },
+    "Myst_Area": {
+        "WeaponRequirement": "Myst",
+        "Label": "Myst: bigger area",
+        "Description": "Spreads Myst on a bigger area",
+        "Icon": "Myst",
+        "Rule_Value": "Weapons.Myst.PositionRandom2",
+        "Multiply": 1,
+        "Add": 10,
     },
 }

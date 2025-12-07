@@ -5,6 +5,7 @@ export const Pools = {
         [1, "Sword"],
         [1, "Flame"],
         [1, "Revolver"],
+        [1, "Myst"],
     ],
 
     "Upgrades": [
@@ -21,6 +22,8 @@ export const Pools = {
         [1, "WeaponAmount"],
         [1, "Sword"],
         [1, "ItemSpawnCooldown"],
+        [1, "Myst"],
+        [1, "Myst_Area"],
     ],
 
     // todo upgrade banning (no more item drop / level up upgrade option)

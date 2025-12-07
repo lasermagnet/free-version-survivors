@@ -64,7 +64,11 @@
 				},
 				{
 					"type": "comment",
-					"text": "todo_maybe remove all cooldown IVs and keep data in Rules"
+					"text": "~~todo_maybe remove all cooldown IVs and keep data in Rules~~"
+				},
+				{
+					"type": "comment",
+					"text": "todo use Timer JSON, randomize first cooldown between 0 and cooldown param"
 				},
 				{
 					"id": "set-instvar-value",
@@ -286,12 +290,14 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Weapon",
-									"sid": 990478502421996,
+									"sid": 459545277625584,
 									"parameters": [
 										"Rules.CurrentKey",
 										"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
 										"Player.lastMovingAngle",
-										"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)"
+										"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
+										"Rules.Get(DOT & KEY_PositionRandom1)",
+										"Rules.Get(DOT & KEY_PositionRandom2)"
 									]
 								}
 							],
@@ -754,7 +760,7 @@
 					"children": [
 						{
 							"eventType": "variable",
-							"name": "selectedUpgrade",
+							"name": "upgradeCandidate",
 							"type": "string",
 							"initialValue": "",
 							"comment": "",
@@ -769,6 +775,10 @@
 						{
 							"eventType": "comment",
 							"text": "This is not the most elegant solution to the problem that we have multiple (ideally 3) unique upgrade options, which should be chosen based on their weight"
+						},
+						{
+							"eventType": "comment",
+							"text": "todo mn 100"
 						},
 						{
 							"eventType": "block",
@@ -825,43 +835,100 @@
 									"objectClass": "System",
 									"sid": 882146791657174,
 									"parameters": {
-										"variable": "selectedUpgrade",
+										"variable": "upgradeCandidate",
 										"value": "AdvancedRandom.WeightedByName(PT_Upgrades)"
 									}
 								},
 								{
 									"id": "log",
 									"objectClass": "Browser",
-									"sid": 318948125872464,
+									"sid": 833212594223381,
 									"parameters": {
 										"type": "log",
-										"message": "\"upgrade choice step: \" & selectedUpgrade"
+										"message": "\"upgrade candidate: \" & upgradeCandidate"
 									}
+								},
+								{
+									"type": "comment",
+									"text": "If upgrade candidate not unique, clear it"
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 787466613906827,
+									"parameters": {
+										"variable": "upgradeCandidate",
+										"value": "UpgradeOptions.IndexOf(upgradeCandidate) = NOTHING ? upgradeCandidate : EMPTY"
+									}
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 114035751771528,
+									"parameters": {
+										"type": "log",
+										"message": "\"Update candidate after first validation: \" & upgradeCandidate"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "If upgrade candidate has an unsatisfied weapon requirement, clear it"
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 550155427069395,
+									"parameters": {
+										"type": "log",
+										"message": "\"Weapon requirement for \" & upgradeCandidate & \": \" & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement)"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 714268585606491,
+									"parameters": {
+										"variable": "upgradeCandidate",
+										"value": "Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) = NO ? upgradeCandidate : (Rules.Get(KEY_Weapons & DOT & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) & DOT & KEY_Amount) > 0 ? upgradeCandidate : EMPTY)"
+									}
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 108463257033813,
+									"parameters": {
+										"type": "log",
+										"message": "\"Update candidate after second validation: \" & upgradeCandidate"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "Use upgrade candidate (if it's still a valid one)"
 								},
 								{
 									"id": "set-instvar-value",
 									"objectClass": "UI_Button9P_Upgrade",
-									"sid": 146361965504858,
+									"sid": 672685898076604,
 									"parameters": {
 										"instance-variable": "upgrade",
-										"value": "UpgradeOptions.IndexOf(selectedUpgrade) = NOTHING ? selectedUpgrade : EMPTY"
+										"value": "upgradeCandidate"
 									}
 								},
 								{
 									"id": "set-animation",
 									"objectClass": "Icon",
-									"sid": 871116676435623,
+									"sid": 439449580852157,
 									"parameters": {
-										"animation": "Rules.Get(KEY_Upgrades & DOT & selectedUpgrade & DOT & KEY_Icon)",
+										"animation": "Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Icon)",
 										"from": "beginning"
 									}
 								},
 								{
 									"id": "set-text",
 									"objectClass": "UI_TextSF_Upgrade",
-									"sid": 356123709941595,
+									"sid": 585831293527480,
 									"parameters": {
-										"text": "(UI_Button9P_Upgrade.upgrade = EMPTY ? EMPTY : \"[scale=0.2]\" & Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Label) & \"[/scale]\" & newline & Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Description))"
+										"text": "(upgradeCandidate = EMPTY ? EMPTY : \"[scale=0.2]\" & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Label) & \"[/scale]\" & newline & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Description))"
 									}
 								},
 								{
@@ -870,7 +937,7 @@
 									"sid": 313942423004106,
 									"parameters": {
 										"where": "back",
-										"value": "selectedUpgrade",
+										"value": "upgradeCandidate",
 										"axis": "x"
 									}
 								}

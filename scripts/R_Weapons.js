@@ -1,4 +1,20 @@
 export const Weapons = {
+    "_Template": {
+        "Cooldown": 2,
+        "Amount": 0,
+        "Damage": 0,
+        "PierceLimit": 1,
+        "Scale": 1,
+        "Timeout": 4,
+        "MovementSpeed": 0,
+        "MovementAcceleration": 0,
+        "Timer": 1,
+        "Pin": 0,
+        "OrbitRadius": 0,
+        "OrbitSpeed": 0,
+        "PositionRandom1": 0,
+        "PositionRandom2": 0,
+    },
     "Sword": {
         "Cooldown": 1,
         "Amount": 1,
@@ -8,9 +24,6 @@ export const Weapons = {
         "Timeout": 4,
         "MovementSpeed": 85,
         "Timer": 1,
-        "Pin": 0,
-        "OrbitRadius": 0,
-        "OrbitSpeed": 0,
     },
     "Flame": {
         "Cooldown": 3,
@@ -22,8 +35,6 @@ export const Weapons = {
         "MovementSpeed": 10,
         "Timer": 1,
         "Pin": 1,
-        "OrbitRadius": 0,
-        "OrbitSpeed": 0,
     },
     "Revolver": {
         "Cooldown": 5,
@@ -37,5 +48,20 @@ export const Weapons = {
         "Pin": 1,
         "OrbitRadius": 40,
         "OrbitSpeed": 150,
-    }
+    },
+    "Myst": {
+        "Cooldown": 6,
+        "Amount": 0,
+        "Damage": 2,
+        "PierceLimit": 1000,
+        "Scale": 1,
+        "Timeout": 3,
+        "MovementSpeed": 10,
+        "MovementAcceleration": -5,
+        "Timer": 1,
+        "PositionRandom1": 40,
+        "PositionRandom2": 20,
+    },
 }
+
+// todo move timers out of weapon/other rules and into a Timers JSON object

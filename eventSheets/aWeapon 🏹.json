@@ -38,6 +38,20 @@
 					"initialValue": "1",
 					"comment": "",
 					"sid": 410210461955907
+				},
+				{
+					"name": "positionRandom1",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 370468262071908
+				},
+				{
+					"name": "positionRandom2",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 665538211913658
 				}
 			],
 			"eventType": "custom-ace-block",
@@ -56,17 +70,21 @@
 			"actions": [
 				{
 					"type": "comment",
+					"text": "todo remove Rules.Get stuff, use parameters"
+				},
+				{
+					"type": "comment",
 					"text": "Spawn projectile"
 				},
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 200482084576445,
+					"sid": 356296586837111,
 					"parameters": {
 						"object-to-create": "Weapon",
 						"layer": "LAYER_Main",
-						"x": "Player.X",
-						"y": "Player.Y",
+						"x": "Player.X + random(-positionRandom2, positionRandom2) + positionRandom1",
+						"y": "Player.Y + random(-positionRandom2, positionRandom2) + positionRandom1",
 						"create-hierarchy": false,
 						"template-name": "\"\""
 					}
@@ -86,7 +104,19 @@
 				},
 				{
 					"type": "comment",
-					"text": "Set movement speed"
+					"text": "Set sprite (movement) angle"
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "Weapon",
+					"sid": 411194248423230,
+					"parameters": {
+						"angle": "firstAngle + (360 / amount * loopindex)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Initialize bullet behaviour"
 				},
 				{
 					"id": "set-speed",
@@ -95,6 +125,15 @@
 					"behaviorType": "Bullet",
 					"parameters": {
 						"speed": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_MovementSpeed)"
+					}
+				},
+				{
+					"id": "set-acceleration",
+					"objectClass": "Weapon",
+					"sid": 998288389943659,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"acceleration": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_MovementAcceleration)"
 					}
 				},
 				{
@@ -120,18 +159,6 @@
 					"parameters": {
 						"instance-variable": "damage",
 						"value": "Rules.Get(KEY_Weapons & DOT & weapon & DOT & KEY_Damage)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Set sprite (movement) angle"
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "Weapon",
-					"sid": 214497628590692,
-					"parameters": {
-						"angle": "firstAngle + (360 / amount * loopindex)"
 					}
 				},
 				{

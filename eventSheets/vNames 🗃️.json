@@ -447,6 +447,26 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_PositionRandom1",
+			"type": "string",
+			"initialValue": "PositionRandom1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 695980413314861
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_PositionRandom2",
+			"type": "string",
+			"initialValue": "PositionRandom2",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 846814970302667
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Queues",
 			"type": "string",
 			"initialValue": "Queues",
@@ -524,6 +544,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 400290896442803
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_WeaponRequirement",
+			"type": "string",
+			"initialValue": "WeaponRequirement",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 855705167315955
 		},
 		{
 			"eventType": "variable",
