@@ -786,13 +786,13 @@
 				{
 					"type": "UI_TextSF_Upgrade",
 					"properties": {
-						"text": "[scale=0.2]Upgrade 1[/scale]\nDescription 1",
+						"text": "[scale=0.15]Upgrade 1[/scale]\nDescription 1",
 						"enable-bbcode": true,
 						"character-width": 30,
 						"character-height": 30,
 						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~🅰🅱©⌛",
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.1,
+						"scale": 0.09,
 						"character-spacing": 0,
 						"line-height": 3,
 						"horizontal-alignment": "left",
@@ -864,13 +864,13 @@
 				{
 					"type": "UI_TextSF_Upgrade",
 					"properties": {
-						"text": "[scale=0.2]Upgrade 2[/scale]\nDescription 2",
+						"text": "[scale=0.15]Upgrade 2[/scale]\nDescription 2",
 						"enable-bbcode": true,
 						"character-width": 30,
 						"character-height": 30,
 						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~🅰🅱©⌛",
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.1,
+						"scale": 0.09,
 						"character-spacing": 0,
 						"line-height": 3,
 						"horizontal-alignment": "left",
@@ -942,13 +942,13 @@
 				{
 					"type": "UI_TextSF_Upgrade",
 					"properties": {
-						"text": "[scale=0.2]Upgrade 3[/scale]\nDescription 3",
+						"text": "[scale=0.15]Upgrade 3[/scale]\nDescription 3",
 						"enable-bbcode": true,
 						"character-width": 30,
 						"character-height": 30,
 						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~🅰🅱©⌛",
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.1,
+						"scale": 0.09,
 						"character-spacing": 0,
 						"line-height": 3,
 						"horizontal-alignment": "left",
@@ -1719,7 +1719,7 @@
 						"expanded": true
 					},
 					"showing": true,
-					"locked": false,
+					"locked": true,
 					"world": {
 						"x": 5,
 						"y": 24,

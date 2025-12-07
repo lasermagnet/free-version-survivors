@@ -1,11 +1,13 @@
-const _template = {
+const _example = {
     "": {
-        "Label": "",
-        "Description": "",
-        "Icon": "",
-        "Rule_Value": "",
-        "Multiply": 1,
-        "Add": 0,
+        "Label": "Heal a bit",              // bigger text for the level up screen
+        "Description": "Heal 100 points",   // smaller text for the level up screen
+        "Icon": "Heal",                     // an animation name in the Icons object
+        "Rule_Value": "Player.Health",      // specify which rule value to modify
+        "Rule_Max": "Player.Health_Max",    // optionally specify the rule which holds the maximum allowed value
+        "Multiply": 1,                      // amount to multiply the specified rule value with
+        "Add": 100,                         // amount to add to the specified rule value
+        "Weapon": "Axe"                     // optionally specify a weapon to immediately trigger its attack and restart its cooldown
     },
 }
 
@@ -36,7 +38,7 @@ export const Modifiers = {
     },
     "HealingBonus": {
         "Label": "Healing bonus",
-        "Description": "Health drops worth 10% more.",
+        "Description": "Increase healing efficiency by 10%.",
         "Icon": "Heal",
         "Rule_Value": "Player.Bonus_Healing_Multiplier",
         "Multiply": 1,
@@ -124,7 +126,7 @@ export const Modifiers = {
         "Add": 1,
     },
     "Axe_Amount": {
-        "Weapon": "Axe", // to attack & reset cooldown
+        "Weapon": "Axe",
         "Label": "+1 Axe",
         "Description": "A trusty old throwing axe.",
         "Icon": "Axe",
@@ -218,8 +220,8 @@ export const Modifiers = {
 
     "Spikes_Amount": {
         "Weapon": "Spikes",
-        "Label": "+5 Spikes",
-        "Description": "Spawns 5 more spike clusters.",
+        "Label": "+1 Spikes",
+        "Description": "Spawns spike clusters.",
         "Icon": "Spikes",
         "Rule_Value": "Weapons.Spikes.Amount",
         "Multiply": 1,
@@ -228,7 +230,7 @@ export const Modifiers = {
     "Spikes_Area": {
         "Weapon": "Spikes",
         "Label": "Spikes: area up",
-        "Description": "Spreads spikes on a bigger area",
+        "Description": "Spreads spikes on a bigger area.",
         "Icon": "Spikes",
         "Rule_Value": "Weapons.Spikes.PositionRandom2",
         "Multiply": 1,
@@ -246,10 +248,38 @@ export const Modifiers = {
     "Spikes_Damage_Extra": {
         "Weapon": "Spikes",
         "Label": "Spikes: +2 damage",
-        "Description": "Spikes do bit more damage.",
+        "Description": "Spikes do a bit more damage.",
         "Icon": "Spikes",
         "Rule_Value": "Weapons.Spikes.Amount",
         "Multiply": 1,
         "Add": 2,
+    },
+
+    "Ice_Amount": {
+        "Weapon": "Ice",
+        "Label": "+1 Ice Wheel",
+        "Description": "Spawns a rotating ice wheel nearby.",
+        "Icon": "Ice",
+        "Rule_Value": "Weapons.Ice.Amount",
+        "Multiply": 1,
+        "Add": 8,
+    },
+    "Ice_Duration": {
+        "Weapon": "Ice",
+        "Label": "Ice wheel: duration up",
+        "Description": "Ice wheel lasts 0.5s longer.",
+        "Icon": "Ice",
+        "Rule_Value": "Weapons.Ice.Duration",
+        "Multiply": 1,
+        "Add": 0.5,
+    },
+    "Ice_FreezeTime": {
+        "Weapon": "Ice",
+        "Label": "Ice wheel: freeze longer",
+        "Description": "Ice wheel freezes enemies 0.5s longer.",
+        "Icon": "Ice",
+        "Rule_Value": "Weapons.Ice.FreezeTime",
+        "Multiply": 1,
+        "Add": 0.5,
     },
 }

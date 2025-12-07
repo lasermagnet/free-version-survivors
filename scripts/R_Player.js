@@ -1,19 +1,24 @@
 export const Player = {
-    // HP
-    "Health": 300,
-    "Health_Max": 300,
-    // XP
-    "Experience": 0,
+    // Health
+    "Health": 300, // starting & current health
+    "Health_Max": 300, // health limit
+
+    // Experience
+    "Experience": 0, // starting & current XP
     "Experience_Target": 40,
     "Experience_Target_Multiplier": 1.2,
+
     // Movement
+    // todo remove acc & deacc?
     "MovementAcceleration": 100,
     "MovementDeceleration": 100,
-    "MovementSpeed": 70,
+    "MovementSpeed": 70, // movement speed for the 8 Direction behaviour
+
     // Misc
     "PickupDistance": 30,
     "PickupDistanceMagnet": 1000,
     "LevelUpFreezeTime": 1,
+
     // Bonuses
     // todo_maybe "Bonus" object with children, get rid of Bonus_?
     "Bonus_Enemy_Spawn_Amount_Multiplier": 2,

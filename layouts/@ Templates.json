@@ -87,7 +87,7 @@
 						"damage": 0,
 						"isMovementBlocker": 0,
 						"isDestroyed": 0,
-						"piercedUIDs_SSV": ""
+						"piercedEnemyUIDs_SSV": ""
 					},
 					"behaviors": {
 						"Bullet": {
@@ -333,7 +333,6 @@
 					"tags": "",
 					"instanceVariables": {
 						"level": 1,
-						"experience": 0,
 						"isDead": 0,
 						"isHurt": 0,
 						"lastMovingAngle": 0,
@@ -1005,8 +1004,8 @@
 									"w": false,
 									"h": false,
 									"a": false,
-									"o": false,
-									"v": false,
+									"o": true,
+									"v": true,
 									"d": true,
 									"sm": "normal"
 								}
@@ -1096,8 +1095,8 @@
 							"w": false,
 							"h": false,
 							"a": false,
-							"o": false,
-							"v": false,
+							"o": true,
+							"v": true,
 							"d": true,
 							"sm": "normal"
 						},

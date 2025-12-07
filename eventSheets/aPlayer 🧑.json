@@ -2,96 +2,6 @@
 	"name": "aPlayer 🧑",
 	"events": [
 		{
-			"eventType": "comment",
-			"text": "todo_pack move actions to \"on start of project\""
-		},
-		{
-			"aceType": "action",
-			"aceName": "spawn",
-			"objectClass": "Player",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionCopyPicked": false,
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "custom-ace-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "create-object",
-					"objectClass": "System",
-					"sid": 221635225319954,
-					"parameters": {
-						"object-to-create": "Player",
-						"layer": "LAYER_Main",
-						"x": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Width) * 0.5",
-						"y": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Height) * 0.5",
-						"create-hierarchy": true,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Disable gravity"
-				},
-				{
-					"id": "set-world-gravity",
-					"objectClass": "Player",
-					"sid": 776809560545526,
-					"behaviorType": "Physics",
-					"parameters": {
-						"gravity": "0"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Initialize player behaviours"
-				},
-				{
-					"id": "set-max-speed",
-					"objectClass": "Player",
-					"sid": 316291171629907,
-					"behaviorType": "8Direction",
-					"parameters": {
-						"max-speed": "Rules.Get(KEY_Player & DOT & KEY_MovementSpeed)"
-					}
-				},
-				{
-					"id": "set-acceleration",
-					"objectClass": "Player",
-					"sid": 221202146104270,
-					"behaviorType": "8Direction",
-					"parameters": {
-						"acceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementAcceleration)"
-					}
-				},
-				{
-					"id": "set-deceleration",
-					"objectClass": "Player",
-					"sid": 993068735412028,
-					"behaviorType": "8Direction",
-					"parameters": {
-						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Initialize health bar"
-				},
-				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 438540538290760,
-					"parameters": {
-						"type": "log",
-						"message": "\"Spawning player\""
-					}
-				}
-			],
-			"sid": 821905210614926
-		},
-		{
 			"aceType": "action",
 			"aceName": "processInput",
 			"objectClass": "Player",
@@ -830,23 +740,23 @@
 						{
 							"customAction": "spawn",
 							"objectClass": "Weapon",
-							"sid": 371377346080431,
+							"sid": 464914540675245,
 							"parameters": [
 								"Rules.CurrentKey",
 								"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
-								"Player.lastMovingAngle",
-								"Rules.Get(DOT & KEY_AngleOffset)",
-								"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
-								"Rules.Type(DOT & KEY_StaticAngle) = NULL ? EMPTY : str(Rules.Get(DOT & KEY_StaticAngle))",
-								"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
-								"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
-								"Rules.Get(DOT & KEY_PositionRandom2)",
-								"Rules.Get(DOT & KEY_MovementSpeed)",
-								"Rules.Get(DOT & KEY_MovementAcceleration)",
 								"Rules.Get(DOT & KEY_Damage)",
 								"Rules.Get(DOT & KEY_Duration)",
 								"Rules.Get(DOT & KEY_BlockMovement) = NO ? NO : YES",
 								"Rules.Get(DOT & KEY_Pin) = NO ? NO : YES",
+								"Player.lastMovingAngle",
+								"Rules.Get(DOT & KEY_AngleOffset)",
+								"Rules.Type(DOT & KEY_StaticAngle) = NULL ? EMPTY : str(Rules.Get(DOT & KEY_StaticAngle))",
+								"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
+								"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
+								"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
+								"Rules.Get(DOT & KEY_PositionRandom2)",
+								"Rules.Get(DOT & KEY_BulletSpeed)",
+								"Rules.Get(DOT & KEY_BulletAcceleration)",
 								"Rules.Get(DOT & KEY_OrbitRadius)",
 								"Rules.Get(DOT & KEY_OrbitSpeed)",
 								"Rules.Get(DOT & KEY_RotationSpeed)"
@@ -868,20 +778,28 @@
 							"sid": 178554304329498,
 							"behaviorType": "Timer",
 							"parameters": {
-								"tag": "TIMER_WaveCycle"
+								"tag": "TIMER_SpawnCycle"
 							},
 							"isInverted": true
 						}
 					],
 					"actions": [
 						{
+							"type": "comment",
+							"text": "Increase wave cycle counter"
+						},
+						{
 							"id": "add-to-eventvar",
 							"objectClass": "System",
 							"sid": 613390079745651,
 							"parameters": {
-								"variable": "waveCycle",
+								"variable": "spawnCycle",
 								"value": "1"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Start next wave cycle timer"
 						},
 						{
 							"id": "start-timer",
@@ -891,7 +809,7 @@
 							"parameters": {
 								"duration": "Rules.Get(KEY_Level & DOT & KEY_SpawnInterval)",
 								"type": "once",
-								"tag": "TIMER_WaveCycle"
+								"tag": "TIMER_SpawnCycle"
 							}
 						},
 						{
@@ -1102,16 +1020,6 @@
 									"text": "Player: collect experience (with bonus applied)"
 								},
 								{
-									"id": "set-instvar-value",
-									"objectClass": "Player",
-									"sid": 224969977370347,
-									"disabled": true,
-									"parameters": {
-										"instance-variable": "experience",
-										"value": "Drop.experience > 0 ? Self.experience + round(Drop.experience * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : Self.experience"
-									}
-								},
-								{
 									"id": "add-to",
 									"objectClass": "Rules",
 									"sid": 550631592040703,
@@ -1138,7 +1046,7 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "Activate magnet drop"
+									"text": "Magnet drop: start picking up experience drops within magnet distance"
 								},
 								{
 									"eventType": "block",
@@ -1204,17 +1112,6 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-instance-variable",
-							"objectClass": "Player",
-							"sid": 196602343613844,
-							"disabled": true,
-							"parameters": {
-								"instance-variable": "experience",
-								"comparison": 5,
-								"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
-							}
-						},
-						{
 							"id": "compare-value",
 							"objectClass": "Rules",
 							"sid": 413438640669039,
@@ -1237,6 +1134,10 @@
 							]
 						},
 						{
+							"type": "comment",
+							"text": "Set \"is leveling\" state"
+						},
+						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
 							"sid": 515945957497019,
@@ -1244,6 +1145,10 @@
 								"variable": "isLeveling",
 								"value": "YES"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Increase player level counter"
 						},
 						{
 							"id": "add-to-instvar",
@@ -1326,7 +1231,7 @@
 						},
 						{
 							"type": "comment",
-							"text": "Show & reset level up UI"
+							"text": "Show level up UI"
 						},
 						{
 							"id": "set-default-color",
@@ -1376,9 +1281,13 @@
 							}
 						},
 						{
+							"type": "comment",
+							"text": "Clear upgrade options"
+						},
+						{
 							"id": "set-instvar-value",
 							"objectClass": "UI_Button9P_Upgrade",
-							"sid": 830593669059011,
+							"sid": 870681656230784,
 							"parameters": {
 								"instance-variable": "modifier",
 								"value": "EMPTY"
@@ -1387,7 +1296,7 @@
 						{
 							"id": "set-text",
 							"objectClass": "UI_TextSF_Upgrade",
-							"sid": 532471539928078,
+							"sid": 663318670480407,
 							"parameters": {
 								"text": "EMPTY"
 							}
@@ -1543,6 +1452,16 @@
 									}
 								},
 								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 919693974230369,
+									"disabled": true,
+									"parameters": {
+										"type": "log",
+										"message": "\"Update candidate after second validation: \" & upgradeCandidate"
+									}
+								},
+								{
 									"type": "comment",
 									"text": "Set modifier"
 								},
@@ -1597,9 +1516,9 @@
 								{
 									"id": "set-text",
 									"objectClass": "UI_TextSF_Upgrade",
-									"sid": 988567318967188,
+									"sid": 600207889077602,
 									"parameters": {
-										"text": "(modifier = EMPTY ? EMPTY : \"[scale=0.2]\" & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Label) & \"[/scale]\" & newline & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Description))"
+										"text": "(modifier = EMPTY ? EMPTY : \"[scale=0.15]\" & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Label) & \"[/scale]\" & newline & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Description))"
 									}
 								},
 								{
@@ -1993,16 +1912,6 @@
 					"text": "Spend experience"
 				},
 				{
-					"id": "subtract-from-instvar",
-					"objectClass": "Player",
-					"sid": 164427102917643,
-					"disabled": true,
-					"parameters": {
-						"instance-variable": "experience",
-						"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
-					}
-				},
-				{
 					"id": "subtract-from",
 					"objectClass": "Rules",
 					"sid": 172350394201615,
@@ -2013,7 +1922,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Tween out level up UI"
+					"text": "Tween out level up UI (wait for it)"
 				},
 				{
 					"id": "tween-one-property",
@@ -2038,12 +1947,20 @@
 					"sid": 777887322997353
 				},
 				{
+					"type": "comment",
+					"text": "Hide level up UI"
+				},
+				{
 					"id": "set-visible",
 					"objectClass": "UI_Border_LevelUp",
 					"sid": 787808226938946,
 					"parameters": {
 						"visibility": "invisible"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Unset \"is leveling\" state"
 				},
 				{
 					"id": "set-eventvar-value",
@@ -2109,7 +2026,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Resume game"
+					"text": "Resume game: restore time scale of paused objects"
 				},
 				{
 					"id": "restore-object-time-scale",
@@ -2346,7 +2263,7 @@
 					"objectClass": "System",
 					"sid": 354139982860080,
 					"parameters": {
-						"variable": "waveCycle",
+						"variable": "spawnCycle",
 						"value": "0"
 					}
 				},

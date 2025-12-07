@@ -13,13 +13,6 @@
 			"sid": 400566419621835
 		},
 		{
-			"name": "experience",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 423768083061147
-		},
-		{
 			"name": "isDead",
 			"type": "number",
 			"desc": "",

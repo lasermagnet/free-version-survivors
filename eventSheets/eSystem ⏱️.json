@@ -33,7 +33,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Load rules"
+					"text": "Load rules from JSON"
 				},
 				{
 					"id": "parse",
@@ -58,7 +58,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Initialize stuff"
+					"text": "Set up collision cell size"
 				},
 				{
 					"id": "set-collision-cell-size",
@@ -239,9 +239,61 @@
 					"text": "Spawn player"
 				},
 				{
-					"customAction": "spawn",
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 221635225319954,
+					"parameters": {
+						"object-to-create": "Player",
+						"layer": "LAYER_Main",
+						"x": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Width) * 0.5",
+						"y": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Height) * 0.5",
+						"create-hierarchy": true,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Disable gravity"
+				},
+				{
+					"id": "set-world-gravity",
 					"objectClass": "Player",
-					"sid": 608803642935295
+					"sid": 776809560545526,
+					"behaviorType": "Physics",
+					"parameters": {
+						"gravity": "0"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Initialize player movement behaviour"
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Player",
+					"sid": 316291171629907,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"max-speed": "Rules.Get(KEY_Player & DOT & KEY_MovementSpeed)"
+					}
+				},
+				{
+					"id": "set-acceleration",
+					"objectClass": "Player",
+					"sid": 221202146104270,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"acceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementAcceleration)"
+					}
+				},
+				{
+					"id": "set-deceleration",
+					"objectClass": "Player",
+					"sid": 993068735412028,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
+					}
 				},
 				{
 					"type": "comment",
@@ -469,9 +521,9 @@
 				{
 					"id": "set-opacity",
 					"objectClass": "Arrow",
-					"sid": 381940989544921,
+					"sid": 253612130135831,
 					"parameters": {
-						"opacity": "lerp(Self.Opacity, distance(Player.X, Player.Y, Self.itemX, Self.itemY) < min(ViewportMidX(LAYER_UI), ViewportMidY(LAYER_UI)) ? 0 : C_Arrow_Opacity, 0.1)"
+						"opacity": "lerp(Self.Opacity, distance(Player.X, Player.Y, Self.itemX, Self.itemY) < min(ViewportMidX(LAYER_UI), ViewportMidY(LAYER_UI)) ? 0 : C_Arrow_Opacity, 0.2)"
 					}
 				},
 				{
@@ -481,18 +533,9 @@
 				{
 					"id": "set-width",
 					"objectClass": "UI_Bar_Experience",
-					"sid": 272227564943345,
-					"disabled": true,
+					"sid": 817837506902190,
 					"parameters": {
-						"width": "lerp(Self.Width, min(Player.experience / Rules.Get(KEY_Player & DOT & KEY_Experience_Target) * Self.initWidth, Self.initWidth), 0.05)"
-					}
-				},
-				{
-					"id": "set-width",
-					"objectClass": "UI_Bar_Experience",
-					"sid": 501704119198524,
-					"parameters": {
-						"width": "lerp(Self.Width, min(Rules.Get(KEY_Player & DOT & KEY_Experience) / Rules.Get(KEY_Player & DOT & KEY_Experience_Target) * Self.initWidth, Self.initWidth), 0.05)"
+						"width": "lerp(Self.Width, min(Rules.Get(KEY_Player & DOT & KEY_Experience) / Rules.Get(KEY_Player & DOT & KEY_Experience_Target) * Self.initWidth, Self.initWidth), 0.2)"
 					}
 				},
 				{
@@ -502,9 +545,9 @@
 				{
 					"id": "set-width",
 					"objectClass": "UI_Bar_Health",
-					"sid": 133218698030148,
+					"sid": 720625773003021,
 					"parameters": {
-						"width": "lerp(Self.Width, min(Rules.Get(KEY_Player & DOT & KEY_Health) / Rules.Get(KEY_Player & DOT & KEY_Health_Max) * Self.initWidth, Self.initWidth), 0.05)"
+						"width": "lerp(Self.Width, min(Rules.Get(KEY_Player & DOT & KEY_Health) / Rules.Get(KEY_Player & DOT & KEY_Health_Max) * Self.initWidth, Self.initWidth), 0.1)"
 					}
 				}
 			],

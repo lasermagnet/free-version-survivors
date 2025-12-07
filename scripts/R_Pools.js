@@ -6,10 +6,11 @@ export const Pools = {
         [1, "HealAll"],
 
         //  Weapons
-        [1, "Axe"],
+        [2, "Axe"],
         [1, "Flame"],
         [1, "Chainsaw"],
         [1, "Spikes"],
+        [0.5, "Ice"],
 
         // Player stats
         [1, "Regeneration"],

@@ -1,7 +1,7 @@
 const _example = {
     "": {
-        "Modifiers": [],
-        "Modifiers_Infinite": [],
+        "Modifiers": [],            // todo
+        "Modifiers_Infinite": [],   // todo
     },
 }
 
@@ -12,7 +12,7 @@ export const Upgrades = {
 
     // Weapons
     "Axe": {
-        "Modifiers": ["Axe_Amount", "Axe_Damage", "Axe_PierceLimit"],
+        "Modifiers": ["Axe_Amount", "Axe_Damage", "Axe_PierceLimit", "Axe_Amount", "Axe_Damage", "Axe_PierceLimit"],
         "Modifiers_Infinite": ["Axe_Damage_Extra"],
     },
     "Flame": {
@@ -26,6 +26,9 @@ export const Upgrades = {
     "Spikes": {
         "Modifiers": ["Spikes_Amount", "Spikes_Area", "Spikes_Amount", "Spikes_Area", "Spikes_Amount", "Spikes_Area", "Spikes_Damage", "Spikes_Damage"],
         "Modifiers_Infinite": ["Spikes_Damage_Extra"],
+    },
+    "Ice": {
+        "Modifiers": ["Ice_Amount", "Ice_Duration", "Ice_FreezeTime", "Ice_Duration", "Ice_FreezeTime", "Ice_Duration", "Ice_FreezeTime"],
     },
 
     // Player stats

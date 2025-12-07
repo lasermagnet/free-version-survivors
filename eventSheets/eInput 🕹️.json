@@ -189,7 +189,7 @@
 					"objectClass": "UI_TextSF_Stats",
 					"sid": 900704920651912,
 					"parameters": {
-						"text": "StringSub(\"Wave {0}: #{1}, cycle #{2}\", waveCount, waveId, waveCycle) & newline &\n\"Player level: \" & Player.level & newline &\n\"Health: \" & round(Rules.Get(KEY_Player & DOT & KEY_Health)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max)) & newline &\n\"Enemies killed: \" & enemiesKilled & newline &\n\"Enemy spawn amount bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Amount_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Healing bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Regeneration bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Regeneration_Amount) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
+						"text": "StringSub(\"Wave {0}: #{1}, cycle #{2}\", waveCount, waveId, spawnCycle) & newline &\n\"Player level: \" & Player.level & newline &\n\"Health: \" & round(Rules.Get(KEY_Player & DOT & KEY_Health)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max)) & newline &\n\"Enemies killed: \" & enemiesKilled & newline &\n\"Enemy spawn amount bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Amount_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Healing bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Regeneration bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Regeneration_Amount) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
 					}
 				},
 				{
@@ -301,12 +301,11 @@
 					"sid": 694782701146895,
 					"behaviorType": "Timer",
 					"parameters": {
-						"tag": "TIMER_WaveCycle"
+						"tag": "TIMER_SpawnCycle"
 					}
 				}
 			],
-			"sid": 650745842861088,
-			"disabled": true
+			"sid": 650745842861088
 		},
 		{
 			"eventType": "block",
@@ -354,8 +353,7 @@
 					]
 				}
 			],
-			"sid": 275142110073853,
-			"disabled": true
+			"sid": 275142110073853
 		},
 		{
 			"eventType": "block",

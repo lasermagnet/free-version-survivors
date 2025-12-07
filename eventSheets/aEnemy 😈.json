@@ -87,14 +87,14 @@
 				},
 				{
 					"type": "comment",
-					"text": "Set animation (matches enemy type)"
+					"text": "Set animation"
 				},
 				{
 					"id": "set-animation",
 					"objectClass": "Enemy",
-					"sid": 188461980292847,
+					"sid": 811086684319649,
 					"parameters": {
-						"animation": "enemy",
+						"animation": "Rules.Type(KEY_Enemies & DOT & enemy & DOT & KEY_Animation) = NULL ?\nenemy :\nRules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Animation)",
 						"from": "beginning"
 					}
 				},
@@ -256,16 +256,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Flash / unflash enemy according to the \"flash on\" timer"
-				},
-				{
-					"id": "set-default-color",
-					"objectClass": "Enemy",
-					"sid": 272219199942972,
-					"disabled": true,
-					"parameters": {
-						"color": "Player.Timer.CurrentTime(TIMER_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Freeze) = 0 ?\n(Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)) :\nrgbEx(100, 100, 200)"
-					}
+					"text": "Set enemy color (flashing, frozen, or normal)"
 				},
 				{
 					"id": "set-default-color",
@@ -285,21 +276,6 @@
 					"sid": 570746798042963,
 					"parameters": {
 						"width": "(Player.Timer.CurrentTime(TIMER_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Freeze) > 0) ?\nSelf.Width :\n(\n  Self.X < Player.X - 5 ?\r\n  abs(Self.Width) :\r\n  (\r\n    Self.X > Player.X + 5 ?\r\n    -abs(Self.Width) :\r\n    Self.Width\r\n  )\n)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Stop frozen enemies"
-				},
-				{
-					"id": "set-velocity",
-					"objectClass": "Enemy",
-					"sid": 962694462761295,
-					"disabled": true,
-					"behaviorType": "Physics",
-					"parameters": {
-						"x-component": "(Player.Timer.CurrentTime(TIMER_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Freeze) > 0) ? 0 : Self.Physics.VelocityX ",
-						"y-component": "(Player.Timer.CurrentTime(TIMER_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Freeze) > 0) ? 0 : Self.Physics.VelocityY "
 					}
 				}
 			],
@@ -479,8 +455,8 @@
 							"objectClass": "Weapon",
 							"sid": 589144911077692,
 							"parameters": {
-								"instance-variable": "piercedUIDs_SSV",
-								"value": "find(SPACE & Self.piercedUIDs_SSV & SPACE, str(Enemy.UID)) = NOTHING ? Self.piercedUIDs_SSV & SPACE & Enemy.UID : Self.piercedUIDs_SSV"
+								"instance-variable": "piercedEnemyUIDs_SSV",
+								"value": "find(SPACE & Self.piercedEnemyUIDs_SSV & SPACE, str(Enemy.UID)) = NOTHING ? Self.piercedEnemyUIDs_SSV & SPACE & Enemy.UID : Self.piercedEnemyUIDs_SSV"
 							}
 						},
 						{
@@ -528,7 +504,7 @@
 									"sid": 995038679006034,
 									"parameters": {
 										"object": "Weapon",
-										"expression": "tokencount(trim(Weapon.piercedUIDs_SSV), SPACE)",
+										"expression": "tokencount(trim(Weapon.piercedEnemyUIDs_SSV), SPACE)",
 										"comparison": 5,
 										"value": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_PierceLimit)"
 									}
@@ -542,7 +518,7 @@
 									"disabled": true,
 									"parameters": {
 										"type": "log",
-										"message": "\"Projectile #\" & Weapon.UID & \" has pierced \" & tokencount(trim(Weapon.piercedUIDs_SSV), SPACE) & \" enemies, destroying.\""
+										"message": "\"Projectile #\" & Weapon.UID & \" has pierced \" & tokencount(trim(Weapon.piercedEnemyUIDs_SSV), SPACE) & \" enemies, destroying.\""
 									}
 								},
 								{

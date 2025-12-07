@@ -27,7 +27,7 @@
 			"sid": 116859992122150
 		},
 		{
-			"name": "piercedUIDs_SSV",
+			"name": "piercedEnemyUIDs_SSV",
 			"type": "string",
 			"desc": "",
 			"show": true,
@@ -347,6 +347,51 @@
 				],
 				"sid": 139217648611500,
 				"name": "Spikes",
+				"isLooping": true,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 9
+			},
+			{
+				"frames": [
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 1475370,
+						"collisionPoly": {
+							"points": [
+								0.3125,
+								0,
+								0.6875,
+								0,
+								1,
+								0.3125,
+								1,
+								0.6875,
+								0.6875,
+								1,
+								0.3125,
+								1,
+								0,
+								0.6875,
+								0,
+								0.3125
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 585816084648949,
+				"name": "Ice",
 				"isLooping": true,
 				"isPingPong": false,
 				"repeatCount": 1,

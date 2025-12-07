@@ -94,7 +94,7 @@
 			"name": "waveId",
 			"type": "number",
 			"initialValue": "-1",
-			"comment": "",
+			"comment": "Corresponds to an index in in Waves",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 815500935480966
@@ -104,14 +104,14 @@
 			"name": "waveCount",
 			"type": "number",
 			"initialValue": "0",
-			"comment": "",
+			"comment": "Counts how many waves have started",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 821045850089169
 		},
 		{
 			"eventType": "variable",
-			"name": "waveCycle",
+			"name": "spawnCycle",
 			"type": "number",
 			"initialValue": "-1",
 			"comment": "",

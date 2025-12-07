@@ -1,4 +1,4 @@
-
+/*
 import { basicSetup, EditorView } from "https://esm.sh/codemirror@6.0.2/"
 import { javascript } from "https://esm.sh/@codemirror/lang-javascript@6.2.4/"
 import { basicDark } from "https://esm.sh/@fsegurai/codemirror-theme-basic-dark@6.2.2/"
@@ -24,13 +24,13 @@ async function OnBeforeProjectStart(runtime) {
 				}
 			})
 	}
-	
-		let editorView = new EditorView({
-			doc: customStringify(rules),
-			extensions: [basicSetup, javascript(), basicDark],
-			parent: document.getElementById("rule-editor"),
-		})
-	
+
+	let editorView = new EditorView({
+		doc: customStringify(rules),
+		extensions: [basicSetup, javascript(), basicDark],
+		parent: document.getElementById("rule-editor"),
+	})
+
 	function addStyle(styleString) {
 		const style = document.createElement('style')
 		style.textContent = styleString
@@ -38,3 +38,4 @@ async function OnBeforeProjectStart(runtime) {
 	}
 	addStyle(`#rule-editor {overflow: auto}`)
 }
+*/

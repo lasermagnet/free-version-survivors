@@ -1,23 +1,25 @@
 const _example = {
     "": {
-        "Container": 0, // containers don't spawn items (only drops)
+        "Container": false, // containers don't spawn items (only drops)
         "Health": 1, // starting health
         "Damage": 0, // damage per second while weapon is overlapping the player
         "Healing": 0, // healing drop value
         "Experience": 0, // experience drop value
         "MovementSpeed": 0, // movement speed
         "MovementAngle": null, // if specified, enemy will move in this angle; -1 value is not supported
+        "Scale": 1, // size multiplier (null means 1)
+        "Animation": "Beholder" // optionanly specify an animation name if it's not the same as the enemy's name
     }
 }
 
 export const Enemies = {
     "HealingCrate": {
-        "Container": 1,
+        "Container": true,
         "Health": 3,
         "Healing": 100,
     },
     "MagnetCrate": {
-        "Container": 1,
+        "Container": true,
         "Health": 3,
     },
     "Slime": {
@@ -26,7 +28,7 @@ export const Enemies = {
         "Experience": 4,
         "MovementSpeed": 0.5,
     },
-    "SlimeBig": {
+    "Slime_Boss": {
         "Health": 50,
         "Damage": 20,
         "Experience": 50,
@@ -91,12 +93,20 @@ export const Enemies = {
         "Health": 200,
         "Damage": 60,
         "Experience": 250,
-        "MovementSpeed": 2,
+        "MovementSpeed": 1.7,
     },
     "Beholder": {
         "Health": 500,
         "Damage": 70,
         "Experience": 320,
-        "MovementSpeed": 2,
+        "MovementSpeed": 1.8,
+    },
+    "Beholder_Boss": {
+        "Health": 1000,
+        "Damage": 200,
+        "Experience": 700,
+        "MovementSpeed": 2.5,
+        "Scale": 3,
+        "Animation": "Beholder"
     }
 }

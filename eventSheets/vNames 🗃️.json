@@ -187,6 +187,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Animation",
+			"type": "string",
+			"initialValue": "Animation",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 766536890471728
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_BlockMovement",
 			"type": "string",
 			"initialValue": "BlockMovement",
@@ -274,6 +284,26 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 407179137716937
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_BulletAcceleration",
+			"type": "string",
+			"initialValue": "BulletAcceleration",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 905583590634979
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_BulletSpeed",
+			"type": "string",
+			"initialValue": "BulletSpeed",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 669360435554156
 		},
 		{
 			"eventType": "variable",
@@ -597,16 +627,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_MovementSpeed",
-			"type": "string",
-			"initialValue": "MovementSpeed",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 514107089827304
-		},
-		{
-			"eventType": "variable",
 			"name": "KEY_MovementAcceleration",
 			"type": "string",
 			"initialValue": "MovementAcceleration",
@@ -624,6 +644,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 982570091533426
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_MovementSpeed",
+			"type": "string",
+			"initialValue": "MovementSpeed",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 628517530382107
 		},
 		{
 			"eventType": "variable",
@@ -1147,9 +1177,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TIMER_WaveCycle",
+			"name": "TIMER_SpawnCycle",
 			"type": "string",
-			"initialValue": "WaveCycle",
+			"initialValue": "SpawnCycle",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,

@@ -26,6 +26,34 @@
 					"sid": 239254305447274
 				},
 				{
+					"name": "damage",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 905515065786839
+				},
+				{
+					"name": "duration",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 989317783080672
+				},
+				{
+					"name": "isMovementBlocker",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 212053427248699
+				},
+				{
+					"name": "isPinnedToPlayer",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 729922475904683
+				},
+				{
 					"name": "firstAngle",
 					"type": "number",
 					"initialValue": "0",
@@ -40,18 +68,18 @@
 					"sid": 924473347920568
 				},
 				{
-					"name": "scale",
-					"type": "number",
-					"initialValue": "1",
-					"comment": "",
-					"sid": 410210461955907
-				},
-				{
 					"name": "staticAngle",
 					"type": "string",
 					"initialValue": "",
 					"comment": "JSON null gets converted into an empty string, which means the angle shouldn't be static. If it contains a number, use it as the static angle.",
 					"sid": 653479383884895
+				},
+				{
+					"name": "scale",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 410210461955907
 				},
 				{
 					"name": "positionOffsetX",
@@ -87,34 +115,6 @@
 					"initialValue": "0",
 					"comment": "",
 					"sid": 581881872636391
-				},
-				{
-					"name": "damage",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"sid": 905515065786839
-				},
-				{
-					"name": "duration",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"sid": 989317783080672
-				},
-				{
-					"name": "isMovementBlocker",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"sid": 212053427248699
-				},
-				{
-					"name": "isPinnedToPlayer",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"sid": 729922475904683
 				},
 				{
 					"name": "orbitRadius",
@@ -163,10 +163,10 @@
 				{
 					"id": "for",
 					"objectClass": "System",
-					"sid": 756617946995276,
+					"sid": 681112363243881,
 					"parameters": {
 						"name": "\"\"",
-						"start-index": "0",
+						"start-index": "1",
 						"end-index": "amount"
 					}
 				}
@@ -174,7 +174,7 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Spawn projectile"
+					"text": "Spawn weapon"
 				},
 				{
 					"id": "create-object",
@@ -281,7 +281,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Start \"garbage collector\" tween which fades out & destroys the projectile"
+					"text": "Start \"lifetime\" tween which fades out & destroys the projectile"
 				},
 				{
 					"id": "tween-one-property",
