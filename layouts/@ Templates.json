@@ -87,7 +87,8 @@
 						"damage": 0,
 						"isMovementBlocker": 0,
 						"isDestroyed": 0,
-						"piercedEnemyUIDs_SSV": ""
+						"piercedEnemyUIDs_SSV": "",
+						"knockbackAngle": 0
 					},
 					"behaviors": {
 						"Bullet": {
@@ -125,6 +126,9 @@
 								"enabled": true,
 								"live-preview": false
 							}
+						},
+						"Timer": {
+							"properties": {}
 						}
 					},
 					"instanceFolderItem": {

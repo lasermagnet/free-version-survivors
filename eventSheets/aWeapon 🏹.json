@@ -204,14 +204,27 @@
 				},
 				{
 					"type": "comment",
+					"text": "Set knockback angle"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Weapon",
+					"sid": 254447879147599,
+					"parameters": {
+						"instance-variable": "knockbackAngle",
+						"value": "staticAngle = EMPTY ? firstAngle + (360 / amount * loopindex) : float(staticAngle)"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Set sprite (movement) angle"
 				},
 				{
 					"id": "set-angle",
 					"objectClass": "Weapon",
-					"sid": 771446822796779,
+					"sid": 465320741814237,
 					"parameters": {
-						"angle": "(staticAngle = EMPTY ? firstAngle + (360 / amount * loopindex) : float(staticAngle)) + spriteAngleOffset"
+						"angle": "Self.knockbackAngle + spriteAngleOffset"
 					}
 				},
 				{

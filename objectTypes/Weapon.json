@@ -32,6 +32,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 259379892369156
+		},
+		{
+			"name": "knockbackAngle",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 408964209567692
 		}
 	],
 	"behaviorTypes": [
@@ -54,6 +61,11 @@
 			"behaviorId": "Rotate",
 			"name": "Rotate",
 			"sid": 252709072293198
+		},
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 801059521703891
 		}
 	],
 	"effectTypes": [],

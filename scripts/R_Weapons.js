@@ -18,13 +18,15 @@ const _example = {
         "PositionRandom2": 0,       // X/Y position randomization per weapon instance
         "RotationSpeed": 0,         // rotation speed for the Rotate behaviour
         "FreezeTime": 0,            // amount of time the weapon freezes an overlapping enemy
+        "KnockbackImpulse": 0,      // amount of physics impulse to apply on enemy as knockback
+        "KnockbackCooldown": 0,     // amount of time to wait between knockbacks
     }
 }
 
 export const Weapons = {
     "Axe": {
         "Amount": 1,
-        "BlockMovement": true,
+        "BlockMovement": false,
         "Cooldown": 1.5,
         "Damage": 30,
         "PierceLimit": 2,
@@ -33,6 +35,8 @@ export const Weapons = {
         "Duration": 4,
         "BulletSpeed": 100,
         "RotationSpeed": 300,
+        "KnockbackImpulse": 0.3,
+        "KnockbackCooldown": 0.2,
     },
     "Flame": {
         "BlockMovement": true,
@@ -43,9 +47,11 @@ export const Weapons = {
         "Scale": 0.65,
         "Duration": 0.7,
         "Pin": true,
+        "KnockbackImpulse": 0.5,
+        "KnockbackCooldown": 0.5,
     },
     "Chainsaw": {
-        "BlockMovement": true,
+        "BlockMovement": false,
         "Cooldown": 5,
         "Damage": 20,
         "PierceLimit": 1000,
@@ -75,6 +81,8 @@ export const Weapons = {
         "PositionRandom1": 80,
         "OrbitRadius": 13.5,
         "OrbitSpeed": 250,
+        "KnockbackImpulse": 0.3,
+        "KnockbackCooldown": 0.2,
     },
     "Sword": {
         "BlockMovement": true,
@@ -87,5 +95,7 @@ export const Weapons = {
         "Pin": true,
         "OrbitRadius": 5,
         "OrbitSpeed": 400,
+        "KnockbackImpulse": 0.8,
+        "KnockbackCooldown": 0.5,
     },
 }

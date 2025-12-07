@@ -558,6 +558,10 @@
 					"text": "Start freeze timer if needed"
 				},
 				{
+					"type": "comment",
+					"text": "note the hilarious / disgusting conditional in the tag field"
+				},
+				{
 					"id": "start-timer",
 					"objectClass": "Enemy",
 					"sid": 860285980974004,
@@ -585,6 +589,79 @@
 			],
 			"sid": 623294180875037,
 			"children": [
+				{
+					"eventType": "comment",
+					"text": "If weapon is not a movement blocker, but has knockback, apply it with a per weapon per enemy cooldown"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Weapon",
+							"sid": 437713598536447,
+							"parameters": {
+								"instance-variable": "isMovementBlocker",
+								"comparison": 0,
+								"value": "NO"
+							}
+						},
+						{
+							"id": "compare-value",
+							"objectClass": "Rules",
+							"sid": 393536035480905,
+							"parameters": {
+								"path": "KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackImpulse",
+								"cmp": 4,
+								"value": "0"
+							}
+						},
+						{
+							"id": "is-timer-running",
+							"objectClass": "Weapon",
+							"sid": 425317471673872,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_Knockback_Enemy_ & Enemy.UID"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "start-timer",
+							"objectClass": "Weapon",
+							"sid": 851408326549961,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackCooldown)",
+								"type": "once",
+								"tag": "TIMER_Knockback_Enemy_ & Enemy.UID"
+							}
+						},
+						{
+							"id": "apply-impulse-at-angle",
+							"objectClass": "Enemy",
+							"sid": 983964071965980,
+							"behaviorType": "Physics",
+							"parameters": {
+								"impulse": "Rules.Type(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackImpulse) = NULL ? 0 : Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackImpulse)",
+								"angle": "Weapon.knockbackAngle",
+								"image-point": "0"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 476615712071546,
+							"parameters": {
+								"type": "log",
+								"message": "Weapon.AnimationName & \"_\" & Enemy.UID & \" knockback\""
+							}
+						}
+					],
+					"sid": 577312522101237
+				},
 				{
 					"eventType": "comment",
 					"text": "If projectile has reached its piercing limit, destroy it"
@@ -1322,6 +1399,10 @@
 					"text": "Move enemies that are not blocked by the weapon"
 				},
 				{
+					"type": "comment",
+					"text": "Make all enemies movable (default is immovable for chests)"
+				},
+				{
 					"id": "set-immovable",
 					"objectClass": "Enemy",
 					"sid": 531564772549393,
@@ -1329,6 +1410,10 @@
 					"parameters": {
 						"setting": "movable"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Apply force"
 				},
 				{
 					"id": "apply-force-at-angle",

@@ -587,6 +587,26 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_KnockbackCooldown",
+			"type": "string",
+			"initialValue": "KnockbackCooldown",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 622340047564958
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_KnockbackImpulse",
+			"type": "string",
+			"initialValue": "KnockbackImpulse",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 832865202585598
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Label",
 			"type": "string",
 			"initialValue": "Label",
@@ -1187,13 +1207,13 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TIMER_Wave",
+			"name": "TIMER_Knockback_Enemy_",
 			"type": "string",
-			"initialValue": "Wave",
-			"comment": "",
+			"initialValue": "Knockback_Enemy_",
+			"comment": "should be suffixed with Enemy UID",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 313021126891210
+			"sid": 317683379452443
 		},
 		{
 			"eventType": "variable",
@@ -1203,7 +1223,17 @@
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 520331853285767
+			"sid": 672536484083994
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Wave",
+			"type": "string",
+			"initialValue": "Wave",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 313021126891210
 		},
 		{
 			"eventType": "variable",

@@ -1,4 +1,7 @@
 /*
+Build 64
+- Wonky weapon knockback system.
+
 Build 63
 - New player rule: "Bonus_Incoming_Damage_Multiplier": allows incoming damage reduction (or increase :) + a new matching "Armor" upgrade & modifier
 - New enemy rule: "Density" (physics property), defaults to 1, allows making enemies "heavier" so they can push lighter enemies around
