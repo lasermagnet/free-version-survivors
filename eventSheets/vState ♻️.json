@@ -91,13 +91,23 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "wave",
+			"name": "waveId",
 			"type": "number",
 			"initialValue": "-1",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 815500935480966
+		},
+		{
+			"eventType": "variable",
+			"name": "waveCount",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 821045850089169
 		},
 		{
 			"eventType": "variable",

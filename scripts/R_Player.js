@@ -11,6 +11,7 @@ export const Player = {
     "MovementSpeed": 70,
     // Misc
     "PickupDistance": 30,
+    "PickupDistanceMagnet": 1000,
     // Bonuses
     "Bonus_Healing_Multiplier": 1,
     "Bonus_Experience_Multiplier": 1,

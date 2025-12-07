@@ -148,6 +148,15 @@
 					}
 				},
 				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 579006079224906,
+					"parameters": {
+						"instance-variable": "isContainer",
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Container)"
+					}
+				},
+				{
 					"id": "set-immovable",
 					"objectClass": "Enemy",
 					"sid": 495389953480134,
@@ -774,6 +783,10 @@
 							}
 						},
 						{
+							"type": "comment",
+							"text": "yuck"
+						},
+						{
 							"id": "set-animation",
 							"objectClass": "Drop",
 							"sid": 293308116858116,
@@ -815,7 +828,7 @@
 									"objectClass": "System",
 									"sid": 713512228835158,
 									"parameters": {
-										"first-value": "Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_ItemSpawnPool)",
+										"first-value": "Rules.ArraySize(KEY_Waves & DOT & waveId & DOT & KEY_ItemSpawnPool)",
 										"comparison": 4,
 										"second-value": "0"
 									}
@@ -838,6 +851,16 @@
 										"object": "Item"
 									},
 									"isInverted": true
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemy",
+									"sid": 514768244716037,
+									"parameters": {
+										"instance-variable": "isContainer",
+										"comparison": 0,
+										"value": "NO"
+									}
 								},
 								{
 									"id": "compare-two-values",

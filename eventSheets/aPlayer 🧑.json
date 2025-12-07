@@ -877,7 +877,7 @@
 							"sid": 490406632417482,
 							"parameters": {
 								"variable": "enemySpawnQueue",
-								"value": "round(Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemyAmount) / Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_Time)) * Rules.Get(KEY_Level & DOT & KEY_SpawnInterval)"
+								"value": "round(Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_EnemyAmount) / Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time)) * Rules.Get(KEY_Level & DOT & KEY_SpawnInterval)"
 							}
 						}
 					],
@@ -1108,14 +1108,6 @@
 							"sid": 893054964726095,
 							"children": [
 								{
-									"eventType": "comment",
-									"text": "todo global name"
-								},
-								{
-									"eventType": "comment",
-									"text": "todo mn"
-								},
-								{
 									"eventType": "block",
 									"conditions": [
 										{
@@ -1145,12 +1137,12 @@
 										{
 											"id": "pick-by-comparison",
 											"objectClass": "System",
-											"sid": 591926183438916,
+											"sid": 102819380508053,
 											"parameters": {
 												"object": "Drop",
 												"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
 												"comparison": 2,
-												"value": "1000"
+												"value": "Rules.Get(KEY_Player & DOT & KEY_PickupDistanceMagnet)"
 											}
 										}
 									],
@@ -1479,40 +1471,6 @@
 									"parameters": {
 										"type": "log",
 										"message": "\"Update candidate after first validation: \" & upgradeCandidate"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "If upgrade candidate has an unsatisfied weapon requirement, clear it"
-								},
-								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 550155427069395,
-									"disabled": true,
-									"parameters": {
-										"type": "log",
-										"message": "\"Weapon requirement for \" & upgradeCandidate & \": \" & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement)"
-									}
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 714268585606491,
-									"disabled": true,
-									"parameters": {
-										"variable": "upgradeCandidate",
-										"value": "Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) = NO ? upgradeCandidate : (Rules.Get(KEY_Weapons & DOT & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) & DOT & KEY_Amount) > 0 ? upgradeCandidate : EMPTY)"
-									}
-								},
-								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 108463257033813,
-									"disabled": true,
-									"parameters": {
-										"type": "log",
-										"message": "\"Update candidate after second validation: \" & upgradeCandidate"
 									}
 								},
 								{
@@ -2296,7 +2254,16 @@
 					"objectClass": "System",
 					"sid": 847961068914298,
 					"parameters": {
-						"variable": "wave",
+						"variable": "waveId",
+						"value": "1"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 285859815769428,
+					"parameters": {
+						"variable": "waveCount",
 						"value": "1"
 					}
 				},
@@ -2309,8 +2276,8 @@
 					"objectClass": "System",
 					"sid": 604873366733704,
 					"parameters": {
-						"variable": "wave",
-						"value": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_Time) = 0 ? Rules.Get(KEY_Level & DOT & KEY_WaveLoopTo) : wave"
+						"variable": "waveId",
+						"value": "Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time) = 0 ? Rules.Get(KEY_Level & DOT & KEY_WaveLoopTo) : waveId"
 					}
 				},
 				{
@@ -2320,7 +2287,7 @@
 					"disabled": true,
 					"parameters": {
 						"type": "log",
-						"message": "\"Wave #\" & wave & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool)"
+						"message": "\"Wave #\" & waveId & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool)"
 					}
 				},
 				{
@@ -2333,7 +2300,7 @@
 					"sid": 563817216794692,
 					"parameters": {
 						"name": "PT_Enemies",
-						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool)"
+						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool)"
 					}
 				},
 				{
@@ -2343,7 +2310,7 @@
 					"disabled": true,
 					"parameters": {
 						"type": "log",
-						"message": "\"Wave #\" & wave & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & wave & DOT & KEY_ItemSpawnPool)"
+						"message": "\"Wave #\" & waveId & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_ItemSpawnPool)"
 					}
 				},
 				{
@@ -2356,7 +2323,7 @@
 					"sid": 929665451432000,
 					"parameters": {
 						"name": "PT_Items",
-						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & wave & DOT & KEY_ItemSpawnPool)"
+						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_ItemSpawnPool)"
 					}
 				},
 				{
@@ -2369,7 +2336,7 @@
 					"sid": 926337034951366,
 					"behaviorType": "Timer",
 					"parameters": {
-						"duration": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_Time)",
+						"duration": "Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time)",
 						"type": "once",
 						"tag": "TIMER_Wave"
 					}
@@ -2384,7 +2351,7 @@
 					"sid": 555486501587659,
 					"parameters": {
 						"variable": "itemSpawnCue",
-						"value": "Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool) > 0 ? AdvancedRandom.WeightedByName(PT_Items) : EMPTY"
+						"value": "Rules.ArraySize(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool) > 0 ? AdvancedRandom.WeightedByName(PT_Items) : EMPTY"
 					}
 				},
 				{
@@ -2409,7 +2376,7 @@
 					"objectClass": "UI_TextSF_Wave",
 					"sid": 430725875829815,
 					"parameters": {
-						"text": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_Name)"
+						"text": "Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Name)"
 					}
 				},
 				{
@@ -2469,7 +2436,7 @@
 							"objectClass": "Rules",
 							"sid": 919392068197452,
 							"parameters": {
-								"path": "KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnFixed"
+								"path": "KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnFixed"
 							}
 						}
 					],

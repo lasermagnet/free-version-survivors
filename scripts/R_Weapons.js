@@ -56,7 +56,7 @@ export const Weapons = {
     "Spikes": {
         "Cooldown": 6,
         "Amount": 0,
-        "Damage": 2,
+        "Damage": 4,
         "PierceLimit": 1000,
         "Scale": 0.5,
         "StaticAngle": 10,

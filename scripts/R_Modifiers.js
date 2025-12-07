@@ -68,12 +68,20 @@ export const Modifiers = {
         "Add": 10
     },
     "WeaponDamage": {
-        "Label": "Damage up",
+        "Label": "All damage up",
         "Description": "Increase damage bonus by 5%.",
         "Icon": "WeaponDamage",
         "Rule_Value": "Player.Bonus_Weapon_Damage_Multiplier",
         "Multiply": 1,
         "Add": 0.05,
+    },
+    "WeaponDamage_Extra": {
+        "Label": "All damage up a bit",
+        "Description": "Increase damage bonus by 1%.",
+        "Icon": "WeaponDamage",
+        "Rule_Value": "Player.Bonus_Weapon_Damage_Multiplier",
+        "Multiply": 1,
+        "Add": 0.01,
     },
     "WeaponCooldown": {
         "Label": "Attack faster",
@@ -118,7 +126,6 @@ export const Modifiers = {
     },
     "Axe_Damage": {
         "Weapon": "Axe",
-        "WeaponRequirement": "Axe",
         "Label": "Axe: +5 damage",
         "Description": "Deal bigger damage with your axe.",
         "Icon": "Axe",
@@ -137,7 +144,6 @@ export const Modifiers = {
     },
     "Axe_PierceLimit": {
         "Weapon": "Axe",
-        "WeaponRequirement": "Axe",
         "Label": "Axe: +1 piercing",
         "Description": "Go through one more enemy.",
         "Icon": "Axe",
@@ -145,6 +151,7 @@ export const Modifiers = {
         "Multiply": 1,
         "Add": 1,
     },
+
     "Flame_Amount": {
         "Weapon": "Flame",
         "Label": "+1 Flame",
@@ -156,14 +163,14 @@ export const Modifiers = {
     },
     "Flame_Timeout": {
         "Weapon": "Flame",
-        "WeaponRequirement": "Flame",
         "Label": "Flame: fuel up",
         "Description": "Flames last longer.",
         "Icon": "Flame",
         "Rule_Value": "Weapons.Flame.Timeout",
         "Multiply": 1,
-        "Add": 0.2,
+        "Add": 0.5,
     },
+
     "Chainsaw_Amount": {
         "Weapon": "Chainsaw",
         "Label": "+1 Chainsaw",
@@ -175,7 +182,6 @@ export const Modifiers = {
     },
     "Chainsaw_Radius": {
         "Weapon": "Chainsaw",
-        "WeaponRequirement": "Chainsaw",
         "Label": "Chainsaw: radius up",
         "Description": "Increase distance from player.",
         "Icon": "Chainsaw",
@@ -185,7 +191,6 @@ export const Modifiers = {
     },
     "Chainsaw_Size": {
         "Weapon": "Chainsaw",
-        "WeaponRequirement": "Chainsaw",
         "Label": "Chainsaw: scale up",
         "Description": "Increase the size of your chainsaws.",
         "Icon": "Chainsaw",
@@ -193,10 +198,11 @@ export const Modifiers = {
         "Multiply": 1,
         "Add": 0.1,
     },
+
     "Spikes_Amount": {
         "Weapon": "Spikes",
-        "Label": "+1 Spikes",
-        "Description": "Spawns spikes on the ground.",
+        "Label": "+5 Spikes",
+        "Description": "Spawns 5 more spike clusters.",
         "Icon": "Spikes",
         "Rule_Value": "Weapons.Spikes.Amount",
         "Multiply": 1,
@@ -204,12 +210,29 @@ export const Modifiers = {
     },
     "Spikes_Area": {
         "Weapon": "Spikes",
-        "WeaponRequirement": "Spikes",
         "Label": "Spikes: area up",
         "Description": "Spreads spikes on a bigger area",
         "Icon": "Spikes",
         "Rule_Value": "Weapons.Spikes.PositionRandom2",
         "Multiply": 1,
         "Add": 10,
+    },
+    "Spikes_Damage": {
+        "Weapon": "Spikes",
+        "Label": "Spikes: +5 damage",
+        "Description": "Spikes do more damage.",
+        "Icon": "Spikes",
+        "Rule_Value": "Weapons.Spikes.Amount",
+        "Multiply": 1,
+        "Add": 5,
+    },
+    "Spikes_Damage_Extra": {
+        "Weapon": "Spikes",
+        "Label": "Spikes: +2 damage",
+        "Description": "Spikes do bit more damage.",
+        "Icon": "Spikes",
+        "Rule_Value": "Weapons.Spikes.Amount",
+        "Multiply": 1,
+        "Add": 2,
     },
 }

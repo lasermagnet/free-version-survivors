@@ -1,16 +1,17 @@
 export const Enemies = {
     "HealingCrate": {
+        "Container": 1, // containers don't spawn items (only drops)
         "Health": 3,
         "Healing": 100,
     },
     "MagnetCrate": {
-        "Health": 3,
-        "Magnet": 1,
+        "Container": 1,
+        "Health": 0,
     },
     "Slime": {
         "Health": 3,
         "Damage": 10,
-        "Experience": 4*10,
+        "Experience": 4,
         "MovementSpeed": 0.5
     },
     "Rat": {

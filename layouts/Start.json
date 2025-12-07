@@ -513,32 +513,7 @@
 		"subfolders": []
 	},
 	"sid": 441891104461848,
-	"nonworld-instances": [
-		{
-			"type": "UpgradesUsed",
-			"properties": {
-				"width": 0,
-				"height": 1,
-				"depth": 1
-			},
-			"uid": 26,
-			"sid": 791130084603997,
-			"tags": "",
-			"instanceVariables": {}
-		},
-		{
-			"type": "UpgradesMaxed",
-			"properties": {
-				"width": 0,
-				"height": 1,
-				"depth": 1
-			},
-			"uid": 27,
-			"sid": 604555495082910,
-			"tags": "",
-			"instanceVariables": {}
-		}
-	],
+	"nonworld-instances": [],
 	"effectTypes": [],
 	"width": 320,
 	"height": 180,

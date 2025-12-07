@@ -374,7 +374,7 @@
 					"sid": 603679412350218,
 					"parameters": [
 						"EMPTY",
-						"enemySpawnQueue > 0 & Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool) > 0 ? 1 : 0"
+						"enemySpawnQueue > 0 & Rules.ArraySize(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool) > 0 ? 1 : 0"
 					]
 				},
 				{

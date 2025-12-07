@@ -170,7 +170,8 @@
 						"damageTakenRecently": 0,
 						"isDead": 0,
 						"isMovementBlocked": 0,
-						"movementSpeed": 0
+						"movementSpeed": 0,
+						"isContainer": 0
 					},
 					"behaviors": {
 						"Physics": {
@@ -268,7 +269,7 @@
 					"type": "Drop",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Experience",
+						"initial-animation": "Default",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -303,8 +304,8 @@
 					"world": {
 						"x": 57,
 						"y": 102,
-						"width": 4,
-						"height": 4,
+						"width": 13.5,
+						"height": 13.5,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [

@@ -7,6 +7,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "ANIM_Default",
+			"type": "string",
+			"initialValue": "Default",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 708531455794017
+		},
+		{
+			"eventType": "variable",
 			"name": "ANIM_Experience",
 			"type": "string",
 			"initialValue": "Experience",
@@ -244,6 +254,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 407179137716937
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Container",
+			"type": "string",
+			"initialValue": "Container",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 290122049831762
 		},
 		{
 			"eventType": "variable",
@@ -506,10 +526,6 @@
 			"sid": 923828765477710
 		},
 		{
-			"eventType": "comment",
-			"text": "todo_now"
-		},
-		{
 			"eventType": "variable",
 			"name": "KEY_Modifiers",
 			"type": "string",
@@ -608,6 +624,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 983768474373603
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_PickupDistanceMagnet",
+			"type": "string",
+			"initialValue": "PickupDistanceMagnet",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 648576738399789
 		},
 		{
 			"eventType": "variable",
@@ -761,6 +787,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Vacuum",
+			"type": "string",
+			"initialValue": "Vacuum",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 501526225654696
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_WallThickness",
 			"type": "string",
 			"initialValue": "WallThickness",
@@ -788,16 +824,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 641746479686938
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_WeaponRequirement",
-			"type": "string",
-			"initialValue": "WeaponRequirement",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 855705167315955
 		},
 		{
 			"eventType": "variable",

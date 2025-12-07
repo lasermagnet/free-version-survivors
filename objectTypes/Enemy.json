@@ -60,6 +60,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 863815777907208
+		},
+		{
+			"name": "isContainer",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 273883652881775
 		}
 	],
 	"behaviorTypes": [
@@ -722,7 +729,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 9566624,
+						"imageSpriteId": 1218435,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
