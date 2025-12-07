@@ -35,7 +35,7 @@ export const Weapons = {
         "Duration": 4,
         "BulletSpeed": 100,
         "RotationSpeed": 300,
-        "KnockbackForceMultiplier": 4,
+        "KnockbackForceMultiplier": 3,
         "KnockbackDuration": 0.1,
     },
     "Flame": {
@@ -47,7 +47,7 @@ export const Weapons = {
         "Scale": 0.65,
         "Duration": 0.7,
         "Pin": true,
-        "KnockbackForceMultiplier": 5,
+        "KnockbackForceMultiplier": 4,
         "KnockbackDuration": 0.15,
     },
     "Chainsaw": {
@@ -60,7 +60,7 @@ export const Weapons = {
         "Pin": true,
         "OrbitRadius": 25,
         "OrbitSpeed": 200,
-        "KnockbackForceMultiplier": 4,
+        "KnockbackForceMultiplier": 3,
         "KnockbackDuration": 0.1,
     },
     "Spikes": {
@@ -96,6 +96,6 @@ export const Weapons = {
         "OrbitRadius": 5,
         "OrbitSpeed": 400,
         "KnockbackForceMultiplier": 2,
-        "KnockbackDuration": 0.2,
+        "KnockbackDuration": 0.15,
     },
 }

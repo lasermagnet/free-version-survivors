@@ -363,6 +363,14 @@
 					"script-info": {
 						"purpose": "none"
 					}
+				},
+				{
+					"name": "_license.js",
+					"type": "application/javascript",
+					"sid": 780782475394179,
+					"script-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []
@@ -569,7 +577,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "65b",
+		"version": "67",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

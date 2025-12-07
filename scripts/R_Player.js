@@ -1,7 +1,7 @@
 export const Player = {
     // Health
-    "Health": 300,     // starting & current health
-    "Health_Max": 300, // health limit
+    "Health": 200,     // starting & current health
+    "Health_Max": 200, // health limit
 
     // Experience
     "Experience": 0,                     // starting & current XP
@@ -9,7 +9,7 @@ export const Player = {
     "Experience_Target_Multiplier": 1.2, // experience target is multiplied by this value when leveling up
 
     // Movement
-    "MovementSpeed": 60, // movement speed for the 8 Direction behaviour
+    "MovementSpeed": 50, // movement speed for the 8 Direction behaviour
 
     // Misc
     "PickupDistance": 30,         // starting / current drop pickup distance of the player

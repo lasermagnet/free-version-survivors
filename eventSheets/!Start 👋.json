@@ -27,14 +27,6 @@
 					}
 				},
 				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 979315173817982,
-					"parameters": {
-						"key": 32
-					}
-				},
-				{
 					"id": "on-button-pressed",
 					"objectClass": "Gamepad",
 					"sid": 617458317322238,
@@ -55,16 +47,8 @@
 					"type": "script",
 					"language": "javascript",
 					"script": [
-						"runtime.globalVars.rulesJSON = getEditorContent()"
+						"runtime.globalVars.rulesJSON = getRulesFromEditor() ?? JSON.stringify(rules)"
 					]
-				},
-				{
-					"type": "script",
-					"language": "javascript",
-					"script": [
-						"runtime.globalVars.rulesJSON = JSON.stringify(rules)"
-					],
-					"disabled": true
 				},
 				{
 					"id": "go-to-layout",

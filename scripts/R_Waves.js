@@ -11,7 +11,7 @@ const _example = {
 
 export const Waves = [
     {
-        "Label": "Welcome!",
+        "Label": "Hi there!",
         "Time": 2,
         "EnemySpawnFixed": { "MagnetCrate": 1 },
     },
@@ -53,7 +53,7 @@ export const Waves = [
         "Time": 3,
     },
     {
-        "EnemyAmount": 200,
+        "EnemyAmount": 300,
         "Time": 60,
         "EnemySpawnPool": [[0.5, "MagnetCrate"], [1, "HealingCrate"], [40, "Slime"], [20, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"]],
         "EnemySpawnFixed": {},
@@ -61,14 +61,14 @@ export const Waves = [
     },
     {
         "Label": "Boss time!",
-        "EnemyAmount": 400,
+        "EnemyAmount": 600,
         "Time": 60,
         "EnemySpawnPool": [[0.5, "MagnetCrate"], [1, "HealingCrate"], [40, "Slime"], [20, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"]],
         "EnemySpawnFixed": { "Beholder_Boss": 1 },
         "ItemSpawnPool": [[1, "Axe_Amount"], [1, "Flame_Amount"], [1, "Chainsaw_Amount"], [1, "Spikes_Amount"]],
     },
     {
-        "EnemyAmount": 500,
+        "EnemyAmount": 1000,
         "Time": 60,
         "EnemySpawnPool": [[1, "HealingCrate"], [40, "Slime"], [20, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"]],
     },
@@ -77,7 +77,7 @@ export const Waves = [
         "EnemySpawnFixed": { "MagnetCrate": 1 },
     },
     {
-        "EnemyAmount": 1000,
+        "EnemyAmount": 2000,
         "Time": 60,
         "EnemySpawnPool": [[0.2, "HealingCrate"], [10, "Slime"], [10, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"], [0.1, "Beholder_Boss"]],
     },
