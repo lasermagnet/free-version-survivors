@@ -284,7 +284,7 @@
 					"objectClass": "UI_TextSF_Devlog",
 					"sid": 228647574835914,
 					"parameters": {
-						"text": "round(fps) & \" FPS, \" & objectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Weapon.Count & \" projectiles\" & newline &\n\"XP gain bonus: +\" & (Rules.Get(KEY_Player & DOT & KEY_Experience_Bonus_Multiplier) - 1) * 100 & \"%\""
+						"text": "round(fps) & \" FPS, \" & objectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Weapon.Count & \" projectiles\" & newline &\n\"XP gain bonus: +\" & (Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) - 1) * 100 & \"%\""
 					}
 				},
 				{

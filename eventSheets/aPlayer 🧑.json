@@ -81,7 +81,7 @@
 					"sid": 177029972898140,
 					"parameters": {
 						"instance-variable": "cooldown_spawn_enemy",
-						"value": "Rules.Get(KEY_Wave & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
+						"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
 					}
 				},
 				{
@@ -90,7 +90,7 @@
 					"sid": 271378456414787,
 					"parameters": {
 						"instance-variable": "cooldown_spawn_item",
-						"value": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)"
+						"value": "Rules.Get(KEY_Spawns & DOT & KEY_Items & DOT & KEY_Cooldown)"
 					}
 				}
 			],
@@ -209,50 +209,32 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 102200767806325,
+							"sid": 608152032944310,
 							"parameters": {
 								"instance-variable": "cooldown_weapon_sword",
-								"value": "Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Cooldown)"
+								"value": "Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)"
 							}
+						},
+						{
+							"customAction": "spawn",
+							"objectClass": "Weapon",
+							"sid": 748740735832209,
+							"parameters": [
+								"Key_Weapon_Sword",
+								"Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Add)",
+								"Player.lastMovingAngle",
+								"Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)"
+							]
 						}
 					],
-					"sid": 135052668909848,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "for",
-									"objectClass": "System",
-									"sid": 608056707650086,
-									"parameters": {
-										"name": "\"\"",
-										"start-index": "1",
-										"end-index": "Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Amount)"
-									}
-								}
-							],
-							"actions": [
-								{
-									"customAction": "spawn",
-									"objectClass": "Weapon",
-									"sid": 885853957694187,
-									"parameters": [
-										"Player.lastMovingAngle + (360 / Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Amount) * loopindex)",
-										"Key_Weapon_Sword",
-										"Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Scale)"
-									]
-								}
-							],
-							"sid": 862025105194662
-						}
-					]
+					"sid": 135052668909848
 				},
 				{
 					"eventType": "comment",
 					"text": "Queue enemy spawn"
 				},
 				{
+					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -270,10 +252,10 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 575116398767069,
+							"sid": 801998012935639,
 							"parameters": {
 								"instance-variable": "cooldown_spawn_enemy",
-								"value": "Rules.Get(KEY_Wave & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
+								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier)"
 							}
 						},
 						{
@@ -282,7 +264,7 @@
 							"sid": 317499462563761,
 							"parameters": {
 								"type": "log",
-								"message": "\"Adding \" & Rules.Get(KEY_Wave & DOT & KEY_Enemies & DOT & KEY_Amount) & \" enemies to the spawn queue.\""
+								"message": "\"Adding \" & Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Amount) & \" enemies to the spawn queue.\""
 							}
 						},
 						{
@@ -291,7 +273,7 @@
 							"sid": 232278523205720,
 							"parameters": {
 								"path": "KEY_Queues & DOT & KEY_Enemies",
-								"value": "Rules.Get(KEY_Wave & DOT & KEY_Enemies & DOT & KEY_Amount)"
+								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Amount)"
 							}
 						},
 						{
@@ -328,10 +310,10 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 832707280107346,
+							"sid": 335745970724105,
 							"parameters": {
 								"instance-variable": "cooldown_spawn_item",
-								"value": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)"
+								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Items & DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Item_Spawn_Cooldown_Multiplier)"
 							}
 						},
 						{
@@ -361,7 +343,6 @@
 					"text": "Pick up item"
 				},
 				{
-					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -759,6 +740,15 @@
 							"id": "is-overlapping-another-object",
 							"objectClass": "Player",
 							"sid": 643754501194321,
+							"disabled": true,
+							"parameters": {
+								"object": "Enemy"
+							}
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "PlayerHurtbox",
+							"sid": 649766626643368,
 							"parameters": {
 								"object": "Enemy"
 							}
@@ -771,6 +761,14 @@
 								"instance-variable": "isDead",
 								"comparison": 0,
 								"value": "NO"
+							}
+						},
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 756668298158005,
+							"parameters": {
+								"object": "Enemy"
 							}
 						}
 					],

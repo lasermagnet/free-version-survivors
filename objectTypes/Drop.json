@@ -11,6 +11,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 504929688816682
+		},
+		{
+			"name": "isCollected",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 214553083042694
 		}
 	],
 	"behaviorTypes": [

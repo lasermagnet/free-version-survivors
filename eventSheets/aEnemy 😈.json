@@ -185,6 +185,10 @@
 			"sid": 323244324797060,
 			"children": [
 				{
+					"eventType": "comment",
+					"text": "Enemy getting damaged"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -219,19 +223,19 @@
 						{
 							"id": "subtract-from-instvar",
 							"objectClass": "Enemy",
-							"sid": 285493070811282,
+							"sid": 953437095812154,
 							"parameters": {
 								"instance-variable": "health",
-								"value": "Weapon.damage * dt"
+								"value": "Weapon.damage * dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier)"
 							}
 						},
 						{
 							"id": "add-to-instvar",
 							"objectClass": "Enemy",
-							"sid": 785851037904608,
+							"sid": 339039127435682,
 							"parameters": {
 								"instance-variable": "damageTaken",
-								"value": "Weapon.damage * dt"
+								"value": "Weapon.damage * dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier)"
 							}
 						},
 						{
@@ -329,6 +333,10 @@
 							"isStatic": false,
 							"isConstant": false,
 							"sid": 895032254930732
+						},
+						{
+							"eventType": "comment",
+							"text": "Show damage number if needed"
 						},
 						{
 							"eventType": "block",

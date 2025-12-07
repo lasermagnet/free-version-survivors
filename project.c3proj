@@ -189,7 +189,8 @@
 			"UI_TextSF_DamageNumber",
 			"DamageNumber",
 			"UI_Icon",
-			"UI_Vignette9P"
+			"UI_Vignette9P",
+			"PlayerHurtbox"
 		],
 		"subfolders": []
 	},
@@ -215,7 +216,7 @@
 			"vNames 🗃️",
 			"vPrimitives 🍞",
 			"vState ♻️",
-			"aProjectile 🏹",
+			"aWeapon 🏹",
 			"eSystem ⏱️",
 			"eInput 🕹️",
 			"aEnemy 😈",
@@ -249,6 +250,70 @@
 					"name": "rules.js",
 					"type": "application/javascript",
 					"sid": 658997198896662,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "R_Player.js",
+					"type": "application/javascript",
+					"sid": 922089253724789,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "R_Queues.js",
+					"type": "application/javascript",
+					"sid": 967489109528786,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "R_Spawns.js",
+					"type": "application/javascript",
+					"sid": 417902140887293,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "R_Pools.js",
+					"type": "application/javascript",
+					"sid": 442162123792153,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "R_Upgrades.js",
+					"type": "application/javascript",
+					"sid": 784123600485611,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "R_Enemies.js",
+					"type": "application/javascript",
+					"sid": 947541805804190,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "R_Weapons.js",
+					"type": "application/javascript",
+					"sid": 500156935729654,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "R_Items.js",
+					"type": "application/javascript",
+					"sid": 409382410080374,
 					"script-info": {
 						"purpose": "none"
 					}
@@ -353,7 +418,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "11",
+		"version": "12",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

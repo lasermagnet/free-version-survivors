@@ -2,6 +2,10 @@
 	"name": "aDrop 💧",
 	"events": [
 		{
+			"eventType": "comment",
+			"text": "todo_pack move to player"
+		},
+		{
 			"aceType": "action",
 			"aceName": "tick",
 			"objectClass": "Drop",
@@ -19,6 +23,16 @@
 					"sid": 963679348378466,
 					"parameters": {
 						"variable": "isLeveling",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Drop",
+					"sid": 965990483767594,
+					"parameters": {
+						"instance-variable": "isCollected",
 						"comparison": 0,
 						"value": "NO"
 					}
@@ -81,9 +95,22 @@
 							],
 							"actions": [
 								{
+									"id": "set-instvar-value",
+									"objectClass": "Drop",
+									"sid": 166542007013569,
+									"parameters": {
+										"instance-variable": "isCollected",
+										"value": "YES"
+									}
+								},
+								{
 									"id": "destroy",
 									"objectClass": "Drop",
 									"sid": 162031479341671
+								},
+								{
+									"type": "comment",
+									"text": "Player: collect experience (with bonus applied)"
 								},
 								{
 									"id": "set-instvar-value",
@@ -91,7 +118,7 @@
 									"sid": 487070083361722,
 									"parameters": {
 										"instance-variable": "experience",
-										"value": "Drop.AnimationName = ROLE_Experience ? Self.experience + round(Drop.amount * Rules.Get(KEY_Player & DOT & KEY_Experience_Bonus_Multiplier)) : Self.experience"
+										"value": "Drop.AnimationName = ROLE_Experience ? Self.experience + round(Drop.amount * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : Self.experience"
 									}
 								}
 							],

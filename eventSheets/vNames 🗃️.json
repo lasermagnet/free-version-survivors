@@ -69,6 +69,276 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Add",
+			"type": "string",
+			"initialValue": "Add",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 709355757484171
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Amount",
+			"type": "string",
+			"initialValue": "Amount",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 302328234135474
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier",
+			"type": "string",
+			"initialValue": "Bonus_Enemy_Spawn_Cooldown_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 877156241595011
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Bonus_Experience_Multiplier",
+			"type": "string",
+			"initialValue": "Bonus_Experience_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 446231297191168
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Bonus_Item_Spawn_Cooldown_Multiplier",
+			"type": "string",
+			"initialValue": "Bonus_Item_Spawn_Cooldown_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 776173971268297
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Bonus_Weapon_Amount_Add",
+			"type": "string",
+			"initialValue": "Bonus_Weapon_Amount_Add",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 221695903888076
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Bonus_Weapon_Cooldown_Multiplier",
+			"type": "string",
+			"initialValue": "Bonus_Weapon_Cooldown_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 739398101416171
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Bonus_Weapon_Damage_Multiplier",
+			"type": "string",
+			"initialValue": "Bonus_Weapon_Damage_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 891754243403284
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Bonus_Weapon_Size_Multiplier",
+			"type": "string",
+			"initialValue": "Bonus_Weapon_Size_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 407179137716937
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Cooldown",
+			"type": "string",
+			"initialValue": "Cooldown",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 757964511800341
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Damage",
+			"type": "string",
+			"initialValue": "Damage",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 728829847967031
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Enemies",
+			"type": "string",
+			"initialValue": "Enemies",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 260309811983460
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Experience",
+			"type": "string",
+			"initialValue": "Experience",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 813389467900788
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Experience_Target",
+			"type": "string",
+			"initialValue": "Experience_Target",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 267184944738624
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Experience_Target_Multiplier",
+			"type": "string",
+			"initialValue": "Experience_Target_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 661251184749942
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Health",
+			"type": "string",
+			"initialValue": "Health",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 193700461985965
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Health_Max",
+			"type": "string",
+			"initialValue": "Health_Max",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 102741378861192
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Health_Multiplier",
+			"type": "string",
+			"initialValue": "Health_Max_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 876298997252055
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Icon",
+			"type": "string",
+			"initialValue": "Icon",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 300756568646211
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Items",
+			"type": "string",
+			"initialValue": "Items",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 990155293678732
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Label",
+			"type": "string",
+			"initialValue": "Label",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 665338597903307
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_MovementSpeed",
+			"type": "string",
+			"initialValue": "MovementSpeed",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 514107089827304
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_MovementAcceleration",
+			"type": "string",
+			"initialValue": "MovementAcceleration",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 830534511767597
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_MovementDeceleration",
+			"type": "string",
+			"initialValue": "MovementDeceleration",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 982570091533426
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Multiply",
+			"type": "string",
+			"initialValue": "Multiply",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 612566766668746
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_PickupDistance",
+			"type": "string",
+			"initialValue": "PickupDistance",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 983768474373603
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_PierceLimit",
+			"type": "string",
+			"initialValue": "PierceLimit",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 909545994641247
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Player",
 			"type": "string",
 			"initialValue": "Player",
@@ -79,83 +349,73 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Enemies",
+			"name": "KEY_Pools",
 			"type": "string",
-			"initialValue": "Enemies",
+			"initialValue": "Pools",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 973162742391941
+			"sid": 974911269037936
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Health_Max",
+			"name": "KEY_Queues",
 			"type": "string",
-			"initialValue": "Health_Max",
+			"initialValue": "Queues",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 665175399500443
+			"sid": 960935344389056
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Health_Multiplier",
+			"name": "KEY_Rule_Max",
 			"type": "string",
-			"initialValue": "Health_Max_Multiplier",
+			"initialValue": "Rule_Max",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 808316354153313
+			"sid": 245743096954132
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Health",
+			"name": "KEY_Rule_Value",
 			"type": "string",
-			"initialValue": "Health",
+			"initialValue": "Rule_Value",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 549476401211245
+			"sid": 336932584532681
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Damage",
+			"name": "KEY_Scale",
 			"type": "string",
-			"initialValue": "Damage",
+			"initialValue": "Scale",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 615529378731428
+			"sid": 242774993217273
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Experience",
+			"name": "KEY_Upgrades",
 			"type": "string",
-			"initialValue": "Experience",
+			"initialValue": "Upgrades",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 867132281892900
+			"sid": 129044761791842
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Wave",
+			"name": "KEY_Spawns",
 			"type": "string",
-			"initialValue": "Wave",
+			"initialValue": "Spawns",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 400290896442803
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Items",
-			"type": "string",
-			"initialValue": "Items",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 322405926494955
 		},
 		{
 			"eventType": "variable",
@@ -169,213 +429,13 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Cooldown",
-			"type": "string",
-			"initialValue": "Cooldown",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 955279441704862
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Amount",
-			"type": "string",
-			"initialValue": "Amount",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 144781007347416
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Experience_Target",
-			"type": "string",
-			"initialValue": "Experience_Target",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 285185700926874
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Experience_Target_Multiplier",
-			"type": "string",
-			"initialValue": "Experience_Target_Multiplier",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 621653491382017
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Experience_Bonus_Multiplier",
-			"type": "string",
-			"initialValue": "Experience_Bonus_Multiplier",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 602634027842356
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Pools",
-			"type": "string",
-			"initialValue": "Pools",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 239070177315976
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Upgrades",
-			"type": "string",
-			"initialValue": "Upgrades",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 326060069846749
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Rule_Value",
-			"type": "string",
-			"initialValue": "Rule_Value",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 373563846543836
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Rule_Max",
-			"type": "string",
-			"initialValue": "Rule_Max",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 205485891005776
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Add",
-			"type": "string",
-			"initialValue": "Add",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 441498095084860
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Multiply",
-			"type": "string",
-			"initialValue": "Multiply",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 795799592767588
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Label",
-			"type": "string",
-			"initialValue": "Label",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 782715964468413
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_PierceLimit",
-			"type": "string",
-			"initialValue": "PierceLimit",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 874095317289260
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Icon",
-			"type": "string",
-			"initialValue": "Icon",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 815565522830219
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_MovementSpeed",
-			"type": "string",
-			"initialValue": "MovementSpeed",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 419679795605069
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_MovementAcceleration",
-			"type": "string",
-			"initialValue": "MovementAcceleration",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 261523272078757
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_MovementDeceleration",
-			"type": "string",
-			"initialValue": "MovementDeceleration",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 890744415786530
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Scale",
-			"type": "string",
-			"initialValue": "Scale",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 976666608148276
-		},
-		{
-			"eventType": "variable",
 			"name": "KEY_Weapon_Sword",
 			"type": "string",
 			"initialValue": "Sword",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 200576385417831
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Queues",
-			"type": "string",
-			"initialValue": "Queues",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 385362962184584
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_PickupDistance",
-			"type": "string",
-			"initialValue": "PickupDistance",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 685952872375412
+			"sid": 577932868393958
 		},
 		{
 			"eventType": "comment",
@@ -509,16 +569,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TWEEN_Projectile_Opacity_Lifetime",
-			"type": "string",
-			"initialValue": "Opacity_Lifetime",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 246462826460968
-		},
-		{
-			"eventType": "variable",
 			"name": "TWEEN_LevelUp_FadeIn",
 			"type": "string",
 			"initialValue": "FadeIn",
@@ -536,6 +586,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 934132276170255
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_Projectile_Opacity_Lifetime",
+			"type": "string",
+			"initialValue": "Opacity_Lifetime",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 268804068231088
 		},
 		{
 			"eventType": "variable",

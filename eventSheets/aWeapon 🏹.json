@@ -1,5 +1,5 @@
 {
-	"name": "aProjectile 🏹",
+	"name": "aWeapon 🏹",
 	"events": [
 		{
 			"aceType": "action",
@@ -12,18 +12,25 @@
 			"functionIsAsync": false,
 			"functionParameters": [
 				{
-					"name": "movementAngle",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"sid": 763453866054419
-				},
-				{
 					"name": "weapon",
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
 					"sid": 535484699166720
+				},
+				{
+					"name": "amount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 239254305447274
+				},
+				{
+					"name": "firstAngle",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 763453866054419
 				},
 				{
 					"name": "scale",
@@ -34,11 +41,31 @@
 				}
 			],
 			"eventType": "custom-ace-block",
-			"conditions": [],
+			"conditions": [
+				{
+					"id": "for",
+					"objectClass": "System",
+					"sid": 232683009987832,
+					"parameters": {
+						"name": "\"\"",
+						"start-index": "1",
+						"end-index": "amount"
+					}
+				}
+			],
 			"actions": [
 				{
 					"type": "comment",
 					"text": "Spawn projectile"
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 152729365321321,
+					"parameters": {
+						"type": "log",
+						"message": "\"weapon spawn! amount: \" & amount"
+					}
 				},
 				{
 					"id": "create-object",
@@ -98,9 +125,9 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Weapon",
-					"sid": 700142642990439,
+					"sid": 214497628590692,
 					"parameters": {
-						"angle": "movementAngle"
+						"angle": "firstAngle + (360 / amount * loopindex)"
 					}
 				},
 				{
