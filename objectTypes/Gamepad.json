@@ -5,7 +5,7 @@
 	"singleglobal-inst": {
 		"type": "Gamepad",
 		"properties": {
-			"analog-deadzone": 25
+			"analog-deadzone": 50
 		},
 		"uid": 13,
 		"sid": 586107981482357,

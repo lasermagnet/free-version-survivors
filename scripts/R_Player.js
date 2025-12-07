@@ -6,9 +6,9 @@ export const Player = {
     "Experience_Target": 40,
     "Experience_Target_Multiplier": 1.2,
     // Movement
-    "MovementAcceleration": 2000,
-    "MovementDeceleration": 2000,
-    "MovementSpeed": 60,
+    "MovementAcceleration": 100,
+    "MovementDeceleration": 100,
+    "MovementSpeed": 70,
     // Misc
     "PickupDistance": 30,
     // Bonuses

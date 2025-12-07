@@ -94,6 +94,419 @@
 		},
 		{
 			"aceType": "action",
+			"aceName": "tick_input",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 954428231497829,
+					"parameters": {
+						"instance-variable": "IN_Movement_Active",
+						"value": "NO"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 177688051001749,
+					"parameters": {
+						"instance-variable": "IN_Vector_X",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 978730537400933,
+					"parameters": {
+						"instance-variable": "IN_Vector_Y",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 823782812326942,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 772246255168906,
+							"parameters": {
+								"key": 87
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 786399882874846,
+							"parameters": {
+								"key": 38
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 805028382977787,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-up"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Up"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 680243255169599,
+							"parameters": {
+								"instance-variable": "IN_Movement_Active",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Player",
+							"sid": 379931190030021,
+							"parameters": {
+								"instance-variable": "IN_Vector_Y",
+								"value": "1"
+							}
+						},
+						{
+							"id": "simulate-control",
+							"objectClass": "Player",
+							"sid": 625055331408129,
+							"disabled": true,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "up"
+							}
+						}
+					],
+					"sid": 581718632324741,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 834502893889159,
+							"parameters": {
+								"key": 83
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 896657789915836,
+							"parameters": {
+								"key": 40
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 717498175393543,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-down"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Down"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 647010615786517,
+							"parameters": {
+								"instance-variable": "IN_Movement_Active",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "Player",
+							"sid": 463085651783216,
+							"parameters": {
+								"instance-variable": "IN_Vector_Y",
+								"value": "1"
+							}
+						},
+						{
+							"id": "simulate-control",
+							"objectClass": "Player",
+							"sid": 970375632912931,
+							"disabled": true,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "down"
+							}
+						}
+					],
+					"sid": 812801529942632,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 276593055585175,
+							"parameters": {
+								"key": 65
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 937706129584026,
+							"parameters": {
+								"key": 37
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 957800495108569,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-left"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Left"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 112032855513694,
+							"parameters": {
+								"instance-variable": "IN_Movement_Active",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Player",
+							"sid": 173675738846566,
+							"parameters": {
+								"instance-variable": "IN_Vector_X",
+								"value": "1"
+							}
+						},
+						{
+							"id": "simulate-control",
+							"objectClass": "Player",
+							"sid": 444905633219251,
+							"disabled": true,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "left"
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "Player",
+							"sid": 767699884217055,
+							"parameters": {
+								"state": "mirrored"
+							}
+						}
+					],
+					"sid": 108543780388197,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 597351052477431,
+							"parameters": {
+								"key": 68
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 615239764408925,
+							"parameters": {
+								"key": 39
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 561846695332405,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-right"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Right"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 670216901044388,
+							"parameters": {
+								"instance-variable": "IN_Movement_Active",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "Player",
+							"sid": 165518113987227,
+							"parameters": {
+								"instance-variable": "IN_Vector_X",
+								"value": "1"
+							}
+						},
+						{
+							"id": "simulate-control",
+							"objectClass": "Player",
+							"sid": 549848122392855,
+							"disabled": true,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "right"
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "Player",
+							"sid": 678338974065388,
+							"parameters": {
+								"state": "not-mirrored"
+							}
+						}
+					],
+					"sid": 971231662640716,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Gamepad"
+				},
+				{
+					"eventType": "comment",
+					"text": "todo optimize condition?"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-axis",
+							"objectClass": "Gamepad",
+							"sid": 270446686242941,
+							"parameters": {
+								"gamepad": "0",
+								"axis": "left-analog-x-axis",
+								"comparison": 1,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-axis",
+							"objectClass": "Gamepad",
+							"sid": 667677360565018,
+							"parameters": {
+								"gamepad": "0",
+								"axis": "left-analog-y-axis",
+								"comparison": 1,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-axis",
+							"objectClass": "Gamepad",
+							"sid": 488216473442178,
+							"parameters": {
+								"gamepad": "0",
+								"axis": "right-analog-x-axis",
+								"comparison": 1,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-axis",
+							"objectClass": "Gamepad",
+							"sid": 164447874212789,
+							"parameters": {
+								"gamepad": "0",
+								"axis": "right-analog-y-axis",
+								"comparison": 1,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 218995351776755,
+							"parameters": {
+								"instance-variable": "IN_Movement_Active",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 179189209428264,
+							"parameters": {
+								"instance-variable": "IN_Vector_X",
+								"value": "Gamepad.Axis(0, 0) + Gamepad.Axis(0, 2)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 399838042645245,
+							"parameters": {
+								"instance-variable": "IN_Vector_Y",
+								"value": "Gamepad.Axis(0, 1) + Gamepad.Axis(0, 3)"
+							}
+						}
+					],
+					"sid": 975737648800403,
+					"isOrBlock": true
+				}
+			]
+		},
+		{
+			"aceType": "action",
 			"aceName": "tick",
 			"objectClass": "Player",
 			"functionDescription": "",
@@ -199,40 +612,74 @@
 					"id": "move-to-top",
 					"objectClass": "UI_TextSF_DamageNumber",
 					"sid": 211095788548384
+				},
+				{
+					"type": "comment",
+					"text": "Override analog input if digital is active"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 389242365643063,
+					"parameters": {
+						"instance-variable": "IN_Movement_Angle",
+						"value": "Self.IN_Vector_X <> 0 | Self.IN_Vector_Y <> 0 ?\nangle(0, 0, Self.IN_Vector_X, Self.IN_Vector_Y) :\nSelf.IN_Movement_Angle"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update 8-direction behaviour vectors"
+				},
+				{
+					"id": "set-vector-x",
+					"objectClass": "Player",
+					"sid": 751285753920567,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"vector-x": "Self.IN_Movement_Active = YES ? cos(Self.IN_Movement_Angle) * Self.8Direction.MaxSpeed : 0"
+					}
+				},
+				{
+					"id": "set-vector-y",
+					"objectClass": "Player",
+					"sid": 944556552997328,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"vector-y": "Self.IN_Movement_Active = YES ? sin(Self.IN_Movement_Angle) * Self.8Direction.MaxSpeed : 0"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update last moving angle (for attacks) if player is moving"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 962096084900686,
+					"parameters": {
+						"instance-variable": "lastMovingAngle",
+						"value": "Self.IN_Movement_Active = YES ? Self.IN_Movement_Angle : Self.lastMovingAngle"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update animation (idle or walking)"
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Player",
+					"sid": 140199965495082,
+					"parameters": {
+						"animation": "Self.IN_Movement_Active = YES ? ANIM_Walking : ANIM_Idle",
+						"from": "current-frame"
+					}
 				}
 			],
 			"sid": 892639912846222,
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Stop player animation in standing position if player is not moving"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-moving",
-							"objectClass": "Player",
-							"sid": 815957691255878,
-							"behaviorType": "8Direction",
-							"isInverted": true
-						}
-					],
-					"actions": [
-						{
-							"id": "set-animation-frame",
-							"objectClass": "Player",
-							"sid": 929243666119132,
-							"parameters": {
-								"frame-number": "FRAME_Standing"
-							}
-						}
-					],
-					"sid": 105257302270069
-				},
-				{
-					"eventType": "comment",
-					"text": "Attack with all weapons"
+					"text": "Update cooldown on weapons with at least 1 amount & attack when a cooldown is finished"
 				},
 				{
 					"eventType": "block",
@@ -248,36 +695,40 @@
 						{
 							"id": "compare-value",
 							"objectClass": "Rules",
-							"sid": 898774779668406,
+							"sid": 986676676024691,
 							"parameters": {
 								"path": "DOT & KEY_Amount",
-								"cmp": 4,
-								"value": "0"
+								"cmp": 5,
+								"value": "1"
 							}
 						}
 					],
 					"actions": [
 						{
 							"id": "set-value",
-							"objectClass": "Rules",
-							"sid": 987792150045880,
+							"objectClass": "Cooldowns",
+							"sid": 527834733319670,
 							"parameters": {
-								"path": "DOT & KEY_Timer",
-								"value": "max(0, Rules.Get(DOT & KEY_Timer) - dt)"
+								"path": "KEY_Weapons & DOT & Rules.CurrentKey",
+								"value": "max(0, Cooldowns.Get(KEY_Weapons & DOT & Rules.CurrentKey) - dt)"
 							}
 						}
 					],
 					"sid": 135052668909848,
 					"children": [
 						{
+							"eventType": "comment",
+							"text": "Attack when a cooldown is finished + reset cooldown"
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
 									"id": "compare-value",
-									"objectClass": "Rules",
-									"sid": 387993056308811,
+									"objectClass": "Cooldowns",
+									"sid": 437833347468631,
 									"parameters": {
-										"path": "DOT & KEY_Timer",
+										"path": "KEY_Weapons & DOT & Rules.CurrentKey",
 										"cmp": 0,
 										"value": "0"
 									}
@@ -286,10 +737,10 @@
 							"actions": [
 								{
 									"id": "set-value",
-									"objectClass": "Rules",
-									"sid": 737014952994807,
+									"objectClass": "Cooldowns",
+									"sid": 865456342309256,
 									"parameters": {
-										"path": "DOT & KEY_Timer",
+										"path": "KEY_Weapons & DOT & Rules.CurrentKey",
 										"value": "Rules.Get(DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)"
 									}
 								},
@@ -518,7 +969,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Attract / pick up drops"
+					"text": "Attract & pick up drops"
 				},
 				{
 					"eventType": "block",
@@ -609,16 +1060,6 @@
 									"parameters": {
 										"type": "log",
 										"message": "StringSub(\"Drop pickup: {0} health, {1} experience\", Drop.healing, Drop.experience)"
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Player",
-									"sid": 747132776152467,
-									"disabled": true,
-									"parameters": {
-										"instance-variable": "experience",
-										"value": "Drop.AnimationName = ROLE_Experience ? Self.experience + round(Drop.experience * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : Self.experience"
 									}
 								},
 								{

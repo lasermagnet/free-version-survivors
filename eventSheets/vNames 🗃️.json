@@ -7,13 +7,23 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "ANIM_Default",
+			"name": "ANIM_Walking",
 			"type": "string",
-			"initialValue": "Default",
+			"initialValue": "Walking",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 926677348791607
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Idle",
+			"type": "string",
+			"initialValue": "Idle",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 503392850679348
 		},
 		{
 			"eventType": "comment",
@@ -524,16 +534,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 275286016797896
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Timer",
-			"type": "string",
-			"initialValue": "Timer",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 752979570410370
 		},
 		{
 			"eventType": "variable",

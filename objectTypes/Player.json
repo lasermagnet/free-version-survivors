@@ -6,6 +6,13 @@
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [
 		{
+			"name": "level",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 400566419621835
+		},
+		{
 			"name": "experience",
 			"type": "number",
 			"desc": "",
@@ -32,6 +39,34 @@
 			"desc": "",
 			"show": true,
 			"sid": 481484818498935
+		},
+		{
+			"name": "IN_Vector_X",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 946805757541400
+		},
+		{
+			"name": "IN_Vector_Y",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 647164089444106
+		},
+		{
+			"name": "IN_Movement_Active",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 608916688674712
+		},
+		{
+			"name": "IN_Movement_Angle",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 617678160914566
 		}
 	],
 	"behaviorTypes": [
@@ -59,6 +94,43 @@
 	"effectTypes": [],
 	"animations": {
 		"items": [
+			{
+				"frames": [
+					{
+						"width": 32,
+						"height": 32,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3407303,
+						"collisionPoly": {
+							"points": [
+								0.1875,
+								0.5,
+								0.5,
+								0.1875,
+								0.8125,
+								0.5,
+								0.5,
+								0.8125
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Standing"
+					}
+				],
+				"sid": 583604754101005,
+				"name": "Idle",
+				"isLooping": true,
+				"isPingPong": true,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
 			{
 				"frames": [
 					{
@@ -141,49 +213,12 @@
 					}
 				],
 				"sid": 509383271072117,
-				"name": "Default",
+				"name": "Walking",
 				"isLooping": true,
 				"isPingPong": true,
 				"repeatCount": 1,
 				"repeatTo": 0,
 				"speed": 5
-			},
-			{
-				"frames": [
-					{
-						"width": 8,
-						"height": 8,
-						"originX": 0.5,
-						"originY": 0.5,
-						"originalSource": "",
-						"exportFormat": "lossless",
-						"exportQuality": 0.8,
-						"fileType": "image/png",
-						"imageSpriteId": 8605163,
-						"collisionPoly": {
-							"points": [
-								0,
-								0.5,
-								0.5,
-								0,
-								1,
-								0.5,
-								0.5,
-								1
-							]
-						},
-						"useCollisionPoly": true,
-						"duration": 1,
-						"tag": ""
-					}
-				],
-				"sid": 782546712835158,
-				"name": "DefaultOld",
-				"isLooping": false,
-				"isPingPong": false,
-				"repeatCount": 1,
-				"repeatTo": 0,
-				"speed": 0
 			}
 		],
 		"subfolders": []

@@ -336,9 +336,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_DevInfo",
-					"sid": 956259198535286,
+					"sid": 355194803491613,
 					"parameters": {
-						"text": "\"Build \" & projectversion & newline &\nround(fps) & \" FPS, \" & objectcount & \" objects, \" & Enemy.Count & \" enemies\" & newline & newline &\n\"Enemies killed: \" & enemiesKilled & newline & newline &\n\"Enemy spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Item spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Item_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Health gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
+						"text": "\"Build \" & projectversion & newline &\nStringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects, {4} enemies\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount, Enemy.Count) & newline & newline & \n\"Player level: \" & Player.level & newline &\n\"Enemies killed: \" & enemiesKilled & newline &\n\"Enemy spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Item spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Item_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Health gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
 					}
 				},
 				{
@@ -384,6 +384,11 @@
 				{
 					"type": "comment",
 					"text": "Tick player"
+				},
+				{
+					"customAction": "tick_input",
+					"objectClass": "Player",
+					"sid": 761816761818882
 				},
 				{
 					"customAction": "tick",

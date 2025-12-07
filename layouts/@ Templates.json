@@ -268,7 +268,7 @@
 					"type": "Player",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Default",
+						"initial-animation": "Walking",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -277,17 +277,22 @@
 					"sid": 275528799847544,
 					"tags": "",
 					"instanceVariables": {
+						"level": 1,
 						"experience": 0,
 						"isDead": 0,
 						"lastMovingAngle": 0,
-						"isHurt": 0
+						"isHurt": 0,
+						"IN_Vector_X": 0,
+						"IN_Vector_Y": 0,
+						"IN_Movement_Active": 0,
+						"IN_Movement_Angle": 0
 					},
 					"behaviors": {
 						"8Direction": {
 							"properties": {
 								"max-speed": 0,
-								"acceleration": 2000,
-								"deceleration": 2000,
+								"acceleration": 0,
+								"deceleration": 0,
 								"directions": "dir-8",
 								"set-angle": "no",
 								"allow-sliding": true,

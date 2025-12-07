@@ -103,20 +103,6 @@
 		},
 		{
 			"eventType": "comment",
-			"text": "Input"
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Input_Gamepad_Analog_Threshold",
-			"type": "number",
-			"initialValue": "50",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 910881760947431
-		},
-		{
-			"eventType": "comment",
 			"text": "Map"
 		},
 		{
