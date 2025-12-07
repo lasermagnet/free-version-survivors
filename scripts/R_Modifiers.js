@@ -5,7 +5,7 @@ const _example = {
         "Icon": "Heal",                     // an animation name in the Icons object
         "Rule_Value": "Player.Health",      // specify which rule value to modify
         "Rule_Max": "Player.Health_Max",    // optionally specify the rule which holds the maximum allowed value
-        "Multiply": 1,                      // amount to multiply the specified rule value with
+        //"Multiply": 1,                      // amount to multiply the specified rule value with (defaults to 1 when not specified or set to null)
         "Add": 100,                         // amount to add to the specified rule value
         "Weapon": "Axe"                     // optionally specify a weapon to immediately trigger its attack and restart its cooldown
     },
@@ -17,7 +17,6 @@ export const Modifiers = {
         "Description": "Increase health regeneration amount.",
         "Icon": "Regeneration",
         "Rule_Value": "Player.Bonus_Regeneration_Amount",
-        "Multiply": 1,
         "Add": 1,
     },
     "EnemySpawnAmount": {
@@ -25,7 +24,6 @@ export const Modifiers = {
         "Description": "Increase enemy spawn amount by 10%.",
         "Icon": "Enemy",
         "Rule_Value": "Player.Bonus_Enemy_Spawn_Amount_Multiplier",
-        "Multiply": 1,
         "Add": 0.1,
     },
     "ExperienceBonus": {
@@ -33,7 +31,6 @@ export const Modifiers = {
         "Description": "XP drops worth 10% more.",
         "Icon": "Experience",
         "Rule_Value": "Player.Bonus_Experience_Multiplier",
-        "Multiply": 1,
         "Add": 0.1,
     },
     "HealingBonus": {
@@ -41,7 +38,6 @@ export const Modifiers = {
         "Description": "Increase healing efficiency by 10%.",
         "Icon": "Heal",
         "Rule_Value": "Player.Bonus_Healing_Multiplier",
-        "Multiply": 1,
         "Add": 0.1,
     },
     "HealAll": {
@@ -50,23 +46,20 @@ export const Modifiers = {
         "Icon": "Heal",
         "Rule_Value": "Player.Health",
         "Rule_Max": "Player.Health_Max",
-        "Multiply": 1,
-        "Add": 1000000, // todo Infnity
+        "Add": 1000000,
     },
     "MaxHealth": {
-        "Label": "Max health up",
-        "Description": "By 10%, healing not included.",
+        "Label": "Max health to 110%",
+        "Description": "Healing not included.",
         "Icon": "HealthMax",
         "Rule_Value": "Player.Health_Max",
         "Multiply": 1.1,
-        "Add": 0,
     },
     "MovementSpeed": {
         "Label": "Speed up",
         "Description": "Increase movement speed slightly.",
         "Icon": "MoveSpeed",
         "Rule_Value": "Player.MovementSpeed",
-        "Multiply": 1,
         "Add": 5,
     },
     "PickupDistance": {
@@ -74,7 +67,6 @@ export const Modifiers = {
         "Description": "Attract drops from further.",
         "Icon": "PickupDistance",
         "Rule_Value": "Player.PickupDistance",
-        "Multiply": 1,
         "Add": 10,
     },
     "LevelUpFreezeTime": {
@@ -82,7 +74,6 @@ export const Modifiers = {
         "Description": "Longer freeze time after level up.",
         "Icon": "Ice",
         "Rule_Value": "Player.LevelUpFreezeTime",
-        "Multiply": 1,
         "Add": 0.2,
     },
     "WeaponDamage": {
@@ -90,7 +81,6 @@ export const Modifiers = {
         "Description": "Increase damage bonus by 5%.",
         "Icon": "WeaponDamage",
         "Rule_Value": "Player.Bonus_Weapon_Damage_Multiplier",
-        "Multiply": 1,
         "Add": 0.05,
     },
     "WeaponDamage_Extra": {
@@ -98,7 +88,6 @@ export const Modifiers = {
         "Description": "Increase damage bonus by 1%.",
         "Icon": "WeaponDamage",
         "Rule_Value": "Player.Bonus_Weapon_Damage_Multiplier",
-        "Multiply": 1,
         "Add": 0.01,
     },
     "WeaponCooldown": {
@@ -106,7 +95,6 @@ export const Modifiers = {
         "Description": "Reduce all weapon cooldowns by 5%.",
         "Icon": "WeaponCooldown",
         "Rule_Value": "Player.Bonus_Weapon_Cooldown_Multiplier",
-        "Multiply": 1,
         "Add": -0.05,
     },
     "WeaponCooldown_Extra": {
@@ -114,7 +102,6 @@ export const Modifiers = {
         "Description": "Reduce all weapon cooldowns by 1%.",
         "Icon": "WeaponCooldown",
         "Rule_Value": "Player.Bonus_Weapon_Cooldown_Multiplier",
-        "Multiply": 1,
         "Add": -0.01,
     },
     "WeaponSize": {
@@ -122,15 +109,13 @@ export const Modifiers = {
         "Description": "Scale up all weapons.",
         "Icon": "WeaponSize",
         "Rule_Value": "Player.Bonus_Weapon_Size_Multiplier",
-        "Multiply": 1,
         "Add": 0.10,
     },
     "WeaponAmount": {
         "Label": "+1 Weapon amount",
         "Description": "Increase all weapon amounts.",
         "Icon": "WeaponAmount",
-        "Rule_Value": "Player.Bonus_Weapon_Amount_Extra",
-        "Multiply": 1,
+        "Rule_Value": "Player.Bonus_Weapon_Amount",
         "Add": 1,
     },
     "Axe_Amount": {
@@ -139,7 +124,6 @@ export const Modifiers = {
         "Description": "A trusty old throwing axe.",
         "Icon": "Axe",
         "Rule_Value": "Weapons.Axe.Amount",
-        "Multiply": 1,
         "Add": 1,
     },
     "Axe_Damage": {
@@ -148,7 +132,6 @@ export const Modifiers = {
         "Description": "Deal bigger damage with your axe.",
         "Icon": "Axe",
         "Rule_Value": "Weapons.Axe.Damage",
-        "Multiply": 1,
         "Add": 5,
     },
     "Axe_Damage_Extra": {
@@ -157,7 +140,6 @@ export const Modifiers = {
         "Description": "Deal a bit bigger damage with your axe.",
         "Icon": "Axe",
         "Rule_Value": "Weapons.Axe.Damage",
-        "Multiply": 1,
         "Add": 2,
     },
     "Axe_PierceLimit": {
@@ -166,7 +148,6 @@ export const Modifiers = {
         "Description": "Go through one more enemy.",
         "Icon": "Axe",
         "Rule_Value": "Weapons.Axe.PierceLimit",
-        "Multiply": 1,
         "Add": 1,
     },
 
@@ -176,7 +157,6 @@ export const Modifiers = {
         "Description": "Cooks nearby enemies.",
         "Icon": "Flame",
         "Rule_Value": "Weapons.Flame.Amount",
-        "Multiply": 1,
         "Add": 1,
     },
     "Flame_Duration": {
@@ -185,7 +165,6 @@ export const Modifiers = {
         "Description": "Flames last longer.",
         "Icon": "Flame",
         "Rule_Value": "Weapons.Flame.Duration",
-        "Multiply": 1,
         "Add": 0.5,
     },
 
@@ -195,7 +174,6 @@ export const Modifiers = {
         "Description": "It orbits around you.",
         "Icon": "Chainsaw",
         "Rule_Value": "Weapons.Chainsaw.Amount",
-        "Multiply": 1,
         "Add": 1,
     },
     "Chainsaw_Radius": {
@@ -204,7 +182,6 @@ export const Modifiers = {
         "Description": "Increase distance from player.",
         "Icon": "Chainsaw",
         "Rule_Value": "Weapons.Chainsaw.OrbitRadius",
-        "Multiply": 1,
         "Add": 10,
     },
     "Chainsaw_Size": {
@@ -213,7 +190,6 @@ export const Modifiers = {
         "Description": "Increase the size of your chainsaws.",
         "Icon": "Chainsaw",
         "Rule_Value": "Weapons.Chainsaw.Scale",
-        "Multiply": 1,
         "Add": 0.1,
     },
     "Chainsaw_Speed": {
@@ -222,7 +198,6 @@ export const Modifiers = {
         "Description": "Faster orbit speed for the chainsaws.",
         "Icon": "Chainsaw",
         "Rule_Value": "Weapons.Chainsaw.OrbitSpeed",
-        "Multiply": 1,
         "Add": 50,
     },
 
@@ -232,7 +207,6 @@ export const Modifiers = {
         "Description": "Spawns spike clusters.",
         "Icon": "Spikes",
         "Rule_Value": "Weapons.Spikes.Amount",
-        "Multiply": 1,
         "Add": 5,
     },
     "Spikes_Area": {
@@ -241,7 +215,6 @@ export const Modifiers = {
         "Description": "Spreads spikes on a bigger area.",
         "Icon": "Spikes",
         "Rule_Value": "Weapons.Spikes.PositionRandom2",
-        "Multiply": 1,
         "Add": 10,
     },
     "Spikes_Damage": {
@@ -250,7 +223,6 @@ export const Modifiers = {
         "Description": "Spikes do more damage.",
         "Icon": "Spikes",
         "Rule_Value": "Weapons.Spikes.Amount",
-        "Multiply": 1,
         "Add": 5,
     },
     "Spikes_Damage_Extra": {
@@ -259,7 +231,6 @@ export const Modifiers = {
         "Description": "Spikes do a bit more damage.",
         "Icon": "Spikes",
         "Rule_Value": "Weapons.Spikes.Amount",
-        "Multiply": 1,
         "Add": 2,
     },
 
@@ -269,7 +240,6 @@ export const Modifiers = {
         "Description": "Spawns a rotating ice wheel nearby.",
         "Icon": "Ice",
         "Rule_Value": "Weapons.Ice.Amount",
-        "Multiply": 1,
         "Add": 8,
     },
     "Ice_Duration": {
@@ -278,7 +248,6 @@ export const Modifiers = {
         "Description": "Ice wheel lasts 0.5s longer.",
         "Icon": "Ice",
         "Rule_Value": "Weapons.Ice.Duration",
-        "Multiply": 1,
         "Add": 0.5,
     },
     "Ice_FreezeTime": {
@@ -287,7 +256,6 @@ export const Modifiers = {
         "Description": "Ice wheel freezes enemies 0.5s longer.",
         "Icon": "Ice",
         "Rule_Value": "Weapons.Ice.FreezeTime",
-        "Multiply": 1,
         "Add": 0.5,
     },
 
@@ -297,7 +265,6 @@ export const Modifiers = {
         "Description": "Slash!",
         "Icon": "Sword",
         "Rule_Value": "Weapons.Sword.Amount",
-        "Multiply": 1,
         "Add": 1,
     },
     "Sword_Damage": {
@@ -306,7 +273,6 @@ export const Modifiers = {
         "Description": "Sword does more damage.",
         "Icon": "Sword",
         "Rule_Value": "Weapons.Sword.Damage",
-        "Multiply": 1,
         "Add": 5,
     },
     "Sword_Size": {
@@ -316,6 +282,5 @@ export const Modifiers = {
         "Icon": "Sword",
         "Rule_Value": "Weapons.Sword.Scale",
         "Multiply": 1.15,
-        "Add": 0,
     },
 }

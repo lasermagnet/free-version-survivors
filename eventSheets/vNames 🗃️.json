@@ -237,9 +237,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Bonus_Weapon_Amount_Extra",
+			"name": "KEY_Bonus_Weapon_Amount",
 			"type": "string",
-			"initialValue": "Bonus_Weapon_Amount_Extra",
+			"initialValue": "Bonus_Weapon_Amount",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -294,16 +294,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 669360435554156
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Container",
-			"type": "string",
-			"initialValue": "Container",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 290122049831762
 		},
 		{
 			"eventType": "variable",
@@ -367,9 +357,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_DropValueToLevel",
+			"name": "KEY_DropValueToFrame",
 			"type": "string",
-			"initialValue": "DropValueToLevel",
+			"initialValue": "DropValueToFrame",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -534,6 +524,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 300756568646211
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_ItemSpawnDisabled",
+			"type": "string",
+			"initialValue": "ItemSpawnDisabled",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 634467689995631
 		},
 		{
 			"eventType": "variable",

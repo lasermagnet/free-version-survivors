@@ -1,11 +1,12 @@
 const _example = {
     "": {
-        "Modifiers": [],            // todo
-        "Modifiers_Infinite": [],   // todo
+        "Modifiers": [],          // ordered list of modifiers to show first
+        "Modifiers_Infinite": [], // unordered list of modifiers to keep showing (randomly) after normal modifiers ran out
     },
 }
 
 export const Upgrades = {
+    // One-off boosts
     "HealAll": {
         "Modifiers_Infinite": ["HealAll"],
     },
@@ -17,11 +18,9 @@ export const Upgrades = {
     },
     "Flame": {
         "Modifiers": ["Flame_Amount", "Flame_Duration", "Flame_Amount", "Flame_Duration", "Flame_Amount", "Flame_Duration"],
-        //"Modifiers_Infinite": [],
     },
     "Chainsaw": {
         "Modifiers": ["Chainsaw_Amount", "Chainsaw_Radius", "Chainsaw_Size", "Chainsaw_Speed", "Chainsaw_Amount", "Chainsaw_Radius", "Chainsaw_Amount", "Chainsaw_Size", "Chainsaw_Speed", "Chainsaw_Amount", "Chainsaw_Radius", "Chainsaw_Size"],
-        //"Modifiers_Infinite": [],
     },
     "Spikes": {
         "Modifiers": ["Spikes_Amount", "Spikes_Area", "Spikes_Amount", "Spikes_Area", "Spikes_Amount", "Spikes_Area", "Spikes_Damage", "Spikes_Damage"],
@@ -35,7 +34,6 @@ export const Upgrades = {
     },
 
     // Player stats
-    // todo_maybe number based usage limit for "simple" upgrades? or group them together with optional touple format (for specifying amount) with string fallback (amount = 1)?
     "EnemySpawnAmount": {
         "Modifiers_Infinite": ["EnemySpawnAmount"]
     },
@@ -44,7 +42,6 @@ export const Upgrades = {
     },
     "MaxHealth": {
         "Modifiers": ["MaxHealth", "MaxHealth", "MaxHealth", "MaxHealth"],
-        //"Modifiers_Infinite": [],
     },
     "HealingBonus": {
         "Modifiers": ["HealingBonus", "HealingBonus", "HealingBonus", "HealingBonus"],

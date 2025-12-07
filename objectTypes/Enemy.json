@@ -48,7 +48,7 @@
 			"sid": 414852239883857
 		},
 		{
-			"name": "isContainer",
+			"name": "isItemSpawnDisabled",
 			"type": "number",
 			"desc": "",
 			"show": true,

@@ -255,7 +255,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Disable gravity"
+					"text": "Disable physics gravity"
 				},
 				{
 					"id": "set-world-gravity",
@@ -268,7 +268,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Initialize player movement behaviour"
+					"text": "Set player's movement speed"
 				},
 				{
 					"id": "set-max-speed",
@@ -328,16 +328,6 @@
 					"sid": 698811962908702
 				},
 				{
-					"id": "compare-instance-variable",
-					"objectClass": "Player",
-					"sid": 481669356013328,
-					"parameters": {
-						"instance-variable": "isDead",
-						"comparison": 0,
-						"value": "NO"
-					}
-				},
-				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
 					"sid": 243781292392919,
@@ -387,34 +377,12 @@
 				},
 				{
 					"type": "comment",
-					"text": "Process player input"
-				},
-				{
-					"customAction": "processInput",
-					"objectClass": "Player",
-					"sid": 773206114187745
-				},
-				{
-					"type": "comment",
 					"text": "Tick player"
-				},
-				{
-					"type": "comment",
-					"text": "todo_opt"
 				},
 				{
 					"customAction": "tick",
 					"objectClass": "Player",
 					"sid": 665667490718525
-				},
-				{
-					"type": "comment",
-					"text": "Tick wave (start a new one if there's no wave in progress)"
-				},
-				{
-					"customAction": "updateWave",
-					"objectClass": "Player",
-					"sid": 627065738697227
 				},
 				{
 					"type": "comment",
@@ -443,10 +411,6 @@
 					"text": "Tick enemies"
 				},
 				{
-					"type": "comment",
-					"text": "todo_opt"
-				},
-				{
 					"customAction": "tick",
 					"objectClass": "Enemy",
 					"sid": 776456162115713
@@ -465,7 +429,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Update vignette opacity"
+					"text": "Update vignette opacity according to the \"is hurt\" state of the player"
 				},
 				{
 					"id": "set-opacity",
@@ -473,6 +437,18 @@
 					"sid": 113435045110058,
 					"parameters": {
 						"opacity": "lerp(Self.Opacity, Player.isHurt = YES ? 100 : 0, 0.2)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update player particle rate according to the \"is hurt\" state of the player"
+				},
+				{
+					"id": "set-rate",
+					"objectClass": "PlayerParticles",
+					"sid": 910576062455164,
+					"parameters": {
+						"rate": "Player.isHurt = YES & Player.isDead = NO ? C_Particle_Rate_Hurting : 0"
 					}
 				},
 				{

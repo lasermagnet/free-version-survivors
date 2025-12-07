@@ -60,10 +60,6 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "todo make sure enemies don't spawn outside the \"ground\" or at least teleport non-moving enemies somewhere on the ground, ideally out of sight"
-				},
-				{
-					"type": "comment",
 					"text": "Spawn an enemy; if enemy type was not specified, choose one randomly from the pool"
 				},
 				{
@@ -184,8 +180,8 @@
 					"objectClass": "Enemy",
 					"sid": 579006079224906,
 					"parameters": {
-						"instance-variable": "isContainer",
-						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Container)"
+						"instance-variable": "isItemSpawnDisabled",
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_ItemSpawnDisabled)"
 					}
 				},
 				{
@@ -241,7 +237,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 759310124208695,
+					"sid": 491574592995474,
 					"parameters": {
 						"variable": "isLeveling",
 						"comparison": 0,
@@ -251,7 +247,7 @@
 				{
 					"id": "compare-instance-variable",
 					"objectClass": "Enemy",
-					"sid": 169438741384102,
+					"sid": 704943036793941,
 					"parameters": {
 						"instance-variable": "isDead",
 						"comparison": 0,
@@ -261,7 +257,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 356892487029801,
+					"sid": 633580929783850,
 					"parameters": {
 						"variable": "isPaused",
 						"comparison": 0,
@@ -277,7 +273,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 965283521473552,
+					"sid": 952908350055018,
 					"parameters": {
 						"instance-variable": "isMovementBlocked",
 						"value": "Self.movementSpeed = 0 ? YES : NO"
@@ -290,7 +286,7 @@
 				{
 					"id": "set-default-color",
 					"objectClass": "Enemy",
-					"sid": 338487326379787,
+					"sid": 731071060439983,
 					"parameters": {
 						"color": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500) :\n(\n  Player.Timer.CurrentTime(TIMER_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Freeze) = 0 ?\n  rgbEx(100, 100, 100) :\n  rgbEx(50, 50, 200)\n)\n"
 					}
@@ -302,7 +298,7 @@
 				{
 					"id": "set-width",
 					"objectClass": "Enemy",
-					"sid": 570746798042963,
+					"sid": 302784389403893,
 					"parameters": {
 						"width": "(Player.Timer.CurrentTime(TIMER_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Freeze) > 0) ?\nSelf.Width :\n(\n  Self.X < Player.X - 5 ?\r\n  abs(Self.Width) :\r\n  (\r\n    Self.X > Player.X + 5 ?\r\n    -abs(Self.Width) :\r\n    Self.Width\r\n  )\n)"
 					}
@@ -314,554 +310,776 @@
 				{
 					"id": "set-animation-speed",
 					"objectClass": "Enemy",
-					"sid": 451800226878739,
+					"sid": 932390248167081,
 					"parameters": {
 						"speed": "Player.Timer.CurrentTime(TIMER_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Freeze) = 0 ? Self.initAnimationSpeed : 0"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Tick all \"subroutines\""
+				},
+				{
+					"customAction": "tick_teleport",
+					"objectClass": "Enemy",
+					"sid": 201465197800123
+				},
+				{
+					"customAction": "tick_takeDamage",
+					"objectClass": "Enemy",
+					"sid": 723471677236212
+				},
+				{
+					"customAction": "tick_damageNumber1",
+					"objectClass": "Enemy",
+					"sid": 378701659476779
+				},
+				{
+					"customAction": "tick_damageNumber2",
+					"objectClass": "Enemy",
+					"sid": 306638402884577
+				},
+				{
+					"customAction": "tick_health",
+					"objectClass": "Enemy",
+					"sid": 993507941977590
+				},
+				{
+					"customAction": "tick_movement",
+					"objectClass": "Enemy",
+					"sid": 322189294551794
 				}
 			],
-			"sid": 323244324797060,
+			"sid": 189649208726275
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_teleport",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 292879612692565,
+					"parameters": {
+						"instance-variable": "movementSpeed",
+						"comparison": 4,
+						"value": "0"
+					}
+				},
+				{
+					"id": "pick-by-comparison",
+					"objectClass": "System",
+					"sid": 910916037246637,
+					"parameters": {
+						"object": "Enemy",
+						"expression": "distance(Player.X, Player.Y, Enemy.X, Enemy.Y)",
+						"comparison": 4,
+						"value": "Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemyTeleport)"
+					}
+				},
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 737710676853525,
+					"parameters": {
+						"object": "Enemy"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Teleport far away moving enemies closer to the player"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 311087110938679,
+					"parameters": {
+						"variable": "randomAngle",
+						"value": "random(0, 360)"
+					}
+				},
+				{
+					"id": "teleport",
+					"objectClass": "Enemy",
+					"sid": 864911433032877,
+					"behaviorType": "Physics",
+					"parameters": {
+						"x": "Player.X + cos(randomAngle) * Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)",
+						"y": "Player.Y + sin(randomAngle) * Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)"
+					}
+				}
+			],
+			"sid": 349985745414011
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_takeDamage",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "Enemy",
+					"sid": 924935815679441,
+					"parameters": {
+						"object": "Weapon"
+					}
+				},
+				{
+					"id": "is-on-screen",
+					"objectClass": "Weapon",
+					"sid": 112569511126495
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Weapon",
+					"sid": 273936547891781,
+					"parameters": {
+						"instance-variable": "isDestroyed",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 878533353758140,
+					"parameters": {
+						"object": "Weapon"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "If weapon is a movement blocker and enemy is a moving one, block its movement (temporarily)"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 383616009981655,
+					"parameters": {
+						"instance-variable": "isMovementBlocked",
+						"value": "Self.movementSpeed = 0 ? YES : Weapon.isMovementBlocker"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Damage enemy"
+				},
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "Enemy",
+					"sid": 790178770395093,
+					"parameters": {
+						"instance-variable": "health",
+						"value": "Weapon.damage * dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier)"
+					}
+				},
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Enemy",
+					"sid": 617304290947054,
+					"parameters": {
+						"instance-variable": "damageTakenRecently",
+						"value": "Weapon.damage * dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Start damage flash on & off timers if they are not running yet"
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Enemy",
+					"sid": 346578960389206,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "C_Damage_Flash_Interval",
+						"type": "once",
+						"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOn : EMPTY"
+					}
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Enemy",
+					"sid": 505493171678698,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "C_Damage_Flash_Interval * 2",
+						"type": "once",
+						"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "If projectile pierced a new enemy, add it to the list"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Weapon",
+					"sid": 988344835157789,
+					"parameters": {
+						"instance-variable": "piercedEnemyUIDs_SSV",
+						"value": "find(SPACE & Self.piercedEnemyUIDs_SSV & SPACE, str(Enemy.UID)) = NOTHING ? Self.piercedEnemyUIDs_SSV & SPACE & Enemy.UID : Self.piercedEnemyUIDs_SSV"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Start freeze timer if needed"
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Enemy",
+					"sid": 860285980974004,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_FreezeTime)",
+						"type": "once",
+						"tag": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_FreezeTime) > 0 &\nSelf.Timer.CurrentTime(TIMER_Freeze) = 0 ?\nTIMER_Freeze :\nEMPTY"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Stop movement if movement is blocked"
+				},
+				{
+					"id": "set-velocity",
+					"objectClass": "Enemy",
+					"sid": 345666433366829,
+					"behaviorType": "Physics",
+					"parameters": {
+						"x-component": "Enemy.isMovementBlocked = YES ? 0 : Self.Physics.VelocityX",
+						"y-component": "Enemy.isMovementBlocked = YES ? 0 : Self.Physics.VelocityY"
+					}
+				}
+			],
+			"sid": 623294180875037,
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Teleport far away [moving] enemies near the player"
+					"text": "If projectile has reached its piercing limit, destroy it"
 				},
 				{
 					"eventType": "block",
 					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 106585432721594,
-							"parameters": {
-								"instance-variable": "movementSpeed",
-								"comparison": 4,
-								"value": "0"
-							}
-						},
 						{
 							"id": "pick-by-comparison",
 							"objectClass": "System",
-							"sid": 439465885983319,
+							"sid": 143953735543464,
 							"parameters": {
-								"object": "Enemy",
-								"expression": "distance(Player.X, Player.Y, Enemy.X, Enemy.Y)",
-								"comparison": 4,
-								"value": "Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemyTeleport)"
-							}
-						},
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 929165353494252,
-							"parameters": {
-								"object": "Enemy"
+								"object": "Weapon",
+								"expression": "tokencount(trim(Weapon.piercedEnemyUIDs_SSV), SPACE)",
+								"comparison": 5,
+								"value": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_PierceLimit)"
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 262331466998579,
-							"parameters": {
-								"variable": "randomAngle",
-								"value": "random(0, 360)"
-							}
-						},
-						{
-							"id": "teleport",
-							"objectClass": "Enemy",
-							"sid": 346029354180080,
-							"behaviorType": "Physics",
-							"parameters": {
-								"x": "Player.X + cos(randomAngle) * Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)",
-								"y": "Player.Y + sin(randomAngle) * Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)"
-							}
-						}
-					],
-					"sid": 494746008157198
-				},
-				{
-					"eventType": "comment",
-					"text": "Enemy getting damaged"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-overlapping-another-object",
-							"objectClass": "Enemy",
-							"sid": 807314407853475,
-							"parameters": {
-								"object": "Weapon"
-							}
-						},
-						{
-							"id": "is-on-screen",
+							"id": "set-instvar-value",
 							"objectClass": "Weapon",
-							"sid": 250565518753538
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Weapon",
-							"sid": 682851023232220,
+							"sid": 640020696735232,
 							"parameters": {
 								"instance-variable": "isDestroyed",
-								"comparison": 0,
-								"value": "NO"
-							}
-						},
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 542889553905847,
-							"parameters": {
-								"object": "Weapon"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "If weapon is a movement blocker and enemy is a moving one, block its movement (temporarily)"
-						},
-						{
-							"type": "comment",
-							"text": "todo_nth handle multiple weapons with at least one blocker, but not the last"
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 927528857589538,
-							"parameters": {
-								"instance-variable": "isMovementBlocked",
-								"value": "Self.movementSpeed = 0 ? YES : Weapon.isMovementBlocker"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Damage enemy"
-						},
-						{
-							"id": "subtract-from-instvar",
-							"objectClass": "Enemy",
-							"sid": 953437095812154,
-							"parameters": {
-								"instance-variable": "health",
-								"value": "Weapon.damage * dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier)"
-							}
-						},
-						{
-							"id": "add-to-instvar",
-							"objectClass": "Enemy",
-							"sid": 339039127435682,
-							"parameters": {
-								"instance-variable": "damageTakenRecently",
-								"value": "Weapon.damage * dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier)"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Start damage flash on & off timers if they are not running yet"
-						},
-						{
-							"id": "start-timer",
-							"objectClass": "Enemy",
-							"sid": 186375863490088,
-							"behaviorType": "Timer",
-							"parameters": {
-								"duration": "C_Damage_Flash_Interval",
-								"type": "once",
-								"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOn : EMPTY"
-							}
-						},
-						{
-							"id": "start-timer",
-							"objectClass": "Enemy",
-							"sid": 645487316551288,
-							"behaviorType": "Timer",
-							"parameters": {
-								"duration": "C_Damage_Flash_Interval * 2",
-								"type": "once",
-								"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "If projectile pierced a new enemy, add it to the list"
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Weapon",
-							"sid": 589144911077692,
-							"parameters": {
-								"instance-variable": "piercedEnemyUIDs_SSV",
-								"value": "find(SPACE & Self.piercedEnemyUIDs_SSV & SPACE, str(Enemy.UID)) = NOTHING ? Self.piercedEnemyUIDs_SSV & SPACE & Enemy.UID : Self.piercedEnemyUIDs_SSV"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Start freeze timer if needed"
-						},
-						{
-							"id": "start-timer",
-							"objectClass": "Enemy",
-							"sid": 645890967718806,
-							"behaviorType": "Timer",
-							"parameters": {
-								"duration": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_FreezeTime)",
-								"type": "once",
-								"tag": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_FreezeTime) > 0 &\nSelf.Timer.CurrentTime(TIMER_Freeze) = 0 ?\nTIMER_Freeze :\nEMPTY"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Stop movement if movement is blocked"
-						},
-						{
-							"id": "set-velocity",
-							"objectClass": "Enemy",
-							"sid": 520560129133835,
-							"behaviorType": "Physics",
-							"parameters": {
-								"x-component": "Enemy.isMovementBlocked = YES ? 0 : Self.Physics.VelocityX",
-								"y-component": "Enemy.isMovementBlocked = YES ? 0 : Self.Physics.VelocityY"
-							}
-						}
-					],
-					"sid": 465104577973746,
-					"children": [
-						{
-							"eventType": "comment",
-							"text": "Check projectile piercing limit & destroy projectile if reached"
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "pick-by-comparison",
-									"objectClass": "System",
-									"sid": 995038679006034,
-									"parameters": {
-										"object": "Weapon",
-										"expression": "tokencount(trim(Weapon.piercedEnemyUIDs_SSV), SPACE)",
-										"comparison": 5,
-										"value": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_PierceLimit)"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 988057123335795,
-									"disabled": true,
-									"parameters": {
-										"type": "log",
-										"message": "\"Projectile #\" & Weapon.UID & \" has pierced \" & tokencount(trim(Weapon.piercedEnemyUIDs_SSV), SPACE) & \" enemies, destroying.\""
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Weapon",
-									"sid": 151100235435201,
-									"parameters": {
-										"instance-variable": "isDestroyed",
-										"value": "YES"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Stop weapon"
-								},
-								{
-									"id": "set-speed",
-									"objectClass": "Weapon",
-									"sid": 125895672334683,
-									"behaviorType": "Orbit",
-									"parameters": {
-										"speed": "0"
-									}
-								},
-								{
-									"id": "set-speed",
-									"objectClass": "Weapon",
-									"sid": 707124144412964,
-									"behaviorType": "Bullet",
-									"parameters": {
-										"speed": "0"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Flash & fade out weapon"
-								},
-								{
-									"id": "set-default-color",
-									"objectClass": "Weapon",
-									"sid": 978441568313677,
-									"parameters": {
-										"color": "rgbEx(500, 500, 500)"
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "Weapon",
-									"sid": 803814591045713,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"\"",
-										"property": "offsetOpacity",
-										"end-value": "0",
-										"time": "0.5",
-										"ease": "easeoutquint",
-										"destroy-on-complete": "yes",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								}
-							],
-							"sid": 728908823243223
-						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "If enemy received at least 1 damage and there's no damage number spawned, spawn a damage number"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 473101626486301,
-							"parameters": {
-								"instance-variable": "damageTakenRecently",
-								"comparison": 5,
-								"value": "1"
-							}
-						},
-						{
-							"id": "pick-children",
-							"objectClass": "Enemy",
-							"sid": 811884615212423,
-							"parameters": {
-								"child": "UI_TextSF_Damage",
-								"which": "own"
-							}
-						},
-						{
-							"id": "compare-text",
-							"objectClass": "UI_TextSF_Damage",
-							"sid": 298634100197920,
-							"parameters": {
-								"text-to-compare": "str(round(Enemy.damageTakenRecently))",
-								"case-sensitivity": "ignore-case"
-							},
-							"isInverted": true
-						}
-					],
-					"actions": [
-						{
-							"customAction": "playSFX",
-							"objectClass": "Audio",
-							"sid": 215625060781360,
-							"parameters": [
-								"SFX_EnemyDamaged",
-								"3",
-								"1"
-							]
-						},
-						{
-							"id": "stop-all-tweens",
-							"objectClass": "UI_TextSF_Damage",
-							"sid": 261850147716654,
-							"behaviorType": "Tween"
-						},
-						{
-							"id": "set-position",
-							"objectClass": "UI_TextSF_Damage",
-							"sid": 471929799839871,
-							"parameters": {
-								"x": "Enemy.X",
-								"y": "Enemy.Y"
-							}
-						},
-						{
-							"id": "set-opacity",
-							"objectClass": "UI_TextSF_Damage",
-							"sid": 374485917684913,
-							"parameters": {
-								"opacity": "100"
-							}
-						},
-						{
-							"id": "tween-two-properties",
-							"objectClass": "UI_TextSF_Damage",
-							"sid": 280540920032560,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"\"",
-								"property": "position",
-								"end-x": "Self.X + cos(angle(0, 0, Enemy.Physics.VelocityX, Enemy.Physics.VelocityY) + 180) * C_UI_DamageNumber_TweenDistance",
-								"end-y": "Self.Y + sin(angle(0, 0, Enemy.Physics.VelocityX, Enemy.Physics.VelocityY) + 180) * C_UI_DamageNumber_TweenDistance",
-								"time": "C_UI_DamageNumber_Lifetime",
-								"ease": "easeoutcubic",
-								"destroy-on-complete": "no",
-								"loop": "no",
-								"ping-pong": "no",
-								"repeat-count": "1"
-							}
-						},
-						{
-							"id": "tween-one-property",
-							"objectClass": "UI_TextSF_Damage",
-							"sid": 324809708969108,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"\"",
-								"property": "offsetOpacity",
-								"end-value": "0",
-								"time": "C_UI_DamageNumber_Lifetime",
-								"ease": "easeinexpo",
-								"destroy-on-complete": "no",
-								"loop": "no",
-								"ping-pong": "no",
-								"repeat-count": "1"
-							}
-						},
-						{
-							"id": "set-visible",
-							"objectClass": "UI_TextSF_Damage",
-							"sid": 887333999764376,
-							"parameters": {
-								"visibility": "visible"
-							}
-						},
-						{
-							"id": "set-text",
-							"objectClass": "UI_TextSF_Damage",
-							"sid": 509498912291650,
-							"parameters": {
-								"text": "round(Enemy.damageTakenRecently)"
-							}
-						},
-						{
-							"id": "set-default-color",
-							"objectClass": "UI_TextSF_Damage",
-							"sid": 385659036234260,
-							"parameters": {
-								"color": "int(tokenat(C_UI_DamageNumber_Colors_SSV, min(tokencount(C_UI_DamageNumber_Colors_SSV, SPACE) - 1, int(Enemy.damageTakenRecently / Rules.Get(KEY_Level & DOT & KEY_Dividers & DOT & KEY_DamageToColor))), SPACE))"
-							}
-						}
-					],
-					"sid": 696070708804544
-				},
-				{
-					"eventType": "comment",
-					"text": "Kill enemy if they are out of health"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 131247656892219,
-							"parameters": {
-								"instance-variable": "health",
-								"comparison": 3,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Update \"is dead\" state"
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 796021549979899,
-							"parameters": {
-								"instance-variable": "isDead",
 								"value": "YES"
 							}
 						},
 						{
 							"type": "comment",
-							"text": "Increment kill counter"
+							"text": "Stop weapon movement"
 						},
 						{
-							"id": "add-to-eventvar",
-							"objectClass": "System",
-							"sid": 435178335234605,
+							"id": "set-speed",
+							"objectClass": "Weapon",
+							"sid": 542919796967310,
+							"behaviorType": "Orbit",
 							"parameters": {
-								"variable": "enemiesKilled",
-								"value": "1"
+								"speed": "0"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "Weapon",
+							"sid": 773646721601672,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "0"
 							}
 						},
 						{
 							"type": "comment",
-							"text": "Disable physics (so dead enemies won't collide with alive ones)"
+							"text": "Flash & fade out weapon"
 						},
 						{
-							"id": "set-enabled",
-							"objectClass": "Enemy",
-							"sid": 365914010207802,
-							"behaviorType": "Physics",
+							"id": "set-default-color",
+							"objectClass": "Weapon",
+							"sid": 202366243491645,
 							"parameters": {
-								"mode": "disabled"
+								"color": "rgbEx(500, 500, 500)"
 							}
-						},
-						{
-							"type": "comment",
-							"text": "Stop animation"
-						},
-						{
-							"id": "stop-animation",
-							"objectClass": "Enemy",
-							"sid": 675304688951205
-						},
-						{
-							"type": "comment",
-							"text": "Fade out enemy"
 						},
 						{
 							"id": "tween-one-property",
-							"objectClass": "Enemy",
-							"sid": 259640237429076,
+							"objectClass": "Weapon",
+							"sid": 976760720545752,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"\"",
 								"property": "offsetOpacity",
 								"end-value": "0",
 								"time": "0.5",
-								"ease": "easeinoutcubic",
+								"ease": "easeoutquint",
 								"destroy-on-complete": "yes",
 								"loop": "no",
 								"ping-pong": "no",
 								"repeat-count": "1"
 							}
+						}
+					],
+					"sid": 854479034512966
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_damageNumber1",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 782998300716229,
+					"parameters": {
+						"instance-variable": "damageTakenRecently",
+						"comparison": 5,
+						"value": "1"
+					}
+				},
+				{
+					"id": "pick-children",
+					"objectClass": "Enemy",
+					"sid": 507571085725167,
+					"parameters": {
+						"child": "UI_TextSF_Damage",
+						"which": "own"
+					}
+				},
+				{
+					"id": "compare-text",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 627447532307258,
+					"parameters": {
+						"text-to-compare": "str(round(Enemy.damageTakenRecently))",
+						"case-sensitivity": "ignore-case"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "If enemy received at least 1 damage and there's no damage number spawned, spawn a damage number"
+				},
+				{
+					"customAction": "playSFX",
+					"objectClass": "Audio",
+					"sid": 848366859230745,
+					"parameters": [
+						"SFX_EnemyDamaged",
+						"3",
+						"1"
+					]
+				},
+				{
+					"type": "comment",
+					"text": "Damage numbers are hidden by default, so make them visible first"
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 150823203999862,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Reinitialize damage number"
+				},
+				{
+					"id": "stop-all-tweens",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 794453036651030,
+					"behaviorType": "Tween"
+				},
+				{
+					"id": "set-position",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 295526856287176,
+					"parameters": {
+						"x": "Enemy.X",
+						"y": "Enemy.Y"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 674913439705897,
+					"parameters": {
+						"opacity": "100"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Start position & opacity tween"
+				},
+				{
+					"id": "tween-two-properties",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 398717816866021,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "position",
+						"end-x": "Self.X + cos(angle(0, 0, Enemy.Physics.VelocityX, Enemy.Physics.VelocityY) + 180) * C_UI_DamageNumber_TweenDistance",
+						"end-y": "Self.Y + sin(angle(0, 0, Enemy.Physics.VelocityX, Enemy.Physics.VelocityY) + 180) * C_UI_DamageNumber_TweenDistance",
+						"time": "C_UI_DamageNumber_Lifetime",
+						"ease": "easeoutcubic",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 769508264847400,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetOpacity",
+						"end-value": "0",
+						"time": "C_UI_DamageNumber_Lifetime",
+						"ease": "easeinexpo",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update damage number text with recently taken damage amount"
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 648679001203803,
+					"parameters": {
+						"text": "round(Enemy.damageTakenRecently)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update damage number text color according to its value"
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 722689841551983,
+					"parameters": {
+						"color": "int(tokenat(C_UI_DamageNumber_Colors_SSV, min(tokencount(C_UI_DamageNumber_Colors_SSV, SPACE) - 1, int(Enemy.damageTakenRecently / Rules.Get(KEY_Level & DOT & KEY_Dividers & DOT & KEY_DamageToColor))), SPACE))"
+					}
+				}
+			],
+			"sid": 783732046062607
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_health",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 391320469319902,
+					"parameters": {
+						"instance-variable": "health",
+						"comparison": 3,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Kill enemy if they are out of health"
+				},
+				{
+					"type": "comment",
+					"text": "Update \"is dead\" state"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 191716216026664,
+					"parameters": {
+						"instance-variable": "isDead",
+						"value": "YES"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Increment kill counter"
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 845877099363167,
+					"parameters": {
+						"variable": "enemiesKilled",
+						"value": "1"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Disable physics (so dead enemies won't collide with alive ones)"
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Enemy",
+					"sid": 430904480459229,
+					"behaviorType": "Physics",
+					"parameters": {
+						"mode": "disabled"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Stop animation"
+				},
+				{
+					"id": "stop-animation",
+					"objectClass": "Enemy",
+					"sid": 355134125432233
+				},
+				{
+					"type": "comment",
+					"text": "Fade out enemy"
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "Enemy",
+					"sid": 556471551512952,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetOpacity",
+						"end-value": "0",
+						"time": "0.5",
+						"ease": "easeinoutcubic",
+						"destroy-on-complete": "yes",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Spawn an experience or health drop"
+				},
+				{
+					"id": "spawn-another-object",
+					"objectClass": "Enemy",
+					"sid": 170757084074084,
+					"parameters": {
+						"object": "Drop",
+						"layer": "LAYER_Main",
+						"image-point": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set drop IVs"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Drop",
+					"sid": 741015666002738,
+					"parameters": {
+						"instance-variable": "experience",
+						"value": "Enemy.experience"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Drop",
+					"sid": 595884802635856,
+					"parameters": {
+						"instance-variable": "healing",
+						"value": "Enemy.healing"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set animation name for drop (this is... not great :)"
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Drop",
+					"sid": 700717236841217,
+					"parameters": {
+						"animation": "Enemy.experience > 0 ? ANIM_Experience : (Enemy.healing > 0 ? ANIM_Health : ANIM_Magnet)",
+						"from": "beginning"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set animation frame for drop according to its value"
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "Drop",
+					"sid": 425697614399292,
+					"parameters": {
+						"frame-number": "min(floor(max(Self.experience, Self.healing) / max(1, Rules.Get(KEY_Level & DOT & KEY_Dividers & DOT & KEY_DropValueToFrame))), Self.AnimationFrameCount - 1)"
+					}
+				}
+			],
+			"sid": 336510554154724,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Spawn an item from the queue (if enemy is on the layout, but far enough from the player)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 847734325065143,
+							"parameters": {
+								"first-value": "Rules.ArraySize(KEY_Waves & DOT & waveId & DOT & KEY_ItemSpawnPool)",
+								"comparison": 4,
+								"second-value": "0"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 150102467223416,
+							"parameters": {
+								"variable": "itemSpawnCue",
+								"comparison": 1,
+								"value": "EMPTY"
+							}
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "Enemy",
+							"sid": 374307807069321,
+							"parameters": {
+								"object": "Item"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemy",
+							"sid": 810081251182927,
+							"parameters": {
+								"instance-variable": "isItemSpawnDisabled",
+								"comparison": 0,
+								"value": "NO"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 147237795918531,
+							"parameters": {
+								"first-value": "distance(Enemy.X, Enemy.Y, Player.X, Player.Y)",
+								"comparison": 5,
+								"second-value": "Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_ItemSpawnMinimum)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Spawn item (\"frame\")"
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 504395021970797,
+							"parameters": {
+								"object-to-create": "Item",
+								"layer": "LAYER_Main",
+								"x": "Enemy.X",
+								"y": "Enemy.Y",
+								"create-hierarchy": true,
+								"template-name": "\"\""
+							}
 						},
 						{
 							"type": "comment",
-							"text": "Spawn an experience or health drop"
+							"text": "Set modifier"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Item",
+							"sid": 503753753194955,
+							"parameters": {
+								"instance-variable": "modifier",
+								"value": "itemSpawnCue"
+							}
 						},
 						{
 							"type": "comment",
-							"text": "todo_ext add check if Enemy.experience > 0 & Enemy.healing > 0"
+							"text": "Spawn icon"
 						},
 						{
 							"id": "spawn-another-object",
-							"objectClass": "Enemy",
-							"sid": 247845064383759,
+							"objectClass": "Item",
+							"sid": 500523986792730,
 							"parameters": {
-								"object": "Drop",
+								"object": "Icon",
 								"layer": "LAYER_Main",
 								"image-point": "0",
 								"create-hierarchy": false,
@@ -869,379 +1087,249 @@
 							}
 						},
 						{
-							"id": "set-instvar-value",
-							"objectClass": "Drop",
-							"sid": 721278977651726,
+							"id": "add-child",
+							"objectClass": "Item",
+							"sid": 272795530112527,
 							"parameters": {
-								"instance-variable": "experience",
-								"value": "Enemy.experience"
+								"child": "Icon",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": true,
+								"transform-h": true,
+								"transform-a": true,
+								"transform-o": true,
+								"transform-z-elevation": false,
+								"transform-visibility": true,
+								"destroy-with-parent": true
 							}
 						},
 						{
-							"id": "set-instvar-value",
-							"objectClass": "Drop",
-							"sid": 145596203029649,
+							"id": "set-size",
+							"objectClass": "Icon",
+							"sid": 291266241149227,
 							"parameters": {
-								"instance-variable": "healing",
-								"value": "Enemy.healing"
+								"width": "8",
+								"height": "8"
 							}
 						},
 						{
 							"type": "comment",
-							"text": "todo fix this mess"
+							"text": "Start tween to fade out item before next spawn"
 						},
 						{
 							"id": "set-animation",
-							"objectClass": "Drop",
-							"sid": 293308116858116,
+							"objectClass": "Icon",
+							"sid": 184164922212000,
 							"parameters": {
-								"animation": "Enemy.experience > 0 ? ANIM_Experience : (Enemy.healing > 0 ? ANIM_Health : ANIM_Magnet)",
+								"animation": "Rules.Get(KEY_Modifiers & DOT & Item.modifier & DOT & KEY_Icon)",
 								"from": "beginning"
 							}
 						},
 						{
-							"id": "set-animation-frame",
-							"objectClass": "Drop",
-							"sid": 469205144351388,
+							"type": "comment",
+							"text": "Spawn & initialize arrow"
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "Player",
+							"sid": 104639018807229,
 							"parameters": {
-								"frame-number": "min(floor(max(Self.experience, Self.healing) / max(1, Rules.Get(KEY_Level & DOT & KEY_Dividers & DOT & KEY_DropValueToLevel))), Self.AnimationFrameCount - 1)"
+								"object": "Arrow",
+								"layer": "LAYER_Main",
+								"image-point": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "Item",
+							"sid": 599347387517529,
+							"parameters": {
+								"child": "Arrow",
+								"transform-x": false,
+								"transform-y": false,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": false,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Arrow",
+							"sid": 764996896496665,
+							"parameters": {
+								"instance-variable": "itemX",
+								"value": "Item.X"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Arrow",
+							"sid": 704945026347938,
+							"parameters": {
+								"instance-variable": "itemY",
+								"value": "Item.Y"
+							}
+						},
+						{
+							"id": "set-opacity",
+							"objectClass": "Arrow",
+							"sid": 755534609587597,
+							"parameters": {
+								"opacity": "0"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Clear item spawn cue"
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 370145111779359,
+							"parameters": {
+								"variable": "itemSpawnCue",
+								"value": "EMPTY"
 							}
 						}
 					],
-					"sid": 138573276807002,
-					"children": [
-						{
-							"eventType": "comment",
-							"text": "Spawn an item from the queue (if enemy is on the layout, but far enough from the player)"
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 713512228835158,
-									"parameters": {
-										"first-value": "Rules.ArraySize(KEY_Waves & DOT & waveId & DOT & KEY_ItemSpawnPool)",
-										"comparison": 4,
-										"second-value": "0"
-									}
-								},
-								{
-									"id": "compare-eventvar",
-									"objectClass": "System",
-									"sid": 457737067710452,
-									"parameters": {
-										"variable": "itemSpawnCue",
-										"comparison": 1,
-										"value": "EMPTY"
-									}
-								},
-								{
-									"id": "is-overlapping-another-object",
-									"objectClass": "Enemy",
-									"sid": 308229500784199,
-									"parameters": {
-										"object": "Item"
-									},
-									"isInverted": true
-								},
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "Enemy",
-									"sid": 514768244716037,
-									"parameters": {
-										"instance-variable": "isContainer",
-										"comparison": 0,
-										"value": "NO"
-									}
-								},
-								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 731344962535583,
-									"parameters": {
-										"first-value": "distance(Enemy.X, Enemy.Y, Player.X, Player.Y)",
-										"comparison": 5,
-										"second-value": "Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_ItemSpawnMinimum)"
-									}
-								}
-							],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "Spawn item (\"frame\")"
-								},
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 222206496615398,
-									"parameters": {
-										"object-to-create": "Item",
-										"layer": "LAYER_Main",
-										"x": "Enemy.X",
-										"y": "Enemy.Y",
-										"create-hierarchy": true,
-										"template-name": "\"\""
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Set modifier"
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Item",
-									"sid": 510478867346886,
-									"parameters": {
-										"instance-variable": "modifier",
-										"value": "itemSpawnCue"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Spawn icon"
-								},
-								{
-									"id": "spawn-another-object",
-									"objectClass": "Item",
-									"sid": 846552344039637,
-									"parameters": {
-										"object": "Icon",
-										"layer": "LAYER_Main",
-										"image-point": "0",
-										"create-hierarchy": false,
-										"template-name": "\"\""
-									}
-								},
-								{
-									"id": "add-child",
-									"objectClass": "Item",
-									"sid": 208055744447936,
-									"parameters": {
-										"child": "Icon",
-										"transform-x": true,
-										"transform-y": true,
-										"transform-w": true,
-										"transform-h": true,
-										"transform-a": true,
-										"transform-o": true,
-										"transform-z-elevation": false,
-										"transform-visibility": true,
-										"destroy-with-parent": true
-									}
-								},
-								{
-									"id": "set-size",
-									"objectClass": "Icon",
-									"sid": 743138762419580,
-									"parameters": {
-										"width": "8",
-										"height": "8"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Start tween to fade out item before next spawn"
-								},
-								{
-									"id": "set-animation",
-									"objectClass": "Icon",
-									"sid": 906411942984468,
-									"parameters": {
-										"animation": "Rules.Get(KEY_Modifiers & DOT & Item.modifier & DOT & KEY_Icon)",
-										"from": "beginning"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Spawn & initialize arrow"
-								},
-								{
-									"id": "spawn-another-object",
-									"objectClass": "Player",
-									"sid": 609512833515183,
-									"parameters": {
-										"object": "Arrow",
-										"layer": "LAYER_Main",
-										"image-point": "0",
-										"create-hierarchy": false,
-										"template-name": "\"\""
-									}
-								},
-								{
-									"id": "add-child",
-									"objectClass": "Item",
-									"sid": 979781433410141,
-									"parameters": {
-										"child": "Arrow",
-										"transform-x": false,
-										"transform-y": false,
-										"transform-w": false,
-										"transform-h": false,
-										"transform-a": false,
-										"transform-o": false,
-										"transform-z-elevation": false,
-										"transform-visibility": false,
-										"destroy-with-parent": true
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Arrow",
-									"sid": 767624424458445,
-									"parameters": {
-										"instance-variable": "itemX",
-										"value": "Item.X"
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Arrow",
-									"sid": 385930557196663,
-									"parameters": {
-										"instance-variable": "itemY",
-										"value": "Item.Y"
-									}
-								},
-								{
-									"id": "set-opacity",
-									"objectClass": "Arrow",
-									"sid": 117538146717123,
-									"parameters": {
-										"opacity": "0"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Clear item spawn cue"
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 597303569368787,
-									"parameters": {
-										"variable": "itemSpawnCue",
-										"value": "EMPTY"
-									}
-								}
-							],
-							"sid": 418673705087675
-						}
-					]
+					"sid": 457154420643555
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_damageNumber2",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 804624148720679,
+					"parameters": {
+						"instance-variable": "damageTakenRecently",
+						"comparison": 4,
+						"value": "1"
+					}
 				},
 				{
-					"eventType": "comment",
+					"id": "pick-children",
+					"objectClass": "Enemy",
+					"sid": 840167908665948,
+					"parameters": {
+						"child": "UI_TextSF_Damage",
+						"which": "own"
+					}
+				},
+				{
+					"id": "compare-opacity",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 701510191433358,
+					"parameters": {
+						"comparison": 0,
+						"opacity": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
 					"text": "Reset \"damage taken recently\" variable after damage text is invisible again"
 				},
 				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 771067080540230,
-							"parameters": {
-								"instance-variable": "damageTakenRecently",
-								"comparison": 4,
-								"value": "1"
-							}
-						},
-						{
-							"id": "pick-children",
-							"objectClass": "Enemy",
-							"sid": 811884615212423,
-							"parameters": {
-								"child": "UI_TextSF_Damage",
-								"which": "own"
-							}
-						},
-						{
-							"id": "compare-opacity",
-							"objectClass": "UI_TextSF_Damage",
-							"sid": 906389376191912,
-							"parameters": {
-								"comparison": 0,
-								"opacity": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 221788281789269,
-							"parameters": {
-								"instance-variable": "damageTakenRecently",
-								"value": "0"
-							}
-						}
-					],
-					"sid": 198297768925010
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 828869957221187,
+					"parameters": {
+						"instance-variable": "damageTakenRecently",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 925692660780281
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_movement",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 847376521578773,
+					"parameters": {
+						"instance-variable": "isMovementBlocked",
+						"comparison": 0,
+						"value": "NO"
+					}
 				},
 				{
-					"eventType": "comment",
+					"id": "is-timer-running",
+					"objectClass": "Enemy",
+					"sid": 968123479097968,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_Freeze"
+					},
+					"isInverted": true
+				},
+				{
+					"id": "is-timer-running",
+					"objectClass": "Player",
+					"sid": 826385697198461,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_Freeze_All"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
 					"text": "Move enemies that are not blocked by the weapon"
 				},
 				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 795640150955139,
-							"parameters": {
-								"instance-variable": "isMovementBlocked",
-								"comparison": 0,
-								"value": "NO"
-							}
-						},
-						{
-							"id": "is-timer-running",
-							"objectClass": "Enemy",
-							"sid": 653484529696924,
-							"behaviorType": "Timer",
-							"parameters": {
-								"tag": "TIMER_Freeze"
-							},
-							"isInverted": true
-						},
-						{
-							"id": "is-timer-running",
-							"objectClass": "Player",
-							"sid": 109846216448982,
-							"behaviorType": "Timer",
-							"parameters": {
-								"tag": "TIMER_Freeze_All"
-							},
-							"isInverted": true
-						}
-					],
-					"actions": [
-						{
-							"id": "set-immovable",
-							"objectClass": "Enemy",
-							"sid": 416539625453697,
-							"behaviorType": "Physics",
-							"parameters": {
-								"setting": "movable"
-							}
-						},
-						{
-							"id": "apply-force-at-angle",
-							"objectClass": "Enemy",
-							"sid": 842939501639174,
-							"behaviorType": "Physics",
-							"parameters": {
-								"force": "Self.movementSpeed * Self.Physics.Mass",
-								"angle": "Self.movementAngle = NOTHING ? angle(Self.X, Self.Y, Player.X, Player.Y) : Self.movementAngle",
-								"image-point": "0"
-							}
-						}
-					],
-					"sid": 403949667641976
+					"id": "set-immovable",
+					"objectClass": "Enemy",
+					"sid": 531564772549393,
+					"behaviorType": "Physics",
+					"parameters": {
+						"setting": "movable"
+					}
+				},
+				{
+					"id": "apply-force-at-angle",
+					"objectClass": "Enemy",
+					"sid": 861694955085499,
+					"behaviorType": "Physics",
+					"parameters": {
+						"force": "Self.movementSpeed * Self.Physics.Mass",
+						"angle": "Self.movementAngle = NOTHING ? angle(Self.X, Self.Y, Player.X, Player.Y) : Self.movementAngle",
+						"image-point": "0"
+					}
 				}
-			]
+			],
+			"sid": 675917121849598
 		}
 	],
 	"sid": 389141576528271

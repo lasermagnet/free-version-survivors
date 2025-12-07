@@ -3,7 +3,1210 @@
 	"events": [
 		{
 			"aceType": "action",
-			"aceName": "processInput",
+			"aceName": "tick",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 860097898078923,
+					"parameters": {
+						"variable": "isLeveling",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 402391089457723,
+					"parameters": {
+						"instance-variable": "isDead",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 703410617402308,
+					"parameters": {
+						"variable": "isPaused",
+						"comparison": 0,
+						"value": "NO"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Handle input first"
+				},
+				{
+					"customAction": "tick_input",
+					"objectClass": "Player",
+					"sid": 406681418686896
+				},
+				{
+					"type": "comment",
+					"text": "Initialize health bar if needed"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "UI_Bar_Health",
+					"sid": 813525834457805,
+					"parameters": {
+						"instance-variable": "initWidth",
+						"value": "Self.initWidth = 0 ? Self.Width : Self.initWidth"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Increase passed time"
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 672241172367725,
+					"parameters": {
+						"variable": "timePassed",
+						"value": "dt"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Reset hurt state"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 925351740225164,
+					"parameters": {
+						"instance-variable": "isHurt",
+						"value": "NO"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update Z orders"
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Enemy",
+					"sid": 531046539279743
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Weapon",
+					"sid": 354509360787089
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Arrow",
+					"sid": 258838286228098
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Player",
+					"sid": 531655831829064
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "PlayerParticles",
+					"sid": 625900676522550
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 595605090066452
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "UI_Bar_Health",
+					"sid": 704298874778693
+				},
+				{
+					"type": "comment",
+					"text": "Override analog input if digital is active"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 385077939272710,
+					"parameters": {
+						"instance-variable": "IN_Movement_Angle",
+						"value": "Self.IN_Vector_X <> 0 | Self.IN_Vector_Y <> 0 ?\nangle(0, 0, Self.IN_Vector_X, Self.IN_Vector_Y) :\nSelf.IN_Movement_Angle"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update 8-direction behaviour vectors"
+				},
+				{
+					"id": "set-vector-x",
+					"objectClass": "Player",
+					"sid": 838033699443888,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"vector-x": "Self.IN_Movement_Active = YES ? cos(Self.IN_Movement_Angle) * Self.8Direction.MaxSpeed : 0"
+					}
+				},
+				{
+					"id": "set-vector-y",
+					"objectClass": "Player",
+					"sid": 864564382317125,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"vector-y": "Self.IN_Movement_Active = YES ? sin(Self.IN_Movement_Angle) * Self.8Direction.MaxSpeed : 0"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update last moving angle (for attacks) if player is moving"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 918445174337675,
+					"parameters": {
+						"instance-variable": "lastMovingAngle",
+						"value": "Self.IN_Movement_Active = YES ? Self.IN_Movement_Angle : Self.lastMovingAngle"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update animation (idle or walking)"
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Player",
+					"sid": 852166438523850,
+					"parameters": {
+						"animation": "Self.IN_Movement_Active = YES ? ANIM_Walking : ANIM_Idle",
+						"from": "current-frame"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Mirror player based on its movement angle (if movement is active)"
+				},
+				{
+					"id": "set-width",
+					"objectClass": "Player",
+					"sid": 704391484159753,
+					"parameters": {
+						"width": "Self.IN_Movement_Active = YES ?\n(\n  anglediff(180, Self.IN_Movement_Angle) < 80 ?\r\n  -abs(Self.Width) :\r\n  (\r\n    anglediff(0, Self.IN_Movement_Angle) < 80 ? abs(Self.Width) : Self.Width\r\n  )\n) :\nSelf.Width"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Flash / unflash according to the \"flash on\" timer"
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "Player",
+					"sid": 904537207197884,
+					"parameters": {
+						"color": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Regenerate health"
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 984643965871395,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Health",
+						"value": "min(Rules.Get(KEY_Player & DOT & KEY_Health) + dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Regeneration_Amount) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier), Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Tick all \"subroutines\""
+				},
+				{
+					"customAction": "tick_attack",
+					"objectClass": "Player",
+					"sid": 999288460373505
+				},
+				{
+					"customAction": "tick_spawnCycle",
+					"objectClass": "Player",
+					"sid": 316939747583400
+				},
+				{
+					"customAction": "tick_itemPickups",
+					"objectClass": "Player",
+					"sid": 324678648570010
+				},
+				{
+					"customAction": "tick_attractDrops",
+					"objectClass": "Player",
+					"sid": 743745607634445
+				},
+				{
+					"customAction": "tick_pickupDrops",
+					"objectClass": "Player",
+					"sid": 951991278869773
+				},
+				{
+					"customAction": "tick_levelUp",
+					"objectClass": "Player",
+					"sid": 907203772598064
+				},
+				{
+					"customAction": "tick_takeDamage",
+					"objectClass": "Player",
+					"sid": 130659401245213
+				},
+				{
+					"customAction": "tick_health",
+					"objectClass": "Player",
+					"sid": 892364115359393
+				},
+				{
+					"customAction": "tick_wave",
+					"objectClass": "Player",
+					"sid": 830484081604924
+				}
+			],
+			"sid": 567046003726085
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_attractDrops",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "is-on-screen",
+					"objectClass": "Drop",
+					"sid": 123041055328802
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Drop",
+					"sid": 972174143643228,
+					"parameters": {
+						"instance-variable": "isCollected",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "pick-by-comparison",
+					"objectClass": "System",
+					"sid": 266169878350619,
+					"parameters": {
+						"object": "Drop",
+						"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
+						"comparison": 2,
+						"value": "Rules.Get(KEY_Player & DOT & KEY_PickupDistance)"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-enabled",
+					"objectClass": "Drop",
+					"sid": 124271299229955,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"state": "enabled"
+					}
+				}
+			],
+			"sid": 270908935167114
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_pickupDrops",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "Player",
+					"sid": 673808905104997,
+					"parameters": {
+						"object": "Drop"
+					}
+				},
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 681364775555878,
+					"parameters": {
+						"object": "Drop"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "playSFX",
+					"objectClass": "Audio",
+					"sid": 605243333581659,
+					"parameters": [
+						"SFX_Drop_ & Drop.AnimationName",
+						"0",
+						"1"
+					]
+				},
+				{
+					"type": "comment",
+					"text": "Set \"picked up\" state & destroy drop"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Drop",
+					"sid": 366274515581688,
+					"parameters": {
+						"instance-variable": "isCollected",
+						"value": "YES"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Drop",
+					"sid": 390770805038106
+				},
+				{
+					"type": "comment",
+					"text": "Player: collect experience (with bonus applied)"
+				},
+				{
+					"id": "add-to",
+					"objectClass": "Rules",
+					"sid": 468368626575325,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Experience",
+						"value": "Drop.experience > 0 ? round(Drop.experience * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : 0"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Player: collect healing (with bonus applied)"
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 764186276805891,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Health",
+						"value": "min(Rules.Get(KEY_Player & DOT & KEY_Health) + Drop.healing * Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier), Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
+					}
+				}
+			],
+			"sid": 497434341150514,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Magnet drop: start picking up experience drops within magnet distance"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Drop",
+							"sid": 488073157951568,
+							"parameters": {
+								"animation": "ANIM_Magnet"
+							}
+						},
+						{
+							"id": "pick-all",
+							"objectClass": "System",
+							"sid": 369841772210856,
+							"parameters": {
+								"object": "Drop"
+							}
+						},
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Drop",
+							"sid": 497854117493364,
+							"parameters": {
+								"animation": "ANIM_Experience"
+							}
+						},
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 918643275889356,
+							"parameters": {
+								"object": "Drop",
+								"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
+								"comparison": 2,
+								"value": "Rules.Get(KEY_Player & DOT & KEY_PickupDistanceMagnet)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "Drop",
+							"sid": 593490135055299,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"state": "enabled"
+							}
+						}
+					],
+					"sid": 589625546167992
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_levelUp",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-value",
+					"objectClass": "Rules",
+					"sid": 870521276127901,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Experience",
+						"cmp": 5,
+						"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "playSFX",
+					"objectClass": "Audio",
+					"sid": 334770550814119,
+					"parameters": [
+						"SFX_LevelUp",
+						"0",
+						"1"
+					]
+				},
+				{
+					"type": "comment",
+					"text": "Increase player level counter"
+				},
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Player",
+					"sid": 436285909196078,
+					"parameters": {
+						"instance-variable": "level",
+						"value": "1"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update time scale of moving objects"
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 425149658303130,
+					"parameters": {
+						"object": "Weapon",
+						"time-scale": "0"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 905246524024994,
+					"parameters": {
+						"object": "Drop",
+						"time-scale": "0"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 864489562043173,
+					"parameters": {
+						"object": "Enemy",
+						"time-scale": "0"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 681386880054939,
+					"parameters": {
+						"object": "Player",
+						"time-scale": "0"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 702063493907075,
+					"parameters": {
+						"object": "PlayerParticles",
+						"time-scale": "0"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 153641463942966,
+					"parameters": {
+						"object": "UI_TextSF_Damage",
+						"time-scale": "0"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 388168400491553,
+					"parameters": {
+						"object": "UI_TextSF_Wave",
+						"time-scale": "0"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set \"is leveling\" state"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 593754245958473,
+					"parameters": {
+						"variable": "isLeveling",
+						"value": "YES"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Hide touch marker"
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_TouchMarker",
+					"sid": 290540883052382,
+					"parameters": {
+						"opacity": "0"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Show level up UI"
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "UI_Button9P_Upgrade",
+					"sid": 205992895652769,
+					"parameters": {
+						"color": "C_Color_Brown"
+					}
+				},
+				{
+					"id": "stop-all-tweens",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 388636822598985,
+					"behaviorType": "Tween"
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 857452596406580,
+					"parameters": {
+						"opacity": "0"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 927608118606448,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 404253743647973,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_LevelUp_FadeIn",
+						"property": "offsetOpacity",
+						"end-value": "100",
+						"time": "C_UI_LevelUp_Tween_Time",
+						"ease": "easeoutcubic",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Clear upgrade options"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "UI_Button9P_Upgrade",
+					"sid": 792323419393420,
+					"parameters": {
+						"instance-variable": "modifier",
+						"value": "EMPTY"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_Upgrade",
+					"sid": 667935558937044,
+					"parameters": {
+						"text": "EMPTY"
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "UpgradeOptions",
+					"sid": 303695715160826,
+					"parameters": {
+						"width": "0",
+						"height": "1",
+						"depth": "1"
+					}
+				}
+			],
+			"sid": 873626486402719,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "upgradeCandidate",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 238020051166281
+				},
+				{
+					"eventType": "variable",
+					"name": "modifier",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 262832898982935
+				},
+				{
+					"eventType": "comment",
+					"text": "Generate upgrade options and show update level up UI"
+				},
+				{
+					"eventType": "comment",
+					"text": "This is an inelegant solution to the problem that we need multiple (ideally 3) unique upgrade options, which should be chosen based on their weight"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 850797514658563,
+							"parameters": {
+								"count": "100"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UI_Button9P_Upgrade",
+							"sid": 290392294712659,
+							"parameters": {
+								"instance-variable": "modifier",
+								"comparison": 0,
+								"value": "EMPTY"
+							}
+						},
+						{
+							"id": "pick-highestlowest",
+							"objectClass": "UI_Button9P_Upgrade",
+							"sid": 519292572309658,
+							"parameters": {
+								"which": "lowest",
+								"instance-variable": "option"
+							}
+						},
+						{
+							"id": "pick-children",
+							"objectClass": "UI_Button9P_Upgrade",
+							"sid": 848658632286199,
+							"parameters": {
+								"child": "UI_TextSF_Upgrade",
+								"which": "own"
+							}
+						},
+						{
+							"id": "pick-children",
+							"objectClass": "UI_Button9P_Upgrade",
+							"sid": 595803783118286,
+							"parameters": {
+								"child": "Icon",
+								"which": "own"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 208629903418153,
+							"parameters": {
+								"variable": "upgradeCandidate",
+								"value": "AdvancedRandom.WeightedByName(PT_Upgrades)"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 217245850990327,
+							"disabled": true,
+							"parameters": {
+								"type": "log",
+								"message": "\"Upgrade candidate: \" & upgradeCandidate"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "If upgrade candidate not unique, clear it"
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 215952326742553,
+							"parameters": {
+								"variable": "upgradeCandidate",
+								"value": "UpgradeOptions.IndexOf(upgradeCandidate) = NOTHING ? upgradeCandidate : EMPTY"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 248553856758531,
+							"disabled": true,
+							"parameters": {
+								"type": "log",
+								"message": "\"Update candidate after first validation: \" & upgradeCandidate"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Validate if upgrade has modifiers"
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 386060348102497,
+							"parameters": {
+								"variable": "upgradeCandidate",
+								"value": "Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers) > 0 | Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers_Infinite) > 0 ? upgradeCandidate : EMPTY"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 553004739551527,
+							"disabled": true,
+							"parameters": {
+								"type": "log",
+								"message": "\"Update candidate after second validation: \" & upgradeCandidate"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Set modifier"
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 649313746691351,
+							"parameters": {
+								"variable": "modifier",
+								"value": "Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers) > 0 ?\nRules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers & DOT & \"0\") :\n(\n  Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers_Infinite) > 0 ?\n  Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers_Infinite & DOT & \"0\") :\n  EMPTY\n)"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Use upgrade candidate (if it's still a valid one)"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "UI_Button9P_Upgrade",
+							"sid": 259307422504496,
+							"parameters": {
+								"instance-variable": "upgrade",
+								"value": "upgradeCandidate"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "UI_Button9P_Upgrade",
+							"sid": 116131577307368,
+							"parameters": {
+								"instance-variable": "modifier",
+								"value": "modifier"
+							}
+						},
+						{
+							"id": "set-opacity",
+							"objectClass": "UI_Button9P_Upgrade",
+							"sid": 376101786744360,
+							"parameters": {
+								"opacity": "upgradeCandidate = EMPTY ? 0 : 100"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "Icon",
+							"sid": 484903702747816,
+							"parameters": {
+								"animation": "Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Icon)",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "UI_TextSF_Upgrade",
+							"sid": 716582881851718,
+							"parameters": {
+								"text": "(modifier = EMPTY ? EMPTY : \"[scale=0.15]\" & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Label) & \"[/scale]\" & newline & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Description))"
+							}
+						},
+						{
+							"id": "push",
+							"objectClass": "UpgradeOptions",
+							"sid": 994293527720367,
+							"parameters": {
+								"where": "back",
+								"value": "upgradeCandidate",
+								"axis": "x"
+							}
+						}
+					],
+					"sid": 453279715358873
+				}
+			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_takeDamage",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "PlayerHurtbox",
+					"sid": 215196772925861,
+					"parameters": {
+						"object": "Enemy"
+					}
+				},
+				{
+					"id": "is-timer-running",
+					"objectClass": "Player",
+					"sid": 276431174221574,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_Freeze_All"
+					},
+					"isInverted": true
+				},
+				{
+					"id": "is-timer-running",
+					"objectClass": "Enemy",
+					"sid": 900749640864772,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_Freeze"
+					},
+					"isInverted": true
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 666999215744724,
+					"parameters": {
+						"instance-variable": "damage",
+						"comparison": 4,
+						"value": "0"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 574919279917018,
+					"parameters": {
+						"instance-variable": "isDead",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 764339309438728,
+					"parameters": {
+						"object": "Enemy"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "playSFX",
+					"objectClass": "Audio",
+					"sid": 343619360425579,
+					"parameters": [
+						"SFX_PlayerDamaged",
+						"3",
+						"Enemy.damage > 0 ? 1 : 0"
+					]
+				},
+				{
+					"type": "comment",
+					"text": "Decrease player health"
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 241786249775180,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Health",
+						"value": "max(0, Rules.Get(KEY_Player & DOT & KEY_Health) - Enemy.damage * dt)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set player to hurting (for vignette UI effect)"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 940597314678305,
+					"parameters": {
+						"instance-variable": "isHurt",
+						"value": "Enemy.damage > 0 ? YES : NO"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Start damage flash on & off timers if they are not running yet"
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Player",
+					"sid": 854253537586009,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "C_Damage_Flash_Interval",
+						"type": "once",
+						"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOn : EMPTY"
+					}
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Player",
+					"sid": 323006303895966,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "C_Damage_Flash_Interval * 2",
+						"type": "once",
+						"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
+					}
+				}
+			],
+			"sid": 712392008794518
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_health",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-value",
+					"objectClass": "Rules",
+					"sid": 913902116645606,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Health",
+						"cmp": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Kill player if they are out of health"
+				},
+				{
+					"customAction": "playSFX",
+					"objectClass": "Audio",
+					"sid": 721240114321395,
+					"parameters": [
+						"SFX_PlayerDead",
+						"0",
+						"1"
+					]
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 395506935754137,
+					"parameters": {
+						"instance-variable": "isDead",
+						"value": "YES"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Show game over text"
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 856169019054401,
+					"parameters": {
+						"object-to-create": "UI_TextSF_GameOver",
+						"layer": "LAYER_UI",
+						"x": "ViewportMidX(LAYER_UI)",
+						"y": "ViewportMidY(LAYER_UI)",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Stop animation"
+				},
+				{
+					"id": "stop-animation",
+					"objectClass": "Player",
+					"sid": 926745807737879
+				},
+				{
+					"type": "comment",
+					"text": "Slow down moving drops"
+				},
+				{
+					"id": "set-acceleration",
+					"objectClass": "Drop",
+					"sid": 424814984230285,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"acceleration": "-Self.Bullet.Speed * 0.5"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Disable player movement"
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Player",
+					"sid": 194591845780256,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"state": "disabled"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Disable player-physics (don't keep pushing away enemies)"
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Player",
+					"sid": 772499342138245,
+					"behaviorType": "Physics",
+					"parameters": {
+						"mode": "disabled"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Flash player"
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "Player",
+					"sid": 421173815202768,
+					"parameters": {
+						"color": "rgbEx(500, 500, 500)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Fade out player"
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "Player",
+					"sid": 109592256412946,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetOpacity",
+						"end-value": "0",
+						"time": "3",
+						"ease": "easeoutcubic",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 789487943492872
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_input",
 			"objectClass": "Player",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -62,7 +1265,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Update touch marker position if a new touch is in progress"
+					"text": "Update touch marker position when a touch starts"
 				},
 				{
 					"id": "set-position",
@@ -82,6 +1285,10 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Update player's input IVs if touch input is active"
+				},
+				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
 					"sid": 519892987291122,
@@ -98,6 +1305,10 @@
 						"instance-variable": "IN_Movement_Angle",
 						"value": "Touch.TouchCount > 0 & distance(UI_TouchMarker.X, UI_TouchMarker.Y, Touch.XAt(0, LAYER_UI), Touch.YAt(0, LAYER_UI)) > UI_TouchMarker.Width * 0.5 ?\nangle(UI_TouchMarker.X, UI_TouchMarker.Y, Touch.XAt(0, LAYER_UI), Touch.YAt(0, LAYER_UI)) :\nSelf.IN_Movement_Angle"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Update touch marker angle & animation"
 				},
 				{
 					"id": "set-angle",
@@ -121,7 +1332,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Keyboard & gamepad D-pad (digital)"
+					"text": "Process keyboard & gamepad D-pad (digital) input"
 				},
 				{
 					"eventType": "block",
@@ -349,7 +1560,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Gamepad (analog)"
+					"text": "Process gamepad / joystick (analog) input"
 				},
 				{
 					"eventType": "block",
@@ -433,7 +1644,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Mouse (move to cursor)"
+					"text": "Process mouse (move to cursor analog) input"
 				},
 				{
 					"eventType": "block",
@@ -473,7 +1684,7 @@
 		},
 		{
 			"aceType": "action",
-			"aceName": "tick",
+			"aceName": "tick_attack",
 			"objectClass": "Player",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -484,31 +1695,184 @@
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 198184957131593,
+					"id": "for-each",
+					"objectClass": "Rules",
+					"sid": 174480782636585,
 					"parameters": {
-						"variable": "isLeveling",
-						"comparison": 0,
-						"value": "NO"
+						"path": "KEY_Weapons"
+					}
+				},
+				{
+					"id": "compare-value",
+					"objectClass": "Rules",
+					"sid": 184166043939085,
+					"parameters": {
+						"path": "DOT & KEY_Amount",
+						"cmp": 5,
+						"value": "1"
+					}
+				},
+				{
+					"id": "is-timer-running",
+					"objectClass": "Player",
+					"sid": 799821860525253,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Attack with weapon with at least one amount and if their cooldown timer is not running"
+				},
+				{
+					"type": "comment",
+					"text": "Start attack cooldown timer"
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Player",
+					"sid": 570041474817079,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "Rules.Get(DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)",
+						"type": "once",
+						"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Spawn weapon(s) / attack"
+				},
+				{
+					"customAction": "spawn",
+					"objectClass": "Weapon",
+					"sid": 263440204921821,
+					"parameters": [
+						"Rules.CurrentKey",
+						"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount)",
+						"Rules.Get(DOT & KEY_Damage)",
+						"Rules.Get(DOT & KEY_Duration)",
+						"Rules.Get(DOT & KEY_BlockMovement) = NO ? NO : YES",
+						"Rules.Get(DOT & KEY_Pin) = NO ? NO : YES",
+						"Player.lastMovingAngle + Rules.Get(DOT & KEY_SpawnAngleOffset)",
+						"Rules.Get(DOT & KEY_RotationAngleOffset)",
+						"Rules.Type(DOT & KEY_StaticAngle) = NULL ? EMPTY : str(Rules.Get(DOT & KEY_StaticAngle))",
+						"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
+						"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
+						"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
+						"Rules.Get(DOT & KEY_PositionRandom2)",
+						"Rules.Get(DOT & KEY_BulletSpeed)",
+						"Rules.Get(DOT & KEY_BulletAcceleration)",
+						"Rules.Get(DOT & KEY_OrbitRadius)",
+						"Rules.Get(DOT & KEY_OrbitSpeed)",
+						"Rules.Get(DOT & KEY_RotationSpeed)"
+					]
+				}
+			],
+			"sid": 768367347814953
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_spawnCycle",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "is-timer-running",
+					"objectClass": "Player",
+					"sid": 846800341537685,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_SpawnCycle"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "When the enemy spawn cooldown expires, reset it & add enemy amount to the spawn queue"
+				},
+				{
+					"type": "comment",
+					"text": "Increase wave cycle counter"
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 245084156722990,
+					"parameters": {
+						"variable": "spawnCycle",
+						"value": "1"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Start next wave cycle timer"
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Player",
+					"sid": 351057059123665,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "Rules.Get(KEY_Level & DOT & KEY_SpawnInterval)",
+						"type": "once",
+						"tag": "TIMER_SpawnCycle"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Add enemy amount to spawn queue"
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 272383174403206,
+					"parameters": {
+						"variable": "enemySpawnQueue",
+						"value": "round(Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_EnemyAmount) / Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time)) * Rules.Get(KEY_Level & DOT & KEY_SpawnInterval) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Amount_Multiplier)"
+					}
+				}
+			],
+			"sid": 698877660721366
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_itemPickups",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "Player",
+					"sid": 332578672363300,
+					"parameters": {
+						"object": "Item"
 					}
 				},
 				{
 					"id": "compare-instance-variable",
-					"objectClass": "Player",
-					"sid": 608216906352595,
+					"objectClass": "Item",
+					"sid": 302812988967815,
 					"parameters": {
-						"instance-variable": "isDead",
-						"comparison": 0,
-						"value": "NO"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 409663250665454,
-					"parameters": {
-						"variable": "isPaused",
+						"instance-variable": "isPickedUp",
 						"comparison": 0,
 						"value": "NO"
 					}
@@ -517,181 +1881,319 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Initialize health bar if needed"
+					"text": "Update \"picked up\" state"
 				},
 				{
 					"id": "set-instvar-value",
-					"objectClass": "UI_Bar_Health",
-					"sid": 321729216861160,
+					"objectClass": "Item",
+					"sid": 614026837795589,
 					"parameters": {
-						"instance-variable": "initWidth",
-						"value": "Self.initWidth = 0 ? Self.Width : Self.initWidth"
+						"instance-variable": "isPickedUp",
+						"value": "YES"
 					}
 				},
 				{
 					"type": "comment",
-					"text": "Increase passed time"
+					"text": "Apply \"item\" (upgrade)"
 				},
 				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 162117903351338,
-					"parameters": {
-						"variable": "timePassed",
-						"value": "dt"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Reset hurt state"
-				},
-				{
-					"id": "set-instvar-value",
+					"customAction": "applyModifier",
 					"objectClass": "Player",
-					"sid": 259950020665446,
+					"sid": 135214136234939,
+					"parameters": [
+						"Item.modifier"
+					]
+				},
+				{
+					"type": "comment",
+					"text": "Flash and fade out item"
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "Item",
+					"sid": 395634840693893,
 					"parameters": {
-						"instance-variable": "isHurt",
+						"color": "rgbEx(500, 500, 500)"
+					}
+				},
+				{
+					"id": "stop-all-tweens",
+					"objectClass": "Item",
+					"sid": 285032564911987,
+					"behaviorType": "Tween"
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "Item",
+					"sid": 579580890222572,
+					"parameters": {
+						"opacity": "100"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "Item",
+					"sid": 815032192118742,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetOpacity",
+						"end-value": "0",
+						"time": "1",
+						"ease": "easeoutexpo",
+						"destroy-on-complete": "yes",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 811100200491126
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_wave",
+			"objectClass": "Player",
+			"functionDescription": "If there's no wave in progress, start one",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 899796644566916,
+					"parameters": {
+						"variable": "isLeveling",
+						"comparison": 0,
 						"value": "NO"
 					}
 				},
 				{
-					"type": "comment",
-					"text": "Update Z orders"
-				},
-				{
-					"id": "move-to-top",
-					"objectClass": "Enemy",
-					"sid": 895177308946313
-				},
-				{
-					"id": "move-to-top",
-					"objectClass": "Weapon",
-					"sid": 533239325380281
-				},
-				{
-					"id": "move-to-top",
-					"objectClass": "Arrow",
-					"sid": 709494247023266
-				},
-				{
-					"id": "move-to-top",
-					"objectClass": "Player",
-					"sid": 910721350011334
-				},
-				{
-					"id": "move-to-top",
-					"objectClass": "UI_TextSF_Damage",
-					"sid": 211095788548384
-				},
-				{
-					"id": "move-to-top",
-					"objectClass": "UI_Bar_Health",
-					"sid": 801330699564623
-				},
-				{
-					"type": "comment",
-					"text": "Override analog input if digital is active"
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
-					"sid": 389242365643063,
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 258673283578829,
 					"parameters": {
-						"instance-variable": "IN_Movement_Angle",
-						"value": "Self.IN_Vector_X <> 0 | Self.IN_Vector_Y <> 0 ?\nangle(0, 0, Self.IN_Vector_X, Self.IN_Vector_Y) :\nSelf.IN_Movement_Angle"
+						"variable": "isPaused",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "is-timer-running",
+					"objectClass": "Player",
+					"sid": 135498244222749,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_Wave"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Reset cycle counter"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 681862890012938,
+					"parameters": {
+						"variable": "spawnCycle",
+						"value": "0"
 					}
 				},
 				{
 					"type": "comment",
-					"text": "Update 8-direction behaviour vectors"
+					"text": "Increase wave counter"
 				},
 				{
-					"id": "set-vector-x",
-					"objectClass": "Player",
-					"sid": 751285753920567,
-					"behaviorType": "8Direction",
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 447034496823719,
 					"parameters": {
-						"vector-x": "Self.IN_Movement_Active = YES ? cos(Self.IN_Movement_Angle) * Self.8Direction.MaxSpeed : 0"
+						"variable": "waveId",
+						"value": "1"
 					}
 				},
 				{
-					"id": "set-vector-y",
-					"objectClass": "Player",
-					"sid": 944556552997328,
-					"behaviorType": "8Direction",
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 356763451186596,
 					"parameters": {
-						"vector-y": "Self.IN_Movement_Active = YES ? sin(Self.IN_Movement_Angle) * Self.8Direction.MaxSpeed : 0"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Update last moving angle (for attacks) if player is moving"
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
-					"sid": 962096084900686,
-					"parameters": {
-						"instance-variable": "lastMovingAngle",
-						"value": "Self.IN_Movement_Active = YES ? Self.IN_Movement_Angle : Self.lastMovingAngle"
+						"variable": "waveCount",
+						"value": "1"
 					}
 				},
 				{
 					"type": "comment",
-					"text": "Update animation (idle or walking)"
+					"text": "If wave counter is invalid, reset it (to specified wave number)"
 				},
 				{
-					"id": "set-animation",
-					"objectClass": "Player",
-					"sid": 140199965495082,
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 415270100861037,
 					"parameters": {
-						"animation": "Self.IN_Movement_Active = YES ? ANIM_Walking : ANIM_Idle",
-						"from": "current-frame"
+						"variable": "waveId",
+						"value": "Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time) = 0 ? Rules.Get(KEY_Level & DOT & KEY_WaveLoopTo) : waveId"
+					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 949451974426900,
+					"disabled": true,
+					"parameters": {
+						"type": "log",
+						"message": "\"Wave #\" & waveId & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool)"
 					}
 				},
 				{
 					"type": "comment",
-					"text": "Mirror player based on its movement angle (if movement is active)"
+					"text": "Initialize enemy spawn pool"
 				},
 				{
-					"id": "set-width",
-					"objectClass": "Player",
-					"sid": 503290649060390,
+					"id": "createProbabilityTableFromJSON",
+					"objectClass": "AdvancedRandom",
+					"sid": 235171129713881,
 					"parameters": {
-						"width": "Self.IN_Movement_Active = YES ?\n(\n  anglediff(180, Self.IN_Movement_Angle) < 80 ?\r\n  -abs(Self.Width) :\r\n  (\r\n    anglediff(0, Self.IN_Movement_Angle) < 80 ? abs(Self.Width) : Self.Width\r\n  )\n) :\nSelf.Width"
+						"name": "PT_Enemies",
+						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool)"
+					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 257884264819011,
+					"disabled": true,
+					"parameters": {
+						"type": "log",
+						"message": "\"Wave #\" & waveId & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_ItemSpawnPool)"
 					}
 				},
 				{
 					"type": "comment",
-					"text": "Flash / unflash according to the \"flash on\" timer"
+					"text": "Initialize item spawn pool"
 				},
 				{
-					"id": "set-default-color",
-					"objectClass": "Player",
-					"sid": 694075979615174,
+					"id": "createProbabilityTableFromJSON",
+					"objectClass": "AdvancedRandom",
+					"sid": 249991923841289,
 					"parameters": {
-						"color": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)"
+						"name": "PT_Items",
+						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_ItemSpawnPool)"
 					}
 				},
 				{
 					"type": "comment",
-					"text": "Regenerate health"
+					"text": "Start wave cooldown timer (also triggers first wave cycle)"
 				},
 				{
-					"id": "set-value",
-					"objectClass": "Rules",
-					"sid": 666757284984194,
+					"id": "start-timer",
+					"objectClass": "Player",
+					"sid": 627664346708544,
+					"behaviorType": "Timer",
 					"parameters": {
-						"path": "KEY_Player & DOT & KEY_Health",
-						"value": "min(Rules.Get(KEY_Player & DOT & KEY_Health) + dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Regeneration_Amount) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier), Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
+						"duration": "Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time)",
+						"type": "once",
+						"tag": "TIMER_Wave"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Cue item spawn"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 584799519464070,
+					"parameters": {
+						"variable": "itemSpawnCue",
+						"value": "Rules.ArraySize(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool) > 0 ? AdvancedRandom.WeightedByName(PT_Items) : EMPTY"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Spawn wave text UI"
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 525385144159645,
+					"parameters": {
+						"object-to-create": "UI_TextSF_Wave",
+						"layer": "LAYER_UI",
+						"x": "ViewportMidX(LAYER_UI)",
+						"y": "ViewportMidY(LAYER_UI) - 60",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "move-to-bottom",
+					"objectClass": "UI_TextSF_Wave",
+					"sid": 341458770524413
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_Wave",
+					"sid": 709116856004383,
+					"parameters": {
+						"text": "Rules.Type(KEY_Waves & DOT & waveId & DOT & KEY_Label) = NULL ? EMPTY : Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Label)"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_TextSF_Wave",
+					"sid": 221475067224664,
+					"parameters": {
+						"opacity": "0"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "UI_TextSF_Wave",
+					"sid": 894401552332482,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetOpacity",
+						"end-value": "100",
+						"time": "1",
+						"ease": "easeoutexpo",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "yes",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "UI_TextSF_Wave",
+					"sid": 864868310181885,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetY",
+						"end-value": "Self.Y + 10",
+						"time": "1",
+						"ease": "easeoutcubic",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
 					}
 				}
 			],
-			"sid": 892639912846222,
+			"sid": 554965157620194,
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Attack with each weapon if there's at least one amount and its cooldown timer is not running"
+					"text": "Spawn fixed enemies at wave start"
 				},
 				{
 					"eventType": "block",
@@ -699,1161 +2201,24 @@
 						{
 							"id": "for-each",
 							"objectClass": "Rules",
-							"sid": 968372128618713,
+							"sid": 194307963488648,
 							"parameters": {
-								"path": "KEY_Weapons"
+								"path": "KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnFixed"
 							}
-						},
-						{
-							"id": "compare-value",
-							"objectClass": "Rules",
-							"sid": 469097933985330,
-							"parameters": {
-								"path": "DOT & KEY_Amount",
-								"cmp": 5,
-								"value": "1"
-							}
-						},
-						{
-							"id": "is-timer-running",
-							"objectClass": "Player",
-							"sid": 542826378162532,
-							"behaviorType": "Timer",
-							"parameters": {
-								"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
-							},
-							"isInverted": true
 						}
 					],
 					"actions": [
-						{
-							"id": "start-timer",
-							"objectClass": "Player",
-							"sid": 978977293431420,
-							"behaviorType": "Timer",
-							"parameters": {
-								"duration": "Rules.Get(DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)",
-								"type": "once",
-								"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
-							}
-						},
 						{
 							"customAction": "spawn",
-							"objectClass": "Weapon",
-							"sid": 808841034647847,
+							"objectClass": "Enemy",
+							"sid": 919417429833895,
 							"parameters": [
 								"Rules.CurrentKey",
-								"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
-								"Rules.Get(DOT & KEY_Damage)",
-								"Rules.Get(DOT & KEY_Duration)",
-								"Rules.Get(DOT & KEY_BlockMovement) = NO ? NO : YES",
-								"Rules.Get(DOT & KEY_Pin) = NO ? NO : YES",
-								"Player.lastMovingAngle + Rules.Get(DOT & KEY_SpawnAngleOffset)",
-								"Rules.Get(DOT & KEY_RotationAngleOffset)",
-								"Rules.Type(DOT & KEY_StaticAngle) = NULL ? EMPTY : str(Rules.Get(DOT & KEY_StaticAngle))",
-								"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
-								"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
-								"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
-								"Rules.Get(DOT & KEY_PositionRandom2)",
-								"Rules.Get(DOT & KEY_BulletSpeed)",
-								"Rules.Get(DOT & KEY_BulletAcceleration)",
-								"Rules.Get(DOT & KEY_OrbitRadius)",
-								"Rules.Get(DOT & KEY_OrbitSpeed)",
-								"Rules.Get(DOT & KEY_RotationSpeed)"
+								"Rules.CurrentValue"
 							]
 						}
 					],
-					"sid": 723069313143119
-				},
-				{
-					"eventType": "comment",
-					"text": "When the enemy spawn cooldown expires, reset it & add enemy amount to the spawn queue"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-timer-running",
-							"objectClass": "Player",
-							"sid": 178554304329498,
-							"behaviorType": "Timer",
-							"parameters": {
-								"tag": "TIMER_SpawnCycle"
-							},
-							"isInverted": true
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Increase wave cycle counter"
-						},
-						{
-							"id": "add-to-eventvar",
-							"objectClass": "System",
-							"sid": 613390079745651,
-							"parameters": {
-								"variable": "spawnCycle",
-								"value": "1"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Start next wave cycle timer"
-						},
-						{
-							"id": "start-timer",
-							"objectClass": "Player",
-							"sid": 869475259618861,
-							"behaviorType": "Timer",
-							"parameters": {
-								"duration": "Rules.Get(KEY_Level & DOT & KEY_SpawnInterval)",
-								"type": "once",
-								"tag": "TIMER_SpawnCycle"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Add enemy amount to spawn queue"
-						},
-						{
-							"id": "add-to-eventvar",
-							"objectClass": "System",
-							"sid": 810918883252903,
-							"parameters": {
-								"variable": "enemySpawnQueue",
-								"value": "round(Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_EnemyAmount) / Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time)) * Rules.Get(KEY_Level & DOT & KEY_SpawnInterval) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Amount_Multiplier)"
-							}
-						}
-					],
-					"sid": 884938568296906
-				},
-				{
-					"eventType": "comment",
-					"text": "Pick up item"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-overlapping-another-object",
-							"objectClass": "Player",
-							"sid": 229852428941040,
-							"parameters": {
-								"object": "Item"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Item",
-							"sid": 792888105578515,
-							"parameters": {
-								"instance-variable": "isPickedUp",
-								"comparison": 0,
-								"value": "NO"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Update \"picked up\" state"
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Item",
-							"sid": 924526291743139,
-							"parameters": {
-								"instance-variable": "isPickedUp",
-								"value": "YES"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Apply \"item\" (upgrade)"
-						},
-						{
-							"customAction": "applyModifier",
-							"objectClass": "Player",
-							"sid": 366719559556059,
-							"parameters": [
-								"Item.modifier"
-							]
-						},
-						{
-							"type": "comment",
-							"text": "Flash and fade out item"
-						},
-						{
-							"id": "set-default-color",
-							"objectClass": "Item",
-							"sid": 484277913474189,
-							"parameters": {
-								"color": "rgbEx(500, 500, 500)"
-							}
-						},
-						{
-							"id": "stop-all-tweens",
-							"objectClass": "Item",
-							"sid": 207101199220881,
-							"behaviorType": "Tween"
-						},
-						{
-							"id": "set-opacity",
-							"objectClass": "Item",
-							"sid": 722870505118830,
-							"parameters": {
-								"opacity": "100"
-							}
-						},
-						{
-							"id": "tween-one-property",
-							"objectClass": "Item",
-							"sid": 865811529008529,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"\"",
-								"property": "offsetOpacity",
-								"end-value": "0",
-								"time": "1",
-								"ease": "easeoutexpo",
-								"destroy-on-complete": "yes",
-								"loop": "no",
-								"ping-pong": "no",
-								"repeat-count": "1"
-							}
-						}
-					],
-					"sid": 303362420858496
-				},
-				{
-					"eventType": "comment",
-					"text": "todo_opt foreaches: process first only, one every tick?"
-				},
-				{
-					"eventType": "comment",
-					"text": "Attract & pick up drops"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-on-screen",
-							"objectClass": "Drop",
-							"sid": 932905336695205
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Drop",
-							"sid": 998052080631810,
-							"parameters": {
-								"instance-variable": "isCollected",
-								"comparison": 0,
-								"value": "NO"
-							}
-						},
-						{
-							"id": "pick-by-comparison",
-							"objectClass": "System",
-							"sid": 106873194313241,
-							"parameters": {
-								"object": "Drop",
-								"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
-								"comparison": 2,
-								"value": "Rules.Get(KEY_Player & DOT & KEY_PickupDistance)"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-enabled",
-							"objectClass": "Drop",
-							"sid": 792646770947617,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"state": "enabled"
-							}
-						}
-					],
-					"sid": 814017461985152
-				},
-				{
-					"eventType": "comment",
-					"text": "Pick up overlapping drops"
-				},
-				{
-					"eventType": "comment",
-					"text": "todo_opt use distance check instead of overlap check?"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-overlapping-another-object",
-							"objectClass": "Player",
-							"sid": 617369594684253,
-							"parameters": {
-								"object": "Drop"
-							}
-						},
-						{
-							"id": "pick-overlapping-point",
-							"objectClass": "System",
-							"sid": 958945996006157,
-							"disabled": true,
-							"parameters": {
-								"object": "Drop",
-								"x": "Player.X",
-								"y": "Player.Y"
-							}
-						},
-						{
-							"id": "is-on-screen",
-							"objectClass": "Drop",
-							"sid": 964959936922761,
-							"disabled": true
-						},
-						{
-							"id": "pick-by-comparison",
-							"objectClass": "System",
-							"sid": 852085648119428,
-							"disabled": true,
-							"parameters": {
-								"object": "Drop",
-								"expression": "distance(Player.X, Player.Y, Drop.X, Drop.Y)",
-								"comparison": 2,
-								"value": "Player.Width"
-							}
-						},
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 536932808805254,
-							"parameters": {
-								"object": "Drop"
-							}
-						}
-					],
-					"actions": [
-						{
-							"customAction": "playSFX",
-							"objectClass": "Audio",
-							"sid": 166413249183077,
-							"parameters": [
-								"SFX_Drop_ & Drop.AnimationName",
-								"0",
-								"1"
-							]
-						},
-						{
-							"type": "comment",
-							"text": "Set \"picked up\" state & destroy drop"
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Drop",
-							"sid": 339640971669673,
-							"parameters": {
-								"instance-variable": "isCollected",
-								"value": "YES"
-							}
-						},
-						{
-							"id": "destroy",
-							"objectClass": "Drop",
-							"sid": 613955840491030
-						},
-						{
-							"type": "comment",
-							"text": "Player: collect experience (with bonus applied)"
-						},
-						{
-							"id": "add-to",
-							"objectClass": "Rules",
-							"sid": 363669788348040,
-							"parameters": {
-								"path": "KEY_Player & DOT & KEY_Experience",
-								"value": "Drop.experience > 0 ? round(Drop.experience * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : 0"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Player: collect healing (with bonus applied)"
-						},
-						{
-							"id": "set-value",
-							"objectClass": "Rules",
-							"sid": 136620600775398,
-							"parameters": {
-								"path": "KEY_Player & DOT & KEY_Health",
-								"value": "min(Rules.Get(KEY_Player & DOT & KEY_Health) + Drop.healing * Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier), Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
-							}
-						}
-					],
-					"sid": 161162140053177,
-					"children": [
-						{
-							"eventType": "comment",
-							"text": "Magnet drop: start picking up experience drops within magnet distance"
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-animation-playing",
-									"objectClass": "Drop",
-									"sid": 717527835498094,
-									"parameters": {
-										"animation": "ANIM_Magnet"
-									}
-								},
-								{
-									"id": "pick-all",
-									"objectClass": "System",
-									"sid": 599666318608959,
-									"parameters": {
-										"object": "Drop"
-									}
-								},
-								{
-									"id": "is-animation-playing",
-									"objectClass": "Drop",
-									"sid": 562515372994726,
-									"parameters": {
-										"animation": "ANIM_Experience"
-									}
-								},
-								{
-									"id": "pick-by-comparison",
-									"objectClass": "System",
-									"sid": 416544930367758,
-									"parameters": {
-										"object": "Drop",
-										"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
-										"comparison": 2,
-										"value": "Rules.Get(KEY_Player & DOT & KEY_PickupDistanceMagnet)"
-									}
-								}
-							],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "todo use bullet speed 0/x?"
-								},
-								{
-									"id": "set-enabled",
-									"objectClass": "Drop",
-									"sid": 442391700084963,
-									"behaviorType": "Bullet",
-									"parameters": {
-										"state": "enabled"
-									}
-								}
-							],
-							"sid": 635036850342896
-						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "Level up"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-value",
-							"objectClass": "Rules",
-							"sid": 413438640669039,
-							"parameters": {
-								"path": "KEY_Player & DOT & KEY_Experience",
-								"cmp": 5,
-								"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
-							}
-						}
-					],
-					"actions": [
-						{
-							"customAction": "playSFX",
-							"objectClass": "Audio",
-							"sid": 917474558896452,
-							"parameters": [
-								"SFX_LevelUp",
-								"0",
-								"1"
-							]
-						},
-						{
-							"type": "comment",
-							"text": "Increase player level counter"
-						},
-						{
-							"id": "add-to-instvar",
-							"objectClass": "Player",
-							"sid": 221051656413814,
-							"parameters": {
-								"instance-variable": "level",
-								"value": "1"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Update time scale of moving objects"
-						},
-						{
-							"id": "set-object-time-scale",
-							"objectClass": "System",
-							"sid": 151181250190212,
-							"parameters": {
-								"object": "Weapon",
-								"time-scale": "0"
-							}
-						},
-						{
-							"id": "set-object-time-scale",
-							"objectClass": "System",
-							"sid": 185234516291077,
-							"parameters": {
-								"object": "Drop",
-								"time-scale": "0"
-							}
-						},
-						{
-							"id": "set-object-time-scale",
-							"objectClass": "System",
-							"sid": 696855108900735,
-							"parameters": {
-								"object": "Enemy",
-								"time-scale": "0"
-							}
-						},
-						{
-							"id": "set-object-time-scale",
-							"objectClass": "System",
-							"sid": 240154764419903,
-							"parameters": {
-								"object": "Player",
-								"time-scale": "0"
-							}
-						},
-						{
-							"id": "set-object-time-scale",
-							"objectClass": "System",
-							"sid": 197417321501456,
-							"parameters": {
-								"object": "UI_TextSF_Damage",
-								"time-scale": "0"
-							}
-						},
-						{
-							"id": "set-object-time-scale",
-							"objectClass": "System",
-							"sid": 664002498855078,
-							"parameters": {
-								"object": "UI_TextSF_Wave",
-								"time-scale": "0"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Set \"is leveling\" state"
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 993772412875843,
-							"parameters": {
-								"variable": "isLeveling",
-								"value": "YES"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Hide touch marker"
-						},
-						{
-							"id": "set-opacity",
-							"objectClass": "UI_TouchMarker",
-							"sid": 746201348440196,
-							"parameters": {
-								"opacity": "0"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Show level up UI"
-						},
-						{
-							"id": "set-default-color",
-							"objectClass": "UI_Button9P_Upgrade",
-							"sid": 862382384060389,
-							"parameters": {
-								"color": "C_Color_Brown"
-							}
-						},
-						{
-							"id": "stop-all-tweens",
-							"objectClass": "UI_Border_LevelUp",
-							"sid": 533770999747504,
-							"behaviorType": "Tween"
-						},
-						{
-							"id": "set-opacity",
-							"objectClass": "UI_Border_LevelUp",
-							"sid": 151538551897156,
-							"parameters": {
-								"opacity": "0"
-							}
-						},
-						{
-							"id": "set-visible",
-							"objectClass": "UI_Border_LevelUp",
-							"sid": 855122626981925,
-							"parameters": {
-								"visibility": "visible"
-							}
-						},
-						{
-							"id": "tween-one-property",
-							"objectClass": "UI_Border_LevelUp",
-							"sid": 291321989748869,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "TWEEN_LevelUp_FadeIn",
-								"property": "offsetOpacity",
-								"end-value": "100",
-								"time": "C_UI_LevelUp_Tween_Time",
-								"ease": "easeoutcubic",
-								"destroy-on-complete": "no",
-								"loop": "no",
-								"ping-pong": "no",
-								"repeat-count": "1"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Clear upgrade options"
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "UI_Button9P_Upgrade",
-							"sid": 870681656230784,
-							"parameters": {
-								"instance-variable": "modifier",
-								"value": "EMPTY"
-							}
-						},
-						{
-							"id": "set-text",
-							"objectClass": "UI_TextSF_Upgrade",
-							"sid": 663318670480407,
-							"parameters": {
-								"text": "EMPTY"
-							}
-						},
-						{
-							"id": "set-size",
-							"objectClass": "UpgradeOptions",
-							"sid": 786662869535676,
-							"parameters": {
-								"width": "0",
-								"height": "1",
-								"depth": "1"
-							}
-						}
-					],
-					"sid": 222428401904073,
-					"children": [
-						{
-							"eventType": "variable",
-							"name": "upgradeCandidate",
-							"type": "string",
-							"initialValue": "",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 836788779224185
-						},
-						{
-							"eventType": "variable",
-							"name": "modifier",
-							"type": "string",
-							"initialValue": "",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 670459196056724
-						},
-						{
-							"eventType": "comment",
-							"text": "Generate upgrade options and show update level up UI"
-						},
-						{
-							"eventType": "comment",
-							"text": "This is an inelegant solution to the problem that we need multiple (ideally 3) unique upgrade options, which should be chosen based on their weight"
-						},
-						{
-							"eventType": "comment",
-							"text": "todo handle situation where there are no valid upgrade candidates"
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "repeat",
-									"objectClass": "System",
-									"sid": 396368678140248,
-									"parameters": {
-										"count": "100"
-									}
-								},
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "UI_Button9P_Upgrade",
-									"sid": 520864684137256,
-									"parameters": {
-										"instance-variable": "modifier",
-										"comparison": 0,
-										"value": "EMPTY"
-									}
-								},
-								{
-									"id": "pick-highestlowest",
-									"objectClass": "UI_Button9P_Upgrade",
-									"sid": 162181787282881,
-									"parameters": {
-										"which": "lowest",
-										"instance-variable": "option"
-									}
-								},
-								{
-									"id": "pick-children",
-									"objectClass": "UI_Button9P_Upgrade",
-									"sid": 728998628239513,
-									"parameters": {
-										"child": "UI_TextSF_Upgrade",
-										"which": "own"
-									}
-								},
-								{
-									"id": "pick-children",
-									"objectClass": "UI_Button9P_Upgrade",
-									"sid": 358465600345835,
-									"parameters": {
-										"child": "Icon",
-										"which": "own"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 882146791657174,
-									"parameters": {
-										"variable": "upgradeCandidate",
-										"value": "AdvancedRandom.WeightedByName(PT_Upgrades)"
-									}
-								},
-								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 839714219956467,
-									"disabled": true,
-									"parameters": {
-										"type": "log",
-										"message": "\"Upgrade candidate: \" & upgradeCandidate"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "If upgrade candidate not unique, clear it"
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 787466613906827,
-									"parameters": {
-										"variable": "upgradeCandidate",
-										"value": "UpgradeOptions.IndexOf(upgradeCandidate) = NOTHING ? upgradeCandidate : EMPTY"
-									}
-								},
-								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 114035751771528,
-									"disabled": true,
-									"parameters": {
-										"type": "log",
-										"message": "\"Update candidate after first validation: \" & upgradeCandidate"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Validate if upgrade has modifiers"
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 843062976617220,
-									"parameters": {
-										"variable": "upgradeCandidate",
-										"value": "Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers) > 0 | Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers_Infinite) > 0 ? upgradeCandidate : EMPTY"
-									}
-								},
-								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 919693974230369,
-									"disabled": true,
-									"parameters": {
-										"type": "log",
-										"message": "\"Update candidate after second validation: \" & upgradeCandidate"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Set modifier"
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 525910363227406,
-									"parameters": {
-										"variable": "modifier",
-										"value": "Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers) > 0 ?\nRules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers & DOT & \"0\") :\n(\n  Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers_Infinite) > 0 ?\n  Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers_Infinite & DOT & \"0\") :\n  EMPTY\n)"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Use upgrade candidate (if it's still a valid one)"
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "UI_Button9P_Upgrade",
-									"sid": 691844759236153,
-									"parameters": {
-										"instance-variable": "upgrade",
-										"value": "upgradeCandidate"
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "UI_Button9P_Upgrade",
-									"sid": 470681944975400,
-									"parameters": {
-										"instance-variable": "modifier",
-										"value": "modifier"
-									}
-								},
-								{
-									"id": "set-opacity",
-									"objectClass": "UI_Button9P_Upgrade",
-									"sid": 774631035267122,
-									"parameters": {
-										"opacity": "upgradeCandidate = EMPTY ? 0 : 100"
-									}
-								},
-								{
-									"id": "set-animation",
-									"objectClass": "Icon",
-									"sid": 382227726049012,
-									"parameters": {
-										"animation": "Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Icon)",
-										"from": "beginning"
-									}
-								},
-								{
-									"id": "set-text",
-									"objectClass": "UI_TextSF_Upgrade",
-									"sid": 600207889077602,
-									"parameters": {
-										"text": "(modifier = EMPTY ? EMPTY : \"[scale=0.15]\" & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Label) & \"[/scale]\" & newline & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Description))"
-									}
-								},
-								{
-									"id": "push",
-									"objectClass": "UpgradeOptions",
-									"sid": 313942423004106,
-									"parameters": {
-										"where": "back",
-										"value": "upgradeCandidate",
-										"axis": "x"
-									}
-								}
-							],
-							"sid": 733472237835046
-						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "Take damage from all overlapping enemies"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-overlapping-another-object",
-							"objectClass": "PlayerHurtbox",
-							"sid": 766574561772515,
-							"parameters": {
-								"object": "Enemy"
-							}
-						},
-						{
-							"id": "is-timer-running",
-							"objectClass": "Player",
-							"sid": 615942382186523,
-							"behaviorType": "Timer",
-							"parameters": {
-								"tag": "TIMER_Freeze_All"
-							},
-							"isInverted": true
-						},
-						{
-							"id": "is-timer-running",
-							"objectClass": "Enemy",
-							"sid": 959342064623453,
-							"behaviorType": "Timer",
-							"parameters": {
-								"tag": "TIMER_Freeze"
-							},
-							"isInverted": true
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 479189017002844,
-							"parameters": {
-								"instance-variable": "damage",
-								"comparison": 4,
-								"value": "0"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 580702806611316,
-							"parameters": {
-								"instance-variable": "isDead",
-								"comparison": 0,
-								"value": "NO"
-							}
-						},
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 333691895605164,
-							"parameters": {
-								"object": "Enemy"
-							}
-						}
-					],
-					"actions": [
-						{
-							"customAction": "playSFX",
-							"objectClass": "Audio",
-							"sid": 224359359293664,
-							"parameters": [
-								"SFX_PlayerDamaged",
-								"3",
-								"Enemy.damage > 0 ? 1 : 0"
-							]
-						},
-						{
-							"type": "comment",
-							"text": "Decrease player health"
-						},
-						{
-							"id": "set-value",
-							"objectClass": "Rules",
-							"sid": 301754234018953,
-							"parameters": {
-								"path": "KEY_Player & DOT & KEY_Health",
-								"value": "max(0, Rules.Get(KEY_Player & DOT & KEY_Health) - Enemy.damage * dt)"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Set player to hurting (for vignette UI effect)"
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 254658252485260,
-							"parameters": {
-								"instance-variable": "isHurt",
-								"value": "Enemy.damage > 0 ? YES : NO"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Start damage flash on & off timers if they are not running yet"
-						},
-						{
-							"id": "start-timer",
-							"objectClass": "Player",
-							"sid": 933427457769060,
-							"behaviorType": "Timer",
-							"parameters": {
-								"duration": "C_Damage_Flash_Interval",
-								"type": "once",
-								"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOn : EMPTY"
-							}
-						},
-						{
-							"id": "start-timer",
-							"objectClass": "Player",
-							"sid": 955757498722809,
-							"behaviorType": "Timer",
-							"parameters": {
-								"duration": "C_Damage_Flash_Interval * 2",
-								"type": "once",
-								"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
-							}
-						}
-					],
-					"sid": 188067803728793
-				},
-				{
-					"eventType": "comment",
-					"text": "Kill player if they are out of health"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-value",
-							"objectClass": "Rules",
-							"sid": 438692348991556,
-							"parameters": {
-								"path": "KEY_Player & DOT & KEY_Health",
-								"cmp": 0,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"customAction": "playSFX",
-							"objectClass": "Audio",
-							"sid": 867180006094448,
-							"parameters": [
-								"SFX_PlayerDead",
-								"0",
-								"1"
-							]
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 242879650947707,
-							"parameters": {
-								"instance-variable": "isDead",
-								"value": "YES"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Show game over text"
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 979372111917261,
-							"parameters": {
-								"object-to-create": "UI_TextSF_GameOver",
-								"layer": "LAYER_UI",
-								"x": "ViewportMidX(LAYER_UI)",
-								"y": "ViewportMidY(LAYER_UI)",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Stop animation"
-						},
-						{
-							"id": "stop-animation",
-							"objectClass": "Player",
-							"sid": 207226070526332
-						},
-						{
-							"type": "comment",
-							"text": "Slow down moving drops"
-						},
-						{
-							"id": "set-acceleration",
-							"objectClass": "Drop",
-							"sid": 383188207661019,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"acceleration": "-Self.Bullet.Speed * 0.5"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Disable player movement"
-						},
-						{
-							"id": "set-enabled",
-							"objectClass": "Player",
-							"sid": 574219236840102,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"state": "disabled"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Disable player-physics (don't keep pushing away enemies)"
-						},
-						{
-							"id": "set-enabled",
-							"objectClass": "Player",
-							"sid": 783248802365482,
-							"behaviorType": "Physics",
-							"parameters": {
-								"mode": "disabled"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Flash player"
-						},
-						{
-							"id": "set-default-color",
-							"objectClass": "Player",
-							"sid": 422307302001334,
-							"parameters": {
-								"color": "rgbEx(500, 500, 500)"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Fade out player"
-						},
-						{
-							"id": "tween-one-property",
-							"objectClass": "Player",
-							"sid": 520423819540252,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"\"",
-								"property": "offsetOpacity",
-								"end-value": "0",
-								"time": "3",
-								"ease": "easeoutcubic",
-								"destroy-on-complete": "no",
-								"loop": "no",
-								"ping-pong": "no",
-								"repeat-count": "1"
-							}
-						}
-					],
-					"sid": 960843257670359
+					"sid": 828770595183893
 				}
 			]
 		},
@@ -2089,6 +2454,14 @@
 				{
 					"id": "restore-object-time-scale",
 					"objectClass": "System",
+					"sid": 196277122481736,
+					"parameters": {
+						"object": "PlayerParticles"
+					}
+				},
+				{
+					"id": "restore-object-time-scale",
+					"objectClass": "System",
 					"sid": 809025054578776,
 					"parameters": {
 						"object": "Drop"
@@ -2162,30 +2535,20 @@
 				},
 				{
 					"type": "comment",
-					"text": "Apply upgrade (multiply)"
-				},
-				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 273124568448496,
-					"disabled": true,
-					"parameters": {
-						"type": "log",
-						"message": "\"Applying upgrade: \" & modifier"
-					}
+					"text": "Apply upgrade (multiply), defaults 1 when not specified"
 				},
 				{
 					"id": "set-value",
 					"objectClass": "Rules",
-					"sid": 587536001670108,
+					"sid": 215114442845049,
 					"parameters": {
 						"path": "Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Multiply)"
+						"value": "Rules.Get(Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Rule_Value)) * (Rules.Type(KEY_Modifiers & DOT & modifier & DOT & KEY_Multiply) = NULL ? 1 : Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Multiply))"
 					}
 				},
 				{
 					"type": "comment",
-					"text": "Apply upgrade (add)"
+					"text": "Apply upgrade (add), defaults to 0 when not specified"
 				},
 				{
 					"id": "add-to",
@@ -2198,7 +2561,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Apply upgrade (max)"
+					"text": "Apply upgrade (maximize via second rule), optional"
 				},
 				{
 					"id": "set-value",
@@ -2211,7 +2574,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "If upgrade is for weapon, zero its cooldown"
+					"text": "If upgrade is for weapon, stop its cooldown (triggers immediate attack)"
 				},
 				{
 					"id": "stop-timer",
@@ -2224,7 +2587,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Update player properties"
+					"text": "Update player' movement speed in case it changed"
 				},
 				{
 					"id": "set-max-speed",
@@ -2237,277 +2600,6 @@
 				}
 			],
 			"sid": 266788838218702
-		},
-		{
-			"aceType": "action",
-			"aceName": "updateWave",
-			"objectClass": "Player",
-			"functionDescription": "If there's no wave in progress, start one",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionCopyPicked": false,
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "custom-ace-block",
-			"conditions": [
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 310976501573365,
-					"parameters": {
-						"variable": "isLeveling",
-						"comparison": 0,
-						"value": "NO"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 818549398125658,
-					"parameters": {
-						"variable": "isPaused",
-						"comparison": 0,
-						"value": "NO"
-					}
-				},
-				{
-					"id": "is-timer-running",
-					"objectClass": "Player",
-					"sid": 896283728470302,
-					"behaviorType": "Timer",
-					"parameters": {
-						"tag": "TIMER_Wave"
-					},
-					"isInverted": true
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Reset cycle counter"
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 354139982860080,
-					"parameters": {
-						"variable": "spawnCycle",
-						"value": "0"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Increase wave counter"
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 847961068914298,
-					"parameters": {
-						"variable": "waveId",
-						"value": "1"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 285859815769428,
-					"parameters": {
-						"variable": "waveCount",
-						"value": "1"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "If wave counter is invalid, reset it (to specified wave number)"
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 604873366733704,
-					"parameters": {
-						"variable": "waveId",
-						"value": "Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time) = 0 ? Rules.Get(KEY_Level & DOT & KEY_WaveLoopTo) : waveId"
-					}
-				},
-				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 883852951812457,
-					"disabled": true,
-					"parameters": {
-						"type": "log",
-						"message": "\"Wave #\" & waveId & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Initialize enemy spawn pool"
-				},
-				{
-					"id": "createProbabilityTableFromJSON",
-					"objectClass": "AdvancedRandom",
-					"sid": 563817216794692,
-					"parameters": {
-						"name": "PT_Enemies",
-						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool)"
-					}
-				},
-				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 263947699746162,
-					"disabled": true,
-					"parameters": {
-						"type": "log",
-						"message": "\"Wave #\" & waveId & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_ItemSpawnPool)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Initialize item spawn pool"
-				},
-				{
-					"id": "createProbabilityTableFromJSON",
-					"objectClass": "AdvancedRandom",
-					"sid": 929665451432000,
-					"parameters": {
-						"name": "PT_Items",
-						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_ItemSpawnPool)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Start wave cooldown timer (also triggers first wave cycle)"
-				},
-				{
-					"id": "start-timer",
-					"objectClass": "Player",
-					"sid": 926337034951366,
-					"behaviorType": "Timer",
-					"parameters": {
-						"duration": "Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time)",
-						"type": "once",
-						"tag": "TIMER_Wave"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Cue item spawn"
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 555486501587659,
-					"parameters": {
-						"variable": "itemSpawnCue",
-						"value": "Rules.ArraySize(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool) > 0 ? AdvancedRandom.WeightedByName(PT_Items) : EMPTY"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Spawn wave text UI"
-				},
-				{
-					"type": "comment",
-					"text": "todo_maybe spawn one at start / add to layout, reuse, use \"message queue\""
-				},
-				{
-					"id": "create-object",
-					"objectClass": "System",
-					"sid": 294371349219062,
-					"parameters": {
-						"object-to-create": "UI_TextSF_Wave",
-						"layer": "LAYER_UI",
-						"x": "ViewportMidX(LAYER_UI)",
-						"y": "ViewportMidY(LAYER_UI) - 60",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "UI_TextSF_Wave",
-					"sid": 575302447098711,
-					"parameters": {
-						"text": "Rules.Type(KEY_Waves & DOT & waveId & DOT & KEY_Label) = NULL ? EMPTY : Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Label)"
-					}
-				},
-				{
-					"id": "set-opacity",
-					"objectClass": "UI_TextSF_Wave",
-					"sid": 944226078392843,
-					"parameters": {
-						"opacity": "0"
-					}
-				},
-				{
-					"id": "tween-one-property",
-					"objectClass": "UI_TextSF_Wave",
-					"sid": 934730373585434,
-					"behaviorType": "Tween",
-					"parameters": {
-						"tags": "\"\"",
-						"property": "offsetOpacity",
-						"end-value": "100",
-						"time": "1",
-						"ease": "easeoutexpo",
-						"destroy-on-complete": "no",
-						"loop": "no",
-						"ping-pong": "yes",
-						"repeat-count": "1"
-					}
-				},
-				{
-					"id": "tween-one-property",
-					"objectClass": "UI_TextSF_Wave",
-					"sid": 351427664386702,
-					"behaviorType": "Tween",
-					"parameters": {
-						"tags": "\"\"",
-						"property": "offsetY",
-						"end-value": "Self.Y + 10",
-						"time": "1",
-						"ease": "easeoutcubic",
-						"destroy-on-complete": "no",
-						"loop": "no",
-						"ping-pong": "no",
-						"repeat-count": "1"
-					}
-				}
-			],
-			"sid": 656671393076444,
-			"children": [
-				{
-					"eventType": "comment",
-					"text": "Spawn fixed enemies at wave start"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "for-each",
-							"objectClass": "Rules",
-							"sid": 919392068197452,
-							"parameters": {
-								"path": "KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnFixed"
-							}
-						}
-					],
-					"actions": [
-						{
-							"customAction": "spawn",
-							"objectClass": "Enemy",
-							"sid": 685676196464256,
-							"parameters": [
-								"Rules.CurrentKey",
-								"Rules.CurrentValue"
-							]
-						}
-					],
-					"sid": 876141430989688
-				}
-			]
 		}
 	],
 	"sid": 562729237747902

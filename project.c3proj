@@ -71,6 +71,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Particles",
+			"name": "Particles",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
@@ -227,7 +234,8 @@
 			"UI_TextSF_Stats",
 			"UI_TouchMarker",
 			"UI_TextSF_Level",
-			"UI_TextSF_PauseButton"
+			"UI_TextSF_PauseButton",
+			"PlayerParticles"
 		],
 		"subfolders": []
 	},
@@ -552,7 +560,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "57",
+		"version": "58",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

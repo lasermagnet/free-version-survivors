@@ -1,13 +1,13 @@
 const _example = {
     "": {
+        "Amount": 0,                // number of weapons to spawn per attack
         "BlockMovement": false,     // whether a weapon blocks movement of overlapping enemies
         "Cooldown": 2,              // seconds, the weapon attacks at this interval
-        "Amount": 0,                // number of weapons to spawn per attack
         "Damage": 0,                // damage per second while weapon is overlapping an enemy
         "PierceLimit": 1,           // weapon is destroyed after hitting this amount of unique enemioes
-        "RotationAngleOffset": 0,           // optional rotation offset for the weapon sprite (eg. if its drawn pointing to the top right, use -45)
+        "RotationAngleOffset": 0,   // optional rotation offset for the weapon sprite
         "Scale": 1,                 // size multiplier
-        "StaticAngle": null,        // null means weapon will keep facing the player, a number sets a fixed angle
+        "StaticAngle": null,        // null: weapon will keep facing the player; any number: fixed angle
         "Duration": 1,              // seconds, defines the lifetime of a weapon (fades out at the end)
         "BulletSpeed": 0,           // movement speed for the Bullet behaviour
         "BulletAcceleration": 0,    // acceleration for the Bullet behaviour
@@ -23,9 +23,9 @@ const _example = {
 
 export const Weapons = {
     "Axe": {
+        "Amount": 1,
         "BlockMovement": true,
         "Cooldown": 1.5,
-        "Amount": 1,
         "Damage": 30,
         "PierceLimit": 2,
         "RotationAngleOffset": -45,
@@ -37,7 +37,6 @@ export const Weapons = {
     "Flame": {
         "BlockMovement": true,
         "Cooldown": 3,
-        "Amount": 0,
         "Damage": 25,
         "PierceLimit": 1000,
         "RotationAngleOffset": 45,
@@ -48,7 +47,6 @@ export const Weapons = {
     "Chainsaw": {
         "BlockMovement": true,
         "Cooldown": 5,
-        "Amount": 0,
         "Damage": 20,
         "PierceLimit": 1000,
         "Scale": 0.5,
@@ -59,7 +57,6 @@ export const Weapons = {
     },
     "Spikes": {
         "Cooldown": 6,
-        "Amount": 0,
         "Damage": 4,
         "PierceLimit": 1000,
         "Scale": 0.5,
@@ -70,7 +67,6 @@ export const Weapons = {
     },
     "Ice": {
         "Cooldown": 5,
-        "Amount": 0,
         "Damage": 2,
         "PierceLimit": 3,
         "Scale": 0.5,
@@ -83,15 +79,12 @@ export const Weapons = {
     "Sword": {
         "BlockMovement": true,
         "Cooldown": 2.5,
-        "Amount": 0,
         "Damage": 40,
         "PierceLimit": 10000,
-        "RotationAngleOffset": 0,
         "SpawnAngleOffset": -160,
         "Scale": 0.5,
         "Duration": 0.3,
         "Pin": true,
-        // todo use angle tween instead (so it can be made faster)
         "OrbitRadius": 5,
         "OrbitSpeed": 400,
     },

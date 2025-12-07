@@ -99,6 +99,20 @@
 		},
 		{
 			"eventType": "comment",
+			"text": "Particles"
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Particle_Rate_Hurting",
+			"type": "number",
+			"initialValue": "50",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 105832228050614
+		},
+		{
+			"eventType": "comment",
 			"text": "UI"
 		},
 		{
