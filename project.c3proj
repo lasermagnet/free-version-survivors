@@ -226,7 +226,7 @@
 		"script": {
 			"items": [
 				{
-					"name": "rules.js",
+					"name": "importsforevents.js",
 					"type": "application/javascript",
 					"sid": 540848896340855,
 					"script-info": {
@@ -239,6 +239,14 @@
 					"sid": 364512063500660,
 					"script-info": {
 						"purpose": "main"
+					}
+				},
+				{
+					"name": "rules.js",
+					"type": "application/javascript",
+					"sid": 658997198896662,
+					"script-info": {
+						"purpose": "none"
 					}
 				}
 			],
@@ -341,7 +349,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "5",
+		"version": "6",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

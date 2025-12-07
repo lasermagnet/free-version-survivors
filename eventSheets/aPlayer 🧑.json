@@ -833,6 +833,10 @@
 			],
 			"actions": [
 				{
+					"type": "comment",
+					"text": "Hide level up UI"
+				},
+				{
 					"id": "tween-one-property",
 					"objectClass": "UI_Border_LevelUp",
 					"sid": 411269398563607,
@@ -850,6 +854,14 @@
 					}
 				},
 				{
+					"id": "set-visible",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 203108483435764,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
 					"id": "wait-for-previous-actions",
 					"objectClass": "System",
 					"sid": 777887322997353
@@ -861,15 +873,6 @@
 					"parameters": {
 						"variable": "isLeveling",
 						"value": "NO"
-					}
-				},
-				{
-					"id": "subtract-from-instvar",
-					"objectClass": "Player",
-					"sid": 734531545694981,
-					"parameters": {
-						"instance-variable": "experience",
-						"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
 					}
 				},
 				{
@@ -934,12 +937,21 @@
 					}
 				},
 				{
-					"id": "set-visible",
-					"objectClass": "UI_Border_LevelUp",
-					"sid": 305836740429358,
+					"type": "comment",
+					"text": "Update player properties"
+				},
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "Player",
+					"sid": 796363870427194,
 					"parameters": {
-						"visibility": "invisible"
+						"instance-variable": "experience",
+						"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Resume game"
 				},
 				{
 					"id": "set-object-time-scale",

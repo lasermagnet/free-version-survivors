@@ -54,6 +54,10 @@
 			"text": "Level rules"
 		},
 		{
+			"eventType": "comment",
+			"text": "todo move to rules.js"
+		},
+		{
 			"eventType": "variable",
 			"name": "R_Spawn_Distance",
 			"type": "number",
@@ -82,6 +86,16 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 734229755722200
+		},
+		{
+			"eventType": "variable",
+			"name": "rulesJS",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 911663041288137
 		}
 	],
 	"sid": 382566761626237

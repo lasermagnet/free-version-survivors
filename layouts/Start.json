@@ -40,17 +40,7 @@
 					"sid": 398183981570846,
 					"tags": "",
 					"instanceVariables": {},
-					"behaviors": {
-						"Anchor": {
-							"properties": {
-								"left-edge": "window-left",
-								"top-edge": "window-top",
-								"right-edge": "window-right",
-								"bottom-edge": "none",
-								"enabled": true
-							}
-						}
-					},
+					"behaviors": {},
 					"instanceFolderItem": {
 						"sid": 398183981570846,
 						"expanded": true
@@ -333,7 +323,7 @@
 								"top-edge": "none",
 								"right-edge": "none",
 								"bottom-edge": "none",
-								"enabled": true
+								"enabled": false
 							}
 						}
 					},
@@ -428,7 +418,7 @@
 	"effectTypes": [],
 	"width": 320,
 	"height": 180,
-	"unboundedScrolling": false,
+	"unboundedScrolling": true,
 	"vpX": 0.5,
 	"vpY": 0.5,
 	"projection": "perspective",

@@ -1,78 +1,11 @@
-
-/*
-import { basicSetup, EditorView } from "https://cdn.jsdelivr.net/npm/codemirror/+esm"
-import { javascript } from "https://cdn.jsdelivr.net/npm/@codemirror/lang-javascript/+esm"
-*/
-import { basicSetup, EditorView } from "https://esm.sh/codemirror/"
-import { javascript } from "https://esm.sh/@codemirror/lang-javascript/"
-//import { Compartment } from "https://esm.sh/@codemirror/state"
-//import { EditorView } from "https://esm.sh/@codemirror/view"
-import { basicDark } from "https://esm.sh/@fsegurai/codemirror-theme-basic-dark"
-
-function initCodeMirror() {
-
-    console.log("rule editor element", document.getElementById("rule-editor"))
-    console.log("basicSetup", basicSetup)
-/*
-    const myTheme = EditorView.theme({
-        "&": {
-            color: "white",
-            backgroundColor: "#034"
-        },
-        ".cm-content": {
-            caretColor: "#0e9"
-        },
-        "&.cm-focused .cm-cursor": {
-            borderLeftColor: "#0e9"
-        },
-        "&.cm-focused .cm-selectionBackground, ::selection": {
-            backgroundColor: "#074"
-        },
-        ".cm-gutters": {
-            backgroundColor: "#045",
-            color: "#ddd",
-            border: "none"
-        }
-    }, { dark: true })
-*/
-    const editorView = new EditorView({
-        doc: JSON.stringify(rules, null, 2),
-        extensions: [basicSetup, javascript(), basicDark],
-        parent: document.getElementById("rule-editor"),
-    })
-
-
-    /*
-        let theme = new Compartment;
-    
-        editorView.dispatch({
-            effects: theme.reconfigure(myTheme)
-        })*/
-}
-
-function addStyle(styleString) {
-    const style = document.createElement('style')
-    style.textContent = styleString
-    document.head.append(style)
-}
-
-//addStyle(`#rule-editor .cm-editor {font-size: 1rem;background:white}`)
-
-addStyle(`
-#rule-editor {overflow: auto}
-`)
-
-const rules = {
+export const rules = {
 
     "Player": { // Player rules
         "Health": 100,
         "Health_Max": 100,
-        //"Health_Max_Multiplier": 1.05,
         "Experience_Target": 40,
         "Experience_Target_Multiplier": 1.15
     },
-
-    // todo waves (with string names/labels)
 
     "Wave": { // Wave rules
 
@@ -152,6 +85,7 @@ const rules = {
 /*
 
 # todo
+[ ] waves (with string names/labels)
 [ ] enemy types: advanced spawning, damage and xp drop amounts
 [ ] damage numbers
 [ ] more weapons
@@ -160,3 +94,4 @@ const rules = {
 [ ] game over screen
 
 */
+
