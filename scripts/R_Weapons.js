@@ -17,6 +17,7 @@ export const Weapons = {
         "PositionRandom1": 0,
         "PositionRandom2": 0,
         "RotationSpeed": 0,
+        "FreezeTime": 0,
     },
     "Axe": {
         "BlockMovement": 1,
@@ -27,7 +28,7 @@ export const Weapons = {
         "AngleOffset": -45,
         "Scale": 0.5,
         "Timeout": 4,
-        "MovementSpeed": 85,
+        "MovementSpeed": 100,
         "RotationSpeed": 300,
     },
     "Flame": {
@@ -51,7 +52,7 @@ export const Weapons = {
         "Timeout": 4,
         "Pin": 1,
         "OrbitRadius": 25,
-        "OrbitSpeed": 120,
+        "OrbitSpeed": 200,
     },
     "Spikes": {
         "Cooldown": 6,
@@ -65,5 +66,3 @@ export const Weapons = {
         "PositionRandom2": 30,
     },
 }
-
-// todo_prod remove * and + stuff (added for testing)

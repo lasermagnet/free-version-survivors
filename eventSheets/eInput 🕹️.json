@@ -242,10 +242,6 @@
 			],
 			"actions": [
 				{
-					"type": "comment",
-					"text": "todo better restart"
-				},
-				{
 					"id": "reload",
 					"objectClass": "Browser",
 					"sid": 646195926729200
@@ -312,37 +308,33 @@
 				{
 					"customAction": "applyModifier",
 					"objectClass": "Player",
-					"sid": 392482584681037,
-					"disabled": true,
+					"sid": 138000117224545,
 					"parameters": [
-						"\"Spikes\""
+						"\"Spikes_Amount\""
 					]
 				},
 				{
 					"customAction": "applyModifier",
 					"objectClass": "Player",
-					"sid": 305730127677525,
-					"disabled": true,
+					"sid": 649403129098451,
 					"parameters": [
-						"\"Axe\""
+						"\"Axe_Amount\""
 					]
 				},
 				{
 					"customAction": "applyModifier",
 					"objectClass": "Player",
-					"sid": 507747436401260,
-					"disabled": true,
+					"sid": 291657791115488,
 					"parameters": [
-						"\"Chainsaw\""
+						"\"Chainsaw_Amount\""
 					]
 				},
 				{
 					"customAction": "applyModifier",
 					"objectClass": "Player",
-					"sid": 348140626402611,
-					"disabled": true,
+					"sid": 722467348444723,
 					"parameters": [
-						"\"Flame\""
+						"\"Flame_Amount\""
 					]
 				}
 			],

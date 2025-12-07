@@ -100,6 +100,18 @@
 				},
 				{
 					"type": "comment",
+					"text": "Set scale"
+				},
+				{
+					"id": "set-scale",
+					"objectClass": "Enemy",
+					"sid": 784238058723449,
+					"parameters": {
+						"scale": "Rules.Type(KEY_Enemies & DOT & enemy & DOT & KEY_Scale) = NULL ? 1 : Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Scale)"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Initialize enemy IVs"
 				},
 				{
@@ -232,9 +244,18 @@
 				{
 					"id": "set-default-color",
 					"objectClass": "Enemy",
-					"sid": 360507637327988,
+					"sid": 272219199942972,
+					"disabled": true,
 					"parameters": {
-						"color": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)"
+						"color": "Player.Timer.CurrentTime(TIMER_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Freeze) = 0 ?\n(Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)) :\nrgbEx(100, 100, 200)"
+					}
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "Enemy",
+					"sid": 771909031736053,
+					"parameters": {
+						"color": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500) :\n(\n  Player.Timer.CurrentTime(TIMER_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Freeze) = 0 ?\n  rgbEx(100, 100, 100) :\n  rgbEx(100, 100, 200)\n)\n"
 					}
 				},
 				{
@@ -244,9 +265,24 @@
 				{
 					"id": "set-width",
 					"objectClass": "Enemy",
-					"sid": 391161352384051,
+					"sid": 570746798042963,
 					"parameters": {
-						"width": "Self.X < Player.X - 5 ?\nabs(Self.Width) :\n(\n  Self.X > Player.X + 5 ?\n  -abs(Self.Width) :\n  Self.Width\n)"
+						"width": "(Player.Timer.CurrentTime(TIMER_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Freeze) > 0) ?\nSelf.Width :\n(\n  Self.X < Player.X - 5 ?\r\n  abs(Self.Width) :\r\n  (\r\n    Self.X > Player.X + 5 ?\r\n    -abs(Self.Width) :\r\n    Self.Width\r\n  )\n)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Stop frozen enemies"
+				},
+				{
+					"id": "set-velocity",
+					"objectClass": "Enemy",
+					"sid": 962694462761295,
+					"disabled": true,
+					"behaviorType": "Physics",
+					"parameters": {
+						"x-component": "(Player.Timer.CurrentTime(TIMER_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Freeze) > 0) ? 0 : Self.Physics.VelocityX ",
+						"y-component": "(Player.Timer.CurrentTime(TIMER_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Freeze) > 0) ? 0 : Self.Physics.VelocityY "
 					}
 				}
 			],
@@ -317,10 +353,7 @@
 					"text": "Enemy getting damaged"
 				},
 				{
-					"eventType": "comment",
-					"text": "todo rework damage stuff, maybe use one-off damage type & dt based type too?"
-				},
-				{
+					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -359,6 +392,10 @@
 						{
 							"type": "comment",
 							"text": "If weapon is a movement blocker and enemy is a moving one, block its movement (temporarily)"
+						},
+						{
+							"type": "comment",
+							"text": "todo_nth handle multiple weapons with at least one blocker, but not the last"
 						},
 						{
 							"id": "set-instvar-value",
@@ -429,14 +466,43 @@
 								"instance-variable": "piercedUIDs_SSV",
 								"value": "find(SPACE & Self.piercedUIDs_SSV & SPACE, str(Enemy.UID)) = NOTHING ? Self.piercedUIDs_SSV & SPACE & Enemy.UID : Self.piercedUIDs_SSV"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Start freeze timer if needed"
+						},
+						{
+							"id": "start-timer",
+							"objectClass": "Enemy",
+							"sid": 645890967718806,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_FreezeTime)",
+								"type": "once",
+								"tag": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_FreezeTime) > 0 &\nSelf.Timer.CurrentTime(TIMER_Freeze) = 0 ?\nTIMER_Freeze :\nEMPTY"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "todo stop properly if blocked/frozen"
+						},
+						{
+							"type": "comment",
+							"text": "Stop movement if movement is blocked"
+						},
+						{
+							"id": "set-velocity",
+							"objectClass": "Enemy",
+							"sid": 520560129133835,
+							"behaviorType": "Physics",
+							"parameters": {
+								"x-component": "Enemy.isMovementBlocked = YES ? 0 : Self.Physics.VelocityX",
+								"y-component": "Enemy.isMovementBlocked = YES ? 0 : Self.Physics.VelocityY"
+							}
 						}
 					],
 					"sid": 465104577973746,
 					"children": [
-						{
-							"eventType": "comment",
-							"text": "todo_fix foreach weapons so all of them deal damage to the enemy"
-						},
 						{
 							"eventType": "comment",
 							"text": "Check projectile piercing limit & destroy projectile if reached"
@@ -537,10 +603,6 @@
 					"text": "If enemy received at least 1 damage and there's no damage number spawned, spawn a damage number"
 				},
 				{
-					"eventType": "comment",
-					"text": "todo rework damage number stuff so it updates"
-				},
-				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -574,10 +636,6 @@
 						}
 					],
 					"actions": [
-						{
-							"type": "comment",
-							"text": "todo keep updating existing damage numbers after enemy takes more damage"
-						},
 						{
 							"customAction": "playSFX",
 							"objectClass": "Audio",
@@ -1107,6 +1165,26 @@
 								"comparison": 0,
 								"value": "NO"
 							}
+						},
+						{
+							"id": "is-timer-running",
+							"objectClass": "Enemy",
+							"sid": 653484529696924,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_Freeze"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-timer-running",
+							"objectClass": "Player",
+							"sid": 109846216448982,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_Freeze_All"
+							},
+							"isInverted": true
 						}
 					],
 					"actions": [
@@ -1117,6 +1195,15 @@
 							"behaviorType": "Physics",
 							"parameters": {
 								"setting": "movable"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 584886164493083,
+							"parameters": {
+								"type": "log",
+								"message": "\"Moving enemies\""
 							}
 						},
 						{

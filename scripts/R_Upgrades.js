@@ -20,7 +20,7 @@ export const Upgrades = {
         //"Modifiers_Infinite": [],
     },
     "Chainsaw": {
-        "Modifiers": ["Chainsaw_Amount", "Chainsaw_Radius", "Chainsaw_Size", "Chainsaw_Amount", "Chainsaw_Radius", "Chainsaw_Amount", "Chainsaw_Size", "Chainsaw_Amount", "Chainsaw_Radius", "Chainsaw_Size"],
+        "Modifiers": ["Chainsaw_Amount", "Chainsaw_Radius", "Chainsaw_Size", "Chainsaw_Speed", "Chainsaw_Amount", "Chainsaw_Radius", "Chainsaw_Amount", "Chainsaw_Size", "Chainsaw_Speed", "Chainsaw_Amount", "Chainsaw_Radius", "Chainsaw_Size"],
         //"Modifiers_Infinite": [],
     },
     "Spikes": {

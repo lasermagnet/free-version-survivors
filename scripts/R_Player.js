@@ -12,8 +12,10 @@ export const Player = {
     // Misc
     "PickupDistance": 30,
     "PickupDistanceMagnet": 1000,
+    "LevelUpFreezeTime": 1,
     // Bonuses
-    "Bonus_Enemy_Spawn_Amount_Multiplier": 1,
+    // todo_maybe "Bonus" object with children, get rid of Bonus_?
+    "Bonus_Enemy_Spawn_Amount_Multiplier": 2,
     "Bonus_Experience_Multiplier": 1,
     "Bonus_Healing_Multiplier": 1,
     "Bonus_Regeneration_Amount": 0, // per second
@@ -21,5 +23,4 @@ export const Player = {
     "Bonus_Weapon_Cooldown_Multiplier": 1,
     "Bonus_Weapon_Size_Multiplier": 1,
     "Bonus_Weapon_Amount_Extra": 0,
-    "Bonus_Item_Spawn_Cooldown_Multiplier": 1,
 }

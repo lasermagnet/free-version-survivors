@@ -186,10 +186,6 @@
 			"sid": 944984716583836
 		},
 		{
-			"eventType": "comment",
-			"text": "todo_now"
-		},
-		{
 			"eventType": "variable",
 			"name": "KEY_Bonus_Enemy_Spawn_Amount_Multiplier",
 			"type": "string",
@@ -441,6 +437,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_FreezeTime",
+			"type": "string",
+			"initialValue": "FreezeTime",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 833993264545955
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Healing",
 			"type": "string",
 			"initialValue": "Healing",
@@ -528,6 +534,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 694929315152815
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_LevelUpFreezeTime",
+			"type": "string",
+			"initialValue": "LevelUpFreezeTime",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 435167823618200
 		},
 		{
 			"eventType": "variable",

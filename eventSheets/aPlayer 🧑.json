@@ -2,6 +2,10 @@
 	"name": "aPlayer 🧑",
 	"events": [
 		{
+			"eventType": "comment",
+			"text": "todo_pack move actions to \"on start of project\""
+		},
+		{
 			"aceType": "action",
 			"aceName": "spawn",
 			"objectClass": "Player",
@@ -15,15 +19,6 @@
 			"conditions": [],
 			"actions": [
 				{
-					"id": "set-world-gravity",
-					"objectClass": "Player",
-					"sid": 586979652809177,
-					"behaviorType": "Physics",
-					"parameters": {
-						"gravity": "0"
-					}
-				},
-				{
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 221635225319954,
@@ -34,6 +29,19 @@
 						"y": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Height) * 0.5",
 						"create-hierarchy": true,
 						"template-name": "\"\""
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Disable gravity"
+				},
+				{
+					"id": "set-world-gravity",
+					"objectClass": "Player",
+					"sid": 776809560545526,
+					"behaviorType": "Physics",
+					"parameters": {
+						"gravity": "0"
 					}
 				},
 				{
@@ -81,45 +89,7 @@
 					}
 				}
 			],
-			"sid": 821905210614926,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "pick-children",
-							"objectClass": "Player",
-							"sid": 870460362005587,
-							"parameters": {
-								"child": "UI_Bar_Health",
-								"which": "own"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "UI_Bar_Health",
-							"sid": 473935911658221,
-							"parameters": {
-								"instance-variable": "initWidth",
-								"value": "Self.Width"
-							}
-						},
-						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 918684510507956,
-							"parameters": {
-								"type": "log",
-								"message": "\"Setting init width to:\" & UI_Bar_Health.Width"
-							}
-						}
-					],
-					"sid": 436840418728070,
-					"disabled": true
-				}
-			]
+			"sid": 821905210614926
 		},
 		{
 			"aceType": "action",
@@ -533,7 +503,6 @@
 			"functionCopyPicked": false,
 			"functionIsAsync": false,
 			"functionParameters": [],
-			"bookmark": true,
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
@@ -596,7 +565,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Reset hurt state variable"
+					"text": "Reset hurt state"
 				},
 				{
 					"id": "set-instvar-value",
@@ -744,7 +713,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Update cooldown on weapons with at least 1 amount & attack when a cooldown is finished"
+					"text": "Attack with each weapon if there's at least one amount and its cooldown timer is not running"
 				},
 				{
 					"eventType": "block",
@@ -766,70 +735,57 @@
 								"cmp": 5,
 								"value": "1"
 							}
-						}
-					],
-					"actions": [],
-					"sid": 135052668909848,
-					"children": [
-						{
-							"eventType": "comment",
-							"text": "Attack when a cooldown is finished + reset cooldown"
 						},
 						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-timer-running",
-									"objectClass": "Player",
-									"sid": 983631089051915,
-									"behaviorType": "Timer",
-									"parameters": {
-										"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
-									},
-									"isInverted": true
-								}
-							],
-							"actions": [
-								{
-									"id": "start-timer",
-									"objectClass": "Player",
-									"sid": 721679729354410,
-									"behaviorType": "Timer",
-									"parameters": {
-										"duration": "Rules.Get(DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)",
-										"type": "once",
-										"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
-									}
-								},
-								{
-									"customAction": "spawn",
-									"objectClass": "Weapon",
-									"sid": 234212675148566,
-									"parameters": [
-										"Rules.CurrentKey",
-										"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
-										"Player.lastMovingAngle",
-										"Rules.Get(DOT & KEY_AngleOffset)",
-										"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
-										"Rules.Type(DOT & KEY_StaticAngle) = NULL ? EMPTY : str(Rules.Get(DOT & KEY_StaticAngle))",
-										"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
-										"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
-										"Rules.Get(DOT & KEY_PositionRandom2)",
-										"Rules.Get(DOT & KEY_MovementSpeed)",
-										"Rules.Get(DOT & KEY_MovementAcceleration)",
-										"Rules.Get(DOT & KEY_Damage)",
-										"Rules.Get(DOT & KEY_Timeout)",
-										"Rules.Get(DOT & KEY_BlockMovement) = NO ? NO : YES",
-										"Rules.Get(DOT & KEY_Pin) = NO ? NO : YES",
-										"Rules.Get(DOT & KEY_OrbitRadius)",
-										"Rules.Get(DOT & KEY_OrbitSpeed)",
-										"Rules.Get(DOT & KEY_RotationSpeed)"
-									]
-								}
-							],
-							"sid": 577702350018540
+							"id": "is-timer-running",
+							"objectClass": "Player",
+							"sid": 275223050894204,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
+							},
+							"isInverted": true
 						}
-					]
+					],
+					"actions": [
+						{
+							"id": "start-timer",
+							"objectClass": "Player",
+							"sid": 783842095913817,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "Rules.Get(DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)",
+								"type": "once",
+								"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
+							}
+						},
+						{
+							"customAction": "spawn",
+							"objectClass": "Weapon",
+							"sid": 371377346080431,
+							"parameters": [
+								"Rules.CurrentKey",
+								"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
+								"Player.lastMovingAngle",
+								"Rules.Get(DOT & KEY_AngleOffset)",
+								"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
+								"Rules.Type(DOT & KEY_StaticAngle) = NULL ? EMPTY : str(Rules.Get(DOT & KEY_StaticAngle))",
+								"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
+								"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
+								"Rules.Get(DOT & KEY_PositionRandom2)",
+								"Rules.Get(DOT & KEY_MovementSpeed)",
+								"Rules.Get(DOT & KEY_MovementAcceleration)",
+								"Rules.Get(DOT & KEY_Damage)",
+								"Rules.Get(DOT & KEY_Timeout)",
+								"Rules.Get(DOT & KEY_BlockMovement) = NO ? NO : YES",
+								"Rules.Get(DOT & KEY_Pin) = NO ? NO : YES",
+								"Rules.Get(DOT & KEY_OrbitRadius)",
+								"Rules.Get(DOT & KEY_OrbitSpeed)",
+								"Rules.Get(DOT & KEY_RotationSpeed)"
+							]
+						}
+					],
+					"sid": 135052668909848
 				},
 				{
 					"eventType": "comment",
@@ -1043,6 +999,10 @@
 					"sid": 622273281678330,
 					"children": [
 						{
+							"eventType": "comment",
+							"text": "Activate drop"
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -1120,6 +1080,10 @@
 							],
 							"sid": 893054964726095,
 							"children": [
+								{
+									"eventType": "comment",
+									"text": "Activate magnet drop"
+								},
 								{
 									"eventType": "block",
 									"conditions": [
@@ -1392,7 +1356,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "todo hide all upgrade buttons, only enable the ones which have a valid candidate"
+							"text": "todo handle situation where there are no valid upgrade candidates"
 						},
 						{
 							"eventType": "block",
@@ -1582,12 +1546,32 @@
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "is-timer-running",
+							"objectClass": "Player",
+							"sid": 615837367331856,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_Freeze_All"
+							},
+							"isInverted": true
+						},
+						{
 							"id": "is-overlapping-another-object",
 							"objectClass": "PlayerHurtbox",
 							"sid": 649766626643368,
 							"parameters": {
 								"object": "Enemy"
 							}
+						},
+						{
+							"id": "is-timer-running",
+							"objectClass": "Enemy",
+							"sid": 631742886751662,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_Freeze"
+							},
+							"isInverted": true
 						},
 						{
 							"id": "compare-instance-variable",
@@ -2021,6 +2005,21 @@
 				},
 				{
 					"type": "comment",
+					"text": "Freeze all enemies"
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Player",
+					"sid": 957480099040497,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "Rules.Get(KEY_Player & DOT & KEY_LevelUpFreezeTime)",
+						"type": "once",
+						"tag": "TIMER_Freeze_All"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Resume game"
 				},
 				{
@@ -2179,6 +2178,10 @@
 					"parameters": {
 						"max-speed": "Rules.Get(KEY_Player & DOT & KEY_MovementSpeed)"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "todo_remove or implement acceleration/deceleration?"
 				},
 				{
 					"id": "set-acceleration",
@@ -2372,6 +2375,10 @@
 					"text": "Spawn wave text UI"
 				},
 				{
+					"type": "comment",
+					"text": "todo spawn one, reuse, use \"message queue\""
+				},
+				{
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 294371349219062,
@@ -2437,6 +2444,10 @@
 			],
 			"sid": 656671393076444,
 			"children": [
+				{
+					"eventType": "comment",
+					"text": "todo_pack spawn an enemy at every tick from the fixed spawn pool (copy it to an array at first, pop it one by one)"
+				},
 				{
 					"eventType": "comment",
 					"text": "Spawn fixed enemies at wave start"

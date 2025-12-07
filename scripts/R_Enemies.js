@@ -1,4 +1,5 @@
 export const Enemies = {
+    // todo _template
     "HealingCrate": {
         "Container": 1, // containers don't spawn items (only drops)
         "Health": 3,
@@ -12,72 +13,79 @@ export const Enemies = {
         "Health": 3,
         "Damage": 10,
         "Experience": 4,
-        "MovementSpeed": 0.5
+        "MovementSpeed": 0.5,
+    },
+    "SlimeBig": {
+        "Health": 50,
+        "Damage": 20,
+        "Experience": 50,
+        "MovementSpeed": 10,
+        "Scale": 4,
     },
     "Rat": {
         "Health": 5,
         "Damage": 15,
         "Experience": 9,
-        "MovementSpeed": 0.8
+        "MovementSpeed": 0.8,
     },
     "Crab": {
         "Health": 10,
         "Damage": 20,
         "Experience": 14,
-        "MovementSpeed": 0.9
+        "MovementSpeed": 0.9,
     },
     "Snake": {
         "Health": 15,
         "Damage": 25,
         "Experience": 19,
-        "MovementSpeed": 1
+        "MovementSpeed": 1,
     },
     "Werewolf": {
         "Health": 20,
         "Damage": 30,
         "Experience": 30,
-        "MovementSpeed": 1.1
+        "MovementSpeed": 1.1,
     },
     "Ent": {
         "Health": 50,
         "Damage": 35,
         "Experience": 50,
-        "MovementSpeed": 0.5
+        "MovementSpeed": 0.5,
     },
     "Tentacle": {
         "Health": 70,
         "Damage": 40,
         "Experience": 80,
-        "MovementSpeed": 1.2
+        "MovementSpeed": 1.2,
     },
     "Dwarf": {
         "Health": 80,
         "Damage": 45,
         "Experience": 90,
-        "MovementSpeed": 0.8
+        "MovementSpeed": 0.8,
     },
     "Golem": {
         "Health": 100,
         "Damage": 50,
         "Experience": 120,
-        "MovementSpeed": 1.5
+        "MovementSpeed": 1.5,
     },
     "Ogre": {
         "Health": 150,
         "Damage": 55,
-        "Experience": 9,
-        "MovementSpeed": 1.5
+        "Experience": 180,
+        "MovementSpeed": 1.5,
     },
     "Cultist": {
         "Health": 200,
         "Damage": 60,
-        "Experience": 9,
-        "MovementSpeed": 2
+        "Experience": 250,
+        "MovementSpeed": 2,
     },
     "Beholder": {
         "Health": 500,
         "Damage": 70,
-        "Experience": 9,
-        "MovementSpeed": 2
+        "Experience": 320,
+        "MovementSpeed": 2,
     }
 }

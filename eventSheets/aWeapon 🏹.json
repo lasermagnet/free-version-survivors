@@ -141,6 +141,26 @@
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 142211893608915,
+					"parameters": {
+						"variable": "isPaused",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 464124782233114,
+					"parameters": {
+						"variable": "isLeveling",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
 					"id": "for",
 					"objectClass": "System",
 					"sid": 756617946995276,

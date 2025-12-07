@@ -206,6 +206,15 @@ export const Modifiers = {
         "Multiply": 1,
         "Add": 0.1,
     },
+    "Chainsaw_Speed": {
+        "Weapon": "Chainsaw",
+        "Label": "Chainsaw: speed up",
+        "Description": "Faster orbit speed for the chainsaws.",
+        "Icon": "Chainsaw",
+        "Rule_Value": "Weapons.Chainsaw.OrbitSpeed",
+        "Multiply": 1,
+        "Add": 50,
+    },
 
     "Spikes_Amount": {
         "Weapon": "Spikes",
