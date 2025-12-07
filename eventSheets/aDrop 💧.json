@@ -12,7 +12,18 @@
 			"functionIsAsync": false,
 			"functionParameters": [],
 			"eventType": "custom-ace-block",
-			"conditions": [],
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 963679348378466,
+					"parameters": {
+						"variable": "isLeveling",
+						"comparison": 0,
+						"value": "NO"
+					}
+				}
+			],
 			"actions": [
 				{
 					"id": "set-angle-of-motion",
@@ -73,6 +84,29 @@
 									"id": "destroy",
 									"objectClass": "Drop",
 									"sid": 162031479341671
+								},
+								{
+									"type": "comment",
+									"text": "todo max health"
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 821331794717279,
+									"disabled": true,
+									"parameters": {
+										"instance-variable": "health",
+										"value": "Drop.AnimationName = ROLE_Health ? Self.health + Drop.amount : Self.health"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 128233460434581,
+									"parameters": {
+										"instance-variable": "experience",
+										"value": "Drop.AnimationName = ROLE_Experience ? Self.experience + Drop.amount : Self.experience"
+									}
 								}
 							],
 							"sid": 563644976303548

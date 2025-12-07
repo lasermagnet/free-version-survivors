@@ -41,13 +41,13 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "spawn_queue",
+			"name": "isLeveling",
 			"type": "number",
 			"initialValue": "0",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
-			"sid": 211745329613975
+			"sid": 278446877515976
 		},
 		{
 			"eventType": "comment",

@@ -55,26 +55,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Player_Health_Start",
-			"type": "string",
-			"initialValue": "Player_Health_Start",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 307421626153181
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Item_Spawn_Cooldown",
-			"type": "string",
-			"initialValue": "Item_Spawn_Cooldown",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 328453536536896
-		},
-		{
-			"eventType": "variable",
 			"name": "KEY_Player",
 			"type": "string",
 			"initialValue": "Player",
@@ -82,6 +62,36 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 725029190180261
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Enemies",
+			"type": "string",
+			"initialValue": "Enemies",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 973162742391941
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Health_Max",
+			"type": "string",
+			"initialValue": "Health_Max",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 665175399500443
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Health_Multiplier",
+			"type": "string",
+			"initialValue": "Health_Max_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 808316354153313
 		},
 		{
 			"eventType": "variable",
@@ -95,6 +105,26 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Damage",
+			"type": "string",
+			"initialValue": "Damage",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 615529378731428
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Experience",
+			"type": "string",
+			"initialValue": "Experience",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 867132281892900
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Spawn",
 			"type": "string",
 			"initialValue": "Spawn",
@@ -105,9 +135,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Item",
+			"name": "KEY_Items",
 			"type": "string",
-			"initialValue": "Item",
+			"initialValue": "Items",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -135,6 +165,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Amount",
+			"type": "string",
+			"initialValue": "Amount",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 144781007347416
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Level",
 			"type": "string",
 			"initialValue": "Level",
@@ -142,6 +182,36 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 769332779672486
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Experience_Target",
+			"type": "string",
+			"initialValue": "Experience_Target",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 285185700926874
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Experience_Target_Multiplier",
+			"type": "string",
+			"initialValue": "Experience_Target_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 621653491382017
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Pool",
+			"type": "string",
+			"initialValue": "Pool",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 975736788463612
 		},
 		{
 			"eventType": "comment",
@@ -169,13 +239,37 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "LOOP_Decoration_Per_Cell",
+			"name": "LOOP_Decorations_Per_Cell",
 			"type": "string",
-			"initialValue": "Decoration_Per_Cell",
+			"initialValue": "Decorations_Per_Cell",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 444973302307180
+		},
+		{
+			"eventType": "variable",
+			"name": "LOOP_Obstacles_Per_Cell",
+			"type": "string",
+			"initialValue": "Obstacles_Per_Cell",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 797025420437282
+		},
+		{
+			"eventType": "comment",
+			"text": "Probability tables"
+		},
+		{
+			"eventType": "variable",
+			"name": "PT_Enemies",
+			"type": "string",
+			"initialValue": "Enemies",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 430835665973979
 		},
 		{
 			"eventType": "comment",
@@ -192,18 +286,24 @@
 			"sid": 993471557987743
 		},
 		{
-			"eventType": "comment",
-			"text": "Tiles"
-		},
-		{
 			"eventType": "variable",
-			"name": "TILE_Empty",
-			"type": "number",
-			"initialValue": "0",
+			"name": "ROLE_Experience",
+			"type": "string",
+			"initialValue": "Experience",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 653401462004529
+			"sid": 624490682212020
+		},
+		{
+			"eventType": "variable",
+			"name": "ROLE_Health",
+			"type": "string",
+			"initialValue": "Health",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 462448438943379
 		},
 		{
 			"eventType": "comment",
@@ -220,12 +320,32 @@
 			"sid": 246462826460968
 		},
 		{
+			"eventType": "variable",
+			"name": "TWEEN_LevelUp_FadeIn",
+			"type": "string",
+			"initialValue": "LevelUp_FadeIn",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 916865266777374
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_LevelUp_FadeOut",
+			"type": "string",
+			"initialValue": "LevelUp_FadeOut",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 934132276170255
+		},
+		{
 			"eventType": "comment",
 			"text": "Weapons"
 		},
 		{
 			"eventType": "variable",
-			"name": "WEAPON_Sword",
+			"name": "WEAPON_Sword_todoRemove",
 			"type": "string",
 			"initialValue": "Sword",
 			"comment": "",

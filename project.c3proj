@@ -8,6 +8,13 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
+			"id": "AdvancedRandom",
+			"name": "Advanced Random",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Browser",
 			"name": "Browser",
 			"author": "Scirra",
@@ -66,6 +73,13 @@
 			"type": "plugin",
 			"id": "gamepad",
 			"name": "Gamepad",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Anchor",
+			"name": "Anchor",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -135,9 +149,17 @@
 			"Wall",
 			"Gamepad",
 			"Weapon",
-			"UI_Bar",
-			"UI_Border",
-			"Rules"
+			"UI_Bar_Experience",
+			"UI_Border_Experience",
+			"Rules",
+			"UI_TextSF_Experience",
+			"UI_Border_LevelUp",
+			"UI_TextSF_Upgrade",
+			"UI_TextSF_Label",
+			"AdvancedRandom",
+			"UI_Bar_Health",
+			"UI_Border_Health",
+			"UI_TextSF_Health"
 		],
 		"subfolders": []
 	},
@@ -166,11 +188,8 @@
 			"eSystem ⏱️",
 			"eInput 🕹️",
 			"aEnemy 😈",
-			"_eCollisions 💥",
 			"aPlayer 🧑",
 			"aDrop 💧",
-			"_eTimers ⏰",
-			"_eTweens 🌓",
 			"aGroundMap 🌳"
 		],
 		"subfolders": []
@@ -286,7 +305,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "2",
+		"version": "3",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

@@ -328,11 +328,7 @@
 		},
 		{
 			"eventType": "comment",
-			"text": "Dev"
-		},
-		{
-			"eventType": "comment",
-			"text": "todo_pack remove everything"
+			"text": "Level up UI"
 		},
 		{
 			"eventType": "block",
@@ -340,52 +336,132 @@
 				{
 					"id": "on-any-key-pressed",
 					"objectClass": "Keyboard",
-					"sid": 735107101935972
+					"sid": 723514756394995
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 899906407548923,
+					"parameters": {
+						"variable": "isLeveling",
+						"comparison": 0,
+						"value": "YES"
+					}
+				},
+				{
+					"id": "is-any-playing",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 183777275047325,
+					"behaviorType": "Tween",
+					"isInverted": true
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "UI_TextSF_Upgrade",
+					"sid": 484554562576703,
+					"parameters": {
+						"instance-variable": "option",
+						"comparison": 0,
+						"value": "int(Keyboard.TypedKey)"
+					}
 				}
 			],
 			"actions": [
 				{
-					"id": "add-to-eventvar",
+					"id": "tween-one-property",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 411269398563607,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_LevelUp_FadeOut",
+						"property": "offsetOpacity",
+						"end-value": "0",
+						"time": "1",
+						"ease": "easeoutquint",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "wait-for-previous-actions",
 					"objectClass": "System",
-					"sid": 240977982791190,
-					"parameters": {
-						"variable": "spawn_queue",
-						"value": "int(Keyboard.TypedKey) * 10"
-					}
-				}
-			],
-			"sid": 591465149004269,
-			"isOrBlock": true
-		},
-		{
-			"eventType": "block",
-			"conditions": [
+					"sid": 777887322997353
+				},
 				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 173641484783588,
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 426153536588302,
 					"parameters": {
-						"key": 107
+						"variable": "isLeveling",
+						"value": "NO"
 					}
-				}
-			],
-			"actions": [],
-			"sid": 803864937289158
-		},
-		{
-			"eventType": "block",
-			"conditions": [
+				},
 				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 928559303121088,
+					"id": "subtract-from-instvar",
+					"objectClass": "Player",
+					"sid": 734531545694981,
 					"parameters": {
-						"key": 109
+						"instance-variable": "experience",
+						"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
+					}
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 215433469077875,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Experience_Target",
+						"value": "round(Rules.Get(KEY_Player & DOT & KEY_Experience_Target) * Rules.Get(KEY_Player & DOT & KEY_Experience_Target_Multiplier))"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 305836740429358,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 163372637783556,
+					"parameters": {
+						"object": "Drop",
+						"time-scale": "1"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 374930440088694,
+					"parameters": {
+						"object": "Enemy",
+						"time-scale": "1"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 581517427302123,
+					"parameters": {
+						"object": "Player",
+						"time-scale": "1"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 232002924512385,
+					"parameters": {
+						"object": "Projectile",
+						"time-scale": "1"
 					}
 				}
 			],
-			"actions": [],
-			"sid": 552852968566585
+			"sid": 491362048002243
 		}
 	],
 	"sid": 909767790016851

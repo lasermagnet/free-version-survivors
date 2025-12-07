@@ -1,11 +1,17 @@
 {
-	"name": "UI_Border",
+	"name": "UI_Border_Health",
 	"plugin-id": "NinePatch",
-	"sid": 840635283600648,
+	"sid": 433753867436009,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Anchor",
+			"name": "Anchor",
+			"sid": 768680097669825
+		}
+	],
 	"effectTypes": [],
 	"image": {
 		"width": 3,
@@ -16,7 +22,7 @@
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 508014,
+		"imageSpriteId": 6850131,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

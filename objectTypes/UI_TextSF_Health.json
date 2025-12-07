@@ -1,23 +1,15 @@
 {
-	"name": "UI_TextSF",
+	"name": "UI_TextSF_Health",
 	"plugin-id": "Spritefont2",
-	"sid": 882265311898311,
+	"sid": 306184465546752,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [
-		{
-			"name": "role",
-			"type": "string",
-			"desc": "",
-			"show": true,
-			"sid": 337951322884825
-		}
-	],
+	"instanceVariables": [],
 	"behaviorTypes": [
 		{
 			"behaviorId": "Anchor",
 			"name": "Anchor",
-			"sid": 168019866867789
+			"sid": 763860720985929
 		}
 	],
 	"effectTypes": [],
@@ -30,7 +22,7 @@
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 8189741,
+		"imageSpriteId": 9304834,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

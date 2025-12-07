@@ -20,7 +20,7 @@
 					"tags": "",
 					"instanceVariables": {
 						"R_AngleOffset": 45,
-						"R_Damage": 10
+						"damage": 0
 					},
 					"behaviors": {
 						"Bullet": {
@@ -67,7 +67,7 @@
 					"type": "Enemy",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "All",
+						"initial-animation": "Slime",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -76,8 +76,9 @@
 					"sid": 667473189291264,
 					"tags": "",
 					"instanceVariables": {
-						"R_Health_Init": 1,
 						"health": 0,
+						"damage": 0,
+						"experience": 0,
 						"isDead": 0
 					},
 					"behaviors": {
@@ -128,7 +129,7 @@
 					"type": "Drop",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "XP",
+						"initial-animation": "Experience",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -136,7 +137,9 @@
 					"uid": 11,
 					"sid": 691388145451267,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"amount": 3
+					},
 					"behaviors": {
 						"Bullet": {
 							"properties": {
@@ -186,9 +189,13 @@
 					"sid": 275528799847544,
 					"tags": "",
 					"instanceVariables": {
-						"item_spawn_cooldown": -1,
-						"weapon_sword_cooldown": 0,
-						"health": 0
+						"cooldown_spawn_item": 0,
+						"cooldown_weapon_sword": 0,
+						"cooldown_spawn_enemy": 0,
+						"queue_spawn_enemy": 0,
+						"health": 0,
+						"experience": 0,
+						"isDead": 0
 					},
 					"behaviors": {
 						"8Direction": {

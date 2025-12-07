@@ -4,7 +4,15 @@
 	"sid": 418893563664792,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "amount",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 504929688816682
+		}
+	],
 	"behaviorTypes": [
 		{
 			"behaviorId": "Bullet",
@@ -45,7 +53,44 @@
 					}
 				],
 				"sid": 534758153009268,
-				"name": "XP",
+				"name": "Experience",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 8,
+						"height": 8,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5321205,
+						"collisionPoly": {
+							"points": [
+								0.125,
+								0.125,
+								0.875,
+								0.125,
+								0.875,
+								0.875,
+								0.125,
+								0.875
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 560593410516407,
+				"name": "Health",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,

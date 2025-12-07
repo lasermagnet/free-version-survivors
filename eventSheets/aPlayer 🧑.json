@@ -40,26 +40,35 @@
 					"objectClass": "Player",
 					"sid": 780833186605289,
 					"parameters": {
-						"instance-variable": "weapon_sword_cooldown",
-						"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Cooldown)"
+						"instance-variable": "cooldown_weapon_sword",
+						"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Cooldown)"
 					}
 				},
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
-					"sid": 204842853026142,
+					"sid": 783049380182159,
 					"parameters": {
-						"instance-variable": "item_spawn_cooldown",
-						"value": "Rules.Get(KEY_Item_Spawn_Cooldown)"
+						"instance-variable": "cooldown_spawn_item",
+						"value": "Rules.Get(KEY_Spawn & DOT & KEY_Items & DOT & KEY_Cooldown)"
 					}
 				},
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
-					"sid": 588991818421002,
+					"sid": 177029972898140,
+					"parameters": {
+						"instance-variable": "cooldown_spawn_enemy",
+						"value": "Rules.Get(KEY_Spawn & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 186553279483570,
 					"parameters": {
 						"instance-variable": "health",
-						"value": "Rules.Get(KEY_Player_Health_Start)"
+						"value": "Rules.Get(KEY_Player & DOT & KEY_Health)"
 					}
 				}
 			],
@@ -76,7 +85,28 @@
 			"functionIsAsync": false,
 			"functionParameters": [],
 			"eventType": "custom-ace-block",
-			"conditions": [],
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 198184957131593,
+					"parameters": {
+						"variable": "isLeveling",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 608216906352595,
+					"parameters": {
+						"instance-variable": "isDead",
+						"comparison": 0,
+						"value": "NO"
+					}
+				}
+			],
 			"actions": [
 				{
 					"type": "comment",
@@ -87,8 +117,8 @@
 					"objectClass": "Player",
 					"sid": 678410323692335,
 					"parameters": {
-						"instance-variable": "weapon_sword_cooldown",
-						"value": "Self.weapon_Sword_Cooldown = NOTHING ? NOTHING : max(0, Self.weapon_Sword_Cooldown - dt)"
+						"instance-variable": "cooldown_weapon_sword",
+						"value": "Self.cooldown_weapon_sword = NOTHING ? NOTHING : max(0, Self.cooldown_weapon_sword - dt)"
 					}
 				},
 				{
@@ -96,8 +126,17 @@
 					"objectClass": "Player",
 					"sid": 786724687286705,
 					"parameters": {
-						"instance-variable": "item_spawn_cooldown",
-						"value": "Self.item_Spawn_Cooldown = NOTHING ? NOTHING : max(0, Self.item_Spawn_Cooldown - dt)"
+						"instance-variable": "cooldown_spawn_item",
+						"value": "Self.cooldown_spawn_item = NOTHING ? NOTHING : max(0, Self.cooldown_spawn_item - dt)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 880923047439531,
+					"parameters": {
+						"instance-variable": "cooldown_spawn_enemy",
+						"value": "Self.cooldown_spawn_enemy = NOTHING ? NOTHING : max(0, Self.cooldown_spawn_enemy - dt)"
 					}
 				}
 			],
@@ -125,7 +164,7 @@
 							"objectClass": "Rules",
 							"sid": 202899305705582,
 							"parameters": {
-								"path": "KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Level",
+								"path": "KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level",
 								"cmp": 4,
 								"value": "0"
 							}
@@ -135,7 +174,7 @@
 							"objectClass": "Player",
 							"sid": 180896289172722,
 							"parameters": {
-								"instance-variable": "weapon_sword_cooldown",
+								"instance-variable": "cooldown_weapon_sword",
 								"comparison": 0,
 								"value": "0"
 							}
@@ -147,8 +186,8 @@
 							"objectClass": "Player",
 							"sid": 102200767806325,
 							"parameters": {
-								"instance-variable": "weapon_sword_cooldown",
-								"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Cooldown)"
+								"instance-variable": "cooldown_weapon_sword",
+								"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Cooldown)"
 							}
 						},
 						{
@@ -173,7 +212,7 @@
 									"parameters": {
 										"name": "\"\"",
 										"start-index": "1",
-										"end-index": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Level)"
+										"end-index": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level)"
 									}
 								}
 							],
@@ -181,9 +220,10 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Projectile",
-									"sid": 358178069420982,
+									"sid": 806197989260994,
 									"parameters": [
-										"randomAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Level) * loopindex)"
+										"randomAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level) * loopindex)",
+										"WEAPON_Sword_todoRemove"
 									]
 								}
 							],
@@ -203,7 +243,7 @@
 							"objectClass": "Player",
 							"sid": 195966855546266,
 							"parameters": {
-								"instance-variable": "item_spawn_cooldown",
+								"instance-variable": "cooldown_spawn_item",
 								"comparison": 0,
 								"value": "0"
 							}
@@ -213,10 +253,10 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 306709955027062,
+							"sid": 554032964253695,
 							"parameters": {
-								"instance-variable": "item_spawn_cooldown",
-								"value": "Rules.Get(KEY_Item_Spawn_Cooldown)"
+								"instance-variable": "cooldown_spawn_item",
+								"value": "Rules.Get(KEY_Spawn & DOT & KEY_Items & DOT & KEY_Cooldown)"
 							}
 						},
 						{
@@ -239,13 +279,13 @@
 						{
 							"id": "tween-one-property",
 							"objectClass": "Weapon",
-							"sid": 559557836579902,
+							"sid": 253088102355691,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"\"",
 								"property": "offsetOpacity",
 								"end-value": "0",
-								"time": "Rules.Get(KEY_Item_Spawn_Cooldown)",
+								"time": "Rules.Get(KEY_Spawn & DOT & KEY_Items & DOT & KEY_Cooldown)",
 								"ease": "easeinexpo",
 								"destroy-on-complete": "yes",
 								"loop": "no",
@@ -259,7 +299,48 @@
 							"sid": 176612895163338
 						}
 					],
-					"sid": 129191214035208
+					"sid": 129191214035208,
+					"disabled": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Queue enemy spawn"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 329208908358969,
+							"parameters": {
+								"instance-variable": "cooldown_spawn_enemy",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 575116398767069,
+							"parameters": {
+								"instance-variable": "cooldown_spawn_enemy",
+								"value": "Rules.Get(KEY_Spawn & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "Player",
+							"sid": 612564162008655,
+							"parameters": {
+								"instance-variable": "queue_spawn_enemy",
+								"value": "Rules.Get(KEY_Spawn & DOT & KEY_Enemies & DOT & KEY_Amount)"
+							}
+						}
+					],
+					"sid": 884938568296906
 				},
 				{
 					"eventType": "comment",
@@ -356,6 +437,212 @@
 						}
 					],
 					"sid": 303362420858496
+				},
+				{
+					"eventType": "comment",
+					"text": "Level up"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 196602343613844,
+							"parameters": {
+								"instance-variable": "experience",
+								"comparison": 5,
+								"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 515945957497019,
+							"parameters": {
+								"variable": "isLeveling",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "set-object-time-scale",
+							"objectClass": "System",
+							"sid": 185234516291077,
+							"parameters": {
+								"object": "Drop",
+								"time-scale": "0"
+							}
+						},
+						{
+							"id": "set-object-time-scale",
+							"objectClass": "System",
+							"sid": 696855108900735,
+							"parameters": {
+								"object": "Enemy",
+								"time-scale": "0"
+							}
+						},
+						{
+							"id": "set-object-time-scale",
+							"objectClass": "System",
+							"sid": 240154764419903,
+							"parameters": {
+								"object": "Player",
+								"time-scale": "0"
+							}
+						},
+						{
+							"id": "set-object-time-scale",
+							"objectClass": "System",
+							"sid": 672119175847318,
+							"parameters": {
+								"object": "Projectile",
+								"time-scale": "0"
+							}
+						},
+						{
+							"id": "stop-all-tweens",
+							"objectClass": "UI_Border_LevelUp",
+							"sid": 533770999747504,
+							"behaviorType": "Tween"
+						},
+						{
+							"id": "set-opacity",
+							"objectClass": "UI_Border_LevelUp",
+							"sid": 151538551897156,
+							"parameters": {
+								"opacity": "0"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "UI_Border_LevelUp",
+							"sid": 855122626981925,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "UI_Border_LevelUp",
+							"sid": 847425139102714,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "TWEEN_LevelUp_FadeIn",
+								"property": "offsetOpacity",
+								"end-value": "100",
+								"time": "1",
+								"ease": "easeoutcubic",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 222428401904073
+				},
+				{
+					"eventType": "comment",
+					"text": "Take damage from enemies"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "Player",
+							"sid": 643754501194321,
+							"parameters": {
+								"object": "Enemy"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemy",
+							"sid": 279699643422993,
+							"parameters": {
+								"instance-variable": "isDead",
+								"comparison": 0,
+								"value": "NO"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 402692368345753,
+							"parameters": {
+								"instance-variable": "health",
+								"value": "max(0, Self.health - Enemy.damage * dt)"
+							}
+						}
+					],
+					"sid": 213451265694389
+				},
+				{
+					"eventType": "comment",
+					"text": "Dying"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 250616126210243,
+							"parameters": {
+								"instance-variable": "health",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "todo"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 242879650947707,
+							"parameters": {
+								"instance-variable": "isDead",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Player",
+							"sid": 574219236840102,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "Player",
+							"sid": 269555740685749,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"\"",
+								"property": "offsetOpacity",
+								"end-value": "0",
+								"time": "1",
+								"ease": "easeoutcubic",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 960843257670359
 				}
 			]
 		}

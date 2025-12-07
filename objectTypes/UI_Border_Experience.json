@@ -1,36 +1,28 @@
 {
-	"name": "UI_TextSF",
-	"plugin-id": "Spritefont2",
-	"sid": 882265311898311,
+	"name": "UI_Border_Experience",
+	"plugin-id": "NinePatch",
+	"sid": 840635283600648,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [
-		{
-			"name": "role",
-			"type": "string",
-			"desc": "",
-			"show": true,
-			"sid": 337951322884825
-		}
-	],
+	"instanceVariables": [],
 	"behaviorTypes": [
 		{
 			"behaviorId": "Anchor",
 			"name": "Anchor",
-			"sid": 168019866867789
+			"sid": 795019415540378
 		}
 	],
 	"effectTypes": [],
 	"image": {
-		"width": 570,
-		"height": 150,
+		"width": 3,
+		"height": 3,
 		"originX": 0.5,
 		"originY": 0.5,
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 8189741,
+		"imageSpriteId": 508014,
 		"useCollisionPoly": true,
 		"tag": ""
 	}
