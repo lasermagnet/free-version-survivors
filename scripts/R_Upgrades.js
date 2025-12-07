@@ -30,9 +30,12 @@ export const Upgrades = {
     "Ice": {
         "Modifiers": ["Ice_Amount", "Ice_Duration", "Ice_FreezeTime", "Ice_Duration", "Ice_FreezeTime", "Ice_Duration", "Ice_FreezeTime"],
     },
+    "Sword": {
+        "Modifiers": ["Sword_Amount", "Sword_Damage", "Sword_Size", "Sword_Damage", "Sword_Size", "Sword_Damage", "Sword_Size"],
+    },
 
     // Player stats
-    // todo_maybe number based usage limit for "simple" upgrades? or group them together?
+    // todo_maybe number based usage limit for "simple" upgrades? or group them together with optional touple format (for specifying amount) with string fallback (amount = 1)?
     "EnemySpawnAmount": {
         "Modifiers_Infinite": ["EnemySpawnAmount"]
     },
@@ -54,6 +57,9 @@ export const Upgrades = {
     },
     "PickupDistance": {
         "Modifiers": ["PickupDistance", "PickupDistance", "PickupDistance", "PickupDistance"],
+    },
+    "LevelUpFreezeTime": {
+        "Modifiers": ["LevelUpFreezeTime", "LevelUpFreezeTime", "LevelUpFreezeTime", "LevelUpFreezeTime", "LevelUpFreezeTime",]
     },
     "WeaponDamage": {
         "Modifiers": ["WeaponDamage", "WeaponDamage", "WeaponDamage", "WeaponDamage"],

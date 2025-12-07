@@ -166,10 +166,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 898095459607257,
+					"sid": 674194114201843,
 					"parameters": {
 						"variable": "isPaused",
-						"value": "isLeveling = YES ? isPaused : (isPaused = YES ? NO : YES)"
+						"value": "isLeveling = YES | Player.isDead = YES ? isPaused : (isPaused = YES ? NO : YES)"
 					}
 				},
 				{

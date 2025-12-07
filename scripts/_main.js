@@ -1,4 +1,4 @@
-/*
+
 import { basicSetup, EditorView } from "https://esm.sh/codemirror@6.0.2/"
 import { javascript } from "https://esm.sh/@codemirror/lang-javascript@6.2.4/"
 import { basicDark } from "https://esm.sh/@fsegurai/codemirror-theme-basic-dark@6.2.2/"
@@ -38,4 +38,3 @@ async function OnBeforeProjectStart(runtime) {
 	}
 	addStyle(`#rule-editor {overflow: auto}`)
 }
-*/

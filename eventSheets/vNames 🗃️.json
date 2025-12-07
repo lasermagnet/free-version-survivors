@@ -177,16 +177,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_AngleOffset",
-			"type": "string",
-			"initialValue": "AngleOffset",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 106917551357912
-		},
-		{
-			"eventType": "variable",
 			"name": "KEY_Animation",
 			"type": "string",
 			"initialValue": "Animation",
@@ -747,6 +737,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_RotationAngleOffset",
+			"type": "string",
+			"initialValue": "RotationAngleOffset",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 363760324058142
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_RotationSpeed",
 			"type": "string",
 			"initialValue": "RotationSpeed",
@@ -784,6 +784,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 242774993217273
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_SpawnAngleOffset",
+			"type": "string",
+			"initialValue": "SpawnAngleOffset",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 917675420928452
 		},
 		{
 			"eventType": "variable",

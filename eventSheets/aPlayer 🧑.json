@@ -740,7 +740,7 @@
 						{
 							"customAction": "spawn",
 							"objectClass": "Weapon",
-							"sid": 754867529646976,
+							"sid": 808841034647847,
 							"parameters": [
 								"Rules.CurrentKey",
 								"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
@@ -748,8 +748,8 @@
 								"Rules.Get(DOT & KEY_Duration)",
 								"Rules.Get(DOT & KEY_BlockMovement) = NO ? NO : YES",
 								"Rules.Get(DOT & KEY_Pin) = NO ? NO : YES",
-								"Player.lastMovingAngle",
-								"Rules.Get(DOT & KEY_AngleOffset)",
+								"Player.lastMovingAngle + Rules.Get(DOT & KEY_SpawnAngleOffset)",
+								"Rules.Get(DOT & KEY_RotationAngleOffset)",
 								"Rules.Type(DOT & KEY_StaticAngle) = NULL ? EMPTY : str(Rules.Get(DOT & KEY_StaticAngle))",
 								"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
 								"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
@@ -1185,19 +1185,6 @@
 						},
 						{
 							"type": "comment",
-							"text": "Set \"is leveling\" state"
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 515945957497019,
-							"parameters": {
-								"variable": "isLeveling",
-								"value": "YES"
-							}
-						},
-						{
-							"type": "comment",
 							"text": "Increase player level counter"
 						},
 						{
@@ -1212,6 +1199,15 @@
 						{
 							"type": "comment",
 							"text": "Update time scale of moving objects"
+						},
+						{
+							"id": "set-object-time-scale",
+							"objectClass": "System",
+							"sid": 151181250190212,
+							"parameters": {
+								"object": "Weapon",
+								"time-scale": "0"
+							}
 						},
 						{
 							"id": "set-object-time-scale",
@@ -1243,15 +1239,6 @@
 						{
 							"id": "set-object-time-scale",
 							"objectClass": "System",
-							"sid": 672119175847318,
-							"parameters": {
-								"object": "Weapon",
-								"time-scale": "0"
-							}
-						},
-						{
-							"id": "set-object-time-scale",
-							"objectClass": "System",
 							"sid": 197417321501456,
 							"parameters": {
 								"object": "UI_TextSF_Damage",
@@ -1265,6 +1252,19 @@
 							"parameters": {
 								"object": "UI_TextSF_Wave",
 								"time-scale": "0"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Set \"is leveling\" state"
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 993772412875843,
+							"parameters": {
+								"variable": "isLeveling",
+								"value": "YES"
 							}
 						},
 						{

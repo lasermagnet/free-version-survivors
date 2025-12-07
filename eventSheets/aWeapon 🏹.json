@@ -61,7 +61,7 @@
 					"sid": 763453866054419
 				},
 				{
-					"name": "angleOffset",
+					"name": "spriteAngleOffset",
 					"type": "number",
 					"initialValue": "0",
 					"comment": "",
@@ -211,7 +211,7 @@
 					"objectClass": "Weapon",
 					"sid": 771446822796779,
 					"parameters": {
-						"angle": "(staticAngle = EMPTY ? firstAngle + (360 / amount * loopindex) : float(staticAngle)) + angleOffset"
+						"angle": "(staticAngle = EMPTY ? firstAngle + (360 / amount * loopindex) : float(staticAngle)) + spriteAngleOffset"
 					}
 				},
 				{
@@ -390,6 +390,15 @@
 							"behaviorType": "Orbit",
 							"parameters": {
 								"state": "enabled"
+							}
+						},
+						{
+							"id": "set-offset-angle",
+							"objectClass": "Weapon",
+							"sid": 353165451763849,
+							"behaviorType": "Orbit",
+							"parameters": {
+								"angle": "20"
 							}
 						},
 						{

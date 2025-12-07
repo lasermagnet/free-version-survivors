@@ -5,7 +5,7 @@ const _example = {
         "Amount": 0,                // number of weapons to spawn per attack
         "Damage": 0,                // damage per second while weapon is overlapping an enemy
         "PierceLimit": 1,           // weapon is destroyed after hitting this amount of unique enemioes
-        "AngleOffset": 0,           // optional rotation offset for the weapon sprite (eg. if its drawn pointing to the top right, use -45)
+        "RotationAngleOffset": 0,           // optional rotation offset for the weapon sprite (eg. if its drawn pointing to the top right, use -45)
         "Scale": 1,                 // size multiplier
         "StaticAngle": null,        // null means weapon will keep facing the player, a number sets a fixed angle
         "Duration": 1,              // seconds, defines the lifetime of a weapon (fades out at the end)
@@ -28,7 +28,7 @@ export const Weapons = {
         "Amount": 1,
         "Damage": 30,
         "PierceLimit": 2,
-        "AngleOffset": -45,
+        "RotationAngleOffset": -45,
         "Scale": 0.5,
         "Duration": 4,
         "BulletSpeed": 100,
@@ -40,7 +40,7 @@ export const Weapons = {
         "Amount": 0,
         "Damage": 25,
         "PierceLimit": 1000,
-        "AngleOffset": 45,
+        "RotationAngleOffset": 45,
         "Scale": 0.65,
         "Duration": 0.7,
         "Pin": true,
@@ -79,5 +79,20 @@ export const Weapons = {
         "PositionRandom1": 80,
         "OrbitRadius": 13.5,
         "OrbitSpeed": 250,
-    }
+    },
+    "Sword": {
+        "BlockMovement": true,
+        "Cooldown": 2.5,
+        "Amount": 0,
+        "Damage": 40,
+        "PierceLimit": 10000,
+        "RotationAngleOffset": 0,
+        "SpawnAngleOffset": -160,
+        "Scale": 0.5,
+        "Duration": 0.3,
+        "Pin": true,
+        // todo use angle tween instead (so it can be made faster)
+        "OrbitRadius": 5,
+        "OrbitSpeed": 400,
+    },
 }

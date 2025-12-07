@@ -77,6 +77,14 @@ export const Modifiers = {
         "Multiply": 1,
         "Add": 10,
     },
+    "LevelUpFreezeTime": {
+        "Label": "Freeze time",
+        "Description": "Longer freeze time after level up.",
+        "Icon": "Ice",
+        "Rule_Value": "Player.LevelUpFreezeTime",
+        "Multiply": 1,
+        "Add": 0.2,
+    },
     "WeaponDamage": {
         "Label": "All damage up",
         "Description": "Increase damage bonus by 5%.",
@@ -281,5 +289,33 @@ export const Modifiers = {
         "Rule_Value": "Weapons.Ice.FreezeTime",
         "Multiply": 1,
         "Add": 0.5,
+    },
+
+    "Sword_Amount": {
+        "Weapon": "Sword",
+        "Label": "+1 Sword",
+        "Description": "Slash!",
+        "Icon": "Sword",
+        "Rule_Value": "Weapons.Sword.Amount",
+        "Multiply": 1,
+        "Add": 1,
+    },
+    "Sword_Damage": {
+        "Weapon": "Sword",
+        "Label": "Sword: +5 damage",
+        "Description": "Sword does more damage.",
+        "Icon": "Sword",
+        "Rule_Value": "Weapons.Sword.Damage",
+        "Multiply": 1,
+        "Add": 5,
+    },
+    "Sword_Size": {
+        "Weapon": "Sword",
+        "Label": "Sword: scale up",
+        "Description": "Increase the size of your sword.",
+        "Icon": "Sword",
+        "Rule_Value": "Weapons.Sword.Scale",
+        "Multiply": 1.15,
+        "Add": 0,
     },
 }
