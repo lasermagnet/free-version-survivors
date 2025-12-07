@@ -18,13 +18,13 @@ export const Enemies = {
     "Crab": {
         "Health": 10,
         "Damage": 20,
-        "Experience": 15,
+        "Experience": 14,
         "MovementSpeed": 0.9
     },
     "Snake": {
         "Health": 15,
         "Damage": 25,
-        "Experience": 20,
+        "Experience": 19,
         "MovementSpeed": 1
     },
     "Werewolf": {

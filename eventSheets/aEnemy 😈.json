@@ -705,6 +705,10 @@
 							],
 							"actions": [
 								{
+									"type": "comment",
+									"text": "Increment counter"
+								},
+								{
 									"id": "add-to-eventvar",
 									"objectClass": "System",
 									"sid": 535727323171775,
@@ -712,6 +716,10 @@
 										"variable": "enemiesKilled",
 										"value": "1"
 									}
+								},
+								{
+									"type": "comment",
+									"text": "Update enemy status, disable its movement and tween it out"
 								},
 								{
 									"id": "set-instvar-value",
@@ -747,6 +755,22 @@
 										"ping-pong": "no",
 										"repeat-count": "1"
 									}
+								},
+								{
+									"type": "comment",
+									"text": "Spawn an experience or health drop"
+								},
+								{
+									"type": "comment",
+									"text": "todo_ext add check if Enemy.experience > 0 & Enemy.healing > 0"
+								},
+								{
+									"type": "comment",
+									"text": "todo_now add experience/healing bonus here instead of on pickup"
+								},
+								{
+									"type": "comment",
+									"text": "todo_now change drop animation frame based on its value"
 								},
 								{
 									"id": "spawn-another-object",
@@ -785,6 +809,14 @@
 									"parameters": {
 										"animation": "Enemy.experience > 0 ? KEY_Experience : KEY_Health",
 										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-animation-frame",
+									"objectClass": "Drop",
+									"sid": 793572563336753,
+									"parameters": {
+										"frame-number": "min(floor(max(Self.experience, Self.healing) / C_Drop_ValueToLevelDivider), Self.AnimationFrameCount - 1)"
 									}
 								}
 							],
