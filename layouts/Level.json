@@ -1013,42 +1013,6 @@
 						"angle": 0,
 						"zElevation": 0
 					}
-				},
-				{
-					"type": "DrawingCanvas",
-					"properties": {
-						"resolution-mode": "auto",
-						"initially-visible": true,
-						"origin": "top-left",
-						"antialiasing": "off"
-					},
-					"uid": 38,
-					"sid": 578822196554836,
-					"tags": "",
-					"instanceVariables": {},
-					"behaviors": {},
-					"instanceFolderItem": {
-						"sid": 578822196554836,
-						"expanded": true
-					},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 26,
-						"y": 8,
-						"width": 16,
-						"height": 8,
-						"originX": 0,
-						"originY": 0,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
 				}
 			],
 			"sid": 401569751333957,

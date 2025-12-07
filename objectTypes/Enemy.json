@@ -27,13 +27,6 @@
 			"sid": 570871117964012
 		},
 		{
-			"name": "damageTaken",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 598713301505426
-		},
-		{
 			"name": "isDead",
 			"type": "number",
 			"desc": "",
@@ -51,11 +44,6 @@
 			"behaviorId": "Tween",
 			"name": "Tween",
 			"sid": 766580555767484
-		},
-		{
-			"behaviorId": "Timer",
-			"name": "Timer",
-			"sid": 271333952884408
 		}
 	],
 	"effectTypes": [],
@@ -86,13 +74,6 @@
 							]
 						},
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.5
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -130,13 +111,6 @@
 							]
 						},
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -174,13 +148,6 @@
 							]
 						},
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -218,13 +185,6 @@
 							]
 						},
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -262,13 +222,6 @@
 							]
 						},
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -306,13 +259,6 @@
 							]
 						},
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -350,13 +296,6 @@
 							]
 						},
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -382,13 +321,6 @@
 						"fileType": "image/png",
 						"imageSpriteId": 8334652,
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -414,13 +346,6 @@
 						"fileType": "image/png",
 						"imageSpriteId": 9152506,
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -446,13 +371,6 @@
 						"fileType": "image/png",
 						"imageSpriteId": 3442040,
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -478,13 +396,6 @@
 						"fileType": "image/png",
 						"imageSpriteId": 5471851,
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -522,13 +433,6 @@
 							]
 						},
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
@@ -566,13 +470,6 @@
 							]
 						},
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "DamageNumber",
-								"x": 0.5,
-								"y": 0.375
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}

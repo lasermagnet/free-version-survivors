@@ -29,13 +29,6 @@
 		},
 		{
 			"type": "plugin",
-			"id": "DrawingCanvas",
-			"name": "Drawing canvas",
-			"author": "Scirra",
-			"bundled": false
-		},
-		{
-			"type": "plugin",
 			"id": "HTMLElement",
 			"name": "HTML Element",
 			"author": "Scirra",
@@ -193,9 +186,7 @@
 			"HTMLElement",
 			"UI_Button9P",
 			"UI_Rectangle",
-			"UI_TextSF_DamageNumber",
-			"DrawingCanvas",
-			"DamageNumber"
+			"UI_TextSF_Damage"
 		],
 		"subfolders": []
 	},

@@ -15,8 +15,8 @@ export const rules = {
             "Cooldown": 10
         },
         "Enemies": { // Enemy spawning
-            "Cooldown": 1,
-            "Amount": 50,
+            "Cooldown": 2,
+            "Amount": 10,
         },
     },
 
@@ -53,9 +53,9 @@ export const rules = {
         },
         "MovementSpeed": {
             "Label": "Increase movement speed",
-            "Rule_Value": "Player.MovementSpeed",
-            "Multiply": 1,
-            "Add": 10
+            "Rule_Value": "Player.Health_Max",
+            "Multiply": 1.1,
+            "Add": 0
         },
     },
 
@@ -81,9 +81,9 @@ export const rules = {
             //todo: animation name, "movement type"
             // todo: use player direction
             "Cooldown": 1,
-            "Level": 10,
+            "Level": 2,
             "Damage": 10,
-            "PierceLimit": 10
+            "PierceLimit": 3
         }
         // todo more weapons
     }

@@ -165,6 +165,16 @@
 			"sid": 892639912846222,
 			"children": [
 				{
+					"eventType": "variable",
+					"name": "randomAngle",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 377622339872424
+				},
+				{
 					"eventType": "comment",
 					"text": "Attack: Sword"
 				},
@@ -201,6 +211,15 @@
 								"instance-variable": "cooldown_weapon_sword",
 								"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Cooldown)"
 							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 579380886182412,
+							"parameters": {
+								"variable": "randomAngle",
+								"value": "random(0, 360)"
+							}
 						}
 					],
 					"sid": 135052668909848,
@@ -223,9 +242,9 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Projectile",
-									"sid": 815504127971766,
+									"sid": 806197989260994,
 									"parameters": [
-										"Player.lastMovingAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level) * loopindex)",
+										"randomAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level) * loopindex)",
 										"WEAPON_Sword_todoRemove"
 									]
 								}
@@ -502,15 +521,6 @@
 							"sid": 672119175847318,
 							"parameters": {
 								"object": "Projectile",
-								"time-scale": "0"
-							}
-						},
-						{
-							"id": "set-object-time-scale",
-							"objectClass": "System",
-							"sid": 197417321501456,
-							"parameters": {
-								"object": "UI_TextSF_DamageNumber",
 								"time-scale": "0"
 							}
 						},
@@ -927,6 +937,16 @@
 					"text": "Apply upgrade (multiply)"
 				},
 				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 351531945397990,
+					"disabled": true,
+					"parameters": {
+						"type": "log",
+						"message": "\"Applying upgrade: \" & Rules.GetAsBeautifiedString(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade)"
+					}
+				},
+				{
 					"id": "set-value",
 					"objectClass": "Rules",
 					"sid": 468422597204872,
@@ -1029,15 +1049,6 @@
 					"sid": 232002924512385,
 					"parameters": {
 						"object": "Projectile",
-						"time-scale": "1"
-					}
-				},
-				{
-					"id": "set-object-time-scale",
-					"objectClass": "System",
-					"sid": 222741729041849,
-					"parameters": {
-						"object": "UI_TextSF_DamageNumber",
 						"time-scale": "1"
 					}
 				}

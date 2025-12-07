@@ -1,5 +1,5 @@
 {
-	"name": "UI_TextSF_DamageNumber",
+	"name": "UI_TextSF_Damage",
 	"plugin-id": "Spritefont2",
 	"sid": 982870579480649,
 	"isGlobal": false,
@@ -14,15 +14,15 @@
 	],
 	"effectTypes": [],
 	"image": {
-		"width": 40,
-		"height": 56,
+		"width": 570,
+		"height": 150,
 		"originX": 0.5,
 		"originY": 0.5,
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 3298697,
+		"imageSpriteId": 2724839,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

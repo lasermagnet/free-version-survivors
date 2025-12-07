@@ -46,13 +46,6 @@
 			"desc": "",
 			"show": true,
 			"sid": 216679022523564
-		},
-		{
-			"name": "lastMovingAngle",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 131043624706321
 		}
 	],
 	"behaviorTypes": [
