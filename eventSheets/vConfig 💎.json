@@ -120,6 +120,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 295044313391476
+		},
+		{
+			"eventType": "variable",
+			"name": "C_UI_LevelUp_Tween_Time",
+			"type": "number",
+			"initialValue": "0.7",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 255623351048611
 		}
 	],
 	"sid": 900977153576648

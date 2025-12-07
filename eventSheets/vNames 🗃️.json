@@ -125,9 +125,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Spawn",
+			"name": "KEY_Wave",
 			"type": "string",
-			"initialValue": "Spawn",
+			"initialValue": "Wave",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -205,13 +205,53 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Pool",
+			"name": "KEY_Pools",
 			"type": "string",
-			"initialValue": "Pool",
+			"initialValue": "Pools",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 975736788463612
+			"sid": 239070177315976
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Upgrades",
+			"type": "string",
+			"initialValue": "Upgrades",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 326060069846749
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Rule",
+			"type": "string",
+			"initialValue": "Rule",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 373563846543836
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Add",
+			"type": "string",
+			"initialValue": "Add",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 441498095084860
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Multiply",
+			"type": "string",
+			"initialValue": "Multiply",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 795799592767588
 		},
 		{
 			"eventType": "comment",
@@ -270,6 +310,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 430835665973979
+		},
+		{
+			"eventType": "variable",
+			"name": "PT_Upgrades",
+			"type": "string",
+			"initialValue": "Upgrades",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 123819595005711
 		},
 		{
 			"eventType": "comment",

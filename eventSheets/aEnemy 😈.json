@@ -274,6 +274,15 @@
 										"create-hierarchy": false,
 										"template-name": "\"\""
 									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Drop",
+									"sid": 131233287870206,
+									"parameters": {
+										"instance-variable": "amount",
+										"value": "Enemy.experience"
+									}
 								}
 							],
 							"sid": 158259314566033

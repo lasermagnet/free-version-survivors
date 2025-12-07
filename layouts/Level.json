@@ -528,7 +528,9 @@
 					"sid": 748426752606334,
 					"tags": "",
 					"instanceVariables": {
-						"option": 1
+						"option": 1,
+						"isDisabled": 0,
+						"upgrade": ""
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -605,7 +607,9 @@
 					"sid": 282178370716221,
 					"tags": "",
 					"instanceVariables": {
-						"option": 2
+						"option": 2,
+						"isDisabled": 0,
+						"upgrade": ""
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -682,7 +686,9 @@
 					"sid": 715822958727901,
 					"tags": "",
 					"instanceVariables": {
-						"option": 3
+						"option": 3,
+						"isDisabled": 0,
+						"upgrade": ""
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -1050,6 +1056,18 @@
 			"properties": {},
 			"uid": 17,
 			"sid": 558890336944726,
+			"tags": "",
+			"instanceVariables": {}
+		},
+		{
+			"type": "UpgradeOptions",
+			"properties": {
+				"width": 0,
+				"height": 1,
+				"depth": 1
+			},
+			"uid": 29,
+			"sid": 426001082676518,
 			"tags": "",
 			"instanceVariables": {}
 		}

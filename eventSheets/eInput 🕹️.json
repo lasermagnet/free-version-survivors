@@ -337,131 +337,43 @@
 					"id": "on-any-key-pressed",
 					"objectClass": "Keyboard",
 					"sid": 723514756394995
-				},
+				}
+			],
+			"actions": [
 				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 899906407548923,
+					"customAction": "selectUpgrade",
+					"objectClass": "Player",
+					"sid": 803168892900854,
+					"parameters": [
+						"int(Keyboard.TypedKey)"
+					]
+				}
+			],
+			"sid": 491362048002243
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 939190789538379,
 					"parameters": {
-						"variable": "isLeveling",
-						"comparison": 0,
-						"value": "YES"
-					}
-				},
-				{
-					"id": "is-any-playing",
-					"objectClass": "UI_Border_LevelUp",
-					"sid": 183777275047325,
-					"behaviorType": "Tween",
-					"isInverted": true
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "UI_TextSF_Upgrade",
-					"sid": 484554562576703,
-					"parameters": {
-						"instance-variable": "option",
-						"comparison": 0,
-						"value": "int(Keyboard.TypedKey)"
+						"object": "UI_TextSF_Upgrade"
 					}
 				}
 			],
 			"actions": [
 				{
-					"id": "tween-one-property",
-					"objectClass": "UI_Border_LevelUp",
-					"sid": 411269398563607,
-					"behaviorType": "Tween",
-					"parameters": {
-						"tags": "TWEEN_LevelUp_FadeOut",
-						"property": "offsetOpacity",
-						"end-value": "0",
-						"time": "1",
-						"ease": "easeoutquint",
-						"destroy-on-complete": "no",
-						"loop": "no",
-						"ping-pong": "no",
-						"repeat-count": "1"
-					}
-				},
-				{
-					"id": "wait-for-previous-actions",
-					"objectClass": "System",
-					"sid": 777887322997353
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 426153536588302,
-					"parameters": {
-						"variable": "isLeveling",
-						"value": "NO"
-					}
-				},
-				{
-					"id": "subtract-from-instvar",
+					"customAction": "selectUpgrade",
 					"objectClass": "Player",
-					"sid": 734531545694981,
-					"parameters": {
-						"instance-variable": "experience",
-						"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
-					}
-				},
-				{
-					"id": "set-value",
-					"objectClass": "Rules",
-					"sid": 215433469077875,
-					"parameters": {
-						"path": "KEY_Player & DOT & KEY_Experience_Target",
-						"value": "round(Rules.Get(KEY_Player & DOT & KEY_Experience_Target) * Rules.Get(KEY_Player & DOT & KEY_Experience_Target_Multiplier))"
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "UI_Border_LevelUp",
-					"sid": 305836740429358,
-					"parameters": {
-						"visibility": "invisible"
-					}
-				},
-				{
-					"id": "set-object-time-scale",
-					"objectClass": "System",
-					"sid": 163372637783556,
-					"parameters": {
-						"object": "Drop",
-						"time-scale": "1"
-					}
-				},
-				{
-					"id": "set-object-time-scale",
-					"objectClass": "System",
-					"sid": 374930440088694,
-					"parameters": {
-						"object": "Enemy",
-						"time-scale": "1"
-					}
-				},
-				{
-					"id": "set-object-time-scale",
-					"objectClass": "System",
-					"sid": 581517427302123,
-					"parameters": {
-						"object": "Player",
-						"time-scale": "1"
-					}
-				},
-				{
-					"id": "set-object-time-scale",
-					"objectClass": "System",
-					"sid": 232002924512385,
-					"parameters": {
-						"object": "Projectile",
-						"time-scale": "1"
-					}
+					"sid": 260729131259590,
+					"parameters": [
+						"UI_TextSF_Upgrade.option"
+					]
 				}
 			],
-			"sid": 491362048002243
+			"sid": 511077247796427
 		}
 	],
 	"sid": 909767790016851

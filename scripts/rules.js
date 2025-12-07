@@ -1,7 +1,6 @@
 const rules = {
 
-    // Player rules
-    "Player": {
+    "Player": { // Player rules
         "Health": 100,
         "Health_Max": 100,
         "Health_Max_Multiplier": 1.05,
@@ -9,51 +8,79 @@ const rules = {
         "Experience_Target_Multiplier": 1.15
     },
 
-    // Spawn rules
-    "Spawn": {
+    // todo waves (with string names/labels)
 
-        // Item spawning
-        "Items": {
+    "Wave": { // Wave rules
+
+        "Items": { // Item spawning
             "Cooldown": 10
         },
 
-        // Enemy spawning
-        "Enemies": {
-            "Cooldown": 2,
-            "Amount": 20,
-            "Pool": [
-                [4, "Slime"],
-                [1, "Rat"],
-            ]
+        "Enemies": { // Enemy spawning
+            "Cooldown": 1,
+            "Amount": 10,
+        },
+
+    },
+
+    "Pools": {
+        "Upgrades": [
+            [1, "Heal1"],
+            [1, "MaxHealth"],
+            /*
+[1, "MoveSpeed"],
+[1, "WeaponLevelUpRandom"],
+[1, "WeaponLevelUpAll"],
+*/
+        ],
+
+        "Enemies": [
+            [4, "Slime"],
+            [1, "Rat"],
+        ]
+    },
+
+    "Upgrades": {
+        "Heal1": {
+            "Label": "Minor healing",
+            "Rule": "Player.Health",
+            "Multiply": 1,
+            "Add": 20
+        },
+        "MaxHealth": {
+            "Label": "Increase max health",
+            "Rule": "Player.Health_Max",
+            "Multiply": 2,
+            "Add": 0
         }
     },
 
-    // Enemy rules
-    "Enemies": {
+    "Enemies": { // Enemy rules
 
         // todo: Slime Rat Crab Snake Werewolf Ent Ghost Tentacle Golem Dwarf Ogre Cultist Beholder
         "Slime": {
             "Health": 1,
-            "Damage": 1,
-            "Experience": 1,
+            "Damage": 5,
+            "Experience": 50,
             "Speed": 1
         },
         "Rat": {
-            "Health": 20,
-            "Damage": 20,
-            "Experience": 20,
+            "Health": 1,
+            "Damage": 10,
+            "Experience": 50,
             "Speed": 2
         }
     },
 
-    // Weapon rules
-    "Weapons": {
+    "Weapons": { // Weapon rules
         "Sword": {
             "Cooldown": 1,
             "Level": 5,
-            "Damage": 10
+            "Damage": 10,
+            "Pierce": 2 // todo
         }
     }
+
 }
 
 /*

@@ -95,8 +95,8 @@
 									"sid": 821331794717279,
 									"disabled": true,
 									"parameters": {
-										"instance-variable": "health",
-										"value": "Drop.AnimationName = ROLE_Health ? Self.health + Drop.amount : Self.health"
+										"instance-variable": "health_todoRemove",
+										"value": "Drop.AnimationName = ROLE_Health ? Self.health_todoRemove + Drop.amount : Self.health_todoRemove"
 									}
 								},
 								{

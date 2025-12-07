@@ -15,6 +15,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Arr",
+			"name": "Array",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Browser",
 			"name": "Browser",
 			"author": "Scirra",
@@ -66,6 +73,13 @@
 			"type": "plugin",
 			"id": "Tilemap",
 			"name": "Tilemap",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Touch",
+			"name": "Touch",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -142,7 +156,7 @@
 			"Global",
 			"Keyboard",
 			"Browser",
-			"GroundMap",
+			"Map",
 			"Projectile",
 			"Drop",
 			"Ground",
@@ -159,7 +173,9 @@
 			"AdvancedRandom",
 			"UI_Bar_Health",
 			"UI_Border_Health",
-			"UI_TextSF_Health"
+			"UI_TextSF_Health",
+			"Touch",
+			"UpgradeOptions"
 		],
 		"subfolders": []
 	},
@@ -190,7 +206,7 @@
 			"aEnemy 😈",
 			"aPlayer 🧑",
 			"aDrop 💧",
-			"aGroundMap 🌳"
+			"aMap 🌳"
 		],
 		"subfolders": []
 	},
@@ -305,7 +321,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "3",
+		"version": "4",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

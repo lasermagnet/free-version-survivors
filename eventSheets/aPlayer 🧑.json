@@ -2,10 +2,6 @@
 	"name": "aPlayer 🧑",
 	"events": [
 		{
-			"eventType": "comment",
-			"text": "todo move player rules to JSON"
-		},
-		{
 			"aceType": "action",
 			"aceName": "spawn",
 			"objectClass": "Player",
@@ -50,7 +46,7 @@
 					"sid": 783049380182159,
 					"parameters": {
 						"instance-variable": "cooldown_spawn_item",
-						"value": "Rules.Get(KEY_Spawn & DOT & KEY_Items & DOT & KEY_Cooldown)"
+						"value": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)"
 					}
 				},
 				{
@@ -59,7 +55,7 @@
 					"sid": 177029972898140,
 					"parameters": {
 						"instance-variable": "cooldown_spawn_enemy",
-						"value": "Rules.Get(KEY_Spawn & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
+						"value": "Rules.Get(KEY_Wave & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
 					}
 				},
 				{
@@ -67,7 +63,7 @@
 					"objectClass": "Player",
 					"sid": 186553279483570,
 					"parameters": {
-						"instance-variable": "health",
+						"instance-variable": "health_todoRemove",
 						"value": "Rules.Get(KEY_Player & DOT & KEY_Health)"
 					}
 				}
@@ -256,7 +252,7 @@
 							"sid": 554032964253695,
 							"parameters": {
 								"instance-variable": "cooldown_spawn_item",
-								"value": "Rules.Get(KEY_Spawn & DOT & KEY_Items & DOT & KEY_Cooldown)"
+								"value": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)"
 							}
 						},
 						{
@@ -285,7 +281,7 @@
 								"tags": "\"\"",
 								"property": "offsetOpacity",
 								"end-value": "0",
-								"time": "Rules.Get(KEY_Spawn & DOT & KEY_Items & DOT & KEY_Cooldown)",
+								"time": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)",
 								"ease": "easeinexpo",
 								"destroy-on-complete": "yes",
 								"loop": "no",
@@ -327,7 +323,7 @@
 							"sid": 575116398767069,
 							"parameters": {
 								"instance-variable": "cooldown_spawn_enemy",
-								"value": "Rules.Get(KEY_Spawn & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
+								"value": "Rules.Get(KEY_Wave & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
 							}
 						},
 						{
@@ -336,7 +332,7 @@
 							"sid": 612564162008655,
 							"parameters": {
 								"instance-variable": "queue_spawn_enemy",
-								"value": "Rules.Get(KEY_Spawn & DOT & KEY_Enemies & DOT & KEY_Amount)"
+								"value": "Rules.Get(KEY_Wave & DOT & KEY_Enemies & DOT & KEY_Amount)"
 							}
 						}
 					],
@@ -527,22 +523,141 @@
 						{
 							"id": "tween-one-property",
 							"objectClass": "UI_Border_LevelUp",
-							"sid": 847425139102714,
+							"sid": 291321989748869,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "TWEEN_LevelUp_FadeIn",
 								"property": "offsetOpacity",
 								"end-value": "100",
-								"time": "1",
+								"time": "C_UI_LevelUp_Tween_Time",
 								"ease": "easeoutcubic",
 								"destroy-on-complete": "no",
 								"loop": "no",
 								"ping-pong": "no",
 								"repeat-count": "1"
 							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "UI_TextSF_Upgrade",
+							"sid": 870111875852480,
+							"parameters": {
+								"instance-variable": "upgrade",
+								"value": "EMPTY"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "UI_TextSF_Upgrade",
+							"sid": 532471539928078,
+							"parameters": {
+								"text": "EMPTY"
+							}
+						},
+						{
+							"id": "set-size",
+							"objectClass": "UpgradeOptions",
+							"sid": 786662869535676,
+							"parameters": {
+								"width": "0",
+								"height": "1",
+								"depth": "1"
+							}
 						}
 					],
-					"sid": 222428401904073
+					"sid": 222428401904073,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "selectedUpgrade",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 836788779224185
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "repeat",
+									"objectClass": "System",
+									"sid": 396368678140248,
+									"parameters": {
+										"count": "100"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "UI_TextSF_Upgrade",
+									"sid": 599264720397435,
+									"parameters": {
+										"instance-variable": "upgrade",
+										"comparison": 0,
+										"value": "EMPTY"
+									}
+								},
+								{
+									"id": "pick-highestlowest",
+									"objectClass": "UI_TextSF_Upgrade",
+									"sid": 587520517175835,
+									"parameters": {
+										"which": "lowest",
+										"instance-variable": "option"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 882146791657174,
+									"parameters": {
+										"variable": "selectedUpgrade",
+										"value": "AdvancedRandom.WeightedByName(PT_Upgrades)"
+									}
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 318948125872464,
+									"parameters": {
+										"type": "log",
+										"message": "\"upgrade choice step: \" & selectedUpgrade"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "UI_TextSF_Upgrade",
+									"sid": 163045367161795,
+									"parameters": {
+										"instance-variable": "upgrade",
+										"value": "UpgradeOptions.IndexOf(selectedUpgrade) = NOTHING ? selectedUpgrade : EMPTY"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "UI_TextSF_Upgrade",
+									"sid": 834583327644511,
+									"parameters": {
+										"text": "Self.upgrade"
+									}
+								},
+								{
+									"id": "push",
+									"objectClass": "UpgradeOptions",
+									"sid": 313942423004106,
+									"parameters": {
+										"where": "back",
+										"value": "selectedUpgrade",
+										"axis": "x"
+									}
+								}
+							],
+							"sid": 733472237835046
+						}
+					]
 				},
 				{
 					"eventType": "comment",
@@ -576,8 +691,8 @@
 							"objectClass": "Player",
 							"sid": 402692368345753,
 							"parameters": {
-								"instance-variable": "health",
-								"value": "max(0, Self.health - Enemy.damage * dt)"
+								"instance-variable": "health_todoRemove",
+								"value": "max(0, Self.health_todoRemove - Enemy.damage * dt)"
 							}
 						}
 					],
@@ -595,7 +710,7 @@
 							"objectClass": "Player",
 							"sid": 250616126210243,
 							"parameters": {
-								"instance-variable": "health",
+								"instance-variable": "health_todoRemove",
 								"comparison": 0,
 								"value": "0"
 							}
@@ -645,6 +760,200 @@
 					"sid": 960843257670359
 				}
 			]
+		},
+		{
+			"aceType": "action",
+			"aceName": "selectUpgrade",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "option",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 797014957186007
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 899906407548923,
+					"parameters": {
+						"variable": "isLeveling",
+						"comparison": 0,
+						"value": "YES"
+					}
+				},
+				{
+					"id": "is-any-playing",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 183777275047325,
+					"behaviorType": "Tween",
+					"isInverted": true
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "UI_TextSF_Upgrade",
+					"sid": 371688155002512,
+					"parameters": {
+						"instance-variable": "option",
+						"comparison": 0,
+						"value": "option"
+					}
+				},
+				{
+					"id": "compare-text",
+					"objectClass": "UI_TextSF_Upgrade",
+					"sid": 111540531222433,
+					"parameters": {
+						"text-to-compare": "EMPTY",
+						"case-sensitivity": "ignore-case"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "tween-one-property",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 411269398563607,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_LevelUp_FadeOut",
+						"property": "offsetOpacity",
+						"end-value": "0",
+						"time": "1",
+						"ease": "easeoutquint",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 777887322997353
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 426153536588302,
+					"parameters": {
+						"variable": "isLeveling",
+						"value": "NO"
+					}
+				},
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "Player",
+					"sid": 734531545694981,
+					"parameters": {
+						"instance-variable": "experience",
+						"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Increase target experience"
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 215433469077875,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Experience_Target",
+						"value": "round(Rules.Get(KEY_Player & DOT & KEY_Experience_Target) * Rules.Get(KEY_Player & DOT & KEY_Experience_Target_Multiplier))"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Apply upgrade (multiply)"
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 351531945397990,
+					"parameters": {
+						"type": "log",
+						"message": "\"Applying upgrade: \" & Rules.GetAsBeautifiedString(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade)"
+					}
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 468422597204872,
+					"parameters": {
+						"path": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule)",
+						"value": "Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule)) * Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Multiply)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Apply upgrade (add)"
+				},
+				{
+					"id": "add-to",
+					"objectClass": "Rules",
+					"sid": 134692220812218,
+					"parameters": {
+						"path": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule)",
+						"value": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Add)"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 305836740429358,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 163372637783556,
+					"parameters": {
+						"object": "Drop",
+						"time-scale": "1"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 374930440088694,
+					"parameters": {
+						"object": "Enemy",
+						"time-scale": "1"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 581517427302123,
+					"parameters": {
+						"object": "Player",
+						"time-scale": "1"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 232002924512385,
+					"parameters": {
+						"object": "Projectile",
+						"time-scale": "1"
+					}
+				}
+			],
+			"sid": 134088445000097
 		}
 	],
 	"sid": 562729237747902

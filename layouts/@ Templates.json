@@ -138,7 +138,7 @@
 					"sid": 691388145451267,
 					"tags": "",
 					"instanceVariables": {
-						"amount": 3
+						"amount": 0
 					},
 					"behaviors": {
 						"Bullet": {
@@ -193,7 +193,7 @@
 						"cooldown_weapon_sword": 0,
 						"cooldown_spawn_enemy": 0,
 						"queue_spawn_enemy": 0,
-						"health": 0,
+						"health_todoRemove": 0,
 						"experience": 0,
 						"isDead": 0
 					},
@@ -245,7 +245,7 @@
 					}
 				},
 				{
-					"type": "GroundMap",
+					"type": "Map",
 					"properties": {
 						"initially-visible": true,
 						"tile-width": 8,

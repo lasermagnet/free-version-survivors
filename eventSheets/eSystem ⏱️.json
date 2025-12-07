@@ -25,10 +25,19 @@
 				{
 					"id": "createProbabilityTableFromJSON",
 					"objectClass": "AdvancedRandom",
-					"sid": 616087639561343,
+					"sid": 522703065808419,
 					"parameters": {
 						"name": "PT_Enemies",
-						"json": "Rules.GetAsCompactString(KEY_Spawn & DOT & KEY_Enemies & DOT & KEY_Pool)"
+						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Enemies)"
+					}
+				},
+				{
+					"id": "createProbabilityTableFromJSON",
+					"objectClass": "AdvancedRandom",
+					"sid": 621677751769992,
+					"parameters": {
+						"name": "PT_Upgrades",
+						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Upgrades)"
 					}
 				},
 				{
@@ -169,7 +178,7 @@
 				},
 				{
 					"customAction": "spawn",
-					"objectClass": "GroundMap",
+					"objectClass": "Map",
 					"sid": 808457871185290
 				},
 				{
@@ -249,7 +258,7 @@
 					"objectClass": "UI_Bar_Health",
 					"sid": 297298202631857,
 					"parameters": {
-						"width": "lerp(Self.Width, min(Player.health / Rules.Get(KEY_Player & DOT & KEY_Health_Max) * Self.initWidth, Self.initWidth), 0.1)"
+						"width": "lerp(Self.Width, min(Player.health_todoRemove / Rules.Get(KEY_Player & DOT & KEY_Health_Max) * Self.initWidth, Self.initWidth), 0.1)"
 					}
 				},
 				{
@@ -257,7 +266,7 @@
 					"objectClass": "UI_TextSF_Health",
 					"sid": 404245535858118,
 					"parameters": {
-						"text": "KEY_Health & newline & round(Player.health) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
+						"text": "KEY_Health & newline & round(Player.health_todoRemove) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
 					}
 				},
 				{

@@ -34,7 +34,7 @@
 			"sid": 222305735525245
 		},
 		{
-			"name": "health",
+			"name": "health_todoRemove",
 			"type": "number",
 			"desc": "",
 			"show": true,
@@ -90,13 +90,13 @@
 						"collisionPoly": {
 							"points": [
 								0.25,
+								0.5,
+								0.5,
 								0.25,
 								0.75,
-								0.25,
-								0.75,
-								1,
-								0.25,
-								1
+								0.5,
+								0.5,
+								0.75
 							]
 						},
 						"useCollisionPoly": true,

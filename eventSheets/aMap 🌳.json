@@ -1,10 +1,10 @@
 {
-	"name": "aGroundMap 🌳",
+	"name": "aMap 🌳",
 	"events": [
 		{
 			"aceType": "action",
 			"aceName": "spawn",
-			"objectClass": "GroundMap",
+			"objectClass": "Map",
 			"functionDescription": "",
 			"functionCategory": "",
 			"functionReturnType": "none",
@@ -19,7 +19,7 @@
 					"objectClass": "System",
 					"sid": 503951035980512,
 					"parameters": {
-						"object-to-create": "GroundMap",
+						"object-to-create": "Map",
 						"layer": "LAYER_Main",
 						"x": "0",
 						"y": "0",
@@ -29,7 +29,7 @@
 				},
 				{
 					"id": "set-size",
-					"objectClass": "GroundMap",
+					"objectClass": "Map",
 					"sid": 298003901122335,
 					"parameters": {
 						"width": "LayoutWidth",
@@ -38,7 +38,7 @@
 				},
 				{
 					"id": "erase-tile-range",
-					"objectClass": "GroundMap",
+					"objectClass": "Map",
 					"sid": 549860918635645,
 					"parameters": {
 						"tile-x": "0",
@@ -64,7 +64,7 @@
 							"parameters": {
 								"name": "LOOP_Cell_X",
 								"start-index": "0",
-								"end-index": "GroundMap.MapDisplayWidth / C_GroundMap_Cell_Size"
+								"end-index": "Map.MapDisplayWidth / C_GroundMap_Cell_Size"
 							}
 						},
 						{
@@ -74,7 +74,7 @@
 							"parameters": {
 								"name": "LOOP_Cell_Y",
 								"start-index": "0",
-								"end-index": "GroundMap.MapDisplayHeight / C_GroundMap_Cell_Size"
+								"end-index": "Map.MapDisplayHeight / C_GroundMap_Cell_Size"
 							}
 						},
 						{
@@ -91,7 +91,7 @@
 					"actions": [
 						{
 							"id": "set-tile",
-							"objectClass": "GroundMap",
+							"objectClass": "Map",
 							"sid": 470684030057121,
 							"parameters": {
 								"tile-x": "loopindex(LOOP_Cell_X) * C_GroundMap_Cell_Size + int(random(0, C_GroundMap_Cell_Size))",
@@ -117,7 +117,7 @@
 							"parameters": {
 								"name": "LOOP_Cell_X",
 								"start-index": "0",
-								"end-index": "GroundMap.MapDisplayWidth / C_GroundMap_Cell_Size"
+								"end-index": "Map.MapDisplayWidth / C_GroundMap_Cell_Size"
 							}
 						},
 						{
@@ -127,7 +127,7 @@
 							"parameters": {
 								"name": "LOOP_Cell_Y",
 								"start-index": "0",
-								"end-index": "GroundMap.MapDisplayHeight / C_GroundMap_Cell_Size"
+								"end-index": "Map.MapDisplayHeight / C_GroundMap_Cell_Size"
 							}
 						},
 						{
@@ -144,7 +144,7 @@
 					"actions": [
 						{
 							"id": "set-tile",
-							"objectClass": "GroundMap",
+							"objectClass": "Map",
 							"sid": 117754017457456,
 							"parameters": {
 								"tile-x": "loopindex(LOOP_Cell_X) * C_GroundMap_Cell_Size + int(random(0, C_GroundMap_Cell_Size))",
