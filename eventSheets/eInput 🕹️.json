@@ -473,6 +473,16 @@
 					"parameters": {
 						"object": "UI_Button9P_Upgrade"
 					}
+				},
+				{
+					"id": "on-object-clicked",
+					"objectClass": "Mouse",
+					"sid": 343676911332355,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked",
+						"object-clicked": "UI_Button9P_Upgrade"
+					}
 				}
 			],
 			"actions": [

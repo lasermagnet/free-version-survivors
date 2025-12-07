@@ -140,7 +140,7 @@
 						"x": 160,
 						"y": 0,
 						"width": 160,
-						"height": 170,
+						"height": 180,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -340,7 +340,7 @@
 					}
 				},
 				{
-					"type": "UI_TextSF_Devlog",
+					"type": "UI_TextSF_DevInfo",
 					"properties": {
 						"text": "Start",
 						"enable-bbcode": true,
@@ -427,7 +427,7 @@
 				{
 					"type": "UI_TextSF_Start",
 					"properties": {
-						"text": "HI THERE! WELCOME TO\n\n[SCALE=1.5]FREE VERSION SURVIVORS[/SCALE]\n\nA \"BULLET HEAVEN\" OR \"SURVIVORS-LIKE\" GAME TEMPLATE MADE IN CONSTRUCT 3. PLEASE DON'T MIND THE PLACEHOLDER ASSETS.\n\nTHE PROJECT WILL SOON BE AVAILABLE FOR DOWNLOAD (FOR FREE). IT FITS IN THE 50 EVENT LIMIT IN THE FREE VERSION OF CONSTURCT 3 AND IT HAS A FAIRLY ROBOUST RULE SYSTEM BASED IN JSON. YOU CAN MOD IT IF YOU WANT USING THE EDITOR ON THE RIGHT!",
+						"text": "HI THERE! WELCOME TO\n\n[SCALE=1.5]FREE VERSION SURVIVORS[/SCALE]\n\nBY FODI\n\nA \"BULLET HEAVEN\" OR \"SURVIVORS-LIKE\" GAME TEMPLATE MADE IN CONSTRUCT 3. PLEASE DON'T MIND THE PLACEHOLDER ASSETS.\n\nTHE PROJECT WILL SOON BE AVAILABLE FOR DOWNLOAD (FOR FREE). IT FITS WITHIN ALL LIMITATIONS OF THE FREE VERSION OF CONSTURCT 3!\n\nIT ALSO HAS A FAIRLY ROBOUST JSON BASED RULE SYSTEM. YOU CAN MOD IT IF YOU WANT USING THE EDITOR ON THE RIGHT!",
 						"enable-bbcode": true,
 						"character-width": 5,
 						"character-height": 7,

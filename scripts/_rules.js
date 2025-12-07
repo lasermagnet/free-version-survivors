@@ -6,12 +6,4 @@ import { Spawns } from "./R_Spawns.js"
 import { Upgrades } from "./R_Upgrades.js"
 import { Weapons } from "./R_Weapons.js"
 
-export const rules = {
-    "Enemies": Enemies,
-    "Player": Player,
-    "Pools": Pools,
-    "Queues": Queues,
-    "Spawns": Spawns,
-    "Upgrades": Upgrades,
-    "Weapons": Weapons,
-}
+export const rules = { Enemies, Player, Pools, Queues, Spawns, Upgrades, Weapons }

@@ -10,33 +10,50 @@
 			"functionReturnType": "none",
 			"functionCopyPicked": false,
 			"functionIsAsync": false,
-			"functionParameters": [],
+			"functionParameters": [
+				{
+					"name": "enemy",
+					"type": "string",
+					"initialValue": "",
+					"comment": "If not specified, it will be chosen randomly",
+					"sid": 500842434014901
+				},
+				{
+					"name": "amount",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 244649095207517
+				}
+			],
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
-					"id": "compare-value",
-					"objectClass": "Rules",
-					"sid": 416384875828382,
+					"id": "repeat",
+					"objectClass": "System",
+					"sid": 151864700105649,
 					"parameters": {
-						"path": "KEY_Queues & DOT & KEY_Enemies",
-						"cmp": 4,
-						"value": "0"
+						"count": "amount"
 					}
 				}
 			],
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Process enemy spawn queue, spawn one enemy per call (tick) and remove it from the queue"
+					"text": "Spawn an enemy; if enemy type was not specified, choose one randomly from the queue"
 				},
 				{
-					"id": "subtract-from",
-					"objectClass": "Rules",
-					"sid": 259101572361751,
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 312023686957999,
 					"parameters": {
-						"path": "KEY_Queues & DOT & KEY_Enemies",
-						"value": "1"
+						"variable": "enemy",
+						"value": "enemy = EMPTY ? AdvancedRandom.WeightedByName(PT_Enemies) : enemy"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Choose a random angle"
 				},
 				{
 					"id": "set-eventvar-value",
@@ -48,70 +65,82 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Spawn enemy object"
+				},
+				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 443287625595748,
+					"sid": 563724051265681,
 					"parameters": {
 						"object-to-create": "Enemy",
 						"layer": "LAYER_Main",
-						"x": "Player.X + cos(randomAngle) * Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Distance)",
-						"y": "Player.Y + sin(randomAngle) * Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Distance)",
+						"x": "Player.X + cos(randomAngle) * C_Distance_Enemy_Spawn",
+						"y": "Player.Y + sin(randomAngle) * C_Distance_Enemy_Spawn",
 						"create-hierarchy": true,
 						"template-name": "\"\""
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Set animation (matches enemy type)"
+				},
+				{
 					"id": "set-animation",
 					"objectClass": "Enemy",
-					"sid": 188179399128604,
+					"sid": 188461980292847,
 					"parameters": {
-						"animation": "AdvancedRandom.WeightedByName(PT_Enemies)",
+						"animation": "enemy",
 						"from": "beginning"
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Initialize enemy IVs"
+				},
+				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 736865178929334,
+					"sid": 451469773109217,
 					"parameters": {
 						"instance-variable": "health",
-						"value": "Rules.Get(KEY_Enemies & DOT & Enemy.AnimationName & DOT & KEY_Health)"
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Health)"
 					}
 				},
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 639507967605963,
+					"sid": 411011654021404,
 					"parameters": {
 						"instance-variable": "damage",
-						"value": "Rules.Get(KEY_Enemies & DOT & Enemy.AnimationName & DOT & KEY_Damage)"
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Damage)"
 					}
 				},
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 903127641605562,
+					"sid": 782234367946509,
 					"parameters": {
 						"instance-variable": "experience",
-						"value": "Rules.Get(KEY_Enemies & DOT & Enemy.AnimationName & DOT & KEY_Experience)"
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Experience)"
 					}
 				},
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 880673156709293,
+					"sid": 860698036664817,
 					"parameters": {
 						"instance-variable": "healing",
-						"value": "Rules.Get(KEY_Enemies & DOT & Enemy.AnimationName & DOT & KEY_Healing)"
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Healing)"
 					}
 				},
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 118594801988185,
+					"sid": 355875597487192,
 					"parameters": {
 						"instance-variable": "movementSpeed",
-						"value": "Rules.Get(KEY_Enemies & DOT & Enemy.AnimationName & DOT & KEY_MovementSpeed)"
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_MovementSpeed)"
 					}
 				},
 				{
@@ -248,14 +277,89 @@
 					"parameters": {
 						"color": "Self.Timer.CurrentTime(TIMER_Enemy_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)"
 					}
-				},
-				{
-					"type": "comment",
-					"text": "todo teleport enemies closer that are too far from the player"
 				}
 			],
 			"sid": 323244324797060,
 			"children": [
+				{
+					"eventType": "comment",
+					"text": "Teleport far away [moving] enemies near the player"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemy",
+							"sid": 106585432721594,
+							"parameters": {
+								"instance-variable": "movementSpeed",
+								"comparison": 4,
+								"value": "0"
+							}
+						},
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 868999438022580,
+							"parameters": {
+								"object": "Enemy",
+								"expression": "distance(Player.X, Player.Y, Enemy.X, Enemy.Y)",
+								"comparison": 4,
+								"value": "C_Distance_Enemy_Teleport"
+							}
+						},
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 929165353494252,
+							"parameters": {
+								"object": "Enemy"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 262331466998579,
+							"parameters": {
+								"variable": "randomAngle",
+								"value": "random(0, 360)"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "Enemy",
+							"sid": 136938948745870,
+							"disabled": true,
+							"parameters": {
+								"x": "Player.X + cos(randomAngle) * C_Distance_Enemy_Spawn",
+								"y": "Player.Y + sin(randomAngle) * C_Distance_Enemy_Spawn"
+							}
+						},
+						{
+							"id": "teleport",
+							"objectClass": "Enemy",
+							"sid": 536910921301331,
+							"behaviorType": "Physics",
+							"parameters": {
+								"x": "Player.X + cos(randomAngle) * C_Distance_Enemy_Spawn",
+								"y": "Player.Y + sin(randomAngle) * C_Distance_Enemy_Spawn"
+							}
+						},
+						{
+							"id": "set-opacity",
+							"objectClass": "Enemy",
+							"sid": 524496873828237,
+							"disabled": true,
+							"parameters": {
+								"opacity": "50"
+							}
+						}
+					],
+					"sid": 494746008157198
+				},
 				{
 					"eventType": "comment",
 					"text": "Enemy getting damaged"
@@ -624,6 +728,10 @@
 							"sid": 768998235732742
 						},
 						{
+							"eventType": "comment",
+							"text": "Kill enemy if they are out of health"
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -726,7 +834,7 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "Spawn an item from the queue (if enemy is far enough from the player and within layout bounds)"
+									"text": "Spawn an item from the queue (if enemy is on the layout, but far enough from the player)"
 								},
 								{
 									"eventType": "block",
@@ -764,7 +872,7 @@
 												"object": "Enemy",
 												"expression": "distance(Enemy.X, Enemy.Y, Player.X, Player.Y)",
 												"comparison": 5,
-												"value": "C_Item_Spawn_Distance_Min"
+												"value": "C_Distance_Item_Spawn_Min"
 											}
 										}
 									],

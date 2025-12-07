@@ -2,7 +2,7 @@
 export const Spawns = {
     // Item spawns
     "Items": {
-        "Cooldown": 30,
+        "Cooldown": 60,
     },
 
     // Enemy spawns

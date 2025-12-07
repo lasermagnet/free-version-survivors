@@ -71,11 +71,21 @@
 			"eventType": "variable",
 			"name": "C_Distance_Enemy_Teleport",
 			"type": "number",
-			"initialValue": "400",
+			"initialValue": "360",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 904404492853739
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Distance_Item_Spawn_Min",
+			"type": "number",
+			"initialValue": "70",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 188733480595106
 		},
 		{
 			"eventType": "comment",
@@ -104,20 +114,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 910881760947431
-		},
-		{
-			"eventType": "comment",
-			"text": "Item"
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Item_Spawn_Distance_Min",
-			"type": "number",
-			"initialValue": "70",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 605678625295526
 		},
 		{
 			"eventType": "comment",

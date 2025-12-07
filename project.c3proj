@@ -180,7 +180,7 @@
 		"items": [
 			"Player",
 			"Enemy",
-			"UI_TextSF_Devlog",
+			"UI_TextSF_DevInfo",
 			"Global",
 			"Keyboard",
 			"Browser",
@@ -528,7 +528,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "24",
+		"version": "25c",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

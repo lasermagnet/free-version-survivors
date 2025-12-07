@@ -36,14 +36,6 @@
 					"text": "Load rules"
 				},
 				{
-					"type": "script",
-					"language": "javascript",
-					"script": [
-						"runtime.objects.Rules.getFirstInstance().setJsonDataCopy(rules)"
-					],
-					"disabled": true
-				},
-				{
 					"id": "parse",
 					"objectClass": "Rules",
 					"sid": 623493135682020,
@@ -135,7 +127,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Spawn walls"
+					"text": "Spawn level bounding walls"
 				},
 				{
 					"id": "create-object",
@@ -301,11 +293,15 @@
 			],
 			"actions": [
 				{
+					"type": "comment",
+					"text": "Update devinfo UI"
+				},
+				{
 					"id": "set-text",
-					"objectClass": "UI_TextSF_Devlog",
-					"sid": 951726770861237,
+					"objectClass": "UI_TextSF_DevInfo",
+					"sid": 956259198535286,
 					"parameters": {
-						"text": "round(fps) & \" FPS, \" & objectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Weapon.Count & \" weapon sprites\" & newline &\n\"Enemies killed: \" & enemiesKilled & newline & newline &\n\"Enemy spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Item spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Item_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Health gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
+						"text": "\"Build \" & projectversion & newline &\nround(fps) & \" FPS, \" & objectcount & \" objects, \" & Enemy.Count & \" enemies\" & newline & newline &\n\"Enemies killed: \" & enemiesKilled & newline & newline &\n\"Enemy spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Item spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Item_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Health gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
 					}
 				},
 				{
@@ -343,9 +339,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_Health",
-					"sid": 591907075046490,
+					"sid": 813636887766762,
 					"parameters": {
-						"text": "KEY_Health & newline & round(Rules.Get(KEY_Player & DOT & KEY_Health)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
+						"text": "KEY_Health & newline & ceil(Rules.Get(KEY_Player & DOT & KEY_Health)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
 					}
 				},
 				{
@@ -359,12 +355,25 @@
 				},
 				{
 					"type": "comment",
-					"text": "Spawn an enemy from queue (if needed)"
+					"text": "Spawn an enemy from queue (if needed) & subtract one from spawn queue"
 				},
 				{
 					"customAction": "spawnFromQueue",
 					"objectClass": "Enemy",
-					"sid": 569763485951453
+					"sid": 685889355637540,
+					"parameters": [
+						"EMPTY",
+						"Rules.Get(KEY_Queues & DOT & KEY_Enemies) > 0 ? 1 : 0"
+					]
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 699958871891345,
+					"parameters": {
+						"path": "KEY_Queues & DOT & KEY_Enemies",
+						"value": "max(0, Rules.Get(KEY_Queues & DOT & KEY_Enemies) - 1)"
+					}
 				},
 				{
 					"type": "comment",
