@@ -32,21 +32,43 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Initialize player IVs"
+				},
+				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
 					"sid": 780833186605289,
 					"parameters": {
-						"instance-variable": "weapon_Sword_Cooldown",
+						"instance-variable": "cooldown_weapon_sword",
 						"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Cooldown)"
 					}
 				},
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
-					"sid": 204842853026142,
+					"sid": 783049380182159,
 					"parameters": {
-						"instance-variable": "item_Spawn_Cooldown",
-						"value": "Rules.Get(KEY_Item_Spawn_Cooldown)"
+						"instance-variable": "cooldown_spawn_item",
+						"value": "Rules.Get(KEY_Spawn & DOT & KEY_Item & DOT & KEY_Cooldown)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 177029972898140,
+					"parameters": {
+						"instance-variable": "cooldown_spawn_enemy",
+						"value": "Rules.Get(KEY_Spawn & DOT & KEY_Enemy & DOT & KEY_Cooldown)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 186553279483570,
+					"parameters": {
+						"instance-variable": "health",
+						"value": "Rules.Get(KEY_Player & DOT & KEY_Health)"
 					}
 				}
 			],
@@ -74,8 +96,8 @@
 					"objectClass": "Player",
 					"sid": 678410323692335,
 					"parameters": {
-						"instance-variable": "weapon_Sword_Cooldown",
-						"value": "Self.weapon_Sword_Cooldown = NOTHING ? NOTHING : max(0, Self.weapon_Sword_Cooldown - dt)"
+						"instance-variable": "cooldown_weapon_sword",
+						"value": "Self.cooldown_weapon_sword = NOTHING ? NOTHING : max(0, Self.cooldown_weapon_sword - dt)"
 					}
 				},
 				{
@@ -83,8 +105,17 @@
 					"objectClass": "Player",
 					"sid": 786724687286705,
 					"parameters": {
-						"instance-variable": "item_Spawn_Cooldown",
-						"value": "Self.item_Spawn_Cooldown = NOTHING ? NOTHING : max(0, Self.item_Spawn_Cooldown - dt)"
+						"instance-variable": "cooldown_spawn_item",
+						"value": "Self.cooldown_spawn_item = NOTHING ? NOTHING : max(0, Self.cooldown_spawn_item - dt)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 880923047439531,
+					"parameters": {
+						"instance-variable": "cooldown_spawn_enemy",
+						"value": "Self.cooldown_spawn_enemy = NOTHING ? NOTHING : max(0, Self.cooldown_spawn_enemy - dt)"
 					}
 				}
 			],
@@ -108,11 +139,21 @@
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "compare-value",
+							"objectClass": "Rules",
+							"sid": 202899305705582,
+							"parameters": {
+								"path": "KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Level",
+								"cmp": 4,
+								"value": "0"
+							}
+						},
+						{
 							"id": "compare-instance-variable",
 							"objectClass": "Player",
 							"sid": 180896289172722,
 							"parameters": {
-								"instance-variable": "weapon_Sword_Cooldown",
+								"instance-variable": "cooldown_weapon_sword",
 								"comparison": 0,
 								"value": "0"
 							}
@@ -124,7 +165,7 @@
 							"objectClass": "Player",
 							"sid": 102200767806325,
 							"parameters": {
-								"instance-variable": "weapon_Sword_Cooldown",
+								"instance-variable": "cooldown_weapon_sword",
 								"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Cooldown)"
 							}
 						},
@@ -158,9 +199,10 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Projectile",
-									"sid": 358178069420982,
+									"sid": 806197989260994,
 									"parameters": [
-										"randomAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Level) * loopindex)"
+										"randomAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Level) * loopindex)",
+										"WEAPON_Sword"
 									]
 								}
 							],
@@ -180,7 +222,7 @@
 							"objectClass": "Player",
 							"sid": 195966855546266,
 							"parameters": {
-								"instance-variable": "item_Spawn_Cooldown",
+								"instance-variable": "cooldown_spawn_item",
 								"comparison": 0,
 								"value": "0"
 							}
@@ -190,10 +232,10 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 306709955027062,
+							"sid": 554032964253695,
 							"parameters": {
-								"instance-variable": "item_Spawn_Cooldown",
-								"value": "Rules.Get(KEY_Item_Spawn_Cooldown)"
+								"instance-variable": "cooldown_spawn_item",
+								"value": "Rules.Get(KEY_Spawn & DOT & KEY_Item & DOT & KEY_Cooldown)"
 							}
 						},
 						{
@@ -216,13 +258,13 @@
 						{
 							"id": "tween-one-property",
 							"objectClass": "Weapon",
-							"sid": 559557836579902,
+							"sid": 253088102355691,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"\"",
 								"property": "offsetOpacity",
 								"end-value": "0",
-								"time": "Rules.Get(KEY_Item_Spawn_Cooldown)",
+								"time": "Rules.Get(KEY_Spawn & DOT & KEY_Item & DOT & KEY_Cooldown)",
 								"ease": "easeinexpo",
 								"destroy-on-complete": "yes",
 								"loop": "no",
@@ -237,6 +279,46 @@
 						}
 					],
 					"sid": 129191214035208
+				},
+				{
+					"eventType": "comment",
+					"text": "Queue enemy spawn"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 329208908358969,
+							"parameters": {
+								"instance-variable": "cooldown_spawn_enemy",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 575116398767069,
+							"parameters": {
+								"instance-variable": "cooldown_spawn_enemy",
+								"value": "Rules.Get(KEY_Spawn & DOT & KEY_Enemy & DOT & KEY_Cooldown)"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "Player",
+							"sid": 612564162008655,
+							"parameters": {
+								"instance-variable": "queue_spawn_enemy",
+								"value": "Rules.Get(KEY_Spawn & DOT & KEY_Enemy & DOT & KEY_Amount)"
+							}
+						}
+					],
+					"sid": 884938568296906
 				},
 				{
 					"eventType": "comment",
@@ -265,6 +347,15 @@
 						}
 					],
 					"actions": [
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 460470911981716,
+							"parameters": {
+								"type": "log",
+								"message": "\"Picked up item: \" & Weapon.AnimationFrameTag"
+							}
+						},
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Weapon",

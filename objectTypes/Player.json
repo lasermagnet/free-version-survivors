@@ -6,25 +6,39 @@
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [
 		{
-			"name": "R_Weapon_Sword_Level",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 347209974549356
-		},
-		{
-			"name": "item_Spawn_Cooldown",
+			"name": "cooldown_spawn_item",
 			"type": "number",
 			"desc": "",
 			"show": true,
 			"sid": 925237212199924
 		},
 		{
-			"name": "weapon_Sword_Cooldown",
+			"name": "cooldown_weapon_sword",
 			"type": "number",
 			"desc": "",
 			"show": true,
 			"sid": 977016936738542
+		},
+		{
+			"name": "cooldown_spawn_enemy",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 962469594054445
+		},
+		{
+			"name": "queue_spawn_enemy",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 222305735525245
+		},
+		{
+			"name": "health",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 474339263093984
 		}
 	],
 	"behaviorTypes": [

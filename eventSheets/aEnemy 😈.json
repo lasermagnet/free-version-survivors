@@ -37,8 +37,19 @@
 					"id": "compare-eventvar",
 					"objectClass": "System",
 					"sid": 297305239815305,
+					"disabled": true,
 					"parameters": {
 						"variable": "spawn_queue",
+						"comparison": 4,
+						"value": "0"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 575399264185283,
+					"parameters": {
+						"instance-variable": "queue_spawn_enemy",
 						"comparison": 4,
 						"value": "0"
 					}
@@ -49,8 +60,18 @@
 					"id": "subtract-from-eventvar",
 					"objectClass": "System",
 					"sid": 375273697513207,
+					"disabled": true,
 					"parameters": {
 						"variable": "spawn_queue",
+						"value": "1"
+					}
+				},
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "Player",
+					"sid": 375479589213943,
+					"parameters": {
+						"instance-variable": "queue_spawn_enemy",
 						"value": "1"
 					}
 				},
@@ -158,10 +179,10 @@
 						{
 							"id": "subtract-from-instvar",
 							"objectClass": "Enemy",
-							"sid": 530097498294054,
+							"sid": 285493070811282,
 							"parameters": {
 								"instance-variable": "health",
-								"value": "Projectile.R_Damage * dt"
+								"value": "Projectile.damage * dt"
 							}
 						},
 						{
@@ -278,6 +299,56 @@
 						}
 					],
 					"sid": 403949667641976
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-x",
+							"objectClass": "Enemy",
+							"sid": 127593178964393,
+							"parameters": {
+								"comparison": 4,
+								"x-co-ordinate": "Player.X + C_Enemy_Mirror_Threshold"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Enemy",
+							"sid": 629899684839711,
+							"parameters": {
+								"state": "mirrored"
+							}
+						}
+					],
+					"sid": 304448305740616
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-x",
+							"objectClass": "Enemy",
+							"sid": 333258971427132,
+							"parameters": {
+								"comparison": 2,
+								"x-co-ordinate": "Player.X - C_Enemy_Mirror_Threshold"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Enemy",
+							"sid": 720267318350729,
+							"parameters": {
+								"state": "not-mirrored"
+							}
+						}
+					],
+					"sid": 894429956563491
 				}
 			]
 		}

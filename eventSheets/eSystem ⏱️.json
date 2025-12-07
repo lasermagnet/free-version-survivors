@@ -205,9 +205,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF",
-					"sid": 418846526763550,
+					"sid": 586361156603131,
 					"parameters": {
-						"text": "\"FPS: \" & round(fps) & newline & objectcount & \" objects\""
+						"text": "\"FPS: \" & round(fps) & newline &\nobjectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Projectile.Count & \" projectiles\""
 					}
 				},
 				{
@@ -251,6 +251,10 @@
 			],
 			"actions": [
 				{
+					"type": "comment",
+					"text": "todo"
+				},
+				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
 					"sid": 333244487973738,
@@ -260,7 +264,8 @@
 					}
 				}
 			],
-			"sid": 963691476976903
+			"sid": 963691476976903,
+			"disabled": true
 		}
 	],
 	"sid": 488420928527336

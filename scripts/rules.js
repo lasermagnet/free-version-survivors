@@ -1,15 +1,27 @@
 const rules = {
     // Player rules
-    "Player_Health_Start": 100,
+    "Player": {
+        "Health": 100,
+        "NextLevelXP": 100
+    },
 
-    // Item rules
-    "Item_Spawn_Cooldown": 3,
+    // Spawn rules
+    "Spawn": {
+        "Item": {
+            "Cooldown": 10
+        },
+        "Enemy": {
+            "Cooldown": 2,
+            "Amount": 5
+        }
+    },
 
     // Weapon rules
     "Weapons": {
         "Sword": {
             "Cooldown": 1,
-            "Level": 0
+            "Level": 0,
+            "Damage": 10
         }
     }
 }

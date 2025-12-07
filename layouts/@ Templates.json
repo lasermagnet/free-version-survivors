@@ -20,7 +20,7 @@
 					"tags": "",
 					"instanceVariables": {
 						"R_AngleOffset": 45,
-						"R_Damage": 10
+						"damage": 0
 					},
 					"behaviors": {
 						"Bullet": {
@@ -136,7 +136,9 @@
 					"uid": 11,
 					"sid": 691388145451267,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"value": 0
+					},
 					"behaviors": {
 						"Bullet": {
 							"properties": {
@@ -186,9 +188,11 @@
 					"sid": 275528799847544,
 					"tags": "",
 					"instanceVariables": {
-						"R_Weapon_Sword_Level": 1,
-						"item_Spawn_Cooldown": -1,
-						"weapon_Sword_Cooldown": 0
+						"cooldown_spawn_item": 0,
+						"cooldown_weapon_sword": 0,
+						"cooldown_spawn_enemy": 0,
+						"queue_spawn_enemy": 0,
+						"health": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -260,6 +264,20 @@
 							"properties": {
 								"enabled": true,
 								"tags": ""
+							}
+						},
+						"Physics": {
+							"properties": {
+								"immovable": true,
+								"collision-mask": "use-collision-polygon",
+								"prevent-rotation": false,
+								"density": 1,
+								"friction": 0,
+								"elasticity": 0,
+								"linear-damping": 0,
+								"angular-damping": 0.01,
+								"bullet": false,
+								"enabled": true
 							}
 						}
 					},

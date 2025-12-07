@@ -51,6 +51,10 @@
 			"sid": 988630260845428,
 			"children": [
 				{
+					"eventType": "comment",
+					"text": "Spawn decorations"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -78,7 +82,7 @@
 							"objectClass": "System",
 							"sid": 440536709567931,
 							"parameters": {
-								"name": "LOOP_Decoration_Per_Cell",
+								"name": "LOOP_Decorations_Per_Cell",
 								"start-index": "0",
 								"end-index": "C_GroundMap_Decorations_Per_Cell"
 							}
@@ -98,6 +102,59 @@
 						}
 					],
 					"sid": 570313454722713
+				},
+				{
+					"eventType": "comment",
+					"text": "Spawn obstacles"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 650289157611535,
+							"parameters": {
+								"name": "LOOP_Cell_X",
+								"start-index": "0",
+								"end-index": "GroundMap.MapDisplayWidth / C_GroundMap_Cell_Size"
+							}
+						},
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 966013949134106,
+							"parameters": {
+								"name": "LOOP_Cell_Y",
+								"start-index": "0",
+								"end-index": "GroundMap.MapDisplayHeight / C_GroundMap_Cell_Size"
+							}
+						},
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 649294553158878,
+							"parameters": {
+								"name": "LOOP_Obstacles_Per_Cell",
+								"start-index": "0",
+								"end-index": "C_GroundMap_Obstacles_Per_Cell"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-tile",
+							"objectClass": "GroundMap",
+							"sid": 117754017457456,
+							"parameters": {
+								"tile-x": "loopindex(LOOP_Cell_X) * C_GroundMap_Cell_Size + int(random(0, C_GroundMap_Cell_Size))",
+								"tile-y": "loopindex(LOOP_Cell_Y) * C_GroundMap_Cell_Size + int(random(0, C_GroundMap_Cell_Size))",
+								"tile": "int(random(C_GroundMap_TileId_Obstacles_First, C_GroundMap_TileId_Obstacless_Last + 1))",
+								"state": "normal"
+							}
+						}
+					],
+					"sid": 457282884855551
 				}
 			]
 		}

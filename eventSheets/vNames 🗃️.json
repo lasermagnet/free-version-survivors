@@ -55,33 +55,53 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Player_Health_Start",
+			"name": "KEY_Player",
 			"type": "string",
-			"initialValue": "Player_Health_Start",
+			"initialValue": "Player",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 307421626153181
+			"sid": 725029190180261
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Item_Spawn_Cooldown",
+			"name": "KEY_Enemy",
 			"type": "string",
-			"initialValue": "Item_Spawn_Cooldown",
+			"initialValue": "Enemy",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 328453536536896
+			"sid": 973162742391941
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Weapon_Sword_Cooldown",
+			"name": "KEY_Health",
 			"type": "string",
-			"initialValue": "Weapon_Sword_Cooldown",
+			"initialValue": "Health",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 625828577096144
+			"sid": 549476401211245
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Spawn",
+			"type": "string",
+			"initialValue": "Spawn",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 400290896442803
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Item",
+			"type": "string",
+			"initialValue": "Item",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 322405926494955
 		},
 		{
 			"eventType": "variable",
@@ -102,6 +122,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 955279441704862
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Amount",
+			"type": "string",
+			"initialValue": "Amount",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 144781007347416
 		},
 		{
 			"eventType": "variable",
@@ -139,13 +169,23 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "LOOP_Decoration_Per_Cell",
+			"name": "LOOP_Decorations_Per_Cell",
 			"type": "string",
-			"initialValue": "Decoration_Per_Cell",
+			"initialValue": "Decorations_Per_Cell",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 444973302307180
+		},
+		{
+			"eventType": "variable",
+			"name": "LOOP_Obstacles_Per_Cell",
+			"type": "string",
+			"initialValue": "Obstacles_Per_Cell",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 797025420437282
 		},
 		{
 			"eventType": "comment",
@@ -202,6 +242,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 558238686119792
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Damage",
+			"type": "string",
+			"initialValue": "Damage",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 620616569806497
 		},
 		{
 			"eventType": "group",

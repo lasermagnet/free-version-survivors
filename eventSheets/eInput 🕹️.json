@@ -369,17 +369,7 @@
 					}
 				}
 			],
-			"actions": [
-				{
-					"id": "add-to-instvar",
-					"objectClass": "Player",
-					"sid": 375738800284735,
-					"parameters": {
-						"instance-variable": "R_Weapon_Sword_Level",
-						"value": "1"
-					}
-				}
-			],
+			"actions": [],
 			"sid": 803864937289158
 		},
 		{
@@ -394,17 +384,7 @@
 					}
 				}
 			],
-			"actions": [
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
-					"sid": 703160908558185,
-					"parameters": {
-						"instance-variable": "R_Weapon_Sword_Level",
-						"value": "min(1, Self.R_Weapon_Sword_Level - 1)"
-					}
-				}
-			],
+			"actions": [],
 			"sid": 552852968566585
 		}
 	],

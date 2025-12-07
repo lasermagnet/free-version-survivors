@@ -166,11 +166,8 @@
 			"eSystem ⏱️",
 			"eInput 🕹️",
 			"aEnemy 😈",
-			"_eCollisions 💥",
 			"aPlayer 🧑",
 			"aDrop 💧",
-			"_eTimers ⏰",
-			"_eTweens 🌓",
 			"aGroundMap 🌳"
 		],
 		"subfolders": []
@@ -286,7 +283,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "1",
+		"version": "2",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
