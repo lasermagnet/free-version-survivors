@@ -3,6 +3,7 @@ export const Spawns = {
     // Item spawns
     "Items": {
         "Cooldown": 30,
+        // todo timer?
     },
 
     // Enemy spawns
@@ -10,5 +11,6 @@ export const Spawns = {
         "Cooldown": 3,
         "Amount": 20,
         "Distance": 240,
+        // todo timer?
     },
 }
