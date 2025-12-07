@@ -15,6 +15,8 @@
 						"bottom-margin": 3,
 						"edges": "tile",
 						"fill": "tile",
+						"image-scale-x": 1,
+						"image-scale-y": 1,
 						"initially-visible": true,
 						"origin": "top-left",
 						"seams": "exact"

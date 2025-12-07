@@ -830,7 +830,7 @@
 				{
 					"type": "UI_TextSF_GameOver",
 					"properties": {
-						"text": "GAME OVER\n\n[scale=0.2]Click or tap & hold here to restart",
+						"text": "GAME OVER\n\n[scale=0.2]Click or tap & hold here to restart\n(or press R)",
 						"enable-bbcode": true,
 						"character-width": 30,
 						"character-height": 30,

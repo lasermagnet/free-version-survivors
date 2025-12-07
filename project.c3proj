@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 44902,
+	"savedWithRelease": 45600,
 	"name": "FreeVersionSurvivors",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -560,7 +560,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "58",
+		"version": "59",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
@@ -595,7 +595,6 @@
 		"orientations": "landscape",
 		"webgpu": "auto",
 		"gpuPreference": "high-performance",
-		"scriptsType": "module",
 		"framerateMode": "vsync",
 		"sampling": "nearest",
 		"downscaling": "medium",
@@ -606,10 +605,11 @@
 		"maxSpriteSheetSize": 2048,
 		"loaderStyle": "splash",
 		"preloadSounds": true,
+		"uidAllocationMode": "increment",
 		"cordovaiOSScheme": "app",
 		"cordovaAndroidScheme": "https",
 		"exportFileStructure": "folders",
-		"uidAllocationMode": "increment"
+		"scriptsType": "module"
 	},
 	"viewportWidth": 320,
 	"viewportHeight": 180,

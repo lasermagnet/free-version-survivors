@@ -13,28 +13,6 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Move editor to UI layer & hide it by default"
-				},
-				{
-					"id": "move-to-layer",
-					"objectClass": "Editor",
-					"sid": 328131485641796,
-					"disabled": true,
-					"parameters": {
-						"layer": "LAYER_UI"
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "Editor",
-					"sid": 746445835537442,
-					"disabled": true,
-					"parameters": {
-						"visibility": "invisible"
-					}
-				},
-				{
-					"type": "comment",
 					"text": "Load rules from JSON"
 				},
 				{

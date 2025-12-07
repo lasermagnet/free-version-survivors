@@ -49,6 +49,8 @@
 						"bottom-margin": 4,
 						"edges": "tile",
 						"fill": "tile",
+						"image-scale-x": 1,
+						"image-scale-y": 1,
 						"initially-visible": true,
 						"origin": "top-left",
 						"seams": "exact"
@@ -100,6 +102,8 @@
 						"bottom-margin": 2,
 						"edges": "stretch",
 						"fill": "stretch",
+						"image-scale-x": 1,
+						"image-scale-y": 1,
 						"initially-visible": false,
 						"origin": "top-left",
 						"seams": "overlap"
@@ -237,6 +241,8 @@
 						"bottom-margin": 3,
 						"edges": "tile",
 						"fill": "tile",
+						"image-scale-x": 1,
+						"image-scale-y": 1,
 						"initially-visible": false,
 						"origin": "top-left",
 						"seams": "exact"
@@ -357,6 +363,8 @@
 						"bottom-margin": 3,
 						"edges": "tile",
 						"fill": "tile",
+						"image-scale-x": 1,
+						"image-scale-y": 1,
 						"initially-visible": true,
 						"origin": "top-left",
 						"seams": "exact"
@@ -477,6 +485,8 @@
 						"bottom-margin": 3,
 						"edges": "tile",
 						"fill": "tile",
+						"image-scale-x": 1,
+						"image-scale-y": 1,
 						"initially-visible": false,
 						"origin": "top-left",
 						"seams": "exact"
@@ -597,6 +607,8 @@
 						"bottom-margin": 1,
 						"edges": "stretch",
 						"fill": "stretch",
+						"image-scale-x": 1,
+						"image-scale-y": 1,
 						"initially-visible": true,
 						"origin": "top-left",
 						"seams": "overlap"
