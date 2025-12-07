@@ -6,13 +6,6 @@
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [
 		{
-			"name": "cooldown_spawn_item",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 925237212199924
-		},
-		{
 			"name": "cooldown_weapon_sword",
 			"type": "number",
 			"desc": "",
@@ -25,13 +18,6 @@
 			"desc": "",
 			"show": true,
 			"sid": 962469594054445
-		},
-		{
-			"name": "queue_spawn_enemy",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 222305735525245
 		},
 		{
 			"name": "experience",
@@ -53,6 +39,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 131043624706321
+		},
+		{
+			"name": "isHurt",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 481484818498935
 		}
 	],
 	"behaviorTypes": [
@@ -70,6 +63,11 @@
 			"behaviorId": "Tween",
 			"name": "Tween",
 			"sid": 257134290531599
+		},
+		{
+			"behaviorId": "Physics",
+			"name": "Physics",
+			"sid": 940000542529119
 		}
 	],
 	"effectTypes": [],
@@ -89,14 +87,14 @@
 						"imageSpriteId": 5239422,
 						"collisionPoly": {
 							"points": [
-								0.25,
+								0,
 								0.5,
 								0.5,
-								0.25,
-								0.75,
+								0,
+								1,
 								0.5,
 								0.5,
-								0.75
+								1
 							]
 						},
 						"useCollisionPoly": true,

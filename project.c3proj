@@ -159,7 +159,7 @@
 		"items": [
 			"Player",
 			"Enemy",
-			"UI_TextSF",
+			"UI_TextSF_Devlog",
 			"Global",
 			"Keyboard",
 			"Browser",
@@ -188,7 +188,8 @@
 			"UI_Rectangle",
 			"UI_TextSF_DamageNumber",
 			"DamageNumber",
-			"UI_Icon"
+			"UI_Icon",
+			"UI_Vignette9P"
 		],
 		"subfolders": []
 	},
@@ -352,7 +353,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "9",
+		"version": "10",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

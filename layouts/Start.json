@@ -340,7 +340,7 @@
 					}
 				},
 				{
-					"type": "UI_TextSF",
+					"type": "UI_TextSF_Devlog",
 					"properties": {
 						"text": "Start",
 						"enable-bbcode": true,
@@ -361,9 +361,7 @@
 					"uid": 36,
 					"sid": 203380825076763,
 					"tags": "",
-					"instanceVariables": {
-						"role": ""
-					},
+					"instanceVariables": {},
 					"behaviors": {
 						"Anchor": {
 							"properties": {

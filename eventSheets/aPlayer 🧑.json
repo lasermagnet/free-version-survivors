@@ -78,15 +78,6 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
-					"sid": 783049380182159,
-					"parameters": {
-						"instance-variable": "cooldown_spawn_item",
-						"value": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)"
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
 					"sid": 177029972898140,
 					"parameters": {
 						"instance-variable": "cooldown_spawn_enemy",
@@ -146,19 +137,19 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
-					"sid": 786724687286705,
+					"sid": 880923047439531,
 					"parameters": {
-						"instance-variable": "cooldown_spawn_item",
-						"value": "Self.cooldown_spawn_item = NOTHING ? NOTHING : max(0, Self.cooldown_spawn_item - dt)"
+						"instance-variable": "cooldown_spawn_enemy",
+						"value": "Self.cooldown_spawn_enemy = NOTHING ? NOTHING : max(0, Self.cooldown_spawn_enemy - dt)"
 					}
 				},
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
-					"sid": 880923047439531,
+					"sid": 259950020665446,
 					"parameters": {
-						"instance-variable": "cooldown_spawn_enemy",
-						"value": "Self.cooldown_spawn_enemy = NOTHING ? NOTHING : max(0, Self.cooldown_spawn_enemy - dt)"
+						"instance-variable": "isHurt",
+						"value": "NO"
 					}
 				}
 			],
@@ -241,80 +232,6 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Spawn item"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Player",
-							"sid": 195966855546266,
-							"parameters": {
-								"instance-variable": "cooldown_spawn_item",
-								"comparison": 0,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 554032964253695,
-							"parameters": {
-								"instance-variable": "cooldown_spawn_item",
-								"value": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "todo item type"
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 313628640848420,
-							"parameters": {
-								"object-to-create": "Item",
-								"layer": "LAYER_Main",
-								"x": "Player.X + cos(angle(Player.X, Player.Y, LayoutWidth * 0.5, LayoutHeight * 0.5)) * random(C_Item_Spawn_Distance_Min, C_Item_Spawn_Distance_Max)",
-								"y": "Player.Y + sin(angle(Player.X, Player.Y, LayoutWidth * 0.5, LayoutHeight * 0.5)) * random(C_Item_Spawn_Distance_Min, C_Item_Spawn_Distance_Max)",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Start tween to fade out item before next spawn"
-						},
-						{
-							"id": "tween-one-property",
-							"objectClass": "Item",
-							"sid": 253088102355691,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"\"",
-								"property": "offsetOpacity",
-								"end-value": "0",
-								"time": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)",
-								"ease": "easeinexpo",
-								"destroy-on-complete": "yes",
-								"loop": "no",
-								"ping-pong": "no",
-								"repeat-count": "1"
-							}
-						},
-						{
-							"id": "move-to-top",
-							"objectClass": "Player",
-							"sid": 176612895163338
-						}
-					],
-					"sid": 129191214035208
-				},
-				{
-					"eventType": "comment",
 					"text": "Queue enemy spawn"
 				},
 				{
@@ -342,12 +259,30 @@
 							}
 						},
 						{
-							"id": "add-to-instvar",
-							"objectClass": "Player",
-							"sid": 612564162008655,
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 317499462563761,
 							"parameters": {
-								"instance-variable": "queue_spawn_enemy",
+								"type": "log",
+								"message": "\"Adding \" & Rules.Get(KEY_Wave & DOT & KEY_Enemies & DOT & KEY_Amount) & \" enemies to the spawn queue.\""
+							}
+						},
+						{
+							"id": "add-to",
+							"objectClass": "Rules",
+							"sid": 232278523205720,
+							"parameters": {
+								"path": "KEY_Queues & DOT & KEY_Enemies",
 								"value": "Rules.Get(KEY_Wave & DOT & KEY_Enemies & DOT & KEY_Amount)"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 650407931225055,
+							"parameters": {
+								"type": "log",
+								"message": "\"Enemy spawn queue size: \" & Rules.Get(KEY_Queues & DOT & KEY_Enemies)"
 							}
 						}
 					],
@@ -358,6 +293,7 @@
 					"text": "Pick up item"
 				},
 				{
+					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -399,12 +335,42 @@
 							}
 						},
 						{
+							"type": "comment",
+							"text": "Apply item (multiply)"
+						},
+						{
+							"id": "set-value",
+							"objectClass": "Rules",
+							"sid": 277736828016472,
+							"parameters": {
+								"path": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)",
+								"value": "Rules.Get(Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Multiply)"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Apply item (add)"
+						},
+						{
 							"id": "add-to",
 							"objectClass": "Rules",
 							"sid": 637742095993104,
 							"parameters": {
 								"path": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)",
 								"value": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Add)"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Apply item (max)"
+						},
+						{
+							"id": "set-value",
+							"objectClass": "Rules",
+							"sid": 315518869748953,
+							"parameters": {
+								"path": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)",
+								"value": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Max)))"
 							}
 						},
 						{
@@ -748,6 +714,15 @@
 							"parameters": {
 								"path": "KEY_Player & DOT & KEY_Health",
 								"value": "max(0, Rules.Get(KEY_Player & DOT & KEY_Health) - Enemy.damage * dt)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 122113130659706,
+							"parameters": {
+								"instance-variable": "isHurt",
+								"value": "YES"
 							}
 						}
 					],

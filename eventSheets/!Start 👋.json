@@ -29,6 +29,14 @@
 					"language": "javascript",
 					"script": [
 						"runtime.globalVars.rulesJS = getModifiedRules()"
+					],
+					"disabled": true
+				},
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"runtime.globalVars.rulesJS = JSON.stringify(rules)"
 					]
 				},
 				{

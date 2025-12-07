@@ -209,6 +209,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Experience_Bonus_Multiplier",
+			"type": "string",
+			"initialValue": "Experience_Bonus_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 602634027842356
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Pools",
 			"type": "string",
 			"initialValue": "Pools",
@@ -426,6 +436,16 @@
 			"sid": 123819595005711
 		},
 		{
+			"eventType": "variable",
+			"name": "PT_Items",
+			"type": "string",
+			"initialValue": "Items",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 502481881529950
+		},
+		{
 			"eventType": "comment",
 			"text": "Roles"
 		},
@@ -526,6 +546,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 165491564316690
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_UI_Vignette9P_Opacity",
+			"type": "string",
+			"initialValue": "UI_Vignette9P_Opacity",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 109637739901070
 		},
 		{
 			"eventType": "group",

@@ -88,10 +88,10 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "Player",
-									"sid": 128233460434581,
+									"sid": 487070083361722,
 									"parameters": {
 										"instance-variable": "experience",
-										"value": "Drop.AnimationName = ROLE_Experience ? Self.experience + Drop.amount : Self.experience"
+										"value": "Drop.AnimationName = ROLE_Experience ? Self.experience + round(Drop.amount * Rules.Get(KEY_Player & DOT & KEY_Experience_Bonus_Multiplier)) : Self.experience"
 									}
 								}
 							],

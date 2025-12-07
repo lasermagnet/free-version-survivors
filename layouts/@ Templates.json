@@ -194,13 +194,12 @@
 					"sid": 275528799847544,
 					"tags": "",
 					"instanceVariables": {
-						"cooldown_spawn_item": 0,
 						"cooldown_weapon_sword": 0,
 						"cooldown_spawn_enemy": 0,
-						"queue_spawn_enemy": 0,
 						"experience": 0,
 						"isDead": 0,
-						"lastMovingAngle": 0
+						"lastMovingAngle": 0,
+						"isHurt": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -222,6 +221,20 @@
 						},
 						"Tween": {
 							"properties": {
+								"enabled": true
+							}
+						},
+						"Physics": {
+							"properties": {
+								"immovable": true,
+								"collision-mask": "circle",
+								"prevent-rotation": false,
+								"density": 1,
+								"friction": 0,
+								"elasticity": 0,
+								"linear-damping": 0,
+								"angular-damping": 0.01,
+								"bullet": false,
 								"enabled": true
 							}
 						}

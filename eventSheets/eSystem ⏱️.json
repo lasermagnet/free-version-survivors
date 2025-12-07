@@ -52,6 +52,10 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Initialize probability tables"
+				},
+				{
 					"id": "createProbabilityTableFromJSON",
 					"objectClass": "AdvancedRandom",
 					"sid": 522703065808419,
@@ -67,6 +71,15 @@
 					"parameters": {
 						"name": "PT_Upgrades",
 						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Upgrades)"
+					}
+				},
+				{
+					"id": "createProbabilityTableFromJSON",
+					"objectClass": "AdvancedRandom",
+					"sid": 108957093600224,
+					"parameters": {
+						"name": "PT_Items",
+						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Items)"
 					}
 				},
 				{
@@ -244,6 +257,14 @@
 					"parameters": {
 						"width": "0"
 					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_Vignette9P",
+					"sid": 273375704844316,
+					"parameters": {
+						"opacity": "0"
+					}
 				}
 			],
 			"sid": 448800525830597
@@ -260,10 +281,10 @@
 			"actions": [
 				{
 					"id": "set-text",
-					"objectClass": "UI_TextSF",
-					"sid": 586361156603131,
+					"objectClass": "UI_TextSF_Devlog",
+					"sid": 228647574835914,
 					"parameters": {
-						"text": "\"FPS: \" & round(fps) & newline &\nobjectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Weapon.Count & \" projectiles\""
+						"text": "round(fps) & \" FPS, \" & objectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Weapon.Count & \" projectiles\" & newline &\n\"XP gain bonus: +\" & (Rules.Get(KEY_Player & DOT & KEY_Experience_Bonus_Multiplier) - 1) * 100 & \"%\""
 					}
 				},
 				{
@@ -328,6 +349,14 @@
 					"sid": 603707266467517,
 					"parameters": {
 						"scale": "Self.Tween.Value(TWEEN_UI_TextSF_DamageNumber_Scale) = 0 ? Self.CharacterScale : Self.Tween.Value(TWEEN_UI_TextSF_DamageNumber_Scale)"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_Vignette9P",
+					"sid": 134933458583808,
+					"parameters": {
+						"opacity": "lerp(Self.Opacity, Player.isHurt = YES ? 100 : 0, 0.2)"
 					}
 				}
 			],

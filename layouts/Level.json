@@ -586,7 +586,7 @@
 					}
 				},
 				{
-					"type": "UI_TextSF",
+					"type": "UI_TextSF_Devlog",
 					"properties": {
 						"text": "<DevLog>",
 						"enable-bbcode": true,
@@ -607,9 +607,7 @@
 					"uid": 5,
 					"sid": 191170601076700,
 					"tags": "",
-					"instanceVariables": {
-						"role": "DevLog"
-					},
+					"instanceVariables": {},
 					"behaviors": {
 						"Anchor": {
 							"properties": {
@@ -1788,6 +1786,47 @@
 							1,
 							1,
 							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "UI_Vignette9P",
+					"properties": {
+						"left-margin": 4,
+						"right-margin": 4,
+						"top-margin": 4,
+						"bottom-margin": 4,
+						"edges": "tile",
+						"fill": "tile",
+						"initially-visible": true,
+						"origin": "top-left",
+						"seams": "exact"
+					},
+					"uid": 38,
+					"sid": 748172629066057,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 748172629066057,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 0,
+						"y": 0,
+						"width": 320,
+						"height": 180,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							0.8196078431372549,
+							0.011764705882352941,
+							0.0392156862745098,
 							1
 						],
 						"angle": 0,

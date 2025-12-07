@@ -34,24 +34,33 @@
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
-					"id": "compare-instance-variable",
-					"objectClass": "Player",
-					"sid": 575399264185283,
+					"id": "compare-value",
+					"objectClass": "Rules",
+					"sid": 416384875828382,
 					"parameters": {
-						"instance-variable": "queue_spawn_enemy",
-						"comparison": 4,
+						"path": "KEY_Queues & DOT & KEY_Enemies",
+						"cmp": 4,
 						"value": "0"
 					}
 				}
 			],
 			"actions": [
 				{
-					"id": "subtract-from-instvar",
-					"objectClass": "Player",
-					"sid": 375479589213943,
+					"id": "subtract-from",
+					"objectClass": "Rules",
+					"sid": 259101572361751,
 					"parameters": {
-						"instance-variable": "queue_spawn_enemy",
+						"path": "KEY_Queues & DOT & KEY_Enemies",
 						"value": "1"
+					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 501429619255092,
+					"parameters": {
+						"type": "log",
+						"message": "\"Spawning enemy\""
 					}
 				},
 				{
@@ -72,6 +81,10 @@
 						"variable": "spawn_randomSize",
 						"value": "random(R_Spawn_RandomSize_Min, R_Spawn_RandomSize_Max)"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "todo dynamically calculated offscreen spawn distance (or try spawn rectangle!)"
 				},
 				{
 					"id": "create-object",
@@ -569,7 +582,115 @@
 									}
 								}
 							],
-							"sid": 158259314566033
+							"sid": 158259314566033,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "Spawn item from queue (if enemy is not overlapping an item or the player)"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 400710386844605,
+											"parameters": {
+												"first-value": "Rules.ArraySize(KEY_Queues & DOT & KEY_Items)",
+												"comparison": 4,
+												"second-value": "0"
+											}
+										},
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "Enemy",
+											"sid": 238260535279451,
+											"parameters": {
+												"object": "Item"
+											},
+											"isInverted": true
+										},
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "Enemy",
+											"sid": 118700603474877,
+											"parameters": {
+												"object": "Player"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "todo item type"
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 877116734688026,
+											"parameters": {
+												"object-to-create": "Item",
+												"layer": "LAYER_Main",
+												"x": "Enemy.X",
+												"y": "Enemy.Y",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"type": "comment",
+											"text": "Start tween to fade out item before next spawn"
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "Item",
+											"sid": 223666303312368,
+											"parameters": {
+												"animation": "Rules.Get(KEY_Queues & DOT & KEY_Items & DOT & 0)",
+												"from": "beginning"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "Remove spawned item from queue"
+										},
+										{
+											"id": "pop-value",
+											"objectClass": "Rules",
+											"sid": 502417958839213,
+											"parameters": {
+												"where": "front",
+												"path": "KEY_Queues & DOT & KEY_Items"
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "Item",
+											"sid": 253088102355691,
+											"disabled": true,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"\"",
+												"property": "offsetOpacity",
+												"end-value": "0",
+												"time": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)",
+												"ease": "easeinexpo",
+												"destroy-on-complete": "yes",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "move-to-top",
+											"objectClass": "Player",
+											"sid": 176612895163338
+										}
+									],
+									"sid": 129191214035208
+								}
+							]
 						}
 					]
 				},
