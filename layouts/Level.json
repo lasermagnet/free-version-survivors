@@ -1751,7 +1751,7 @@
 					}
 				},
 				{
-					"type": "UI_Icon",
+					"type": "Icons",
 					"properties": {
 						"initially-visible": false,
 						"initial-animation": "HeartBlack",
@@ -1816,7 +1816,7 @@
 					}
 				},
 				{
-					"type": "UI_Icon",
+					"type": "Icons",
 					"properties": {
 						"initially-visible": false,
 						"initial-animation": "HeartBlack",
@@ -1881,7 +1881,7 @@
 					}
 				},
 				{
-					"type": "UI_Icon",
+					"type": "Icons",
 					"properties": {
 						"initially-visible": false,
 						"initial-animation": "HeartBlack",

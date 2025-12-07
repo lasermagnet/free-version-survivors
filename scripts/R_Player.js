@@ -1,7 +1,7 @@
 export const Player = {
     // HP
-    "Health": 100,
-    "Health_Max": 100,
+    "Health": 500,
+    "Health_Max": 500,
     
     // XP
     "Experience_Target": 40,
@@ -16,9 +16,10 @@ export const Player = {
     "PickupDistance": 30,
 
     // Enabled weapons (weapons not listed here will never fire)
-    "Weapons": ["Revolver", "Sword", "Flame"],
+    "Weapons": ["Revolver", "Sword", "Flame"], // todo remove, foreach weapons instead
 
     // Bonuses
+    // todo heal bonus
     "Bonus_Experience_Multiplier": 1,
     "Bonus_Enemy_Spawn_Cooldown_Multiplier": 1,
     "Bonus_Weapon_Damage_Multiplier": 1,

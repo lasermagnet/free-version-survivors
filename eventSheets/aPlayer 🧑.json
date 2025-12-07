@@ -165,6 +165,11 @@
 						"instance-variable": "isHurt",
 						"value": "NO"
 					}
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Player",
+					"sid": 910721350011334
 				}
 			],
 			"sid": 892639912846222,
@@ -198,7 +203,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Attack"
+					"text": "Attack with all weapons"
 				},
 				{
 					"eventType": "block",
@@ -263,6 +268,7 @@
 									"id": "log",
 									"objectClass": "Browser",
 									"sid": 622964289085077,
+									"disabled": true,
 									"parameters": {
 										"type": "log",
 										"message": "\"Spawning weapon(s): \" & Rules.CurrentValue"
@@ -511,10 +517,10 @@
 						{
 							"id": "log",
 							"objectClass": "Browser",
-							"sid": 679558873454432,
+							"sid": 550811228631696,
 							"parameters": {
 								"type": "log",
-								"message": "\"Picked up item: \" & Item.AnimationName"
+								"message": "\"Picked up item: \" & Item.upgrade"
 							}
 						},
 						{
@@ -533,9 +539,9 @@
 						{
 							"customAction": "applyUpgrade",
 							"objectClass": "Player",
-							"sid": 787050549987334,
+							"sid": 366719559556059,
 							"parameters": [
-								"Item.AnimationName"
+								"Item.upgrade"
 							]
 						},
 						{
@@ -784,7 +790,7 @@
 									"objectClass": "UI_Button9P_Upgrade",
 									"sid": 358465600345835,
 									"parameters": {
-										"child": "UI_Icon",
+										"child": "Icons",
 										"which": "own"
 									}
 								}
@@ -819,7 +825,7 @@
 								},
 								{
 									"id": "set-animation",
-									"objectClass": "UI_Icon",
+									"objectClass": "Icons",
 									"sid": 871116676435623,
 									"parameters": {
 										"animation": "Rules.Get(KEY_Upgrades & DOT & selectedUpgrade & DOT & KEY_Icon)",

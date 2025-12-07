@@ -1,73 +1,73 @@
 export const Enemies = {
     "Slime": {
         "Health": 3,
-        "Damage": 25,
+        "Damage": 10,
         "Experience": 4,
         "MovementSpeed": 0.5
     },
     "Rat": {
         "Health": 5,
-        "Damage": 50,
+        "Damage": 15,
         "Experience": 9,
         "MovementSpeed": 1
     },
     "Crab": {
-        "Health": 5,
-        "Damage": 50,
-        "Experience": 9,
-        "MovementSpeed": 2
+        "Health": 10,
+        "Damage": 20,
+        "Experience": 15,
+        "MovementSpeed": 1.6
     },
     "Snake": {
-        "Health": 5,
-        "Damage": 50,
-        "Experience": 9,
-        "MovementSpeed": 2
+        "Health": 15,
+        "Damage": 25,
+        "Experience": 20,
+        "MovementSpeed": 1.3
     },
     "Werewolf": {
-        "Health": 5,
-        "Damage": 50,
-        "Experience": 9,
-        "MovementSpeed": 2
+        "Health": 20,
+        "Damage": 30,
+        "Experience": 30,
+        "MovementSpeed": 1.2
     },
     "Ent": {
-        "Health": 5,
-        "Damage": 50,
-        "Experience": 9,
-        "MovementSpeed": 2
+        "Health": 50,
+        "Damage": 35,
+        "Experience": 50,
+        "MovementSpeed": 0.5
     },
     "Tentacle": {
-        "Health": 5,
-        "Damage": 50,
-        "Experience": 9,
-        "MovementSpeed": 2
-    },
-    "Golem": {
-        "Health": 5,
-        "Damage": 50,
-        "Experience": 9,
-        "MovementSpeed": 2
+        "Health": 70,
+        "Damage": 40,
+        "Experience": 80,
+        "MovementSpeed": 1.2
     },
     "Dwarf": {
-        "Health": 5,
+        "Health": 80,
+        "Damage": 45,
+        "Experience": 90,
+        "MovementSpeed": 0.8
+    },
+    "Golem": {
+        "Health": 100,
         "Damage": 50,
-        "Experience": 9,
-        "MovementSpeed": 2
+        "Experience": 120,
+        "MovementSpeed": 1.5
     },
     "Ogre": {
-        "Health": 5,
-        "Damage": 50,
+        "Health": 150,
+        "Damage": 55,
         "Experience": 9,
-        "MovementSpeed": 2
+        "MovementSpeed": 1.5
     },
     "Cultist": {
-        "Health": 5,
-        "Damage": 50,
+        "Health": 200,
+        "Damage": 60,
         "Experience": 9,
         "MovementSpeed": 2
     },
     "Beholder": {
-        "Health": 5,
-        "Damage": 50,
+        "Health": 500,
+        "Damage": 70,
         "Experience": 9,
         "MovementSpeed": 2
     }

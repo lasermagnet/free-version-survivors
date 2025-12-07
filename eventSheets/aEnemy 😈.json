@@ -323,6 +323,10 @@
 									}
 								},
 								{
+									"type": "comment",
+									"text": "todo bugfix: zero out damage taken after text is spawned"
+								},
+								{
 									"id": "set-x",
 									"objectClass": "UI_TextSF_DamageNumber",
 									"sid": 380455576936530,
@@ -480,6 +484,7 @@
 									"text": "Spawn item from queue (if enemy is not overlapping an item or the player)"
 								},
 								{
+									"bookmark": true,
 									"eventType": "block",
 									"conditions": [
 										{
@@ -527,14 +532,78 @@
 										},
 										{
 											"type": "comment",
+											"text": "Set upgrade"
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Item",
+											"sid": 597701673707448,
+											"parameters": {
+												"instance-variable": "upgrade",
+												"value": "Rules.Get(KEY_Queues & DOT & KEY_Items & DOT & 0)"
+											}
+										},
+										{
+											"id": "log",
+											"objectClass": "Browser",
+											"sid": 217617026861100,
+											"parameters": {
+												"type": "log",
+												"message": "\"spawning item: \" & Item.upgrade"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "Spawn icon"
+										},
+										{
+											"id": "spawn-another-object",
+											"objectClass": "Item",
+											"sid": 574624985699913,
+											"parameters": {
+												"object": "Icons",
+												"layer": "LAYER_Main",
+												"image-point": "0",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "Item",
+											"sid": 198627867679643,
+											"parameters": {
+												"child": "Icons",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": true,
+												"transform-z-elevation": false,
+												"transform-visibility": true,
+												"destroy-with-parent": true
+											}
+										},
+										{
+											"type": "comment",
 											"text": "Start tween to fade out item before next spawn"
 										},
 										{
-											"id": "set-animation",
-											"objectClass": "Item",
-											"sid": 223666303312368,
+											"id": "log",
+											"objectClass": "Browser",
+											"sid": 730733740712829,
 											"parameters": {
-												"animation": "Rules.Get(KEY_Queues & DOT & KEY_Items & DOT & 0)",
+												"type": "log",
+												"message": "\"setting icon: \" & Rules.Get(KEY_Upgrades & DOT & Item.upgrade & DOT & KEY_Icon)"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "Icons",
+											"sid": 793804274910788,
+											"parameters": {
+												"animation": "Rules.Get(KEY_Upgrades & DOT & Item.upgrade & DOT & KEY_Icon)",
 												"from": "beginning"
 											}
 										},
@@ -550,11 +619,6 @@
 												"where": "front",
 												"path": "KEY_Queues & DOT & KEY_Items"
 											}
-										},
-										{
-											"id": "move-to-top",
-											"objectClass": "Player",
-											"sid": 176612895163338
 										}
 									],
 									"sid": 129191214035208

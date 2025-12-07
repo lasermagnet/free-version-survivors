@@ -568,7 +568,7 @@
 					"type": "Item",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Sword",
+						"initial-animation": "_Blank",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -577,6 +577,7 @@
 					"sid": 896172996303602,
 					"tags": "",
 					"instanceVariables": {
+						"upgrade": "",
 						"isPickedUp": 0
 					},
 					"behaviors": {

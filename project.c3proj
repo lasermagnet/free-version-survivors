@@ -194,7 +194,7 @@
 			"UI_Button9P_Upgrade",
 			"UI_Rectangle",
 			"UI_TextSF_DamageNumber",
-			"UI_Icon",
+			"Icons",
 			"UI_Vignette9P",
 			"PlayerHurtbox"
 		],
@@ -423,7 +423,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "16",
+		"version": "18",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
