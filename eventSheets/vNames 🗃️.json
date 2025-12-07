@@ -597,16 +597,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Queues",
-			"type": "string",
-			"initialValue": "Queues",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 960935344389056
-		},
-		{
-			"eventType": "variable",
 			"name": "KEY_Rule_Max",
 			"type": "string",
 			"initialValue": "Rule_Max",

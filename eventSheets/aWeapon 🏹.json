@@ -159,6 +159,10 @@
 					"text": "Set sprite (movement) angle"
 				},
 				{
+					"type": "comment",
+					"text": "todo rule to adjust angle"
+				},
+				{
 					"id": "set-angle",
 					"objectClass": "Weapon",
 					"sid": 411194248423230,
@@ -321,6 +325,10 @@
 							"parameters": {
 								"state": "enabled"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "todo rule to adjust \"match rotation\" property... but try to save an event"
 						},
 						{
 							"id": "set-rotation",

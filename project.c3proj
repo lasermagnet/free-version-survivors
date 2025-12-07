@@ -292,14 +292,6 @@
 					}
 				},
 				{
-					"name": "R_Queues.js",
-					"type": "application/javascript",
-					"sid": 967489109528786,
-					"script-info": {
-						"purpose": "none"
-					}
-				},
-				{
 					"name": "R_Pools.js",
 					"type": "application/javascript",
 					"sid": 442162123792153,
@@ -536,7 +528,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "37",
+		"version": "38",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

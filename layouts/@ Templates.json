@@ -75,7 +75,7 @@
 					"type": "Weapon",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Sword",
+						"initial-animation": "Axe",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -113,7 +113,7 @@
 								"primary-axis": 0,
 								"secondary-axis": 0,
 								"offset-angle": 0,
-								"match-rotation": false,
+								"match-rotation": true,
 								"enabled": false,
 								"live-preview": false
 							}
@@ -128,8 +128,8 @@
 					"world": {
 						"x": 8,
 						"y": 116,
-						"width": 20,
-						"height": 8,
+						"width": 16,
+						"height": 16,
 						"originX": 0,
 						"originY": 0.5,
 						"color": [

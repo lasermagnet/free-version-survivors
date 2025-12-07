@@ -822,7 +822,7 @@
 									"sid": 316990042035146,
 									"parameters": {
 										"type": "log",
-										"message": "nextItemSpawn = EMPTY ? EMPTY : \"Enemy is dead, gonna spawn an item: \" & nextItemSpawn"
+										"message": "itemSpawnCue = EMPTY ? EMPTY : \"Enemy is dead, gonna spawn an item: \" & itemSpawnCue"
 									}
 								}
 							],
@@ -846,22 +846,11 @@
 											}
 										},
 										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 555483154867909,
-											"disabled": true,
-											"parameters": {
-												"first-value": "Rules.ArraySize(KEY_Queues & DOT & KEY_Items)",
-												"comparison": 4,
-												"second-value": "0"
-											}
-										},
-										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 633653800541142,
+											"sid": 770763278531050,
 											"parameters": {
-												"variable": "nextItemSpawn",
+												"variable": "itemSpawnCue",
 												"comparison": 1,
 												"value": "EMPTY"
 											}
@@ -869,28 +858,20 @@
 										{
 											"id": "is-overlapping-another-object",
 											"objectClass": "Enemy",
-											"sid": 238260535279451,
+											"sid": 639641986168532,
 											"parameters": {
 												"object": "Item"
 											},
 											"isInverted": true
 										},
 										{
-											"id": "is-outside-layout",
-											"objectClass": "Enemy",
-											"sid": 498433608917396,
-											"disabled": true,
-											"isInverted": true
-										},
-										{
-											"id": "pick-by-comparison",
+											"id": "compare-two-values",
 											"objectClass": "System",
-											"sid": 363693118836054,
+											"sid": 886890391850880,
 											"parameters": {
-												"object": "Enemy",
-												"expression": "distance(Enemy.X, Enemy.Y, Player.X, Player.Y)",
+												"first-value": "distance(Enemy.X, Enemy.Y, Player.X, Player.Y)",
 												"comparison": 5,
-												"value": "C_Distance_Item_Spawn_Min"
+												"second-value": "C_Distance_Item_Spawn_Min"
 											}
 										}
 									],
@@ -898,7 +879,7 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 427850262955858,
+											"sid": 266806616747946,
 											"parameters": {
 												"object-to-create": "Item",
 												"layer": "LAYER_Main",
@@ -911,7 +892,7 @@
 										{
 											"id": "log",
 											"objectClass": "Browser",
-											"sid": 480511634667752,
+											"sid": 292145393173066,
 											"parameters": {
 												"type": "log",
 												"message": "\"Item spawn pool size: \" & Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_ItemSpawnPool)"
@@ -924,26 +905,16 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "Item",
-											"sid": 597701673707448,
-											"disabled": true,
+											"sid": 362663137347641,
 											"parameters": {
 												"instance-variable": "upgrade",
-												"value": "Rules.Get(KEY_Queues & DOT & KEY_Items & DOT & 0)"
-											}
-										},
-										{
-											"id": "set-instvar-value",
-											"objectClass": "Item",
-											"sid": 875772942696666,
-											"parameters": {
-												"instance-variable": "upgrade",
-												"value": "nextItemSpawn"
+												"value": "itemSpawnCue"
 											}
 										},
 										{
 											"id": "log",
 											"objectClass": "Browser",
-											"sid": 217617026861100,
+											"sid": 628829815311617,
 											"parameters": {
 												"type": "log",
 												"message": "\"spawning item: \" & Item.upgrade"
@@ -956,7 +927,7 @@
 										{
 											"id": "spawn-another-object",
 											"objectClass": "Item",
-											"sid": 574624985699913,
+											"sid": 938304382851150,
 											"parameters": {
 												"object": "Icon",
 												"layer": "LAYER_Main",
@@ -968,7 +939,7 @@
 										{
 											"id": "add-child",
 											"objectClass": "Item",
-											"sid": 198627867679643,
+											"sid": 508103680919322,
 											"parameters": {
 												"child": "Icon",
 												"transform-x": true,
@@ -985,7 +956,7 @@
 										{
 											"id": "set-size",
 											"objectClass": "Icon",
-											"sid": 227990397397037,
+											"sid": 323666195314981,
 											"parameters": {
 												"width": "8",
 												"height": "8"
@@ -998,7 +969,7 @@
 										{
 											"id": "log",
 											"objectClass": "Browser",
-											"sid": 730733740712829,
+											"sid": 841679172530826,
 											"parameters": {
 												"type": "log",
 												"message": "\"setting icon: \" & Rules.Get(KEY_Upgrades & DOT & Item.upgrade & DOT & KEY_Icon)"
@@ -1007,7 +978,7 @@
 										{
 											"id": "set-animation",
 											"objectClass": "Icon",
-											"sid": 793804274910788,
+											"sid": 731639744694872,
 											"parameters": {
 												"animation": "Rules.Get(KEY_Upgrades & DOT & Item.upgrade & DOT & KEY_Icon)",
 												"from": "beginning"
@@ -1020,7 +991,7 @@
 										{
 											"id": "spawn-another-object",
 											"objectClass": "Player",
-											"sid": 680771256286622,
+											"sid": 930984945945146,
 											"parameters": {
 												"object": "Arrow",
 												"layer": "LAYER_Main",
@@ -1032,7 +1003,7 @@
 										{
 											"id": "add-child",
 											"objectClass": "Item",
-											"sid": 959138659302353,
+											"sid": 521018599376098,
 											"parameters": {
 												"child": "Arrow",
 												"transform-x": false,
@@ -1049,7 +1020,7 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "Arrow",
-											"sid": 791621165867173,
+											"sid": 717815080573578,
 											"parameters": {
 												"instance-variable": "itemX",
 												"value": "Item.X"
@@ -1058,7 +1029,7 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "Arrow",
-											"sid": 384880148953013,
+											"sid": 237812005597817,
 											"parameters": {
 												"instance-variable": "itemY",
 												"value": "Item.Y"
@@ -1067,7 +1038,7 @@
 										{
 											"id": "set-opacity",
 											"objectClass": "Arrow",
-											"sid": 296270546148280,
+											"sid": 757222216803530,
 											"parameters": {
 												"opacity": "0"
 											}
@@ -1077,21 +1048,11 @@
 											"text": "Remove spawned item from queue"
 										},
 										{
-											"id": "pop-value",
-											"objectClass": "Rules",
-											"sid": 502417958839213,
-											"disabled": true,
-											"parameters": {
-												"where": "front",
-												"path": "KEY_Queues & DOT & KEY_Items"
-											}
-										},
-										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 579159893270924,
+											"sid": 337993445552969,
 											"parameters": {
-												"variable": "nextItemSpawn",
+												"variable": "itemSpawnCue",
 												"value": "EMPTY"
 											}
 										}

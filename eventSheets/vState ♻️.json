@@ -81,10 +81,10 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "nextItemSpawn",
+			"name": "itemSpawnCue",
 			"type": "string",
 			"initialValue": "",
-			"comment": "",
+			"comment": "Only supports a single item, it's not a \"queue\"",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 820976962514249

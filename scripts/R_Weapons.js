@@ -15,13 +15,13 @@ export const Weapons = {
         "PositionRandom1": 0,
         "PositionRandom2": 0,
     },
-    "Sword": {
+    "Axe": {
         "BlockMovement": 1,
         "Cooldown": 1.5,
         "Amount": 1,
-        "Damage": 15,
+        "Damage": 15*10,
         "PierceLimit": 2,
-        "Scale": 1,
+        "Scale": 0.5,
         "Timeout": 4,
         "MovementSpeed": 85,
     },
@@ -36,13 +36,13 @@ export const Weapons = {
         "MovementSpeed": 10,
         "Pin": 1,
     },
-    "Revolver": {
+    "Chainsaw": {
         "BlockMovement": 1,
         "Cooldown": 5,
         "Amount": 0,
         "Damage": 20,
         "PierceLimit": 1000,
-        "Scale": 1,
+        "Scale": 0.5,
         "Timeout": 4,
         "Pin": 1,
         "OrbitRadius": 25,

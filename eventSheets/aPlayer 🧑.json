@@ -806,16 +806,6 @@
 							"text": "Add enemy amount to spawn queue"
 						},
 						{
-							"id": "add-to",
-							"objectClass": "Rules",
-							"sid": 681183222805725,
-							"disabled": true,
-							"parameters": {
-								"path": "KEY_Queues & DOT & KEY_Enemies",
-								"value": "round(Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnAmountPerWave) / Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCycles))"
-							}
-						},
-						{
 							"id": "add-to-eventvar",
 							"objectClass": "System",
 							"sid": 474553894970900,
@@ -2130,25 +2120,14 @@
 				},
 				{
 					"type": "comment",
-					"text": "Spawn item (warning: appalling workaround to save an event)"
-				},
-				{
-					"id": "push-value",
-					"objectClass": "Rules",
-					"sid": 131514688627958,
-					"disabled": true,
-					"parameters": {
-						"where": "back",
-						"path": "Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool) > 0 ? KEY_Queues & DOT & KEY_Items : EMPTY",
-						"value": "AdvancedRandom.WeightedByName(PT_Items)"
-					}
+					"text": "Cue item spawn"
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
 					"sid": 555486501587659,
 					"parameters": {
-						"variable": "nextItemSpawn",
+						"variable": "itemSpawnCue",
 						"value": "Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool) > 0 ? AdvancedRandom.WeightedByName(PT_Items) : EMPTY"
 					}
 				},
