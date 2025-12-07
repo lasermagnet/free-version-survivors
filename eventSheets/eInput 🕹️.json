@@ -74,39 +74,6 @@
 			"text": "Enable full screen - because why waste two events on toggling :) user can cancel with Esc."
 		},
 		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 721749153108317,
-					"parameters": {
-						"key": 70
-					}
-				},
-				{
-					"id": "key-is-down",
-					"objectClass": "Keyboard",
-					"sid": 302409571708101,
-					"parameters": {
-						"key": 16
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "request-fullscreen",
-					"objectClass": "Browser",
-					"sid": 743018549105810,
-					"parameters": {
-						"mode": "stretch-scale-outer",
-						"navigation-ui": "auto"
-					}
-				}
-			],
-			"sid": 275256803650067
-		},
-		{
 			"eventType": "comment",
 			"text": "Toggle pause"
 		},
@@ -170,9 +137,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_Stats",
-					"sid": 512084167698803,
+					"sid": 941327417961216,
 					"parameters": {
-						"text": "StringSub(\"Wave {0}: #{1}, cycle #{2}\", waveCount, waveId, spawnCycle) & newline &\n\"Health: \" & round(Rules.Get(KEY_Player & DOT & KEY_Health)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max)) & newline &\n\"Experience: \" & round(Rules.Get(KEY_Player & DOT & KEY_Experience)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Experience_Target)) & newline &\n\"Enemies killed: \" & enemiesKilled & newline &\n\"Enemy spawn amount bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Amount_Multiplier) * 100 & \"%\" & newline &\n\"Movement speed: \" & Rules.Get(KEY_Player & DOT & KEY_MovementSpeed) & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Healing bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Regeneration: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Regeneration_Amount) & \" / s\" & newline &\n\"Level up freeze time: \" & Rules.Get(KEY_Player & DOT & KEY_LevelUpFreezeTime) & \" sec\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount) & newline &\n\"Damage reduction bonus: \" & (100 - Rules.Get(KEY_Player & DOT & KEY_Bonus_Incoming_Damage_Multiplier) * 100) & \"%\" & newline"
+						"text": "StringSub(\"Wave {0}: #{1}, cycle #{2}\", waveCount, waveId, spawnCycle) & newline &\n\"Health: \" & round(Rules.Get(KEY_Player & DOT & KEY_Health)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max)) & newline &\n\"Experience: \" & round(Rules.Get(KEY_Player & DOT & KEY_Experience)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Experience_Target)) & newline &\n\"Enemies killed: \" & enemiesKilled & newline &\n\"Enemy spawn amount bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Amount_Multiplier) * 100 & \"%\" & newline &\n\"Movement speed: \" & Rules.Get(KEY_Player & DOT & KEY_MovementSpeed) & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Healing bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Regeneration: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Regeneration_Amount) & \" / s\" & newline &\n\"Level up freeze time: \" & Rules.Get(KEY_Player & DOT & KEY_LevelUpFreezeTime) & \" sec\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount) & newline &\n\"Damage reduction bonus: \" & (100 - Rules.Get(KEY_Player & DOT & KEY_Bonus_Incoming_Damage_Multiplier) * 100) & \"%\" & newline"
 					}
 				},
 				{

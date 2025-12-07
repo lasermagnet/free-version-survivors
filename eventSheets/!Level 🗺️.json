@@ -7,6 +7,10 @@
 		},
 		{
 			"eventType": "include",
+			"includeSheet": "eInput_Global 🔘"
+		},
+		{
+			"eventType": "include",
 			"includeSheet": "eSystem ⏱️"
 		}
 	],

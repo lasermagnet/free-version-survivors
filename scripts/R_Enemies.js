@@ -37,7 +37,7 @@ export const Enemies = {
         "Scale": 2.5,
     },
     "Rat": {
-        "Health": 5,
+        "Health": 7,
         "Damage": 15,
         "Experience": 9,
         "MovementSpeed": 0.8,
@@ -101,7 +101,7 @@ export const Enemies = {
         "Health": 200,
         "Damage": 60,
         "Experience": 250,
-        "MovementSpeed": 1.7,
+        "MovementSpeed": 2.5,
         "Scale": 2,
         "Density": 10,
     },
@@ -109,7 +109,7 @@ export const Enemies = {
         "Health": 500,
         "Damage": 70,
         "Experience": 320,
-        "MovementSpeed": 1.8,
+        "MovementSpeed": 2.2,
         "Scale": 1.4,
     },
     "Beholder_Boss": {

@@ -12,7 +12,7 @@ export const Level = {
         "ItemSpawnMinimum": 35 // minimum distance of item spawns (when an enemy dies) from the player
     },
 
-    "EnemyLimit": 700,  // maximum number of enemies allowed to exist; enemy spawns will be skipped when reached
+    "EnemyLimit": 500,  // maximum number of enemies allowed to exist; enemy spawns will be skipped when reached
     "SpawnInterval": 1, // seconds, determines enemy spawn frequency (cycle)
     "WaveLoopTo": 10,   // when no waves are left, jump back to this wave ID and keep going
 

@@ -81,6 +81,20 @@
 			"desc": "",
 			"show": true,
 			"sid": 749526333859586
+		},
+		{
+			"name": "knockbackAngle",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 946684366164939
+		},
+		{
+			"name": "knockbackForceMultiplier",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 802435953299236
 		}
 	],
 	"behaviorTypes": [

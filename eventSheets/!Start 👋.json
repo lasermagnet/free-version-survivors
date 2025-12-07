@@ -2,6 +2,10 @@
 	"name": "!Start 👋",
 	"events": [
 		{
+			"eventType": "include",
+			"includeSheet": "eInput_Global 🔘"
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{

@@ -204,7 +204,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Set knockback angle"
+					"text": "Set initial knockback angle"
 				},
 				{
 					"id": "set-instvar-value",

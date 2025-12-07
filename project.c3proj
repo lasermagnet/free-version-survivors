@@ -268,7 +268,8 @@
 			"aPlayer 🧑",
 			"aMap 🌳",
 			"!Start 👋",
-			"aAudio 🔉"
+			"aAudio 🔉",
+			"eInput_Global 🔘"
 		],
 		"subfolders": []
 	},
@@ -568,7 +569,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "64",
+		"version": "64b",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

@@ -177,7 +177,9 @@
 						"isMovementBlocked": 0,
 						"movementSpeed": 0,
 						"movementAngle": -1,
-						"initAnimationSpeed": 0
+						"initAnimationSpeed": 0,
+						"knockbackAngle": 0,
+						"knockbackForceMultiplier": 0
 					},
 					"behaviors": {
 						"Physics": {

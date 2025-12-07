@@ -587,9 +587,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_KnockbackCooldown",
+			"name": "KEY_KnockbackDuration",
 			"type": "string",
-			"initialValue": "KnockbackCooldown",
+			"initialValue": "KnockbackDuration",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -597,9 +597,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_KnockbackImpulse",
+			"name": "KEY_KnockbackForceMultiplier",
 			"type": "string",
-			"initialValue": "KnockbackImpulse",
+			"initialValue": "KnockbackForceMultiplier",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -1207,13 +1207,13 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TIMER_Knockback_Enemy_",
+			"name": "TIMER_Knockback",
 			"type": "string",
-			"initialValue": "Knockback_Enemy_",
-			"comment": "should be suffixed with Enemy UID",
+			"initialValue": "Knockback",
+			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 317683379452443
+			"sid": 923129812449843
 		},
 		{
 			"eventType": "variable",

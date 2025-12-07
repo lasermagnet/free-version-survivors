@@ -1,25 +1,25 @@
 const _example = {
     "": {
-        "Amount": 0,                // number of weapons to spawn per attack
-        "BlockMovement": false,     // whether a weapon blocks movement of overlapping enemies
-        "Cooldown": 2,              // seconds, the weapon attacks at this interval
-        "Damage": 0,                // damage per second while weapon is overlapping an enemy
-        "PierceLimit": 1,           // weapon is destroyed after hitting this amount of unique enemioes
-        "RotationAngleOffset": 0,   // optional rotation offset for the weapon sprite
-        "Scale": 1,                 // size multiplier
-        "StaticAngle": null,        // null: weapon will keep facing the player; any number: fixed angle
-        "Duration": 1,              // seconds, defines the lifetime of a weapon (fades out at the end)
-        "BulletSpeed": 0,           // movement speed for the Bullet behaviour
-        "BulletAcceleration": 0,    // acceleration for the Bullet behaviour
-        "Pin": false,               // whether to pin position of the weapon to the player
-        "OrbitRadius": 0,           // radius for the Orbit behaviour
-        "OrbitSpeed": 0,            // movement speed for the Orbit behaviour
-        "PositionRandom1": 0,       // X/Y position randomization per attack
-        "PositionRandom2": 0,       // X/Y position randomization per weapon instance
-        "RotationSpeed": 0,         // rotation speed for the Rotate behaviour
-        "FreezeTime": 0,            // amount of time the weapon freezes an overlapping enemy
-        "KnockbackImpulse": 0,      // amount of physics impulse to apply on enemy as knockback
-        "KnockbackCooldown": 0,     // amount of time to wait between knockbacks
+        "Amount": 0,                    // number of weapons to spawn per attack
+        "BlockMovement": false,         // whether a weapon blocks movement of overlapping enemies
+        "Cooldown": 2,                  // seconds, the weapon attacks at this interval
+        "Damage": 0,                    // damage per second while weapon is overlapping an enemy
+        "PierceLimit": 1,               // weapon is destroyed after hitting this amount of unique enemioes
+        "RotationAngleOffset": 0,       // optional rotation offset for the weapon sprite
+        "Scale": 1,                     // size multiplier
+        "StaticAngle": null,            // null: weapon will face the player; any number: fixed angle
+        "Duration": 1,                  // seconds, defines the lifetime of a weapon (fades out at the end)
+        "BulletSpeed": 0,               // movement speed for the Bullet behaviour
+        "BulletAcceleration": 0,        // acceleration for the Bullet behaviour
+        "Pin": false,                   // whether to pin position of the weapon to the player
+        "OrbitRadius": 0,               // radius for the Orbit behaviour
+        "OrbitSpeed": 0,                // movement speed for the Orbit behaviour
+        "PositionRandom1": 0,           // X/Y position randomization per attack
+        "PositionRandom2": 0,           // X/Y position randomization per weapon instance
+        "RotationSpeed": 0,             // rotation speed for the Rotate behaviour
+        "FreezeTime": 0,                // amount of time the weapon freezes an overlapping enemy
+        "KnockbackForceMultiplier": 0,  // 0: weapon has no knockback; >0: multiplier for enemy's movement speed to apply during knockback
+        "KnockbackDuration": 0,         // length of knockback effect
     }
 }
 
@@ -35,11 +35,11 @@ export const Weapons = {
         "Duration": 4,
         "BulletSpeed": 100,
         "RotationSpeed": 300,
-        "KnockbackImpulse": 0.3,
-        "KnockbackCooldown": 0.2,
+        "KnockbackForceMultiplier": 4,
+        "KnockbackDuration": 0.1,
     },
     "Flame": {
-        "BlockMovement": true,
+        "BlockMovement": false,
         "Cooldown": 3,
         "Damage": 25,
         "PierceLimit": 1000,
@@ -47,8 +47,8 @@ export const Weapons = {
         "Scale": 0.65,
         "Duration": 0.7,
         "Pin": true,
-        "KnockbackImpulse": 0.5,
-        "KnockbackCooldown": 0.5,
+        "KnockbackForceMultiplier": 5,
+        "KnockbackDuration": 0.15,
     },
     "Chainsaw": {
         "BlockMovement": false,
@@ -60,6 +60,8 @@ export const Weapons = {
         "Pin": true,
         "OrbitRadius": 25,
         "OrbitSpeed": 200,
+        "KnockbackForceMultiplier": 4,
+        "KnockbackDuration": 0.1,
     },
     "Spikes": {
         "Cooldown": 6,
@@ -81,11 +83,9 @@ export const Weapons = {
         "PositionRandom1": 80,
         "OrbitRadius": 13.5,
         "OrbitSpeed": 250,
-        "KnockbackImpulse": 0.3,
-        "KnockbackCooldown": 0.2,
     },
     "Sword": {
-        "BlockMovement": true,
+        "BlockMovement": false,
         "Cooldown": 2.5,
         "Damage": 40,
         "PierceLimit": 10000,
@@ -95,7 +95,7 @@ export const Weapons = {
         "Pin": true,
         "OrbitRadius": 5,
         "OrbitSpeed": 400,
-        "KnockbackImpulse": 0.8,
-        "KnockbackCooldown": 0.5,
+        "KnockbackForceMultiplier": 2,
+        "KnockbackDuration": 0.2,
     },
 }

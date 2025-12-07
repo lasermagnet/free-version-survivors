@@ -591,7 +591,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "If weapon is not a movement blocker, but has knockback, apply it with a per weapon per enemy cooldown"
+					"text": "If weapon is not a movement blocker, but has knockback, stop enemy, calculate knockback angle and start knockback timer"
 				},
 				{
 					"eventType": "block",
@@ -599,7 +599,7 @@
 						{
 							"id": "compare-instance-variable",
 							"objectClass": "Weapon",
-							"sid": 437713598536447,
+							"sid": 393610533955759,
 							"parameters": {
 								"instance-variable": "isMovementBlocker",
 								"comparison": 0,
@@ -609,20 +609,20 @@
 						{
 							"id": "compare-value",
 							"objectClass": "Rules",
-							"sid": 393536035480905,
+							"sid": 166207322246293,
 							"parameters": {
-								"path": "KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackImpulse",
+								"path": "KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackForceMultiplier",
 								"cmp": 4,
 								"value": "0"
 							}
 						},
 						{
 							"id": "is-timer-running",
-							"objectClass": "Weapon",
-							"sid": 425317471673872,
+							"objectClass": "Enemy",
+							"sid": 649297989583263,
 							"behaviorType": "Timer",
 							"parameters": {
-								"tag": "TIMER_Knockback_Enemy_ & Enemy.UID"
+								"tag": "TIMER_Knockback"
 							},
 							"isInverted": true
 						}
@@ -630,37 +630,45 @@
 					"actions": [
 						{
 							"id": "start-timer",
-							"objectClass": "Weapon",
-							"sid": 851408326549961,
+							"objectClass": "Enemy",
+							"sid": 580697474519452,
 							"behaviorType": "Timer",
 							"parameters": {
-								"duration": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackCooldown)",
+								"duration": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackDuration)",
 								"type": "once",
-								"tag": "TIMER_Knockback_Enemy_ & Enemy.UID"
+								"tag": "TIMER_Knockback"
 							}
 						},
 						{
-							"id": "apply-impulse-at-angle",
+							"id": "set-instvar-value",
 							"objectClass": "Enemy",
-							"sid": 983964071965980,
+							"sid": 356349622011270,
+							"parameters": {
+								"instance-variable": "knockbackAngle",
+								"value": "angle(Enemy.X, Enemy.Y, Player.X, Player.Y) + 180"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemy",
+							"sid": 805522782545225,
+							"parameters": {
+								"instance-variable": "knockbackForceMultiplier",
+								"value": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackForceMultiplier)"
+							}
+						},
+						{
+							"id": "set-velocity",
+							"objectClass": "Enemy",
+							"sid": 454148878398254,
 							"behaviorType": "Physics",
 							"parameters": {
-								"impulse": "Rules.Type(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackImpulse) = NULL ? 0 : Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackImpulse)",
-								"angle": "Weapon.knockbackAngle",
-								"image-point": "0"
-							}
-						},
-						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 476615712071546,
-							"parameters": {
-								"type": "log",
-								"message": "Weapon.AnimationName & \"_\" & Enemy.UID & \" knockback\""
+								"x-component": "0",
+								"y-component": "0"
 							}
 						}
 					],
-					"sid": 577312522101237
+					"sid": 585169274065533
 				},
 				{
 					"eventType": "comment",
@@ -1413,16 +1421,16 @@
 				},
 				{
 					"type": "comment",
-					"text": "Apply force"
+					"text": "Apply force (normal movement or knockback)"
 				},
 				{
 					"id": "apply-force-at-angle",
 					"objectClass": "Enemy",
-					"sid": 861694955085499,
+					"sid": 870263353263316,
 					"behaviorType": "Physics",
 					"parameters": {
-						"force": "Self.movementSpeed * Self.Physics.Mass",
-						"angle": "Self.movementAngle = NOTHING ? angle(Self.X, Self.Y, Player.X, Player.Y) : Self.movementAngle",
+						"force": "Self.Timer.NormalizedProgress(TIMER_Knockback) > 0 ?\nSelf.movementSpeed * Self.Physics.Mass * Self.knockbackForceMultiplier :\nSelf.movementSpeed * Self.Physics.Mass\n",
+						"angle": "Self.Timer.NormalizedProgress(TIMER_Knockback) > 0 ?\nSelf.knockbackAngle :\n(\n  Self.movementAngle = NOTHING ?\n  angle(Self.X, Self.Y, Player.X, Player.Y) :\n  Self.movementAngle\n)",
 						"image-point": "0"
 					}
 				}

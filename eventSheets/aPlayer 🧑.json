@@ -196,6 +196,11 @@
 					"text": "Tick all \"subroutines\""
 				},
 				{
+					"customAction": "tick_levelUp",
+					"objectClass": "Player",
+					"sid": 848037988801680
+				},
+				{
 					"customAction": "tick_attack",
 					"objectClass": "Player",
 					"sid": 999288460373505
@@ -219,11 +224,6 @@
 					"customAction": "tick_pickupDrops",
 					"objectClass": "Player",
 					"sid": 951991278869773
-				},
-				{
-					"customAction": "tick_levelUp",
-					"objectClass": "Player",
-					"sid": 907203772598064
 				},
 				{
 					"customAction": "tick_takeDamage",
