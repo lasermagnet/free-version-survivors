@@ -22,6 +22,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Browser",
 			"name": "Browser",
 			"author": "Scirra",
@@ -198,7 +205,8 @@
 			"UI_Vignette9P",
 			"PlayerHurtbox",
 			"UI_Button9P_Start",
-			"Arrow"
+			"Arrow",
+			"Audio"
 		],
 		"subfolders": []
 	},
@@ -230,7 +238,8 @@
 			"aEnemy 😈",
 			"aPlayer 🧑",
 			"aMap 🌳",
-			"!Start 👋"
+			"!Start 👋",
+			"aAudio 🔉"
 		],
 		"subfolders": []
 	},
@@ -329,7 +338,88 @@
 			"subfolders": []
 		},
 		"sound": {
-			"items": [],
+			"items": [
+				{
+					"name": "EnemyDamaged3.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 975147161929872,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "EnemyDamaged2.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 558627232550237,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "EnemyDamaged1.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 896961237987103,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "DropPickup.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 368217196996174,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "UpgradeApplied.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 938671381346670,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "LevelUp.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 562105424820725,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "PlayerDamaged3.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 943648017208089,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "PlayerDamaged2.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 501924359290816,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "PlayerDamaged1.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 299748050995051,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "PlayerDead.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 614025687851715,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"music": {
@@ -425,7 +515,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "19",
+		"version": "20",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

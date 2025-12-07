@@ -9,8 +9,11 @@ export const Pools = {
     ],
 
     "Upgrades": [
+        // Healing items
         [1, "Heal1"],
         [1, "Heal2"],
+        
+        // Player upgrades & bonuses
         [1, "MaxHealth"],
         [1, "MovementSpeed"],
         [1, "ExperienceBonus"],
@@ -20,8 +23,16 @@ export const Pools = {
         [1, "WeaponCooldown"],
         [1, "WeaponSize"],
         [1, "WeaponAmount"],
-        [1, "Sword"],
         [1, "ItemSpawnCooldown"],
+
+        // Weapons & their upgrades
+        [1, "Sword"],
+        [1, "Sword_Damage"],
+        [1, "Flame"],
+        [1, "Flame_Timeout"],
+        [1, "Revolver"],
+        [1, "Revolver_Radius"],
+        [1, "Revolver_Size"],
         [1, "Myst"],
         [1, "Myst_Area"],
     ],
@@ -41,6 +52,6 @@ export const Pools = {
         [1, "Golem"],
         [1, "Ogre"],
         [1, "Cultist"],
-        [1, "Beholder"],*/
+        [1, "Beholder"],*/[]
     ]
 }

@@ -117,6 +117,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_BlockMovement",
+			"type": "string",
+			"initialValue": "BlockMovement",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 944984716583836
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier",
 			"type": "string",
 			"initialValue": "Bonus_Enemy_Spawn_Cooldown_Multiplier",
@@ -676,6 +686,70 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 462448438943379
+		},
+		{
+			"eventType": "comment",
+			"text": "Sound effects"
+		},
+		{
+			"eventType": "variable",
+			"name": "SFX_DropPickup",
+			"type": "string",
+			"initialValue": "DropPickup",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 907093821045628
+		},
+		{
+			"eventType": "variable",
+			"name": "SFX_EnemyDamaged",
+			"type": "string",
+			"initialValue": "EnemyDamaged",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 306380490225541
+		},
+		{
+			"eventType": "variable",
+			"name": "SFX_LevelUp",
+			"type": "string",
+			"initialValue": "LevelUp",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 114056398490478
+		},
+		{
+			"eventType": "variable",
+			"name": "SFX_PlayerDamaged",
+			"type": "string",
+			"initialValue": "PlayerDamaged",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 547606269696265
+		},
+		{
+			"eventType": "variable",
+			"name": "SFX_PlayerDead",
+			"type": "string",
+			"initialValue": "PlayerDead",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 894823877716605
+		},
+		{
+			"eventType": "variable",
+			"name": "SFX_UpgradeApplied",
+			"type": "string",
+			"initialValue": "UpgradeApplied",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 332482984239385
 		},
 		{
 			"eventType": "comment",

@@ -577,6 +577,16 @@
 							],
 							"actions": [
 								{
+									"customAction": "playSFX",
+									"objectClass": "Audio",
+									"sid": 369744139280662,
+									"parameters": [
+										"SFX_DropPickup",
+										"0",
+										"1"
+									]
+								},
+								{
 									"id": "set-instvar-value",
 									"objectClass": "Drop",
 									"sid": 701635499251847,
@@ -627,6 +637,16 @@
 						}
 					],
 					"actions": [
+						{
+							"customAction": "playSFX",
+							"objectClass": "Audio",
+							"sid": 917474558896452,
+							"parameters": [
+								"SFX_LevelUp",
+								"0",
+								"1"
+							]
+						},
 						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
@@ -982,6 +1002,16 @@
 					],
 					"actions": [
 						{
+							"customAction": "playSFX",
+							"objectClass": "Audio",
+							"sid": 110573603425708,
+							"parameters": [
+								"SFX_PlayerDamaged",
+								"3",
+								"1"
+							]
+						},
+						{
 							"type": "comment",
 							"text": "Decrease player health"
 						},
@@ -1029,6 +1059,16 @@
 						}
 					],
 					"actions": [
+						{
+							"customAction": "playSFX",
+							"objectClass": "Audio",
+							"sid": 867180006094448,
+							"parameters": [
+								"SFX_PlayerDead",
+								"0",
+								"1"
+							]
+						},
 						{
 							"type": "comment",
 							"text": "todo more feedback / game over screen, etc"
@@ -1346,6 +1386,16 @@
 			"eventType": "custom-ace-block",
 			"conditions": [],
 			"actions": [
+				{
+					"customAction": "playSFX",
+					"objectClass": "Audio",
+					"sid": 934419269839959,
+					"parameters": [
+						"SFX_UpgradeApplied",
+						"0",
+						"1"
+					]
+				},
 				{
 					"type": "comment",
 					"text": "Apply upgrade (multiply)"

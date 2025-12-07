@@ -1,0 +1,85 @@
+{
+	"name": "aAudio 🔉",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "playSFX",
+			"objectClass": "Audio",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "sfxName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 473512811779861
+				},
+				{
+					"name": "variantCount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 838634347524456
+				},
+				{
+					"name": "volumePercentMultiplier",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 736238851834375
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 773507944794559,
+					"parameters": {
+						"variable": "volumePercentSFX",
+						"comparison": 4,
+						"value": "0"
+					}
+				},
+				{
+					"id": "is-tag-playing",
+					"objectClass": "Audio",
+					"sid": 155669123558488,
+					"parameters": {
+						"tag": "sfxName"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "todo use very short debounce timer instead of SFX exclusivity"
+				},
+				{
+					"type": "comment",
+					"text": "This custom action plays a sound effect by name, takes care of debouncing and optional variations"
+				},
+				{
+					"id": "play-by-name",
+					"objectClass": "Audio",
+					"sid": 113500539614942,
+					"parameters": {
+						"folder": "sounds",
+						"audio-file-name": "sfxName & (variantCount = NO ? EMPTY : int(random(1, variantCount +1)))",
+						"loop": "not-looping",
+						"volume": "(-log10(100 / volumePercentSFX) * 33.2) * volumePercentMultiplier",
+						"stereo-pan": "0",
+						"tag-optional": "AUDIO_SFX & \" \" & sfxName"
+					}
+				}
+			],
+			"sid": 794827885199458
+		}
+	],
+	"sid": 788941216342244
+}

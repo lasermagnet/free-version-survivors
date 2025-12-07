@@ -105,6 +105,15 @@ export const Upgrades = {
         "Multiply": 1,
         "Add": 1,
     },
+    "Sword_Damage": {
+        "WeaponRequirement": "Sword",
+        "Label": "Sword: damage up",
+        "Description": "Deal bigger damage with your sword.",
+        "Icon": "Sword",
+        "Rule_Value": "Weapons.Sword.Damage",
+        "Multiply": 1,
+        "Add": 2,
+    },
     "Flame": {
         "Label": "+1 Flame",
         "Description": "Cooks nearby enemies.",
@@ -112,6 +121,15 @@ export const Upgrades = {
         "Rule_Value": "Weapons.Flame.Amount",
         "Multiply": 1,
         "Add": 1,
+    },
+    "Flame_Timeout": {
+        "WeaponRequirement": "Flame",
+        "Label": "Flame: fuel up",
+        "Description": "Flames last longer.",
+        "Icon": "Flame",
+        "Rule_Value": "Weapons.Flame.Timeout",
+        "Multiply": 1,
+        "Add": 0.2,
     },
     "Revolver": {
         "Label": "+1 Revolver",
@@ -121,9 +139,27 @@ export const Upgrades = {
         "Multiply": 1,
         "Add": 1,
     },
+    "Revolver_Radius": {
+        "WeaponRequirement": "Revolver",
+        "Label": "Revolver: radius up",
+        "Description": "Increase distance from player.",
+        "Icon": "Revolver",
+        "Rule_Value": "Weapons.Revolver.OrbitRadius",
+        "Multiply": 1,
+        "Add": 10,
+    },
+    "Revolver_Size": {
+        "WeaponRequirement": "Revolver",
+        "Label": "Revolver: scale up",
+        "Description": "Increase the size of your revolvers.",
+        "Icon": "Revolver",
+        "Rule_Value": "Weapons.Revolver.Scale",
+        "Multiply": 1,
+        "Add": 0.1,
+    },
     "Myst": {
-        "Label": "Myst / density",
-        "Description": "Creates a damaging zone.",
+        "Label": "+1 Myst",
+        "Description": "Spawns damaging zones.",
         "Icon": "Myst",
         "Rule_Value": "Weapons.Myst.Amount",
         "Multiply": 1,
@@ -131,7 +167,7 @@ export const Upgrades = {
     },
     "Myst_Area": {
         "WeaponRequirement": "Myst",
-        "Label": "Myst: bigger area",
+        "Label": "Myst: area up",
         "Description": "Spreads Myst on a bigger area",
         "Icon": "Myst",
         "Rule_Value": "Weapons.Myst.PositionRandom2",
@@ -139,3 +175,4 @@ export const Upgrades = {
         "Add": 10,
     },
 }
+// todo limit how many time an upgrade shows up

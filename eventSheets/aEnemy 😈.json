@@ -142,7 +142,21 @@
 					}
 				}
 			],
-			"actions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Reset \"movement blocked\" state"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 102457041612568,
+					"parameters": {
+						"instance-variable": "isMovementBlocked",
+						"value": "NO"
+					}
+				}
+			],
 			"sid": 323244324797060,
 			"children": [
 				{
@@ -150,6 +164,7 @@
 					"text": "Enemy getting damaged"
 				},
 				{
+					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -177,6 +192,23 @@
 						}
 					],
 					"actions": [
+						{
+							"type": "comment",
+							"text": "Set movement block if needed"
+						},
+						{
+							"type": "comment",
+							"text": "todo_now"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemy",
+							"sid": 393868468966729,
+							"parameters": {
+								"instance-variable": "isMovementBlocked",
+								"value": "KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_BlockMovement"
+							}
+						},
 						{
 							"type": "comment",
 							"text": "Damage enemy"
@@ -310,6 +342,16 @@
 								}
 							],
 							"actions": [
+								{
+									"customAction": "playSFX",
+									"objectClass": "Audio",
+									"sid": 746673726225653,
+									"parameters": [
+										"SFX_EnemyDamaged",
+										"3",
+										"1"
+									]
+								},
 								{
 									"id": "spawn-another-object",
 									"objectClass": "Enemy",
@@ -516,16 +558,6 @@
 											"isInverted": true
 										},
 										{
-											"id": "is-overlapping-another-object",
-											"objectClass": "Enemy",
-											"sid": 118700603474877,
-											"disabled": true,
-											"parameters": {
-												"object": "Player"
-											},
-											"isInverted": true
-										},
-										{
 											"id": "pick-by-comparison",
 											"objectClass": "System",
 											"sid": 363693118836054,
@@ -709,7 +741,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Move enemies that are overlapping a weapon"
+					"text": "Move enemies that are not blocked by the weapon"
 				},
 				{
 					"eventType": "block",
@@ -722,6 +754,16 @@
 								"object": "Weapon"
 							},
 							"isInverted": true
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemy",
+							"sid": 795640150955139,
+							"parameters": {
+								"instance-variable": "isMovementBlocked",
+								"comparison": 0,
+								"value": "NO"
+							}
 						}
 					],
 					"actions": [
@@ -809,6 +851,33 @@
 						}
 					],
 					"sid": 894429956563491
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemy",
+							"sid": 222801899404332,
+							"parameters": {
+								"instance-variable": "isMovementBlocked",
+								"comparison": 0,
+								"value": "YES"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 218060331233019,
+							"parameters": {
+								"type": "log",
+								"message": "\"Enemies with movement blocked: \" & Enemy.PickedCount"
+							}
+						}
+					],
+					"sid": 250292561153445
 				}
 			]
 		}

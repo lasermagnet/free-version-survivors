@@ -39,6 +39,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 414852239883857
+		},
+		{
+			"name": "isMovementBlocked",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 212962772624305
 		}
 	],
 	"behaviorTypes": [

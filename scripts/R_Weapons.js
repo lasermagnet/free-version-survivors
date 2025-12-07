@@ -1,5 +1,6 @@
 export const Weapons = {
     "_Template": {
+        "BlockMovement": 1,
         "Cooldown": 2,
         "Amount": 0,
         "Damage": 0,
@@ -16,7 +17,8 @@ export const Weapons = {
         "PositionRandom2": 0,
     },
     "Sword": {
-        "Cooldown": 1,
+        "BlockMovement": 1,
+        "Cooldown": 1.5,
         "Amount": 1,
         "Damage": 15,
         "PierceLimit": 5,
@@ -26,8 +28,9 @@ export const Weapons = {
         "Timer": 1,
     },
     "Flame": {
+        "BlockMovement": 1,
         "Cooldown": 3,
-        "Amount": 2,
+        "Amount": 0,
         "Damage": 25,
         "PierceLimit": 1000,
         "Scale": 1,
@@ -37,17 +40,17 @@ export const Weapons = {
         "Pin": 1,
     },
     "Revolver": {
+        "BlockMovement": 1,
         "Cooldown": 5,
-        "Amount": 3,
+        "Amount": 0,
         "Damage": 20,
         "PierceLimit": 1000,
         "Scale": 1,
         "Timeout": 4,
-        "MovementSpeed": 20,
         "Timer": 1,
         "Pin": 1,
-        "OrbitRadius": 40,
-        "OrbitSpeed": 150,
+        "OrbitRadius": 25,
+        "OrbitSpeed": 120,
     },
     "Myst": {
         "Cooldown": 6,
@@ -59,8 +62,8 @@ export const Weapons = {
         "MovementSpeed": 10,
         "MovementAcceleration": -5,
         "Timer": 1,
-        "PositionRandom1": 40,
-        "PositionRandom2": 20,
+        "PositionRandom1": 100,
+        "PositionRandom2": 100,
     },
 }
 
