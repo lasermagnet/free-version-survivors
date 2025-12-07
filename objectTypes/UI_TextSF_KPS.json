@@ -1,36 +1,28 @@
 {
-	"name": "UI_Bar_Health",
-	"plugin-id": "TiledBg",
-	"sid": 758223601034880,
+	"name": "UI_TextSF_KPS",
+	"plugin-id": "Spritefont2",
+	"sid": 738193354760749,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [
-		{
-			"name": "initWidth",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 935787413954760
-		}
-	],
+	"instanceVariables": [],
 	"behaviorTypes": [
 		{
 			"behaviorId": "Anchor",
 			"name": "Anchor",
-			"sid": 409648792568246
+			"sid": 761902897124385
 		}
 	],
 	"effectTypes": [],
 	"image": {
-		"width": 1,
-		"height": 1,
+		"width": 570,
+		"height": 180,
 		"originX": 0.5,
 		"originY": 0.5,
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 577789,
+		"imageSpriteId": 8342323,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

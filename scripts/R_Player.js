@@ -6,14 +6,14 @@ export const Player = {
     // Experience
     "Experience": 0,                     // starting & current XP
     "Experience_Target": 40,             // starting & next XP target
-    "Experience_Target_Multiplier": 1.2, // experience target is multiplied by this value when leveling up
+    "Experience_Target_Multiplier": 1.19, // experience target is multiplied by this value when leveling up
 
     // Movement
     "MovementSpeed": 50, // movement speed for the 8 Direction behaviour
 
     // Misc
     "PickupDistance": 30,         // starting / current drop pickup distance of the player
-    "PickupDistanceMagnet": 1000, // picking up a magnet drop will vacuum experience drops within this distance from the player
+    "PickupDistanceMagnet": 1500, // picking up a magnet drop will vacuum experience drops within this distance from the player
     "LevelUpFreezeTime": 1,       // number of seconds while enemies stay frozen after player levels up
 
     // Bonuses

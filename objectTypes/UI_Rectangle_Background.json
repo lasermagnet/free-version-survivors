@@ -1,11 +1,17 @@
 {
-	"name": "UI_Rectangle",
+	"name": "UI_Rectangle_Background",
 	"plugin-id": "TiledBg",
-	"sid": 715207690266040,
-	"isGlobal": true,
+	"sid": 438101834052962,
+	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 134041050158358
+		}
+	],
 	"effectTypes": [],
 	"image": {
 		"width": 1,
@@ -16,7 +22,7 @@
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 8691571,
+		"imageSpriteId": 1760510,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

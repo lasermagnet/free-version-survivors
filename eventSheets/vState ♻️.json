@@ -131,13 +131,33 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "timePassed",
+			"name": "timeSurvived",
 			"type": "number",
 			"initialValue": "0",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 500098607238649
+		},
+		{
+			"eventType": "variable",
+			"name": "enemiesKilledperSecond",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Or \"kps\", gets reset every second",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 553670930245171
+		},
+		{
+			"eventType": "variable",
+			"name": "winStreak",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "How many consecutive times have the target kps been met",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 529551554805287
 		},
 		{
 			"eventType": "comment",

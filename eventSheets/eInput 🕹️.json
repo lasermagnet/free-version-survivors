@@ -120,14 +120,15 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Enable visibility of the \"pause\" text (it's invisible by default)"
+					"text": "If the game is not in a \"leveling\" state and the player is not dead, toggle the \"is paused\" state"
 				},
 				{
-					"id": "set-visible",
-					"objectClass": "UI_TextSF_Pause",
-					"sid": 984196809538558,
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 156555786695072,
 					"parameters": {
-						"visibility": "visible"
+						"variable": "isPaused",
+						"value": "isLeveling = YES | Player.isDead = YES ? isPaused : (isPaused = YES ? NO : YES)"
 					}
 				},
 				{
@@ -144,20 +145,11 @@
 				},
 				{
 					"type": "comment",
-					"text": "If the game is not in a \"leveling\" state and the player is not dead, toggle the \"is paused\" state"
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 381806647688418,
-					"parameters": {
-						"variable": "isPaused",
-						"value": "isLeveling = YES | Player.isDead = YES ? isPaused : (isPaused = YES ? NO : YES)"
-					}
+					"text": "Set opacity of the pause & stats text elements according to the \"is paused\" state"
 				},
 				{
 					"type": "comment",
-					"text": "Set opacity of the pause & stats text elements according to the \"is paused\" state"
+					"text": "(This is yucky, but saves on sub events)"
 				},
 				{
 					"id": "set-opacity",
@@ -185,6 +177,14 @@
 					"sid": 394360798595963,
 					"parameters": {
 						"time-scale": "abs(isPaused - 1)"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_Rectangle_Background",
+					"sid": 433711698232672,
+					"parameters": {
+						"opacity": "isPaused * 50"
 					}
 				}
 			],
@@ -238,7 +238,24 @@
 				{
 					"id": "reload",
 					"objectClass": "Browser",
-					"sid": 646195926729200
+					"sid": 646195926729200,
+					"disabled": true
+				},
+				{
+					"id": "reset-global-variables",
+					"objectClass": "System",
+					"sid": 992725248529566,
+					"parameters": {
+						"reset-static": false
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 607688981422502,
+					"parameters": {
+						"layout": "Start"
+					}
 				}
 			],
 			"sid": 894833612974342,

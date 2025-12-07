@@ -205,7 +205,7 @@
 			"Gamepad",
 			"Item",
 			"UI_Bar_Experience",
-			"UI_Border_Experience",
+			"UI_Border",
 			"Rules",
 			"UI_Border_LevelUp",
 			"UI_TextSF_Upgrade",
@@ -216,7 +216,7 @@
 			"UpgradeOptions",
 			"Editor",
 			"UI_Button9P_Upgrade",
-			"UI_Rectangle",
+			"UI_Rectangle_Frame",
 			"UI_TextSF_Damage",
 			"Icon",
 			"UI_Vignette9P",
@@ -230,12 +230,13 @@
 			"UI_TextSF_Wave",
 			"UI_TextSF_Pause",
 			"UI_TextSF_Time",
-			"UI_Background_Health",
 			"UI_TextSF_Stats",
 			"UI_TouchMarker",
 			"UI_TextSF_Level",
 			"UI_TextSF_PauseButton",
-			"PlayerParticles"
+			"PlayerParticles",
+			"UI_TextSF_KPS",
+			"UI_Rectangle_Background"
 		],
 		"subfolders": []
 	},
@@ -577,7 +578,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "68",
+		"version": "68c",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

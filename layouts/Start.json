@@ -154,7 +154,7 @@
 					}
 				},
 				{
-					"type": "UI_Rectangle",
+					"type": "UI_Rectangle_Frame",
 					"properties": {
 						"initially-visible": true,
 						"origin": "bottom",
@@ -201,7 +201,7 @@
 					}
 				},
 				{
-					"type": "UI_Rectangle",
+					"type": "UI_Rectangle_Frame",
 					"properties": {
 						"initially-visible": true,
 						"origin": "top",
@@ -248,7 +248,7 @@
 					}
 				},
 				{
-					"type": "UI_Rectangle",
+					"type": "UI_Rectangle_Frame",
 					"properties": {
 						"initially-visible": true,
 						"origin": "right",
@@ -295,7 +295,7 @@
 					}
 				},
 				{
-					"type": "UI_Rectangle",
+					"type": "UI_Rectangle_Frame",
 					"properties": {
 						"initially-visible": true,
 						"origin": "left",

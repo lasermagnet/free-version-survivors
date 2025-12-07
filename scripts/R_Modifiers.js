@@ -1,13 +1,28 @@
 const _example = {
     "": {
-        "Label": "Heal a bit",              // bigger text for the level up screen
-        "Description": "Heal 100 points",   // smaller text for the level up screen
-        "Icon": "Heal",                     // an animation name in the Icons object
-        "Rule_Value": "Player.Health",      // specify which rule value to modify
-        "Rule_Max": "Player.Health_Max",    // optionally specify the rule which holds the maximum allowed value
-        //"Multiply": 1,                      // amount to multiply the specified rule value with (defaults to 1 when not specified or set to null)
-        "Add": 100,                         // amount to add to the specified rule value
-        "Weapon": "Axe"                     // optionally specify a weapon to immediately trigger its attack and restart its cooldown
+        // bigger text for the level up screen
+        "Label": "Heal a bit",
+
+        // smaller text for the level up screen
+        "Description": "Heal 100 points",
+
+        // an animation name in the Icons object
+        "Icon": "Heal",
+
+        // specify which rule value to modify
+        "Rule_Value": "Player.Health",
+
+        // optionally specify the rule which holds the maximum allowed value
+        "Rule_Max": "Player.Health_Max",
+
+        // amount to multiply the specified rule value with (defaults to 1 when not specified or set to null)
+        "Multiply": 1,
+
+        // amount to add to the specified rule value
+        "Add": 100,
+
+        // optionally specify a weapon to immediately trigger its attack and restart its cooldown
+        "Weapon": "Axe"
     },
 }
 

@@ -1,28 +1,22 @@
 {
-	"name": "UI_Border_Experience",
-	"plugin-id": "NinePatch",
-	"sid": 840635283600648,
-	"isGlobal": false,
+	"name": "UI_Rectangle_Frame",
+	"plugin-id": "TiledBg",
+	"sid": 715207690266040,
+	"isGlobal": true,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Anchor",
-			"name": "Anchor",
-			"sid": 795019415540378
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"image": {
-		"width": 3,
-		"height": 3,
+		"width": 1,
+		"height": 1,
 		"originX": 0.5,
 		"originY": 0.5,
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 508014,
+		"imageSpriteId": 8691571,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

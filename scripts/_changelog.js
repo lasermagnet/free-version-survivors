@@ -1,7 +1,14 @@
 /*
 
 Build 68
-- New feature: ability to activate a list of modifiers at the start of a wave. See ModifiersToApply in Waves.
+- New: ability to activate a list of modifiers at the start of a wave. See ModifiersToApply in R_Waves.
+- New: added "kills/s" (KPS) measurement & UI (shows when KPS is above 0)
+- New: implemented a better "restart": instead of the basic browser refresh, stuff gets reset and the game goes back to the start screen. Rule changes in the editor persist between restarts (but not between browser refreshes).
+- New (minor stuff): added dark background to pause and game over screens, enemies gradually stop moving after player is dead, added LabelTime property to Waves so it's possible to specify fade out interval of the label (defaults to 1 sec).
+- Change: Moved (back) player health bar to bottom of the screen, so it's visible on the upgrade screen and hopefully easier to read in intense situations :)
+- Change: level timer now pauses on the level up screen. Internally it was called timePassed, now it's timeSurvived.
+- Change: some random acts of refactoring and balancing.
+- Bugfix: kill count was inaccurate, as it was only increased by 1 per tick even if multiple enemies died in the same tick.
 
 Build 67
 - Reworked knockback system: KncobackForceMultiplier is gone, now there's KnockbackSpeed that can be either null (or absent) so the weapon ha no knockback, set to zero so the weapon stops & blocks enemy movement but doesn't cause knockback, or a value that moves the enemy like MovementSpeed, but in the knockback's direction.

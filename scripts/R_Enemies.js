@@ -1,26 +1,45 @@
 const _example = {
     "": {
-        "Health": 1,                // starting health
-        "Damage": 1,                // damage per second while weapon is overlapping the player
-        "Healing": 0,               // healing drop value
-        "Experience": 10,           // experience drop value
-        "MovementSpeed": 0,         // movement speed
-        "MovementAngle": null,      // if specified, enemy will move in this angle; -1 value is not supported
-        "Density": 1,               // physics density (defaults to 1 when unset or null)
-        "Scale": 1,                 // sprite size multiplier (defaults to 1 when unset or null)
-        "Animation": "Beholder",    // override default animation name (which is the enemy's name)
-        "ItemSpawnDisabled": false, // containers don't spawn items (only drops)
+        // starting health
+        "Health": 1,
+
+        // damage per second while weapon is overlapping the player
+        "Damage": 1,
+
+        // healing drop value (for crates spawning health drops)
+        "Healing": 0,
+
+        // experience drop value
+        "Experience": 10,
+
+        // movement speed (0 = enemy is stationary, eg. crates)
+        "MovementSpeed": 0,
+
+        // if specified, enemy will move in this angle; -1 value is not supported
+        "MovementAngle": null,
+
+        // physics density (defaults to 1 when unset or null)
+        "Density": 1,
+
+        // sprite size multiplier (defaults to 1 when unset or null)
+        "Scale": 1,
+
+        // (optional) custom animation name (by the default it's the enemy's name)
+        "Animation": "Beholder",
+
+        // whether the enemy can spawn an item (so containers don't spawn items, only drops)
+        "ItemSpawnDisabled": false,
     }
 }
 
 export const Enemies = {
     "HealingCrate": {
-        "Health": 3,
-        "Healing": 100,
+        "Health": 5,
+        "Healing": 50,
         "ItemSpawnDisabled": true,
     },
     "MagnetCrate": {
-        "Health": 3,
+        "Health": 5,
         "ItemSpawnDisabled": true,
     },
     "Slime": {

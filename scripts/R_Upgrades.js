@@ -1,7 +1,10 @@
 const _example = {
     "": {
-        "Modifiers": [],          // ordered list of modifiers to show first
-        "Modifiers_Infinite": [], // unordered list of modifiers to keep showing (randomly) after normal modifiers ran out
+        // ordered list of modifiers to show first
+        "Modifiers": [],
+
+        // unordered list of modifiers to keep showing (randomly) after normal modifiers ran out
+        "Modifiers_Infinite": [],
     },
 }
 

@@ -617,6 +617,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_LabelTime",
+			"type": "string",
+			"initialValue": "LabelTime",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 195002819906869
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Level",
 			"type": "string",
 			"initialValue": "Level",

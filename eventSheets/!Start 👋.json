@@ -38,25 +38,26 @@
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 909455077034720
+					"sid": 909455077034720,
+					"disabled": true
 				}
 			],
 			"actions": [
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 265592090473247,
+					"parameters": {
+						"type": "log",
+						"message": "\"Free Version Survivors build \" & projectversion"
+					}
+				},
 				{
 					"type": "script",
 					"language": "javascript",
 					"script": [
 						"runtime.globalVars.rulesJSON = getRulesFromEditor() ?? JSON.stringify(rules)"
 					]
-				},
-				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 941873728969446,
-					"parameters": {
-						"type": "log",
-						"message": "\"Free Version Survivors build \" & projectversion"
-					}
 				},
 				{
 					"id": "go-to-layout",
@@ -71,8 +72,33 @@
 			"isOrBlock": true
 		},
 		{
-			"eventType": "comment",
-			"text": "todo_prod disable \"on start of layout\" condition"
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 312044748835706
+				}
+			],
+			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "Editor",
+					"sid": 106464108126459,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 248636676969624,
+					"parameters": {
+						"time-scale": "1"
+					}
+				}
+			],
+			"sid": 852420688445446
 		}
 	],
 	"sid": 300998432203858

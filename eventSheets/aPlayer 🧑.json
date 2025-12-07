@@ -69,19 +69,6 @@
 				},
 				{
 					"type": "comment",
-					"text": "Increase passed time"
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 672241172367725,
-					"parameters": {
-						"variable": "timePassed",
-						"value": "dt"
-					}
-				},
-				{
-					"type": "comment",
 					"text": "Reset hurt state"
 				},
 				{
@@ -231,7 +218,7 @@
 					"sid": 130659401245213
 				},
 				{
-					"customAction": "tick_health",
+					"customAction": "tick_healthCheck",
 					"objectClass": "Player",
 					"sid": 892364115359393
 				},
@@ -1019,7 +1006,7 @@
 		},
 		{
 			"aceType": "action",
-			"aceName": "tick_health",
+			"aceName": "tick_healthCheck",
 			"objectClass": "Player",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -1155,6 +1142,23 @@
 						"property": "offsetOpacity",
 						"end-value": "0",
 						"time": "3",
+						"ease": "easeoutcubic",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "UI_Rectangle_Background",
+					"sid": 826559495502923,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetOpacity",
+						"end-value": "50",
+						"time": "2",
 						"ease": "easeoutcubic",
 						"destroy-on-complete": "no",
 						"loop": "no",
@@ -2082,6 +2086,11 @@
 					"text": "Spawn wave text UI"
 				},
 				{
+					"id": "destroy",
+					"objectClass": "UI_TextSF_Wave",
+					"sid": 992313115544987
+				},
+				{
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 525385144159645,
@@ -2118,13 +2127,13 @@
 				{
 					"id": "tween-one-property",
 					"objectClass": "UI_TextSF_Wave",
-					"sid": 894401552332482,
+					"sid": 349027221832991,
 					"behaviorType": "Tween",
 					"parameters": {
 						"tags": "\"\"",
 						"property": "offsetOpacity",
 						"end-value": "100",
-						"time": "1",
+						"time": "Rules.Type(KEY_Waves & DOT & waveId & DOT & KEY_LabelTime) = NULL ? 1 : Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_LabelTime)",
 						"ease": "easeoutexpo",
 						"destroy-on-complete": "no",
 						"loop": "no",

@@ -1,25 +1,64 @@
 const _example = {
     "": {
-        "Amount": 0,                    // number of weapons to spawn per attack
-        "BlockMovement": false,         // whether a weapon blocks movement of overlapping enemies
-        "Cooldown": 2,                  // seconds, the weapon attacks at this interval
-        "Damage": 0,                    // damage per second while weapon is overlapping an enemy
-        "PierceLimit": 1,               // weapon is destroyed after hitting this amount of unique enemioes
-        "RotationAngleOffset": 0,       // optional rotation offset for the weapon sprite
-        "Scale": 1,                     // size multiplier
-        "StaticAngle": null,            // null: weapon will face the player; any number: fixed angle
-        "Duration": 1,                  // seconds, defines the lifetime of a weapon (fades out at the end)
-        "BulletSpeed": 0,               // movement speed for the Bullet behaviour
-        "BulletAcceleration": 0,        // acceleration for the Bullet behaviour
-        "Pin": false,                   // whether to pin position of the weapon to the player
-        "OrbitRadius": 0,               // radius for the Orbit behaviour
-        "OrbitSpeed": 0,                // movement speed for the Orbit behaviour
-        "PositionRandom1": 0,           // X/Y position randomization per attack
-        "PositionRandom2": 0,           // X/Y position randomization per weapon instance
-        "RotationSpeed": 0,             // rotation speed for the Rotate behaviour
-        "FreezeTime": 0,                // amount of time the weapon freezes an overlapping enemy
-        "KnockbackSpeed": 0,            // null: weapon has no knockback; 0: weapon blocks enem movement; >0: weapon moves back enemies with given speed
-        "KnockbackDuration": 0,         // length of knockback effect
+        // number of weapons to spawn per attack
+        "Amount": 0,
+
+        // whether a weapon blocks movement of overlapping enemies
+        "BlockMovement": false,
+
+        // seconds, the weapon attacks at this interval
+        "Cooldown": 2,
+
+        // damage per second while weapon is overlapping an enemy
+        "Damage": 0,
+
+        // weapon is destroyed after hitting this amount of unique enemioes
+        "PierceLimit": 1,
+
+        // optional rotation offset for the weapon sprite
+        "RotationAngleOffset": 0,
+
+        // size multiplier
+        "Scale": 1,
+
+        // null: weapon will face the player; any number: fixed angle
+        "StaticAngle": null,
+
+        // seconds, defines the lifetime of a weapon (fades out at the end)
+        "Duration": 1,
+
+        // movement speed for the Bullet behaviour
+        "BulletSpeed": 0,
+
+        // acceleration for the Bullet behaviour
+        "BulletAcceleration": 0,
+
+        // whether to pin position of the weapon to the player
+        "Pin": false,
+
+        // radius for the Orbit behaviour
+        "OrbitRadius": 0,
+
+        // movement speed for the Orbit behaviour
+        "OrbitSpeed": 0,
+
+        // X/Y position randomization per attack
+        "PositionRandom1": 0,
+
+        // X/Y position randomization per weapon instance
+        "PositionRandom2": 0,
+
+        // rotation speed for the Rotate behaviour
+        "RotationSpeed": 0,
+
+        // amount of time the weapon freezes an overlapping enemy
+        "FreezeTime": 0,
+
+        // null: weapon has no knockback; 0: weapon blocks enemy movement; >0: weapon moves back enemies with given speed
+        "KnockbackSpeed": 0,
+
+        // length of knockback effect
+        "KnockbackDuration": 0,
     }
 }
 
@@ -64,14 +103,16 @@ export const Weapons = {
         "KnockbackDuration": 0.1,
     },
     "Spikes": {
-        "Cooldown": 6,
-        "Damage": 4,
+        "Cooldown": 8,
+        "Damage": 3,
         "PierceLimit": 1000,
         "Scale": 0.5,
-        "StaticAngle": 10,
+        "StaticAngle": 0,
         "Duration": 3,
         "PositionRandom1": 40,
         "PositionRandom2": 30,
+        "KnockbackSpeed": 0,
+        "KnockbackDuration": 0.05,
     },
     "Ice": {
         "Cooldown": 5,

@@ -303,6 +303,19 @@
 				},
 				{
 					"type": "comment",
+					"text": "Slow down gradually if player is dead"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 847955216189725,
+					"parameters": {
+						"instance-variable": "movementSpeed",
+						"value": "Player.isDead = YES ? max(0, Self.movementSpeed - dt * 0.2) : Self.movementSpeed"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Set enemy color (flashing, frozen, or normal)"
 				},
 				{
@@ -490,6 +503,41 @@
 					"sid": 878533353758140,
 					"parameters": {
 						"object": "Weapon"
+					}
+				},
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "Weapon",
+					"sid": 408207076831765,
+					"disabled": true,
+					"parameters": {
+						"object": "Enemy"
+					}
+				},
+				{
+					"id": "is-on-screen",
+					"objectClass": "Weapon",
+					"sid": 670844444843887,
+					"disabled": true
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Weapon",
+					"sid": 263313139166640,
+					"disabled": true,
+					"parameters": {
+						"instance-variable": "isDestroyed",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 116894896817741,
+					"disabled": true,
+					"parameters": {
+						"object": "Enemy"
 					}
 				}
 			],
@@ -937,6 +985,10 @@
 			"sid": 783732046062607
 		},
 		{
+			"eventType": "comment",
+			"text": "Kill enemy if they are out of health"
+		},
+		{
 			"aceType": "action",
 			"aceName": "tick_health",
 			"objectClass": "Enemy",
@@ -962,10 +1014,6 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Kill enemy if they are out of health"
-				},
-				{
-					"type": "comment",
 					"text": "Update \"is dead\" state"
 				},
 				{
@@ -979,15 +1027,37 @@
 				},
 				{
 					"type": "comment",
-					"text": "Increment kill counter"
+					"text": "Increment kill counters"
+				},
+				{
+					"type": "comment",
+					"text": "(Crates are also counted as kills, which is.. not optimal, but not filtering them out saves on a sub event.)"
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 298873645356378,
+					"parameters": {
+						"type": "log",
+						"message": "\"Enemy killed: \" & Enemy.PickedCount"
+					}
 				},
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 845877099363167,
+					"sid": 339308444111222,
 					"parameters": {
 						"variable": "enemiesKilled",
-						"value": "1"
+						"value": "Enemy.PickedCount"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 720815621652811,
+					"parameters": {
+						"variable": "enemiesKilledperSecond",
+						"value": "Enemy.PickedCount"
 					}
 				},
 				{
@@ -1382,6 +1452,10 @@
 			"sid": 925692660780281
 		},
 		{
+			"eventType": "comment",
+			"text": "Move enemies that are not blocked by the weapon"
+		},
+		{
 			"aceType": "action",
 			"aceName": "tick_movement",
 			"objectClass": "Enemy",
@@ -1422,16 +1496,23 @@
 						"tag": "TIMER_Freeze_All"
 					},
 					"isInverted": true
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 777151504867871,
+					"disabled": true,
+					"parameters": {
+						"instance-variable": "isDead",
+						"comparison": 0,
+						"value": "NO"
+					}
 				}
 			],
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Move enemies that are not blocked by the weapon"
-				},
-				{
-					"type": "comment",
-					"text": "Make all enemies movable (default is immovable for chests)"
+					"text": "Make all enemies movable (they are immovable by default, so crates remain stationary)"
 				},
 				{
 					"id": "set-immovable",

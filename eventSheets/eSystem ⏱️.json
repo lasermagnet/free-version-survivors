@@ -76,11 +76,6 @@
 					}
 				},
 				{
-					"id": "move-to-bottom",
-					"objectClass": "Ground",
-					"sid": 666911253684500
-				},
-				{
 					"type": "comment",
 					"text": "Spawn four level bounding walls"
 				},
@@ -259,6 +254,18 @@
 				},
 				{
 					"type": "comment",
+					"text": "Hide editor UI"
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "Editor",
+					"sid": 337390277165829,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Initalize UI"
 				},
 				{
@@ -290,6 +297,30 @@
 					"id": "set-opacity",
 					"objectClass": "UI_TextSF_Stats",
 					"sid": 881795499284109,
+					"parameters": {
+						"opacity": "0"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_TextSF_Pause",
+					"sid": 936613692171973,
+					"parameters": {
+						"opacity": "0"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_KPS",
+					"sid": 614946757545185,
+					"parameters": {
+						"text": "enemiesKilledperSecond"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_Rectangle_Background",
+					"sid": 294282832304793,
 					"parameters": {
 						"opacity": "0"
 					}
@@ -331,18 +362,6 @@
 				},
 				{
 					"type": "comment",
-					"text": "Update time UI"
-				},
-				{
-					"id": "set-text",
-					"objectClass": "UI_TextSF_Time",
-					"sid": 801658922532501,
-					"parameters": {
-						"text": "(timePassed / 3600 >= 1 ? int(timePassed / 3600) & \":\" : \"\") & zeropad(int(timePassed / 60), 2) & \":\" & zeropad((int(timePassed) % 60), 2)"
-					}
-				},
-				{
-					"type": "comment",
 					"text": "Update player level UI"
 				},
 				{
@@ -351,6 +370,64 @@
 					"sid": 658624073574158,
 					"parameters": {
 						"text": "\"LVL \" & Player.level"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update KPS UI"
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_KPS",
+					"sid": 969887783859005,
+					"parameters": {
+						"text": "int(timeSurvived) < int(timeSurvived + dt) ? enemiesKilledperSecond & (enemiesKilledperSecond = 1 ? \" kill/s\" : \" kills/s\") : Self.Text"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_TextSF_KPS",
+					"sid": 229635023311668,
+					"parameters": {
+						"opacity": "int(Self.Text) < 1 ? 0 : 100"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Reset KPS if needed"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 902523105648769,
+					"parameters": {
+						"variable": "enemiesKilledperSecond",
+						"value": "int(timeSurvived) < int(timeSurvived + dt) ? 0 : enemiesKilledperSecond"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Increase time survived if player is not leveling"
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 258801125894143,
+					"parameters": {
+						"variable": "timeSurvived",
+						"value": "isLeveling = NO ? dt : 0"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update passed time UI"
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_Time",
+					"sid": 352158642236302,
+					"parameters": {
+						"text": "(timeSurvived / 3600 >= 1 ? int(timeSurvived / 3600) & \":\" : \"\") & zeropad(int(timeSurvived / 60), 2) & \":\" & zeropad((int(timeSurvived) % 60), 2)"
 					}
 				},
 				{
@@ -501,11 +578,6 @@
 					"text": "Update Z orders"
 				},
 				{
-					"id": "move-to-bottom",
-					"objectClass": "Drop",
-					"sid": 185420096314904
-				},
-				{
 					"id": "move-to-top",
 					"objectClass": "Enemy",
 					"sid": 531046539279743
@@ -544,6 +616,21 @@
 					"id": "move-to-top",
 					"objectClass": "UI_Bar_Health",
 					"sid": 704298874778693
+				},
+				{
+					"id": "move-to-bottom",
+					"objectClass": "Drop",
+					"sid": 702017441427244
+				},
+				{
+					"id": "move-to-bottom",
+					"objectClass": "Map",
+					"sid": 989669045184173
+				},
+				{
+					"id": "move-to-bottom",
+					"objectClass": "Ground",
+					"sid": 383358365896856
 				}
 			],
 			"sid": 153988922630664
