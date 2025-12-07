@@ -92,6 +92,10 @@
 			"text": "Drops"
 		},
 		{
+			"eventType": "comment",
+			"text": "todo_maybe move to rule"
+		},
+		{
 			"eventType": "variable",
 			"name": "C_Drop_ValueToLevelDivider",
 			"type": "number",

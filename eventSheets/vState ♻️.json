@@ -70,6 +70,26 @@
 			"sid": 543485991026452
 		},
 		{
+			"eventType": "variable",
+			"name": "wave",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 815500935480966
+		},
+		{
+			"eventType": "variable",
+			"name": "cycle",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 529489209798016
+		},
+		{
 			"eventType": "comment",
 			"text": "Data"
 		},

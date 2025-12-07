@@ -337,6 +337,14 @@
 					"script-info": {
 						"purpose": "none"
 					}
+				},
+				{
+					"name": "R_Waves.js",
+					"type": "application/javascript",
+					"sid": 235255113649830,
+					"script-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []
@@ -527,7 +535,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "32",
+		"version": "33",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
