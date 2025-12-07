@@ -186,10 +186,14 @@
 			"sid": 944984716583836
 		},
 		{
+			"eventType": "comment",
+			"text": "todo_now"
+		},
+		{
 			"eventType": "variable",
-			"name": "KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier",
+			"name": "KEY_Bonus_Enemy_Spawn_Amount_Multiplier",
 			"type": "string",
-			"initialValue": "Bonus_Enemy_Spawn_Cooldown_Multiplier",
+			"initialValue": "Bonus_Enemy_Spawn_Amount_Multiplier",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -214,6 +218,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 945364366268268
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Bonus_Regeneration_Amount",
+			"type": "string",
+			"initialValue": "Bonus_Regeneration_Amount",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 189033628348364
 		},
 		{
 			"eventType": "variable",
@@ -973,13 +987,13 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "SFX_DropPickup",
+			"name": "SFX_Drop_",
 			"type": "string",
-			"initialValue": "DropPickup",
+			"initialValue": "Drop_",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 907093821045628
+			"sid": 122444769520601
 		},
 		{
 			"eventType": "variable",
@@ -1064,6 +1078,26 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 631897334080321
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Freeze",
+			"type": "string",
+			"initialValue": "Freeze",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 334861571206058
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Freeze_All",
+			"type": "string",
+			"initialValue": "Freeze_All",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 414460960343519
 		},
 		{
 			"eventType": "variable",

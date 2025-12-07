@@ -382,7 +382,7 @@
 					}
 				},
 				{
-					"name": "DropPickup.webm",
+					"name": "Drop_Experience.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 368217196996174,
 					"file-info": {
@@ -441,6 +441,22 @@
 					"name": "UpgradeSelected.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 942013476790222,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Drop_Magnet.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 219243989111699,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Drop_Health.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 664693790011425,
 					"file-info": {
 						"purpose": "none"
 					}
@@ -541,7 +557,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "48",
+		"version": "49",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

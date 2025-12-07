@@ -29,7 +29,13 @@ export const Upgrades = {
     },
 
     // Player stats
-    // todo_maybe use usage limit for "simple" upgrades?
+    // todo_maybe use usage limit for "simple" upgrades? or group them together?
+    "EnemySpawnAmount": {
+        "Modifiers_Infinite": ["EnemySpawnAmount"]
+    },
+    "Regeneration": {
+        "Modifiers": ["Regeneration", "Regeneration", "Regeneration", "Regeneration"],
+    },
     "MaxHealth": {
         "Modifiers": ["MaxHealth", "MaxHealth", "MaxHealth", "MaxHealth"],
         //"Modifiers_Infinite": [],

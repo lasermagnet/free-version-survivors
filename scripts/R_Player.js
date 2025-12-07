@@ -13,9 +13,10 @@ export const Player = {
     "PickupDistance": 30,
     "PickupDistanceMagnet": 1000,
     // Bonuses
-    "Bonus_Healing_Multiplier": 1,
+    "Bonus_Enemy_Spawn_Amount_Multiplier": 1,
     "Bonus_Experience_Multiplier": 1,
-    "Bonus_Enemy_Spawn_Cooldown_Multiplier": 1,
+    "Bonus_Healing_Multiplier": 1,
+    "Bonus_Regeneration_Amount": 0, // per second
     "Bonus_Weapon_Damage_Multiplier": 1,
     "Bonus_Weapon_Cooldown_Multiplier": 1,
     "Bonus_Weapon_Size_Multiplier": 1,

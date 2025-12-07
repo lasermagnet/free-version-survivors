@@ -6,7 +6,6 @@ export const Waves = [
         //"EnemySpawnPool": [],
         "EnemySpawnFixed": { "MagnetCrate": 1 },
         //"ItemSpawnPool": [],
-        "Time": 3,
     },
     {
         "Name": "And now: Slimes & Rats!",

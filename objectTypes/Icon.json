@@ -543,7 +543,7 @@
 						"fileType": "image/png",
 						"imageSpriteId": 2566559,
 						"useCollisionPoly": true,
-						"duration": 10,
+						"duration": 5,
 						"tag": ""
 					},
 					{
@@ -592,7 +592,7 @@
 				"sid": 103534561443454,
 				"name": "Heal",
 				"isLooping": true,
-				"isPingPong": false,
+				"isPingPong": true,
 				"repeatCount": 1,
 				"repeatTo": 0,
 				"speed": 10
@@ -610,7 +610,7 @@
 						"fileType": "image/png",
 						"imageSpriteId": 7228085,
 						"useCollisionPoly": true,
-						"duration": 10,
+						"duration": 5,
 						"tag": ""
 					},
 					{
@@ -659,7 +659,74 @@
 				"sid": 747005658866145,
 				"name": "HealthMax",
 				"isLooping": true,
-				"isPingPong": false,
+				"isPingPong": true,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 10
+			},
+			{
+				"frames": [
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 1174974,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 775073,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9775211,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 588873,
+						"useCollisionPoly": true,
+						"duration": 15,
+						"tag": ""
+					}
+				],
+				"sid": 112965426747753,
+				"name": "Regeneration",
+				"isLooping": true,
+				"isPingPong": true,
 				"repeatCount": 1,
 				"repeatTo": 0,
 				"speed": 10

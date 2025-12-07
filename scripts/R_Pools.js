@@ -12,6 +12,8 @@ export const Pools = {
         [1, "Spikes"],
 
         // Player stats
+        [1, "Regeneration"],
+        [1, "EnemySpawnAmount"],
         [1, "WeaponCooldown"],
         [1, "MaxHealth"],
         [1, "HealingBonus"],

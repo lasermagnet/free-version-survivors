@@ -10,13 +10,21 @@ const _template = {
 }
 
 export const Modifiers = {
-    "EnemySpawnCooldown": {
-        "Label": "More enemies",
-        "Description": "Reduce enemy spawn cooldown by 5%.",
-        "Icon": "Enemy",
-        "Rule_Value": "Player.Bonus_Enemy_Spawn_Cooldown_Multiplier",
+    "Regeneration": {
+        "Label": "Regeneration",
+        "Description": "Increase health regeneration amount.",
+        "Icon": "Regeneration",
+        "Rule_Value": "Player.Bonus_Regeneration_Amount",
         "Multiply": 1,
-        "Add": -0.05,
+        "Add": 1,
+    },
+    "EnemySpawnAmount": {
+        "Label": "More enemies",
+        "Description": "Increase enemy spawn amount by 10%.",
+        "Icon": "Enemy",
+        "Rule_Value": "Player.Bonus_Enemy_Spawn_Amount_Multiplier",
+        "Multiply": 1,
+        "Add": 0.1,
     },
     "ExperienceBonus": {
         "Label": "More XP gain",

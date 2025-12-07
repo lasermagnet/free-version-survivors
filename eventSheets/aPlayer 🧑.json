@@ -533,6 +533,7 @@
 			"functionCopyPicked": false,
 			"functionIsAsync": false,
 			"functionParameters": [],
+			"bookmark": true,
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
@@ -724,6 +725,19 @@
 					"parameters": {
 						"color": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Regenerate health"
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 666757284984194,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Health",
+						"value": "min(Rules.Get(KEY_Player & DOT & KEY_Health) + dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Regeneration_Amount) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier), Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
+					}
 				}
 			],
 			"sid": 892639912846222,
@@ -822,7 +836,6 @@
 					"text": "When the enemy spawn cooldown expires, reset it & add enemy amount to the spawn queue"
 				},
 				{
-					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -874,10 +887,10 @@
 						{
 							"id": "add-to-eventvar",
 							"objectClass": "System",
-							"sid": 490406632417482,
+							"sid": 810918883252903,
 							"parameters": {
 								"variable": "enemySpawnQueue",
-								"value": "round(Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_EnemyAmount) / Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time)) * Rules.Get(KEY_Level & DOT & KEY_SpawnInterval)"
+								"value": "round(Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_EnemyAmount) / Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time)) * Rules.Get(KEY_Level & DOT & KEY_SpawnInterval) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Amount_Multiplier)"
 							}
 						}
 					],
@@ -1047,9 +1060,9 @@
 								{
 									"customAction": "playSFX",
 									"objectClass": "Audio",
-									"sid": 369744139280662,
+									"sid": 484443249184409,
 									"parameters": [
-										"SFX_DropPickup",
+										"SFX_Drop_ & Drop.AnimationName",
 										"0",
 										"1"
 									]
@@ -2374,9 +2387,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_Wave",
-					"sid": 430725875829815,
+					"sid": 915036478377883,
 					"parameters": {
-						"text": "Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Name)"
+						"text": "Rules.Type(KEY_Waves & DOT & waveId & DOT & KEY_Name) = NULL ? EMPTY : Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Name)"
 					}
 				},
 				{
