@@ -2,26 +2,6 @@
 	"name": "aEnemy 😈",
 	"events": [
 		{
-			"eventType": "variable",
-			"name": "spawn_randomSize",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 208214625529194
-		},
-		{
-			"eventType": "variable",
-			"name": "spawn_randomAngle",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 853079015252439
-		},
-		{
 			"aceType": "action",
 			"aceName": "spawnFromQueue",
 			"objectClass": "Enemy",
@@ -46,6 +26,10 @@
 			],
 			"actions": [
 				{
+					"type": "comment",
+					"text": "Process enemy spawn queue, spawn one enemy per call (tick) and remove it from the queue"
+				},
+				{
 					"id": "subtract-from",
 					"objectClass": "Rules",
 					"sid": 259101572361751,
@@ -55,46 +39,23 @@
 					}
 				},
 				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 501429619255092,
-					"parameters": {
-						"type": "log",
-						"message": "\"Spawning enemy\""
-					}
-				},
-				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
 					"sid": 361829937226822,
 					"parameters": {
-						"variable": "spawn_randomAngle",
+						"variable": "randomAngle",
 						"value": "random(0, 360)"
 					}
 				},
 				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 770180229278679,
-					"disabled": true,
-					"parameters": {
-						"variable": "spawn_randomSize",
-						"value": "random(R_Spawn_RandomSize_Min, R_Spawn_RandomSize_Max)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "todo dynamically calculated offscreen spawn distance (or try spawn rectangle!)"
-				},
-				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 921526464494714,
+					"sid": 443287625595748,
 					"parameters": {
 						"object-to-create": "Enemy",
 						"layer": "LAYER_Main",
-						"x": "Player.X + cos(spawn_randomAngle) * R_Spawn_Distance",
-						"y": "Player.Y + sin(spawn_randomAngle) * R_Spawn_Distance",
+						"x": "Player.X + cos(randomAngle) * Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Distance)",
+						"y": "Player.Y + sin(randomAngle) * Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Distance)",
 						"create-hierarchy": true,
 						"template-name": "\"\""
 					}
@@ -106,16 +67,6 @@
 					"parameters": {
 						"animation": "AdvancedRandom.WeightedByName(PT_Enemies)",
 						"from": "beginning"
-					}
-				},
-				{
-					"id": "set-size",
-					"objectClass": "Enemy",
-					"sid": 340816504532596,
-					"disabled": true,
-					"parameters": {
-						"width": "spawn_randomSize",
-						"height": "spawn_randomSize"
 					}
 				},
 				{
@@ -176,6 +127,16 @@
 					"sid": 169438741384102,
 					"parameters": {
 						"instance-variable": "isDead",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 356892487029801,
+					"parameters": {
+						"variable": "isPaused",
 						"comparison": 0,
 						"value": "NO"
 					}
@@ -325,16 +286,6 @@
 							"sid": 728908823243223
 						},
 						{
-							"eventType": "variable",
-							"name": "randomAngle",
-							"type": "number",
-							"initialValue": "0",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 895032254930732
-						},
-						{
 							"eventType": "comment",
 							"text": "Show damage number if needed"
 						},
@@ -359,15 +310,6 @@
 								}
 							],
 							"actions": [
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 215321142275892,
-									"parameters": {
-										"variable": "randomAngle",
-										"value": "random(0, 360)"
-									}
-								},
 								{
 									"id": "spawn-another-object",
 									"objectClass": "Enemy",
@@ -403,65 +345,6 @@
 										"transform-z-elevation": false,
 										"transform-visibility": false,
 										"destroy-with-parent": true
-									}
-								},
-								{
-									"id": "tween-value",
-									"objectClass": "UI_TextSF_DamageNumber",
-									"sid": 459783682704980,
-									"disabled": true,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "TWEEN_UI_TextSF_DamageNumber_Scale",
-										"start-value": "Self.CharacterScale",
-										"end-value": "Self.CharacterScale + 0.25",
-										"time": "0.2",
-										"ease": "easeoutcirc",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "yes",
-										"repeat-count": "1"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "todo try slight movement in a random direction instead of scale tween"
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "UI_TextSF_DamageNumber",
-									"sid": 109127360225409,
-									"disabled": true,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"\"",
-										"property": "offsetY",
-										"end-value": "Self.Y - 2",
-										"time": "0.3",
-										"ease": "easeoutcubic",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								},
-								{
-									"id": "tween-two-properties",
-									"objectClass": "UI_TextSF_DamageNumber",
-									"sid": 787613074357709,
-									"disabled": true,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"\"",
-										"property": "position",
-										"end-x": "Self.X + cos(randomAngle) * 10",
-										"end-y": "Self.Y + sin(randomAngle) * 10",
-										"time": "0.3",
-										"ease": "easeoutexpo",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
 									}
 								},
 								{

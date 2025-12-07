@@ -1,13 +1,15 @@
 export const Upgrades = {
     "EnemySpawnCooldown": {
-        "Label": "More enemy spawns",
+        "Label": "More enemies",
+        "Description": "Reduce enemy spawn cooldown by 5%.",
         "Icon": "Enemy",
         "Rule_Value": "Player.Bonus_Enemy_Spawn_Cooldown_Multiplier",
         "Multiply": 1,
         "Add": -0.05,
     },
     "ExperienceBonus": {
-        "Label": "XP gain multiplier",
+        "Label": "More XP gain",
+        "Description": "XP drops worth 10% more.",
         "Icon": "Experience",
         "Rule_Value": "Player.Bonus_Experience_Multiplier",
         "Multiply": 1,
@@ -15,49 +17,56 @@ export const Upgrades = {
     },
     "Heal1": {
         "Label": "Minor healing",
+        "Description": "Heal 30 points.",
         "Icon": "HeartRed",
         "Rule_Value": "Player.Health",
         "Rule_Max": "Player.Health_Max",
         "Multiply": 1,
-        "Add": 20
+        "Add": 30
     },
     "ItemSpawnCooldown": {
-        "Label": "More item Spawns",
+        "Label": "More items",
+        "Description": "Reduce item spawn cooldown by 5%.",
         "Icon": "Item",
         "Rule_Value": "Player.Bonus_Item_Spawn_Cooldown_Multiplier",
         "Multiply": 1,
         "Add": -0.05,
     },
     "MaxHealth": {
-        "Label": "Increase max health",
+        "Label": "Max health up",
+        "Description": "By 10%, healing not included.",
         "Icon": "HeartBlack",
         "Rule_Value": "Player.Health_Max",
         "Multiply": 1.1,
         "Add": 0
     },
     "MovementSpeed": {
-        "Label": "Increase movement speed",
+        "Label": "Speed up",
+        "Description": "Increase movement speed slightly.",
         "Icon": "GoldArrowRight",
         "Rule_Value": "Player.MovementSpeed",
         "Multiply": 1,
         "Add": 10
     },
     "PickupDistance": {
-        "Label": "Pickup distance",
+        "Label": "Pickup power up",
+        "Description": "Attract drops from further.",
         "Icon": "Experience",
         "Rule_Value": "Player.PickupDistance",
         "Multiply": 1,
         "Add": 10
     },
     "WeaponDamage": {
-        "Label": "More weapon damage",
+        "Label": "Damage up",
+        "Description": "Deal 10% more damage.",
         "Icon": "WeaponDamage",
         "Rule_Value": "Player.Bonus_Weapon_Damage_Multiplier",
         "Multiply": 1,
-        "Add": 0.2,
+        "Add": 0.1,
     },
     "WeaponCooldown": {
-        "Label": "Reduce all weapon cooldowns",
+        "Label": "Attack faster",
+        "Description": "Reduce all weapon cooldowns by 10%.",
         "Icon": "WeaponCooldown",
         "Rule_Value": "Player.Bonus_Weapon_Cooldown_Multiplier",
         "Multiply": 1,
@@ -65,13 +74,15 @@ export const Upgrades = {
     },
     "WeaponSize": {
         "Label": "Bigger weapons",
+        "Description": "Scale up all weapons.",
         "Icon": "WeaponSize",
         "Rule_Value": "Player.Bonus_Weapon_Size_Multiplier",
         "Multiply": 1,
         "Add": 0.4,
     },
-    "WeaponAmount": {
-        "Label": "Extra amount (all weapons)",
+    "Sword": {
+        "Label": "+1 GigaSword",
+        "Description": "Throw one more sword.",
         "Icon": "WeaponAmount",
         "Rule_Value": "Player.Bonus_Weapon_Amount_Add",
         "Multiply": 1,

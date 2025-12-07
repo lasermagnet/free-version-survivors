@@ -18,21 +18,3 @@ export const rules = {
     "Upgrades": Upgrades,
     "Weapons": Weapons,
 }
-
-/*
-
-# todo
-- audio
-- waves (with string names/labels)
-- enemy types: advanced spawning, damage and xp drop amounts
-- more weapons
-- stat upgrades: health regen
-- weapon upgrades: level, cooldown
-- game over screen
-- split upgrades: buffs & debuffs
-
-# maybe
-- restructure weapons so their behaviours are modifiable (not just properties)
-
-*/
-

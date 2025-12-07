@@ -377,7 +377,7 @@
 			],
 			"actions": [
 				{
-					"customAction": "selectUpgrade",
+					"customAction": "levelUpUpgrade",
 					"objectClass": "Player",
 					"sid": 803168892900854,
 					"parameters": [
@@ -401,7 +401,7 @@
 			],
 			"actions": [
 				{
-					"customAction": "selectUpgrade",
+					"customAction": "levelUpUpgrade",
 					"objectClass": "Player",
 					"sid": 945703588425093,
 					"parameters": [
@@ -410,6 +410,76 @@
 				}
 			],
 			"sid": 511077247796427
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 595682033696653,
+					"parameters": {
+						"key": 80
+					}
+				},
+				{
+					"id": "on-button-pressed",
+					"objectClass": "Gamepad",
+					"sid": 741403628142286,
+					"parameters": {
+						"gamepad": "0",
+						"button": "start-menu"
+					}
+				},
+				{
+					"id": "on-button-pressed",
+					"objectClass": "Gamepad",
+					"sid": 666709096246933,
+					"parameters": {
+						"gamepad": "0",
+						"button": "back-view"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 134135360552882,
+					"parameters": {
+						"type": "log",
+						"message": "\"Is paused before: \" & isPaused"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 898095459607257,
+					"parameters": {
+						"variable": "isPaused",
+						"value": "isLeveling = YES ? isPaused : (isPaused = YES ? NO : YES)"
+					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 230965184813951,
+					"parameters": {
+						"type": "log",
+						"message": "\"Is paused after: \" & isPaused"
+					}
+				},
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 394360798595963,
+					"parameters": {
+						"time-scale": "abs(isPaused - 1)"
+					}
+				}
+			],
+			"sid": 988978364115935,
+			"isOrBlock": true
 		}
 	],
 	"sid": 909767790016851

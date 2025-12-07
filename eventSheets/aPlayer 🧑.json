@@ -64,7 +64,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "todo remove these IVs and keep data in Rules"
+					"text": "todo_maybe remove these IVs and keep data in Rules"
 				},
 				{
 					"id": "set-instvar-value",
@@ -124,6 +124,16 @@
 					"sid": 608216906352595,
 					"parameters": {
 						"instance-variable": "isDead",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 409663250665454,
+					"parameters": {
+						"variable": "isPaused",
 						"comparison": 0,
 						"value": "NO"
 					}
@@ -234,7 +244,6 @@
 					"text": "Queue enemy spawn"
 				},
 				{
-					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -709,9 +718,18 @@
 								{
 									"id": "set-text",
 									"objectClass": "UI_TextSF_Upgrade",
-									"sid": 775551355581062,
+									"sid": 632404175777567,
+									"disabled": true,
 									"parameters": {
-										"text": "(UI_Button9P_Upgrade.upgrade = EMPTY ? EMPTY : Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Label)) & newline &\n(\nRules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Multiply) = 1 ? EMPTY : \"+ \" & (Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Multiply) - 1) * 100 & \"%\" & SPACE\n) &\n(\nRules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add) = 0 ? EMPTY : (Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add) < 0 ? \"- \" : \"+ \") & abs(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add))\n)"
+										"text": "(UI_Button9P_Upgrade.upgrade = EMPTY ? EMPTY : Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Label)) & newline & \"\\[\" &\n(\nRules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Multiply) = 1 ? EMPTY : \"+ \" & (Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Multiply) - 1) * 100 & \"%\" & SPACE\n) &\n(\nRules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add) = 0 ? EMPTY : (Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add) < 0 ? \"- \" : \"+ \") & abs(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add))\n) & \"]\""
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "UI_TextSF_Upgrade",
+									"sid": 356123709941595,
+									"parameters": {
+										"text": "(UI_Button9P_Upgrade.upgrade = EMPTY ? EMPTY : \"[scale=0.2]\" & Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Label) & \"[/scale]\" & newline & Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Description))"
 									}
 								},
 								{
@@ -736,15 +754,6 @@
 				{
 					"eventType": "block",
 					"conditions": [
-						{
-							"id": "is-overlapping-another-object",
-							"objectClass": "Player",
-							"sid": 643754501194321,
-							"disabled": true,
-							"parameters": {
-								"object": "Enemy"
-							}
-						},
 						{
 							"id": "is-overlapping-another-object",
 							"objectClass": "PlayerHurtbox",
@@ -859,7 +868,7 @@
 		},
 		{
 			"aceType": "action",
-			"aceName": "selectUpgrade",
+			"aceName": "levelUpUpgrade",
 			"objectClass": "Player",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -885,6 +894,16 @@
 						"variable": "isLeveling",
 						"comparison": 0,
 						"value": "YES"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 498497197667409,
+					"parameters": {
+						"variable": "isPaused",
+						"comparison": 0,
+						"value": "NO"
 					}
 				},
 				{
@@ -996,73 +1015,15 @@
 				},
 				{
 					"type": "comment",
-					"text": "Apply upgrade (multiply)"
+					"text": "Apply selected upgrade"
 				},
 				{
-					"id": "set-value",
-					"objectClass": "Rules",
-					"sid": 626059529650984,
-					"parameters": {
-						"path": "Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Multiply)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Apply upgrade (add)"
-				},
-				{
-					"id": "add-to",
-					"objectClass": "Rules",
-					"sid": 670440074217041,
-					"parameters": {
-						"path": "Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Apply upgrade (max)"
-				},
-				{
-					"id": "set-value",
-					"objectClass": "Rules",
-					"sid": 570815074518229,
-					"parameters": {
-						"path": "Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Max)))"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Update player properties"
-				},
-				{
-					"id": "set-max-speed",
+					"customAction": "applyUpgrade",
 					"objectClass": "Player",
-					"sid": 764744182789778,
-					"behaviorType": "8Direction",
-					"parameters": {
-						"max-speed": "Rules.Get(KEY_Player & DOT & KEY_MovementSpeed)"
-					}
-				},
-				{
-					"id": "set-acceleration",
-					"objectClass": "Player",
-					"sid": 300033388980964,
-					"behaviorType": "8Direction",
-					"parameters": {
-						"acceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementAcceleration)"
-					}
-				},
-				{
-					"id": "set-deceleration",
-					"objectClass": "Player",
-					"sid": 414761694337799,
-					"behaviorType": "8Direction",
-					"parameters": {
-						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
-					}
+					"sid": 450428395935593,
+					"parameters": [
+						"UI_Button9P_Upgrade.upgrade"
+					]
 				},
 				{
 					"type": "comment",
@@ -1115,6 +1076,100 @@
 				}
 			],
 			"sid": 134088445000097
+		},
+		{
+			"aceType": "action",
+			"aceName": "applyUpgrade",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "upgrade",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 323013347631822
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Apply upgrade (multiply)"
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 438822248656384,
+					"parameters": {
+						"path": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Multiply)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Apply upgrade (add)"
+				},
+				{
+					"id": "add-to",
+					"objectClass": "Rules",
+					"sid": 781287846172329,
+					"parameters": {
+						"path": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Add)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Apply upgrade (max)"
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 999042333458569,
+					"parameters": {
+						"path": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Max)))"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update player properties"
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Player",
+					"sid": 764744182789778,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"max-speed": "Rules.Get(KEY_Player & DOT & KEY_MovementSpeed)"
+					}
+				},
+				{
+					"id": "set-acceleration",
+					"objectClass": "Player",
+					"sid": 300033388980964,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"acceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementAcceleration)"
+					}
+				},
+				{
+					"id": "set-deceleration",
+					"objectClass": "Player",
+					"sid": 414761694337799,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
+					}
+				}
+			],
+			"sid": 266788838218702
 		}
 	],
 	"sid": 562729237747902

@@ -14,7 +14,7 @@ export const Pools = {
         [1, "WeaponDamage"],
         [1, "WeaponCooldown"],
         [1, "WeaponSize"],
-        [1, "WeaponAmount"],
+        [1, "Sword"],
         [1, "ItemSpawnCooldown"],
     ],
 

@@ -50,42 +50,18 @@
 			"sid": 278446877515976
 		},
 		{
+			"eventType": "variable",
+			"name": "randomAngle",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 169323888444903
+		},
+		{
 			"eventType": "comment",
-			"text": "Level rules"
-		},
-		{
-			"eventType": "comment",
-			"text": "todo move to rules.js"
-		},
-		{
-			"eventType": "variable",
-			"name": "R_Spawn_Distance",
-			"type": "number",
-			"initialValue": "240",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 446705022490802
-		},
-		{
-			"eventType": "variable",
-			"name": "R_Spawn_RandomSize_Min",
-			"type": "number",
-			"initialValue": "8",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 792314783459089
-		},
-		{
-			"eventType": "variable",
-			"name": "R_Spawn_RandomSize_Max",
-			"type": "number",
-			"initialValue": "14",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 734229755722200
+			"text": "Data"
 		},
 		{
 			"eventType": "variable",

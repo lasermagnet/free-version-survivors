@@ -179,6 +179,26 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Description",
+			"type": "string",
+			"initialValue": "Description",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 255335715483182
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Distance",
+			"type": "string",
+			"initialValue": "Distance",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 660478029933878
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Enemies",
 			"type": "string",
 			"initialValue": "Enemies",
@@ -396,6 +416,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 242774993217273
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Timeout",
+			"type": "string",
+			"initialValue": "Timeout",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 275286016797896
 		},
 		{
 			"eventType": "variable",

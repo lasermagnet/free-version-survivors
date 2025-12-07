@@ -41,6 +41,57 @@
 			"subLayers": [],
 			"instances": [
 				{
+					"type": "UI_Vignette9P",
+					"properties": {
+						"left-margin": 4,
+						"right-margin": 4,
+						"top-margin": 4,
+						"bottom-margin": 4,
+						"edges": "tile",
+						"fill": "tile",
+						"initially-visible": true,
+						"origin": "top-left",
+						"seams": "exact"
+					},
+					"uid": 38,
+					"sid": 748172629066057,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Anchor": {
+							"properties": {
+								"left-edge": "window-left",
+								"top-edge": "window-top",
+								"right-edge": "window-right",
+								"bottom-edge": "window-bottom",
+								"enabled": true
+							}
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 748172629066057,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": true,
+					"world": {
+						"x": 0,
+						"y": 0,
+						"width": 320,
+						"height": 180,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							0.8196078431372549,
+							0.011764705882352941,
+							0.0392156862745098,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
 					"type": "UI_Border_LevelUp",
 					"properties": {
 						"left-margin": 2,
@@ -161,10 +212,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 70,
-						"y": 40,
-						"width": 180,
-						"height": 100,
+						"x": 60,
+						"y": 30,
+						"width": 200,
+						"height": 120,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -280,10 +331,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 95,
-						"y": 92,
-						"width": 130,
-						"height": 16,
+						"x": 80,
+						"y": 90,
+						"width": 160,
+						"height": 19,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -399,10 +450,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 95,
-						"y": 72,
-						"width": 130,
-						"height": 16,
+						"x": 80,
+						"y": 62,
+						"width": 160,
+						"height": 19,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -518,10 +569,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 95,
-						"y": 112,
-						"width": 130,
-						"height": 16,
+						"x": 80,
+						"y": 118,
+						"width": 160,
+						"height": 19,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -570,15 +621,15 @@
 					"locked": false,
 					"world": {
 						"x": 100,
-						"y": 4,
+						"y": 0,
 						"width": 120,
-						"height": 12,
+						"height": 7,
 						"originX": 0,
 						"originY": 0,
 						"color": [
-							1,
-							1,
-							1,
+							0.611764705882353,
+							0.611764705882353,
+							0.611764705882353,
 							1
 						],
 						"angle": 0,
@@ -594,11 +645,11 @@
 						"character-height": 30,
 						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.125,
+						"scale": 0.1,
 						"character-spacing": 0,
 						"line-height": 0,
 						"horizontal-alignment": "left",
-						"vertical-alignment": "bottom",
+						"vertical-alignment": "top",
 						"wrapping": "word",
 						"initially-visible": true,
 						"origin": "top-left",
@@ -612,9 +663,9 @@
 						"Anchor": {
 							"properties": {
 								"left-edge": "window-left",
-								"top-edge": "none",
+								"top-edge": "window-top",
 								"right-edge": "none",
-								"bottom-edge": "window-bottom",
+								"bottom-edge": "none",
 								"enabled": true
 							}
 						}
@@ -655,7 +706,7 @@
 					"locked": false,
 					"world": {
 						"x": 4,
-						"y": 140,
+						"y": 13,
 						"width": 312,
 						"height": 36,
 						"originX": 0,
@@ -760,9 +811,9 @@
 					"locked": false,
 					"world": {
 						"x": 101,
-						"y": 5,
+						"y": 1,
 						"width": 118,
-						"height": 10,
+						"height": 5,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -778,7 +829,7 @@
 				{
 					"type": "UI_TextSF_Experience",
 					"properties": {
-						"text": "<Experience>",
+						"text": "0/1\n<Experience>",
 						"enable-bbcode": true,
 						"character-width": 30,
 						"character-height": 30,
@@ -786,9 +837,9 @@
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
 						"scale": 0.125,
 						"character-spacing": 0,
-						"line-height": 1,
+						"line-height": 2,
 						"horizontal-alignment": "center",
-						"vertical-alignment": "center",
+						"vertical-alignment": "bottom",
 						"wrapping": "word",
 						"initially-visible": true,
 						"origin": "top",
@@ -845,9 +896,9 @@
 					"locked": false,
 					"world": {
 						"x": 160,
-						"y": 5,
+						"y": 0,
 						"width": 108,
-						"height": 11,
+						"height": 12,
 						"originX": 0.5,
 						"originY": 0,
 						"color": [
@@ -863,15 +914,15 @@
 				{
 					"type": "UI_TextSF_Upgrade",
 					"properties": {
-						"text": "Option 1",
+						"text": "[scale=0.2]Upgrade 1[/scale]\nDescription 1",
 						"enable-bbcode": true,
 						"character-width": 30,
 						"character-height": 30,
 						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.125,
+						"scale": 0.1,
 						"character-spacing": 0,
-						"line-height": 0,
+						"line-height": 3,
 						"horizontal-alignment": "left",
 						"vertical-alignment": "center",
 						"wrapping": "word",
@@ -922,10 +973,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 174.5,
-						"y": 72,
-						"width": 97,
-						"height": 16,
+						"x": 180,
+						"y": 62,
+						"width": 120,
+						"height": 19,
 						"originX": 0.5,
 						"originY": 0,
 						"color": [
@@ -941,15 +992,15 @@
 				{
 					"type": "UI_TextSF_Upgrade",
 					"properties": {
-						"text": "Option 2",
+						"text": "[scale=0.2]Upgrade 2[/scale]\nDescription 2",
 						"enable-bbcode": true,
 						"character-width": 30,
 						"character-height": 30,
 						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.125,
+						"scale": 0.1,
 						"character-spacing": 0,
-						"line-height": 0,
+						"line-height": 3,
 						"horizontal-alignment": "left",
 						"vertical-alignment": "center",
 						"wrapping": "word",
@@ -1000,10 +1051,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 174.5,
-						"y": 92,
-						"width": 97,
-						"height": 16,
+						"x": 180,
+						"y": 90,
+						"width": 120,
+						"height": 19,
 						"originX": 0.5,
 						"originY": 0,
 						"color": [
@@ -1019,15 +1070,15 @@
 				{
 					"type": "UI_TextSF_Upgrade",
 					"properties": {
-						"text": "Option 3",
+						"text": "[scale=0.2]Upgrade 3[/scale]\nDescription 3",
 						"enable-bbcode": true,
 						"character-width": 30,
 						"character-height": 30,
 						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.125,
+						"scale": 0.1,
 						"character-spacing": 0,
-						"line-height": 0,
+						"line-height": 3,
 						"horizontal-alignment": "left",
 						"vertical-alignment": "center",
 						"wrapping": "word",
@@ -1078,10 +1129,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 174.5,
-						"y": 112,
-						"width": 97,
-						"height": 16,
+						"x": 180,
+						"y": 118,
+						"width": 120,
+						"height": 19,
 						"originX": 0.5,
 						"originY": 0,
 						"color": [
@@ -1103,7 +1154,7 @@
 						"character-height": 30,
 						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.25,
+						"scale": 0.3,
 						"character-spacing": 0,
 						"line-height": 0,
 						"horizontal-alignment": "center",
@@ -1156,7 +1207,7 @@
 					"locked": false,
 					"world": {
 						"x": 160,
-						"y": 48,
+						"y": 38,
 						"width": 150,
 						"height": 16,
 						"originX": 0.5,
@@ -1207,15 +1258,15 @@
 					"locked": false,
 					"world": {
 						"x": 100,
-						"y": 164,
+						"y": 173,
 						"width": 120,
-						"height": 12,
+						"height": 7,
 						"originX": 0,
 						"originY": 0,
 						"color": [
-							1,
-							1,
-							1,
+							0.611764705882353,
+							0.611764705882353,
+							0.611764705882353,
 							1
 						],
 						"angle": 0,
@@ -1266,9 +1317,9 @@
 					"locked": false,
 					"world": {
 						"x": 101,
-						"y": 165,
+						"y": 174,
 						"width": 118,
-						"height": 10,
+						"height": 5,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -1284,7 +1335,7 @@
 				{
 					"type": "UI_TextSF_Health",
 					"properties": {
-						"text": "<Health>",
+						"text": "<Health>\n1/1",
 						"enable-bbcode": true,
 						"character-width": 30,
 						"character-height": 30,
@@ -1292,7 +1343,7 @@
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
 						"scale": 0.125,
 						"character-spacing": 0,
-						"line-height": 1,
+						"line-height": 2,
 						"horizontal-alignment": "center",
 						"vertical-alignment": "center",
 						"wrapping": "word",
@@ -1351,9 +1402,9 @@
 					"locked": false,
 					"world": {
 						"x": 160,
-						"y": 165,
+						"y": 168,
 						"width": 108,
-						"height": 11,
+						"height": 12,
 						"originX": 0.5,
 						"originY": 0,
 						"color": [
@@ -1375,7 +1426,7 @@
 						"character-height": 30,
 						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.3,
+						"scale": 0.33,
 						"character-spacing": 1,
 						"line-height": 0,
 						"horizontal-alignment": "left",
@@ -1427,8 +1478,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 105,
-						"y": 76,
+						"x": 92,
+						"y": 67,
 						"width": 12,
 						"height": 12,
 						"originX": 0.5,
@@ -1452,7 +1503,7 @@
 						"character-height": 30,
 						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.3,
+						"scale": 0.33,
 						"character-spacing": 1,
 						"line-height": 0,
 						"horizontal-alignment": "left",
@@ -1504,8 +1555,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 105,
-						"y": 96,
+						"x": 92,
+						"y": 95,
 						"width": 12,
 						"height": 12,
 						"originX": 0.5,
@@ -1529,7 +1580,7 @@
 						"character-height": 30,
 						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
 						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.3,
+						"scale": 0.33,
 						"character-spacing": 1,
 						"line-height": 0,
 						"horizontal-alignment": "left",
@@ -1581,8 +1632,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 105,
-						"y": 116,
+						"x": 92,
+						"y": 123,
 						"width": 12,
 						"height": 12,
 						"originX": 0.5,
@@ -1646,10 +1697,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 117,
-						"y": 80,
-						"width": 8,
-						"height": 8,
+						"x": 107,
+						"y": 71,
+						"width": 10,
+						"height": 10,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -1711,10 +1762,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 117,
-						"y": 100,
-						"width": 8,
-						"height": 8,
+						"x": 107,
+						"y": 99,
+						"width": 10,
+						"height": 10,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -1776,67 +1827,16 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 117,
-						"y": 120,
-						"width": 8,
-						"height": 8,
+						"x": 107,
+						"y": 127,
+						"width": 10,
+						"height": 10,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
 							1,
 							1,
 							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "UI_Vignette9P",
-					"properties": {
-						"left-margin": 4,
-						"right-margin": 4,
-						"top-margin": 4,
-						"bottom-margin": 4,
-						"edges": "tile",
-						"fill": "tile",
-						"initially-visible": true,
-						"origin": "top-left",
-						"seams": "exact"
-					},
-					"uid": 38,
-					"sid": 748172629066057,
-					"tags": "",
-					"instanceVariables": {},
-					"behaviors": {
-						"Anchor": {
-							"properties": {
-								"left-edge": "window-left",
-								"top-edge": "window-top",
-								"right-edge": "window-right",
-								"bottom-edge": "window-bottom",
-								"enabled": true
-							}
-						}
-					},
-					"instanceFolderItem": {
-						"sid": 748172629066057,
-						"expanded": true
-					},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 0,
-						"y": 0,
-						"width": 320,
-						"height": 180,
-						"originX": 0,
-						"originY": 0,
-						"color": [
-							0.8196078431372549,
-							0.011764705882352941,
-							0.0392156862745098,
 							1
 						],
 						"angle": 0,

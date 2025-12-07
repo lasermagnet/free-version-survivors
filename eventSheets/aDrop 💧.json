@@ -36,6 +36,16 @@
 						"comparison": 0,
 						"value": "NO"
 					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 359549717661425,
+					"parameters": {
+						"variable": "isPaused",
+						"comparison": 0,
+						"value": "NO"
+					}
 				}
 			],
 			"actions": [

@@ -276,15 +276,25 @@
 					"id": "every-tick",
 					"objectClass": "System",
 					"sid": 823011474147348
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 694647922651802,
+					"parameters": {
+						"variable": "isPaused",
+						"comparison": 0,
+						"value": "NO"
+					}
 				}
 			],
 			"actions": [
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_Devlog",
-					"sid": 228647574835914,
+					"sid": 636058736437787,
 					"parameters": {
-						"text": "round(fps) & \" FPS, \" & objectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Weapon.Count & \" projectiles\" & newline &\n\"XP gain bonus: +\" & (Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) - 1) * 100 & \"%\""
+						"text": "round(fps) & \" FPS, \" & objectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Weapon.Count & \" weapon sprites\" & newline &\n\"XP gain bonus: +\" & (Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) - 1) * 100 & \"%\""
 					}
 				},
 				{
@@ -298,9 +308,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_Experience",
-					"sid": 166748606763268,
+					"sid": 327795640325862,
 					"parameters": {
-						"text": "KEY_Experience & newline & Player.experience & \" / \" & Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
+						"text": "Player.experience & \" / \" & Rules.Get(KEY_Player & DOT & KEY_Experience_Target) & newline & KEY_Experience"
 					}
 				},
 				{

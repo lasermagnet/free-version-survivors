@@ -135,19 +135,15 @@
 					"text": "Start \"garbage collector\" tween which fades out & destroys the projectile"
 				},
 				{
-					"type": "comment",
-					"text": "todo mn"
-				},
-				{
 					"id": "tween-one-property",
 					"objectClass": "Weapon",
-					"sid": 202024646643991,
+					"sid": 954323146863235,
 					"behaviorType": "Tween",
 					"parameters": {
 						"tags": "TWEEN_Projectile_Opacity_Lifetime",
 						"property": "offsetOpacity",
 						"end-value": "0",
-						"time": "6",
+						"time": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_Timeout)",
 						"ease": "easeinexpo",
 						"destroy-on-complete": "yes",
 						"loop": "no",
