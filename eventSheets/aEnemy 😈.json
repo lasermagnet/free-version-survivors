@@ -195,7 +195,7 @@
 							"objectClass": "Enemy",
 							"sid": 339039127435682,
 							"parameters": {
-								"instance-variable": "damageTaken",
+								"instance-variable": "damageNumber",
 								"value": "Weapon.damage * dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier)"
 							}
 						},
@@ -297,7 +297,7 @@
 									"objectClass": "Enemy",
 									"sid": 152429532726828,
 									"parameters": {
-										"instance-variable": "damageTaken",
+										"instance-variable": "damageNumber",
 										"comparison": 5,
 										"value": "1"
 									}
@@ -399,7 +399,16 @@
 									"objectClass": "UI_TextSF_DamageNumber",
 									"sid": 676689008390364,
 									"parameters": {
-										"text": "round(Enemy.damageTaken)"
+										"text": "round(Enemy.damageNumber)"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Enemy",
+									"sid": 628033003207604,
+									"parameters": {
+										"instance-variable": "damageNumber",
+										"value": "0"
 									}
 								}
 							],
@@ -480,11 +489,11 @@
 							"sid": 158259314566033,
 							"children": [
 								{
+									"bookmark": true,
 									"eventType": "comment",
-									"text": "Spawn item from queue (if enemy is not overlapping an item or the player)"
+									"text": "Spawn an item from the queue (if enemy is far enough from the player)"
 								},
 								{
-									"bookmark": true,
 									"eventType": "block",
 									"conditions": [
 										{
@@ -510,23 +519,35 @@
 											"id": "is-overlapping-another-object",
 											"objectClass": "Enemy",
 											"sid": 118700603474877,
+											"disabled": true,
 											"parameters": {
 												"object": "Player"
 											},
 											"isInverted": true
+										},
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 363693118836054,
+											"parameters": {
+												"object": "Enemy",
+												"expression": "distance(Enemy.X, Enemy.Y, Player.X, Player.Y)",
+												"comparison": 5,
+												"value": "C_Item_Spawn_Distance_Min"
+											}
 										}
 									],
 									"actions": [
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 877116734688026,
+											"sid": 427850262955858,
 											"parameters": {
 												"object-to-create": "Item",
 												"layer": "LAYER_Main",
 												"x": "Enemy.X",
 												"y": "Enemy.Y",
-												"create-hierarchy": false,
+												"create-hierarchy": true,
 												"template-name": "\"\""
 											}
 										},
@@ -561,7 +582,7 @@
 											"objectClass": "Item",
 											"sid": 574624985699913,
 											"parameters": {
-												"object": "Icons",
+												"object": "Icon",
 												"layer": "LAYER_Main",
 												"image-point": "0",
 												"create-hierarchy": false,
@@ -573,7 +594,7 @@
 											"objectClass": "Item",
 											"sid": 198627867679643,
 											"parameters": {
-												"child": "Icons",
+												"child": "Icon",
 												"transform-x": true,
 												"transform-y": true,
 												"transform-w": true,
@@ -600,11 +621,70 @@
 										},
 										{
 											"id": "set-animation",
-											"objectClass": "Icons",
+											"objectClass": "Icon",
 											"sid": 793804274910788,
 											"parameters": {
 												"animation": "Rules.Get(KEY_Upgrades & DOT & Item.upgrade & DOT & KEY_Icon)",
 												"from": "beginning"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "Spawn & initialize arrow"
+										},
+										{
+											"id": "spawn-another-object",
+											"objectClass": "Player",
+											"sid": 680771256286622,
+											"parameters": {
+												"object": "Arrow",
+												"layer": "LAYER_Main",
+												"image-point": "0",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "Item",
+											"sid": 959138659302353,
+											"parameters": {
+												"child": "Arrow",
+												"transform-x": false,
+												"transform-y": false,
+												"transform-w": false,
+												"transform-h": false,
+												"transform-a": false,
+												"transform-o": false,
+												"transform-z-elevation": false,
+												"transform-visibility": false,
+												"destroy-with-parent": true
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Arrow",
+											"sid": 791621165867173,
+											"parameters": {
+												"instance-variable": "itemX",
+												"value": "Item.X"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Arrow",
+											"sid": 384880148953013,
+											"parameters": {
+												"instance-variable": "itemY",
+												"value": "Item.Y"
+											}
+										},
+										{
+											"id": "set-opacity",
+											"objectClass": "Arrow",
+											"sid": 296270546148280,
+											"parameters": {
+												"opacity": "0"
 											}
 										},
 										{
@@ -678,7 +758,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "todo_pack maybe some ugly business"
+					"text": "todo_pack maybe some foreach based ugly business instead"
 				},
 				{
 					"eventType": "block",

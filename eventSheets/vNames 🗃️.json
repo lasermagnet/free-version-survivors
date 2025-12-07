@@ -137,6 +137,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Bonus_Heal_Amount_Multiplier",
+			"type": "string",
+			"initialValue": "Bonus_Heal_Amount_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 419725753270440
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Bonus_Item_Spawn_Cooldown_Multiplier",
 			"type": "string",
 			"initialValue": "Bonus_Item_Spawn_Cooldown_Multiplier",

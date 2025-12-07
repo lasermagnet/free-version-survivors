@@ -194,9 +194,11 @@
 			"UI_Button9P_Upgrade",
 			"UI_Rectangle",
 			"UI_TextSF_DamageNumber",
-			"Icons",
+			"Icon",
 			"UI_Vignette9P",
-			"PlayerHurtbox"
+			"PlayerHurtbox",
+			"UI_Button9P_Start",
+			"Arrow"
 		],
 		"subfolders": []
 	},

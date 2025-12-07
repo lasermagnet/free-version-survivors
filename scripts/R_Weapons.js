@@ -1,9 +1,9 @@
 export const Weapons = {
     "Sword": {
         "Cooldown": 1,
-        "Amount": 0,
+        "Amount": 1,
         "Damage": 15,
-        "PierceLimit": 10,
+        "PierceLimit": 5,
         "Scale": 1,
         "Timeout": 4,
         "MovementSpeed": 85,
@@ -15,7 +15,7 @@ export const Weapons = {
     "Flame": {
         "Cooldown": 3,
         "Amount": 2,
-        "Damage": 15,
+        "Damage": 25,
         "PierceLimit": 1000,
         "Scale": 1,
         "Timeout": 0.5,
@@ -27,8 +27,8 @@ export const Weapons = {
     },
     "Revolver": {
         "Cooldown": 5,
-        "Amount": 2,
-        "Damage": 15,
+        "Amount": 3,
+        "Damage": 20,
         "PierceLimit": 1000,
         "Scale": 1,
         "Timeout": 4,

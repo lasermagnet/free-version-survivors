@@ -18,7 +18,7 @@ export const Upgrades = {
     "Heal1": {
         "Label": "Minor healing",
         "Description": "Heal 150 points.",
-        "Icon": "HeartRed",
+        "Icon": "Heal1",
         "Rule_Value": "Player.Health",
         "Rule_Max": "Player.Health_Max",
         "Multiply": 1,
@@ -27,7 +27,7 @@ export const Upgrades = {
     "Heal2": {
         "Label": "Major healing",
         "Description": "Heal 500 points.",
-        "Icon": "HeartRed",
+        "Icon": "Heal2",
         "Rule_Value": "Player.Health",
         "Rule_Max": "Player.Health_Max",
         "Multiply": 1,
@@ -58,7 +58,7 @@ export const Upgrades = {
         "Add": 5
     },
     "PickupDistance": {
-        "Label": "Pickup power up",
+        "Label": "Pickup zone up",
         "Description": "Attract drops from further.",
         "Icon": "Experience",
         "Rule_Value": "Player.PickupDistance",
@@ -67,19 +67,19 @@ export const Upgrades = {
     },
     "WeaponDamage": {
         "Label": "Damage up",
-        "Description": "Deal 10% more damage.",
+        "Description": "Increase damage bonus by 5%.",
         "Icon": "WeaponDamage",
         "Rule_Value": "Player.Bonus_Weapon_Damage_Multiplier",
         "Multiply": 1,
-        "Add": 0.1,
+        "Add": 0.05,
     },
     "WeaponCooldown": {
         "Label": "Attack faster",
-        "Description": "Reduce all weapon cooldowns by 10%.",
+        "Description": "Increase cooldown bonus by 5%.",
         "Icon": "WeaponCooldown",
         "Rule_Value": "Player.Bonus_Weapon_Cooldown_Multiplier",
         "Multiply": 1,
-        "Add": -0.1,
+        "Add": -0.05,
     },
     "WeaponSize": {
         "Label": "Bigger weapons",
@@ -87,11 +87,11 @@ export const Upgrades = {
         "Icon": "WeaponSize",
         "Rule_Value": "Player.Bonus_Weapon_Size_Multiplier",
         "Multiply": 1,
-        "Add": 0.15,
+        "Add": 0.10,
     },
     "WeaponAmount": {
-        "Label": "All weapons up",
-        "Description": "One more of each weapon.",
+        "Label": "+1 Weapon amount",
+        "Description": "Increase all weapon amounts.",
         "Icon": "WeaponAmount",
         "Rule_Value": "Player.Bonus_Weapon_Amount_Extra",
         "Multiply": 1,

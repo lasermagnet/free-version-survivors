@@ -1,5 +1,5 @@
 {
-	"name": "Icons",
+	"name": "Icon",
 	"plugin-id": "Sprite",
 	"sid": 303951766503662,
 	"isGlobal": false,
@@ -70,6 +70,31 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
+						"imageSpriteId": 7612345,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 664696879841820,
+				"name": "Heal1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 8,
+						"height": 8,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
 						"imageSpriteId": 4850626,
 						"useCollisionPoly": true,
 						"duration": 1,
@@ -77,7 +102,7 @@
 					}
 				],
 				"sid": 405881039324799,
-				"name": "HeartRed",
+				"name": "Heal2",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,
@@ -345,14 +370,39 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 4638038,
+						"imageSpriteId": 1449867,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
 				"sid": 276261788025845,
-				"name": "Animation 1",
+				"name": "Flame",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 8,
+						"height": 8,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 2359439,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 922737476471574,
+				"name": "Revolver",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,

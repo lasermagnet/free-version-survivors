@@ -157,7 +157,7 @@
 						"health": 0,
 						"damage": 0,
 						"experience": 0,
-						"damageTaken": 0,
+						"damageNumber": 0,
 						"isDead": 0
 					},
 					"behaviors": {
@@ -568,7 +568,7 @@
 					"type": "Item",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "_Blank",
+						"initial-animation": "Default",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -661,6 +661,47 @@
 						],
 						"angle": 0,
 						"zElevation": 0
+					}
+				},
+				{
+					"type": "Arrow",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 35,
+					"sid": 941515962273430,
+					"tags": "",
+					"instanceVariables": {
+						"itemX": 0,
+						"itemY": 0
+					},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 941515962273430,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 57,
+						"y": 95,
+						"width": 16,
+						"height": 16,
+						"originX": -3,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0,
+						"blendMode": "additive"
 					}
 				}
 			],

@@ -92,24 +92,18 @@
 			"sid": 174991595870129
 		},
 		{
+			"eventType": "comment",
+			"text": "todo 70"
+		},
+		{
 			"eventType": "variable",
 			"name": "C_Item_Spawn_Distance_Min",
 			"type": "number",
-			"initialValue": "50",
+			"initialValue": "20",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 100238732808406
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Item_Spawn_Distance_Max",
-			"type": "number",
-			"initialValue": "150",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 629299138832056
 		},
 		{
 			"eventType": "variable",
@@ -130,6 +124,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 255623351048611
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Arrow_Opacity",
+			"type": "number",
+			"initialValue": "50",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 224697067758987
 		}
 	],
 	"sid": 900977153576648

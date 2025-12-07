@@ -52,6 +52,10 @@
 			"children": [
 				{
 					"eventType": "comment",
+					"text": "todo_pack do it in one step"
+				},
+				{
+					"eventType": "comment",
 					"text": "Spawn decorations"
 				},
 				{

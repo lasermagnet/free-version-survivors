@@ -154,6 +154,16 @@
 						"ping-pong": "no",
 						"repeat-count": "1"
 					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 904420723027911,
+					"disabled": true,
+					"parameters": {
+						"type": "log",
+						"message": "StringSub(\"Weapon spawn: {0}, DMG {1}\", weapon, Weapon.damage)"
+					}
 				}
 			],
 			"sid": 977922686671153,
@@ -211,7 +221,6 @@
 					"text": "Optionally enable orbit"
 				},
 				{
-					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{

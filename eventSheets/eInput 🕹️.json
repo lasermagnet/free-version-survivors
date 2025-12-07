@@ -499,10 +499,6 @@
 			],
 			"actions": [
 				{
-					"type": "comment",
-					"text": "todo bug: player doesn't pause after first level up"
-				},
-				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
 					"sid": 898095459607257,

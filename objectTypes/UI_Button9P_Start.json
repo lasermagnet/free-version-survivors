@@ -1,0 +1,38 @@
+{
+	"name": "UI_Button9P_Start",
+	"plugin-id": "NinePatch",
+	"sid": 912252353751969,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "option",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 644034200261582
+		},
+		{
+			"name": "upgrade",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 754712532155904
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 7,
+		"height": 7,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 3462330,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

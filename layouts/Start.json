@@ -7,6 +7,95 @@
 			"subLayers": [],
 			"instances": [
 				{
+					"type": "UI_Button9P_Start",
+					"properties": {
+						"left-margin": 3,
+						"right-margin": 3,
+						"top-margin": 3,
+						"bottom-margin": 3,
+						"edges": "tile",
+						"fill": "tile",
+						"initially-visible": true,
+						"origin": "top-left",
+						"seams": "exact"
+					},
+					"uid": 51,
+					"sid": 541948253827762,
+					"tags": "",
+					"instanceVariables": {
+						"option": 0,
+						"upgrade": ""
+					},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 51,
+						"children": [
+							{
+								"uid": 36,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 541948253827762,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 10,
+						"y": 140,
+						"width": 140,
+						"height": 30,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							0.23529411764705882,
+							0.6392156862745098,
+							0.4392156862745098,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
 					"type": "Editor",
 					"properties": {
 						"tag": "div",
@@ -251,95 +340,6 @@
 					}
 				},
 				{
-					"type": "UI_Button9P_Upgrade",
-					"properties": {
-						"left-margin": 3,
-						"right-margin": 3,
-						"top-margin": 3,
-						"bottom-margin": 3,
-						"edges": "tile",
-						"fill": "tile",
-						"initially-visible": true,
-						"origin": "top-left",
-						"seams": "exact"
-					},
-					"uid": 35,
-					"sid": 506331070366143,
-					"tags": "",
-					"instanceVariables": {
-						"option": 0,
-						"upgrade": ""
-					},
-					"behaviors": {},
-					"sceneGraphData": {
-						"parent-uid": null,
-						"uid": 35,
-						"children": [
-							{
-								"uid": 36,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": true,
-									"h": true,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							}
-						],
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"instanceFolderItem": {
-						"sid": 506331070366143,
-						"expanded": true
-					},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 10,
-						"y": 140,
-						"width": 140,
-						"height": 30,
-						"originX": 0,
-						"originY": 0,
-						"color": [
-							0.23529411764705882,
-							0.6392156862745098,
-							0.4392156862745098,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
 					"type": "UI_TextSF_Devlog",
 					"properties": {
 						"text": "Start",
@@ -374,7 +374,7 @@
 						}
 					},
 					"sceneGraphData": {
-						"parent-uid": 35,
+						"parent-uid": 51,
 						"uid": 36,
 						"flags": {
 							"x": true,

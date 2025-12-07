@@ -11,10 +11,10 @@
 				{
 					"id": "on-tap-object",
 					"objectClass": "Touch",
-					"sid": 173079047440041,
+					"sid": 304990990446090,
 					"disabled": true,
 					"parameters": {
-						"object": "UI_Button9P_Upgrade"
+						"object": "UI_Button9P_Start"
 					}
 				},
 				{

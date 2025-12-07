@@ -1,8 +1,10 @@
 export const Pools = {
     "Items": [
-        [3, "Sword"],
         [10, "Heal1"],
         [1, "Heal2"],
+        [1, "Sword"],
+        [1, "Flame"],
+        [1, "Revolver"],
     ],
 
     "Upgrades": [
@@ -21,6 +23,9 @@ export const Pools = {
         [1, "ItemSpawnCooldown"],
     ],
 
+    // todo upgrade banning (no more item drop / level up upgrade option)
+
+    // todo enemy amount based spawning instaed of pool/chance based
     "Enemies": [
         [40, "Slime"],
         [20, "Rat"],

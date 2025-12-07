@@ -167,6 +167,25 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Update Z orders"
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Enemy",
+					"sid": 895177308946313
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Weapon",
+					"sid": 533239325380281
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Arrow",
+					"sid": 709494247023266
+				},
+				{
 					"id": "move-to-top",
 					"objectClass": "Player",
 					"sid": 910721350011334
@@ -211,17 +230,17 @@
 						{
 							"id": "for-each",
 							"objectClass": "Rules",
-							"sid": 793989520308754,
+							"sid": 567391062633599,
 							"parameters": {
-								"path": "KEY_Player & DOT & KEY_Weapons"
+								"path": "KEY_Weapons"
 							}
 						},
 						{
 							"id": "compare-value",
 							"objectClass": "Rules",
-							"sid": 413757915216087,
+							"sid": 898774779668406,
 							"parameters": {
-								"path": "KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Amount",
+								"path": "DOT & KEY_Amount",
 								"cmp": 4,
 								"value": "0"
 							}
@@ -231,10 +250,10 @@
 						{
 							"id": "set-value",
 							"objectClass": "Rules",
-							"sid": 507690793267307,
+							"sid": 987792150045880,
 							"parameters": {
-								"path": "KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Timer",
-								"value": "max(0, Rules.Get(KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Timer) - dt)"
+								"path": "DOT & KEY_Timer",
+								"value": "max(0, Rules.Get(DOT & KEY_Timer) - dt)"
 							}
 						}
 					],
@@ -246,9 +265,9 @@
 								{
 									"id": "compare-value",
 									"objectClass": "Rules",
-									"sid": 815488500474987,
+									"sid": 387993056308811,
 									"parameters": {
-										"path": "KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Timer",
+										"path": "DOT & KEY_Timer",
 										"cmp": 0,
 										"value": "0"
 									}
@@ -258,31 +277,21 @@
 								{
 									"id": "set-value",
 									"objectClass": "Rules",
-									"sid": 385769584468187,
+									"sid": 737014952994807,
 									"parameters": {
-										"path": "KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Timer",
-										"value": "Rules.Get(KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)"
-									}
-								},
-								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 622964289085077,
-									"disabled": true,
-									"parameters": {
-										"type": "log",
-										"message": "\"Spawning weapon(s): \" & Rules.CurrentValue"
+										"path": "DOT & KEY_Timer",
+										"value": "Rules.Get(DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)"
 									}
 								},
 								{
 									"customAction": "spawn",
 									"objectClass": "Weapon",
-									"sid": 584341475092885,
+									"sid": 990478502421996,
 									"parameters": [
-										"Rules.CurrentValue",
-										"Rules.Get(KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
+										"Rules.CurrentKey",
+										"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
 										"Player.lastMovingAngle",
-										"Rules.Get(KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)"
+										"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)"
 									]
 								}
 							],
@@ -322,6 +331,7 @@
 							"id": "log",
 							"objectClass": "Browser",
 							"sid": 317499462563761,
+							"disabled": true,
 							"parameters": {
 								"type": "log",
 								"message": "\"Adding \" & Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Amount) & \" enemies to the spawn queue.\""
@@ -340,6 +350,7 @@
 							"id": "log",
 							"objectClass": "Browser",
 							"sid": 650407931225055,
+							"disabled": true,
 							"parameters": {
 								"type": "log",
 								"message": "\"Enemy spawn queue size: \" & Rules.Get(KEY_Queues & DOT & KEY_Enemies)"
@@ -390,6 +401,7 @@
 							"id": "log",
 							"objectClass": "Browser",
 							"sid": 263380193314445,
+							"disabled": true,
 							"parameters": {
 								"type": "log",
 								"message": "\"A \" & Rules.Get(KEY_Queues & DOT & KEY_Items & DOT & \"0\") & \" will spawn soon...\""
@@ -397,95 +409,6 @@
 						}
 					],
 					"sid": 416805021167430
-				},
-				{
-					"eventType": "comment",
-					"text": "Attract / pick up drops"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Drop",
-							"sid": 497143461059446,
-							"parameters": {
-								"instance-variable": "isCollected",
-								"comparison": 0,
-								"value": "NO"
-							}
-						},
-						{
-							"id": "pick-by-comparison",
-							"objectClass": "System",
-							"sid": 117652347320402,
-							"parameters": {
-								"object": "Drop",
-								"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
-								"comparison": 2,
-								"value": "Rules.Get(KEY_Player & DOT & KEY_PickupDistance)"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-enabled",
-							"objectClass": "Drop",
-							"sid": 811149408323897,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"state": "enabled"
-							}
-						}
-					],
-					"sid": 983656793334925,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "pick-overlapping-point",
-									"objectClass": "System",
-									"sid": 630875946663587,
-									"parameters": {
-										"object": "Drop",
-										"x": "Player.X",
-										"y": "Player.Y"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Drop",
-									"sid": 166542007013569,
-									"parameters": {
-										"instance-variable": "isCollected",
-										"value": "YES"
-									}
-								},
-								{
-									"id": "destroy",
-									"objectClass": "Drop",
-									"sid": 162031479341671
-								},
-								{
-									"type": "comment",
-									"text": "Player: collect experience (with bonus applied)"
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Player",
-									"sid": 487070083361722,
-									"parameters": {
-										"instance-variable": "experience",
-										"value": "Drop.AnimationName = ROLE_Experience ? Self.experience + round(Drop.amount * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : Self.experience"
-									}
-								}
-							],
-							"sid": 563644976303548
-						}
-					]
 				},
 				{
 					"eventType": "comment",
@@ -592,6 +515,95 @@
 				},
 				{
 					"eventType": "comment",
+					"text": "Attract / pick up drops"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Drop",
+							"sid": 667811058829487,
+							"parameters": {
+								"instance-variable": "isCollected",
+								"comparison": 0,
+								"value": "NO"
+							}
+						},
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 819101292241200,
+							"parameters": {
+								"object": "Drop",
+								"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
+								"comparison": 2,
+								"value": "Rules.Get(KEY_Player & DOT & KEY_PickupDistance)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "Drop",
+							"sid": 395249354730319,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"state": "enabled"
+							}
+						}
+					],
+					"sid": 622273281678330,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-overlapping-point",
+									"objectClass": "System",
+									"sid": 666948097838731,
+									"parameters": {
+										"object": "Drop",
+										"x": "Player.X",
+										"y": "Player.Y"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Drop",
+									"sid": 701635499251847,
+									"parameters": {
+										"instance-variable": "isCollected",
+										"value": "YES"
+									}
+								},
+								{
+									"id": "destroy",
+									"objectClass": "Drop",
+									"sid": 975610977138803
+								},
+								{
+									"type": "comment",
+									"text": "Player: collect experience (with bonus applied)"
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 747132776152467,
+									"parameters": {
+										"instance-variable": "experience",
+										"value": "Drop.AnimationName = ROLE_Experience ? Self.experience + round(Drop.amount * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : Self.experience"
+									}
+								}
+							],
+							"sid": 893054964726095
+						}
+					]
+				},
+				{
+					"eventType": "comment",
 					"text": "Level up"
 				},
 				{
@@ -617,6 +629,10 @@
 								"variable": "isLeveling",
 								"value": "YES"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Update time scale of moving objects"
 						},
 						{
 							"id": "set-object-time-scale",
@@ -662,6 +678,10 @@
 								"object": "UI_TextSF_DamageNumber",
 								"time-scale": "0"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Show & reset level up UI"
 						},
 						{
 							"id": "stop-all-tweens",
@@ -744,6 +764,10 @@
 						},
 						{
 							"eventType": "comment",
+							"text": "Generate upgrade options and show update level up UI"
+						},
+						{
+							"eventType": "comment",
 							"text": "This is not the most elegant solution to the problem that we have multiple (ideally 3) unique upgrade options, which should be chosen based on their weight"
 						},
 						{
@@ -790,7 +814,7 @@
 									"objectClass": "UI_Button9P_Upgrade",
 									"sid": 358465600345835,
 									"parameters": {
-										"child": "Icons",
+										"child": "Icon",
 										"which": "own"
 									}
 								}
@@ -825,20 +849,11 @@
 								},
 								{
 									"id": "set-animation",
-									"objectClass": "Icons",
+									"objectClass": "Icon",
 									"sid": 871116676435623,
 									"parameters": {
 										"animation": "Rules.Get(KEY_Upgrades & DOT & selectedUpgrade & DOT & KEY_Icon)",
 										"from": "beginning"
-									}
-								},
-								{
-									"id": "set-text",
-									"objectClass": "UI_TextSF_Upgrade",
-									"sid": 632404175777567,
-									"disabled": true,
-									"parameters": {
-										"text": "(UI_Button9P_Upgrade.upgrade = EMPTY ? EMPTY : Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Label)) & newline & \"\\[\" &\n(\nRules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Multiply) = 1 ? EMPTY : \"+ \" & (Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Multiply) - 1) * 100 & \"%\" & SPACE\n) &\n(\nRules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add) = 0 ? EMPTY : (Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add) < 0 ? \"- \" : \"+ \") & abs(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add))\n) & \"]\""
 									}
 								},
 								{
@@ -900,6 +915,10 @@
 					],
 					"actions": [
 						{
+							"type": "comment",
+							"text": "Decrease player health"
+						},
+						{
 							"id": "set-value",
 							"objectClass": "Rules",
 							"sid": 690662732743411,
@@ -907,6 +926,10 @@
 								"path": "KEY_Player & DOT & KEY_Health",
 								"value": "max(0, Rules.Get(KEY_Player & DOT & KEY_Health) - Enemy.damage * dt)"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Set player to hurting (for vignette UI effect)"
 						},
 						{
 							"id": "set-instvar-value",
@@ -922,7 +945,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Dying"
+					"text": "Kill player if they are out of health"
 				},
 				{
 					"eventType": "block",
@@ -941,7 +964,7 @@
 					"actions": [
 						{
 							"type": "comment",
-							"text": "todo feedback / game over screen, etc"
+							"text": "todo more feedback / game over screen, etc"
 						},
 						{
 							"id": "set-instvar-value",
@@ -953,13 +976,21 @@
 							}
 						},
 						{
+							"type": "comment",
+							"text": "Slow down moving drops"
+						},
+						{
 							"id": "set-acceleration",
 							"objectClass": "Drop",
-							"sid": 978137124524970,
+							"sid": 383188207661019,
 							"behaviorType": "Bullet",
 							"parameters": {
-								"acceleration": "-Self.Bullet.Speed"
+								"acceleration": "-Self.Bullet.Speed * 0.5"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Disable player movement"
 						},
 						{
 							"id": "set-enabled",
@@ -971,6 +1002,10 @@
 							}
 						},
 						{
+							"type": "comment",
+							"text": "Disable player-physics (don't keep pushing away enemies)"
+						},
+						{
 							"id": "set-enabled",
 							"objectClass": "Player",
 							"sid": 783248802365482,
@@ -980,15 +1015,31 @@
 							}
 						},
 						{
+							"type": "comment",
+							"text": "Flash player"
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "Player",
+							"sid": 422307302001334,
+							"parameters": {
+								"color": "rgbEx(500, 500, 500)"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Fade out player"
+						},
+						{
 							"id": "tween-one-property",
 							"objectClass": "Player",
-							"sid": 269555740685749,
+							"sid": 520423819540252,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"\"",
 								"property": "offsetOpacity",
 								"end-value": "0",
-								"time": "1",
+								"time": "3",
 								"ease": "easeoutcubic",
 								"destroy-on-complete": "no",
 								"loop": "no",
@@ -1165,48 +1216,43 @@
 					"text": "Resume game"
 				},
 				{
-					"id": "set-object-time-scale",
+					"id": "restore-object-time-scale",
 					"objectClass": "System",
-					"sid": 163372637783556,
+					"sid": 222614948091389,
 					"parameters": {
-						"object": "Drop",
-						"time-scale": "1"
+						"object": "Player"
 					}
 				},
 				{
-					"id": "set-object-time-scale",
+					"id": "restore-object-time-scale",
 					"objectClass": "System",
-					"sid": 374930440088694,
+					"sid": 809025054578776,
 					"parameters": {
-						"object": "Enemy",
-						"time-scale": "1"
+						"object": "Drop"
 					}
 				},
 				{
-					"id": "set-object-time-scale",
+					"id": "restore-object-time-scale",
 					"objectClass": "System",
-					"sid": 581517427302123,
+					"sid": 928378655102511,
 					"parameters": {
-						"object": "Player",
-						"time-scale": "1"
+						"object": "Weapon"
 					}
 				},
 				{
-					"id": "set-object-time-scale",
+					"id": "restore-object-time-scale",
 					"objectClass": "System",
-					"sid": 232002924512385,
+					"sid": 524246590112507,
 					"parameters": {
-						"object": "Weapon",
-						"time-scale": "1"
+						"object": "Enemy"
 					}
 				},
 				{
-					"id": "set-object-time-scale",
+					"id": "restore-object-time-scale",
 					"objectClass": "System",
-					"sid": 222741729041849,
+					"sid": 420789680602969,
 					"parameters": {
-						"object": "UI_TextSF_DamageNumber",
-						"time-scale": "1"
+						"object": "UI_TextSF_DamageNumber"
 					}
 				}
 			],

@@ -265,15 +265,6 @@
 					"parameters": {
 						"opacity": "0"
 					}
-				},
-				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 478337433040637,
-					"parameters": {
-						"type": "log",
-						"message": "\"Weapon count: \""
-					}
 				}
 			],
 			"sid": 448800525830597
@@ -307,6 +298,10 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Update experience bar & text"
+				},
+				{
 					"id": "set-width",
 					"objectClass": "UI_Bar_Experience",
 					"sid": 837565277708013,
@@ -321,6 +316,10 @@
 					"parameters": {
 						"text": "Player.experience & \" / \" & Rules.Get(KEY_Player & DOT & KEY_Experience_Target) & newline & KEY_Experience"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Update health bar & text"
 				},
 				{
 					"id": "set-width",
@@ -340,7 +339,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "todo_pack remove CAs, stuff everything in here if it makes sense"
+					"text": "Tick player"
 				},
 				{
 					"customAction": "tick",
@@ -348,14 +347,26 @@
 					"sid": 451834143784264
 				},
 				{
+					"type": "comment",
+					"text": "Spawn an enemy from queue (if needed)"
+				},
+				{
 					"customAction": "spawnFromQueue",
 					"objectClass": "Enemy",
 					"sid": 569763485951453
 				},
 				{
+					"type": "comment",
+					"text": "Tick enemies"
+				},
+				{
 					"customAction": "tick",
 					"objectClass": "Enemy",
 					"sid": 584880034086273
+				},
+				{
+					"type": "comment",
+					"text": "Update damage number scales"
 				},
 				{
 					"id": "set-scale",
@@ -366,6 +377,10 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Update vignette opacity"
+				},
+				{
 					"id": "set-opacity",
 					"objectClass": "UI_Vignette9P",
 					"sid": 134933458583808,
@@ -374,12 +389,46 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Update drop movement angles (towards player)"
+				},
+				{
 					"id": "set-angle-of-motion",
 					"objectClass": "Drop",
 					"sid": 335552295184695,
 					"behaviorType": "Bullet",
 					"parameters": {
 						"angle": "angle(Self.X, Self.Y, Player.X, Player.Y)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update arrows"
+				},
+				{
+					"id": "set-angle-toward-position",
+					"objectClass": "Arrow",
+					"sid": 772696613266894,
+					"parameters": {
+						"x": "Self.itemX",
+						"y": "Self.itemY"
+					}
+				},
+				{
+					"id": "set-position",
+					"objectClass": "Arrow",
+					"sid": 880305685323650,
+					"parameters": {
+						"x": "Player.X",
+						"y": "Player.Y"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "Arrow",
+					"sid": 381940989544921,
+					"parameters": {
+						"opacity": "lerp(Self.Opacity, distance(Player.X, Player.Y, Self.itemX, Self.itemY) < min(ViewportMidX(LAYER_UI), ViewportMidY(LAYER_UI)) ? 0 : C_Arrow_Opacity, 0.1)"
 					}
 				}
 			],

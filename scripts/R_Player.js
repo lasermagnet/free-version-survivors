@@ -15,11 +15,9 @@ export const Player = {
     // Misc
     "PickupDistance": 30,
 
-    // Enabled weapons (weapons not listed here will never fire)
-    "Weapons": ["Revolver", "Sword", "Flame"], // todo remove, foreach weapons instead
-
     // Bonuses
     // todo heal bonus
+    "Bonus_Heal_Amount_Multiplier": 1,
     "Bonus_Experience_Multiplier": 1,
     "Bonus_Enemy_Spawn_Cooldown_Multiplier": 1,
     "Bonus_Weapon_Damage_Multiplier": 1,
