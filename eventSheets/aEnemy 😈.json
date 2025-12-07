@@ -169,10 +169,10 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 355875597487192,
+					"sid": 730954043451735,
 					"parameters": {
 						"instance-variable": "movementSpeed",
-						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_MovementSpeed)"
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_MovementSpeed) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_MovementSpeed_Multiplier)"
 					}
 				},
 				{

@@ -19,6 +19,13 @@ export const Modifiers = {
         "Rule_Value": "Player.Bonus_Regeneration_Amount",
         "Add": 1,
     },
+    "EnemyMovementSpeed": {
+        "Label": "Faster enemies",
+        "Description": "Increase enemy movement speed.",
+        "Icon": "Enemy",
+        "Rule_Value": "Player.Bonus_Enemy_MovementSpeed_Multiplier",
+        "Add": 0.1,
+    },
     "EnemySpawnAmount": {
         "Label": "More enemies",
         "Description": "Increase enemy spawn amount by 10%.",

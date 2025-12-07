@@ -34,6 +34,9 @@ export const Upgrades = {
     },
 
     // Player stats
+    "EnemyMovementSpeed": {
+        "Modifiers_Infinite": ["EnemyMovementSpeed"]
+    },
     "EnemySpawnAmount": {
         "Modifiers_Infinite": ["EnemySpawnAmount"]
     },

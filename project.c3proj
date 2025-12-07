@@ -354,6 +354,14 @@
 					"script-info": {
 						"purpose": "none"
 					}
+				},
+				{
+					"name": "_changelog.js",
+					"type": "application/javascript",
+					"sid": 676003409399291,
+					"script-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []
@@ -560,7 +568,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "60",
+		"version": "61b",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

@@ -38,6 +38,7 @@ export const Level = {
 
         // Player stat upgrades
         [1, "Regeneration"],
+        [1, "EnemyMovementSpeed"],
         [1, "EnemySpawnAmount"],
         [1, "WeaponCooldown"],
         [1, "MaxHealth"],

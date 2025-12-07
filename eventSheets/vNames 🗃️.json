@@ -197,6 +197,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Bonus_Enemy_MovementSpeed_Multiplier",
+			"type": "string",
+			"initialValue": "Bonus_Enemy_MovementSpeed_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 155483213211109
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Bonus_Enemy_Spawn_Amount_Multiplier",
 			"type": "string",
 			"initialValue": "Bonus_Enemy_Spawn_Amount_Multiplier",
