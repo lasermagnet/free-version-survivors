@@ -1,3 +1,14 @@
+const _template = {
+    "": {
+        "Label": "",
+        "Description": "",
+        "Icon": "",
+        "Rule_Value": "",
+        "Multiply": 1,
+        "Add": 0,
+    },
+}
+
 export const Modifiers = {
     "EnemySpawnCooldown": {
         "Label": "More enemies",
@@ -72,6 +83,14 @@ export const Modifiers = {
         "Multiply": 1,
         "Add": -0.05,
     },
+    "WeaponCooldown_Extra": {
+        "Label": "Attack a bit faster",
+        "Description": "Reduce all weapon cooldowns by 1%.",
+        "Icon": "WeaponCooldown",
+        "Rule_Value": "Player.Bonus_Weapon_Cooldown_Multiplier",
+        "Multiply": 1,
+        "Add": -0.01,
+    },
     "WeaponSize": {
         "Label": "Bigger weapons",
         "Description": "Scale up all weapons.",
@@ -89,8 +108,8 @@ export const Modifiers = {
         "Add": 1,
     },
     "Axe_Amount": {
+        "Weapon": "Axe", // to attack & reset cooldown
         "Label": "+1 Axe",
-        "Weapon": "Axe",
         "Description": "A trusty old throwing axe.",
         "Icon": "Axe",
         "Rule_Value": "Weapons.Axe.Amount",
@@ -100,12 +119,21 @@ export const Modifiers = {
     "Axe_Damage": {
         "Weapon": "Axe",
         "WeaponRequirement": "Axe",
-        "Label": "Axe: damage up",
+        "Label": "Axe: +5 damage",
         "Description": "Deal bigger damage with your axe.",
         "Icon": "Axe",
         "Rule_Value": "Weapons.Axe.Damage",
         "Multiply": 1,
         "Add": 5,
+    },
+    "Axe_Damage_Extra": {
+        "Weapon": "Axe",
+        "Label": "Axe: +2 damage",
+        "Description": "Deal a bit bigger damage with your axe.",
+        "Icon": "Axe",
+        "Rule_Value": "Weapons.Axe.Damage",
+        "Multiply": 1,
+        "Add": 2,
     },
     "Axe_PierceLimit": {
         "Weapon": "Axe",
@@ -117,7 +145,7 @@ export const Modifiers = {
         "Multiply": 1,
         "Add": 1,
     },
-    "Flame": {
+    "Flame_Amount": {
         "Weapon": "Flame",
         "Label": "+1 Flame",
         "Description": "Cooks nearby enemies.",
@@ -136,7 +164,7 @@ export const Modifiers = {
         "Multiply": 1,
         "Add": 0.2,
     },
-    "Chainsaw": {
+    "Chainsaw_Amount": {
         "Weapon": "Chainsaw",
         "Label": "+1 Chainsaw",
         "Description": "It orbits around you.",
@@ -165,7 +193,7 @@ export const Modifiers = {
         "Multiply": 1,
         "Add": 0.1,
     },
-    "Spikes": {
+    "Spikes_Amount": {
         "Weapon": "Spikes",
         "Label": "+1 Spikes",
         "Description": "Spawns spikes on the ground.",

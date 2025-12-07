@@ -866,14 +866,14 @@
 								},
 								{
 									"type": "comment",
-									"text": "Set upgrade"
+									"text": "Set modifier"
 								},
 								{
 									"id": "set-instvar-value",
 									"objectClass": "Item",
 									"sid": 510478867346886,
 									"parameters": {
-										"instance-variable": "upgrade",
+										"instance-variable": "modifier",
 										"value": "itemSpawnCue"
 									}
 								},
@@ -884,7 +884,7 @@
 									"disabled": true,
 									"parameters": {
 										"type": "log",
-										"message": "\"Spawning item: \" & Item.upgrade"
+										"message": "\"Spawning item: \" & Item.modifier"
 									}
 								},
 								{
@@ -936,9 +936,9 @@
 								{
 									"id": "set-animation",
 									"objectClass": "Icon",
-									"sid": 390892621667584,
+									"sid": 906411942984468,
 									"parameters": {
-										"animation": "Rules.Get(KEY_Modifiers & DOT & Item.upgrade & DOT & KEY_Icon)",
+										"animation": "Rules.Get(KEY_Modifiers & DOT & Item.modifier & DOT & KEY_Icon)",
 										"from": "beginning"
 									}
 								},

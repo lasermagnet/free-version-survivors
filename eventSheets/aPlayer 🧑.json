@@ -917,7 +917,7 @@
 							"disabled": true,
 							"parameters": {
 								"type": "log",
-								"message": "\"Picked up item: \" & Item.upgrade"
+								"message": "\"Picked up item: \" & Item.modifier"
 							}
 						},
 						{
@@ -934,11 +934,11 @@
 							"text": "Apply \"item\" (upgrade)"
 						},
 						{
-							"customAction": "applyUpgrade",
+							"customAction": "applyModifier",
 							"objectClass": "Player",
 							"sid": 366719559556059,
 							"parameters": [
-								"Item.upgrade"
+								"Item.modifier"
 							]
 						},
 						{
@@ -1332,7 +1332,7 @@
 							"objectClass": "UI_Button9P_Upgrade",
 							"sid": 830593669059011,
 							"parameters": {
-								"instance-variable": "upgrade",
+								"instance-variable": "modifier",
 								"value": "EMPTY"
 							}
 						},
@@ -1368,6 +1368,16 @@
 							"sid": 836788779224185
 						},
 						{
+							"eventType": "variable",
+							"name": "modifier",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 670459196056724
+						},
+						{
 							"eventType": "comment",
 							"text": "Generate upgrade options and show update level up UI"
 						},
@@ -1395,7 +1405,7 @@
 									"objectClass": "UI_Button9P_Upgrade",
 									"sid": 520864684137256,
 									"parameters": {
-										"instance-variable": "upgrade",
+										"instance-variable": "modifier",
 										"comparison": 0,
 										"value": "EMPTY"
 									}
@@ -1482,16 +1492,17 @@
 									"disabled": true,
 									"parameters": {
 										"type": "log",
-										"message": "\"Weapon requirement for \" & upgradeCandidate & \": \" & Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement)"
+										"message": "\"Weapon requirement for \" & upgradeCandidate & \": \" & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement)"
 									}
 								},
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
 									"sid": 714268585606491,
+									"disabled": true,
 									"parameters": {
 										"variable": "upgradeCandidate",
-										"value": "Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) = NO ? upgradeCandidate : (Rules.Get(KEY_Weapons & DOT & Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) & DOT & KEY_Amount) > 0 ? upgradeCandidate : EMPTY)"
+										"value": "Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) = NO ? upgradeCandidate : (Rules.Get(KEY_Weapons & DOT & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement) & DOT & KEY_Amount) > 0 ? upgradeCandidate : EMPTY)"
 									}
 								},
 								{
@@ -1506,32 +1517,75 @@
 								},
 								{
 									"type": "comment",
+									"text": "Validate if upgrade has modifiers"
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 843062976617220,
+									"parameters": {
+										"variable": "upgradeCandidate",
+										"value": "Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers) > 0 | Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers_Infinite) > 0 ? upgradeCandidate : EMPTY"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "Set modifier"
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 525910363227406,
+									"parameters": {
+										"variable": "modifier",
+										"value": "Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers) > 0 ?\nRules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers & DOT & \"0\") :\n(\n  Rules.ArraySize(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers_Infinite) > 0 ?\n  Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_Modifiers_Infinite & DOT & \"0\") :\n  EMPTY\n)"
+									}
+								},
+								{
+									"type": "comment",
 									"text": "Use upgrade candidate (if it's still a valid one)"
 								},
 								{
 									"id": "set-instvar-value",
 									"objectClass": "UI_Button9P_Upgrade",
-									"sid": 672685898076604,
+									"sid": 691844759236153,
 									"parameters": {
 										"instance-variable": "upgrade",
 										"value": "upgradeCandidate"
 									}
 								},
 								{
+									"id": "set-instvar-value",
+									"objectClass": "UI_Button9P_Upgrade",
+									"sid": 470681944975400,
+									"parameters": {
+										"instance-variable": "modifier",
+										"value": "modifier"
+									}
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "UI_Button9P_Upgrade",
+									"sid": 774631035267122,
+									"parameters": {
+										"opacity": "upgradeCandidate = EMPTY ? 0 : 100"
+									}
+								},
+								{
 									"id": "set-animation",
 									"objectClass": "Icon",
-									"sid": 439449580852157,
+									"sid": 382227726049012,
 									"parameters": {
-										"animation": "Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_Icon)",
+										"animation": "Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Icon)",
 										"from": "beginning"
 									}
 								},
 								{
 									"id": "set-text",
 									"objectClass": "UI_TextSF_Upgrade",
-									"sid": 585831293527480,
+									"sid": 988567318967188,
 									"parameters": {
-										"text": "(upgradeCandidate = EMPTY ? EMPTY : \"[scale=0.2]\" & Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_Label) & \"[/scale]\" & newline & Rules.Get(KEY_Modifiers & DOT & upgradeCandidate & DOT & KEY_Description))"
+										"text": "(modifier = EMPTY ? EMPTY : \"[scale=0.2]\" & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Label) & \"[/scale]\" & newline & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Description))"
 									}
 								},
 								{
@@ -1958,6 +2012,19 @@
 				},
 				{
 					"type": "comment",
+					"text": "Spend a modifier"
+				},
+				{
+					"id": "pop-value",
+					"objectClass": "Rules",
+					"sid": 615377911777828,
+					"parameters": {
+						"where": "front",
+						"path": "KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Modifiers"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Increase target experience"
 				},
 				{
@@ -1971,14 +2038,14 @@
 				},
 				{
 					"type": "comment",
-					"text": "Apply selected upgrade"
+					"text": "Apply selected upgrade's modifier"
 				},
 				{
-					"customAction": "applyUpgrade",
+					"customAction": "applyModifier",
 					"objectClass": "Player",
 					"sid": 450428395935593,
 					"parameters": [
-						"UI_Button9P_Upgrade.upgrade"
+						"UI_Button9P_Upgrade.modifier"
 					]
 				},
 				{
@@ -2038,7 +2105,7 @@
 		},
 		{
 			"aceType": "action",
-			"aceName": "applyUpgrade",
+			"aceName": "applyModifier",
 			"objectClass": "Player",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -2047,7 +2114,7 @@
 			"functionIsAsync": false,
 			"functionParameters": [
 				{
-					"name": "upgrade",
+					"name": "modifier",
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
@@ -2078,16 +2145,16 @@
 					"disabled": true,
 					"parameters": {
 						"type": "log",
-						"message": "\"Applying upgrade: \" & upgrade"
+						"message": "\"Applying upgrade: \" & modifier"
 					}
 				},
 				{
 					"id": "set-value",
 					"objectClass": "Rules",
-					"sid": 438822248656384,
+					"sid": 587536001670108,
 					"parameters": {
-						"path": "Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Multiply)"
+						"path": "Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Multiply)"
 					}
 				},
 				{
@@ -2097,10 +2164,10 @@
 				{
 					"id": "add-to",
 					"objectClass": "Rules",
-					"sid": 781287846172329,
+					"sid": 644711060526061,
 					"parameters": {
-						"path": "Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Add)"
+						"path": "Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(KEY_Modifiers  & DOT & modifier & DOT & KEY_Add)"
 					}
 				},
 				{
@@ -2110,10 +2177,10 @@
 				{
 					"id": "set-value",
 					"objectClass": "Rules",
-					"sid": 999042333458569,
+					"sid": 684682981966172,
 					"parameters": {
-						"path": "Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Rule_Max)))"
+						"path": "Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Rule_Max)))"
 					}
 				},
 				{
@@ -2123,10 +2190,10 @@
 				{
 					"id": "stop-timer",
 					"objectClass": "Player",
-					"sid": 347921085058366,
+					"sid": 820544152948431,
 					"behaviorType": "Timer",
 					"parameters": {
-						"tag": "TIMER_Weapon_Attack_ & Rules.Get(KEY_Modifiers & DOT & upgrade & DOT & KEY_Weapon)"
+						"tag": "TIMER_Weapon_Attack_ & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Weapon)"
 					}
 				},
 				{

@@ -53,7 +53,7 @@
 					"sid": 524116706696208,
 					"parameters": {
 						"name": "PT_Upgrades",
-						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Modifiers)"
+						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Upgrades)"
 					}
 				},
 				{

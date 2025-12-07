@@ -17,6 +17,13 @@
 			"type": "string",
 			"desc": "",
 			"show": true,
+			"sid": 924162863766249
+		},
+		{
+			"name": "modifier",
+			"type": "string",
+			"desc": "",
+			"show": true,
 			"sid": 377639161975727
 		}
 	],

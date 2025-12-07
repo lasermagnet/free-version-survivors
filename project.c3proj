@@ -224,7 +224,9 @@
 			"UI_TextSF_Pause",
 			"UI_TextSF_Time",
 			"UI_Background_Health",
-			"UI_TextSF_Stats"
+			"UI_TextSF_Stats",
+			"UpgradesUsed",
+			"UpgradesMaxed"
 		],
 		"subfolders": []
 	},
@@ -541,7 +543,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "46",
+		"version": "47",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

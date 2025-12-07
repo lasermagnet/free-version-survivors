@@ -10,7 +10,7 @@ export const Enemies = {
     "Slime": {
         "Health": 3,
         "Damage": 10,
-        "Experience": 4,
+        "Experience": 4*10,
         "MovementSpeed": 0.5
     },
     "Rat": {

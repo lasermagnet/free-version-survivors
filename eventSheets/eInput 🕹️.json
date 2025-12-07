@@ -306,33 +306,37 @@
 			],
 			"actions": [
 				{
-					"customAction": "applyUpgrade",
+					"customAction": "applyModifier",
 					"objectClass": "Player",
 					"sid": 392482584681037,
+					"disabled": true,
 					"parameters": [
 						"\"Spikes\""
 					]
 				},
 				{
-					"customAction": "applyUpgrade",
+					"customAction": "applyModifier",
 					"objectClass": "Player",
 					"sid": 305730127677525,
+					"disabled": true,
 					"parameters": [
 						"\"Axe\""
 					]
 				},
 				{
-					"customAction": "applyUpgrade",
+					"customAction": "applyModifier",
 					"objectClass": "Player",
 					"sid": 507747436401260,
+					"disabled": true,
 					"parameters": [
 						"\"Chainsaw\""
 					]
 				},
 				{
-					"customAction": "applyUpgrade",
+					"customAction": "applyModifier",
 					"objectClass": "Player",
 					"sid": 348140626402611,
+					"disabled": true,
 					"parameters": [
 						"\"Flame\""
 					]
@@ -429,7 +433,7 @@
 			],
 			"actions": [
 				{
-					"customAction": "applyUpgrade",
+					"customAction": "applyModifier",
 					"objectClass": "Player",
 					"sid": 177500258081648,
 					"parameters": [

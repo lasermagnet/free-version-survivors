@@ -655,7 +655,7 @@
 					"sid": 896172996303602,
 					"tags": "",
 					"instanceVariables": {
-						"upgrade": "",
+						"modifier": "",
 						"isPickedUp": 0
 					},
 					"behaviors": {

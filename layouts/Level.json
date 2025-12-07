@@ -246,7 +246,8 @@
 					"tags": "",
 					"instanceVariables": {
 						"option": 2,
-						"upgrade": ""
+						"upgrade": "",
+						"modifier": ""
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -365,7 +366,8 @@
 					"tags": "",
 					"instanceVariables": {
 						"option": 1,
-						"upgrade": ""
+						"upgrade": "",
+						"modifier": ""
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -484,7 +486,8 @@
 					"tags": "",
 					"instanceVariables": {
 						"option": 3,
-						"upgrade": ""
+						"upgrade": "",
+						"modifier": ""
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -1716,7 +1719,7 @@
 						"expanded": true
 					},
 					"showing": true,
-					"locked": false,
+					"locked": true,
 					"world": {
 						"x": 10,
 						"y": 26,

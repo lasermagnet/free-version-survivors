@@ -6,7 +6,7 @@
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [
 		{
-			"name": "upgrade",
+			"name": "modifier",
 			"type": "string",
 			"desc": "",
 			"show": true,

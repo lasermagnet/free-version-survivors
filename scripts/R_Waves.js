@@ -4,7 +4,7 @@ export const Waves = [ // todo_maybe remove spawn cooldown and just use a fixed 
         "EnemyAmount": 0,
         "Time": 3,
         "EnemySpawnPool": [],
-        "EnemySpawnFixed": {"MagnetCrate": 3},
+        "EnemySpawnFixed": { "MagnetCrate": 3 },
         "ItemSpawnPool": [],
         "Time": 3,
     },
@@ -14,7 +14,7 @@ export const Waves = [ // todo_maybe remove spawn cooldown and just use a fixed 
         "Time": 60,
         "EnemySpawnPool": [[2, "Slime"], [1, "Rat"]],
         "EnemySpawnFixed": {},
-        "ItemSpawnPool": [[1, "Axe"], [1, "Flame"]],
+        "ItemSpawnPool": [[1, "Axe_Amount"], [1, "Flame_Amount"]],
     },
     {
         "Name": "Now some Crabs & Snakes. And a Tentacle.",
@@ -22,7 +22,7 @@ export const Waves = [ // todo_maybe remove spawn cooldown and just use a fixed 
         "Time": 60,
         "EnemySpawnPool": [[1, "Crab"], [1, "Snake"]],
         "EnemySpawnFixed": { "Tentacle": 1 },
-        "ItemSpawnPool": [[1, "Chainsaw"], [1, "Spikes"]],
+        "ItemSpawnPool": [[1, "Chainsaw_Amount"], [1, "Spikes_Amount"]],
     },
     {
         "Name": "Need some healin'?",
@@ -38,7 +38,7 @@ export const Waves = [ // todo_maybe remove spawn cooldown and just use a fixed 
         "Time": 120,
         "EnemySpawnPool": [[40, "Slime"], [20, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"]],
         "EnemySpawnFixed": {},
-        "ItemSpawnPool": [[1, "Axe"], [1, "Flame"], [1, "Chainsaw"], [1, "Spikes"]],
+        "ItemSpawnPool": [[1, "Axe_Amount"], [1, "Flame_Amount"], [1, "Chainsaw_Amount"], [1, "Spikes_Amount"]],
     },
     {
         "Name": "Incoming healing crates...",
@@ -62,7 +62,7 @@ export const Waves = [ // todo_maybe remove spawn cooldown and just use a fixed 
         "Time": 60,
         "EnemySpawnPool": [[1, "HealingCrate"], [40, "Slime"], [20, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"]],
         "EnemySpawnFixed": {},
-        "ItemSpawnPool": [[1, "Axe"], [1, "Flame"], [1, "Chainsaw"], [1, "Spikes"]],
+        "ItemSpawnPool": [[1, "Axe_Amount"], [1, "Flame_Amount"], [1, "Chainsaw_Amount"], [1, "Spikes_Amount"]],
     },
     {
         "Name": "",
@@ -70,7 +70,7 @@ export const Waves = [ // todo_maybe remove spawn cooldown and just use a fixed 
         "Time": 30,
         "EnemySpawnPool": [[1, "HealingCrate"], [40, "Slime"], [20, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"]],
         "EnemySpawnFixed": {},
-        "ItemSpawnPool": [[1, "Axe"], [1, "Flame"], [1, "Chainsaw"], [1, "Spikes"]],
+        "ItemSpawnPool": [[1, "Axe_Amount"], [1, "Flame_Amount"], [1, "Chainsaw_Amount"], [1, "Spikes_Amount"]],
     },
     {
         "Name": "",

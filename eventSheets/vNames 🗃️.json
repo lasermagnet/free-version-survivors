@@ -511,13 +511,23 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Modifier",
+			"name": "KEY_Modifiers",
 			"type": "string",
-			"initialValue": "Modifier",
+			"initialValue": "Modifiers",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 207160904831020
+			"sid": 848796014235170
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Modifiers_Infinite",
+			"type": "string",
+			"initialValue": "Modifiers_Infinite",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 546371766937255
 		},
 		{
 			"eventType": "variable",
@@ -741,9 +751,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Modifiers",
+			"name": "KEY_Upgrades",
 			"type": "string",
-			"initialValue": "Modifiers",
+			"initialValue": "Upgrades",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
