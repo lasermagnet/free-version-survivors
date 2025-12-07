@@ -692,7 +692,7 @@
 					"type": "UI_TextSF_Damage",
 					"properties": {
 						"text": "1234567",
-						"enable-bbcode": true,
+						"enable-bbcode": false,
 						"character-width": 5,
 						"character-height": 7,
 						"character-set": "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.,;:?!-_~#\"'()[]|°%+*\\/=<> ",

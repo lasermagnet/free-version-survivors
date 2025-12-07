@@ -652,6 +652,14 @@
 							"parameters": {
 								"text": "round(Enemy.damageTakenRecently)"
 							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "UI_TextSF_Damage",
+							"sid": 385659036234260,
+							"parameters": {
+								"color": "int(tokenat(C_UI_DamageNumber_Colors_SSV, min(tokencount(C_UI_DamageNumber_Colors_SSV, SPACE) - 1, int(Enemy.damageTakenRecently / Rules.Get(KEY_Level & DOT & KEY_Dividers & DOT & KEY_DamageToColor))), SPACE))"
+							}
 						}
 					],
 					"sid": 696070708804544
@@ -768,18 +776,18 @@
 						{
 							"id": "set-animation",
 							"objectClass": "Drop",
-							"sid": 655521548353026,
+							"sid": 293308116858116,
 							"parameters": {
-								"animation": "Enemy.experience > 0 ? KEY_Experience : KEY_Health",
+								"animation": "Enemy.experience > 0 ? ANIM_Experience : (Enemy.healing > 0 ? ANIM_Health : ANIM_Magnet)",
 								"from": "beginning"
 							}
 						},
 						{
 							"id": "set-animation-frame",
 							"objectClass": "Drop",
-							"sid": 252362028618143,
+							"sid": 469205144351388,
 							"parameters": {
-								"frame-number": "min(floor(max(Self.experience, Self.healing) / max(1, Rules.Get(KEY_Level & DOT & KEY_DropValueToLevelDivider))), Self.AnimationFrameCount - 1)"
+								"frame-number": "min(floor(max(Self.experience, Self.healing) / max(1, Rules.Get(KEY_Level & DOT & KEY_Dividers & DOT & KEY_DropValueToLevel))), Self.AnimationFrameCount - 1)"
 							}
 						},
 						{

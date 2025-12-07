@@ -1105,7 +1105,69 @@
 									}
 								}
 							],
-							"sid": 893054964726095
+							"sid": 893054964726095,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "todo global name"
+								},
+								{
+									"eventType": "comment",
+									"text": "todo mn"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Drop",
+											"sid": 944791786483183,
+											"parameters": {
+												"animation": "ANIM_Magnet"
+											}
+										},
+										{
+											"id": "pick-all",
+											"objectClass": "System",
+											"sid": 355304951683305,
+											"parameters": {
+												"object": "Drop"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Drop",
+											"sid": 651377895862398,
+											"parameters": {
+												"animation": "ANIM_Experience"
+											}
+										},
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 591926183438916,
+											"parameters": {
+												"object": "Drop",
+												"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
+												"comparison": 2,
+												"value": "1000"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-enabled",
+											"objectClass": "Drop",
+											"sid": 824882698856648,
+											"behaviorType": "Bullet",
+											"parameters": {
+												"state": "enabled"
+											}
+										}
+									],
+									"sid": 726470448171921
+								}
+							]
 						}
 					]
 				},
@@ -2052,6 +2114,19 @@
 					"parameters": {
 						"path": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)",
 						"value": "Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Rule_Max)))"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "If upgrade is for weapon, zero its cooldown"
+				},
+				{
+					"id": "stop-timer",
+					"objectClass": "Player",
+					"sid": 347921085058366,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_Weapon_Attack_ & Rules.Get(KEY_Upgrades & DOT & upgrade & DOT & KEY_Weapon)"
 					}
 				},
 				{

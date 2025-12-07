@@ -3,6 +3,10 @@ export const Enemies = {
         "Health": 3,
         "Healing": 100,
     },
+    "MagnetCrate": {
+        "Health": 3,
+        "Magnet": 1,
+    },
     "Slime": {
         "Health": 3,
         "Damage": 10,

@@ -130,6 +130,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 847723731194477
+		},
+		{
+			"eventType": "variable",
+			"name": "C_UI_DamageNumber_Colors_SSV",
+			"type": "string",
+			"initialValue": "-281492157629439 -281490797983743 -281485881983999 -281480362198015 -258113710310399 -241621909102591",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 359671948260733
 		}
 	],
 	"sid": 900977153576648

@@ -7,13 +7,23 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "ANIM_Walking",
+			"name": "ANIM_Experience",
 			"type": "string",
-			"initialValue": "Walking",
+			"initialValue": "Experience",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 926677348791607
+			"sid": 757242074608810
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Health",
+			"type": "string",
+			"initialValue": "Health",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 983720175920312
 		},
 		{
 			"eventType": "variable",
@@ -23,7 +33,27 @@
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 503392850679348
+			"sid": 222460480720742
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Magnet",
+			"type": "string",
+			"initialValue": "Magnet",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 493365639330572
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Walking",
+			"type": "string",
+			"initialValue": "Walking",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 162284789806155
 		},
 		{
 			"eventType": "comment",
@@ -237,6 +267,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_DamageToColor",
+			"type": "string",
+			"initialValue": "DamageToColor",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 915795250681634
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Description",
 			"type": "string",
 			"initialValue": "Description",
@@ -257,9 +297,19 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_DropValueToLevelDivider",
+			"name": "KEY_Dividers",
 			"type": "string",
-			"initialValue": "DropValueToLevelDivider",
+			"initialValue": "Dividers",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 563188979237141
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_DropValueToLevel",
+			"type": "string",
+			"initialValue": "DropValueToLevel",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -724,6 +774,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 855705167315955
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Weapon",
+			"type": "string",
+			"initialValue": "Weapon",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 588036327159404
 		},
 		{
 			"eventType": "variable",

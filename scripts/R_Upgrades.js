@@ -90,6 +90,7 @@ export const Upgrades = {
     },
     "Axe": {
         "Label": "+1 Axe",
+        "Weapon": "Axe",
         "Description": "A trusty old throwing axe.",
         "Icon": "Axe",
         "Rule_Value": "Weapons.Axe.Amount",
@@ -97,6 +98,7 @@ export const Upgrades = {
         "Add": 1,
     },
     "Axe_Damage": {
+        "Weapon": "Axe",
         "WeaponRequirement": "Axe",
         "Label": "Axe: damage up",
         "Description": "Deal bigger damage with your axe.",
@@ -106,6 +108,7 @@ export const Upgrades = {
         "Add": 5,
     },
     "Axe_PierceLimit": {
+        "Weapon": "Axe",
         "WeaponRequirement": "Axe",
         "Label": "Axe: +1 piercing",
         "Description": "Go through one more enemy.",
@@ -115,6 +118,7 @@ export const Upgrades = {
         "Add": 1,
     },
     "Flame": {
+        "Weapon": "Flame",
         "Label": "+1 Flame",
         "Description": "Cooks nearby enemies.",
         "Icon": "Flame",
@@ -123,6 +127,7 @@ export const Upgrades = {
         "Add": 1,
     },
     "Flame_Timeout": {
+        "Weapon": "Flame",
         "WeaponRequirement": "Flame",
         "Label": "Flame: fuel up",
         "Description": "Flames last longer.",
@@ -132,6 +137,7 @@ export const Upgrades = {
         "Add": 0.2,
     },
     "Chainsaw": {
+        "Weapon": "Chainsaw",
         "Label": "+1 Chainsaw",
         "Description": "It orbits around you.",
         "Icon": "Chainsaw",
@@ -140,6 +146,7 @@ export const Upgrades = {
         "Add": 1,
     },
     "Chainsaw_Radius": {
+        "Weapon": "Chainsaw",
         "WeaponRequirement": "Chainsaw",
         "Label": "Chainsaw: radius up",
         "Description": "Increase distance from player.",
@@ -149,6 +156,7 @@ export const Upgrades = {
         "Add": 10,
     },
     "Chainsaw_Size": {
+        "Weapon": "Chainsaw",
         "WeaponRequirement": "Chainsaw",
         "Label": "Chainsaw: scale up",
         "Description": "Increase the size of your chainsaws.",
@@ -158,6 +166,7 @@ export const Upgrades = {
         "Add": 0.1,
     },
     "Spikes": {
+        "Weapon": "Spikes",
         "Label": "+1 Spikes",
         "Description": "Spawns spikes on the ground.",
         "Icon": "Spikes",
@@ -166,6 +175,7 @@ export const Upgrades = {
         "Add": 5,
     },
     "Spikes_Area": {
+        "Weapon": "Spikes",
         "WeaponRequirement": "Spikes",
         "Label": "Spikes: area up",
         "Description": "Spreads spikes on a bigger area",
