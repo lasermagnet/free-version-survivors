@@ -218,7 +218,8 @@
 			"UI_TextSF_Start",
 			"UI_TextSF_GameOver",
 			"Cooldowns",
-			"UI_TextSF_Wave"
+			"UI_TextSF_Wave",
+			"ItemSpawnQueue"
 		],
 		"subfolders": []
 	},
@@ -535,7 +536,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "36",
+		"version": "37",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

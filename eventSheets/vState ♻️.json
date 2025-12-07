@@ -71,6 +71,26 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "enemySpawnQueue",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 807598111616347
+		},
+		{
+			"eventType": "variable",
+			"name": "nextItemSpawn",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 820976962514249
+		},
+		{
+			"eventType": "variable",
 			"name": "wave",
 			"type": "number",
 			"initialValue": "-1",

@@ -521,6 +521,18 @@
 			"sid": 277553896079803,
 			"tags": "",
 			"instanceVariables": {}
+		},
+		{
+			"type": "ItemSpawnQueue",
+			"properties": {
+				"width": 0,
+				"height": 1,
+				"depth": 1
+			},
+			"uid": 56,
+			"sid": 910129436966257,
+			"tags": "",
+			"instanceVariables": {}
 		}
 	],
 	"effectTypes": [],

@@ -809,8 +809,18 @@
 							"id": "add-to",
 							"objectClass": "Rules",
 							"sid": 681183222805725,
+							"disabled": true,
 							"parameters": {
 								"path": "KEY_Queues & DOT & KEY_Enemies",
+								"value": "round(Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnAmountPerWave) / Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCycles))"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 474553894970900,
+							"parameters": {
+								"variable": "enemySpawnQueue",
 								"value": "round(Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnAmountPerWave) / Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCycles))"
 							}
 						}
@@ -2126,10 +2136,20 @@
 					"id": "push-value",
 					"objectClass": "Rules",
 					"sid": 131514688627958,
+					"disabled": true,
 					"parameters": {
 						"where": "back",
 						"path": "Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool) > 0 ? KEY_Queues & DOT & KEY_Items : EMPTY",
 						"value": "AdvancedRandom.WeightedByName(PT_Items)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 555486501587659,
+					"parameters": {
+						"variable": "nextItemSpawn",
+						"value": "Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool) > 0 ? AdvancedRandom.WeightedByName(PT_Items) : EMPTY"
 					}
 				},
 				{

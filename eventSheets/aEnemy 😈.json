@@ -819,10 +819,10 @@
 								{
 									"id": "log",
 									"objectClass": "Browser",
-									"sid": 481906987333590,
+									"sid": 316990042035146,
 									"parameters": {
 										"type": "log",
-										"message": "\"Enemy died & gonna spawn an item: \" & Rules.Get(KEY_Queues & DOT & KEY_Items & DOT & 0)"
+										"message": "nextItemSpawn = EMPTY ? EMPTY : \"Enemy is dead, gonna spawn an item: \" & nextItemSpawn"
 									}
 								}
 							],
@@ -849,10 +849,21 @@
 											"id": "compare-two-values",
 											"objectClass": "System",
 											"sid": 555483154867909,
+											"disabled": true,
 											"parameters": {
 												"first-value": "Rules.ArraySize(KEY_Queues & DOT & KEY_Items)",
 												"comparison": 4,
 												"second-value": "0"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 633653800541142,
+											"parameters": {
+												"variable": "nextItemSpawn",
+												"comparison": 1,
+												"value": "EMPTY"
 											}
 										},
 										{
@@ -868,6 +879,7 @@
 											"id": "is-outside-layout",
 											"objectClass": "Enemy",
 											"sid": 498433608917396,
+											"disabled": true,
 											"isInverted": true
 										},
 										{
@@ -913,9 +925,19 @@
 											"id": "set-instvar-value",
 											"objectClass": "Item",
 											"sid": 597701673707448,
+											"disabled": true,
 											"parameters": {
 												"instance-variable": "upgrade",
 												"value": "Rules.Get(KEY_Queues & DOT & KEY_Items & DOT & 0)"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Item",
+											"sid": 875772942696666,
+											"parameters": {
+												"instance-variable": "upgrade",
+												"value": "nextItemSpawn"
 											}
 										},
 										{
@@ -1058,9 +1080,19 @@
 											"id": "pop-value",
 											"objectClass": "Rules",
 											"sid": 502417958839213,
+											"disabled": true,
 											"parameters": {
 												"where": "front",
 												"path": "KEY_Queues & DOT & KEY_Items"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 579159893270924,
+											"parameters": {
+												"variable": "nextItemSpawn",
+												"value": "EMPTY"
 											}
 										}
 									],

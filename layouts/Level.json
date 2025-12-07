@@ -1996,8 +1996,8 @@
 		}
 	],
 	"effectTypes": [],
-	"width": 2048,
-	"height": 2048,
+	"width": 320,
+	"height": 180,
 	"unboundedScrolling": true,
 	"vpX": 0.5,
 	"vpY": 0.5,

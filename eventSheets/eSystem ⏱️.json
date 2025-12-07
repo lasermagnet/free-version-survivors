@@ -414,18 +414,38 @@
 					"customAction": "spawn",
 					"objectClass": "Enemy",
 					"sid": 200356015969843,
+					"disabled": true,
 					"parameters": [
 						"EMPTY",
 						"Rules.Get(KEY_Queues & DOT & KEY_Enemies) > 0 & Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool) > 0 ? 1 : 0"
 					]
 				},
 				{
+					"customAction": "spawn",
+					"objectClass": "Enemy",
+					"sid": 603679412350218,
+					"parameters": [
+						"EMPTY",
+						"enemySpawnQueue > 0 & Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool) > 0 ? 1 : 0"
+					]
+				},
+				{
 					"id": "set-value",
 					"objectClass": "Rules",
 					"sid": 699958871891345,
+					"disabled": true,
 					"parameters": {
 						"path": "KEY_Queues & DOT & KEY_Enemies",
 						"value": "max(0, Rules.Get(KEY_Queues & DOT & KEY_Enemies) - 1)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 468118169763292,
+					"parameters": {
+						"variable": "enemySpawnQueue",
+						"value": "max(0, enemySpawnQueue - 1)"
 					}
 				},
 				{
