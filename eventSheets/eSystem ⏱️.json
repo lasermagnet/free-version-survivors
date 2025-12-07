@@ -407,15 +407,15 @@
 				},
 				{
 					"type": "comment",
-					"text": "Increase time survived if player is not leveling"
+					"text": "Increase time survived if player is not leveling & player is not dead"
 				},
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 258801125894143,
+					"sid": 771005755588855,
 					"parameters": {
 						"variable": "timeSurvived",
-						"value": "isLeveling = NO ? dt : 0"
+						"value": "isLeveling = NO & Player.isDead = NO ? dt : 0"
 					}
 				},
 				{
