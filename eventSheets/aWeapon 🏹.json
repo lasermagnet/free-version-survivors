@@ -48,10 +48,10 @@
 				},
 				{
 					"name": "staticAngle",
-					"type": "number",
-					"initialValue": "-1",
-					"comment": "",
-					"sid": 191085955795792
+					"type": "string",
+					"initialValue": "",
+					"comment": "JSON null gets converted into an empty string, which means the angle shouldn't be static. If it contains a number, use it as the static angle.",
+					"sid": 653479383884895
 				},
 				{
 					"name": "positionRandom1",
@@ -173,15 +173,11 @@
 					"text": "Set sprite (movement) angle"
 				},
 				{
-					"type": "comment",
-					"text": "todo rule to adjust angle"
-				},
-				{
 					"id": "set-angle",
 					"objectClass": "Weapon",
-					"sid": 690083873124033,
+					"sid": 771446822796779,
 					"parameters": {
-						"angle": "(staticAngle = NOTHING ? firstAngle + (360 / amount * loopindex) : staticAngle) + angleOffset"
+						"angle": "(staticAngle = EMPTY ? firstAngle + (360 / amount * loopindex) : float(staticAngle)) + angleOffset"
 					}
 				},
 				{
@@ -348,10 +344,6 @@
 							"parameters": {
 								"state": "enabled"
 							}
-						},
-						{
-							"type": "comment",
-							"text": "todo rule to adjust \"match rotation\" property... but try to save an event"
 						},
 						{
 							"id": "set-rotation",

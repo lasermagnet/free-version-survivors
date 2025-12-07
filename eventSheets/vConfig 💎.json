@@ -3,10 +3,6 @@
 	"events": [
 		{
 			"eventType": "comment",
-			"text": "todo move some of these to level rules"
-		},
-		{
-			"eventType": "comment",
 			"text": "Arrow"
 		},
 		{
@@ -56,10 +52,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 414869139275636
-		},
-		{
-			"eventType": "comment",
-			"text": "Distance"
 		},
 		{
 			"eventType": "comment",

@@ -427,7 +427,7 @@
 				{
 					"type": "UI_TextSF_Start",
 					"properties": {
-						"text": "HI THERE! WELCOME TO\n\n[SCALE=1.5]FREE VERSION SURVIVORS[/SCALE]\n\nBY FODI\n\nA \"BULLET HEAVEN\" OR \"SURVIVORS-LIKE\" GAME TEMPLATE MADE IN CONSTRUCT 3. PLEASE DON'T MIND THE PLACEHOLDER ASSETS.\n\nTHE PROJECT WILL SOON BE AVAILABLE FOR DOWNLOAD (FOR FREE). IT FITS WITHIN ALL LIMITATIONS OF THE FREE VERSION OF CONSTURCT 3!\n\nIT ALSO HAS A FAIRLY ROBOUST JSON BASED RULE SYSTEM. YOU CAN MOD IT IF YOU WANT USING THE EDITOR ON THE RIGHT!",
+						"text": "HI THERE! WELCOME TO\n\n[SCALE=1.5]FREE VERSION SURVIVORS[/SCALE]\n\nBY FODI\n\n\nA \"BULLET HEAVEN\" OR \"SURVIVORS-LIKE\" GAME EXAMPLE / TEMPLATE PROJECT MADE IN CONSTRUCT 3.\n\nIT ALSO HAS A FAIRLY ROBOUST JSON BASED RULE SYSTEM. YOU CAN EVEN MOD IT IF YOU WANT USING THE CODE EDITOR ON THE RIGHT!\n\nTHE PROJECT FILE WILL SOON BE AVAILABLE FOR DOWNLOAD (FOR FREE). IT FITS WITHIN ALL LIMITATIONS OF THE FREE VERSION OF CONSTURCT 3!",
 						"enable-bbcode": true,
 						"character-width": 5,
 						"character-height": 7,
@@ -513,28 +513,7 @@
 		"subfolders": []
 	},
 	"sid": 441891104461848,
-	"nonworld-instances": [
-		{
-			"type": "Cooldowns",
-			"properties": {},
-			"uid": 54,
-			"sid": 277553896079803,
-			"tags": "",
-			"instanceVariables": {}
-		},
-		{
-			"type": "ItemSpawnQueue",
-			"properties": {
-				"width": 0,
-				"height": 1,
-				"depth": 1
-			},
-			"uid": 56,
-			"sid": 910129436966257,
-			"tags": "",
-			"instanceVariables": {}
-		}
-	],
+	"nonworld-instances": [],
 	"effectTypes": [],
 	"width": 320,
 	"height": 180,

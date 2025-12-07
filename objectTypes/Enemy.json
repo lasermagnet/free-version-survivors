@@ -34,7 +34,7 @@
 			"sid": 193660718648048
 		},
 		{
-			"name": "damageNumber",
+			"name": "damageTakenRecently",
 			"type": "number",
 			"desc": "",
 			"show": true,

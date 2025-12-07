@@ -1,8 +1,0 @@
-{
-	"name": "ItemSpawnQueue",
-	"plugin-id": "Arr",
-	"sid": 803428342530804,
-	"isGlobal": true,
-	"editorNewInstanceIsReplica": true,
-	"instanceVariables": []
-}

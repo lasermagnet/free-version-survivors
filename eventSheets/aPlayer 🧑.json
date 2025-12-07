@@ -72,7 +72,7 @@
 		},
 		{
 			"aceType": "action",
-			"aceName": "input",
+			"aceName": "processInput",
 			"objectClass": "Player",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -357,10 +357,6 @@
 					"text": "Gamepad (analog)"
 				},
 				{
-					"eventType": "comment",
-					"text": "todo: player mirroring based on vector_x, do it in Player.tick"
-				},
-				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -643,10 +639,6 @@
 					"text": "Update cooldown on weapons with at least 1 amount & attack when a cooldown is finished"
 				},
 				{
-					"eventType": "comment",
-					"text": "todo use timers for weapon spawning & get rid of Cooldowns JSON?"
-				},
-				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -668,17 +660,7 @@
 							}
 						}
 					],
-					"actions": [
-						{
-							"id": "set-value",
-							"objectClass": "Cooldowns",
-							"sid": 527834733319670,
-							"parameters": {
-								"path": "KEY_Weapons & DOT & Rules.CurrentKey",
-								"value": "max(0, Cooldowns.Get(KEY_Weapons & DOT & Rules.CurrentKey) - dt)"
-							}
-						}
-					],
+					"actions": [],
 					"sid": 135052668909848,
 					"children": [
 						{
@@ -689,45 +671,47 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "compare-value",
-									"objectClass": "Cooldowns",
-									"sid": 437833347468631,
+									"id": "is-timer-running",
+									"objectClass": "Player",
+									"sid": 983631089051915,
+									"behaviorType": "Timer",
 									"parameters": {
-										"path": "KEY_Weapons & DOT & Rules.CurrentKey",
-										"cmp": 0,
-										"value": "0"
-									}
+										"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
 								{
-									"id": "set-value",
-									"objectClass": "Cooldowns",
-									"sid": 865456342309256,
+									"id": "start-timer",
+									"objectClass": "Player",
+									"sid": 721679729354410,
+									"behaviorType": "Timer",
 									"parameters": {
-										"path": "KEY_Weapons & DOT & Rules.CurrentKey",
-										"value": "Rules.Get(DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)"
+										"duration": "Rules.Get(DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)",
+										"type": "once",
+										"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
 									}
 								},
 								{
 									"customAction": "spawn",
 									"objectClass": "Weapon",
-									"sid": 617679755615277,
+									"sid": 531761600235457,
 									"parameters": [
 										"Rules.CurrentKey",
 										"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
 										"Player.lastMovingAngle",
 										"Rules.Get(DOT & KEY_AngleOffset)",
 										"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
-										"Rules.Get(DOT & KEY_StaticAngle)",
+										"Rules.Type(DOT & KEY_StaticAngle) = NULL ? EMPTY : str(Rules.Get(DOT & KEY_StaticAngle))",
 										"Rules.Get(DOT & KEY_PositionRandom1)",
 										"Rules.Get(DOT & KEY_PositionRandom2)",
 										"Rules.Get(DOT & KEY_MovementSpeed)",
 										"Rules.Get(DOT & KEY_MovementAcceleration)",
 										"Rules.Get(DOT & KEY_Damage)",
 										"Rules.Get(DOT & KEY_Timeout)",
-										"Rules.Get(DOT & KEY_BlockMovement)",
-										"Rules.Get(DOT & KEY_Pin)",
+										"Rules.Get(DOT & KEY_BlockMovement) = NO ? NO : YES",
+										"Rules.Get(DOT & KEY_Pin) = NO ? NO : YES",
 										"Rules.Get(DOT & KEY_OrbitRadius)",
 										"Rules.Get(DOT & KEY_OrbitSpeed)"
 									]
@@ -769,6 +753,7 @@
 							"id": "log",
 							"objectClass": "Browser",
 							"sid": 472174858355285,
+							"disabled": true,
 							"parameters": {
 								"type": "log",
 								"message": "\"Wave cycle #\" & waveCycle"
@@ -832,6 +817,7 @@
 							"id": "log",
 							"objectClass": "Browser",
 							"sid": 550811228631696,
+							"disabled": true,
 							"parameters": {
 								"type": "log",
 								"message": "\"Picked up item: \" & Item.upgrade"
@@ -1297,10 +1283,11 @@
 								{
 									"id": "log",
 									"objectClass": "Browser",
-									"sid": 833212594223381,
+									"sid": 839714219956467,
+									"disabled": true,
 									"parameters": {
 										"type": "log",
-										"message": "\"upgrade candidate: \" & upgradeCandidate"
+										"message": "\"Upgrade candidate: \" & upgradeCandidate"
 									}
 								},
 								{
@@ -1320,6 +1307,7 @@
 									"id": "log",
 									"objectClass": "Browser",
 									"sid": 114035751771528,
+									"disabled": true,
 									"parameters": {
 										"type": "log",
 										"message": "\"Update candidate after first validation: \" & upgradeCandidate"
@@ -1333,6 +1321,7 @@
 									"id": "log",
 									"objectClass": "Browser",
 									"sid": 550155427069395,
+									"disabled": true,
 									"parameters": {
 										"type": "log",
 										"message": "\"Weapon requirement for \" & upgradeCandidate & \": \" & Rules.Get(KEY_Upgrades & DOT & upgradeCandidate & DOT & KEY_WeaponRequirement)"
@@ -1351,6 +1340,7 @@
 									"id": "log",
 									"objectClass": "Browser",
 									"sid": 108463257033813,
+									"disabled": true,
 									"parameters": {
 										"type": "log",
 										"message": "\"Update candidate after second validation: \" & upgradeCandidate"
@@ -1891,6 +1881,7 @@
 					"id": "log",
 					"objectClass": "Browser",
 					"sid": 273124568448496,
+					"disabled": true,
 					"parameters": {
 						"type": "log",
 						"message": "\"Applying upgrade: \" & upgrade"
@@ -2032,6 +2023,7 @@
 					"id": "log",
 					"objectClass": "Browser",
 					"sid": 883852951812457,
+					"disabled": true,
 					"parameters": {
 						"type": "log",
 						"message": "\"Wave #\" & wave & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool)"
@@ -2054,6 +2046,7 @@
 					"id": "log",
 					"objectClass": "Browser",
 					"sid": 263947699746162,
+					"disabled": true,
 					"parameters": {
 						"type": "log",
 						"message": "\"Wave #\" & wave & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & wave & DOT & KEY_ItemSpawnPool)"
@@ -2206,6 +2199,7 @@
 							"id": "log",
 							"objectClass": "Browser",
 							"sid": 538892113107038,
+							"disabled": true,
 							"parameters": {
 								"type": "log",
 								"message": "\"Fixed enemy spawning: \" & Rules.CurrentValue & \" x \" & Rules.CurrentKey"

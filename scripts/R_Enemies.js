@@ -37,7 +37,7 @@ export const Enemies = {
         "Health": 50,
         "Damage": 35,
         "Experience": 50,
-        "MovementSpeed": 0.
+        "MovementSpeed": 0.5
     },
     "Tentacle": {
         "Health": 70,

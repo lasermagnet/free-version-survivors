@@ -3,7 +3,7 @@
 	"events": [
 		{
 			"eventType": "comment",
-			"text": "todo touch & mouse input?"
+			"text": "todo touch input?"
 		},
 		{
 			"eventType": "comment",
@@ -220,7 +220,7 @@
 		},
 		{
 			"eventType": "comment",
-			"text": "todo_remove"
+			"text": "todo_prod remove"
 		},
 		{
 			"eventType": "block",
@@ -242,38 +242,6 @@
 					"disabled": true
 				},
 				{
-					"customAction": "applyUpgrade",
-					"objectClass": "Player",
-					"sid": 117757444692037,
-					"parameters": [
-						"\"Spikes\""
-					]
-				},
-				{
-					"customAction": "applyUpgrade",
-					"objectClass": "Player",
-					"sid": 623708102040038,
-					"parameters": [
-						"\"Axe\""
-					]
-				},
-				{
-					"customAction": "applyUpgrade",
-					"objectClass": "Player",
-					"sid": 514135098591931,
-					"parameters": [
-						"\"Chainsaw\""
-					]
-				},
-				{
-					"customAction": "applyUpgrade",
-					"objectClass": "Player",
-					"sid": 221625047715787,
-					"parameters": [
-						"\"Flame\""
-					]
-				},
-				{
 					"id": "stop-timer",
 					"objectClass": "Player",
 					"sid": 252818719645836,
@@ -292,6 +260,38 @@
 					"parameters": {
 						"tag": "TIMER_WaveCycle"
 					}
+				},
+				{
+					"customAction": "applyUpgrade",
+					"objectClass": "Player",
+					"sid": 745766177379496,
+					"parameters": [
+						"\"Spikes\""
+					]
+				},
+				{
+					"customAction": "applyUpgrade",
+					"objectClass": "Player",
+					"sid": 381258234467337,
+					"parameters": [
+						"\"Axe\""
+					]
+				},
+				{
+					"customAction": "applyUpgrade",
+					"objectClass": "Player",
+					"sid": 648797659102546,
+					"parameters": [
+						"\"Chainsaw\""
+					]
+				},
+				{
+					"customAction": "applyUpgrade",
+					"objectClass": "Player",
+					"sid": 462982790033053,
+					"parameters": [
+						"\"Flame\""
+					]
 				}
 			],
 			"sid": 591824155855345

@@ -363,13 +363,13 @@
 							"objectClass": "Enemy",
 							"sid": 339039127435682,
 							"parameters": {
-								"instance-variable": "damageNumber",
+								"instance-variable": "damageTakenRecently",
 								"value": "Weapon.damage * dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier)"
 							}
 						},
 						{
 							"type": "comment",
-							"text": "Start damage flash timers if they are not running yet (it's a quite ugly workaround in order to spare an event)"
+							"text": "Start damage flash on & off timers if they are not running yet"
 						},
 						{
 							"id": "start-timer",
@@ -512,36 +512,17 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "Show damage number if needed"
+							"text": "If enemy received at least 1 damage and there's no damage number spawned, spawn a damage number"
 						},
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "is-timer-running",
-									"objectClass": "Enemy",
-									"sid": 788142286399622,
-									"behaviorType": "Timer",
-									"parameters": {
-										"tag": "TIMER_Enemy_FlashOn"
-									},
-									"isInverted": true
-								},
-								{
-									"id": "is-timer-running",
-									"objectClass": "Enemy",
-									"sid": 847883112751429,
-									"behaviorType": "Timer",
-									"parameters": {
-										"tag": "TIMER_Enemy_FlashOff"
-									}
-								},
-								{
 									"id": "compare-instance-variable",
 									"objectClass": "Enemy",
 									"sid": 152429532726828,
 									"parameters": {
-										"instance-variable": "damageNumber",
+										"instance-variable": "damageTakenRecently",
 										"comparison": 5,
 										"value": "1"
 									}
@@ -653,7 +634,7 @@
 									"objectClass": "UI_TextSF_DamageNumber",
 									"sid": 676689008390364,
 									"parameters": {
-										"text": "round(Enemy.damageNumber)"
+										"text": "round(Enemy.damageTakenRecently)"
 									}
 								},
 								{
@@ -661,7 +642,7 @@
 									"objectClass": "Enemy",
 									"sid": 628033003207604,
 									"parameters": {
-										"instance-variable": "damageNumber",
+										"instance-variable": "damageTakenRecently",
 										"value": "0"
 									}
 								}
@@ -748,10 +729,6 @@
 									"text": "todo_ext add check if Enemy.experience > 0 & Enemy.healing > 0"
 								},
 								{
-									"type": "comment",
-									"text": "todo_maybe add experience/healing bonus here instead of on pickup"
-								},
-								{
 									"id": "spawn-another-object",
 									"objectClass": "Enemy",
 									"sid": 304212795716647,
@@ -802,6 +779,7 @@
 									"id": "log",
 									"objectClass": "Browser",
 									"sid": 316990042035146,
+									"disabled": true,
 									"parameters": {
 										"type": "log",
 										"message": "itemSpawnCue = EMPTY ? EMPTY : \"Enemy is dead, gonna spawn an item: \" & itemSpawnCue"
@@ -872,15 +850,6 @@
 											}
 										},
 										{
-											"id": "log",
-											"objectClass": "Browser",
-											"sid": 292145393173066,
-											"parameters": {
-												"type": "log",
-												"message": "\"Item spawn pool size: \" & Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_ItemSpawnPool)"
-											}
-										},
-										{
 											"type": "comment",
 											"text": "Set upgrade"
 										},
@@ -896,10 +865,11 @@
 										{
 											"id": "log",
 											"objectClass": "Browser",
-											"sid": 628829815311617,
+											"sid": 658050284115804,
+											"disabled": true,
 											"parameters": {
 												"type": "log",
-												"message": "\"spawning item: \" & Item.upgrade"
+												"message": "\"Spawning item: \" & Item.upgrade"
 											}
 										},
 										{
@@ -947,15 +917,6 @@
 										{
 											"type": "comment",
 											"text": "Start tween to fade out item before next spawn"
-										},
-										{
-											"id": "log",
-											"objectClass": "Browser",
-											"sid": 841679172530826,
-											"parameters": {
-												"type": "log",
-												"message": "\"setting icon: \" & Rules.Get(KEY_Upgrades & DOT & Item.upgrade & DOT & KEY_Icon)"
-											}
 										},
 										{
 											"id": "set-animation",

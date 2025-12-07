@@ -32,14 +32,6 @@ export const Upgrades = {
         "Multiply": 1,
         "Add": 100000
     },
-    "ItemSpawnCooldown": {
-        "Label": "More items",
-        "Description": "Reduce item spawn cooldown by 5%.",
-        "Icon": "Item",
-        "Rule_Value": "Player.Bonus_Item_Spawn_Cooldown_Multiplier",
-        "Multiply": 1,
-        "Add": -0.05,
-    },
     "MaxHealth": {
         "Label": "Max health up",
         "Description": "By 10%, healing not included.",
@@ -183,4 +175,3 @@ export const Upgrades = {
         "Add": 10,
     },
 }
-// todo limit how many time an upgrade shows up

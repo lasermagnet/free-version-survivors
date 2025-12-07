@@ -20,17 +20,17 @@ async function OnBeforeProjectStart(runtime) {
 					const parsed = JSON.parse(replacement)
 					return isPrimitiveArray(parsed) ? JSON.stringify(parsed) : replacement
 				} catch {
-					return replacement	
+					return replacement
 				}
 			})
 	}
-
-	/*let editorView = new EditorView({
-		doc: customStringify(rules),
-		extensions: [basicSetup, javascript(), basicDark],
-		parent: document.getElementById("rule-editor"),
-	})*/
-
+	/*
+		let editorView = new EditorView({
+			doc: customStringify(rules),
+			extensions: [basicSetup, javascript(), basicDark],
+			parent: document.getElementById("rule-editor"),
+		})
+	*/
 	function addStyle(styleString) {
 		const style = document.createElement('style')
 		style.textContent = styleString

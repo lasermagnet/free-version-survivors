@@ -177,16 +177,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Bonus_Item_Spawn_Cooldown_Multiplier",
-			"type": "string",
-			"initialValue": "Bonus_Item_Spawn_Cooldown_Multiplier",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 776173971268297
-		},
-		{
-			"eventType": "variable",
 			"name": "KEY_Bonus_Weapon_Amount_Extra",
 			"type": "string",
 			"initialValue": "Bonus_Weapon_Amount_Extra",
@@ -257,6 +247,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Distance",
+			"type": "string",
+			"initialValue": "Distance",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 823037978565221
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_DropValueToLevelDivider",
 			"type": "string",
 			"initialValue": "DropValueToLevelDivider",
@@ -274,6 +274,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 260309811983460
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawn",
+			"type": "string",
+			"initialValue": "EnemySpawn",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 194085676929715
 		},
 		{
 			"eventType": "variable",
@@ -324,6 +334,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 462972560956048
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemyTeleport",
+			"type": "string",
+			"initialValue": "EnemyTeleport",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 389803386072843
 		},
 		{
 			"eventType": "variable",
@@ -424,6 +444,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 990155293678732
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_ItemSpawnMinimum",
+			"type": "string",
+			"initialValue": "ItemSpawnMinimum",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 735320469579723
 		},
 		{
 			"eventType": "variable",
@@ -727,50 +757,6 @@
 		},
 		{
 			"eventType": "comment",
-			"text": "todo_now"
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Distance",
-			"type": "string",
-			"initialValue": "Distance",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 703186619401688
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_EnemySpawn",
-			"type": "string",
-			"initialValue": "EnemySpawn",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 190850710959881
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_EnemyTeleport",
-			"type": "string",
-			"initialValue": "EnemyTeleport",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 784093624686586
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_ItemSpawnMinimum",
-			"type": "string",
-			"initialValue": "ItemSpawnMinimum",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 494607954072184
-		},
-		{
-			"eventType": "comment",
 			"text": "Loops"
 		},
 		{
@@ -998,6 +984,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 520331853285767
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Weapon_Attack_",
+			"type": "string",
+			"initialValue": "Weapon_Attack_",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 706765231442737
 		},
 		{
 			"eventType": "comment",

@@ -8,14 +8,13 @@ export const Pools = {
         // Player upgrades & bonuses
         [1, "MaxHealth"],
         [1, "MovementSpeed"],
-        [1, "ExperienceBonus"],
+        [0.8, "ExperienceBonus"],
         [1, "PickupDistance"],
-        [1, "EnemySpawnCooldown"],
+        //[1, "EnemySpawnCooldown"],
         [1, "WeaponDamage"],
         [1, "WeaponCooldown"],
         [1, "WeaponSize"],
-        [1, "WeaponAmount"],
-        [1, "ItemSpawnCooldown"],
+        [0.5, "WeaponAmount"],
 
         // Weapons & their upgrades
         [1, "Axe"],

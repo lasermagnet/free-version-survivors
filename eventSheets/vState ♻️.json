@@ -74,7 +74,7 @@
 			"name": "enemySpawnQueue",
 			"type": "number",
 			"initialValue": "0",
-			"comment": "",
+			"comment": "Amount of enemies to spawn (one per tick)",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 807598111616347

@@ -34,10 +34,20 @@
 			"name": "NOTHING",
 			"type": "number",
 			"initialValue": "-1",
-			"comment": "",
+			"comment": "Numeric representation of null in certain cases",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 887063811207674
+		},
+		{
+			"eventType": "variable",
+			"name": "NULL",
+			"type": "string",
+			"initialValue": "null",
+			"comment": "Used for checking value types in JSON objects",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 149276424368335
 		},
 		{
 			"eventType": "comment",
