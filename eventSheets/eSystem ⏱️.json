@@ -495,6 +495,50 @@
 					"parameters": {
 						"width": "lerp(Self.Width, min(Rules.Get(KEY_Player & DOT & KEY_Health) / Rules.Get(KEY_Player & DOT & KEY_Health_Max) * Self.initWidth, Self.initWidth), 0.1)"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Update Z orders"
+				},
+				{
+					"id": "move-to-bottom",
+					"objectClass": "Drop",
+					"sid": 185420096314904
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Enemy",
+					"sid": 531046539279743
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Weapon",
+					"sid": 354509360787089
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Arrow",
+					"sid": 258838286228098
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "Player",
+					"sid": 531655831829064
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "PlayerParticles",
+					"sid": 625900676522550
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "UI_TextSF_Damage",
+					"sid": 595605090066452
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "UI_Bar_Health",
+					"sid": 704298874778693
 				}
 			],
 			"sid": 153988922630664
