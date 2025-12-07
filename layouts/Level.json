@@ -2004,9 +2004,9 @@
 		}
 	],
 	"effectTypes": [],
-	"width": 640,
-	"height": 640,
-	"unboundedScrolling": false,
+	"width": 1280,
+	"height": 1280,
+	"unboundedScrolling": true,
 	"vpX": 0.5,
 	"vpY": 0.5,
 	"projection": "perspective",

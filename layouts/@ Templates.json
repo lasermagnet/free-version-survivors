@@ -514,7 +514,7 @@
 				{
 					"type": "Wall",
 					"properties": {
-						"initially-visible": false,
+						"initially-visible": true,
 						"origin": "center",
 						"wrap-horizontal": "repeat",
 						"wrap-vertical": "repeat",

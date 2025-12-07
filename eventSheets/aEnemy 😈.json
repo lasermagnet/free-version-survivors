@@ -533,7 +533,7 @@
 								{
 									"bookmark": true,
 									"eventType": "comment",
-									"text": "Spawn an item from the queue (if enemy is far enough from the player)"
+									"text": "Spawn an item from the queue (if enemy is far enough from the player and within layout bounds)"
 								},
 								{
 									"eventType": "block",
@@ -555,6 +555,12 @@
 											"parameters": {
 												"object": "Item"
 											},
+											"isInverted": true
+										},
+										{
+											"id": "is-outside-layout",
+											"objectClass": "Enemy",
+											"sid": 498433608917396,
 											"isInverted": true
 										},
 										{

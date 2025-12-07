@@ -75,7 +75,7 @@
 			"eventType": "variable",
 			"name": "C_Wall_Thickness",
 			"type": "number",
-			"initialValue": "16",
+			"initialValue": "32",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
