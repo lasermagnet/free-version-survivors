@@ -840,9 +840,9 @@
 						"Anchor": {
 							"properties": {
 								"left-edge": "none",
-								"top-edge": "none",
+								"top-edge": "window-bottom",
 								"right-edge": "none",
-								"bottom-edge": "window-bottom",
+								"bottom-edge": "none",
 								"enabled": true
 							}
 						}
@@ -899,9 +899,9 @@
 						"Anchor": {
 							"properties": {
 								"left-edge": "none",
-								"top-edge": "none",
+								"top-edge": "window-bottom",
 								"right-edge": "none",
-								"bottom-edge": "window-bottom",
+								"bottom-edge": "none",
 								"enabled": true
 							}
 						}
@@ -956,9 +956,9 @@
 						"Anchor": {
 							"properties": {
 								"left-edge": "none",
-								"top-edge": "none",
+								"top-edge": "window-bottom",
 								"right-edge": "none",
-								"bottom-edge": "window-bottom",
+								"bottom-edge": "none",
 								"enabled": true
 							}
 						}

@@ -193,7 +193,6 @@
 						"cooldown_weapon_sword": 0,
 						"cooldown_spawn_enemy": 0,
 						"queue_spawn_enemy": 0,
-						"health_todoRemove": 0,
 						"experience": 0,
 						"isDead": 0
 					},

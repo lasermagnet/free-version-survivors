@@ -225,13 +225,23 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Rule",
+			"name": "KEY_Rule_Value",
 			"type": "string",
-			"initialValue": "Rule",
+			"initialValue": "Rule_Value",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 373563846543836
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Rule_Max",
+			"type": "string",
+			"initialValue": "Rule_Max",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 205485891005776
 		},
 		{
 			"eventType": "variable",
@@ -252,6 +262,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 795799592767588
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Label",
+			"type": "string",
+			"initialValue": "Label",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 782715964468413
 		},
 		{
 			"eventType": "comment",

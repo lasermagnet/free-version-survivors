@@ -29,6 +29,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "HTMLElement",
+			"name": "HTML Element",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Json",
 			"name": "JSON",
 			"author": "Scirra",
@@ -175,7 +182,10 @@
 			"UI_Border_Health",
 			"UI_TextSF_Health",
 			"Touch",
-			"UpgradeOptions"
+			"UpgradeOptions",
+			"HTMLElement",
+			"UI_Button9P",
+			"UI_Rectangle"
 		],
 		"subfolders": []
 	},
@@ -188,6 +198,7 @@
 	},
 	"layouts": {
 		"items": [
+			"Start",
 			"Level",
 			"@ Templates"
 		],
@@ -206,7 +217,8 @@
 			"aEnemy 😈",
 			"aPlayer 🧑",
 			"aDrop 💧",
-			"aMap 🌳"
+			"aMap 🌳",
+			"!Start 👋"
 		],
 		"subfolders": []
 	},
@@ -219,6 +231,14 @@
 					"sid": 540848896340855,
 					"script-info": {
 						"purpose": "imports-for-events"
+					}
+				},
+				{
+					"name": "main.js",
+					"type": "application/javascript",
+					"sid": 364512063500660,
+					"script-info": {
+						"purpose": "main"
 					}
 				}
 			],
@@ -321,7 +341,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "4",
+		"version": "5",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
@@ -374,5 +394,5 @@
 	},
 	"viewportWidth": 320,
 	"viewportHeight": 180,
-	"firstLayout": null
+	"firstLayout": "Start"
 }

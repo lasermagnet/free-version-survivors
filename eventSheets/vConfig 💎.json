@@ -83,7 +83,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "C_Input_Gamepad_Analog_Minimum",
+			"name": "C_Input_Gamepad_Analog_Threshold",
 			"type": "number",
 			"initialValue": "50",
 			"comment": "",

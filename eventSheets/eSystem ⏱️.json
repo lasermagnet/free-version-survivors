@@ -256,17 +256,17 @@
 				{
 					"id": "set-width",
 					"objectClass": "UI_Bar_Health",
-					"sid": 297298202631857,
+					"sid": 573386309651650,
 					"parameters": {
-						"width": "lerp(Self.Width, min(Player.health_todoRemove / Rules.Get(KEY_Player & DOT & KEY_Health_Max) * Self.initWidth, Self.initWidth), 0.1)"
+						"width": "lerp(Self.Width, min(Rules.Get(KEY_Player & DOT & KEY_Health) / Rules.Get(KEY_Player & DOT & KEY_Health_Max) * Self.initWidth, Self.initWidth), 0.1)"
 					}
 				},
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_Health",
-					"sid": 404245535858118,
+					"sid": 591907075046490,
 					"parameters": {
-						"text": "KEY_Health & newline & round(Player.health_todoRemove) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
+						"text": "KEY_Health & newline & round(Rules.Get(KEY_Player & DOT & KEY_Health)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
 					}
 				},
 				{

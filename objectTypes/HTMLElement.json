@@ -1,0 +1,15 @@
+{
+	"name": "HTMLElement",
+	"plugin-id": "HTMLElement",
+	"sid": 842194121074806,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Anchor",
+			"name": "Anchor",
+			"sid": 171260383791380
+		}
+	]
+}

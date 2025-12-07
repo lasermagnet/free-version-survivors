@@ -1,0 +1,67 @@
+{
+	"name": "!Start 👋",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "todo_pack remove"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 160047263118251
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 234763743439080,
+					"disabled": true,
+					"parameters": {
+						"layout": "Level"
+					}
+				},
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"initCodeMirror()"
+					]
+				}
+			],
+			"sid": 892228811932624
+		},
+		{
+			"eventType": "comment",
+			"text": "todo greeting screen, editable JSON rules"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 173079047440041,
+					"parameters": {
+						"object": "UI_Button9P"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 310566260791753,
+					"parameters": {
+						"layout": "Level"
+					}
+				}
+			],
+			"sid": 682356468105815
+		}
+	],
+	"sid": 300998432203858
+}

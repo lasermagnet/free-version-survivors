@@ -45,7 +45,7 @@
 						"gamepad": "0",
 						"axis": "left-analog-y-axis",
 						"comparison": 2,
-						"value": "-C_Input_Gamepad_Analog_Minimum"
+						"value": "-C_Input_Gamepad_Analog_Threshold"
 					}
 				},
 				{
@@ -56,7 +56,7 @@
 						"gamepad": "0",
 						"axis": "right-analog-y-axis",
 						"comparison": 2,
-						"value": "-C_Input_Gamepad_Analog_Minimum"
+						"value": "-C_Input_Gamepad_Analog_Threshold"
 					}
 				}
 			],
@@ -114,7 +114,7 @@
 						"gamepad": "0",
 						"axis": "left-analog-y-axis",
 						"comparison": 4,
-						"value": "C_Input_Gamepad_Analog_Minimum"
+						"value": "C_Input_Gamepad_Analog_Threshold"
 					}
 				},
 				{
@@ -125,7 +125,7 @@
 						"gamepad": "0",
 						"axis": "right-analog-y-axis",
 						"comparison": 4,
-						"value": "C_Input_Gamepad_Analog_Minimum"
+						"value": "C_Input_Gamepad_Analog_Threshold"
 					}
 				}
 			],
@@ -183,7 +183,7 @@
 						"gamepad": "0",
 						"axis": "left-analog-x-axis",
 						"comparison": 2,
-						"value": "-C_Input_Gamepad_Analog_Minimum"
+						"value": "-C_Input_Gamepad_Analog_Threshold"
 					}
 				},
 				{
@@ -194,7 +194,7 @@
 						"gamepad": "0",
 						"axis": "right-analog-x-axis",
 						"comparison": 2,
-						"value": "-C_Input_Gamepad_Analog_Minimum"
+						"value": "-C_Input_Gamepad_Analog_Threshold"
 					}
 				}
 			],
@@ -252,7 +252,7 @@
 						"gamepad": "0",
 						"axis": "left-analog-x-axis",
 						"comparison": 4,
-						"value": "C_Input_Gamepad_Analog_Minimum"
+						"value": "C_Input_Gamepad_Analog_Threshold"
 					}
 				},
 				{
@@ -263,7 +263,7 @@
 						"gamepad": "0",
 						"axis": "right-analog-x-axis",
 						"comparison": 4,
-						"value": "C_Input_Gamepad_Analog_Minimum"
+						"value": "C_Input_Gamepad_Analog_Threshold"
 					}
 				}
 			],

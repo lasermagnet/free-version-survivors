@@ -86,20 +86,6 @@
 									"sid": 162031479341671
 								},
 								{
-									"type": "comment",
-									"text": "todo max health"
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Player",
-									"sid": 821331794717279,
-									"disabled": true,
-									"parameters": {
-										"instance-variable": "health_todoRemove",
-										"value": "Drop.AnimationName = ROLE_Health ? Self.health_todoRemove + Drop.amount : Self.health_todoRemove"
-									}
-								},
-								{
 									"id": "set-instvar-value",
 									"objectClass": "Player",
 									"sid": 128233460434581,

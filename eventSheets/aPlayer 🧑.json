@@ -32,6 +32,10 @@
 					"text": "Initialize player IVs"
 				},
 				{
+					"type": "comment",
+					"text": "todo remove these IVs and keep data in Rules"
+				},
+				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
 					"sid": 780833186605289,
@@ -56,15 +60,6 @@
 					"parameters": {
 						"instance-variable": "cooldown_spawn_enemy",
 						"value": "Rules.Get(KEY_Wave & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
-					"sid": 186553279483570,
-					"parameters": {
-						"instance-variable": "health_todoRemove",
-						"value": "Rules.Get(KEY_Player & DOT & KEY_Health)"
 					}
 				}
 			],
@@ -578,6 +573,10 @@
 							"sid": 836788779224185
 						},
 						{
+							"eventType": "comment",
+							"text": "This is not the most elegant solution to the problem that we multiple (ideally 3) unique upgrade options, which should be chosen based on their weight"
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -640,8 +639,21 @@
 									"id": "set-text",
 									"objectClass": "UI_TextSF_Upgrade",
 									"sid": 834583327644511,
+									"disabled": true,
 									"parameters": {
 										"text": "Self.upgrade"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "todo max health!"
+								},
+								{
+									"id": "set-text",
+									"objectClass": "UI_TextSF_Upgrade",
+									"sid": 947833195875694,
+									"parameters": {
+										"text": "Self.upgrade = EMPTY ? EMPTY : Rules.Get(KEY_Upgrades & DOT & Self.upgrade & DOT & KEY_Label)"
 									}
 								},
 								{
@@ -687,12 +699,12 @@
 					],
 					"actions": [
 						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 402692368345753,
+							"id": "set-value",
+							"objectClass": "Rules",
+							"sid": 690662732743411,
 							"parameters": {
-								"instance-variable": "health_todoRemove",
-								"value": "max(0, Self.health_todoRemove - Enemy.damage * dt)"
+								"path": "KEY_Player & DOT & KEY_Health",
+								"value": "max(0, Rules.Get(KEY_Player & DOT & KEY_Health) - Enemy.damage * dt)"
 							}
 						}
 					],
@@ -706,12 +718,12 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-instance-variable",
-							"objectClass": "Player",
-							"sid": 250616126210243,
+							"id": "compare-value",
+							"objectClass": "Rules",
+							"sid": 438692348991556,
 							"parameters": {
-								"instance-variable": "health_todoRemove",
-								"comparison": 0,
+								"path": "KEY_Player & DOT & KEY_Health",
+								"cmp": 0,
 								"value": "0"
 							}
 						}
@@ -891,8 +903,8 @@
 					"objectClass": "Rules",
 					"sid": 468422597204872,
 					"parameters": {
-						"path": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule)",
-						"value": "Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule)) * Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Multiply)"
+						"path": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Multiply)"
 					}
 				},
 				{
@@ -904,8 +916,21 @@
 					"objectClass": "Rules",
 					"sid": 134692220812218,
 					"parameters": {
-						"path": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule)",
+						"path": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)",
 						"value": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Add)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Apply upgrade (max)"
+				},
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 427110458904213,
+					"parameters": {
+						"path": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Max)))"
 					}
 				},
 				{
