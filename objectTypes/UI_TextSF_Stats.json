@@ -1,28 +1,22 @@
 {
-	"name": "UI_Border_Health",
-	"plugin-id": "NinePatch",
-	"sid": 433753867436009,
+	"name": "UI_TextSF_Stats",
+	"plugin-id": "Spritefont2",
+	"sid": 738683331936753,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Anchor",
-			"name": "Anchor",
-			"sid": 768680097669825
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"image": {
-		"width": 3,
-		"height": 3,
+		"width": 570,
+		"height": 180,
 		"originX": 0.5,
 		"originY": 0.5,
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 6850131,
+		"imageSpriteId": 5097224,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

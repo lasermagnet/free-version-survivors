@@ -249,15 +249,6 @@
 				},
 				{
 					"id": "set-instvar-value",
-					"objectClass": "UI_Bar_Health",
-					"sid": 499149326416057,
-					"parameters": {
-						"instance-variable": "initWidth",
-						"value": "Self.Width"
-					}
-				},
-				{
-					"id": "set-instvar-value",
 					"objectClass": "UI_Bar_Experience",
 					"sid": 391170858286368,
 					"parameters": {
@@ -280,6 +271,14 @@
 					"parameters": {
 						"opacity": "0"
 					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_TextSF_Stats",
+					"sid": 881795499284109,
+					"parameters": {
+						"opacity": "0"
+					}
 				}
 			],
 			"sid": 448800525830597
@@ -291,6 +290,16 @@
 					"id": "every-tick",
 					"objectClass": "System",
 					"sid": 823011474147348
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 323519224032659,
+					"parameters": {
+						"instance-variable": "isDead",
+						"comparison": 0,
+						"value": "NO"
+					}
 				},
 				{
 					"id": "compare-eventvar",
@@ -311,9 +320,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_DevInfo",
-					"sid": 872490877472916,
+					"sid": 174144571949196,
 					"parameters": {
-						"text": "\"Build \" & projectversion & newline &\nStringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects, {4} enemies\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount, Enemy.Count) & newline & newline & \nStringSub(\"Wave #{0}, cycle #{1}\", wave, waveCycle) & newline &\n\"Player level: \" & Player.level & newline &\n\"Enemies killed: \" & enemiesKilled & newline &\n\"Enemy spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Health gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
+						"text": "\"Build \" & projectversion & newline &\nStringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects, {4} enemies\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount, Enemy.Count)\n"
 					}
 				},
 				{
@@ -326,46 +335,6 @@
 					"sid": 398807224167392,
 					"parameters": {
 						"text": "(timePassed / 3600 >= 1 ? int(timePassed / 3600) & \":\" : \"\") & zeropad(int(timePassed / 60), 2) & \":\" & zeropad((int(timePassed) % 60), 2)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Update experience bar & text"
-				},
-				{
-					"id": "set-width",
-					"objectClass": "UI_Bar_Experience",
-					"sid": 837565277708013,
-					"parameters": {
-						"width": "lerp(Self.Width, min(Player.experience / Rules.Get(KEY_Player & DOT & KEY_Experience_Target) * Self.initWidth, Self.initWidth), 0.1)"
-					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "UI_TextSF_Experience",
-					"sid": 656631882821951,
-					"parameters": {
-						"text": "Player.experience & \" / \" & Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Update health bar & text"
-				},
-				{
-					"id": "set-width",
-					"objectClass": "UI_Bar_Health",
-					"sid": 573386309651650,
-					"parameters": {
-						"width": "lerp(Self.Width, min(Rules.Get(KEY_Player & DOT & KEY_Health) / Rules.Get(KEY_Player & DOT & KEY_Health_Max) * Self.initWidth, Self.initWidth), 0.1)"
-					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "UI_TextSF_Health",
-					"sid": 813636887766762,
-					"parameters": {
-						"text": "KEY_Health & newline & ceil(Rules.Get(KEY_Player & DOT & KEY_Health)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
 					}
 				},
 				{
@@ -491,6 +460,30 @@
 					"sid": 381940989544921,
 					"parameters": {
 						"opacity": "lerp(Self.Opacity, distance(Player.X, Player.Y, Self.itemX, Self.itemY) < min(ViewportMidX(LAYER_UI), ViewportMidY(LAYER_UI)) ? 0 : C_Arrow_Opacity, 0.1)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update experience bar"
+				},
+				{
+					"id": "set-width",
+					"objectClass": "UI_Bar_Experience",
+					"sid": 272227564943345,
+					"parameters": {
+						"width": "lerp(Self.Width, min(Player.experience / Rules.Get(KEY_Player & DOT & KEY_Experience_Target) * Self.initWidth, Self.initWidth), 0.05)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Update health bar"
+				},
+				{
+					"id": "set-width",
+					"objectClass": "UI_Bar_Health",
+					"sid": 133218698030148,
+					"parameters": {
+						"width": "lerp(Self.Width, min(Rules.Get(KEY_Player & DOT & KEY_Health) / Rules.Get(KEY_Player & DOT & KEY_Health_Max) * Self.initWidth, Self.initWidth), 0.05)"
 					}
 				}
 			],

@@ -1,28 +1,22 @@
 {
-	"name": "UI_TextSF_Experience",
-	"plugin-id": "Spritefont2",
-	"sid": 563002266164785,
+	"name": "UI_Background_Health",
+	"plugin-id": "TiledBg",
+	"sid": 342416690485501,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Anchor",
-			"name": "Anchor",
-			"sid": 657197436271640
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"image": {
-		"width": 570,
-		"height": 180,
+		"width": 1,
+		"height": 1,
 		"originX": 0.5,
 		"originY": 0.5,
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 8865982,
+		"imageSpriteId": 3082861,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

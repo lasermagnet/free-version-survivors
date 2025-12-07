@@ -13,24 +13,18 @@
 			"sid": 935787413954760
 		}
 	],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Anchor",
-			"name": "Anchor",
-			"sid": 397351394132605
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"image": {
-		"width": 10,
-		"height": 10,
+		"width": 1,
+		"height": 1,
 		"originX": 0.5,
 		"originY": 0.5,
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 1290882,
+		"imageSpriteId": 577789,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

@@ -166,6 +166,26 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Update stats UI"
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_Stats",
+					"sid": 478030844081085,
+					"parameters": {
+						"text": "StringSub(\"Wave #{0}, cycle #{1}\", wave, waveCycle) & newline &\n\"Player level: \" & Player.level & newline &\n\"Health: \" & round(Rules.Get(KEY_Player & DOT & KEY_Health)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max)) & newline &\n\"Enemies killed: \" & enemiesKilled & newline &\n\"Enemy spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Health gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_TextSF_Stats",
+					"sid": 558180475817660,
+					"parameters": {
+						"opacity": "isPaused ? 100 : 0"
+					}
+				},
+				{
 					"id": "set-time-scale",
 					"objectClass": "System",
 					"sid": 394360798595963,
@@ -244,24 +264,17 @@
 				{
 					"id": "on-key-pressed",
 					"objectClass": "Keyboard",
-					"sid": 500934329022801,
+					"sid": 923746712832228,
 					"parameters": {
-						"key": 76
+						"key": 52
 					}
 				}
 			],
 			"actions": [
 				{
-					"customAction": "updateWave",
-					"objectClass": "Player",
-					"sid": 398291286998004,
-					"disabled": true
-				},
-				{
 					"id": "stop-timer",
 					"objectClass": "Player",
-					"sid": 252818719645836,
-					"disabled": true,
+					"sid": 762333826121700,
 					"behaviorType": "Timer",
 					"parameters": {
 						"tag": "TIMER_Wave"
@@ -270,17 +283,32 @@
 				{
 					"id": "stop-timer",
 					"objectClass": "Player",
-					"sid": 673291517981318,
-					"disabled": true,
+					"sid": 694782701146895,
 					"behaviorType": "Timer",
 					"parameters": {
 						"tag": "TIMER_WaveCycle"
 					}
-				},
+				}
+			],
+			"sid": 650745842861088
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 697373452926754,
+					"parameters": {
+						"key": 53
+					}
+				}
+			],
+			"actions": [
 				{
 					"customAction": "applyUpgrade",
 					"objectClass": "Player",
-					"sid": 745766177379496,
+					"sid": 392482584681037,
 					"parameters": [
 						"\"Spikes\""
 					]
@@ -288,7 +316,7 @@
 				{
 					"customAction": "applyUpgrade",
 					"objectClass": "Player",
-					"sid": 381258234467337,
+					"sid": 305730127677525,
 					"parameters": [
 						"\"Axe\""
 					]
@@ -296,7 +324,7 @@
 				{
 					"customAction": "applyUpgrade",
 					"objectClass": "Player",
-					"sid": 648797659102546,
+					"sid": 507747436401260,
 					"parameters": [
 						"\"Chainsaw\""
 					]
@@ -304,13 +332,63 @@
 				{
 					"customAction": "applyUpgrade",
 					"objectClass": "Player",
-					"sid": 462982790033053,
+					"sid": 348140626402611,
 					"parameters": [
 						"\"Flame\""
 					]
 				}
 			],
+			"sid": 275142110073853
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 417983204160351,
+					"parameters": {
+						"key": 54
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 589261126962361,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_PickupDistance",
+						"value": "1000"
+					}
+				}
+			],
 			"sid": 591824155855345
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 743136669516648,
+					"parameters": {
+						"key": 55
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 851404473583778,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_PickupDistance",
+						"value": "30"
+					}
+				}
+			],
+			"sid": 217108654786040
 		}
 	],
 	"sid": 909767790016851

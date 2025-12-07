@@ -120,6 +120,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 648468823675061
+		},
+		{
+			"eventType": "variable",
+			"name": "C_UI_DamageNumber_TweenDistance",
+			"type": "number",
+			"initialValue": "5",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 847723731194477
 		}
 	],
 	"sid": 900977153576648

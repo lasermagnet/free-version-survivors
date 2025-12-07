@@ -66,9 +66,60 @@
 					"parameters": {
 						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Initialize health bar"
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 438540538290760,
+					"parameters": {
+						"type": "log",
+						"message": "\"Spawning player\""
+					}
 				}
 			],
-			"sid": 821905210614926
+			"sid": 821905210614926,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-children",
+							"objectClass": "Player",
+							"sid": 870460362005587,
+							"parameters": {
+								"child": "UI_Bar_Health",
+								"which": "own"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "UI_Bar_Health",
+							"sid": 473935911658221,
+							"parameters": {
+								"instance-variable": "initWidth",
+								"value": "Self.Width"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 918684510507956,
+							"parameters": {
+								"type": "log",
+								"message": "\"Setting init width to:\" & UI_Bar_Health.Width"
+							}
+						}
+					],
+					"sid": 436840418728070,
+					"disabled": true
+				}
+			]
 		},
 		{
 			"aceType": "action",
@@ -518,6 +569,19 @@
 			"actions": [
 				{
 					"type": "comment",
+					"text": "todo_now"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "UI_Bar_Health",
+					"sid": 321729216861160,
+					"parameters": {
+						"instance-variable": "initWidth",
+						"value": "Self.initWidth = 0 ? Self.Width : Self.initWidth"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Increase passed time"
 				},
 				{
@@ -570,6 +634,11 @@
 					"id": "move-to-top",
 					"objectClass": "UI_TextSF_Damage",
 					"sid": 211095788548384
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "UI_Bar_Health",
+					"sid": 801330699564623
 				},
 				{
 					"type": "comment",
@@ -721,7 +790,7 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Weapon",
-									"sid": 445240433838427,
+									"sid": 234212675148566,
 									"parameters": [
 										"Rules.CurrentKey",
 										"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
@@ -739,7 +808,8 @@
 										"Rules.Get(DOT & KEY_BlockMovement) = NO ? NO : YES",
 										"Rules.Get(DOT & KEY_Pin) = NO ? NO : YES",
 										"Rules.Get(DOT & KEY_OrbitRadius)",
-										"Rules.Get(DOT & KEY_OrbitSpeed)"
+										"Rules.Get(DOT & KEY_OrbitSpeed)",
+										"Rules.Get(DOT & KEY_RotationSpeed)"
 									]
 								}
 							],
@@ -752,6 +822,7 @@
 					"text": "When the enemy spawn cooldown expires, reset it & add enemy amount to the spawn queue"
 				},
 				{
+					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -788,10 +859,10 @@
 						{
 							"id": "start-timer",
 							"objectClass": "Player",
-							"sid": 645688189130252,
+							"sid": 869475259618861,
 							"behaviorType": "Timer",
 							"parameters": {
-								"duration": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCooldown)",
+								"duration": "Rules.Get(KEY_Level & DOT & KEY_SpawnInterval)",
 								"type": "once",
 								"tag": "TIMER_WaveCycle"
 							}
@@ -803,10 +874,10 @@
 						{
 							"id": "add-to-eventvar",
 							"objectClass": "System",
-							"sid": 474553894970900,
+							"sid": 490406632417482,
 							"parameters": {
 								"variable": "enemySpawnQueue",
-								"value": "round(Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnAmountPerWave) / Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCycles))"
+								"value": "round(Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemyAmount) / Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_Time)) * Rules.Get(KEY_Level & DOT & KEY_SpawnInterval)"
 							}
 						}
 					],
@@ -1748,11 +1819,11 @@
 				{
 					"customAction": "playSFX",
 					"objectClass": "Audio",
-					"sid": 584988801382287,
+					"sid": 929929323156352,
 					"parameters": [
 						"SFX_UpgradeSelected",
 						"0",
-						"1"
+						"0.5"
 					]
 				},
 				{
@@ -1927,11 +1998,11 @@
 				{
 					"customAction": "playSFX",
 					"objectClass": "Audio",
-					"sid": 934419269839959,
+					"sid": 430929194251192,
 					"parameters": [
 						"SFX_UpgradeApplied",
 						"0",
-						"1"
+						"0.7"
 					]
 				},
 				{
@@ -2030,6 +2101,26 @@
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 310976501573365,
+					"parameters": {
+						"variable": "isLeveling",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 818549398125658,
+					"parameters": {
+						"variable": "isPaused",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
 					"id": "is-timer-running",
 					"objectClass": "Player",
 					"sid": 896283728470302,
@@ -2074,10 +2165,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 666718930612841,
+					"sid": 604873366733704,
 					"parameters": {
 						"variable": "wave",
-						"value": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCooldown) = 0 ? Rules.Get(KEY_Level & DOT & KEY_WaveLoopTo) : wave"
+						"value": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_Time) = 0 ? Rules.Get(KEY_Level & DOT & KEY_WaveLoopTo) : wave"
 					}
 				},
 				{
@@ -2128,32 +2219,17 @@
 				},
 				{
 					"type": "comment",
-					"text": "Start wave cooldown timer"
+					"text": "Start wave cooldown timer (also triggers first wave cycle)"
 				},
 				{
 					"id": "start-timer",
 					"objectClass": "Player",
-					"sid": 845017664020528,
+					"sid": 926337034951366,
 					"behaviorType": "Timer",
 					"parameters": {
-						"duration": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCooldown) * Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCycles)",
+						"duration": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_Time)",
 						"type": "once",
 						"tag": "TIMER_Wave"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Start wave cycle cooldown timer"
-				},
-				{
-					"id": "start-timer",
-					"objectClass": "Player",
-					"sid": 429310889580532,
-					"behaviorType": "Timer",
-					"parameters": {
-						"duration": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCooldown)",
-						"type": "once",
-						"tag": "TIMER_WaveCycle"
 					}
 				},
 				{

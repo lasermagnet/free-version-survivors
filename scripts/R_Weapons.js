@@ -16,6 +16,7 @@ export const Weapons = {
         "OrbitSpeed": 0,
         "PositionRandom1": 0,
         "PositionRandom2": 0,
+        "RotationSpeed": 0,
     },
     "Axe": {
         "BlockMovement": 1,
@@ -27,6 +28,7 @@ export const Weapons = {
         "Scale": 0.5,
         "Timeout": 4,
         "MovementSpeed": 85,
+        "RotationSpeed": 300,
     },
     "Flame": {
         "BlockMovement": 1,

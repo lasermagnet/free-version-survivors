@@ -287,33 +287,13 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_EnemySpawnAmountPerWave",
+			"name": "KEY_EnemyAmount",
 			"type": "string",
-			"initialValue": "EnemySpawnAmountPerWave",
+			"initialValue": "EnemyAmount",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 155215406098268
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_EnemySpawnCooldown",
-			"type": "string",
-			"initialValue": "EnemySpawnCooldown",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 741062812388619
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_EnemySpawnCycles",
-			"type": "string",
-			"initialValue": "EnemySpawnCycles",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 199564196662953
 		},
 		{
 			"eventType": "variable",
@@ -407,16 +387,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Health_Multiplier",
-			"type": "string",
-			"initialValue": "Health_Max_Multiplier",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 876298997252055
-		},
-		{
-			"eventType": "variable",
 			"name": "KEY_Height",
 			"type": "string",
 			"initialValue": "Height",
@@ -434,16 +404,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 300756568646211
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Items",
-			"type": "string",
-			"initialValue": "Items",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 990155293678732
 		},
 		{
 			"eventType": "variable",
@@ -637,6 +597,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_RotationSpeed",
+			"type": "string",
+			"initialValue": "RotationSpeed",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 952692963153230
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Rule_Max",
 			"type": "string",
 			"initialValue": "Rule_Max",
@@ -667,6 +637,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_SpawnInterval",
+			"type": "string",
+			"initialValue": "SpawnInterval",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 411308709549892
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_StaticAngle",
 			"type": "string",
 			"initialValue": "StaticAngle",
@@ -674,6 +654,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 196735625579872
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Time",
+			"type": "string",
+			"initialValue": "Time",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 825015893634250
 		},
 		{
 			"eventType": "variable",

@@ -129,6 +129,13 @@
 					"initialValue": "0",
 					"comment": "",
 					"sid": 169564006755256
+				},
+				{
+					"name": "rotationSpeed",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 170908821256317
 				}
 			],
 			"eventType": "custom-ace-block",
@@ -271,6 +278,19 @@
 						"loop": "no",
 						"ping-pong": "no",
 						"repeat-count": "1"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Initialize rotate behaviour"
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "Weapon",
+					"sid": 797571752814460,
+					"behaviorType": "Rotate",
+					"parameters": {
+						"speed": "rotationSpeed"
 					}
 				}
 			],

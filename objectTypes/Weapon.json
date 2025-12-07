@@ -49,6 +49,11 @@
 			"behaviorId": "Orbit",
 			"name": "Orbit",
 			"sid": 733462960360424
+		},
+		{
+			"behaviorId": "Rotate",
+			"name": "Rotate",
+			"sid": 252709072293198
 		}
 	],
 	"effectTypes": [],
@@ -91,7 +96,7 @@
 					{
 						"width": 16,
 						"height": 16,
-						"originX": 0,
+						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",

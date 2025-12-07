@@ -148,6 +148,13 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Rotate",
+			"name": "Rotate",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "Timer",
 			"name": "Timer",
 			"author": "Scirra",
@@ -193,14 +200,11 @@
 			"UI_Bar_Experience",
 			"UI_Border_Experience",
 			"Rules",
-			"UI_TextSF_Experience",
 			"UI_Border_LevelUp",
 			"UI_TextSF_Upgrade",
 			"UI_TextSF_Label",
 			"AdvancedRandom",
 			"UI_Bar_Health",
-			"UI_Border_Health",
-			"UI_TextSF_Health",
 			"Touch",
 			"UpgradeOptions",
 			"Editor",
@@ -218,7 +222,9 @@
 			"UI_TextSF_GameOver",
 			"UI_TextSF_Wave",
 			"UI_TextSF_Pause",
-			"UI_TextSF_Time"
+			"UI_TextSF_Time",
+			"UI_Background_Health",
+			"UI_TextSF_Stats"
 		],
 		"subfolders": []
 	},
@@ -527,7 +533,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "42",
+		"version": "43",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
