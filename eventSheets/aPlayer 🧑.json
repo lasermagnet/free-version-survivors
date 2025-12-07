@@ -15,6 +15,15 @@
 			"conditions": [],
 			"actions": [
 				{
+					"id": "set-world-gravity",
+					"objectClass": "Player",
+					"sid": 586979652809177,
+					"behaviorType": "Physics",
+					"parameters": {
+						"gravity": "0"
+					}
+				},
+				{
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 901945052113015,
@@ -189,6 +198,11 @@
 					"id": "move-to-top",
 					"objectClass": "Player",
 					"sid": 910721350011334
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "UI_TextSF_DamageNumber",
+					"sid": 211095788548384
 				}
 			],
 			"sid": 892639912846222,
@@ -1022,11 +1036,11 @@
 						{
 							"customAction": "playSFX",
 							"objectClass": "Audio",
-							"sid": 110573603425708,
+							"sid": 559557265402918,
 							"parameters": [
 								"SFX_PlayerDamaged",
 								"3",
-								"1"
+								"Enemy.damage > 0 ? 1 : 0"
 							]
 						},
 						{
@@ -1049,10 +1063,10 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
-							"sid": 122113130659706,
+							"sid": 388171655154242,
 							"parameters": {
 								"instance-variable": "isHurt",
-								"value": "YES"
+								"value": "Enemy.damage > 0 ? YES : NO"
 							}
 						}
 					],
@@ -1099,6 +1113,15 @@
 								"instance-variable": "isDead",
 								"value": "YES"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Stop animation"
+						},
+						{
+							"id": "stop-animation",
+							"objectClass": "Player",
+							"sid": 207226070526332
 						},
 						{
 							"type": "comment",

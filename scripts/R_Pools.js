@@ -43,7 +43,7 @@ export const Pools = {
 
     // todo enemy amount based spawning instaed of pool/chance based
     "Enemies": [
-        [2, "HealingCrate"],
+        [0.5, "HealingCrate"],
         [40, "Slime"],
         [20, "Rat"],
         [5, "Crab"],

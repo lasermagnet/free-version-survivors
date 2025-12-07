@@ -18,7 +18,7 @@ export const Upgrades = {
     "HealingBonus": {
         "Label": "Healing bonus",
         "Description": "Health drops worth 10% more.",
-        "Icon": "Experience",
+        "Icon": "HeartBlack",
         "Rule_Value": "Player.Bonus_Healing_Multiplier",
         "Multiply": 1,
         "Add": 0.1
@@ -26,7 +26,7 @@ export const Upgrades = {
     "HealMax": {
         "Label": "Heal to 100%",
         "Description": "Heal completely.",
-        "Icon": "HealMax",
+        "Icon": "Heal",
         "Rule_Value": "Player.Health",
         "Rule_Max": "Player.Health_Max",
         "Multiply": 1,
@@ -43,7 +43,7 @@ export const Upgrades = {
     "MaxHealth": {
         "Label": "Max health up",
         "Description": "By 10%, healing not included.",
-        "Icon": "HeartBlack",
+        "Icon": "HealthMax",
         "Rule_Value": "Player.Health_Max",
         "Multiply": 1.1,
         "Add": 0
@@ -111,7 +111,7 @@ export const Upgrades = {
         "Icon": "Sword",
         "Rule_Value": "Weapons.Sword.Damage",
         "Multiply": 1,
-        "Add": 2,
+        "Add": 5,
     },
     "Sword_PierceLimit": {
         "WeaponRequirement": "Sword",

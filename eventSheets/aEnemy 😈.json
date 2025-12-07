@@ -50,12 +50,12 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 443287625595748,
+					"sid": 563724051265681,
 					"parameters": {
 						"object-to-create": "Enemy",
 						"layer": "LAYER_Main",
-						"x": "Player.X + cos(randomAngle) * Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Distance)",
-						"y": "Player.Y + sin(randomAngle) * Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Distance)",
+						"x": "Player.X + cos(randomAngle) * C_Distance_Enemy_Spawn",
+						"y": "Player.Y + sin(randomAngle) * C_Distance_Enemy_Spawn",
 						"create-hierarchy": true,
 						"template-name": "\"\""
 					}
@@ -113,6 +113,26 @@
 						"instance-variable": "movementSpeed",
 						"value": "Rules.Get(KEY_Enemies & DOT & Enemy.AnimationName & DOT & KEY_MovementSpeed)"
 					}
+				},
+				{
+					"id": "set-linear-damping",
+					"objectClass": "Enemy",
+					"sid": 582352477946657,
+					"disabled": true,
+					"behaviorType": "Physics",
+					"parameters": {
+						"linear-damping": "Self.movementSpeed = 0 ? Infinity : Self.Physics.LinearDamping"
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Enemy",
+					"sid": 568396165377012,
+					"disabled": true,
+					"behaviorType": "Physics",
+					"parameters": {
+						"mode": "disabled"
+					}
 				}
 			],
 			"sid": 418646961252127,
@@ -140,9 +160,19 @@
 							"id": "set-immovable",
 							"objectClass": "Enemy",
 							"sid": 263277160141025,
+							"disabled": true,
 							"behaviorType": "Physics",
 							"parameters": {
 								"setting": "immovable"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Enemy",
+							"sid": 281818199288928,
+							"behaviorType": "Physics",
+							"parameters": {
+								"mode": "disabled"
 							}
 						}
 					],
