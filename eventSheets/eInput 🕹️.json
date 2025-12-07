@@ -17,6 +17,51 @@
 			"eventType": "block",
 			"conditions": [
 				{
+					"id": "on-any-touch-start",
+					"objectClass": "Touch",
+					"sid": 979219085799744
+				}
+			],
+			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "UI_Touch_Up",
+					"sid": 941760329496408,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "UI_Touch_Down",
+					"sid": 834655298653493,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "UI_Touch_Left",
+					"sid": 297616554822369,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "UI_Touch_Right",
+					"sid": 652764812305087,
+					"parameters": {
+						"visibility": "visible"
+					}
+				}
+			],
+			"sid": 957536948098653
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
 					"sid": 682902275537827,

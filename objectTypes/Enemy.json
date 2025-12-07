@@ -27,6 +27,13 @@
 			"sid": 570871117964012
 		},
 		{
+			"name": "healing",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 193660718648048
+		},
+		{
 			"name": "damageNumber",
 			"type": "number",
 			"desc": "",
@@ -46,6 +53,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 212962772624305
+		},
+		{
+			"name": "movementSpeed",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 863815777907208
 		}
 	],
 	"behaviorTypes": [
@@ -634,6 +648,31 @@
 				],
 				"sid": 977528054448769,
 				"name": "Beholder",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 8,
+						"height": 8,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7622297,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 154423021094294,
+				"name": "HealingCrate",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,

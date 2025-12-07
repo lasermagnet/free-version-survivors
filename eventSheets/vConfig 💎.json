@@ -47,7 +47,7 @@
 			"eventType": "variable",
 			"name": "C_Damage_Flash_Interval",
 			"type": "number",
-			"initialValue": "0.08",
+			"initialValue": "0.1",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,

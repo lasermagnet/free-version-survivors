@@ -495,6 +495,16 @@
 					"text": "Attract / pick up drops"
 				},
 				{
+					"eventType": "variable",
+					"name": "upgrade",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 115025345985599
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -533,6 +543,7 @@
 					"sid": 622273281678330,
 					"children": [
 						{
+							"bookmark": true,
 							"eventType": "block",
 							"conditions": [
 								{
@@ -576,12 +587,44 @@
 									"text": "Player: collect experience (with bonus applied)"
 								},
 								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 892986239831999,
+									"parameters": {
+										"type": "log",
+										"message": "StringSub(\"Drop pickup: {0} health, {1} experience\", Drop.healing, Drop.experience)"
+									}
+								},
+								{
 									"id": "set-instvar-value",
 									"objectClass": "Player",
 									"sid": 747132776152467,
+									"disabled": true,
 									"parameters": {
 										"instance-variable": "experience",
-										"value": "Drop.AnimationName = ROLE_Experience ? Self.experience + round(Drop.amount * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : Self.experience"
+										"value": "Drop.AnimationName = ROLE_Experience ? Self.experience + round(Drop.experience * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : Self.experience"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 224969977370347,
+									"parameters": {
+										"instance-variable": "experience",
+										"value": "Drop.experience > 0 ? Self.experience + round(Drop.experience * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : Self.experience"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "Player: collect healing (with bonus applied)"
+								},
+								{
+									"id": "set-value",
+									"objectClass": "Rules",
+									"sid": 195008119513535,
+									"parameters": {
+										"path": "KEY_Player & DOT & KEY_Health",
+										"value": "min(Rules.Get(KEY_Player & DOT & KEY_Health) + Drop.healing * Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier), Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
 									}
 								}
 							],

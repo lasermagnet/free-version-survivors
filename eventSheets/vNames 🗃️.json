@@ -147,13 +147,13 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Bonus_Heal_Amount_Multiplier",
+			"name": "KEY_Bonus_Healing_Multiplier",
 			"type": "string",
-			"initialValue": "Bonus_Heal_Amount_Multiplier",
+			"initialValue": "Bonus_Healing_Multiplier",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 419725753270440
+			"sid": 945364366268268
 		},
 		{
 			"eventType": "variable",
@@ -284,6 +284,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 661251184749942
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Healing",
+			"type": "string",
+			"initialValue": "Healing",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 235009014076591
 		},
 		{
 			"eventType": "variable",
@@ -767,13 +777,23 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TIMER_Enemy_Flash",
+			"name": "TIMER_Enemy_FlashOn",
 			"type": "string",
-			"initialValue": "Flash",
+			"initialValue": "FlashOn",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 773465413025330
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Enemy_FlashOff",
+			"type": "string",
+			"initialValue": "FlashOff",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 631897334080321
 		},
 		{
 			"eventType": "comment",

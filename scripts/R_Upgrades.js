@@ -15,23 +15,22 @@ export const Upgrades = {
         "Multiply": 1,
         "Add": 0.1
     },
-    "Heal1": {
-        "Label": "Minor healing",
-        "Description": "Heal 150 points.",
-        "Icon": "Heal1",
-        "Rule_Value": "Player.Health",
-        "Rule_Max": "Player.Health_Max",
+    "HealingBonus": {
+        "Label": "Healing bonus",
+        "Description": "Health drops worth 10% more.",
+        "Icon": "Experience",
+        "Rule_Value": "Player.Bonus_Healing_Multiplier",
         "Multiply": 1,
-        "Add": 150
+        "Add": 0.1
     },
-    "Heal2": {
-        "Label": "Major healing",
-        "Description": "Heal 500 points.",
-        "Icon": "Heal2",
+    "HealMax": {
+        "Label": "Heal to 100%",
+        "Description": "Heal completely.",
+        "Icon": "HealMax",
         "Rule_Value": "Player.Health",
         "Rule_Max": "Player.Health_Max",
         "Multiply": 1,
-        "Add": 500
+        "Add": 100000
     },
     "ItemSpawnCooldown": {
         "Label": "More items",

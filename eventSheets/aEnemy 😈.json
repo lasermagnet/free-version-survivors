@@ -95,9 +95,60 @@
 						"instance-variable": "experience",
 						"value": "Rules.Get(KEY_Enemies & DOT & Enemy.AnimationName & DOT & KEY_Experience)"
 					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 880673156709293,
+					"parameters": {
+						"instance-variable": "healing",
+						"value": "Rules.Get(KEY_Enemies & DOT & Enemy.AnimationName & DOT & KEY_Healing)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 118594801988185,
+					"parameters": {
+						"instance-variable": "movementSpeed",
+						"value": "Rules.Get(KEY_Enemies & DOT & Enemy.AnimationName & DOT & KEY_MovementSpeed)"
+					}
 				}
 			],
-			"sid": 418646961252127
+			"sid": 418646961252127,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "todo_pack maybe some workaround"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemy",
+							"sid": 780184680406048,
+							"parameters": {
+								"instance-variable": "movementSpeed",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-immovable",
+							"objectClass": "Enemy",
+							"sid": 263277160141025,
+							"behaviorType": "Physics",
+							"parameters": {
+								"setting": "immovable"
+							}
+						}
+					],
+					"sid": 183252596552930
+				}
+			]
 		},
 		{
 			"aceType": "action",
@@ -158,15 +209,19 @@
 				},
 				{
 					"type": "comment",
-					"text": "Flash / unflash enemy according to the flash timer"
+					"text": "Flash / unflash enemy according to the \"flash on\" timer"
 				},
 				{
 					"id": "set-default-color",
 					"objectClass": "Enemy",
-					"sid": 392452988354691,
+					"sid": 360507637327988,
 					"parameters": {
-						"color": "Self.Timer.CurrentTime(TIMER_Enemy_Flash) > 0 ? rgbEx(500, 500, 500) : rgbEx(100, 100, 100)"
+						"color": "Self.Timer.CurrentTime(TIMER_Enemy_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "todo teleport enemies closer that are too far from the player"
 				}
 			],
 			"sid": 323244324797060,
@@ -240,17 +295,28 @@
 						},
 						{
 							"type": "comment",
-							"text": "Start damage flash timer if it's not running yet (note the ugly workaround in order to spare an event :D)"
+							"text": "Start damage flash timers if they are not running yet (it's a quite ugly workaround in order to spare an event)"
 						},
 						{
 							"id": "start-timer",
 							"objectClass": "Enemy",
-							"sid": 190731174826152,
+							"sid": 186375863490088,
 							"behaviorType": "Timer",
 							"parameters": {
 								"duration": "C_Damage_Flash_Interval",
 								"type": "once",
-								"tag": "Self.Timer.CurrentTime(TIMER_Enemy_Flash) > 0 ? EMPTY : TIMER_Enemy_Flash"
+								"tag": "Self.Timer.CurrentTime(TIMER_Enemy_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_Enemy_FlashOff) = 0\n? TIMER_Enemy_FlashOn : EMPTY"
+							}
+						},
+						{
+							"id": "start-timer",
+							"objectClass": "Enemy",
+							"sid": 645487316551288,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "C_Damage_Flash_Interval * 2",
+								"type": "once",
+								"tag": "Self.Timer.CurrentTime(TIMER_Enemy_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_Enemy_FlashOff) = 0\n? TIMER_Enemy_FlashOff : EMPTY"
 							}
 						},
 						{
@@ -376,6 +442,25 @@
 						{
 							"eventType": "block",
 							"conditions": [
+								{
+									"id": "is-timer-running",
+									"objectClass": "Enemy",
+									"sid": 788142286399622,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "TIMER_Enemy_FlashOn"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "is-timer-running",
+									"objectClass": "Enemy",
+									"sid": 847883112751429,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "TIMER_Enemy_FlashOff"
+									}
+								},
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "Enemy",
@@ -584,8 +669,26 @@
 									"objectClass": "Drop",
 									"sid": 131233287870206,
 									"parameters": {
-										"instance-variable": "amount",
+										"instance-variable": "experience",
 										"value": "Enemy.experience"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Drop",
+									"sid": 785348022901118,
+									"parameters": {
+										"instance-variable": "healing",
+										"value": "Enemy.healing"
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "Drop",
+									"sid": 569098360821442,
+									"parameters": {
+										"animation": "Enemy.experience > 0 ? KEY_Experience : KEY_Health",
+										"from": "beginning"
 									}
 								}
 							],
@@ -705,6 +808,15 @@
 											}
 										},
 										{
+											"id": "set-size",
+											"objectClass": "Icon",
+											"sid": 227990397397037,
+											"parameters": {
+												"width": "8",
+												"height": "8"
+											}
+										},
+										{
 											"type": "comment",
 											"text": "Start tween to fade out item before next spawn"
 										},
@@ -810,7 +922,6 @@
 					"text": "Move enemies that are not blocked by the weapon"
 				},
 				{
-					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -837,10 +948,10 @@
 						{
 							"id": "apply-force-towards-position",
 							"objectClass": "Enemy",
-							"sid": 309384909754023,
+							"sid": 503204183871614,
 							"behaviorType": "Physics",
 							"parameters": {
-								"force": "Rules.Get(KEY_Enemies & DOT & Enemy.AnimationName & DOT & KEY_MovementSpeed)",
+								"force": "Self.movementSpeed",
 								"x": "Player.X",
 								"y": "Player.Y",
 								"image-point": "0"

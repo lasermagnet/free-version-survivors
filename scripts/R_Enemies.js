@@ -1,4 +1,8 @@
 export const Enemies = {
+    "HealingCrate": {
+        "Health": 3,
+        "Healing": 100,
+    },
     "Slime": {
         "Health": 3,
         "Damage": 10,

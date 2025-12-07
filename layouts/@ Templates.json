@@ -158,9 +158,11 @@
 						"health": 0,
 						"damage": 0,
 						"experience": 0,
+						"healing": 0,
 						"damageNumber": 0,
 						"isDead": 0,
-						"isMovementBlocked": 0
+						"isMovementBlocked": 0,
+						"movementSpeed": 0
 					},
 					"behaviors": {
 						"Physics": {
@@ -222,7 +224,8 @@
 					"sid": 691388145451267,
 					"tags": "",
 					"instanceVariables": {
-						"amount": 0,
+						"experience": 0,
+						"healing": 0,
 						"isCollected": 0
 					},
 					"behaviors": {
@@ -693,7 +696,7 @@
 						"y": 95,
 						"width": 16,
 						"height": 16,
-						"originX": -3,
+						"originX": -4,
 						"originY": 0.5,
 						"color": [
 							1,

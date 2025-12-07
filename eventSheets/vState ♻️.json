@@ -75,7 +75,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "rulesJS",
+			"name": "rulesJSON",
 			"type": "string",
 			"initialValue": "",
 			"comment": "",

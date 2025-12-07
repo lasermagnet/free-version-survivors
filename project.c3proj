@@ -57,8 +57,22 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "NinePatch",
 			"name": "9-patch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "PlatformInfo",
+			"name": "Platform info",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -210,7 +224,10 @@
 			"UI_Touch_Up",
 			"UI_Touch_Down",
 			"UI_Touch_Left",
-			"UI_Touch_Right"
+			"UI_Touch_Right",
+			"PlatformInfo",
+			"Mouse",
+			"UI_TextSF_Start"
 		],
 		"subfolders": []
 	},
@@ -519,7 +536,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "22",
+		"version": "23b",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

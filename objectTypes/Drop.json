@@ -6,11 +6,18 @@
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [
 		{
-			"name": "amount",
+			"name": "experience",
 			"type": "number",
 			"desc": "",
 			"show": true,
 			"sid": 504929688816682
+		},
+		{
+			"name": "healing",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 456494178215905
 		},
 		{
 			"name": "isCollected",

@@ -12,8 +12,8 @@ export const Player = {
     // Misc
     "PickupDistance": 30,
     // Bonuses
-    // todo heal bonus
-    "Bonus_Heal_Amount_Multiplier": 1,
+    // todo heal bonus maybe, but it needs reworking health system (separate drop like XP) or upgrade system
+    "Bonus_Healing_Multiplier": 1,
     "Bonus_Experience_Multiplier": 1,
     "Bonus_Enemy_Spawn_Cooldown_Multiplier": 1,
     "Bonus_Weapon_Damage_Multiplier": 1,
