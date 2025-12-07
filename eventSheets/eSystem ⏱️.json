@@ -219,12 +219,49 @@
 				},
 				{
 					"type": "comment",
-					"text": "Spawn ground map & player"
+					"text": "Spawn ground map and add decorations"
 				},
 				{
-					"customAction": "spawn",
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 650414608895846,
+					"parameters": {
+						"object-to-create": "Map",
+						"layer": "LAYER_Main",
+						"x": "0",
+						"y": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "Map",
+					"sid": 313548732392798,
+					"parameters": {
+						"width": "LayoutWidth",
+						"height": "LayoutHeight"
+					}
+				},
+				{
+					"id": "erase-tile-range",
+					"objectClass": "Map",
+					"sid": 191380699385691,
+					"parameters": {
+						"tile-x": "0",
+						"tile-y": "0",
+						"width": "Self.MapDisplayWidth",
+						"height": "Self.MapDisplayHeight"
+					}
+				},
+				{
+					"customAction": "addDecorations",
 					"objectClass": "Map",
 					"sid": 808457871185290
+				},
+				{
+					"type": "comment",
+					"text": "Spawn player"
 				},
 				{
 					"customAction": "spawn",

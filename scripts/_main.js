@@ -1,9 +1,9 @@
-
+/*
 import { basicSetup, EditorView } from "https://esm.sh/codemirror@6.0.2/"
 import { javascript } from "https://esm.sh/@codemirror/lang-javascript@6.2.4/"
 import { basicDark } from "https://esm.sh/@fsegurai/codemirror-theme-basic-dark@6.2.2/"
 import { rules } from "./_rules.js"
-
+*/
 runOnStartup(async runtime => {
 	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));
 });
@@ -25,11 +25,11 @@ async function OnBeforeProjectStart(runtime) {
 			})
 	}
 
-	let editorView = new EditorView({
+	/*let editorView = new EditorView({
 		doc: customStringify(rules),
 		extensions: [basicSetup, javascript(), basicDark],
 		parent: document.getElementById("rule-editor"),
-	})
+	})*/
 
 	function addStyle(styleString) {
 		const style = document.createElement('style')

@@ -133,7 +133,7 @@
 			"eventType": "variable",
 			"name": "C_Map_Decorations_Per_Cell",
 			"type": "number",
-			"initialValue": "10",
+			"initialValue": "6",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -141,19 +141,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "C_Map_Obstacles_Per_Cell",
-			"type": "number",
-			"initialValue": "2",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 245672798165925
-		},
-		{
-			"eventType": "variable",
 			"name": "C_Map_TileId_Decorations_First",
 			"type": "number",
-			"initialValue": "1",
+			"initialValue": "0",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -163,31 +153,11 @@
 			"eventType": "variable",
 			"name": "C_Map_TileId_Decorations_Last",
 			"type": "number",
-			"initialValue": "2",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 774737314925639
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Map_TileId_Obstacles_First",
-			"type": "number",
-			"initialValue": "3",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 129615742090558
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Map_TileId_Obstacless_Last",
-			"type": "number",
 			"initialValue": "13",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 173892089957236
+			"sid": 774737314925639
 		},
 		{
 			"eventType": "comment",
