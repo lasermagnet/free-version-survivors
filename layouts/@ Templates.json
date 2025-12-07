@@ -20,7 +20,7 @@
 					"tags": "",
 					"instanceVariables": {
 						"R_AngleOffset": 45,
-						"damage": 0
+						"R_Damage": 10
 					},
 					"behaviors": {
 						"Bullet": {
@@ -136,9 +136,7 @@
 					"uid": 11,
 					"sid": 691388145451267,
 					"tags": "",
-					"instanceVariables": {
-						"value": 0
-					},
+					"instanceVariables": {},
 					"behaviors": {
 						"Bullet": {
 							"properties": {
@@ -188,10 +186,8 @@
 					"sid": 275528799847544,
 					"tags": "",
 					"instanceVariables": {
-						"cooldown_spawn_item": 0,
-						"cooldown_weapon_sword": 0,
-						"cooldown_spawn_enemy": 0,
-						"queue_spawn_enemy": 0,
+						"item_spawn_cooldown": -1,
+						"weapon_sword_cooldown": 0,
 						"health": 0
 					},
 					"behaviors": {

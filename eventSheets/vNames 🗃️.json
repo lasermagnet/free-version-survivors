@@ -55,6 +55,26 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Player_Health_Start",
+			"type": "string",
+			"initialValue": "Player_Health_Start",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 307421626153181
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Item_Spawn_Cooldown",
+			"type": "string",
+			"initialValue": "Item_Spawn_Cooldown",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 328453536536896
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Player",
 			"type": "string",
 			"initialValue": "Player",
@@ -62,16 +82,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 725029190180261
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Enemy",
-			"type": "string",
-			"initialValue": "Enemy",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 973162742391941
 		},
 		{
 			"eventType": "variable",
@@ -125,16 +135,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Amount",
-			"type": "string",
-			"initialValue": "Amount",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 144781007347416
-		},
-		{
-			"eventType": "variable",
 			"name": "KEY_Level",
 			"type": "string",
 			"initialValue": "Level",
@@ -169,23 +169,13 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "LOOP_Decorations_Per_Cell",
+			"name": "LOOP_Decoration_Per_Cell",
 			"type": "string",
-			"initialValue": "Decorations_Per_Cell",
+			"initialValue": "Decoration_Per_Cell",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 444973302307180
-		},
-		{
-			"eventType": "variable",
-			"name": "LOOP_Obstacles_Per_Cell",
-			"type": "string",
-			"initialValue": "Obstacles_Per_Cell",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 797025420437282
 		},
 		{
 			"eventType": "comment",
@@ -242,16 +232,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 558238686119792
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Damage",
-			"type": "string",
-			"initialValue": "Damage",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 620616569806497
 		},
 		{
 			"eventType": "group",

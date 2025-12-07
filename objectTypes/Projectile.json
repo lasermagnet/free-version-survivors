@@ -13,11 +13,11 @@
 			"sid": 117536132792798
 		},
 		{
-			"name": "damage",
+			"name": "R_Damage",
 			"type": "number",
 			"desc": "",
 			"show": true,
-			"sid": 192151957466033
+			"sid": 110727080481989
 		}
 	],
 	"behaviorTypes": [

@@ -15,21 +15,11 @@
 			"eventType": "variable",
 			"name": "C_GroundMap_Decorations_Per_Cell",
 			"type": "number",
-			"initialValue": "10",
+			"initialValue": "1",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 279727138493086
-		},
-		{
-			"eventType": "variable",
-			"name": "C_GroundMap_Obstacles_Per_Cell",
-			"type": "number",
-			"initialValue": "2",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 245672798165925
 		},
 		{
 			"eventType": "variable",
@@ -45,31 +35,11 @@
 			"eventType": "variable",
 			"name": "C_GroundMap_TileId_Decorations_Last",
 			"type": "number",
-			"initialValue": "2",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 774737314925639
-		},
-		{
-			"eventType": "variable",
-			"name": "C_GroundMap_TileId_Obstacles_First",
-			"type": "number",
-			"initialValue": "3",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 129615742090558
-		},
-		{
-			"eventType": "variable",
-			"name": "C_GroundMap_TileId_Obstacless_Last",
-			"type": "number",
 			"initialValue": "13",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 173892089957236
+			"sid": 774737314925639
 		},
 		{
 			"eventType": "variable",
@@ -110,16 +80,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 629299138832056
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Enemy_Mirror_Threshold",
-			"type": "number",
-			"initialValue": "5",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 295044313391476
 		}
 	],
 	"sid": 900977153576648

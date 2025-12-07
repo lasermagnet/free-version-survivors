@@ -17,13 +17,6 @@
 					"initialValue": "0",
 					"comment": "",
 					"sid": 763453866054419
-				},
-				{
-					"name": "weapon",
-					"type": "string",
-					"initialValue": "",
-					"comment": "",
-					"sid": 535484699166720
 				}
 			],
 			"eventType": "custom-ace-block",
@@ -82,24 +75,6 @@
 						"loop": "no",
 						"ping-pong": "no",
 						"repeat-count": "1"
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Projectile",
-					"sid": 861384561382661,
-					"parameters": {
-						"instance-variable": "damage",
-						"value": "Rules.Get(KEY_Weapons & DOT & weapon & DOT & KEY_Damage)"
-					}
-				},
-				{
-					"id": "set-animation",
-					"objectClass": "Projectile",
-					"sid": 971516624268983,
-					"parameters": {
-						"animation": "weapon",
-						"from": "beginning"
 					}
 				}
 			],

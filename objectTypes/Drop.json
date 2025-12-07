@@ -4,15 +4,7 @@
 	"sid": 418893563664792,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [
-		{
-			"name": "value",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 504929688816682
-		}
-	],
+	"instanceVariables": [],
 	"behaviorTypes": [
 		{
 			"behaviorId": "Bullet",
