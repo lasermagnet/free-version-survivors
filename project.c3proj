@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 45600,
+	"savedWithRelease": 45802,
 	"name": "FreeVersionSurvivors",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -568,7 +568,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "62",
+		"version": "63",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
@@ -602,6 +602,7 @@
 		],
 		"orientations": "landscape",
 		"webgpu": "auto",
+		"multitexturing": "auto",
 		"gpuPreference": "high-performance",
 		"framerateMode": "vsync",
 		"sampling": "nearest",

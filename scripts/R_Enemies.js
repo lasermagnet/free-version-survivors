@@ -6,6 +6,7 @@ const _example = {
         "Experience": 10,           // experience drop value
         "MovementSpeed": 0,         // movement speed
         "MovementAngle": null,      // if specified, enemy will move in this angle; -1 value is not supported
+        "Density": 1,               // physics density (defaults to 1 when unset or null)
         "Scale": 1,                 // sprite size multiplier (defaults to 1 when unset or null)
         "Animation": "Beholder",    // override default animation name (which is the enemy's name)
         "ItemSpawnDisabled": false, // containers don't spawn items (only drops)
@@ -94,6 +95,7 @@ export const Enemies = {
         "Experience": 180,
         "MovementSpeed": 1.5,
         "Scale": 2.5,
+        "Density": 10,
     },
     "Cultist": {
         "Health": 200,
@@ -101,6 +103,7 @@ export const Enemies = {
         "Experience": 250,
         "MovementSpeed": 1.7,
         "Scale": 2,
+        "Density": 10,
     },
     "Beholder": {
         "Health": 500,
@@ -116,5 +119,6 @@ export const Enemies = {
         "MovementSpeed": 2.5,
         "Scale": 3,
         "Animation": "Beholder",
+        "Density": 10,
     }
 }

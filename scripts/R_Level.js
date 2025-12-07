@@ -51,7 +51,7 @@ export const Level = {
         [1, "WeaponCooldown"],
         [1, "WeaponSize"],
         [0.5, "WeaponAmount"],
-
+        [1, "Armor"],
     ],
 
 }

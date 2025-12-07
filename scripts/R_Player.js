@@ -26,5 +26,5 @@ export const Player = {
     "Bonus_Weapon_Damage_Multiplier": 1,       // multliplier for all weapon damage values
     "Bonus_Weapon_Cooldown_Multiplier": 1,     // multiplier for all weapon cooldown times
     "Bonus_Weapon_Size_Multiplier": 1,         // multiplier for all weapon sprite sizes
-    
+    "Bonus_Incoming_Damage_Multiplier": 1,      // multiplier for incoming damage
 }

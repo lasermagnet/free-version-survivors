@@ -74,4 +74,7 @@ export const Upgrades = {
     "WeaponAmount": {
         "Modifiers": ["WeaponAmount", "WeaponAmount"],
     },
+    "Armor": {
+        "Modifiers": ["Armor", "Armor", "Armor", "Armor", "Armor"],
+    },
 }

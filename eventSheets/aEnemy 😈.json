@@ -208,7 +208,20 @@
 				},
 				{
 					"type": "comment",
+					"text": "Set density"
+				},
+				{
+					"type": "comment",
 					"text": "Set to immovable by default (containers will stay immovable)"
+				},
+				{
+					"id": "set-density",
+					"objectClass": "Enemy",
+					"sid": 298680940894841,
+					"behaviorType": "Physics",
+					"parameters": {
+						"density": "Rules.Type(KEY_Enemies & DOT & Enemy & DOT & KEY_Density) = NULL ? 1 : Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Density)"
+					}
 				},
 				{
 					"id": "set-immovable",

@@ -2,7 +2,7 @@
 	"name": "UI_Rectangle",
 	"plugin-id": "TiledBg",
 	"sid": 715207690266040,
-	"isGlobal": false,
+	"isGlobal": true,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
 	"behaviorTypes": [],

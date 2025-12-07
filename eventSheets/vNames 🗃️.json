@@ -237,6 +237,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Bonus_Incoming_Damage_Multiplier",
+			"type": "string",
+			"initialValue": "Bonus_Incoming_Damage_Multiplier",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 927219407724615
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Bonus_Regeneration_Amount",
 			"type": "string",
 			"initialValue": "Bonus_Regeneration_Amount",
@@ -334,6 +344,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 915795250681634
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Density",
+			"type": "string",
+			"initialValue": "Density",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 860385217787163
 		},
 		{
 			"eventType": "variable",

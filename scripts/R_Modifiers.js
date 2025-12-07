@@ -47,6 +47,13 @@ export const Modifiers = {
         "Rule_Value": "Player.Bonus_Healing_Multiplier",
         "Add": 0.1,
     },
+    "Armor": {
+        "Label": "Armor",
+        "Description": "Reduce incoming damage by 5%.",
+        "Icon": "Armor",
+        "Rule_Value": "Player.Bonus_Incoming_Damage_Multiplier",
+        "Add": -0.05,
+    },
     "HealAll": {
         "Label": "Heal to 100%",
         "Description": "Heal completely.",

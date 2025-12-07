@@ -969,10 +969,10 @@
 				{
 					"id": "set-value",
 					"objectClass": "Rules",
-					"sid": 241786249775180,
+					"sid": 417252591317647,
 					"parameters": {
 						"path": "KEY_Player & DOT & KEY_Health",
-						"value": "max(0, Rules.Get(KEY_Player & DOT & KEY_Health) - Enemy.damage * dt)"
+						"value": "max(0, Rules.Get(KEY_Player & DOT & KEY_Health) - (Enemy.damage * dt * Rules.Get(KEY_Player & DOT & KEY_Bonus_Incoming_Damage_Multiplier)))"
 					}
 				},
 				{
