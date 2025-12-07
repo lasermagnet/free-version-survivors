@@ -2134,7 +2134,7 @@
 			"aceName": "applyModifier",
 			"objectClass": "Player",
 			"functionDescription": "",
-			"functionCategory": "",
+			"functionCategory": "Apply the effects of a specified modifier (after item pickups & level up upgrades)",
 			"functionReturnType": "none",
 			"functionCopyPicked": false,
 			"functionIsAsync": false,
@@ -2242,7 +2242,7 @@
 			"aceType": "action",
 			"aceName": "updateWave",
 			"objectClass": "Player",
-			"functionDescription": "",
+			"functionDescription": "If there's no wave in progress, start one",
 			"functionCategory": "",
 			"functionReturnType": "none",
 			"functionCopyPicked": false,
@@ -2480,10 +2480,6 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "todo_pack spawn an enemy at every tick from the fixed spawn pool (copy it to an array at first, pop it one by one)"
-				},
-				{
-					"eventType": "comment",
 					"text": "Spawn fixed enemies at wave start"
 				},
 				{
@@ -2499,16 +2495,6 @@
 						}
 					],
 					"actions": [
-						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 538892113107038,
-							"disabled": true,
-							"parameters": {
-								"type": "log",
-								"message": "\"Fixed enemy spawning: \" & Rules.CurrentValue & \" x \" & Rules.CurrentKey"
-							}
-						},
 						{
 							"customAction": "spawn",
 							"objectClass": "Enemy",

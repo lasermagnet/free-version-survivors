@@ -5,7 +5,7 @@
 			"aceType": "action",
 			"aceName": "spawn",
 			"objectClass": "Enemy",
-			"functionDescription": "",
+			"functionDescription": "Spawns a specified number of enemies, within the enemy count limit. Enemy type can be specified or left empty to choose one randomly from the pool.",
 			"functionCategory": "",
 			"functionReturnType": "none",
 			"functionCopyPicked": false,
@@ -60,7 +60,11 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Spawn an enemy; if enemy type was not specified, choose one randomly from the queue"
+					"text": "todo make sure enemies don't spawn outside the \"ground\" or at least teleport non-moving enemies somewhere on the ground, ideally out of sight"
+				},
+				{
+					"type": "comment",
+					"text": "Spawn an enemy; if enemy type was not specified, choose one randomly from the pool"
 				},
 				{
 					"id": "set-eventvar-value",
@@ -87,10 +91,6 @@
 				{
 					"type": "comment",
 					"text": "Spawn enemy object"
-				},
-				{
-					"type": "comment",
-					"text": "todo make sure enemies don't spawn outside the \"ground\" or at least teleport non-moving enemies somewhere on the ground, ideally out of sight"
 				},
 				{
 					"id": "create-object",
@@ -186,6 +186,15 @@
 					"parameters": {
 						"instance-variable": "isContainer",
 						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Container)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 268401483418362,
+					"parameters": {
+						"instance-variable": "initAnimationSpeed",
+						"value": "Self.AnimationSpeed"
 					}
 				},
 				{
@@ -296,6 +305,18 @@
 					"sid": 570746798042963,
 					"parameters": {
 						"width": "(Player.Timer.CurrentTime(TIMER_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Freeze) > 0) ?\nSelf.Width :\n(\n  Self.X < Player.X - 5 ?\r\n  abs(Self.Width) :\r\n  (\r\n    Self.X > Player.X + 5 ?\r\n    -abs(Self.Width) :\r\n    Self.Width\r\n  )\n)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set animation speed"
+				},
+				{
+					"id": "set-animation-speed",
+					"objectClass": "Enemy",
+					"sid": 451800226878739,
+					"parameters": {
+						"speed": "Player.Timer.CurrentTime(TIMER_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Freeze) = 0 ? Self.initAnimationSpeed : 0"
 					}
 				}
 			],
@@ -760,7 +781,20 @@
 					"actions": [
 						{
 							"type": "comment",
-							"text": "Increment counter"
+							"text": "Update \"is dead\" state"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemy",
+							"sid": 796021549979899,
+							"parameters": {
+								"instance-variable": "isDead",
+								"value": "YES"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Increment kill counter"
 						},
 						{
 							"id": "add-to-eventvar",
@@ -773,16 +807,7 @@
 						},
 						{
 							"type": "comment",
-							"text": "Update enemy status, disable its movement and tween it out"
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 614682034850214,
-							"parameters": {
-								"instance-variable": "isDead",
-								"value": "YES"
-							}
+							"text": "Disable physics (so dead enemies won't collide with alive ones)"
 						},
 						{
 							"id": "set-enabled",
@@ -792,6 +817,19 @@
 							"parameters": {
 								"mode": "disabled"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Stop animation"
+						},
+						{
+							"id": "stop-animation",
+							"objectClass": "Enemy",
+							"sid": 675304688951205
+						},
+						{
+							"type": "comment",
+							"text": "Fade out enemy"
 						},
 						{
 							"id": "tween-one-property",
@@ -850,7 +888,7 @@
 						},
 						{
 							"type": "comment",
-							"text": "yuck"
+							"text": "todo fix this mess"
 						},
 						{
 							"id": "set-animation",
@@ -867,16 +905,6 @@
 							"sid": 469205144351388,
 							"parameters": {
 								"frame-number": "min(floor(max(Self.experience, Self.healing) / max(1, Rules.Get(KEY_Level & DOT & KEY_Dividers & DOT & KEY_DropValueToLevel))), Self.AnimationFrameCount - 1)"
-							}
-						},
-						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 526165644337781,
-							"disabled": true,
-							"parameters": {
-								"type": "log",
-								"message": "itemSpawnCue = EMPTY ? EMPTY : \"Enemy is dead, gonna spawn an item: \" & itemSpawnCue"
 							}
 						}
 					],
@@ -941,6 +969,10 @@
 							],
 							"actions": [
 								{
+									"type": "comment",
+									"text": "Spawn item (\"frame\")"
+								},
+								{
 									"id": "create-object",
 									"objectClass": "System",
 									"sid": 222206496615398,
@@ -964,16 +996,6 @@
 									"parameters": {
 										"instance-variable": "modifier",
 										"value": "itemSpawnCue"
-									}
-								},
-								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 528614721209450,
-									"disabled": true,
-									"parameters": {
-										"type": "log",
-										"message": "\"Spawning item: \" & Item.modifier"
 									}
 								},
 								{
@@ -1092,7 +1114,7 @@
 								},
 								{
 									"type": "comment",
-									"text": "Remove spawned item from queue"
+									"text": "Clear item spawn cue"
 								},
 								{
 									"id": "set-eventvar-value",

@@ -172,13 +172,14 @@
 						"isContainer": 0,
 						"isMovementBlocked": 0,
 						"movementSpeed": 0,
-						"movementAngle": -1
+						"movementAngle": -1,
+						"initAnimationSpeed": 0
 					},
 					"behaviors": {
 						"Physics": {
 							"properties": {
 								"immovable": true,
-								"collision-mask": "circle",
+								"collision-mask": "use-collision-polygon",
 								"prevent-rotation": true,
 								"density": 1,
 								"friction": 0,
@@ -675,8 +676,8 @@
 					"world": {
 						"x": 30,
 						"y": 151,
-						"width": 18,
-						"height": 18,
+						"width": 16,
+						"height": 16,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [

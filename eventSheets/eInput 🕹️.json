@@ -95,10 +95,6 @@
 			],
 			"actions": [
 				{
-					"type": "comment",
-					"text": "Enable full screen"
-				},
-				{
 					"id": "request-fullscreen",
 					"objectClass": "Browser",
 					"sid": 743018549105810,
@@ -156,6 +152,10 @@
 			],
 			"actions": [
 				{
+					"type": "comment",
+					"text": "Enable visibility of the \"pause\" text (it's invisible by default)"
+				},
+				{
 					"id": "set-visible",
 					"objectClass": "UI_TextSF_Pause",
 					"sid": 984196809538558,
@@ -164,32 +164,40 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Update stats text"
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_Stats",
+					"sid": 538838378355535,
+					"parameters": {
+						"text": "StringSub(\"Wave {0}: #{1}, cycle #{2}\", waveCount, waveId, spawnCycle) & newline &\n\"Player level: \" & Player.level & newline &\n\"Health: \" & round(Rules.Get(KEY_Player & DOT & KEY_Health)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max)) & newline &\n\"Enemies killed: \" & enemiesKilled & newline &\n\"Enemy spawn amount bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Amount_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Healing bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Regeneration bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Regeneration_Amount) * 100 & \"%\" & newline &\n\"Level up freeze time: \" & Rules.Get(KEY_Player & DOT & KEY_LevelUpFreezeTime) & \" sec\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "If the game is not in a \"leveling\" state and the player is not dead, toggle the \"is paused\" state"
+				},
+				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 674194114201843,
+					"sid": 381806647688418,
 					"parameters": {
 						"variable": "isPaused",
 						"value": "isLeveling = YES | Player.isDead = YES ? isPaused : (isPaused = YES ? NO : YES)"
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Set opacity of the pause & stats text elements according to the \"is paused\" state"
+				},
+				{
 					"id": "set-opacity",
 					"objectClass": "UI_TextSF_Pause",
-					"sid": 272792598130707,
+					"sid": 918416673878159,
 					"parameters": {
 						"opacity": "isPaused ? 100 : 0"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Update stats UI"
-				},
-				{
-					"id": "set-text",
-					"objectClass": "UI_TextSF_Stats",
-					"sid": 900704920651912,
-					"parameters": {
-						"text": "StringSub(\"Wave {0}: #{1}, cycle #{2}\", waveCount, waveId, spawnCycle) & newline &\n\"Player level: \" & Player.level & newline &\n\"Health: \" & round(Rules.Get(KEY_Player & DOT & KEY_Health)) & \" / \" & round(Rules.Get(KEY_Player & DOT & KEY_Health_Max)) & newline &\n\"Enemies killed: \" & enemiesKilled & newline &\n\"Enemy spawn amount bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Amount_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Healing bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Regeneration bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Regeneration_Amount) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
 					}
 				},
 				{
@@ -199,6 +207,10 @@
 					"parameters": {
 						"opacity": "isPaused ? 100 : 0"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Set global time scale according to the \"is paused\" state"
 				},
 				{
 					"id": "set-time-scale",

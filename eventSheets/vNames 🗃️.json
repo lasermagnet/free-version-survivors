@@ -837,6 +837,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_UpgradePool",
+			"type": "string",
+			"initialValue": "UpgradePool",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 599750830122769
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Upgrades",
 			"type": "string",
 			"initialValue": "Upgrades",

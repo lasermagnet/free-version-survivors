@@ -40,6 +40,7 @@ export const Enemies = {
         "Damage": 15,
         "Experience": 9,
         "MovementSpeed": 0.8,
+        "Scale": 0.5,
     },
     "Crab": {
         "Health": 10,

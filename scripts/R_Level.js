@@ -16,16 +16,15 @@ export const Level = {
         "DropValueToLevel": 15, // the value of a health or experience drop is divided by this number then truncated to an integer to make up the animation frame of the drop sprite (allows different looking drops to signify their value)
         "DamageToColor": 10, // similarly, damage numbers are divided by this number and used in tokenat(C_UI_DamageNumber_Colors_SSV, x) to determine the color of a damage number
     },
-    
-    // todo move to upgrades ("Pool")
-    "Upgrades": [
+
+    "UpgradePool": [
         // list of upgrades that can come up when the player levels up
         // (touple format: [weight, upgradeName])
 
-        // One-off
+        // One-off upgrades
         [1, "HealAll"],
 
-        //  Weapons
+        //  Weapon upgrades
         [2, "Axe"],
         [1, "Flame"],
         [1, "Chainsaw"],
@@ -33,7 +32,7 @@ export const Level = {
         [1, "Sword"],
         [0.5, "Ice"],
 
-        // Player stats
+        // Player stat upgrades
         [1, "Regeneration"],
         [1, "EnemySpawnAmount"],
         [1, "WeaponCooldown"],

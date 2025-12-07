@@ -19,6 +19,7 @@
 					"id": "move-to-layer",
 					"objectClass": "Editor",
 					"sid": 328131485641796,
+					"disabled": true,
 					"parameters": {
 						"layer": "LAYER_UI"
 					}
@@ -27,6 +28,7 @@
 					"id": "set-visible",
 					"objectClass": "Editor",
 					"sid": 746445835537442,
+					"disabled": true,
 					"parameters": {
 						"visibility": "invisible"
 					}
@@ -50,10 +52,10 @@
 				{
 					"id": "createProbabilityTableFromJSON",
 					"objectClass": "AdvancedRandom",
-					"sid": 477985162256480,
+					"sid": 499067768398314,
 					"parameters": {
 						"name": "PT_Upgrades",
-						"json": "Rules.GetAsCompactString(KEY_Level & DOT & KEY_Upgrades)"
+						"json": "Rules.GetAsCompactString(KEY_Level & DOT & KEY_UpgradePool)"
 					}
 				},
 				{
@@ -102,7 +104,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Spawn level bounding walls"
+					"text": "Spawn four level bounding walls"
 				},
 				{
 					"id": "create-object",
@@ -194,7 +196,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Spawn ground map and add decorations"
+					"text": "Spawn level tilemap and add decorations"
 				},
 				{
 					"id": "create-object",

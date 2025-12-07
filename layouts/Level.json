@@ -1729,7 +1729,7 @@
 						"expanded": true
 					},
 					"showing": true,
-					"locked": true,
+					"locked": false,
 					"world": {
 						"x": 5,
 						"y": 24,
