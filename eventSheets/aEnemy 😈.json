@@ -26,7 +26,6 @@
 					"sid": 244649095207517
 				}
 			],
-			"bookmark": true,
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
@@ -353,12 +352,12 @@
 					"sid": 723471677236212
 				},
 				{
-					"customAction": "tick_damageNumber1",
+					"customAction": "tick_damageNumber_update",
 					"objectClass": "Enemy",
 					"sid": 378701659476779
 				},
 				{
-					"customAction": "tick_damageNumber2",
+					"customAction": "tick_damageNumber_reset",
 					"objectClass": "Enemy",
 					"sid": 306638402884577
 				},
@@ -385,7 +384,6 @@
 			"functionCopyPicked": false,
 			"functionIsAsync": false,
 			"functionParameters": [],
-			"bookmark": true,
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
@@ -692,6 +690,10 @@
 					"text": "If projectile has reached its piercing limit, destroy it"
 				},
 				{
+					"eventType": "comment",
+					"text": "todo destroy projectile after it's colliding with nothing or an enemy other then the last one from the SSV"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -774,7 +776,7 @@
 		},
 		{
 			"aceType": "action",
-			"aceName": "tick_damageNumber1",
+			"aceName": "tick_damageNumber_update",
 			"objectClass": "Enemy",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -1034,6 +1036,10 @@
 				{
 					"type": "comment",
 					"text": "Spawn an experience or health drop"
+				},
+				{
+					"type": "comment",
+					"text": "(Every enemy spawns a drop, to save on a sub event :)"
 				},
 				{
 					"id": "spawn-another-object",
@@ -1319,7 +1325,7 @@
 		},
 		{
 			"aceType": "action",
-			"aceName": "tick_damageNumber2",
+			"aceName": "tick_damageNumber_reset",
 			"objectClass": "Enemy",
 			"functionDescription": "",
 			"functionCategory": "",

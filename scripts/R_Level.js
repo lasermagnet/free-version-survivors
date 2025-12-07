@@ -1,8 +1,8 @@
 export const Level = {
 
     "Map": { // dimensions
-        "Width": 2000,
-        "Height": 2000,
+        "Width": 1000,
+        "Height": 1000,
         "WallThickness": 200,
     },
 

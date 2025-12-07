@@ -38,8 +38,7 @@
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 909455077034720,
-					"disabled": true
+					"sid": 909455077034720
 				}
 			],
 			"actions": [
@@ -49,6 +48,15 @@
 					"script": [
 						"runtime.globalVars.rulesJSON = getRulesFromEditor() ?? JSON.stringify(rules)"
 					]
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 941873728969446,
+					"parameters": {
+						"type": "log",
+						"message": "\"Free Version Survivors build \" & projectversion"
+					}
 				},
 				{
 					"id": "go-to-layout",
@@ -61,6 +69,10 @@
 			],
 			"sid": 682356468105815,
 			"isOrBlock": true
+		},
+		{
+			"eventType": "comment",
+			"text": "todo_prod disable \"on start of layout\" condition"
 		}
 	],
 	"sid": 300998432203858

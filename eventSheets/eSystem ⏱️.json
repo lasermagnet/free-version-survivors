@@ -512,6 +512,11 @@
 				},
 				{
 					"id": "move-to-top",
+					"objectClass": "Wall",
+					"sid": 214827014962293
+				},
+				{
+					"id": "move-to-top",
 					"objectClass": "Weapon",
 					"sid": 354509360787089
 				},

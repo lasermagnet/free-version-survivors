@@ -2148,6 +2148,15 @@
 						"ping-pong": "no",
 						"repeat-count": "1"
 					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 375816683403526,
+					"parameters": {
+						"type": "log",
+						"message": "\"Starting wave \" & waveCount & \", ID: \" & waveId"
+					}
 				}
 			],
 			"sid": 554965157620194,
@@ -2180,6 +2189,34 @@
 						}
 					],
 					"sid": 828770595183893
+				},
+				{
+					"eventType": "comment",
+					"text": "Activate modifiers"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "Rules",
+							"sid": 191647997432297,
+							"parameters": {
+								"path": "KEY_Waves & DOT & waveId & DOT & KEY_ModifiersToApply"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "applyModifier",
+							"objectClass": "Player",
+							"sid": 495291969181479,
+							"parameters": [
+								"Rules.CurrentValue"
+							]
+						}
+					],
+					"sid": 613024219569827
 				}
 			]
 		},

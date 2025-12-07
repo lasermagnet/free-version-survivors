@@ -667,6 +667,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_ModifiersToApply",
+			"type": "string",
+			"initialValue": "ModifiersToApply",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 351280763027556
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_MovementAngle",
 			"type": "string",
 			"initialValue": "MovementAngle",

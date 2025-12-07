@@ -1,5 +1,8 @@
 /*
 
+Build 68
+- New feature: ability to activate a list of modifiers at the start of a wave. See ModifiersToApply in Waves.
+
 Build 67
 - Reworked knockback system: KncobackForceMultiplier is gone, now there's KnockbackSpeed that can be either null (or absent) so the weapon ha no knockback, set to zero so the weapon stops & blocks enemy movement but doesn't cause knockback, or a value that moves the enemy like MovementSpeed, but in the knockback's direction.
 

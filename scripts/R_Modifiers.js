@@ -21,10 +21,17 @@ export const Modifiers = {
     },
     "EnemyMovementSpeed": {
         "Label": "Faster enemies",
-        "Description": "Increase enemy movement speed.",
+        "Description": "Increase enemy movement speed by 10%.",
         "Icon": "Enemy",
         "Rule_Value": "Player.Bonus_Enemy_MovementSpeed_Multiplier",
         "Add": 0.1,
+    },
+    "EnemyMovementSpeedBig": {
+        "Label": "Much faster enemies",
+        "Description": "Increase enemy movement speed by 100%.",
+        "Icon": "Enemy",
+        "Rule_Value": "Player.Bonus_Enemy_MovementSpeed_Multiplier",
+        "Add": 1,
     },
     "EnemySpawnAmount": {
         "Label": "More enemies",

@@ -6,6 +6,7 @@ const _example = {
         "EnemySpawnPool": [[1, "Slime"]],       // list of enemies that can spawn (touple format: [weight, enemyName])
         "EnemySpawnFixed": { "Slime": 1 },      // a list of enemies to spawn at the start of the wave (format: {EnemyName: amount})
         "ItemSpawnPool": [[1, "Axe_Amount"]],   // a single item from this array will spawn at the start of the wave (touple format: [weight, modifierName])
+        "ModifiersToApply": ["EnemyMovementSpeedBig"], // modifiers to apply at the start of the wave
     }
 }
 
@@ -22,6 +23,7 @@ export const Waves = [
         "EnemySpawnPool": [[2, "Slime"], [1, "Rat"]],
         "EnemySpawnFixed": { "Slime_Boss": 2 },
         "ItemSpawnPool": [[1, "Axe_Amount"], [1, "Flame_Amount"]],
+        //"ModifiersToApply": ["EnemyMovementSpeedBig"],
     },
     {
         "Label": "Now some Crabs & Snakes. And a Tentacle.",
