@@ -597,9 +597,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_KnockbackForceMultiplier",
+			"name": "KEY_KnockbackSpeed",
 			"type": "string",
-			"initialValue": "KnockbackForceMultiplier",
+			"initialValue": "KnockbackSpeed",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,

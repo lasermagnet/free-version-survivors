@@ -90,7 +90,7 @@
 			"sid": 946684366164939
 		},
 		{
-			"name": "knockbackForceMultiplier",
+			"name": "knockbackSpeed",
 			"type": "number",
 			"desc": "",
 			"show": true,

@@ -18,7 +18,7 @@ const _example = {
         "PositionRandom2": 0,           // X/Y position randomization per weapon instance
         "RotationSpeed": 0,             // rotation speed for the Rotate behaviour
         "FreezeTime": 0,                // amount of time the weapon freezes an overlapping enemy
-        "KnockbackForceMultiplier": 0,  // 0: weapon has no knockback; >0: multiplier for enemy's movement speed to apply during knockback
+        "KnockbackSpeed": 0,            // null: weapon has no knockback; 0: weapon blocks enem movement; >0: weapon moves back enemies with given speed
         "KnockbackDuration": 0,         // length of knockback effect
     }
 }
@@ -35,7 +35,7 @@ export const Weapons = {
         "Duration": 4,
         "BulletSpeed": 100,
         "RotationSpeed": 300,
-        "KnockbackForceMultiplier": 3,
+        "KnockbackSpeed": 0,
         "KnockbackDuration": 0.1,
     },
     "Flame": {
@@ -47,7 +47,7 @@ export const Weapons = {
         "Scale": 0.65,
         "Duration": 0.7,
         "Pin": true,
-        "KnockbackForceMultiplier": 4,
+        "KnockbackSpeed": 1,
         "KnockbackDuration": 0.15,
     },
     "Chainsaw": {
@@ -60,7 +60,7 @@ export const Weapons = {
         "Pin": true,
         "OrbitRadius": 25,
         "OrbitSpeed": 200,
-        "KnockbackForceMultiplier": 3,
+        "KnockbackSpeed": 1.5,
         "KnockbackDuration": 0.1,
     },
     "Spikes": {
@@ -95,7 +95,7 @@ export const Weapons = {
         "Pin": true,
         "OrbitRadius": 5,
         "OrbitSpeed": 400,
-        "KnockbackForceMultiplier": 2,
+        "KnockbackSpeed": 2,
         "KnockbackDuration": 0.15,
     },
 }

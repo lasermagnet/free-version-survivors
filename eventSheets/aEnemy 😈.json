@@ -624,14 +624,14 @@
 							}
 						},
 						{
-							"id": "compare-value",
+							"id": "compare-type",
 							"objectClass": "Rules",
-							"sid": 166207322246293,
+							"sid": 362744493108446,
 							"parameters": {
-								"path": "KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackForceMultiplier",
-								"cmp": 4,
-								"value": "0"
-							}
+								"path": "KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackSpeed",
+								"type": "null"
+							},
+							"isInverted": true
 						},
 						{
 							"id": "is-timer-running",
@@ -670,8 +670,8 @@
 							"objectClass": "Enemy",
 							"sid": 805522782545225,
 							"parameters": {
-								"instance-variable": "knockbackForceMultiplier",
-								"value": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackForceMultiplier)"
+								"instance-variable": "knockbackSpeed",
+								"value": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackSpeed)"
 							}
 						},
 						{
@@ -1443,10 +1443,10 @@
 				{
 					"id": "apply-force-at-angle",
 					"objectClass": "Enemy",
-					"sid": 870263353263316,
+					"sid": 833686659136932,
 					"behaviorType": "Physics",
 					"parameters": {
-						"force": "Self.Timer.NormalizedProgress(TIMER_Knockback) > 0 ?\nSelf.movementSpeed * Self.Physics.Mass * Self.knockbackForceMultiplier :\nSelf.movementSpeed * Self.Physics.Mass\n",
+						"force": "Self.Timer.NormalizedProgress(TIMER_Knockback) > 0 ?\nSelf.knockbackSpeed * Self.Physics.Mass :\nSelf.movementSpeed * Self.Physics.Mass\n",
 						"angle": "Self.Timer.NormalizedProgress(TIMER_Knockback) > 0 ?\nSelf.knockbackAngle :\n(\n  Self.movementAngle = NOTHING ?\n  angle(Self.X, Self.Y, Player.X, Player.Y) :\n  Self.movementAngle\n)",
 						"image-point": "0"
 					}

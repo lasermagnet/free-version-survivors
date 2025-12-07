@@ -10,7 +10,7 @@ import { basicDark } from "https://esm.sh/@fsegurai/codemirror-theme-basic-dark@
 import { rules } from "./_rules.js"
 
 runOnStartup(async runtime => {
-	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));
+	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime))
 });
 
 async function OnBeforeProjectStart(runtime) {
