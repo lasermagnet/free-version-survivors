@@ -179,7 +179,8 @@
 						"movementAngle": -1,
 						"initAnimationSpeed": 0,
 						"knockbackAngle": 0,
-						"knockbackForceMultiplier": 0
+						"knockbackForceMultiplier": 0,
+						"isFar": 0
 					},
 					"behaviors": {
 						"Physics": {

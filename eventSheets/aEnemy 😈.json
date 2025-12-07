@@ -26,6 +26,7 @@
 					"sid": 244649095207517
 				}
 			],
+			"bookmark": true,
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
@@ -65,6 +66,15 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
+					"sid": 794235840122969,
+					"parameters": {
+						"variable": "randomAxis",
+						"value": "choose(X, Y)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
 					"sid": 312023686957999,
 					"parameters": {
 						"variable": "enemy",
@@ -92,6 +102,7 @@
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 696672729878055,
+					"disabled": true,
 					"parameters": {
 						"object-to-create": "Enemy",
 						"layer": "LAYER_Main",
@@ -99,6 +110,47 @@
 						"y": "Player.Y + sin(randomAngle) * Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)",
 						"create-hierarchy": true,
 						"template-name": "\"\""
+					}
+				},
+				{
+					"type": "comment",
+					"text": "todo_now"
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 616509476269963,
+					"disabled": true,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "LAYER_Main",
+						"x": "Player.X + (randomAxis = X ? random(-C_Enemy_DistanceFromEdge_Minimum, ViewportWidth(LAYER_UI) + C_Enemy_DistanceFromEdge_Minimum) : choose(-1, 1) * (ViewportWidth(LAYER_UI) * 0.5 + C_Enemy_DistanceFromEdge_Minimum))",
+						"y": "Player.Y + (randomAxis = Y ? random(-C_Enemy_DistanceFromEdge_Minimum, ViewportHeight(LAYER_UI) + C_Enemy_DistanceFromEdge_Minimum) : choose(-1, 1) * (ViewportHeight(LAYER_UI) * 0.5 + C_Enemy_DistanceFromEdge_Minimum))",
+						"create-hierarchy": true,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 810351641027381,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "LAYER_Main",
+						"x": "Player.X + (randomAxis = X ? random(OriginalViewportWidth * -0.5 - C_Enemy_DistanceFromEdge_Minimum, OriginalViewportWidth * 0.5 + C_Enemy_DistanceFromEdge_Minimum) : choose(-1, 1) * (OriginalViewportWidth * 0.5 + C_Enemy_DistanceFromEdge_Minimum))",
+						"y": "Player.Y + (randomAxis = Y ? random(OriginalViewportHeight * -0.5 - C_Enemy_DistanceFromEdge_Minimum, OriginalViewportHeight * 0.5 + C_Enemy_DistanceFromEdge_Minimum) : choose(-1, 1) * (OriginalViewportHeight * 0.5 + C_Enemy_DistanceFromEdge_Minimum))",
+						"create-hierarchy": true,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 933778217917893,
+					"disabled": true,
+					"parameters": {
+						"type": "log",
+						"message": "\"Enemy spawned at \" & Enemy.X & \", \" & Enemy.Y"
 					}
 				},
 				{
@@ -375,6 +427,7 @@
 			"functionCopyPicked": false,
 			"functionIsAsync": false,
 			"functionParameters": [],
+			"bookmark": true,
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
@@ -391,6 +444,7 @@
 					"id": "pick-by-comparison",
 					"objectClass": "System",
 					"sid": 910916037246637,
+					"disabled": true,
 					"parameters": {
 						"object": "Enemy",
 						"expression": "distance(Player.X, Player.Y, Enemy.X, Enemy.Y)",
@@ -399,9 +453,18 @@
 					}
 				},
 				{
+					"id": "pick-by-evaluate",
+					"objectClass": "System",
+					"sid": 761196684031449,
+					"parameters": {
+						"object": "Enemy",
+						"expression": "Enemy.X < Player.X - OriginalViewportWidth * 0.5 - C_Enemy_DistanceFromEdge_Maximum |\nEnemy.X > Player.X + OriginalViewportWidth * 0.5 + C_Enemy_DistanceFromEdge_Maximum |\nEnemy.Y < Player.Y - OriginalViewportHeight * 0.5 - C_Enemy_DistanceFromEdge_Maximum |\r\nEnemy.Y > Player.Y + OriginalViewportHeight * 0.5 + C_Enemy_DistanceFromEdge_Maximum\n"
+					}
+				},
+				{
 					"id": "for-each",
 					"objectClass": "System",
-					"sid": 737710676853525,
+					"sid": 411812908810735,
 					"parameters": {
 						"object": "Enemy"
 					}
@@ -422,13 +485,57 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "todo_now use edge positioning"
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 353821579744548,
+					"parameters": {
+						"type": "log",
+						"message": "\"Teleporting enemy\""
+					}
+				},
+				{
 					"id": "teleport",
 					"objectClass": "Enemy",
 					"sid": 864911433032877,
+					"disabled": true,
 					"behaviorType": "Physics",
 					"parameters": {
 						"x": "Player.X + cos(randomAngle) * Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)",
 						"y": "Player.Y + sin(randomAngle) * Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 625943402633164,
+					"parameters": {
+						"variable": "randomAxis",
+						"value": "choose(X, Y)"
+					}
+				},
+				{
+					"id": "teleport",
+					"objectClass": "Enemy",
+					"sid": 704619502091439,
+					"disabled": true,
+					"behaviorType": "Physics",
+					"parameters": {
+						"x": "Player.X + (randomAxis = X ? random(-C_Enemy_DistanceFromEdge_Minimum, ViewportWidth(LAYER_UI) + C_Enemy_DistanceFromEdge_Minimum) : choose(-1, 1) * (ViewportWidth(LAYER_UI) * 0.5 + C_Enemy_DistanceFromEdge_Minimum))",
+						"y": "Player.Y + (randomAxis = Y ? random(-C_Enemy_DistanceFromEdge_Minimum, ViewportHeight(LAYER_UI) + C_Enemy_DistanceFromEdge_Minimum) : choose(-1, 1) * (ViewportHeight(LAYER_UI) * 0.5 + C_Enemy_DistanceFromEdge_Minimum))"
+					}
+				},
+				{
+					"id": "teleport",
+					"objectClass": "Enemy",
+					"sid": 128679016041737,
+					"behaviorType": "Physics",
+					"parameters": {
+						"x": "Player.X + (randomAxis = X ? random(OriginalViewportWidth * -0.5 - C_Enemy_DistanceFromEdge_Minimum, OriginalViewportWidth * 0.5 + C_Enemy_DistanceFromEdge_Minimum) : choose(-1, 1) * (OriginalViewportWidth * 0.5 + C_Enemy_DistanceFromEdge_Minimum))",
+						"y": "Player.Y + (randomAxis = Y ? random(OriginalViewportHeight * -0.5 - C_Enemy_DistanceFromEdge_Minimum, OriginalViewportHeight * 0.5 + C_Enemy_DistanceFromEdge_Minimum) : choose(-1, 1) * (OriginalViewportHeight * 0.5 + C_Enemy_DistanceFromEdge_Minimum))"
 					}
 				}
 			],

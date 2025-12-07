@@ -61,6 +61,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "randomAxis",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 742437369690954
+		},
+		{
+			"eventType": "variable",
 			"name": "enemiesKilled",
 			"type": "number",
 			"initialValue": "0",

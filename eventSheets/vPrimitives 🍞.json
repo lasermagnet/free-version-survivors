@@ -106,6 +106,30 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 155267692094566
+		},
+		{
+			"eventType": "comment",
+			"text": "Shorthands"
+		},
+		{
+			"eventType": "variable",
+			"name": "X",
+			"type": "string",
+			"initialValue": "X",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 598244203133357
+		},
+		{
+			"eventType": "variable",
+			"name": "Y",
+			"type": "string",
+			"initialValue": "Y",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 506148963340607
 		}
 	],
 	"sid": 960553029824070

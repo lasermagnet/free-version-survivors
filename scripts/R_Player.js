@@ -9,7 +9,7 @@ export const Player = {
     "Experience_Target_Multiplier": 1.2, // experience target is multiplied by this value when leveling up
 
     // Movement
-    "MovementSpeed": 70, // movement speed for the 8 Direction behaviour
+    "MovementSpeed": 60, // movement speed for the 8 Direction behaviour
 
     // Misc
     "PickupDistance": 30,         // starting / current drop pickup distance of the player

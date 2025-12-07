@@ -7,8 +7,8 @@ export const Level = {
     },
 
     "Distance": {
-        "EnemySpawn": 220,     // radius of the "spawn circle": distance of spawning enemies from the player
-        "EnemyTeleport": 280,  // when an enemy is farther then this from the player, it will be teleported closer (to enemy spawn distance)
+        "EnemySpawn": 220,     // enemies spawn off-screen at this distance perpendicular to one of the edges
+        "EnemyTeleport": 280,  // enemies farther from a screen edge than this will be teleported closer (to enemy spawn distance)
         "ItemSpawnMinimum": 35 // minimum distance of item spawns (when an enemy dies) from the player
     },
 

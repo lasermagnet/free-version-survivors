@@ -95,6 +95,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 802435953299236
+		},
+		{
+			"name": "isFar",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 391290845555805
 		}
 	],
 	"behaviorTypes": [
