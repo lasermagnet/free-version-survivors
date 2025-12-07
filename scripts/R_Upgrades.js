@@ -1,4 +1,4 @@
-const _template = {
+const _example = {
     "": {
         "Modifiers": [],
         "Modifiers_Infinite": [],
@@ -16,7 +16,7 @@ export const Upgrades = {
         "Modifiers_Infinite": ["Axe_Damage_Extra"],
     },
     "Flame": {
-        "Modifiers": ["Flame_Amount", "Flame_Timeout", "Flame_Amount", "Flame_Timeout", "Flame_Amount", "Flame_Timeout"],
+        "Modifiers": ["Flame_Amount", "Flame_Duration", "Flame_Amount", "Flame_Duration", "Flame_Amount", "Flame_Duration"],
         //"Modifiers_Infinite": [],
     },
     "Chainsaw": {
@@ -29,7 +29,7 @@ export const Upgrades = {
     },
 
     // Player stats
-    // todo_maybe use usage limit for "simple" upgrades? or group them together?
+    // todo_maybe number based usage limit for "simple" upgrades? or group them together?
     "EnemySpawnAmount": {
         "Modifiers_Infinite": ["EnemySpawnAmount"]
     },
@@ -42,6 +42,9 @@ export const Upgrades = {
     },
     "HealingBonus": {
         "Modifiers": ["HealingBonus", "HealingBonus", "HealingBonus", "HealingBonus"],
+    },
+    "ExperienceBonus": {
+        "Modifiers_Infinite": ["ExperienceBonus"],
     },
     "MovementSpeed": {
         "Modifiers": ["MovementSpeed", "MovementSpeed", "MovementSpeed", "MovementSpeed"],

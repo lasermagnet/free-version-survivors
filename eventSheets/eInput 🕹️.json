@@ -133,6 +133,25 @@
 						"gamepad": "0",
 						"button": "start-menu"
 					}
+				},
+				{
+					"id": "on-touched-object",
+					"objectClass": "Touch",
+					"sid": 273556184073618,
+					"parameters": {
+						"object": "UI_TextSF_PauseButton",
+						"type": "start"
+					}
+				},
+				{
+					"id": "on-object-clicked",
+					"objectClass": "Mouse",
+					"sid": 277123666272054,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked",
+						"object-clicked": "UI_TextSF_PauseButton"
+					}
 				}
 			],
 			"actions": [

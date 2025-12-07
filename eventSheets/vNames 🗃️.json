@@ -817,9 +817,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Timeout",
+			"name": "KEY_Duration",
 			"type": "string",
-			"initialValue": "Timeout",
+			"initialValue": "Duration",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,

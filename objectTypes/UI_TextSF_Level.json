@@ -1,7 +1,7 @@
 {
-	"name": "UI_TextSF_GameOver",
+	"name": "UI_TextSF_Level",
 	"plugin-id": "Spritefont2",
-	"sid": 753959433213748,
+	"sid": 419991242353870,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
@@ -16,7 +16,7 @@
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 4596471,
+		"imageSpriteId": 6420263,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

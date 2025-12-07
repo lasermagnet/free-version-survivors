@@ -339,6 +339,18 @@
 				},
 				{
 					"type": "comment",
+					"text": "Update player level UI"
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_Level",
+					"sid": 451451673435394,
+					"parameters": {
+						"text": "\"LVL \" & Player.level"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Process player input"
 				},
 				{

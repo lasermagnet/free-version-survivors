@@ -169,12 +169,12 @@ export const Modifiers = {
         "Multiply": 1,
         "Add": 1,
     },
-    "Flame_Timeout": {
+    "Flame_Duration": {
         "Weapon": "Flame",
         "Label": "Flame: fuel up",
         "Description": "Flames last longer.",
         "Icon": "Flame",
-        "Rule_Value": "Weapons.Flame.Timeout",
+        "Rule_Value": "Weapons.Flame.Duration",
         "Multiply": 1,
         "Add": 0.5,
     },

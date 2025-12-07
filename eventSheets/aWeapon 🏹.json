@@ -96,7 +96,7 @@
 					"sid": 905515065786839
 				},
 				{
-					"name": "timeout",
+					"name": "duration",
 					"type": "number",
 					"initialValue": "0",
 					"comment": "",
@@ -292,7 +292,7 @@
 						"tags": "TWEEN_Projectile_Opacity_Lifetime",
 						"property": "offsetOpacity",
 						"end-value": "0",
-						"time": "timeout",
+						"time": "duration",
 						"ease": "easeinexpo",
 						"destroy-on-complete": "yes",
 						"loop": "no",

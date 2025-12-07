@@ -1,9 +1,9 @@
 export const Pools = {
     // todo_maybe move to level?
-    "Upgrades": [
+    "Upgrades": [ // list of upgrades that can come up when the player levels up (touple format: [weight, upgradeName])
 
         // One-off
-        [1*100, "HealAll"],
+        [1, "HealAll"],
 
         //  Weapons
         [1, "Axe"],

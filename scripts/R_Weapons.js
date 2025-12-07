@@ -1,14 +1,14 @@
-const _template = {
+const _example = {
     "": {
-        "BlockMovement": 1,
-        "Cooldown": 2,
-        "Amount": 0,
-        "Damage": 0,
+        "BlockMovement": false, // whether a weapon blocks movement of overlapping enemies
+        "Cooldown": 2, // seconds, the weapon attacks at this interval
+        "Amount": 0, // 
+        "Damage": 0, // damage per second while weapon is overlapping an enemy
         "PierceLimit": 1,
         "AngleOffset": 0,
         "Scale": 1,
         "StaticAngle": null,
-        "Timeout": 4,
+        "Duration": 1, // seconds, defines the lifetime of a weapon (fades out at the end)
         "MovementSpeed": 0,
         "MovementAcceleration": 0,
         "Pin": 0,
@@ -23,36 +23,36 @@ const _template = {
 
 export const Weapons = {
     "Axe": {
-        "BlockMovement": 1,
+        "BlockMovement": true,
         "Cooldown": 1.5,
         "Amount": 1,
         "Damage": 30,
         "PierceLimit": 2,
         "AngleOffset": -45,
         "Scale": 0.5,
-        "Timeout": 4,
+        "Duration": 4,
         "MovementSpeed": 100,
         "RotationSpeed": 300,
     },
     "Flame": {
-        "BlockMovement": 1,
+        "BlockMovement": true,
         "Cooldown": 3,
         "Amount": 0,
         "Damage": 25,
         "PierceLimit": 1000,
         "AngleOffset": 45,
         "Scale": 0.65,
-        "Timeout": 0.7,
+        "Duration": 0.7,
         "Pin": 1,
     },
     "Chainsaw": {
-        "BlockMovement": 1,
+        "BlockMovement": true,
         "Cooldown": 5,
         "Amount": 0,
         "Damage": 20,
         "PierceLimit": 1000,
         "Scale": 0.5,
-        "Timeout": 4,
+        "Duration": 4,
         "Pin": 1,
         "OrbitRadius": 25,
         "OrbitSpeed": 200,
@@ -64,7 +64,7 @@ export const Weapons = {
         "PierceLimit": 1000,
         "Scale": 0.5,
         "StaticAngle": 10,
-        "Timeout": 3,
+        "Duration": 3,
         "PositionRandom1": 40,
         "PositionRandom2": 30,
     },

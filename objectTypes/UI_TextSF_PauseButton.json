@@ -1,7 +1,7 @@
 {
-	"name": "UI_TextSF_GameOver",
+	"name": "UI_TextSF_PauseButton",
 	"plugin-id": "Spritefont2",
-	"sid": 753959433213748,
+	"sid": 189185349791537,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
@@ -16,7 +16,7 @@
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 4596471,
+		"imageSpriteId": 9297143,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

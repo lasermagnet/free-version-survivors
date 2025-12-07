@@ -1,10 +1,12 @@
-const _template = {
-    "Name": "WaveTemplate",
-    "EnemyAmount": 10,
-    "Time": 10,
-    "EnemySpawnPool": [[1, "Slime"]],
-    "EnemySpawnFixed": { "Slime": 1 },
-    "ItemSpawnPool": [[1, "Axe_Amount"]],
+const _example = {
+    "": {
+        "Name": "WaveTemplate", // title of the wave that shows on the UI at its start
+        "EnemyAmount": 10, // amount of enemies to spawn from the pool
+        "Time": 10, // length of the wave in seconds
+        "EnemySpawnPool": [[1, "Slime"]], // list of enemies that can spawn (touple format: [weight, enemyName])
+        "EnemySpawnFixed": { "Slime": 1 }, // a list of enemies to spawn at the start of the wave (format: {EnemyName: amount})
+        "ItemSpawnPool": [[1, "Axe_Amount"]], // a single item from this array will spawn at the start of the wave (touple format: [weight, modifierName])
+    }
 }
 
 export const Waves = [

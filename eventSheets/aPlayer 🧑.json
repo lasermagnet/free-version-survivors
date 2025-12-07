@@ -844,7 +844,7 @@
 								"Rules.Get(DOT & KEY_MovementSpeed)",
 								"Rules.Get(DOT & KEY_MovementAcceleration)",
 								"Rules.Get(DOT & KEY_Damage)",
-								"Rules.Get(DOT & KEY_Timeout)",
+								"Rules.Get(DOT & KEY_Duration)",
 								"Rules.Get(DOT & KEY_BlockMovement) = NO ? NO : YES",
 								"Rules.Get(DOT & KEY_Pin) = NO ? NO : YES",
 								"Rules.Get(DOT & KEY_OrbitRadius)",

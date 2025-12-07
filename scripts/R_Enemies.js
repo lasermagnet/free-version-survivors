@@ -1,11 +1,11 @@
-const _template = {
+const _example = {
     "": {
         "Container": 0, // containers don't spawn items (only drops)
-        "Health": 1,
-        "Damage": 0,
+        "Health": 1, // starting health
+        "Damage": 0, // damage per second while weapon is overlapping the player
         "Healing": 0, // healing drop value
         "Experience": 0, // experience drop value
-        "MovementSpeed": 0,
+        "MovementSpeed": 0, // movement speed
         "MovementAngle": null, // if specified, enemy will move in this angle; -1 value is not supported
     }
 }
