@@ -5,8 +5,8 @@ export const Level = {
         "WallThickness": 200,
     },
     "Distance": {
-        "EnemySpawn": 240, // radius of the "spawn circle": distance of spawning enemies from the player
-        "EnemyTeleport": 300, // when an enemy is farther then this from the player, it will be teleported closer (on the "spawn circle")
+        "EnemySpawn": 200, // radius of the "spawn circle": distance of spawning enemies from the player
+        "EnemyTeleport": 280, // when an enemy is farther then this from the player, it will be teleported closer (on the "spawn circle")
         "ItemSpawnMinimum": 35 // minimum distance of item spawns (when an enemy dies) from the player
     },
     "WaveLoopTo": 7, // when no waves are left, jump back to this wave and repeat all subsequent ones too

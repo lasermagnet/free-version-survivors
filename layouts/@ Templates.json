@@ -56,9 +56,9 @@
 					"locked": false,
 					"world": {
 						"x": 37,
-						"y": 32,
-						"width": 18,
-						"height": 18,
+						"y": 34,
+						"width": 12,
+						"height": 12,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -621,7 +621,7 @@
 					}
 				},
 				{
-					"type": "UI_TextSF_DamageNumber",
+					"type": "UI_TextSF_Damage",
 					"properties": {
 						"text": "1234567",
 						"enable-bbcode": true,

@@ -110,6 +110,16 @@
 			"sid": 529489209798016
 		},
 		{
+			"eventType": "variable",
+			"name": "timePassed",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 500098607238649
+		},
+		{
 			"eventType": "comment",
 			"text": "Data"
 		},

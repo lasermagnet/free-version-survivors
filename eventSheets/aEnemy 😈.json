@@ -69,6 +69,10 @@
 					"text": "Spawn enemy object"
 				},
 				{
+					"type": "comment",
+					"text": "todo make sure enemies don't spawn outside the \"ground\" or at least teleport non-moving enemies somewhere on the ground, ideally out of sight"
+				},
+				{
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 696672729878055,
@@ -221,7 +225,7 @@
 					"objectClass": "Enemy",
 					"sid": 360507637327988,
 					"parameters": {
-						"color": "Self.Timer.CurrentTime(TIMER_Enemy_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)"
+						"color": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)"
 					}
 				},
 				{
@@ -382,7 +386,7 @@
 							"parameters": {
 								"duration": "C_Damage_Flash_Interval",
 								"type": "once",
-								"tag": "Self.Timer.CurrentTime(TIMER_Enemy_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_Enemy_FlashOff) = 0\n? TIMER_Enemy_FlashOn : EMPTY"
+								"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOn : EMPTY"
 							}
 						},
 						{
@@ -393,7 +397,7 @@
 							"parameters": {
 								"duration": "C_Damage_Flash_Interval * 2",
 								"type": "once",
-								"tag": "Self.Timer.CurrentTime(TIMER_Enemy_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_Enemy_FlashOff) = 0\n? TIMER_Enemy_FlashOff : EMPTY"
+								"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
 							}
 						},
 						{
@@ -565,7 +569,7 @@
 									"objectClass": "Enemy",
 									"sid": 784961018944364,
 									"parameters": {
-										"object": "UI_TextSF_DamageNumber",
+										"object": "UI_TextSF_Damage",
 										"layer": "Enemy.LayerName",
 										"image-point": "IP_Enemy_DamageNumber",
 										"create-hierarchy": false,
@@ -574,7 +578,7 @@
 								},
 								{
 									"id": "set-x",
-									"objectClass": "UI_TextSF_DamageNumber",
+									"objectClass": "UI_TextSF_Damage",
 									"sid": 380455576936530,
 									"parameters": {
 										"x": "Self.X + 1"
@@ -585,7 +589,7 @@
 									"objectClass": "Enemy",
 									"sid": 697475773580818,
 									"parameters": {
-										"child": "UI_TextSF_DamageNumber",
+										"child": "UI_TextSF_Damage",
 										"transform-x": false,
 										"transform-y": false,
 										"transform-w": false,
@@ -599,7 +603,7 @@
 								},
 								{
 									"id": "tween-two-properties",
-									"objectClass": "UI_TextSF_DamageNumber",
+									"objectClass": "UI_TextSF_Damage",
 									"sid": 834186605828245,
 									"behaviorType": "Tween",
 									"parameters": {
@@ -617,7 +621,7 @@
 								},
 								{
 									"id": "tween-one-property",
-									"objectClass": "UI_TextSF_DamageNumber",
+									"objectClass": "UI_TextSF_Damage",
 									"sid": 419833251111041,
 									"behaviorType": "Tween",
 									"parameters": {
@@ -634,7 +638,7 @@
 								},
 								{
 									"id": "set-visible",
-									"objectClass": "UI_TextSF_DamageNumber",
+									"objectClass": "UI_TextSF_Damage",
 									"sid": 435503946897832,
 									"parameters": {
 										"visibility": "visible"
@@ -642,7 +646,7 @@
 								},
 								{
 									"id": "set-text",
-									"objectClass": "UI_TextSF_DamageNumber",
+									"objectClass": "UI_TextSF_Damage",
 									"sid": 676689008390364,
 									"parameters": {
 										"text": "round(Enemy.damageTakenRecently)"

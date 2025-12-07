@@ -318,6 +318,18 @@
 				},
 				{
 					"type": "comment",
+					"text": "Update time UI"
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_Time",
+					"sid": 398807224167392,
+					"parameters": {
+						"text": "(timePassed / 3600 >= 1 ? int(timePassed / 3600) & \":\" : \"\") & zeropad(int(timePassed / 60), 2) & \":\" & zeropad((int(timePassed) % 60), 2)"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Update experience bar & text"
 				},
 				{
@@ -331,9 +343,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_Experience",
-					"sid": 327795640325862,
+					"sid": 656631882821951,
 					"parameters": {
-						"text": "Player.experience & \" / \" & Rules.Get(KEY_Player & DOT & KEY_Experience_Target) & newline & KEY_Experience"
+						"text": "Player.experience & \" / \" & Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
 					}
 				},
 				{
@@ -420,7 +432,7 @@
 				},
 				{
 					"id": "set-scale",
-					"objectClass": "UI_TextSF_DamageNumber",
+					"objectClass": "UI_TextSF_Damage",
 					"sid": 603707266467517,
 					"parameters": {
 						"scale": "Self.Tween.Value(TWEEN_UI_TextSF_DamageNumber_Scale) = 0 ? Self.CharacterScale : Self.Tween.Value(TWEEN_UI_TextSF_DamageNumber_Scale)"

@@ -206,7 +206,7 @@
 			"Editor",
 			"UI_Button9P_Upgrade",
 			"UI_Rectangle",
-			"UI_TextSF_DamageNumber",
+			"UI_TextSF_Damage",
 			"Icon",
 			"UI_Vignette9P",
 			"PlayerHurtbox",
@@ -217,7 +217,8 @@
 			"UI_TextSF_Start",
 			"UI_TextSF_GameOver",
 			"UI_TextSF_Wave",
-			"UI_TextSF_Paused"
+			"UI_TextSF_Pause",
+			"UI_TextSF_Time"
 		],
 		"subfolders": []
 	},
@@ -526,7 +527,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "41",
+		"version": "42",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

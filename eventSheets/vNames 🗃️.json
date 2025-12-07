@@ -947,7 +947,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TIMER_Enemy_FlashOn",
+			"name": "TIMER_FlashOn",
 			"type": "string",
 			"initialValue": "FlashOn",
 			"comment": "",
@@ -957,7 +957,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TIMER_Enemy_FlashOff",
+			"name": "TIMER_FlashOff",
 			"type": "string",
 			"initialValue": "FlashOff",
 			"comment": "",

@@ -142,7 +142,7 @@
 			"actions": [
 				{
 					"id": "set-visible",
-					"objectClass": "UI_TextSF_Paused",
+					"objectClass": "UI_TextSF_Pause",
 					"sid": 984196809538558,
 					"parameters": {
 						"visibility": "visible"
@@ -159,7 +159,7 @@
 				},
 				{
 					"id": "set-opacity",
-					"objectClass": "UI_TextSF_Paused",
+					"objectClass": "UI_TextSF_Pause",
 					"sid": 272792598130707,
 					"parameters": {
 						"opacity": "isPaused ? 100 : 0"

@@ -21,7 +21,7 @@ export const Weapons = {
         "BlockMovement": 1,
         "Cooldown": 1.5,
         "Amount": 1,
-        "Damage": 15,
+        "Damage": 30,
         "PierceLimit": 2,
         "AngleOffset": -45,
         "Scale": 0.5,
