@@ -696,7 +696,7 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Weapon",
-									"sid": 531761600235457,
+									"sid": 445240433838427,
 									"parameters": [
 										"Rules.CurrentKey",
 										"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
@@ -704,7 +704,8 @@
 										"Rules.Get(DOT & KEY_AngleOffset)",
 										"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
 										"Rules.Type(DOT & KEY_StaticAngle) = NULL ? EMPTY : str(Rules.Get(DOT & KEY_StaticAngle))",
-										"Rules.Get(DOT & KEY_PositionRandom1)",
+										"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
+										"random(-Rules.Get(DOT & KEY_PositionRandom1), Rules.Get(DOT & KEY_PositionRandom1))",
 										"Rules.Get(DOT & KEY_PositionRandom2)",
 										"Rules.Get(DOT & KEY_MovementSpeed)",
 										"Rules.Get(DOT & KEY_MovementAcceleration)",
@@ -933,7 +934,6 @@
 					"sid": 622273281678330,
 					"children": [
 						{
-							"bookmark": true,
 							"eventType": "block",
 							"conditions": [
 								{

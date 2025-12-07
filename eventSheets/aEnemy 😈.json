@@ -244,7 +244,6 @@
 					"text": "Teleport far away [moving] enemies near the player"
 				},
 				{
-					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -303,6 +302,10 @@
 				{
 					"eventType": "comment",
 					"text": "Enemy getting damaged"
+				},
+				{
+					"eventType": "comment",
+					"text": "todo rework damage stuff, maybe use one-off damage type & dt based type too?"
 				},
 				{
 					"eventType": "block",
@@ -411,6 +414,10 @@
 					"children": [
 						{
 							"eventType": "comment",
+							"text": "todo_fix foreach weapons so all of them deal damage to the enemy"
+						},
+						{
+							"eventType": "comment",
 							"text": "Check projectile piercing limit & destroy projectile if reached"
 						},
 						{
@@ -513,6 +520,10 @@
 						{
 							"eventType": "comment",
 							"text": "If enemy received at least 1 damage and there's no damage number spawned, spawn a damage number"
+						},
+						{
+							"eventType": "comment",
+							"text": "todo rework damage number stuff so it updates"
 						},
 						{
 							"eventType": "block",

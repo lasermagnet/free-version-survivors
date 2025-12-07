@@ -216,7 +216,8 @@
 			"Mouse",
 			"UI_TextSF_Start",
 			"UI_TextSF_GameOver",
-			"UI_TextSF_Wave"
+			"UI_TextSF_Wave",
+			"UI_TextSF_Paused"
 		],
 		"subfolders": []
 	},
@@ -525,7 +526,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "40",
+		"version": "41",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

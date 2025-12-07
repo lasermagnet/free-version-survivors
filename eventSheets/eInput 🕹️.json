@@ -141,12 +141,28 @@
 			],
 			"actions": [
 				{
+					"id": "set-visible",
+					"objectClass": "UI_TextSF_Paused",
+					"sid": 984196809538558,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
 					"sid": 898095459607257,
 					"parameters": {
 						"variable": "isPaused",
 						"value": "isLeveling = YES ? isPaused : (isPaused = YES ? NO : YES)"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_TextSF_Paused",
+					"sid": 272792598130707,
+					"parameters": {
+						"opacity": "isPaused ? 100 : 0"
 					}
 				},
 				{

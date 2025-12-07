@@ -12,7 +12,7 @@ export const Waves = [ // todo_maybe remove spawn cooldown and just use a fixed 
         "Name": "And now: Slimes & Rats!",
         "EnemySpawnCycles": 20,
         "EnemySpawnCooldown": 3,
-        "EnemySpawnAmountPerWave": 100,
+        "EnemySpawnAmountPerWave": 200,
         "EnemySpawnPool": [[40, "Slime"], [20, "Rat"]],
         "EnemySpawnFixed": {},
         "ItemSpawnPool": [[1, "Axe"], [1, "Flame"]],

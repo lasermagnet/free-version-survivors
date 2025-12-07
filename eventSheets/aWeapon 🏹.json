@@ -54,14 +54,21 @@
 					"sid": 653479383884895
 				},
 				{
-					"name": "positionRandom1",
+					"name": "positionOffsetX",
 					"type": "number",
 					"initialValue": "0",
 					"comment": "",
 					"sid": 370468262071908
 				},
 				{
-					"name": "positionRandom2",
+					"name": "positionOffsetY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 705246079871083
+				},
+				{
+					"name": "positionRandom",
 					"type": "number",
 					"initialValue": "0",
 					"comment": "",
@@ -149,8 +156,8 @@
 					"parameters": {
 						"object-to-create": "Weapon",
 						"layer": "LAYER_Main",
-						"x": "Player.X + random(-positionRandom2, positionRandom2) + positionRandom1",
-						"y": "Player.Y + random(-positionRandom2, positionRandom2) + positionRandom1",
+						"x": "Player.X + random(-positionRandom, positionRandom) + positionOffsetX",
+						"y": "Player.Y + random(-positionRandom, positionRandom) + positionOffsetX",
 						"create-hierarchy": false,
 						"template-name": "\"\""
 					}
