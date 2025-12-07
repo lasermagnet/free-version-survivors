@@ -1,0 +1,286 @@
+{
+	"name": "aEnemy 😈",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "spawn_randomSize",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 208214625529194
+		},
+		{
+			"eventType": "variable",
+			"name": "spawn_randomAngle",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 853079015252439
+		},
+		{
+			"aceType": "action",
+			"aceName": "spawnFromQueue",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 297305239815305,
+					"parameters": {
+						"variable": "spawn_queue",
+						"comparison": 4,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 375273697513207,
+					"parameters": {
+						"variable": "spawn_queue",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 361829937226822,
+					"parameters": {
+						"variable": "spawn_randomAngle",
+						"value": "random(0, 360)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 770180229278679,
+					"disabled": true,
+					"parameters": {
+						"variable": "spawn_randomSize",
+						"value": "random(R_Spawn_RandomSize_Min, R_Spawn_RandomSize_Max)"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 579439788878911,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "LAYER_Main",
+						"x": "Player.X + cos(spawn_randomAngle) * R_Spawn_Distance",
+						"y": "Player.Y + sin(spawn_randomAngle) * R_Spawn_Distance",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "Enemy",
+					"sid": 379658397591023,
+					"parameters": {
+						"frame-number": "random(0, Self.AnimationFrameCount)"
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "Enemy",
+					"sid": 340816504532596,
+					"disabled": true,
+					"parameters": {
+						"width": "spawn_randomSize",
+						"height": "spawn_randomSize"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 199700904927235,
+					"parameters": {
+						"instance-variable": "health",
+						"value": "Self.R_Health_Init"
+					}
+				}
+			],
+			"sid": 418646961252127
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 169438741384102,
+					"parameters": {
+						"instance-variable": "isDead",
+						"comparison": 0,
+						"value": "NO"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 323244324797060,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "Enemy",
+							"sid": 807314407853475,
+							"parameters": {
+								"object": "Projectile"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Enemy",
+							"sid": 530097498294054,
+							"parameters": {
+								"instance-variable": "health",
+								"value": "Projectile.R_Damage * dt"
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "Enemy",
+							"sid": 485879420803582,
+							"parameters": {
+								"color": "rgbEx(500, 500, 500)"
+							}
+						}
+					],
+					"sid": 465104577973746,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemy",
+									"sid": 404823882277430,
+									"parameters": {
+										"instance-variable": "health",
+										"comparison": 3,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Enemy",
+									"sid": 402986492608939,
+									"parameters": {
+										"instance-variable": "isDead",
+										"value": "YES"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "Enemy",
+									"sid": 228016190127938,
+									"behaviorType": "Physics",
+									"parameters": {
+										"mode": "disabled"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "Enemy",
+									"sid": 331735849961764,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "offsetOpacity",
+										"end-value": "0",
+										"time": "0.5",
+										"ease": "easeinoutcubic",
+										"destroy-on-complete": "yes",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "spawn-another-object",
+									"objectClass": "Enemy",
+									"sid": 304212795716647,
+									"parameters": {
+										"object": "Drop",
+										"layer": "LAYER_Main",
+										"image-point": "0",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								}
+							],
+							"sid": 158259314566033
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "Enemy",
+							"sid": 446909647721359,
+							"parameters": {
+								"object": "Projectile"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "apply-force-towards-position",
+							"objectClass": "Enemy",
+							"sid": 560607462081055,
+							"behaviorType": "Physics",
+							"parameters": {
+								"force": "1",
+								"x": "Player.X",
+								"y": "Player.Y",
+								"image-point": "0"
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "Enemy",
+							"sid": 928884212976278,
+							"parameters": {
+								"color": "rgbEx(100, 100, 100)"
+							}
+						}
+					],
+					"sid": 403949667641976
+				}
+			]
+		}
+	],
+	"sid": 389141576528271
+}

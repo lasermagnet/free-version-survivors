@@ -1,0 +1,31 @@
+{
+	"name": "UI_Bar",
+	"plugin-id": "TiledBg",
+	"sid": 888125549720390,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "initWidth",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 362092373614848
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 10,
+		"height": 10,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 8529337,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

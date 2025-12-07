@@ -1,0 +1,332 @@
+{
+	"name": "aPlayer 🧑",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "todo move player rules to JSON"
+		},
+		{
+			"aceType": "action",
+			"aceName": "spawn",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 901945052113015,
+					"parameters": {
+						"object-to-create": "Player",
+						"layer": "LAYER_Main",
+						"x": "LayoutWidth * 0.5",
+						"y": "LayoutHeight * 0.5",
+						"create-hierarchy": true,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 780833186605289,
+					"parameters": {
+						"instance-variable": "weapon_Sword_Cooldown",
+						"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Cooldown)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 204842853026142,
+					"parameters": {
+						"instance-variable": "item_Spawn_Cooldown",
+						"value": "Rules.Get(KEY_Item_Spawn_Cooldown)"
+					}
+				}
+			],
+			"sid": 821905210614926
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Update cooldowns"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 678410323692335,
+					"parameters": {
+						"instance-variable": "weapon_Sword_Cooldown",
+						"value": "Self.weapon_Sword_Cooldown = NOTHING ? NOTHING : max(0, Self.weapon_Sword_Cooldown - dt)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 786724687286705,
+					"parameters": {
+						"instance-variable": "item_Spawn_Cooldown",
+						"value": "Self.item_Spawn_Cooldown = NOTHING ? NOTHING : max(0, Self.item_Spawn_Cooldown - dt)"
+					}
+				}
+			],
+			"sid": 892639912846222,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "randomAngle",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 377622339872424
+				},
+				{
+					"eventType": "comment",
+					"text": "Attack: Sword"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 180896289172722,
+							"parameters": {
+								"instance-variable": "weapon_Sword_Cooldown",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 102200767806325,
+							"parameters": {
+								"instance-variable": "weapon_Sword_Cooldown",
+								"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Cooldown)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 579380886182412,
+							"parameters": {
+								"variable": "randomAngle",
+								"value": "random(0, 360)"
+							}
+						}
+					],
+					"sid": 135052668909848,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 831146062287362,
+									"parameters": {
+										"name": "\"\"",
+										"start-index": "1",
+										"end-index": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Level)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"customAction": "spawn",
+									"objectClass": "Projectile",
+									"sid": 358178069420982,
+									"parameters": [
+										"randomAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword & DOT & KEY_Level) * loopindex)"
+									]
+								}
+							],
+							"sid": 862025105194662
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Spawn item"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 195966855546266,
+							"parameters": {
+								"instance-variable": "item_Spawn_Cooldown",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 306709955027062,
+							"parameters": {
+								"instance-variable": "item_Spawn_Cooldown",
+								"value": "Rules.Get(KEY_Item_Spawn_Cooldown)"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 313628640848420,
+							"parameters": {
+								"object-to-create": "Weapon",
+								"layer": "LAYER_Main",
+								"x": "Player.X + cos(angle(Player.X, Player.Y, LayoutWidth * 0.5, LayoutHeight * 0.5)) * random(C_Item_Spawn_Distance_Min, C_Item_Spawn_Distance_Max)",
+								"y": "Player.Y + sin(angle(Player.X, Player.Y, LayoutWidth * 0.5, LayoutHeight * 0.5)) * random(C_Item_Spawn_Distance_Min, C_Item_Spawn_Distance_Max)",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Start tween to fade out item before next spawn"
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "Weapon",
+							"sid": 559557836579902,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"\"",
+								"property": "offsetOpacity",
+								"end-value": "0",
+								"time": "Rules.Get(KEY_Item_Spawn_Cooldown)",
+								"ease": "easeinexpo",
+								"destroy-on-complete": "yes",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "move-to-top",
+							"objectClass": "Player",
+							"sid": 176612895163338
+						}
+					],
+					"sid": 129191214035208
+				},
+				{
+					"eventType": "comment",
+					"text": "Pick up item"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "Player",
+							"sid": 229852428941040,
+							"parameters": {
+								"object": "Weapon"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Weapon",
+							"sid": 792888105578515,
+							"parameters": {
+								"instance-variable": "isPickedUp",
+								"comparison": 0,
+								"value": "NO"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Weapon",
+							"sid": 924526291743139,
+							"parameters": {
+								"instance-variable": "isPickedUp",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "add-to",
+							"objectClass": "Rules",
+							"sid": 959073039623894,
+							"parameters": {
+								"path": "KEY_Weapons & DOT & Weapon.AnimationFrameTag & DOT & KEY_Level",
+								"value": "1"
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "Weapon",
+							"sid": 484277913474189,
+							"parameters": {
+								"color": "rgbEx(500, 500, 500)"
+							}
+						},
+						{
+							"id": "stop-all-tweens",
+							"objectClass": "Weapon",
+							"sid": 207101199220881,
+							"behaviorType": "Tween"
+						},
+						{
+							"id": "set-opacity",
+							"objectClass": "Weapon",
+							"sid": 722870505118830,
+							"parameters": {
+								"opacity": "100"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "Weapon",
+							"sid": 865811529008529,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"\"",
+								"property": "offsetOpacity",
+								"end-value": "0",
+								"time": "1",
+								"ease": "easeoutexpo",
+								"destroy-on-complete": "yes",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 303362420858496
+				}
+			]
+		}
+	],
+	"sid": 562729237747902
+}

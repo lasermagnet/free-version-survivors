@@ -1,0 +1,90 @@
+{
+	"name": "Player",
+	"plugin-id": "Sprite",
+	"sid": 951523799756111,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "R_Weapon_Sword_Level",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 347209974549356
+		},
+		{
+			"name": "item_Spawn_Cooldown",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 925237212199924
+		},
+		{
+			"name": "weapon_Sword_Cooldown",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 977016936738542
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "EightDir",
+			"name": "8Direction",
+			"sid": 852963655452128
+		},
+		{
+			"behaviorId": "scrollto",
+			"name": "ScrollTo",
+			"sid": 970388269435607
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 257134290531599
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 8,
+						"height": 8,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5239422,
+						"collisionPoly": {
+							"points": [
+								0.25,
+								0.25,
+								0.75,
+								0.25,
+								0.75,
+								1,
+								0.25,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 509383271072117,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

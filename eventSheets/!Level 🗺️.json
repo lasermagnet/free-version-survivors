@@ -1,0 +1,22 @@
+{
+	"name": "!Level 🗺️",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "todo_pack move contents of event sheets here to save a couple events"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "eInput 🕹️"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "eSystem ⏱️"
+		},
+		{
+			"eventType": "comment",
+			"text": "todo json based rules"
+		}
+	],
+	"sid": 933801713496791
+}

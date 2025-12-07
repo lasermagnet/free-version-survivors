@@ -1,0 +1,412 @@
+{
+	"name": "eInput 🕹️",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "# Player input"
+		},
+		{
+			"eventType": "comment",
+			"text": "todo_maybe: analog input (gamepad, mouse, touch?) - maybe with variable speed below a threshold"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 682902275537827,
+					"parameters": {
+						"key": 87
+					}
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 541136644497353,
+					"parameters": {
+						"key": 38
+					}
+				},
+				{
+					"id": "is-button-down",
+					"objectClass": "Gamepad",
+					"sid": 988947979926182,
+					"parameters": {
+						"gamepad": "0",
+						"button": "d-pad-up"
+					}
+				},
+				{
+					"id": "compare-axis",
+					"objectClass": "Gamepad",
+					"sid": 740804869795051,
+					"parameters": {
+						"gamepad": "0",
+						"axis": "left-analog-y-axis",
+						"comparison": 2,
+						"value": "-C_Input_Gamepad_Analog_Minimum"
+					}
+				},
+				{
+					"id": "compare-axis",
+					"objectClass": "Gamepad",
+					"sid": 252562338825514,
+					"parameters": {
+						"gamepad": "0",
+						"axis": "right-analog-y-axis",
+						"comparison": 2,
+						"value": "-C_Input_Gamepad_Analog_Minimum"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Up"
+				},
+				{
+					"id": "simulate-control",
+					"objectClass": "Player",
+					"sid": 966161195463483,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "up"
+					}
+				}
+			],
+			"sid": 652303209773959,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 474906881052391,
+					"parameters": {
+						"key": 83
+					}
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 199528193475877,
+					"parameters": {
+						"key": 40
+					}
+				},
+				{
+					"id": "is-button-down",
+					"objectClass": "Gamepad",
+					"sid": 510186992557441,
+					"parameters": {
+						"gamepad": "0",
+						"button": "d-pad-down"
+					}
+				},
+				{
+					"id": "compare-axis",
+					"objectClass": "Gamepad",
+					"sid": 430086233863078,
+					"parameters": {
+						"gamepad": "0",
+						"axis": "left-analog-y-axis",
+						"comparison": 4,
+						"value": "C_Input_Gamepad_Analog_Minimum"
+					}
+				},
+				{
+					"id": "compare-axis",
+					"objectClass": "Gamepad",
+					"sid": 317655178764460,
+					"parameters": {
+						"gamepad": "0",
+						"axis": "right-analog-y-axis",
+						"comparison": 4,
+						"value": "C_Input_Gamepad_Analog_Minimum"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Down"
+				},
+				{
+					"id": "simulate-control",
+					"objectClass": "Player",
+					"sid": 778749549464973,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "down"
+					}
+				}
+			],
+			"sid": 682565914386004,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 954520131382007,
+					"parameters": {
+						"key": 65
+					}
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 538574917645103,
+					"parameters": {
+						"key": 37
+					}
+				},
+				{
+					"id": "is-button-down",
+					"objectClass": "Gamepad",
+					"sid": 343289566725632,
+					"parameters": {
+						"gamepad": "0",
+						"button": "d-pad-left"
+					}
+				},
+				{
+					"id": "compare-axis",
+					"objectClass": "Gamepad",
+					"sid": 838137521115682,
+					"parameters": {
+						"gamepad": "0",
+						"axis": "left-analog-x-axis",
+						"comparison": 2,
+						"value": "-C_Input_Gamepad_Analog_Minimum"
+					}
+				},
+				{
+					"id": "compare-axis",
+					"objectClass": "Gamepad",
+					"sid": 237630431714043,
+					"parameters": {
+						"gamepad": "0",
+						"axis": "right-analog-x-axis",
+						"comparison": 2,
+						"value": "-C_Input_Gamepad_Analog_Minimum"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Left"
+				},
+				{
+					"id": "simulate-control",
+					"objectClass": "Player",
+					"sid": 929337266523753,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "left"
+					}
+				}
+			],
+			"sid": 341222706666554,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 737518896483656,
+					"parameters": {
+						"key": 68
+					}
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 377972068416739,
+					"parameters": {
+						"key": 39
+					}
+				},
+				{
+					"id": "is-button-down",
+					"objectClass": "Gamepad",
+					"sid": 277514995646864,
+					"parameters": {
+						"gamepad": "0",
+						"button": "d-pad-right"
+					}
+				},
+				{
+					"id": "compare-axis",
+					"objectClass": "Gamepad",
+					"sid": 932967047141100,
+					"parameters": {
+						"gamepad": "0",
+						"axis": "left-analog-x-axis",
+						"comparison": 4,
+						"value": "C_Input_Gamepad_Analog_Minimum"
+					}
+				},
+				{
+					"id": "compare-axis",
+					"objectClass": "Gamepad",
+					"sid": 909386609440181,
+					"parameters": {
+						"gamepad": "0",
+						"axis": "right-analog-x-axis",
+						"comparison": 4,
+						"value": "C_Input_Gamepad_Analog_Minimum"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Right"
+				},
+				{
+					"id": "simulate-control",
+					"objectClass": "Player",
+					"sid": 654142373601193,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "right"
+					}
+				}
+			],
+			"sid": 122819589461432,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "comment",
+			"text": "Global"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 721749153108317,
+					"parameters": {
+						"key": 70
+					}
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 302409571708101,
+					"parameters": {
+						"key": 16
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Enable full screen, because why waste two events on toggling :) user can cancel with Esc."
+				},
+				{
+					"id": "request-fullscreen",
+					"objectClass": "Browser",
+					"sid": 743018549105810,
+					"parameters": {
+						"mode": "stretch-scale-outer",
+						"navigation-ui": "auto"
+					}
+				}
+			],
+			"sid": 275256803650067
+		},
+		{
+			"eventType": "comment",
+			"text": "Dev"
+		},
+		{
+			"eventType": "comment",
+			"text": "todo_pack remove everything"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 735107101935972
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 240977982791190,
+					"parameters": {
+						"variable": "spawn_queue",
+						"value": "int(Keyboard.TypedKey) * 10"
+					}
+				}
+			],
+			"sid": 591465149004269,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 173641484783588,
+					"parameters": {
+						"key": 107
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Player",
+					"sid": 375738800284735,
+					"parameters": {
+						"instance-variable": "R_Weapon_Sword_Level",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 803864937289158
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 928559303121088,
+					"parameters": {
+						"key": 109
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 703160908558185,
+					"parameters": {
+						"instance-variable": "R_Weapon_Sword_Level",
+						"value": "min(1, Self.R_Weapon_Sword_Level - 1)"
+					}
+				}
+			],
+			"sid": 552852968566585
+		}
+	],
+	"sid": 909767790016851
+}

@@ -1,0 +1,86 @@
+{
+	"name": "vConfig 💎",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "C_GroundMap_Cell_Size",
+			"type": "number",
+			"initialValue": "20",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 137597273950525
+		},
+		{
+			"eventType": "variable",
+			"name": "C_GroundMap_Decorations_Per_Cell",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 279727138493086
+		},
+		{
+			"eventType": "variable",
+			"name": "C_GroundMap_TileId_Decorations_First",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 494216620457064
+		},
+		{
+			"eventType": "variable",
+			"name": "C_GroundMap_TileId_Decorations_Last",
+			"type": "number",
+			"initialValue": "13",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 774737314925639
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Wall_Thickness",
+			"type": "number",
+			"initialValue": "16",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 418104587859054
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Input_Gamepad_Analog_Minimum",
+			"type": "number",
+			"initialValue": "50",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 174991595870129
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Item_Spawn_Distance_Min",
+			"type": "number",
+			"initialValue": "50",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 100238732808406
+		},
+		{
+			"eventType": "variable",
+			"name": "C_Item_Spawn_Distance_Max",
+			"type": "number",
+			"initialValue": "150",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 629299138832056
+		}
+	],
+	"sid": 900977153576648
+}

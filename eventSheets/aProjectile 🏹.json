@@ -1,0 +1,85 @@
+{
+	"name": "aProjectile 🏹",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "spawn",
+			"objectClass": "Projectile",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "movementAngle",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 763453866054419
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 200482084576445,
+					"parameters": {
+						"object-to-create": "Projectile",
+						"layer": "LAYER_Main",
+						"x": "Player.X",
+						"y": "Player.Y",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set sprite angle & movement angle"
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "Projectile",
+					"sid": 223837270444088,
+					"parameters": {
+						"angle": "movementAngle + Self.R_AngleOffset"
+					}
+				},
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "Projectile",
+					"sid": 912607043352233,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"angle": "movementAngle"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Start \"garbage collector\" tween which fades out & destroys the projectile"
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "Projectile",
+					"sid": 202024646643991,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_Projectile_Opacity_Lifetime",
+						"property": "offsetOpacity",
+						"end-value": "0",
+						"time": "6",
+						"ease": "easeinexpo",
+						"destroy-on-complete": "yes",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 977922686671153
+		}
+	],
+	"sid": 567716810740424
+}

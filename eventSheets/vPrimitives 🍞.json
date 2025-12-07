@@ -1,0 +1,102 @@
+{
+	"name": "vPrimitives 🍞",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "\"Booleans\""
+		},
+		{
+			"eventType": "variable",
+			"name": "NO",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 131714099915160
+		},
+		{
+			"eventType": "variable",
+			"name": "YES",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 571907990714039
+		},
+		{
+			"eventType": "comment",
+			"text": "\"Null\""
+		},
+		{
+			"eventType": "variable",
+			"name": "NOTHING",
+			"type": "number",
+			"initialValue": "-1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 887063811207674
+		},
+		{
+			"eventType": "comment",
+			"text": "Empty string"
+		},
+		{
+			"eventType": "variable",
+			"name": "EMPTY",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 802484471473816
+		},
+		{
+			"eventType": "comment",
+			"text": "Characters"
+		},
+		{
+			"eventType": "variable",
+			"name": "COMMA",
+			"type": "string",
+			"initialValue": ",",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 120237988412608
+		},
+		{
+			"eventType": "variable",
+			"name": "UNDERSCORE",
+			"type": "string",
+			"initialValue": "_",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 946517901197436
+		},
+		{
+			"eventType": "variable",
+			"name": "SPACE",
+			"type": "string",
+			"initialValue": " ",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 384512131404821
+		},
+		{
+			"eventType": "variable",
+			"name": "DOT",
+			"type": "string",
+			"initialValue": ".",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 155267692094566
+		}
+	],
+	"sid": 960553029824070
+}

@@ -1,0 +1,106 @@
+{
+	"name": "aGroundMap 🌳",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "spawn",
+			"objectClass": "GroundMap",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 503951035980512,
+					"parameters": {
+						"object-to-create": "GroundMap",
+						"layer": "LAYER_Main",
+						"x": "0",
+						"y": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "GroundMap",
+					"sid": 298003901122335,
+					"parameters": {
+						"width": "LayoutWidth",
+						"height": "LayoutHeight"
+					}
+				},
+				{
+					"id": "erase-tile-range",
+					"objectClass": "GroundMap",
+					"sid": 549860918635645,
+					"parameters": {
+						"tile-x": "0",
+						"tile-y": "0",
+						"width": "Self.MapDisplayWidth",
+						"height": "Self.MapDisplayHeight"
+					}
+				}
+			],
+			"sid": 988630260845428,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 671315868486563,
+							"parameters": {
+								"name": "LOOP_Cell_X",
+								"start-index": "0",
+								"end-index": "GroundMap.MapDisplayWidth / C_GroundMap_Cell_Size"
+							}
+						},
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 794179992955358,
+							"parameters": {
+								"name": "LOOP_Cell_Y",
+								"start-index": "0",
+								"end-index": "GroundMap.MapDisplayHeight / C_GroundMap_Cell_Size"
+							}
+						},
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 440536709567931,
+							"parameters": {
+								"name": "LOOP_Decoration_Per_Cell",
+								"start-index": "0",
+								"end-index": "C_GroundMap_Decorations_Per_Cell"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-tile",
+							"objectClass": "GroundMap",
+							"sid": 470684030057121,
+							"parameters": {
+								"tile-x": "loopindex(LOOP_Cell_X) * C_GroundMap_Cell_Size + int(random(0, C_GroundMap_Cell_Size))",
+								"tile-y": "loopindex(LOOP_Cell_Y) * C_GroundMap_Cell_Size + int(random(0, C_GroundMap_Cell_Size))",
+								"tile": "int(random(C_GroundMap_TileId_Decorations_First, C_GroundMap_TileId_Decorations_Last + 1))",
+								"state": "normal"
+							}
+						}
+					],
+					"sid": 570313454722713
+				}
+			]
+		}
+	],
+	"sid": 353995111102598
+}

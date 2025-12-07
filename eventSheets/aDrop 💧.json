@@ -1,0 +1,86 @@
+{
+	"name": "aDrop 💧",
+	"events": [
+		{
+			"aceType": "action",
+			"aceName": "tick",
+			"objectClass": "Drop",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "Drop",
+					"sid": 335552295184695,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"angle": "angle(Self.X, Self.Y, Player.X, Player.Y)"
+					}
+				}
+			],
+			"sid": 383514355120426,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 528611509747989,
+							"parameters": {
+								"object": "Drop",
+								"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
+								"comparison": 2,
+								"value": "30"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "Drop",
+							"sid": 811149408323897,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"state": "enabled"
+							}
+						}
+					],
+					"sid": 983656793334925,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-overlapping-point",
+									"objectClass": "System",
+									"sid": 630875946663587,
+									"parameters": {
+										"object": "Drop",
+										"x": "Player.X",
+										"y": "Player.Y"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "Drop",
+									"sid": 162031479341671
+								}
+							],
+							"sid": 563644976303548
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 346247448149135
+}

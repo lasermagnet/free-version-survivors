@@ -1,0 +1,88 @@
+{
+	"name": "vState ♻️",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Game state"
+		},
+		{
+			"eventType": "variable",
+			"name": "volumePercentBGM",
+			"type": "number",
+			"initialValue": "50",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 320529700142574
+		},
+		{
+			"eventType": "variable",
+			"name": "volumePercentSFX",
+			"type": "number",
+			"initialValue": "50",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 568377572934428
+		},
+		{
+			"eventType": "comment",
+			"text": "Level state"
+		},
+		{
+			"eventType": "variable",
+			"name": "isPaused",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 323812463896525
+		},
+		{
+			"eventType": "variable",
+			"name": "spawn_queue",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 211745329613975
+		},
+		{
+			"eventType": "comment",
+			"text": "Level rules"
+		},
+		{
+			"eventType": "variable",
+			"name": "R_Spawn_Distance",
+			"type": "number",
+			"initialValue": "240",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 446705022490802
+		},
+		{
+			"eventType": "variable",
+			"name": "R_Spawn_RandomSize_Min",
+			"type": "number",
+			"initialValue": "8",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 792314783459089
+		},
+		{
+			"eventType": "variable",
+			"name": "R_Spawn_RandomSize_Max",
+			"type": "number",
+			"initialValue": "14",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 734229755722200
+		}
+	],
+	"sid": 382566761626237
+}

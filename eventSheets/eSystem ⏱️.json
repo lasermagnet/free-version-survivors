@@ -1,0 +1,267 @@
+{
+	"name": "eSystem ⏱️",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 973691923966273
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Load rules"
+				},
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"runtime.objects.Rules.getFirstInstance().setJsonDataCopy(rules)"
+					]
+				},
+				{
+					"type": "comment",
+					"text": "Initialize stuff"
+				},
+				{
+					"id": "set-collision-cell-size",
+					"objectClass": "System",
+					"sid": 526181492720689,
+					"parameters": {
+						"width": "64",
+						"height": "64"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Spawn ground"
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 538242720749825,
+					"parameters": {
+						"object-to-create": "Ground",
+						"layer": "LAYER_Main",
+						"x": "0",
+						"y": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "Ground",
+					"sid": 853634657343832,
+					"parameters": {
+						"width": "LayoutWidth",
+						"height": "LayoutHeight"
+					}
+				},
+				{
+					"id": "move-to-bottom",
+					"objectClass": "Ground",
+					"sid": 666911253684500
+				},
+				{
+					"type": "comment",
+					"text": "Spawn walls"
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 436165884098190,
+					"parameters": {
+						"object-to-create": "Wall",
+						"layer": "LAYER_Main",
+						"x": "LayoutWidth * 0.5",
+						"y": "- C_Wall_Thickness * 0.5",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "Wall",
+					"sid": 298845753893519,
+					"parameters": {
+						"width": "LayoutWidth + C_Wall_Thickness * 2"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 584770231200107,
+					"parameters": {
+						"object-to-create": "Wall",
+						"layer": "LAYER_Main",
+						"x": "LayoutWidth * 0.5",
+						"y": "LayoutHeight + C_Wall_Thickness * 0.5",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "Wall",
+					"sid": 195492216867294,
+					"parameters": {
+						"width": "LayoutWidth + C_Wall_Thickness * 2"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 240353864337880,
+					"parameters": {
+						"object-to-create": "Wall",
+						"layer": "LAYER_Main",
+						"x": "- C_Wall_Thickness * 0.5",
+						"y": "LayoutHeight * 0.5",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-height",
+					"objectClass": "Wall",
+					"sid": 585346302377158,
+					"parameters": {
+						"height": "LayoutHeight + C_Wall_Thickness * 2"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 862702925551168,
+					"parameters": {
+						"object-to-create": "Wall",
+						"layer": "LAYER_Main",
+						"x": "LayoutWidth + C_Wall_Thickness * 0.5",
+						"y": "LayoutHeight * 0.5",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-height",
+					"objectClass": "Wall",
+					"sid": 907766060084294,
+					"parameters": {
+						"height": "LayoutHeight + C_Wall_Thickness * 2"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Spawn ground map & player"
+				},
+				{
+					"customAction": "spawn",
+					"objectClass": "GroundMap",
+					"sid": 808457871185290
+				},
+				{
+					"customAction": "spawn",
+					"objectClass": "Player",
+					"sid": 608803642935295
+				},
+				{
+					"type": "comment",
+					"text": "Initalize UI"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "UI_Bar",
+					"sid": 391170858286368,
+					"parameters": {
+						"instance-variable": "initWidth",
+						"value": "Self.Width"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "UI_Bar",
+					"sid": 380181524179996,
+					"parameters": {
+						"width": "0"
+					}
+				}
+			],
+			"sid": 448800525830597
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 823011474147348
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF",
+					"sid": 418846526763550,
+					"parameters": {
+						"text": "\"FPS: \" & round(fps) & newline & objectcount & \" objects\""
+					}
+				},
+				{
+					"type": "comment",
+					"text": "todo_pack remove CAs, stuff everything in here if it makes sense"
+				},
+				{
+					"customAction": "spawnFromQueue",
+					"objectClass": "Enemy",
+					"sid": 569763485951453
+				},
+				{
+					"customAction": "tick",
+					"objectClass": "Enemy",
+					"sid": 584880034086273
+				},
+				{
+					"customAction": "tick",
+					"objectClass": "Drop",
+					"sid": 355564617758422
+				},
+				{
+					"customAction": "tick",
+					"objectClass": "Player",
+					"sid": 486600605201489
+				}
+			],
+			"sid": 191789492098499
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 110300315534165,
+					"parameters": {
+						"interval-seconds": "2"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 333244487973738,
+					"parameters": {
+						"variable": "spawn_queue",
+						"value": "5"
+					}
+				}
+			],
+			"sid": 963691476976903
+		}
+	],
+	"sid": 488420928527336
+}
