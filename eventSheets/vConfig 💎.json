@@ -154,30 +154,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 359671948260733
-		},
-		{
-			"eventType": "comment",
-			"text": "todo move to level rules or wherever"
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Enemy_DistanceFromEdge_Minimum",
-			"type": "number",
-			"initialValue": "10",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 904845985558777
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Enemy_DistanceFromEdge_Maximum",
-			"type": "number",
-			"initialValue": "50",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 693571292534024
 		}
 	],
 	"sid": 900977153576648
