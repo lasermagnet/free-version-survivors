@@ -513,7 +513,16 @@
 		"subfolders": []
 	},
 	"sid": 441891104461848,
-	"nonworld-instances": [],
+	"nonworld-instances": [
+		{
+			"type": "Cooldowns",
+			"properties": {},
+			"uid": 54,
+			"sid": 277553896079803,
+			"tags": "",
+			"instanceVariables": {}
+		}
+	],
 	"effectTypes": [],
 	"width": 320,
 	"height": 180,

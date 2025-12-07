@@ -167,7 +167,7 @@
 					"behaviors": {
 						"Physics": {
 							"properties": {
-								"immovable": false,
+								"immovable": true,
 								"collision-mask": "circle",
 								"prevent-rotation": true,
 								"density": 1,
@@ -277,9 +277,6 @@
 					"sid": 275528799847544,
 					"tags": "",
 					"instanceVariables": {
-						"cooldown_weapon_sword": 0,
-						"cooldown_spawn_enemy": 0,
-						"cooldown_spawn_item": 0,
 						"experience": 0,
 						"isDead": 0,
 						"lastMovingAngle": 0,
@@ -599,8 +596,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 79,
-						"y": 125,
+						"x": 30,
+						"y": 151,
 						"width": 18,
 						"height": 18,
 						"originX": 0.5,
@@ -708,6 +705,81 @@
 						"zElevation": 0,
 						"blendMode": "additive"
 					}
+				},
+				{
+					"type": "UI_TextSF_GameOver",
+					"properties": {
+						"text": "GAME OVER\n\n[scale=0.2]Click or tap & hold here to restart",
+						"enable-bbcode": true,
+						"character-width": 30,
+						"character-height": 30,
+						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
+						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
+						"scale": 0.6,
+						"character-spacing": 0,
+						"line-height": 0,
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 53,
+					"sid": 459953218896000,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 53,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": false,
+							"w": false,
+							"h": false,
+							"a": false,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 459953218896000,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 187,
+						"y": 145,
+						"width": 236,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				}
 			],
 			"sid": 435828509073843,
@@ -747,8 +819,8 @@
 	"sid": 660448592118930,
 	"nonworld-instances": [],
 	"effectTypes": [],
-	"width": 320,
-	"height": 180,
+	"width": 600,
+	"height": 600,
 	"unboundedScrolling": false,
 	"vpX": 0.5,
 	"vpY": 0.5,

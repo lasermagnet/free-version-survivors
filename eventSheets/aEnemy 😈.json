@@ -144,70 +144,16 @@
 					}
 				},
 				{
-					"id": "set-linear-damping",
+					"id": "set-immovable",
 					"objectClass": "Enemy",
-					"sid": 582352477946657,
-					"disabled": true,
+					"sid": 495389953480134,
 					"behaviorType": "Physics",
 					"parameters": {
-						"linear-damping": "Self.movementSpeed = 0 ? Infinity : Self.Physics.LinearDamping"
-					}
-				},
-				{
-					"id": "set-enabled",
-					"objectClass": "Enemy",
-					"sid": 568396165377012,
-					"disabled": true,
-					"behaviorType": "Physics",
-					"parameters": {
-						"mode": "disabled"
+						"setting": "immovable"
 					}
 				}
 			],
-			"sid": 418646961252127,
-			"children": [
-				{
-					"eventType": "comment",
-					"text": "todo_pack maybe some workaround"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 780184680406048,
-							"parameters": {
-								"instance-variable": "movementSpeed",
-								"comparison": 0,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-immovable",
-							"objectClass": "Enemy",
-							"sid": 263277160141025,
-							"disabled": true,
-							"behaviorType": "Physics",
-							"parameters": {
-								"setting": "immovable"
-							}
-						},
-						{
-							"id": "set-enabled",
-							"objectClass": "Enemy",
-							"sid": 281818199288928,
-							"behaviorType": "Physics",
-							"parameters": {
-								"mode": "disabled"
-							}
-						}
-					],
-					"sid": 183252596552930
-				}
-			]
+			"sid": 418646961252127
 		},
 		{
 			"aceType": "action",
@@ -255,15 +201,15 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Reset \"movement blocked\" state"
+					"text": "Reset \"movement blocked\" state for moving enemies"
 				},
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 102457041612568,
+					"sid": 965283521473552,
 					"parameters": {
 						"instance-variable": "isMovementBlocked",
-						"value": "NO"
+						"value": "Self.movementSpeed = 0 ? YES : NO"
 					}
 				},
 				{
@@ -1063,15 +1009,6 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "is-overlapping-another-object",
-							"objectClass": "Enemy",
-							"sid": 446909647721359,
-							"parameters": {
-								"object": "Weapon"
-							},
-							"isInverted": true
-						},
-						{
 							"id": "compare-instance-variable",
 							"objectClass": "Enemy",
 							"sid": 795640150955139,
@@ -1083,6 +1020,15 @@
 						}
 					],
 					"actions": [
+						{
+							"id": "set-immovable",
+							"objectClass": "Enemy",
+							"sid": 416539625453697,
+							"behaviorType": "Physics",
+							"parameters": {
+								"setting": "movable"
+							}
+						},
 						{
 							"id": "apply-force-towards-position",
 							"objectClass": "Enemy",
@@ -1096,8 +1042,7 @@
 							}
 						}
 					],
-					"sid": 403949667641976,
-					"isOrBlock": true
+					"sid": 403949667641976
 				},
 				{
 					"eventType": "comment",

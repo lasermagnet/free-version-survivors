@@ -3,60 +3,11 @@
 	"events": [
 		{
 			"eventType": "comment",
-			"text": "# Player input"
-		},
-		{
-			"eventType": "comment",
-			"text": "todo: on screen touch buttons that appear on first (real) touch"
+			"text": "Player input"
 		},
 		{
 			"eventType": "comment",
 			"text": "todo_maybe: analog input (gamepad, mouse, touch?) - maybe with variable speed below a threshold"
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-any-touch-start",
-					"objectClass": "Touch",
-					"sid": 979219085799744
-				}
-			],
-			"actions": [
-				{
-					"id": "set-visible",
-					"objectClass": "UI_Touch_Up",
-					"sid": 941760329496408,
-					"parameters": {
-						"visibility": "visible"
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "UI_Touch_Down",
-					"sid": 834655298653493,
-					"parameters": {
-						"visibility": "visible"
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "UI_Touch_Left",
-					"sid": 297616554822369,
-					"parameters": {
-						"visibility": "visible"
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "UI_Touch_Right",
-					"sid": 652764812305087,
-					"parameters": {
-						"visibility": "visible"
-					}
-				}
-			],
-			"sid": 957536948098653
 		},
 		{
 			"eventType": "block",
@@ -106,14 +57,6 @@
 						"axis": "right-analog-y-axis",
 						"comparison": 2,
 						"value": "-C_Input_Gamepad_Analog_Threshold"
-					}
-				},
-				{
-					"id": "is-touching-object",
-					"objectClass": "Touch",
-					"sid": 751075478741327,
-					"parameters": {
-						"object": "UI_Touch_Up"
 					}
 				}
 			],
@@ -202,14 +145,6 @@
 						"comparison": 4,
 						"value": "C_Input_Gamepad_Analog_Threshold"
 					}
-				},
-				{
-					"id": "is-touching-object",
-					"objectClass": "Touch",
-					"sid": 351146171805557,
-					"parameters": {
-						"object": "UI_Touch_Down"
-					}
 				}
 			],
 			"actions": [
@@ -296,14 +231,6 @@
 						"axis": "right-analog-x-axis",
 						"comparison": 2,
 						"value": "-C_Input_Gamepad_Analog_Threshold"
-					}
-				},
-				{
-					"id": "is-touching-object",
-					"objectClass": "Touch",
-					"sid": 274052398813002,
-					"parameters": {
-						"object": "UI_Touch_Left"
 					}
 				}
 			],
@@ -399,14 +326,6 @@
 						"axis": "right-analog-x-axis",
 						"comparison": 4,
 						"value": "C_Input_Gamepad_Analog_Threshold"
-					}
-				},
-				{
-					"id": "is-touching-object",
-					"objectClass": "Touch",
-					"sid": 215394975172953,
-					"parameters": {
-						"object": "UI_Touch_Right"
 					}
 				}
 			],
@@ -593,6 +512,54 @@
 				}
 			],
 			"sid": 988978364115935,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "comment",
+			"text": "Restart game"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-hold-over-object",
+					"objectClass": "Touch",
+					"sid": 567012130350021,
+					"parameters": {
+						"object": "UI_TextSF_GameOver"
+					}
+				},
+				{
+					"id": "on-object-clicked",
+					"objectClass": "Mouse",
+					"sid": 617621633102459,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked",
+						"object-clicked": "UI_TextSF_GameOver"
+					}
+				},
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 291771175703523,
+					"parameters": {
+						"key": 82
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "todo better restart"
+				},
+				{
+					"id": "reload",
+					"objectClass": "Browser",
+					"sid": 646195926729200
+				}
+			],
+			"sid": 894833612974342,
 			"isOrBlock": true
 		}
 	],

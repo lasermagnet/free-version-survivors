@@ -69,27 +69,23 @@
 				},
 				{
 					"type": "comment",
-					"text": "Initialize player IVs"
+					"text": "Initialize enemy & item spawn cooldowns"
 				},
 				{
-					"type": "comment",
-					"text": "todo use Timer JSON, randomize first cooldown between 0 and cooldown param"
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
-					"sid": 177029972898140,
+					"id": "set-value",
+					"objectClass": "Cooldowns",
+					"sid": 638920384230792,
 					"parameters": {
-						"instance-variable": "cooldown_spawn_enemy",
+						"path": "KEY_Spawns & DOT & KEY_Enemies",
 						"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
 					}
 				},
 				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
-					"sid": 271378456414787,
+					"id": "set-value",
+					"objectClass": "Cooldowns",
+					"sid": 899906220112829,
 					"parameters": {
-						"instance-variable": "cooldown_spawn_item",
+						"path": "KEY_Spawns & DOT & KEY_Items",
 						"value": "Rules.Get(KEY_Spawns & DOT & KEY_Items & DOT & KEY_Cooldown)"
 					}
 				}
@@ -142,24 +138,24 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Update cooldowns"
+					"text": "Update enemy & item spawn cooldowns"
 				},
 				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
-					"sid": 880923047439531,
+					"id": "set-value",
+					"objectClass": "Cooldowns",
+					"sid": 604608562984822,
 					"parameters": {
-						"instance-variable": "cooldown_spawn_enemy",
-						"value": "Self.cooldown_spawn_enemy = NOTHING ? NOTHING : max(0, Self.cooldown_spawn_enemy - dt)"
+						"path": "KEY_Spawns & DOT & KEY_Enemies",
+						"value": "max(0, Cooldowns.Get(KEY_Spawns & DOT & KEY_Enemies) - dt)"
 					}
 				},
 				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
-					"sid": 228730679590735,
+					"id": "set-value",
+					"objectClass": "Cooldowns",
+					"sid": 378881065557794,
 					"parameters": {
-						"instance-variable": "cooldown_spawn_item",
-						"value": "Self.cooldown_spawn_item = NOTHING ? NOTHING : max(0, Self.cooldown_spawn_item - dt)"
+						"path": "KEY_Spawns & DOT & KEY_Items",
+						"value": "max(0, Cooldowns.Get(KEY_Spawns & DOT & KEY_Items) - dt)"
 					}
 				},
 				{
@@ -322,31 +318,39 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Queue enemy spawn"
+					"text": "When the enemy spawn cooldown expires, reset it & add enemy amount to the spawn queue"
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-instance-variable",
-							"objectClass": "Player",
-							"sid": 329208908358969,
+							"id": "compare-value",
+							"objectClass": "Cooldowns",
+							"sid": 383748768843449,
 							"parameters": {
-								"instance-variable": "cooldown_spawn_enemy",
-								"comparison": 0,
+								"path": "KEY_Spawns & DOT & KEY_Enemies",
+								"cmp": 0,
 								"value": "0"
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 801998012935639,
+							"type": "comment",
+							"text": "Reset enemy spawn cooldown"
+						},
+						{
+							"id": "set-value",
+							"objectClass": "Cooldowns",
+							"sid": 696458896079350,
 							"parameters": {
-								"instance-variable": "cooldown_spawn_enemy",
-								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier)"
+								"path": "KEY_Spawns & DOT & KEY_Enemies",
+								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Add enemy amount to spawn queue"
 						},
 						{
 							"id": "add-to",
@@ -362,31 +366,39 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Queue item spawn"
+					"text": "When the item spawn cooldown expires, reset it & add an item to the spawn queue"
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-instance-variable",
-							"objectClass": "Player",
-							"sid": 581358925559862,
+							"id": "compare-value",
+							"objectClass": "Cooldowns",
+							"sid": 485675764215928,
 							"parameters": {
-								"instance-variable": "cooldown_spawn_item",
-								"comparison": 0,
+								"path": "KEY_Spawns & DOT & KEY_Items",
+								"cmp": 0,
 								"value": "0"
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 335745970724105,
+							"type": "comment",
+							"text": "Reset items spawn cooldown"
+						},
+						{
+							"id": "set-value",
+							"objectClass": "Cooldowns",
+							"sid": 423696215753317,
 							"parameters": {
-								"instance-variable": "cooldown_spawn_item",
-								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Items & DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Item_Spawn_Cooldown_Multiplier)"
+								"path": "KEY_Spawns & DOT & KEY_Items",
+								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Items & DOT & KEY_Cooldown)"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Add a (weighted) random item to the spawn queue"
 						},
 						{
 							"id": "push-value",
@@ -507,16 +519,6 @@
 				{
 					"eventType": "comment",
 					"text": "Attract / pick up drops"
-				},
-				{
-					"eventType": "variable",
-					"name": "upgrade",
-					"type": "string",
-					"initialValue": "",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 115025345985599
 				},
 				{
 					"eventType": "block",
@@ -833,6 +835,10 @@
 							"text": "This is an inelegant solution to the problem that we need multiple (ideally 3) unique upgrade options, which should be chosen based on their weight"
 						},
 						{
+							"eventType": "comment",
+							"text": "todo hide all upgrade buttons, only enable the ones which have a valid candidate"
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -1102,16 +1108,29 @@
 							]
 						},
 						{
-							"type": "comment",
-							"text": "todo more feedback / game over screen, etc"
-						},
-						{
 							"id": "set-instvar-value",
 							"objectClass": "Player",
 							"sid": 242879650947707,
 							"parameters": {
 								"instance-variable": "isDead",
 								"value": "YES"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Show game over text"
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 979372111917261,
+							"parameters": {
+								"object-to-create": "UI_TextSF_GameOver",
+								"layer": "LAYER_UI",
+								"x": "ViewportMidX(LAYER_UI)",
+								"y": "ViewportMidY(LAYER_UI)",
+								"create-hierarchy": false,
+								"template-name": "\"\""
 							}
 						},
 						{

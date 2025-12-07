@@ -6,27 +6,6 @@
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [
 		{
-			"name": "cooldown_weapon_sword",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 977016936738542
-		},
-		{
-			"name": "cooldown_spawn_enemy",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 962469594054445
-		},
-		{
-			"name": "cooldown_spawn_item",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 911393079742055
-		},
-		{
 			"name": "experience",
 			"type": "number",
 			"desc": "",

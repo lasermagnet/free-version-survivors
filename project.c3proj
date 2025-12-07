@@ -214,12 +214,10 @@
 			"UI_Button9P_Start",
 			"Arrow",
 			"Audio",
-			"UI_Touch_Up",
-			"UI_Touch_Down",
-			"UI_Touch_Left",
-			"UI_Touch_Right",
 			"Mouse",
-			"UI_TextSF_Start"
+			"UI_TextSF_Start",
+			"UI_TextSF_GameOver",
+			"Cooldowns"
 		],
 		"subfolders": []
 	},
@@ -528,7 +526,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "26",
+		"version": "27",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

@@ -4,7 +4,6 @@ export const Spawns = {
     "Items": {
         "Cooldown": 60,
     },
-
     // Enemy spawns
     "Enemies": {
         "Cooldown": 3,
