@@ -62,36 +62,6 @@
 			"text": "Distance"
 		},
 		{
-			"eventType": "variable",
-			"name": "C_Distance_Enemy_Spawn",
-			"type": "number",
-			"initialValue": "240",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 896165230278225
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Distance_Enemy_Teleport",
-			"type": "number",
-			"initialValue": "360",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 904404492853739
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Distance_Item_Spawn_Min",
-			"type": "number",
-			"initialValue": "35",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 188733480595106
-		},
-		{
 			"eventType": "comment",
 			"text": "Map"
 		},
@@ -148,6 +118,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 956253461214367
+		},
+		{
+			"eventType": "variable",
+			"name": "C_UI_DamageNumber_Lifetime",
+			"type": "number",
+			"initialValue": "0.5",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 648468823675061
 		}
 	],
 	"sid": 900977153576648

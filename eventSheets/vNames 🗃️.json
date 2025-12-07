@@ -127,6 +127,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_AngleOffset",
+			"type": "string",
+			"initialValue": "AngleOffset",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 106917551357912
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_BlockMovement",
 			"type": "string",
 			"initialValue": "BlockMovement",
@@ -627,6 +637,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_StaticAngle",
+			"type": "string",
+			"initialValue": "StaticAngle",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 196735625579872
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Timeout",
 			"type": "string",
 			"initialValue": "Timeout",
@@ -704,6 +724,50 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 150953982884702
+		},
+		{
+			"eventType": "comment",
+			"text": "todo_now"
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Distance",
+			"type": "string",
+			"initialValue": "Distance",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 703186619401688
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawn",
+			"type": "string",
+			"initialValue": "EnemySpawn",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 190850710959881
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemyTeleport",
+			"type": "string",
+			"initialValue": "EnemyTeleport",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 784093624686586
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_ItemSpawnMinimum",
+			"type": "string",
+			"initialValue": "ItemSpawnMinimum",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 494607954072184
 		},
 		{
 			"eventType": "comment",

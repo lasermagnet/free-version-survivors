@@ -71,12 +71,12 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 563724051265681,
+					"sid": 696672729878055,
 					"parameters": {
 						"object-to-create": "Enemy",
 						"layer": "LAYER_Main",
-						"x": "Player.X + cos(randomAngle) * C_Distance_Enemy_Spawn",
-						"y": "Player.Y + sin(randomAngle) * C_Distance_Enemy_Spawn",
+						"x": "Player.X + cos(randomAngle) * Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)",
+						"y": "Player.Y + sin(randomAngle) * Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)",
 						"create-hierarchy": true,
 						"template-name": "\"\""
 					}
@@ -244,6 +244,7 @@
 					"text": "Teleport far away [moving] enemies near the player"
 				},
 				{
+					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -259,12 +260,12 @@
 						{
 							"id": "pick-by-comparison",
 							"objectClass": "System",
-							"sid": 868999438022580,
+							"sid": 439465885983319,
 							"parameters": {
 								"object": "Enemy",
 								"expression": "distance(Player.X, Player.Y, Enemy.X, Enemy.Y)",
 								"comparison": 4,
-								"value": "C_Distance_Enemy_Teleport"
+								"value": "Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemyTeleport)"
 							}
 						},
 						{
@@ -287,32 +288,13 @@
 							}
 						},
 						{
-							"id": "set-position",
-							"objectClass": "Enemy",
-							"sid": 136938948745870,
-							"disabled": true,
-							"parameters": {
-								"x": "Player.X + cos(randomAngle) * C_Distance_Enemy_Spawn",
-								"y": "Player.Y + sin(randomAngle) * C_Distance_Enemy_Spawn"
-							}
-						},
-						{
 							"id": "teleport",
 							"objectClass": "Enemy",
-							"sid": 536910921301331,
+							"sid": 346029354180080,
 							"behaviorType": "Physics",
 							"parameters": {
-								"x": "Player.X + cos(randomAngle) * C_Distance_Enemy_Spawn",
-								"y": "Player.Y + sin(randomAngle) * C_Distance_Enemy_Spawn"
-							}
-						},
-						{
-							"id": "set-opacity",
-							"objectClass": "Enemy",
-							"sid": 524496873828237,
-							"disabled": true,
-							"parameters": {
-								"opacity": "50"
+								"x": "Player.X + cos(randomAngle) * Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)",
+								"y": "Player.Y + sin(randomAngle) * Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)"
 							}
 						}
 					],
@@ -626,16 +608,16 @@
 								{
 									"id": "tween-two-properties",
 									"objectClass": "UI_TextSF_DamageNumber",
-									"sid": 242393952289136,
+									"sid": 834186605828245,
 									"behaviorType": "Tween",
 									"parameters": {
 										"tags": "\"\"",
 										"property": "position",
 										"end-x": "Self.X + cos(angle(0, 0, Enemy.Physics.VelocityX, Enemy.Physics.VelocityY) + 180) * 10",
 										"end-y": "Self.Y + sin(angle(0, 0, Enemy.Physics.VelocityX, Enemy.Physics.VelocityY) + 180) * 10",
-										"time": "0.5",
+										"time": "C_UI_DamageNumber_Lifetime",
 										"ease": "easeoutcubic",
-										"destroy-on-complete": "no",
+										"destroy-on-complete": "yes",
 										"loop": "no",
 										"ping-pong": "no",
 										"repeat-count": "1"
@@ -644,13 +626,13 @@
 								{
 									"id": "tween-one-property",
 									"objectClass": "UI_TextSF_DamageNumber",
-									"sid": 995825742636294,
+									"sid": 419833251111041,
 									"behaviorType": "Tween",
 									"parameters": {
 										"tags": "\"\"",
 										"property": "offsetOpacity",
 										"end-value": "0",
-										"time": "0.5",
+										"time": "C_UI_DamageNumber_Lifetime",
 										"ease": "easeinexpo",
 										"destroy-on-complete": "yes",
 										"loop": "no",
@@ -867,11 +849,11 @@
 										{
 											"id": "compare-two-values",
 											"objectClass": "System",
-											"sid": 886890391850880,
+											"sid": 543485448648289,
 											"parameters": {
 												"first-value": "distance(Enemy.X, Enemy.Y, Player.X, Player.Y)",
 												"comparison": 5,
-												"second-value": "C_Distance_Item_Spawn_Min"
+												"second-value": "Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_ItemSpawnMinimum)"
 											}
 										}
 									],

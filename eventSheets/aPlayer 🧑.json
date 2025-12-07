@@ -72,7 +72,7 @@
 		},
 		{
 			"aceType": "action",
-			"aceName": "tick_input",
+			"aceName": "input",
 			"objectClass": "Player",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -291,15 +291,6 @@
 								"instance-variable": "IN_Vector_X",
 								"value": "1"
 							}
-						},
-						{
-							"id": "set-mirrored",
-							"objectClass": "Player",
-							"sid": 767699884217055,
-							"disabled": true,
-							"parameters": {
-								"state": "mirrored"
-							}
 						}
 					],
 					"sid": 108543780388197,
@@ -355,15 +346,6 @@
 							"parameters": {
 								"instance-variable": "IN_Vector_X",
 								"value": "1"
-							}
-						},
-						{
-							"id": "set-mirrored",
-							"objectClass": "Player",
-							"sid": 678338974065388,
-							"disabled": true,
-							"parameters": {
-								"state": "not-mirrored"
 							}
 						}
 					],
@@ -730,12 +712,14 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Weapon",
-									"sid": 408879046172248,
+									"sid": 617679755615277,
 									"parameters": [
 										"Rules.CurrentKey",
 										"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
 										"Player.lastMovingAngle",
+										"Rules.Get(DOT & KEY_AngleOffset)",
 										"Rules.Get(DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)",
+										"Rules.Get(DOT & KEY_StaticAngle)",
 										"Rules.Get(DOT & KEY_PositionRandom1)",
 										"Rules.Get(DOT & KEY_PositionRandom2)",
 										"Rules.Get(DOT & KEY_MovementSpeed)",

@@ -57,6 +57,38 @@
 			{
 				"frames": [
 					{
+						"width": 27,
+						"height": 27,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7483155,
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "DamageNumber",
+								"x": 0.5555555555555556,
+								"y": 0.5555555555555556
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 580667127713160,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
 						"width": 16,
 						"height": 16,
 						"originX": 0,
@@ -98,21 +130,101 @@
 			{
 				"frames": [
 					{
-						"width": 16,
-						"height": 10,
-						"originX": -0.125,
-						"originY": 0.5,
+						"width": 32,
+						"height": 32,
+						"originX": 0.125,
+						"originY": 0.875,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 4997303,
+						"imageSpriteId": 9336788,
 						"collisionPoly": {
 							"points": [
 								0,
-								0,
+								0.625,
+								0.9375,
+								0.0625,
+								0.375,
 								1,
-								0.5,
+								0,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 32,
+						"height": 32,
+						"originX": 0.125,
+						"originY": 0.875,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5812692,
+						"collisionPoly": {
+							"points": [
+								0,
+								0.625,
+								0.9375,
+								0.0625,
+								0.375,
+								1,
+								0,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 32,
+						"height": 32,
+						"originX": 0.125,
+						"originY": 0.875,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5276872,
+						"collisionPoly": {
+							"points": [
+								0,
+								0.625,
+								0.9375,
+								0.0625,
+								0.375,
+								1,
+								0,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 32,
+						"height": 32,
+						"originX": 0.125,
+						"originY": 0.875,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9965814,
+						"collisionPoly": {
+							"points": [
+								0,
+								0.625,
+								0.9375,
+								0.0625,
+								0.375,
+								1,
 								0,
 								1
 							]
@@ -124,11 +236,11 @@
 				],
 				"sid": 626744427954064,
 				"name": "Flame",
-				"isLooping": false,
+				"isLooping": true,
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 0
+				"speed": 8
 			},
 			{
 				"frames": [
@@ -172,64 +284,64 @@
 			{
 				"frames": [
 					{
-						"width": 8,
-						"height": 8,
+						"width": 16,
+						"height": 16,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 5107969,
+						"imageSpriteId": 483498,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					},
 					{
-						"width": 8,
-						"height": 8,
+						"width": 16,
+						"height": 16,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 4969793,
+						"imageSpriteId": 3211530,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					},
 					{
-						"width": 8,
-						"height": 8,
+						"width": 16,
+						"height": 16,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 3122522,
+						"imageSpriteId": 2911743,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					},
 					{
-						"width": 8,
-						"height": 8,
+						"width": 16,
+						"height": 16,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 4055762,
+						"imageSpriteId": 2542631,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
 				"sid": 139217648611500,
-				"name": "Myst",
+				"name": "Spikes",
 				"isLooping": true,
 				"isPingPong": false,
 				"repeatCount": 1,

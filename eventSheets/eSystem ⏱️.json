@@ -45,27 +45,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Initialize probability tables"
-				},
-				{
-					"id": "createProbabilityTableFromJSON",
-					"objectClass": "AdvancedRandom",
-					"sid": 522703065808419,
-					"disabled": true,
-					"parameters": {
-						"name": "PT_Enemies",
-						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Enemies)"
-					}
-				},
-				{
-					"id": "createProbabilityTableFromJSON",
-					"objectClass": "AdvancedRandom",
-					"sid": 108957093600224,
-					"disabled": true,
-					"parameters": {
-						"name": "PT_Items",
-						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Items)"
-					}
+					"text": "Initialize upgrade pool"
 				},
 				{
 					"id": "createProbabilityTableFromJSON",
@@ -91,17 +71,12 @@
 				},
 				{
 					"type": "comment",
-					"text": "todo remove ground or add texture"
-				},
-				{
-					"type": "comment",
-					"text": "Spawn ground"
+					"text": "Spawn ground texture"
 				},
 				{
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 538242720749825,
-					"disabled": true,
 					"parameters": {
 						"object-to-create": "Ground",
 						"layer": "LAYER_Main",
@@ -114,18 +89,16 @@
 				{
 					"id": "set-size",
 					"objectClass": "Ground",
-					"sid": 853634657343832,
-					"disabled": true,
+					"sid": 469358774110512,
 					"parameters": {
-						"width": "LayoutWidth",
-						"height": "LayoutHeight"
+						"width": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Width)",
+						"height": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Height)"
 					}
 				},
 				{
 					"id": "move-to-bottom",
 					"objectClass": "Ground",
-					"sid": 666911253684500,
-					"disabled": true
+					"sid": 666911253684500
 				},
 				{
 					"type": "comment",
@@ -397,7 +370,7 @@
 					"text": "Tick player"
 				},
 				{
-					"customAction": "tick_input",
+					"customAction": "input",
 					"objectClass": "Player",
 					"sid": 761816761818882
 				},

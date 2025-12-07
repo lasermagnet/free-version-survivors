@@ -1,5 +1,5 @@
 export const Pools = {
-    // todo_maybe move to  waves, make "additive"?
+    // todo move to level?
     "Upgrades": [
         // Healing items
         [1, "HealMax"],
@@ -26,8 +26,8 @@ export const Pools = {
         [1, "Chainsaw"],
         [1, "Chainsaw_Radius"],
         [1, "Chainsaw_Size"],
-        [1, "Myst"],
-        [1, "Myst_Area"],
+        [1, "Spikes"],
+        [1, "Spikes_Area"],
     ],
     // todo upgrade banning (no more item drop / level up upgrade option)
 }

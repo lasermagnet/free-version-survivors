@@ -10,7 +10,7 @@ export const Waves = [
     },
     {
         "Name": "And now: slimes & rats!",
-        "EnemySpawnCycles": 20/5,
+        "EnemySpawnCycles": 20,
         "EnemySpawnCooldown": 3,
         "EnemySpawnAmountPerWave": 100,
         "EnemySpawnPool": [[0.5, "HealingCrate"], [40, "Slime"], [20, "Rat"]],
@@ -19,11 +19,11 @@ export const Waves = [
     },
     {
         "Name": "Now some crabs & snakes",
-        "EnemySpawnCycles": 20/5,
+        "EnemySpawnCycles": 20,
         "EnemySpawnCooldown": 3,
         "EnemySpawnAmountPerWave": 60,
         "EnemySpawnPool": [[5, "Crab"], [5, "Snake"]],
         "EnemySpawnFixed": { "Tentacle": 1 },
-        "ItemSpawnPool": [[1, "Chainsaw"], [1, "Myst"]],
+        "ItemSpawnPool": [[1, "Chainsaw"], [1, "Spikes"]],
     },
 ]

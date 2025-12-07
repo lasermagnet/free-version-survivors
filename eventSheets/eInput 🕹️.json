@@ -244,10 +244,54 @@
 				{
 					"customAction": "applyUpgrade",
 					"objectClass": "Player",
-					"sid": 132202717412832,
+					"sid": 117757444692037,
+					"parameters": [
+						"\"Spikes\""
+					]
+				},
+				{
+					"customAction": "applyUpgrade",
+					"objectClass": "Player",
+					"sid": 623708102040038,
+					"parameters": [
+						"\"Axe\""
+					]
+				},
+				{
+					"customAction": "applyUpgrade",
+					"objectClass": "Player",
+					"sid": 514135098591931,
 					"parameters": [
 						"\"Chainsaw\""
 					]
+				},
+				{
+					"customAction": "applyUpgrade",
+					"objectClass": "Player",
+					"sid": 221625047715787,
+					"parameters": [
+						"\"Flame\""
+					]
+				},
+				{
+					"id": "stop-timer",
+					"objectClass": "Player",
+					"sid": 252818719645836,
+					"disabled": true,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_Wave"
+					}
+				},
+				{
+					"id": "stop-timer",
+					"objectClass": "Player",
+					"sid": 673291517981318,
+					"disabled": true,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_WaveCycle"
+					}
 				}
 			],
 			"sid": 591824155855345

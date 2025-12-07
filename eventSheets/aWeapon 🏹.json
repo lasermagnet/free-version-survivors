@@ -33,11 +33,25 @@
 					"sid": 763453866054419
 				},
 				{
+					"name": "angleOffset",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 924473347920568
+				},
+				{
 					"name": "scale",
 					"type": "number",
 					"initialValue": "1",
 					"comment": "",
 					"sid": 410210461955907
+				},
+				{
+					"name": "staticAngle",
+					"type": "number",
+					"initialValue": "-1",
+					"comment": "",
+					"sid": 191085955795792
 				},
 				{
 					"name": "positionRandom1",
@@ -165,9 +179,9 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Weapon",
-					"sid": 411194248423230,
+					"sid": 690083873124033,
 					"parameters": {
-						"angle": "firstAngle + (360 / amount * loopindex)"
+						"angle": "(staticAngle = NOTHING ? firstAngle + (360 / amount * loopindex) : staticAngle) + angleOffset"
 					}
 				},
 				{
@@ -181,6 +195,15 @@
 					"behaviorType": "Bullet",
 					"parameters": {
 						"speed": "bulletSpeed"
+					}
+				},
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "Weapon",
+					"sid": 575798005925854,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"angle": "firstAngle + (360 / amount * loopindex)"
 					}
 				},
 				{

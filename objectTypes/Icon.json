@@ -12,15 +12,15 @@
 			{
 				"frames": [
 					{
-						"width": 16,
-						"height": 16,
+						"width": 24,
+						"height": 27,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 5552677,
+						"imageSpriteId": 3644184,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
@@ -53,56 +53,6 @@
 				],
 				"sid": 827440601041464,
 				"name": "HeartBlack",
-				"isLooping": false,
-				"isPingPong": false,
-				"repeatCount": 1,
-				"repeatTo": 0,
-				"speed": 0
-			},
-			{
-				"frames": [
-					{
-						"width": 16,
-						"height": 16,
-						"originX": 0.5,
-						"originY": 0.5,
-						"originalSource": "",
-						"exportFormat": "lossless",
-						"exportQuality": 0.8,
-						"fileType": "image/png",
-						"imageSpriteId": 6795949,
-						"useCollisionPoly": true,
-						"duration": 1,
-						"tag": ""
-					}
-				],
-				"sid": 664696879841820,
-				"name": "Heal1_old",
-				"isLooping": false,
-				"isPingPong": false,
-				"repeatCount": 1,
-				"repeatTo": 0,
-				"speed": 0
-			},
-			{
-				"frames": [
-					{
-						"width": 16,
-						"height": 16,
-						"originX": 0.5,
-						"originY": 0.5,
-						"originalSource": "",
-						"exportFormat": "lossless",
-						"exportQuality": 0.8,
-						"fileType": "image/png",
-						"imageSpriteId": 6020635,
-						"useCollisionPoly": true,
-						"duration": 1,
-						"tag": ""
-					}
-				],
-				"sid": 405881039324799,
-				"name": "Heal2_old",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,
@@ -524,19 +474,61 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 9228603,
+						"imageSpriteId": 587978,
+						"useCollisionPoly": true,
+						"duration": 10,
+						"tag": ""
+					},
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8637715,
 						"useCollisionPoly": true,
 						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9320642,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 1917064,
+						"useCollisionPoly": true,
+						"duration": 15,
 						"tag": ""
 					}
 				],
 				"sid": 125080082309583,
-				"name": "Myst",
-				"isLooping": false,
-				"isPingPong": false,
+				"name": "Spikes",
+				"isLooping": true,
+				"isPingPong": true,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 0
+				"speed": 10
 			},
 			{
 				"frames": [
