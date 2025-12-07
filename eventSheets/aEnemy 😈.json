@@ -29,11 +29,31 @@
 			"eventType": "custom-ace-block",
 			"conditions": [
 				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 740990767498781,
+					"parameters": {
+						"variable": "isLeveling",
+						"comparison": 0,
+						"value": "NO"
+					}
+				},
+				{
 					"id": "repeat",
 					"objectClass": "System",
 					"sid": 151864700105649,
 					"parameters": {
 						"count": "amount"
+					}
+				},
+				{
+					"id": "compare-value",
+					"objectClass": "Rules",
+					"sid": 939133436139067,
+					"parameters": {
+						"path": "KEY_Level & DOT & KEY_EnemyLimit",
+						"cmp": 4,
+						"value": "Enemy.Count"
 					}
 				}
 			],

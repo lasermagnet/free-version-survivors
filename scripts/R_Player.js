@@ -10,8 +10,8 @@ export const Player = {
 
     // Movement
     // todo remove acc & deacc?
-    "MovementAcceleration": 100,
-    "MovementDeceleration": 100,
+    //"MovementAcceleration": 100,
+    //"MovementDeceleration": 100,
     "MovementSpeed": 70, // movement speed for the 8 Direction behaviour
 
     // Misc

@@ -417,6 +417,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_EnemyLimit",
+			"type": "string",
+			"initialValue": "EnemyLimit",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 298046195938066
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_EnemySpawnFixed",
 			"type": "string",
 			"initialValue": "EnemySpawnFixed",
@@ -667,16 +677,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Name",
-			"type": "string",
-			"initialValue": "Name",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 213186804235384
-		},
-		{
-			"eventType": "variable",
 			"name": "KEY_OrbitRadius",
 			"type": "string",
 			"initialValue": "OrbitRadius",
@@ -744,16 +744,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 725029190180261
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Pools",
-			"type": "string",
-			"initialValue": "Pools",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 974911269037936
 		},
 		{
 			"eventType": "variable",

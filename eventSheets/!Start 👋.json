@@ -8,7 +8,6 @@
 					"id": "on-tap-object",
 					"objectClass": "Touch",
 					"sid": 304990990446090,
-					"disabled": true,
 					"parameters": {
 						"object": "UI_Button9P_Start"
 					}
@@ -17,7 +16,6 @@
 					"id": "on-object-clicked",
 					"objectClass": "Mouse",
 					"sid": 735338109962809,
-					"disabled": true,
 					"parameters": {
 						"mouse-button": "left",
 						"click-type": "clicked",
@@ -28,7 +26,6 @@
 					"id": "on-key-pressed",
 					"objectClass": "Keyboard",
 					"sid": 979315173817982,
-					"disabled": true,
 					"parameters": {
 						"key": 32
 					}
@@ -36,7 +33,8 @@
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 909455077034720
+					"sid": 909455077034720,
+					"disabled": true
 				}
 			],
 			"actions": [
@@ -45,15 +43,15 @@
 					"language": "javascript",
 					"script": [
 						"runtime.globalVars.rulesJSON = getEditorContent()"
-					],
-					"disabled": true
+					]
 				},
 				{
 					"type": "script",
 					"language": "javascript",
 					"script": [
 						"runtime.globalVars.rulesJSON = JSON.stringify(rules)"
-					]
+					],
+					"disabled": true
 				},
 				{
 					"id": "go-to-layout",

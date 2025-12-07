@@ -50,10 +50,10 @@
 				{
 					"id": "createProbabilityTableFromJSON",
 					"objectClass": "AdvancedRandom",
-					"sid": 524116706696208,
+					"sid": 477985162256480,
 					"parameters": {
 						"name": "PT_Upgrades",
-						"json": "Rules.GetAsCompactString(KEY_Pools & DOT & KEY_Upgrades)"
+						"json": "Rules.GetAsCompactString(KEY_Level & DOT & KEY_Upgrades)"
 					}
 				},
 				{
@@ -278,9 +278,14 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "todo_remove or implement acceleration/deceleration?"
+				},
+				{
 					"id": "set-acceleration",
 					"objectClass": "Player",
 					"sid": 221202146104270,
+					"disabled": true,
 					"behaviorType": "8Direction",
 					"parameters": {
 						"acceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementAcceleration)"
@@ -290,6 +295,7 @@
 					"id": "set-deceleration",
 					"objectClass": "Player",
 					"sid": 993068735412028,
+					"disabled": true,
 					"behaviorType": "8Direction",
 					"parameters": {
 						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
@@ -341,12 +347,12 @@
 				{
 					"id": "every-tick",
 					"objectClass": "System",
-					"sid": 823011474147348
+					"sid": 698811962908702
 				},
 				{
 					"id": "compare-instance-variable",
 					"objectClass": "Player",
-					"sid": 323519224032659,
+					"sid": 481669356013328,
 					"parameters": {
 						"instance-variable": "isDead",
 						"comparison": 0,
@@ -356,7 +362,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 694647922651802,
+					"sid": 243781292392919,
 					"parameters": {
 						"variable": "isPaused",
 						"comparison": 0,
@@ -372,7 +378,7 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_DevInfo",
-					"sid": 174144571949196,
+					"sid": 835607645774821,
 					"parameters": {
 						"text": "\"Build \" & projectversion & newline &\nStringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects, {4} enemies\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount, Enemy.Count)\n"
 					}
@@ -384,7 +390,7 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_Time",
-					"sid": 398807224167392,
+					"sid": 801658922532501,
 					"parameters": {
 						"text": "(timePassed / 3600 >= 1 ? int(timePassed / 3600) & \":\" : \"\") & zeropad(int(timePassed / 60), 2) & \":\" & zeropad((int(timePassed) % 60), 2)"
 					}
@@ -396,7 +402,7 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_Level",
-					"sid": 451451673435394,
+					"sid": 658624073574158,
 					"parameters": {
 						"text": "\"LVL \" & Player.level"
 					}
@@ -408,16 +414,20 @@
 				{
 					"customAction": "processInput",
 					"objectClass": "Player",
-					"sid": 761816761818882
+					"sid": 773206114187745
 				},
 				{
 					"type": "comment",
 					"text": "Tick player"
 				},
 				{
+					"type": "comment",
+					"text": "todo_opt"
+				},
+				{
 					"customAction": "tick",
 					"objectClass": "Player",
-					"sid": 451834143784264
+					"sid": 665667490718525
 				},
 				{
 					"type": "comment",
@@ -426,7 +436,7 @@
 				{
 					"customAction": "updateWave",
 					"objectClass": "Player",
-					"sid": 477482215906633
+					"sid": 627065738697227
 				},
 				{
 					"type": "comment",
@@ -435,7 +445,7 @@
 				{
 					"customAction": "spawn",
 					"objectClass": "Enemy",
-					"sid": 603679412350218,
+					"sid": 872104649170109,
 					"parameters": [
 						"EMPTY",
 						"enemySpawnQueue > 0 & Rules.ArraySize(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool) > 0 ? 1 : 0"
@@ -444,7 +454,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 468118169763292,
+					"sid": 822665144799972,
 					"parameters": {
 						"variable": "enemySpawnQueue",
 						"value": "max(0, enemySpawnQueue - 1)"
@@ -455,9 +465,13 @@
 					"text": "Tick enemies"
 				},
 				{
+					"type": "comment",
+					"text": "todo_opt"
+				},
+				{
 					"customAction": "tick",
 					"objectClass": "Enemy",
-					"sid": 584880034086273
+					"sid": 776456162115713
 				},
 				{
 					"type": "comment",
@@ -466,7 +480,7 @@
 				{
 					"id": "set-scale",
 					"objectClass": "UI_TextSF_Damage",
-					"sid": 603707266467517,
+					"sid": 877494270097599,
 					"parameters": {
 						"scale": "Self.Tween.Value(TWEEN_UI_TextSF_DamageNumber_Scale) = 0 ? Self.CharacterScale : Self.Tween.Value(TWEEN_UI_TextSF_DamageNumber_Scale)"
 					}
@@ -478,7 +492,7 @@
 				{
 					"id": "set-opacity",
 					"objectClass": "UI_Vignette9P",
-					"sid": 134933458583808,
+					"sid": 113435045110058,
 					"parameters": {
 						"opacity": "lerp(Self.Opacity, Player.isHurt = YES ? 100 : 0, 0.2)"
 					}
@@ -490,7 +504,7 @@
 				{
 					"id": "set-angle-of-motion",
 					"objectClass": "Drop",
-					"sid": 335552295184695,
+					"sid": 520741996802467,
 					"behaviorType": "Bullet",
 					"parameters": {
 						"angle": "angle(Self.X, Self.Y, Player.X, Player.Y)"
@@ -503,7 +517,7 @@
 				{
 					"id": "set-angle-toward-position",
 					"objectClass": "Arrow",
-					"sid": 772696613266894,
+					"sid": 412701711563759,
 					"parameters": {
 						"x": "Self.itemX",
 						"y": "Self.itemY"
@@ -512,7 +526,7 @@
 				{
 					"id": "set-position",
 					"objectClass": "Arrow",
-					"sid": 880305685323650,
+					"sid": 173390875794393,
 					"parameters": {
 						"x": "Player.X",
 						"y": "Player.Y"
@@ -521,7 +535,7 @@
 				{
 					"id": "set-opacity",
 					"objectClass": "Arrow",
-					"sid": 253612130135831,
+					"sid": 310423212452665,
 					"parameters": {
 						"opacity": "lerp(Self.Opacity, distance(Player.X, Player.Y, Self.itemX, Self.itemY) < min(ViewportMidX(LAYER_UI), ViewportMidY(LAYER_UI)) ? 0 : C_Arrow_Opacity, 0.2)"
 					}
@@ -533,7 +547,7 @@
 				{
 					"id": "set-width",
 					"objectClass": "UI_Bar_Experience",
-					"sid": 817837506902190,
+					"sid": 371634801953482,
 					"parameters": {
 						"width": "lerp(Self.Width, min(Rules.Get(KEY_Player & DOT & KEY_Experience) / Rules.Get(KEY_Player & DOT & KEY_Experience_Target) * Self.initWidth, Self.initWidth), 0.2)"
 					}
@@ -545,13 +559,13 @@
 				{
 					"id": "set-width",
 					"objectClass": "UI_Bar_Health",
-					"sid": 720625773003021,
+					"sid": 875849611035759,
 					"parameters": {
 						"width": "lerp(Self.Width, min(Rules.Get(KEY_Player & DOT & KEY_Health) / Rules.Get(KEY_Player & DOT & KEY_Health_Max) * Self.initWidth, Self.initWidth), 0.1)"
 					}
 				}
 			],
-			"sid": 191789492098499
+			"sid": 153988922630664
 		}
 	],
 	"sid": 488420928527336

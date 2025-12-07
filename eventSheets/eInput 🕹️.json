@@ -305,7 +305,8 @@
 					}
 				}
 			],
-			"sid": 650745842861088
+			"sid": 650745842861088,
+			"disabled": true
 		},
 		{
 			"eventType": "block",
@@ -353,7 +354,8 @@
 					]
 				}
 			],
-			"sid": 275142110073853
+			"sid": 275142110073853,
+			"disabled": true
 		},
 		{
 			"eventType": "block",
@@ -365,16 +367,24 @@
 					"parameters": {
 						"key": 54
 					}
+				},
+				{
+					"id": "is-animation-playing",
+					"objectClass": "Drop",
+					"sid": 353900388797063,
+					"parameters": {
+						"animation": "ANIM_Experience"
+					}
 				}
 			],
 			"actions": [
 				{
-					"id": "set-value",
-					"objectClass": "Rules",
-					"sid": 589261126962361,
+					"id": "set-enabled",
+					"objectClass": "Drop",
+					"sid": 623874565139915,
+					"behaviorType": "Bullet",
 					"parameters": {
-						"path": "KEY_Player & DOT & KEY_PickupDistance",
-						"value": "1000"
+						"state": "enabled"
 					}
 				}
 			],
@@ -387,35 +397,9 @@
 				{
 					"id": "on-key-pressed",
 					"objectClass": "Keyboard",
-					"sid": 743136669516648,
+					"sid": 863367286833786,
 					"parameters": {
 						"key": 55
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "set-value",
-					"objectClass": "Rules",
-					"sid": 851404473583778,
-					"parameters": {
-						"path": "KEY_Player & DOT & KEY_PickupDistance",
-						"value": "30"
-					}
-				}
-			],
-			"sid": 217108654786040,
-			"disabled": true
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 626404855373322,
-					"parameters": {
-						"key": 56
 					}
 				}
 			],
@@ -439,9 +423,9 @@
 				{
 					"id": "on-key-pressed",
 					"objectClass": "Keyboard",
-					"sid": 266417238029725,
+					"sid": 895215609919032,
 					"parameters": {
-						"key": 57
+						"key": 56
 					}
 				}
 			],

@@ -300,14 +300,6 @@
 					}
 				},
 				{
-					"name": "R_Pools.js",
-					"type": "application/javascript",
-					"sid": 442162123792153,
-					"script-info": {
-						"purpose": "none"
-					}
-				},
-				{
 					"name": "R_Upgrades.js",
 					"type": "application/javascript",
 					"sid": 784123600485611,
@@ -560,7 +552,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "53",
+		"version": "54",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

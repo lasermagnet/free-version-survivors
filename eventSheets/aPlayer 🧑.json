@@ -699,7 +699,7 @@
 						{
 							"id": "for-each",
 							"objectClass": "Rules",
-							"sid": 567391062633599,
+							"sid": 968372128618713,
 							"parameters": {
 								"path": "KEY_Weapons"
 							}
@@ -707,7 +707,7 @@
 						{
 							"id": "compare-value",
 							"objectClass": "Rules",
-							"sid": 986676676024691,
+							"sid": 469097933985330,
 							"parameters": {
 								"path": "DOT & KEY_Amount",
 								"cmp": 5,
@@ -717,7 +717,7 @@
 						{
 							"id": "is-timer-running",
 							"objectClass": "Player",
-							"sid": 275223050894204,
+							"sid": 542826378162532,
 							"behaviorType": "Timer",
 							"parameters": {
 								"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
@@ -729,7 +729,7 @@
 						{
 							"id": "start-timer",
 							"objectClass": "Player",
-							"sid": 783842095913817,
+							"sid": 978977293431420,
 							"behaviorType": "Timer",
 							"parameters": {
 								"duration": "Rules.Get(DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)",
@@ -740,7 +740,7 @@
 						{
 							"customAction": "spawn",
 							"objectClass": "Weapon",
-							"sid": 464914540675245,
+							"sid": 754867529646976,
 							"parameters": [
 								"Rules.CurrentKey",
 								"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
@@ -763,7 +763,7 @@
 							]
 						}
 					],
-					"sid": 135052668909848
+					"sid": 723069313143119
 				},
 				{
 					"eventType": "comment",
@@ -928,15 +928,24 @@
 				},
 				{
 					"eventType": "comment",
+					"text": "todo_opt foreaches: process first only, one every tick?"
+				},
+				{
+					"eventType": "comment",
 					"text": "Attract & pick up drops"
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "is-on-screen",
+							"objectClass": "Drop",
+							"sid": 932905336695205
+						},
+						{
 							"id": "compare-instance-variable",
 							"objectClass": "Drop",
-							"sid": 667811058829487,
+							"sid": 998052080631810,
 							"parameters": {
 								"instance-variable": "isCollected",
 								"comparison": 0,
@@ -946,7 +955,7 @@
 						{
 							"id": "pick-by-comparison",
 							"objectClass": "System",
-							"sid": 819101292241200,
+							"sid": 106873194313241,
 							"parameters": {
 								"object": "Drop",
 								"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
@@ -959,148 +968,189 @@
 						{
 							"id": "set-enabled",
 							"objectClass": "Drop",
-							"sid": 395249354730319,
+							"sid": 792646770947617,
 							"behaviorType": "Bullet",
 							"parameters": {
 								"state": "enabled"
 							}
 						}
 					],
-					"sid": 622273281678330,
+					"sid": 814017461985152
+				},
+				{
+					"eventType": "comment",
+					"text": "Pick up overlapping drops"
+				},
+				{
+					"eventType": "comment",
+					"text": "todo_opt use distance check instead of overlap check?"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "Player",
+							"sid": 617369594684253,
+							"parameters": {
+								"object": "Drop"
+							}
+						},
+						{
+							"id": "pick-overlapping-point",
+							"objectClass": "System",
+							"sid": 958945996006157,
+							"disabled": true,
+							"parameters": {
+								"object": "Drop",
+								"x": "Player.X",
+								"y": "Player.Y"
+							}
+						},
+						{
+							"id": "is-on-screen",
+							"objectClass": "Drop",
+							"sid": 964959936922761,
+							"disabled": true
+						},
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 852085648119428,
+							"disabled": true,
+							"parameters": {
+								"object": "Drop",
+								"expression": "distance(Player.X, Player.Y, Drop.X, Drop.Y)",
+								"comparison": 2,
+								"value": "Player.Width"
+							}
+						},
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 536932808805254,
+							"parameters": {
+								"object": "Drop"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "playSFX",
+							"objectClass": "Audio",
+							"sid": 166413249183077,
+							"parameters": [
+								"SFX_Drop_ & Drop.AnimationName",
+								"0",
+								"1"
+							]
+						},
+						{
+							"type": "comment",
+							"text": "Set \"picked up\" state & destroy drop"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Drop",
+							"sid": 339640971669673,
+							"parameters": {
+								"instance-variable": "isCollected",
+								"value": "YES"
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "Drop",
+							"sid": 613955840491030
+						},
+						{
+							"type": "comment",
+							"text": "Player: collect experience (with bonus applied)"
+						},
+						{
+							"id": "add-to",
+							"objectClass": "Rules",
+							"sid": 363669788348040,
+							"parameters": {
+								"path": "KEY_Player & DOT & KEY_Experience",
+								"value": "Drop.experience > 0 ? round(Drop.experience * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : 0"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Player: collect healing (with bonus applied)"
+						},
+						{
+							"id": "set-value",
+							"objectClass": "Rules",
+							"sid": 136620600775398,
+							"parameters": {
+								"path": "KEY_Player & DOT & KEY_Health",
+								"value": "min(Rules.Get(KEY_Player & DOT & KEY_Health) + Drop.healing * Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier), Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
+							}
+						}
+					],
+					"sid": 161162140053177,
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "Pick up drop"
+							"text": "Magnet drop: start picking up experience drops within magnet distance"
 						},
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "pick-overlapping-point",
+									"id": "is-animation-playing",
+									"objectClass": "Drop",
+									"sid": 717527835498094,
+									"parameters": {
+										"animation": "ANIM_Magnet"
+									}
+								},
+								{
+									"id": "pick-all",
 									"objectClass": "System",
-									"sid": 666948097838731,
+									"sid": 599666318608959,
+									"parameters": {
+										"object": "Drop"
+									}
+								},
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Drop",
+									"sid": 562515372994726,
+									"parameters": {
+										"animation": "ANIM_Experience"
+									}
+								},
+								{
+									"id": "pick-by-comparison",
+									"objectClass": "System",
+									"sid": 416544930367758,
 									"parameters": {
 										"object": "Drop",
-										"x": "Player.X",
-										"y": "Player.Y"
+										"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
+										"comparison": 2,
+										"value": "Rules.Get(KEY_Player & DOT & KEY_PickupDistanceMagnet)"
 									}
 								}
 							],
 							"actions": [
 								{
-									"customAction": "playSFX",
-									"objectClass": "Audio",
-									"sid": 872692223509739,
-									"parameters": [
-										"SFX_Drop_ & Drop.AnimationName",
-										"0",
-										"1"
-									]
-								},
-								{
 									"type": "comment",
-									"text": "Set \"picked up\" state & destroy drop"
+									"text": "todo use bullet speed 0/x?"
 								},
 								{
-									"id": "set-instvar-value",
+									"id": "set-enabled",
 									"objectClass": "Drop",
-									"sid": 421921849484374,
+									"sid": 442391700084963,
+									"behaviorType": "Bullet",
 									"parameters": {
-										"instance-variable": "isCollected",
-										"value": "YES"
-									}
-								},
-								{
-									"id": "destroy",
-									"objectClass": "Drop",
-									"sid": 975610977138803
-								},
-								{
-									"type": "comment",
-									"text": "Player: collect experience (with bonus applied)"
-								},
-								{
-									"id": "add-to",
-									"objectClass": "Rules",
-									"sid": 550631592040703,
-									"parameters": {
-										"path": "KEY_Player & DOT & KEY_Experience",
-										"value": "Drop.experience > 0 ? round(Drop.experience * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : 0"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Player: collect healing (with bonus applied)"
-								},
-								{
-									"id": "set-value",
-									"objectClass": "Rules",
-									"sid": 195008119513535,
-									"parameters": {
-										"path": "KEY_Player & DOT & KEY_Health",
-										"value": "min(Rules.Get(KEY_Player & DOT & KEY_Health) + Drop.healing * Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier), Rules.Get(KEY_Player & DOT & KEY_Health_Max))"
+										"state": "enabled"
 									}
 								}
 							],
-							"sid": 893054964726095,
-							"children": [
-								{
-									"eventType": "comment",
-									"text": "Magnet drop: start picking up experience drops within magnet distance"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "is-animation-playing",
-											"objectClass": "Drop",
-											"sid": 944791786483183,
-											"parameters": {
-												"animation": "ANIM_Magnet"
-											}
-										},
-										{
-											"id": "pick-all",
-											"objectClass": "System",
-											"sid": 355304951683305,
-											"parameters": {
-												"object": "Drop"
-											}
-										},
-										{
-											"id": "is-animation-playing",
-											"objectClass": "Drop",
-											"sid": 651377895862398,
-											"parameters": {
-												"animation": "ANIM_Experience"
-											}
-										},
-										{
-											"id": "pick-by-comparison",
-											"objectClass": "System",
-											"sid": 102819380508053,
-											"parameters": {
-												"object": "Drop",
-												"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
-												"comparison": 2,
-												"value": "Rules.Get(KEY_Player & DOT & KEY_PickupDistanceMagnet)"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-enabled",
-											"objectClass": "Drop",
-											"sid": 824882698856648,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"state": "enabled"
-											}
-										}
-									],
-									"sid": 726470448171921
-								}
-							]
+							"sid": 635036850342896
 						}
 					]
 				},
@@ -1537,134 +1587,144 @@
 					]
 				},
 				{
-					"eventType": "comment",
-					"text": "Take damage from all overlapping enemies"
-				},
-				{
-					"eventType": "block",
-					"conditions": [
+					"eventType": "group",
+					"disabled": false,
+					"title": "Damage",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
 						{
-							"id": "is-timer-running",
-							"objectClass": "Player",
-							"sid": 615837367331856,
-							"behaviorType": "Timer",
-							"parameters": {
-								"tag": "TIMER_Freeze_All"
-							},
-							"isInverted": true
+							"eventType": "comment",
+							"text": "Take damage from all overlapping enemies"
 						},
 						{
-							"id": "is-overlapping-another-object",
-							"objectClass": "PlayerHurtbox",
-							"sid": 649766626643368,
-							"parameters": {
-								"object": "Enemy"
-							}
-						},
-						{
-							"id": "is-timer-running",
-							"objectClass": "Enemy",
-							"sid": 631742886751662,
-							"behaviorType": "Timer",
-							"parameters": {
-								"tag": "TIMER_Freeze"
-							},
-							"isInverted": true
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 635003654749880,
-							"parameters": {
-								"instance-variable": "damage",
-								"comparison": 4,
-								"value": "0"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 279699643422993,
-							"parameters": {
-								"instance-variable": "isDead",
-								"comparison": 0,
-								"value": "NO"
-							}
-						},
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 756668298158005,
-							"parameters": {
-								"object": "Enemy"
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "PlayerHurtbox",
+									"sid": 295885904240679,
+									"parameters": {
+										"object": "Enemy"
+									}
+								},
+								{
+									"id": "is-timer-running",
+									"objectClass": "Player",
+									"sid": 150426683452162,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "TIMER_Freeze_All"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "is-timer-running",
+									"objectClass": "Enemy",
+									"sid": 362324824824371,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "TIMER_Freeze"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemy",
+									"sid": 975687906808912,
+									"parameters": {
+										"instance-variable": "damage",
+										"comparison": 4,
+										"value": "0"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemy",
+									"sid": 475394358697937,
+									"parameters": {
+										"instance-variable": "isDead",
+										"comparison": 0,
+										"value": "NO"
+									}
+								},
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 226826882419403,
+									"parameters": {
+										"object": "Enemy"
+									}
+								}
+							],
+							"actions": [
+								{
+									"customAction": "playSFX",
+									"objectClass": "Audio",
+									"sid": 125886902660889,
+									"parameters": [
+										"SFX_PlayerDamaged",
+										"3",
+										"Enemy.damage > 0 ? 1 : 0"
+									]
+								},
+								{
+									"type": "comment",
+									"text": "Decrease player health"
+								},
+								{
+									"id": "set-value",
+									"objectClass": "Rules",
+									"sid": 280671135268126,
+									"parameters": {
+										"path": "KEY_Player & DOT & KEY_Health",
+										"value": "max(0, Rules.Get(KEY_Player & DOT & KEY_Health) - Enemy.damage * dt)"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "Set player to hurting (for vignette UI effect)"
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 619213010105212,
+									"parameters": {
+										"instance-variable": "isHurt",
+										"value": "Enemy.damage > 0 ? YES : NO"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "Start damage flash on & off timers if they are not running yet"
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "Player",
+									"sid": 508694919754344,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "C_Damage_Flash_Interval",
+										"type": "once",
+										"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOn : EMPTY"
+									}
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "Player",
+									"sid": 963881426102558,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "C_Damage_Flash_Interval * 2",
+										"type": "once",
+										"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
+									}
+								}
+							],
+							"sid": 527035194645239
 						}
 					],
-					"actions": [
-						{
-							"customAction": "playSFX",
-							"objectClass": "Audio",
-							"sid": 559557265402918,
-							"parameters": [
-								"SFX_PlayerDamaged",
-								"3",
-								"Enemy.damage > 0 ? 1 : 0"
-							]
-						},
-						{
-							"type": "comment",
-							"text": "Decrease player health"
-						},
-						{
-							"id": "set-value",
-							"objectClass": "Rules",
-							"sid": 690662732743411,
-							"parameters": {
-								"path": "KEY_Player & DOT & KEY_Health",
-								"value": "max(0, Rules.Get(KEY_Player & DOT & KEY_Health) - Enemy.damage * dt)"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Set player to hurting (for vignette UI effect)"
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 388171655154242,
-							"parameters": {
-								"instance-variable": "isHurt",
-								"value": "Enemy.damage > 0 ? YES : NO"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Start damage flash on & off timers if they are not running yet"
-						},
-						{
-							"id": "start-timer",
-							"objectClass": "Player",
-							"sid": 898663768743063,
-							"behaviorType": "Timer",
-							"parameters": {
-								"duration": "C_Damage_Flash_Interval",
-								"type": "once",
-								"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOn : EMPTY"
-							}
-						},
-						{
-							"id": "start-timer",
-							"objectClass": "Player",
-							"sid": 613752077582164,
-							"behaviorType": "Timer",
-							"parameters": {
-								"duration": "C_Damage_Flash_Interval * 2",
-								"type": "once",
-								"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
-							}
-						}
-					],
-					"sid": 213451265694389
+					"sid": 375877904511764
 				},
 				{
 					"eventType": "comment",
@@ -2193,6 +2253,7 @@
 					"id": "set-acceleration",
 					"objectClass": "Player",
 					"sid": 300033388980964,
+					"disabled": true,
 					"behaviorType": "8Direction",
 					"parameters": {
 						"acceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementAcceleration)"
@@ -2202,6 +2263,7 @@
 					"id": "set-deceleration",
 					"objectClass": "Player",
 					"sid": 414761694337799,
+					"disabled": true,
 					"behaviorType": "8Direction",
 					"parameters": {
 						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
@@ -2400,9 +2462,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_Wave",
-					"sid": 915036478377883,
+					"sid": 575302447098711,
 					"parameters": {
-						"text": "Rules.Type(KEY_Waves & DOT & waveId & DOT & KEY_Name) = NULL ? EMPTY : Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Name)"
+						"text": "Rules.Type(KEY_Waves & DOT & waveId & DOT & KEY_Label) = NULL ? EMPTY : Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Label)"
 					}
 				},
 				{
