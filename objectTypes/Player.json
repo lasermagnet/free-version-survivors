@@ -20,6 +20,13 @@
 			"sid": 962469594054445
 		},
 		{
+			"name": "cooldown_spawn_item",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 911393079742055
+		},
+		{
 			"name": "experience",
 			"type": "number",
 			"desc": "",

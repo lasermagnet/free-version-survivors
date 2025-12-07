@@ -665,24 +665,6 @@
 											}
 										},
 										{
-											"id": "tween-one-property",
-											"objectClass": "Item",
-											"sid": 253088102355691,
-											"disabled": true,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"\"",
-												"property": "offsetOpacity",
-												"end-value": "0",
-												"time": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)",
-												"ease": "easeinexpo",
-												"destroy-on-complete": "yes",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										},
-										{
 											"id": "move-to-top",
 											"objectClass": "Player",
 											"sid": 176612895163338

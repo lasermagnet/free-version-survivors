@@ -8,8 +8,11 @@ export const rules = {
         "Experience_Target_Multiplier": 1.2,
         "MovementAcceleration": 2000,
         "MovementDeceleration": 2000,
-        "MovementSpeed": 60
+        "MovementSpeed": 60,
+        "PickupDistance": 30
     },
+
+    // todo_maybe: Timers? with an array of timer tags
 
     "Queues": {
         "Items": ["Health", "Sword"],
@@ -18,8 +21,7 @@ export const rules = {
 
     "Wave": { // Wave rules
         "Items": { // Item spawning
-            // todo visualize item cooldown
-            "Cooldown": 5
+            "Cooldown": 10
         },
         "Enemies": { // Enemy spawning
             "Cooldown": 3,
@@ -29,15 +31,16 @@ export const rules = {
 
     "Pools": {
         "Items": [
-            [1, "Sword"]
-            [10, "Health"]
+            [1, "Sword"],
+            [5, "Health"]
         ],
 
         "Upgrades": [
             [1, "Heal1"],
             [1, "MaxHealth"],
-            //[1, "MovementSpeed"],
+            [1, "MovementSpeed"],
             [1, "ExperienceBonus"],
+            [1, "PickupDistance"],
             /*
             [1, "WeaponLevelUpRandom"],
             [1, "WeaponLevelUpAll"],
@@ -79,6 +82,13 @@ export const rules = {
             "Rule_Value": "Player.Experience_Bonus_Multiplier",
             "Multiply": 1, // todo
             "Add": 0.1
+        },
+        "PickupDistance": {
+            "Label": "Pickup distance",
+            "Icon": "Experience",
+            "Rule_Value": "Player.PickupDistance",
+            "Multiply": 1, // todo
+            "Add": 10
         }
     },
 
@@ -188,13 +198,11 @@ export const rules = {
 /*
 
 # todo
-- push away enemies
 - audio
 - waves (with string names/labels)
 - enemy types: advanced spawning, damage and xp drop amounts
 - more weapons
-- show upgrade change amounts on level up ui
-- stat upgrades: pickup distance, xp bonus
+- stat upgrades: health regen
 - weapon upgrades: level, cooldown
 - game over screen
 

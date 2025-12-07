@@ -368,6 +368,16 @@
 			"sid": 385362962184584
 		},
 		{
+			"eventType": "variable",
+			"name": "KEY_PickupDistance",
+			"type": "string",
+			"initialValue": "PickupDistance",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 685952872375412
+		},
+		{
 			"eventType": "comment",
 			"text": "Loops"
 		},

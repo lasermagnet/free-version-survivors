@@ -1809,7 +1809,17 @@
 					"sid": 748172629066057,
 					"tags": "",
 					"instanceVariables": {},
-					"behaviors": {},
+					"behaviors": {
+						"Anchor": {
+							"properties": {
+								"left-edge": "window-left",
+								"top-edge": "window-top",
+								"right-edge": "window-right",
+								"bottom-edge": "window-bottom",
+								"enabled": true
+							}
+						}
+					},
 					"instanceFolderItem": {
 						"sid": 748172629066057,
 						"expanded": true

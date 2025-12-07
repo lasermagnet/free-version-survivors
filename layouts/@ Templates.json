@@ -196,6 +196,7 @@
 					"instanceVariables": {
 						"cooldown_weapon_sword": 0,
 						"cooldown_spawn_enemy": 0,
+						"cooldown_spawn_item": 0,
 						"experience": 0,
 						"isDead": 0,
 						"lastMovingAngle": 0,

@@ -43,12 +43,12 @@
 						{
 							"id": "pick-by-comparison",
 							"objectClass": "System",
-							"sid": 528611509747989,
+							"sid": 117652347320402,
 							"parameters": {
 								"object": "Drop",
 								"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
 								"comparison": 2,
-								"value": "30"
+								"value": "Rules.Get(KEY_Player & DOT & KEY_PickupDistance)"
 							}
 						}
 					],

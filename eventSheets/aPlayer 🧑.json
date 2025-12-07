@@ -83,6 +83,15 @@
 						"instance-variable": "cooldown_spawn_enemy",
 						"value": "Rules.Get(KEY_Wave & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
 					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 271378456414787,
+					"parameters": {
+						"instance-variable": "cooldown_spawn_item",
+						"value": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)"
+					}
 				}
 			],
 			"sid": 821905210614926
@@ -141,6 +150,15 @@
 					"parameters": {
 						"instance-variable": "cooldown_spawn_enemy",
 						"value": "Self.cooldown_spawn_enemy = NOTHING ? NOTHING : max(0, Self.cooldown_spawn_enemy - dt)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 228730679590735,
+					"parameters": {
+						"instance-variable": "cooldown_spawn_item",
+						"value": "Self.cooldown_spawn_item = NOTHING ? NOTHING : max(0, Self.cooldown_spawn_item - dt)"
 					}
 				},
 				{
@@ -287,6 +305,56 @@
 						}
 					],
 					"sid": 884938568296906
+				},
+				{
+					"eventType": "comment",
+					"text": "Queue item spawn"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 581358925559862,
+							"parameters": {
+								"instance-variable": "cooldown_spawn_item",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 832707280107346,
+							"parameters": {
+								"instance-variable": "cooldown_spawn_item",
+								"value": "Rules.Get(KEY_Wave & DOT & KEY_Items & DOT & KEY_Cooldown)"
+							}
+						},
+						{
+							"id": "push-value",
+							"objectClass": "Rules",
+							"sid": 882009730037582,
+							"parameters": {
+								"where": "back",
+								"path": "KEY_Queues & DOT & KEY_Items",
+								"value": "AdvancedRandom.WeightedByName(PT_Items)"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 263380193314445,
+							"parameters": {
+								"type": "log",
+								"message": "\"A \" & Rules.Get(KEY_Queues & DOT & KEY_Items & DOT & \"0\") & \" will spawn soon...\""
+							}
+						}
+					],
+					"sid": 416805021167430
 				},
 				{
 					"eventType": "comment",
