@@ -3,7 +3,7 @@
 	"events": [
 		{
 			"aceType": "action",
-			"aceName": "spawnFromQueue",
+			"aceName": "spawn",
 			"objectClass": "Enemy",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -15,7 +15,7 @@
 					"name": "enemy",
 					"type": "string",
 					"initialValue": "",
-					"comment": "If not specified, it will be chosen randomly",
+					"comment": "If not specified, it will be chosen randomly from the pool",
 					"sid": 500842434014901
 				},
 				{
@@ -838,7 +838,17 @@
 										{
 											"id": "compare-two-values",
 											"objectClass": "System",
-											"sid": 400710386844605,
+											"sid": 778563256384820,
+											"parameters": {
+												"first-value": "Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_ItemSpawnPool)",
+												"comparison": 4,
+												"second-value": "0"
+											}
+										},
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 555483154867909,
 											"parameters": {
 												"first-value": "Rules.ArraySize(KEY_Queues & DOT & KEY_Items)",
 												"comparison": 4,
@@ -884,6 +894,15 @@
 												"y": "Enemy.Y",
 												"create-hierarchy": true,
 												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "log",
+											"objectClass": "Browser",
+											"sid": 480511634667752,
+											"parameters": {
+												"type": "log",
+												"message": "\"Item spawn pool size: \" & Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_ItemSpawnPool)"
 											}
 										},
 										{

@@ -74,7 +74,7 @@ export const Upgrades = {
     },
     "WeaponCooldown": {
         "Label": "Attack faster",
-        "Description": "Increase cooldown bonus by 5%.",
+        "Description": "Reduce all weapon cooldowns by 5%.",
         "Icon": "WeaponCooldown",
         "Rule_Value": "Player.Bonus_Weapon_Cooldown_Multiplier",
         "Multiply": 1,

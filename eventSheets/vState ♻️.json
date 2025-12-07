@@ -81,7 +81,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "cycle",
+			"name": "waveCycle",
 			"type": "number",
 			"initialValue": "-1",
 			"comment": "",

@@ -75,6 +75,7 @@
 					"id": "set-value",
 					"objectClass": "Cooldowns",
 					"sid": 638920384230792,
+					"disabled": true,
 					"parameters": {
 						"path": "KEY_Spawns & DOT & KEY_Enemies",
 						"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
@@ -84,6 +85,7 @@
 					"id": "set-value",
 					"objectClass": "Cooldowns",
 					"sid": 899906220112829,
+					"disabled": true,
 					"parameters": {
 						"path": "KEY_Spawns & DOT & KEY_Items",
 						"value": "Rules.Get(KEY_Spawns & DOT & KEY_Items & DOT & KEY_Cooldown)"
@@ -568,6 +570,7 @@
 					"id": "set-value",
 					"objectClass": "Cooldowns",
 					"sid": 604608562984822,
+					"disabled": true,
 					"parameters": {
 						"path": "KEY_Spawns & DOT & KEY_Enemies",
 						"value": "max(0, Cooldowns.Get(KEY_Spawns & DOT & KEY_Enemies) - dt)"
@@ -577,6 +580,7 @@
 					"id": "set-value",
 					"objectClass": "Cooldowns",
 					"sid": 378881065557794,
+					"disabled": true,
 					"parameters": {
 						"path": "KEY_Spawns & DOT & KEY_Items",
 						"value": "max(0, Cooldowns.Get(KEY_Spawns & DOT & KEY_Items) - dt)"
@@ -703,6 +707,10 @@
 				{
 					"eventType": "comment",
 					"text": "Update cooldown on weapons with at least 1 amount & attack when a cooldown is finished"
+				},
+				{
+					"eventType": "comment",
+					"text": "todo use timers for weapon spawning & get rid of Cooldowns JSON?"
 				},
 				{
 					"eventType": "block",
@@ -841,7 +849,7 @@
 							"objectClass": "System",
 							"sid": 613390079745651,
 							"parameters": {
-								"variable": "cycle",
+								"variable": "waveCycle",
 								"value": "1"
 							}
 						},
@@ -878,9 +886,19 @@
 							"id": "add-to",
 							"objectClass": "Rules",
 							"sid": 232278523205720,
+							"disabled": true,
 							"parameters": {
 								"path": "KEY_Queues & DOT & KEY_Enemies",
 								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Amount)"
+							}
+						},
+						{
+							"id": "add-to",
+							"objectClass": "Rules",
+							"sid": 546192475787317,
+							"parameters": {
+								"path": "KEY_Queues & DOT & KEY_Enemies",
+								"value": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPerCycle)"
 							}
 						}
 					],
@@ -1205,6 +1223,15 @@
 							"sid": 197417321501456,
 							"parameters": {
 								"object": "UI_TextSF_DamageNumber",
+								"time-scale": "0"
+							}
+						},
+						{
+							"id": "set-object-time-scale",
+							"objectClass": "System",
+							"sid": 664002498855078,
+							"parameters": {
+								"object": "UI_TextSF_Wave",
 								"time-scale": "0"
 							}
 						},
@@ -1916,6 +1943,14 @@
 					"parameters": {
 						"object": "UI_TextSF_DamageNumber"
 					}
+				},
+				{
+					"id": "restore-object-time-scale",
+					"objectClass": "System",
+					"sid": 482705797042896,
+					"parameters": {
+						"object": "UI_TextSF_Wave"
+					}
 				}
 			],
 			"sid": 134088445000097
@@ -2066,13 +2101,21 @@
 					"text": "todo check wave count first"
 				},
 				{
+					"type": "comment",
+					"text": "Reset cycle counter"
+				},
+				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
 					"sid": 354139982860080,
 					"parameters": {
-						"variable": "cycle",
+						"variable": "waveCycle",
 						"value": "0"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Increase wave counter"
 				},
 				{
 					"id": "add-to-eventvar",
@@ -2082,6 +2125,10 @@
 						"variable": "wave",
 						"value": "1"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "If wave counter is invalid, reset it (restart from first wave)"
 				},
 				{
 					"id": "set-eventvar-value",
@@ -2102,6 +2149,10 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Initialize enemy spawn pool"
+				},
+				{
 					"id": "createProbabilityTableFromJSON",
 					"objectClass": "AdvancedRandom",
 					"sid": 563817216794692,
@@ -2120,6 +2171,10 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Initialize item spawn pool"
+				},
+				{
 					"id": "createProbabilityTableFromJSON",
 					"objectClass": "AdvancedRandom",
 					"sid": 929665451432000,
@@ -2127,6 +2182,10 @@
 						"name": "PT_Items",
 						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & wave & DOT & KEY_ItemSpawnPool)"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Start wave cooldown timer"
 				},
 				{
 					"id": "start-timer",
@@ -2138,6 +2197,10 @@
 						"type": "once",
 						"tag": "TIMER_Wave"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Start wave cycle cooldown timer"
 				},
 				{
 					"id": "start-timer",
@@ -2152,29 +2215,83 @@
 				},
 				{
 					"type": "comment",
-					"text": "todo spawn cycle"
-				},
-				{
-					"type": "comment",
-					"text": "Spawn item"
+					"text": "Spawn item (warning: appalling workaround to save an event)"
 				},
 				{
 					"id": "push-value",
 					"objectClass": "Rules",
-					"sid": 210749285864622,
+					"sid": 131514688627958,
 					"parameters": {
 						"where": "back",
-						"path": "KEY_Queues & DOT & KEY_Items",
+						"path": "Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool) > 0 ? KEY_Queues & DOT & KEY_Items : EMPTY",
 						"value": "AdvancedRandom.WeightedByName(PT_Items)"
 					}
 				},
 				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 165933742969490,
+					"type": "comment",
+					"text": "Spawn wave text UI"
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 294371349219062,
 					"parameters": {
-						"type": "log",
-						"message": "\"Fake spawning \" & AdvancedRandom.WeightedByName(PT_Items)"
+						"object-to-create": "UI_TextSF_Wave",
+						"layer": "LAYER_UI",
+						"x": "ViewportMidX(LAYER_UI)",
+						"y": "ViewportMidY(LAYER_UI) - 60",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "UI_TextSF_Wave",
+					"sid": 430725875829815,
+					"parameters": {
+						"text": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_Name)"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "UI_TextSF_Wave",
+					"sid": 944226078392843,
+					"parameters": {
+						"opacity": "0"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "UI_TextSF_Wave",
+					"sid": 934730373585434,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetOpacity",
+						"end-value": "100",
+						"time": "1",
+						"ease": "easeoutexpo",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "yes",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "UI_TextSF_Wave",
+					"sid": 351427664386702,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetY",
+						"end-value": "Self.Y + 10",
+						"time": "1",
+						"ease": "easeoutcubic",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
 					}
 				}
 			],
@@ -2200,14 +2317,14 @@
 						{
 							"id": "log",
 							"objectClass": "Browser",
-							"sid": 467816786197969,
+							"sid": 538892113107038,
 							"parameters": {
 								"type": "log",
-								"message": "\"Spawning \" & Rules.CurrentValue & \" \" & Rules.CurrentKey & \" enemies.\""
+								"message": "\"Fixed enemy spawning: \" & Rules.CurrentValue & \" x \" & Rules.CurrentKey"
 							}
 						},
 						{
-							"customAction": "spawnFromQueue",
+							"customAction": "spawn",
 							"objectClass": "Enemy",
 							"sid": 685676196464256,
 							"parameters": [

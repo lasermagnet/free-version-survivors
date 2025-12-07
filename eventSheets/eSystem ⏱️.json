@@ -347,9 +347,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_DevInfo",
-					"sid": 355194803491613,
+					"sid": 177235946647710,
 					"parameters": {
-						"text": "\"Build \" & projectversion & newline &\nStringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects, {4} enemies\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount, Enemy.Count) & newline & newline & \n\"Player level: \" & Player.level & newline &\n\"Enemies killed: \" & enemiesKilled & newline &\n\"Enemy spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Item spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Item_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Health gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
+						"text": "\"Build \" & projectversion & newline &\nStringSub(\"{0} FPS, {1}% CPU, {2}% GPU, {3} objects, {4} enemies\", fps, round(cpuutilisation * 100), round(gpuutilisation * 100), objectcount, Enemy.Count) & newline & newline & \nStringSub(\"Wave #{0}, cycle #{1}\", wave, waveCycle) & newline &\n\"Player level: \" & Player.level & newline &\n\"Enemies killed: \" & enemiesKilled & newline &\n\"Enemy spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Item spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Item_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Health gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Healing_Multiplier) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
 					}
 				},
 				{
@@ -411,12 +411,12 @@
 					"text": "Spawn an enemy from queue (if needed) & subtract one from spawn queue"
 				},
 				{
-					"customAction": "spawnFromQueue",
+					"customAction": "spawn",
 					"objectClass": "Enemy",
-					"sid": 685889355637540,
+					"sid": 200356015969843,
 					"parameters": [
 						"EMPTY",
-						"Rules.Get(KEY_Queues & DOT & KEY_Enemies) > 0 ? 1 : 0"
+						"Rules.Get(KEY_Queues & DOT & KEY_Enemies) > 0 & Rules.ArraySize(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPool) > 0 ? 1 : 0"
 					]
 				},
 				{

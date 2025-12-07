@@ -1,0 +1,29 @@
+{
+	"name": "UI_TextSF_Wave",
+	"plugin-id": "Spritefont2",
+	"sid": 107877939717286,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 904349298081316
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 570,
+		"height": 180,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 5886604,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}
