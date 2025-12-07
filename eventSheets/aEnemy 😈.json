@@ -50,12 +50,12 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 563724051265681,
+					"sid": 443287625595748,
 					"parameters": {
 						"object-to-create": "Enemy",
 						"layer": "LAYER_Main",
-						"x": "Player.X + cos(randomAngle) * C_Distance_Enemy_Spawn",
-						"y": "Player.Y + sin(randomAngle) * C_Distance_Enemy_Spawn",
+						"x": "Player.X + cos(randomAngle) * Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Distance)",
+						"y": "Player.Y + sin(randomAngle) * Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Distance)",
 						"create-hierarchy": true,
 						"template-name": "\"\""
 					}
