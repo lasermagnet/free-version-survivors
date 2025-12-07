@@ -251,12 +251,12 @@
 					}
 				},
 				{
-					"type": "UI_Button9P",
+					"type": "UI_Button9P_Upgrade",
 					"properties": {
-						"left-margin": 1,
-						"right-margin": 1,
-						"top-margin": 1,
-						"bottom-margin": 1,
+						"left-margin": 3,
+						"right-margin": 3,
+						"top-margin": 3,
+						"bottom-margin": 3,
 						"edges": "tile",
 						"fill": "tile",
 						"initially-visible": true,
@@ -266,8 +266,56 @@
 					"uid": 35,
 					"sid": 506331070366143,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"option": 0,
+						"upgrade": ""
+					},
 					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 35,
+						"children": [
+							{
+								"uid": 36,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
 					"instanceFolderItem": {
 						"sid": 506331070366143,
 						"expanded": true
@@ -328,7 +376,7 @@
 						}
 					},
 					"sceneGraphData": {
-						"parent-uid": null,
+						"parent-uid": 35,
 						"uid": 36,
 						"flags": {
 							"x": true,
@@ -397,8 +445,8 @@
 				1
 			],
 			"isTransparent": false,
-			"parallaxX": 1,
-			"parallaxY": 1,
+			"parallaxX": 0,
+			"parallaxY": 0,
 			"scaleRate": 1,
 			"forceOwnTexture": false,
 			"renderingMode": "3d",

@@ -1,22 +1,37 @@
 {
-	"name": "UI_Button9P",
+	"name": "UI_Button9P_Upgrade",
 	"plugin-id": "NinePatch",
 	"sid": 458993068615751,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "option",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 679771488803656
+		},
+		{
+			"name": "upgrade",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 377639161975727
+		}
+	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"image": {
-		"width": 3,
-		"height": 3,
+		"width": 7,
+		"height": 7,
 		"originX": 0.5,
 		"originY": 0.5,
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
 		"fileType": "image/png",
-		"imageSpriteId": 7030439,
+		"imageSpriteId": 6528092,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

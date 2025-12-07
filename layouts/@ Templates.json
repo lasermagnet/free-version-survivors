@@ -31,7 +31,7 @@
 								"acceleration": 0,
 								"gravity": 0,
 								"bounce-off-solids": false,
-								"set-angle": false,
+								"set-angle": true,
 								"step": false,
 								"enabled": true
 							}
@@ -51,10 +51,10 @@
 					"world": {
 						"x": 8,
 						"y": 56,
-						"width": 8,
+						"width": 20,
 						"height": 8,
 						"originX": 0,
-						"originY": 1,
+						"originY": 0.5,
 						"color": [
 							1,
 							1,
@@ -81,6 +81,7 @@
 						"health": 0,
 						"damage": 0,
 						"experience": 0,
+						"damageTaken": 0,
 						"isDead": 0
 					},
 					"behaviors": {
@@ -102,51 +103,9 @@
 							"properties": {
 								"enabled": true
 							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": null,
-						"uid": 4,
-						"children": [
-							{
-								"uid": 37,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": true,
-									"h": true,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							}
-						],
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
 						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
+						"Timer": {
+							"properties": {}
 						}
 					},
 					"instanceFolderItem": {
@@ -241,7 +200,8 @@
 						"cooldown_spawn_enemy": 0,
 						"queue_spawn_enemy": 0,
 						"experience": 0,
-						"isDead": 0
+						"isDead": 0,
+						"lastMovingAngle": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -514,22 +474,22 @@
 					}
 				},
 				{
-					"type": "UI_TextSF_Damage",
+					"type": "UI_TextSF_DamageNumber",
 					"properties": {
-						"text": "0",
+						"text": "1234567",
 						"enable-bbcode": true,
-						"character-width": 30,
-						"character-height": 30,
-						"character-set": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
-						"spacing-data": "[[12,\" \"],[24,\"!\\\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\"]]",
-						"scale": 0.1,
+						"character-width": 5,
+						"character-height": 7,
+						"character-set": "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.,;:?!-_~#\"'()[]|°%+*\\/=<> ",
+						"spacing-data": "[[4,\"ABCDEFGHJKLMNOPQRSTUVWXYZ1234567890?-_~#°%+*\\/=<>\"],[3,\",;()[] \"],[2,\"|I.:!'\"]]",
+						"scale": 0.75,
 						"character-spacing": 0,
 						"line-height": 1,
 						"horizontal-alignment": "center",
 						"vertical-alignment": "center",
 						"wrapping": "word",
-						"initially-visible": true,
-						"origin": "bottom",
+						"initially-visible": false,
+						"origin": "center",
 						"read-aloud": false
 					},
 					"uid": 37,
@@ -543,34 +503,6 @@
 							}
 						}
 					},
-					"sceneGraphData": {
-						"parent-uid": 4,
-						"uid": 37,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
 					"instanceFolderItem": {
 						"sid": 843334077670080,
 						"expanded": true
@@ -578,12 +510,12 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 32.75,
-						"y": 31,
+						"x": 49,
+						"y": 48,
 						"width": 16,
 						"height": 8,
 						"originX": 0.5,
-						"originY": 1,
+						"originY": 0.5,
 						"color": [
 							1,
 							1,

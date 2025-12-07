@@ -16,6 +16,7 @@ async function OnBeforeProjectStart(runtime) {
 	// the first layout. Loading has finished and initial
 	// instances are created and available to use here.
 
+
 	let editorView = new EditorView({
 		doc: JSON.stringify(rules.rules, null, 2),
 		extensions: [basicSetup, javascript(), basicDark],
@@ -29,6 +30,8 @@ async function OnBeforeProjectStart(runtime) {
 	}
 
 	addStyle(`#rule-editor {overflow: auto}`)
+
+
 
 	//runtime.addEventListener("tick", () => Tick(runtime));
 

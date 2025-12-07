@@ -27,6 +27,20 @@
 		},
 		{
 			"eventType": "comment",
+			"text": "Image points"
+		},
+		{
+			"eventType": "variable",
+			"name": "IP_Enemy_DamageNumber",
+			"type": "string",
+			"initialValue": "DamageNumber",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 656461353568013
+		},
+		{
+			"eventType": "comment",
 			"text": "Layers"
 		},
 		{
@@ -284,6 +298,16 @@
 			"sid": 874095317289260
 		},
 		{
+			"eventType": "variable",
+			"name": "KEY_Icon",
+			"type": "string",
+			"initialValue": "Icon",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 815565522830219
+		},
+		{
 			"eventType": "comment",
 			"text": "Loops"
 		},
@@ -387,13 +411,27 @@
 		},
 		{
 			"eventType": "comment",
+			"text": "Timers"
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Enemy_SpawnDamageNumber",
+			"type": "string",
+			"initialValue": "SpawnDamageNumber",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 637711406716762
+		},
+		{
+			"eventType": "comment",
 			"text": "Tweens"
 		},
 		{
 			"eventType": "variable",
 			"name": "TWEEN_Projectile_Opacity_Lifetime",
 			"type": "string",
-			"initialValue": "Projectile_Opacity_Lifetime",
+			"initialValue": "Opacity_Lifetime",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -403,7 +441,7 @@
 			"eventType": "variable",
 			"name": "TWEEN_LevelUp_FadeIn",
 			"type": "string",
-			"initialValue": "LevelUp_FadeIn",
+			"initialValue": "FadeIn",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -413,7 +451,7 @@
 			"eventType": "variable",
 			"name": "TWEEN_LevelUp_FadeOut",
 			"type": "string",
-			"initialValue": "LevelUp_FadeOut",
+			"initialValue": "FadeOut",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -421,23 +459,23 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TWEEN_UI_TextSF_Damage_Update",
+			"name": "TWEEN_UI_TextSF_DamageNumber_Destroy",
 			"type": "string",
-			"initialValue": "UI_TextSF_Damage_Update",
+			"initialValue": "Destroy",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 418218570836659
+			"sid": 998609837446816
 		},
 		{
 			"eventType": "variable",
-			"name": "TWEEN_UI_TextSF_Damage_Destroy",
+			"name": "TWEEN_UI_TextSF_DamageNumber_Scale",
 			"type": "string",
-			"initialValue": "UI_TextSF_Damage_Destroy",
+			"initialValue": "Scale",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 853025838108033
+			"sid": 165491564316690
 		},
 		{
 			"eventType": "comment",

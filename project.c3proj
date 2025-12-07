@@ -29,6 +29,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "DrawingCanvas",
+			"name": "Drawing canvas",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "HTMLElement",
 			"name": "HTML Element",
 			"author": "Scirra",
@@ -184,9 +191,12 @@
 			"Touch",
 			"UpgradeOptions",
 			"HTMLElement",
-			"UI_Button9P",
+			"UI_Button9P_Upgrade",
 			"UI_Rectangle",
-			"UI_TextSF_Damage"
+			"UI_TextSF_DamageNumber",
+			"DrawingCanvas",
+			"DamageNumber",
+			"UI_Icon"
 		],
 		"subfolders": []
 	},
@@ -350,7 +360,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "7",
+		"version": "8",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

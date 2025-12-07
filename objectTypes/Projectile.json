@@ -52,6 +52,43 @@
 			{
 				"frames": [
 					{
+						"width": 20,
+						"height": 8,
+						"originX": 0,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 4329666,
+						"collisionPoly": {
+							"points": [
+								0.5,
+								0.25,
+								0.95,
+								0.5,
+								0.5,
+								0.75,
+								0.15,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 616062657317848,
+				"name": "Sword",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
 						"width": 8,
 						"height": 8,
 						"originX": 0,
@@ -60,7 +97,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 5703235,
+						"imageSpriteId": 9180543,
 						"collisionPoly": {
 							"points": [
 								0.25,
@@ -78,8 +115,8 @@
 						"tag": ""
 					}
 				],
-				"sid": 616062657317848,
-				"name": "Sword",
+				"sid": 610706200520152,
+				"name": "SwordOld",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,

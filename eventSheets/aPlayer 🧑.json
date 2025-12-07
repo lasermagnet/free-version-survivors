@@ -165,16 +165,6 @@
 			"sid": 892639912846222,
 			"children": [
 				{
-					"eventType": "variable",
-					"name": "randomAngle",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 377622339872424
-				},
-				{
 					"eventType": "comment",
 					"text": "Attack: Sword"
 				},
@@ -211,15 +201,6 @@
 								"instance-variable": "cooldown_weapon_sword",
 								"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Cooldown)"
 							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 579380886182412,
-							"parameters": {
-								"variable": "randomAngle",
-								"value": "random(0, 360)"
-							}
 						}
 					],
 					"sid": 135052668909848,
@@ -242,9 +223,9 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Projectile",
-									"sid": 806197989260994,
+									"sid": 815504127971766,
 									"parameters": [
-										"randomAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level) * loopindex)",
+										"Player.lastMovingAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level) * loopindex)",
 										"WEAPON_Sword_todoRemove"
 									]
 								}
@@ -525,6 +506,15 @@
 							}
 						},
 						{
+							"id": "set-object-time-scale",
+							"objectClass": "System",
+							"sid": 197417321501456,
+							"parameters": {
+								"object": "UI_TextSF_DamageNumber",
+								"time-scale": "0"
+							}
+						},
+						{
 							"id": "stop-all-tweens",
 							"objectClass": "UI_Border_LevelUp",
 							"sid": 533770999747504,
@@ -565,8 +555,8 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "UI_TextSF_Upgrade",
-							"sid": 870111875852480,
+							"objectClass": "UI_Button9P_Upgrade",
+							"sid": 830593669059011,
 							"parameters": {
 								"instance-variable": "upgrade",
 								"value": "EMPTY"
@@ -605,7 +595,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "This is not the most elegant solution to the problem that we multiple (ideally 3) unique upgrade options, which should be chosen based on their weight"
+							"text": "This is not the most elegant solution to the problem that we have multiple (ideally 3) unique upgrade options, which should be chosen based on their weight"
 						},
 						{
 							"eventType": "block",
@@ -620,8 +610,8 @@
 								},
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "UI_TextSF_Upgrade",
-									"sid": 599264720397435,
+									"objectClass": "UI_Button9P_Upgrade",
+									"sid": 520864684137256,
 									"parameters": {
 										"instance-variable": "upgrade",
 										"comparison": 0,
@@ -630,11 +620,29 @@
 								},
 								{
 									"id": "pick-highestlowest",
-									"objectClass": "UI_TextSF_Upgrade",
-									"sid": 587520517175835,
+									"objectClass": "UI_Button9P_Upgrade",
+									"sid": 162181787282881,
 									"parameters": {
 										"which": "lowest",
 										"instance-variable": "option"
+									}
+								},
+								{
+									"id": "pick-children",
+									"objectClass": "UI_Button9P_Upgrade",
+									"sid": 728998628239513,
+									"parameters": {
+										"child": "UI_TextSF_Upgrade",
+										"which": "own"
+									}
+								},
+								{
+									"id": "pick-children",
+									"objectClass": "UI_Button9P_Upgrade",
+									"sid": 358465600345835,
+									"parameters": {
+										"child": "UI_Icon",
+										"which": "own"
 									}
 								}
 							],
@@ -659,32 +667,28 @@
 								},
 								{
 									"id": "set-instvar-value",
-									"objectClass": "UI_TextSF_Upgrade",
-									"sid": 163045367161795,
+									"objectClass": "UI_Button9P_Upgrade",
+									"sid": 146361965504858,
 									"parameters": {
 										"instance-variable": "upgrade",
 										"value": "UpgradeOptions.IndexOf(selectedUpgrade) = NOTHING ? selectedUpgrade : EMPTY"
 									}
 								},
 								{
-									"id": "set-text",
-									"objectClass": "UI_TextSF_Upgrade",
-									"sid": 834583327644511,
-									"disabled": true,
+									"id": "set-animation",
+									"objectClass": "UI_Icon",
+									"sid": 871116676435623,
 									"parameters": {
-										"text": "Self.upgrade"
+										"animation": "Rules.Get(KEY_Upgrades & DOT & selectedUpgrade & DOT & KEY_Icon)",
+										"from": "beginning"
 									}
 								},
 								{
-									"type": "comment",
-									"text": "todo max health!"
-								},
-								{
 									"id": "set-text",
 									"objectClass": "UI_TextSF_Upgrade",
-									"sid": 947833195875694,
+									"sid": 775551355581062,
 									"parameters": {
-										"text": "Self.upgrade = EMPTY ? EMPTY : Rules.Get(KEY_Upgrades & DOT & Self.upgrade & DOT & KEY_Label)"
+										"text": "(UI_Button9P_Upgrade.upgrade = EMPTY ? EMPTY : Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Label)) & newline &\n(\nRules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Multiply) = 1 ? EMPTY : \"+ \" & (Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Multiply) - 1) * 100 & \"%\" & SPACE\n) &\n(\nRules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add) = 0 ? EMPTY : (Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add) < 0 ? \"- \" : \"+ \") & abs(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add))\n)"
 									}
 								},
 								{
@@ -843,12 +847,21 @@
 				},
 				{
 					"id": "compare-instance-variable",
-					"objectClass": "UI_TextSF_Upgrade",
-					"sid": 371688155002512,
+					"objectClass": "UI_Button9P_Upgrade",
+					"sid": 464416607872974,
 					"parameters": {
 						"instance-variable": "option",
 						"comparison": 0,
 						"value": "option"
+					}
+				},
+				{
+					"id": "pick-children",
+					"objectClass": "UI_Button9P_Upgrade",
+					"sid": 123743708511942,
+					"parameters": {
+						"child": "UI_TextSF_Upgrade",
+						"which": "own"
 					}
 				},
 				{
@@ -937,22 +950,12 @@
 					"text": "Apply upgrade (multiply)"
 				},
 				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 351531945397990,
-					"disabled": true,
-					"parameters": {
-						"type": "log",
-						"message": "\"Applying upgrade: \" & Rules.GetAsBeautifiedString(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade)"
-					}
-				},
-				{
 					"id": "set-value",
 					"objectClass": "Rules",
-					"sid": 468422597204872,
+					"sid": 626059529650984,
 					"parameters": {
-						"path": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Multiply)"
+						"path": "Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Multiply)"
 					}
 				},
 				{
@@ -962,10 +965,10 @@
 				{
 					"id": "add-to",
 					"objectClass": "Rules",
-					"sid": 134692220812218,
+					"sid": 670440074217041,
 					"parameters": {
-						"path": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Add)"
+						"path": "Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Add)"
 					}
 				},
 				{
@@ -975,10 +978,10 @@
 				{
 					"id": "set-value",
 					"objectClass": "Rules",
-					"sid": 427110458904213,
+					"sid": 570815074518229,
 					"parameters": {
-						"path": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)",
-						"value": "Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade & DOT & KEY_Rule_Max)))"
+						"path": "Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)",
+						"value": "Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Upgrades & DOT & UI_Button9P_Upgrade.upgrade & DOT & KEY_Rule_Max)))"
 					}
 				},
 				{
@@ -1049,6 +1052,15 @@
 					"sid": 232002924512385,
 					"parameters": {
 						"object": "Projectile",
+						"time-scale": "1"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 222741729041849,
+					"parameters": {
+						"object": "UI_TextSF_DamageNumber",
 						"time-scale": "1"
 					}
 				}

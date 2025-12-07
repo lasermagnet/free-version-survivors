@@ -47,14 +47,6 @@
 					"text": "Set sprite angle & movement angle"
 				},
 				{
-					"id": "set-angle",
-					"objectClass": "Projectile",
-					"sid": 223837270444088,
-					"parameters": {
-						"angle": "movementAngle + Self.R_AngleOffset_todoRemove"
-					}
-				},
-				{
 					"id": "set-angle-of-motion",
 					"objectClass": "Projectile",
 					"sid": 912607043352233,

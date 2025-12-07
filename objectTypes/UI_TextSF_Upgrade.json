@@ -13,13 +13,6 @@
 			"sid": 728332794008944
 		},
 		{
-			"name": "isDisabled",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 368880553454779
-		},
-		{
 			"name": "upgrade",
 			"type": "string",
 			"desc": "",

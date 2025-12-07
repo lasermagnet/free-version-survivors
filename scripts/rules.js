@@ -4,7 +4,7 @@ export const rules = {
         "Health": 100,
         "Health_Max": 100,
         "Experience_Target": 40,
-        "Experience_Target_Multiplier": 1.15,
+        "Experience_Target_Multiplier": 1.2,
         "MovementAcceleration": 2000,
         "MovementDeceleration": 2000,
         "MovementSpeed": 60
@@ -15,8 +15,8 @@ export const rules = {
             "Cooldown": 10
         },
         "Enemies": { // Enemy spawning
-            "Cooldown": 2,
-            "Amount": 10,
+            "Cooldown": 3,
+            "Amount": 20,
         },
     },
 
@@ -40,6 +40,7 @@ export const rules = {
     "Upgrades": {
         "Heal1": {
             "Label": "Minor healing",
+            "Icon": "HeartRed",
             "Rule_Value": "Player.Health",
             "Rule_Max": "Player.Health_Max",
             "Multiply": 1,
@@ -47,32 +48,92 @@ export const rules = {
         },
         "MaxHealth": {
             "Label": "Increase max health",
+            "Icon": "HeartBlack",
             "Rule_Value": "Player.Health_Max",
             "Multiply": 1.1,
             "Add": 0
         },
         "MovementSpeed": {
             "Label": "Increase movement speed",
-            "Rule_Value": "Player.Health_Max",
-            "Multiply": 1.1,
-            "Add": 0
+            "Icon": "GoldArrowRight",
+            "Rule_Value": "Player.MovementSpeed",
+            "Multiply": 1,
+            "Add": 10
         },
     },
 
     "Enemies": { // Enemy rules
-
-        // todo: Slime Rat Crab Snake Werewolf Ent Ghost Tentacle Golem Dwarf Ogre Cultist Beholder
         "Slime": {
             "Health": 3,
             "Damage": 25,
             "Experience": 4,
-            "Speed": 1
+            "MovementSpeed": 0.5
         },
         "Rat": {
             "Health": 5,
             "Damage": 50,
             "Experience": 9,
-            "Speed": 2
+            "MovementSpeed": 1
+        },
+        "Crab": {
+            "Health": 5,
+            "Damage": 50,
+            "Experience": 9,
+            "MovementSpeed": 2
+        },
+        "Snake": {
+            "Health": 5,
+            "Damage": 50,
+            "Experience": 9,
+            "MovementSpeed": 2
+        },
+        "Werewolf": {
+            "Health": 5,
+            "Damage": 50,
+            "Experience": 9,
+            "MovementSpeed": 2
+        },
+        "Ent": {
+            "Health": 5,
+            "Damage": 50,
+            "Experience": 9,
+            "MovementSpeed": 2
+        },
+        "Tentacle": {
+            "Health": 5,
+            "Damage": 50,
+            "Experience": 9,
+            "MovementSpeed": 2
+        },
+        "Golem": {
+            "Health": 5,
+            "Damage": 50,
+            "Experience": 9,
+            "MovementSpeed": 2
+        },
+        "Dwarf": {
+            "Health": 5,
+            "Damage": 50,
+            "Experience": 9,
+            "MovementSpeed": 2
+        },
+        "Ogre": {
+            "Health": 5,
+            "Damage": 50,
+            "Experience": 9,
+            "MovementSpeed": 2
+        },
+        "Cultist": {
+            "Health": 5,
+            "Damage": 50,
+            "Experience": 9,
+            "MovementSpeed": 2
+        },
+        "Beholder": {
+            "Health": 5,
+            "Damage": 50,
+            "Experience": 9,
+            "MovementSpeed": 2
         }
     },
 
@@ -81,9 +142,9 @@ export const rules = {
             //todo: animation name, "movement type"
             // todo: use player direction
             "Cooldown": 1,
-            "Level": 2,
+            "Level": 10,
             "Damage": 10,
-            "PierceLimit": 3
+            "PierceLimit": 10
         }
         // todo more weapons
     }
@@ -93,14 +154,15 @@ export const rules = {
 /*
 
 # todo
-[ ] waves (with string names/labels)
-[ ] enemy types: advanced spawning, damage and xp drop amounts
-[ ] damage numbers
-[ ] more weapons
-[ ] show upgrade change amounts on level up ui
-[ ] stat upgrades: player speed, player max health, pickup distance
-[ ] weapon upgrades: level, cooldown
-[ ] game over screen
+- audio
+- waves (with string names/labels)
+- enemy types: advanced spawning, damage and xp drop amounts
+- damage numbers
+- more weapons
+- show upgrade change amounts on level up ui
+- stat upgrades: player speed, player max health, pickup distance
+- weapon upgrades: level, cooldown
+- game over screen
 
 */
 
