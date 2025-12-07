@@ -134,12 +134,12 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 436165884098190,
+					"sid": 459577338062875,
 					"parameters": {
 						"object-to-create": "Wall",
 						"layer": "LAYER_Main",
-						"x": "LayoutWidth * 0.5",
-						"y": "- C_Wall_Thickness * 0.5",
+						"x": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Width) * 0.5",
+						"y": "- Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness) * 0.5",
 						"create-hierarchy": false,
 						"template-name": "\"\""
 					}
@@ -147,21 +147,21 @@
 				{
 					"id": "set-size",
 					"objectClass": "Wall",
-					"sid": 372164925536138,
+					"sid": 636851058154223,
 					"parameters": {
-						"width": "LayoutWidth + C_Wall_Thickness * 2",
-						"height": "C_Wall_Thickness"
+						"width": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Width) + Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness) * 2",
+						"height": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness)"
 					}
 				},
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 584770231200107,
+					"sid": 810193117346646,
 					"parameters": {
 						"object-to-create": "Wall",
 						"layer": "LAYER_Main",
-						"x": "LayoutWidth * 0.5",
-						"y": "LayoutHeight + C_Wall_Thickness * 0.5",
+						"x": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Width) * 0.5",
+						"y": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Height) + Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness) * 0.5",
 						"create-hierarchy": false,
 						"template-name": "\"\""
 					}
@@ -169,21 +169,21 @@
 				{
 					"id": "set-size",
 					"objectClass": "Wall",
-					"sid": 937618882365889,
+					"sid": 132560252477310,
 					"parameters": {
-						"width": "LayoutWidth + C_Wall_Thickness * 2",
-						"height": "C_Wall_Thickness"
+						"width": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Width) + Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness) * 2",
+						"height": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness)"
 					}
 				},
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 240353864337880,
+					"sid": 490780749574257,
 					"parameters": {
 						"object-to-create": "Wall",
 						"layer": "LAYER_Main",
-						"x": "- C_Wall_Thickness * 0.5",
-						"y": "LayoutHeight * 0.5",
+						"x": "- Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness) * 0.5",
+						"y": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Height) * 0.5",
 						"create-hierarchy": false,
 						"template-name": "\"\""
 					}
@@ -191,21 +191,21 @@
 				{
 					"id": "set-size",
 					"objectClass": "Wall",
-					"sid": 165370721943898,
+					"sid": 805807832897666,
 					"parameters": {
-						"width": "C_Wall_Thickness",
-						"height": "LayoutHeight + C_Wall_Thickness * 2"
+						"width": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness)",
+						"height": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Height) + Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness) * 2"
 					}
 				},
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 862702925551168,
+					"sid": 871994874644437,
 					"parameters": {
 						"object-to-create": "Wall",
 						"layer": "LAYER_Main",
-						"x": "LayoutWidth + C_Wall_Thickness * 0.5",
-						"y": "LayoutHeight * 0.5",
+						"x": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Width) + Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness) * 0.5",
+						"y": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Height) * 0.5",
 						"create-hierarchy": false,
 						"template-name": "\"\""
 					}
@@ -213,10 +213,10 @@
 				{
 					"id": "set-size",
 					"objectClass": "Wall",
-					"sid": 105567992232093,
+					"sid": 438529320865827,
 					"parameters": {
-						"width": "C_Wall_Thickness",
-						"height": "LayoutHeight + C_Wall_Thickness * 2"
+						"width": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness)",
+						"height": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Height) + Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_WallThickness) * 2"
 					}
 				},
 				{
@@ -239,10 +239,10 @@
 				{
 					"id": "set-size",
 					"objectClass": "Map",
-					"sid": 313548732392798,
+					"sid": 958698470524460,
 					"parameters": {
-						"width": "LayoutWidth",
-						"height": "LayoutHeight"
+						"width": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Width)",
+						"height": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Height)"
 					}
 				},
 				{

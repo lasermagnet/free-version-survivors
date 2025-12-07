@@ -247,6 +247,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_DropValueToLevelDivider",
+			"type": "string",
+			"initialValue": "DropValueToLevelDivider",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 523644740878634
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Enemies",
 			"type": "string",
 			"initialValue": "Enemies",
@@ -254,6 +264,56 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 260309811983460
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawnAmountPerWave",
+			"type": "string",
+			"initialValue": "EnemySpawnAmountPerWave",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 155215406098268
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawnCooldown",
+			"type": "string",
+			"initialValue": "EnemySpawnCooldown",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 741062812388619
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawnCycles",
+			"type": "string",
+			"initialValue": "EnemySpawnCycles",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 199564196662953
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawnFixed",
+			"type": "string",
+			"initialValue": "EnemySpawnFixed",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 703608357685707
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_EnemySpawnPool",
+			"type": "string",
+			"initialValue": "EnemySpawnPool",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 462972560956048
 		},
 		{
 			"eventType": "variable",
@@ -327,6 +387,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Height",
+			"type": "string",
+			"initialValue": "Height",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 487066448985697
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Icon",
 			"type": "string",
 			"initialValue": "Icon",
@@ -347,6 +417,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_ItemSpawnPool",
+			"type": "string",
+			"initialValue": "ItemSpawnPool",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 675425500838668
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Label",
 			"type": "string",
 			"initialValue": "Label",
@@ -354,6 +434,26 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 665338597903307
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Level",
+			"type": "string",
+			"initialValue": "Level",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 694929315152815
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Map",
+			"type": "string",
+			"initialValue": "Map",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 923828765477710
 		},
 		{
 			"eventType": "variable",
@@ -394,6 +494,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 612566766668746
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Name",
+			"type": "string",
+			"initialValue": "Name",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 213186804235384
 		},
 		{
 			"eventType": "variable",
@@ -547,13 +657,33 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Spawns",
+			"name": "KEY_WallThickness",
 			"type": "string",
-			"initialValue": "Spawns",
+			"initialValue": "WallThickness",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 400290896442803
+			"sid": 745102957355950
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_WaveLoopTo",
+			"type": "string",
+			"initialValue": "WaveLoopTo",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 450719927094897
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Waves",
+			"type": "string",
+			"initialValue": "Waves",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 641746479686938
 		},
 		{
 			"eventType": "variable",
@@ -576,88 +706,14 @@
 			"sid": 488366486156130
 		},
 		{
-			"eventType": "comment",
-			"text": "todo_now"
-		},
-		{
 			"eventType": "variable",
-			"name": "KEY_Waves",
+			"name": "KEY_Width",
 			"type": "string",
-			"initialValue": "Waves",
+			"initialValue": "Width",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 990734374298228
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Name",
-			"type": "string",
-			"initialValue": "Name",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 781226614114543
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_EnemySpawnCycles",
-			"type": "string",
-			"initialValue": "EnemySpawnCycles",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 811271427753221
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_EnemySpawnCooldown",
-			"type": "string",
-			"initialValue": "EnemySpawnCooldown",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 699916574354927
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_EnemySpawnPerCycle",
-			"type": "string",
-			"initialValue": "EnemySpawnPerCycle",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 668164995478999
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_EnemySpawnFixed",
-			"type": "string",
-			"initialValue": "EnemySpawnFixed",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 811464329393027
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_EnemySpawnPool",
-			"type": "string",
-			"initialValue": "EnemySpawnPool",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 589427454342132
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_ItemSpawnPool",
-			"type": "string",
-			"initialValue": "ItemSpawnPool",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 606304246897228
+			"sid": 150953982884702
 		},
 		{
 			"eventType": "comment",

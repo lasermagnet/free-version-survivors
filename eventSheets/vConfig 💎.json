@@ -3,6 +3,10 @@
 	"events": [
 		{
 			"eventType": "comment",
+			"text": "todo move some of these to level rules"
+		},
+		{
+			"eventType": "comment",
 			"text": "Arrow"
 		},
 		{
@@ -89,24 +93,6 @@
 		},
 		{
 			"eventType": "comment",
-			"text": "Drops"
-		},
-		{
-			"eventType": "comment",
-			"text": "todo_maybe move to rule"
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Drop_ValueToLevelDivider",
-			"type": "number",
-			"initialValue": "5",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 750500607619768
-		},
-		{
-			"eventType": "comment",
 			"text": "Map"
 		},
 		{
@@ -162,20 +148,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 956253461214367
-		},
-		{
-			"eventType": "comment",
-			"text": "Wall"
-		},
-		{
-			"eventType": "variable",
-			"name": "C_Wall_Thickness",
-			"type": "number",
-			"initialValue": "256",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 418104587859054
 		}
 	],
 	"sid": 900977153576648

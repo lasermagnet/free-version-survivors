@@ -26,12 +26,12 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 901945052113015,
+					"sid": 221635225319954,
 					"parameters": {
 						"object-to-create": "Player",
 						"layer": "LAYER_Main",
-						"x": "LayoutWidth * 0.5",
-						"y": "LayoutHeight * 0.5",
+						"x": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Width) * 0.5",
+						"y": "Rules.Get(KEY_Level & DOT & KEY_Map & DOT & KEY_Height) * 0.5",
 						"create-hierarchy": true,
 						"template-name": "\"\""
 					}
@@ -65,30 +65,6 @@
 					"behaviorType": "8Direction",
 					"parameters": {
 						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Initialize enemy & item spawn cooldowns"
-				},
-				{
-					"id": "set-value",
-					"objectClass": "Cooldowns",
-					"sid": 638920384230792,
-					"disabled": true,
-					"parameters": {
-						"path": "KEY_Spawns & DOT & KEY_Enemies",
-						"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
-					}
-				},
-				{
-					"id": "set-value",
-					"objectClass": "Cooldowns",
-					"sid": 899906220112829,
-					"disabled": true,
-					"parameters": {
-						"path": "KEY_Spawns & DOT & KEY_Items",
-						"value": "Rules.Get(KEY_Spawns & DOT & KEY_Items & DOT & KEY_Cooldown)"
 					}
 				}
 			],
@@ -564,30 +540,6 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Update enemy & item spawn cooldowns"
-				},
-				{
-					"id": "set-value",
-					"objectClass": "Cooldowns",
-					"sid": 604608562984822,
-					"disabled": true,
-					"parameters": {
-						"path": "KEY_Spawns & DOT & KEY_Enemies",
-						"value": "max(0, Cooldowns.Get(KEY_Spawns & DOT & KEY_Enemies) - dt)"
-					}
-				},
-				{
-					"id": "set-value",
-					"objectClass": "Cooldowns",
-					"sid": 378881065557794,
-					"disabled": true,
-					"parameters": {
-						"path": "KEY_Spawns & DOT & KEY_Items",
-						"value": "max(0, Cooldowns.Get(KEY_Spawns & DOT & KEY_Items) - dt)"
-					}
-				},
-				{
-					"type": "comment",
 					"text": "Reset hurt state variable"
 				},
 				{
@@ -806,23 +758,8 @@
 					"text": "When the enemy spawn cooldown expires, reset it & add enemy amount to the spawn queue"
 				},
 				{
-					"eventType": "comment",
-					"text": "todo_now"
-				},
-				{
 					"eventType": "block",
 					"conditions": [
-						{
-							"id": "compare-value",
-							"objectClass": "Cooldowns",
-							"sid": 383748768843449,
-							"disabled": true,
-							"parameters": {
-								"path": "KEY_Spawns & DOT & KEY_Enemies",
-								"cmp": 0,
-								"value": "0"
-							}
-						},
 						{
 							"id": "is-timer-running",
 							"objectClass": "Player",
@@ -836,15 +773,6 @@
 					],
 					"actions": [
 						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 752514346566554,
-							"parameters": {
-								"type": "log",
-								"message": "\"Spawn cycle!\""
-							}
-						},
-						{
 							"id": "add-to-eventvar",
 							"objectClass": "System",
 							"sid": 613390079745651,
@@ -854,17 +782,12 @@
 							}
 						},
 						{
-							"type": "comment",
-							"text": "Reset enemy spawn cooldown"
-						},
-						{
-							"id": "set-value",
-							"objectClass": "Cooldowns",
-							"sid": 696458896079350,
-							"disabled": true,
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 472174858355285,
 							"parameters": {
-								"path": "KEY_Spawns & DOT & KEY_Enemies",
-								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Cooldown)"
+								"type": "log",
+								"message": "\"Wave cycle #\" & waveCycle"
 							}
 						},
 						{
@@ -885,20 +808,10 @@
 						{
 							"id": "add-to",
 							"objectClass": "Rules",
-							"sid": 232278523205720,
-							"disabled": true,
+							"sid": 681183222805725,
 							"parameters": {
 								"path": "KEY_Queues & DOT & KEY_Enemies",
-								"value": "Rules.Get(KEY_Spawns & DOT & KEY_Enemies & DOT & KEY_Amount)"
-							}
-						},
-						{
-							"id": "add-to",
-							"objectClass": "Rules",
-							"sid": 546192475787317,
-							"parameters": {
-								"path": "KEY_Queues & DOT & KEY_Enemies",
-								"value": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnPerCycle)"
+								"value": "round(Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnAmountPerWave) / Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCycles))"
 							}
 						}
 					],
@@ -2069,10 +1982,6 @@
 			"sid": 266788838218702
 		},
 		{
-			"eventType": "comment",
-			"text": "todo_now"
-		},
-		{
 			"aceType": "action",
 			"aceName": "updateWave",
 			"objectClass": "Player",
@@ -2096,10 +2005,6 @@
 				}
 			],
 			"actions": [
-				{
-					"type": "comment",
-					"text": "todo check wave count first"
-				},
 				{
 					"type": "comment",
 					"text": "Reset cycle counter"
@@ -2128,15 +2033,15 @@
 				},
 				{
 					"type": "comment",
-					"text": "If wave counter is invalid, reset it (restart from first wave)"
+					"text": "If wave counter is invalid, reset it (to specified wave number)"
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 686546903501601,
+					"sid": 666718930612841,
 					"parameters": {
 						"variable": "wave",
-						"value": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_Name) = 0 ? 0 : wave"
+						"value": "Rules.Get(KEY_Waves & DOT & wave & DOT & KEY_EnemySpawnCooldown) = 0 ? Rules.Get(KEY_Level & DOT & KEY_WaveLoopTo) : wave"
 					}
 				},
 				{
