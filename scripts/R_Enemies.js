@@ -9,31 +9,31 @@ export const Enemies = {
         "Health": 5,
         "Damage": 15,
         "Experience": 9,
-        "MovementSpeed": 1
+        "MovementSpeed": 0.8
     },
     "Crab": {
         "Health": 10,
         "Damage": 20,
         "Experience": 15,
-        "MovementSpeed": 1.6
+        "MovementSpeed": 0.9
     },
     "Snake": {
         "Health": 15,
         "Damage": 25,
         "Experience": 20,
-        "MovementSpeed": 1.3
+        "MovementSpeed": 1
     },
     "Werewolf": {
         "Health": 20,
         "Damage": 30,
         "Experience": 30,
-        "MovementSpeed": 1.2
+        "MovementSpeed": 1.1
     },
     "Ent": {
         "Health": 50,
         "Damage": 35,
         "Experience": 50,
-        "MovementSpeed": 0.5
+        "MovementSpeed": 0.
     },
     "Tentacle": {
         "Health": 70,

@@ -2,7 +2,7 @@
 
 # todo
 - upgrade level limits (disable after upgrade level is reached)
-- add thick border to the level, inside layout (increase size)
+- todo better looking border (with tilemap instead of tiled background)
 - waves (with string names/labels)
 - stat upgrades: health regen
 - game over screen

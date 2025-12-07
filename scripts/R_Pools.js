@@ -43,8 +43,9 @@ export const Pools = {
     "Enemies": [
         [40, "Slime"],
         [20, "Rat"],
-  /*      [10, "Crab"],
-        [10, "Snake"],
+        [5, "Crab"],
+        [5, "Snake"],
+  /*
         [1, "Werewolf"],
         [1, "Ent"],
         [1, "Tentacle"],
@@ -52,6 +53,6 @@ export const Pools = {
         [1, "Golem"],
         [1, "Ogre"],
         [1, "Cultist"],
-        [1, "Beholder"],*/[]
+        [1, "Beholder"],*/
     ]
 }

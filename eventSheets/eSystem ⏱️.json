@@ -97,12 +97,17 @@
 				},
 				{
 					"type": "comment",
+					"text": "todo remove ground or add texture"
+				},
+				{
+					"type": "comment",
 					"text": "Spawn ground"
 				},
 				{
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 538242720749825,
+					"disabled": true,
 					"parameters": {
 						"object-to-create": "Ground",
 						"layer": "LAYER_Main",
@@ -116,6 +121,7 @@
 					"id": "set-size",
 					"objectClass": "Ground",
 					"sid": 853634657343832,
+					"disabled": true,
 					"parameters": {
 						"width": "LayoutWidth",
 						"height": "LayoutHeight"
@@ -124,7 +130,8 @@
 				{
 					"id": "move-to-bottom",
 					"objectClass": "Ground",
-					"sid": 666911253684500
+					"sid": 666911253684500,
+					"disabled": true
 				},
 				{
 					"type": "comment",
@@ -144,11 +151,12 @@
 					}
 				},
 				{
-					"id": "set-width",
+					"id": "set-size",
 					"objectClass": "Wall",
-					"sid": 298845753893519,
+					"sid": 372164925536138,
 					"parameters": {
-						"width": "LayoutWidth + C_Wall_Thickness * 2"
+						"width": "LayoutWidth + C_Wall_Thickness * 2",
+						"height": "C_Wall_Thickness"
 					}
 				},
 				{
@@ -165,11 +173,12 @@
 					}
 				},
 				{
-					"id": "set-width",
+					"id": "set-size",
 					"objectClass": "Wall",
-					"sid": 195492216867294,
+					"sid": 937618882365889,
 					"parameters": {
-						"width": "LayoutWidth + C_Wall_Thickness * 2"
+						"width": "LayoutWidth + C_Wall_Thickness * 2",
+						"height": "C_Wall_Thickness"
 					}
 				},
 				{
@@ -186,10 +195,11 @@
 					}
 				},
 				{
-					"id": "set-height",
+					"id": "set-size",
 					"objectClass": "Wall",
-					"sid": 585346302377158,
+					"sid": 165370721943898,
 					"parameters": {
+						"width": "C_Wall_Thickness",
 						"height": "LayoutHeight + C_Wall_Thickness * 2"
 					}
 				},
@@ -207,10 +217,11 @@
 					}
 				},
 				{
-					"id": "set-height",
+					"id": "set-size",
 					"objectClass": "Wall",
-					"sid": 907766060084294,
+					"sid": 105567992232093,
 					"parameters": {
+						"width": "C_Wall_Thickness",
 						"height": "LayoutHeight + C_Wall_Thickness * 2"
 					}
 				},

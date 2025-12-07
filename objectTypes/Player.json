@@ -94,14 +94,14 @@
 						"imageSpriteId": 9751480,
 						"collisionPoly": {
 							"points": [
-								0.0625,
+								0.1875,
 								0.5,
 								0.5,
-								0.0625,
-								0.9375,
+								0.1875,
+								0.8125,
 								0.5,
 								0.5,
-								0.9375
+								0.8125
 							]
 						},
 						"useCollisionPoly": true,
@@ -120,14 +120,14 @@
 						"imageSpriteId": 43121,
 						"collisionPoly": {
 							"points": [
-								0.0625,
+								0.1875,
 								0.5,
 								0.5,
-								0.0625,
-								0.9375,
+								0.1875,
+								0.8125,
 								0.5,
 								0.5,
-								0.9375
+								0.8125
 							]
 						},
 						"useCollisionPoly": true,
@@ -146,14 +146,14 @@
 						"imageSpriteId": 4778174,
 						"collisionPoly": {
 							"points": [
-								0.0625,
+								0.1875,
 								0.5,
 								0.5,
-								0.0625,
-								0.9375,
+								0.1875,
+								0.8125,
 								0.5,
 								0.5,
-								0.9375
+								0.8125
 							]
 						},
 						"useCollisionPoly": true,

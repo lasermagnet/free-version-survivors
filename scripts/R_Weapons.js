@@ -62,8 +62,8 @@ export const Weapons = {
         "MovementSpeed": 10,
         "MovementAcceleration": -5,
         "Timer": 1,
-        "PositionRandom1": 100,
-        "PositionRandom2": 100,
+        "PositionRandom1": 40,
+        "PositionRandom2": 30,
     },
 }
 

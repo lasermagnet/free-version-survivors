@@ -515,7 +515,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "20",
+		"version": "21",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

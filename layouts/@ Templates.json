@@ -524,11 +524,11 @@
 						"image-scale-y": 1,
 						"image-angle": 0,
 						"enable-tile-randomization": false,
-						"x-random": 1,
-						"y-random": 1,
-						"angle-random": 1,
-						"blend-margin-x": 0.1,
-						"blend-margin-y": 0.1
+						"x-random": 0,
+						"y-random": 0,
+						"angle-random": 0,
+						"blend-margin-x": 0,
+						"blend-margin-y": 0
 					},
 					"uid": 12,
 					"sid": 957709863655658,
@@ -549,10 +549,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 72,
-						"y": 32,
-						"width": 16,
-						"height": 16,
+						"x": 193,
+						"y": 42,
+						"width": 32,
+						"height": 32,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
