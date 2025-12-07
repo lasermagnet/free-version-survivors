@@ -301,6 +301,14 @@
 					"customAction": "tick",
 					"objectClass": "Player",
 					"sid": 486600605201489
+				},
+				{
+					"id": "set-scale",
+					"objectClass": "UI_TextSF_DamageNumber",
+					"sid": 603707266467517,
+					"parameters": {
+						"scale": "Self.Tween.Value(TWEEN_UI_TextSF_DamageNumber_Scale) = 0 ? Self.CharacterScale : Self.Tween.Value(TWEEN_UI_TextSF_DamageNumber_Scale)"
+					}
 				}
 			],
 			"sid": 191789492098499

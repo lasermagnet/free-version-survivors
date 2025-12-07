@@ -73,6 +73,15 @@
 					"parameters": {
 						"control": "up"
 					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 213537575012343,
+					"parameters": {
+						"instance-variable": "lastMovingAngle",
+						"value": "Self.8Direction.MovingAngle"
+					}
 				}
 			],
 			"sid": 652303209773959,
@@ -141,6 +150,15 @@
 					"behaviorType": "8Direction",
 					"parameters": {
 						"control": "down"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 572467706943971,
+					"parameters": {
+						"instance-variable": "lastMovingAngle",
+						"value": "Self.8Direction.MovingAngle"
 					}
 				}
 			],
@@ -211,6 +229,15 @@
 					"parameters": {
 						"control": "left"
 					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 612553601925053,
+					"parameters": {
+						"instance-variable": "lastMovingAngle",
+						"value": "Self.8Direction.MovingAngle"
+					}
 				}
 			],
 			"sid": 341222706666554,
@@ -279,6 +306,15 @@
 					"behaviorType": "8Direction",
 					"parameters": {
 						"control": "right"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 844019629004786,
+					"parameters": {
+						"instance-variable": "lastMovingAngle",
+						"value": "Self.8Direction.MovingAngle"
 					}
 				}
 			],

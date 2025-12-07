@@ -29,6 +29,37 @@
 				},
 				{
 					"type": "comment",
+					"text": "Initialize player behaviours"
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Player",
+					"sid": 316291171629907,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"max-speed": "Rules.Get(KEY_Player & DOT & KEY_MovementSpeed)"
+					}
+				},
+				{
+					"id": "set-acceleration",
+					"objectClass": "Player",
+					"sid": 221202146104270,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"acceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementAcceleration)"
+					}
+				},
+				{
+					"id": "set-deceleration",
+					"objectClass": "Player",
+					"sid": 993068735412028,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Initialize player IVs"
 				},
 				{
@@ -134,16 +165,6 @@
 			"sid": 892639912846222,
 			"children": [
 				{
-					"eventType": "variable",
-					"name": "randomAngle",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 377622339872424
-				},
-				{
 					"eventType": "comment",
 					"text": "Attack: Sword"
 				},
@@ -180,15 +201,6 @@
 								"instance-variable": "cooldown_weapon_sword",
 								"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Cooldown)"
 							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 579380886182412,
-							"parameters": {
-								"variable": "randomAngle",
-								"value": "random(0, 360)"
-							}
 						}
 					],
 					"sid": 135052668909848,
@@ -211,9 +223,9 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Projectile",
-									"sid": 806197989260994,
+									"sid": 815504127971766,
 									"parameters": [
-										"randomAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level) * loopindex)",
+										"Player.lastMovingAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level) * loopindex)",
 										"WEAPON_Sword_todoRemove"
 									]
 								}
@@ -494,6 +506,15 @@
 							}
 						},
 						{
+							"id": "set-object-time-scale",
+							"objectClass": "System",
+							"sid": 197417321501456,
+							"parameters": {
+								"object": "UI_TextSF_DamageNumber",
+								"time-scale": "0"
+							}
+						},
+						{
 							"id": "stop-all-tweens",
 							"objectClass": "UI_Border_LevelUp",
 							"sid": 533770999747504,
@@ -731,7 +752,7 @@
 					"actions": [
 						{
 							"type": "comment",
-							"text": "todo"
+							"text": "todo feedback / game over screen, etc"
 						},
 						{
 							"id": "set-instvar-value",
@@ -834,7 +855,20 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Hide level up UI"
+					"text": "Spend experience"
+				},
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "Player",
+					"sid": 164427102917643,
+					"parameters": {
+						"instance-variable": "experience",
+						"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Tween out level upUI"
 				},
 				{
 					"id": "tween-one-property",
@@ -854,17 +888,17 @@
 					}
 				},
 				{
-					"id": "set-visible",
-					"objectClass": "UI_Border_LevelUp",
-					"sid": 203108483435764,
-					"parameters": {
-						"visibility": "invisible"
-					}
-				},
-				{
 					"id": "wait-for-previous-actions",
 					"objectClass": "System",
 					"sid": 777887322997353
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "UI_Border_LevelUp",
+					"sid": 787808226938946,
+					"parameters": {
+						"visibility": "invisible"
+					}
 				},
 				{
 					"id": "set-eventvar-value",
@@ -891,15 +925,6 @@
 				{
 					"type": "comment",
 					"text": "Apply upgrade (multiply)"
-				},
-				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 351531945397990,
-					"parameters": {
-						"type": "log",
-						"message": "\"Applying upgrade: \" & Rules.GetAsBeautifiedString(KEY_Upgrades & DOT & UI_TextSF_Upgrade.upgrade)"
-					}
 				},
 				{
 					"id": "set-value",
@@ -941,12 +966,30 @@
 					"text": "Update player properties"
 				},
 				{
-					"id": "subtract-from-instvar",
+					"id": "set-max-speed",
 					"objectClass": "Player",
-					"sid": 796363870427194,
+					"sid": 764744182789778,
+					"behaviorType": "8Direction",
 					"parameters": {
-						"instance-variable": "experience",
-						"value": "Rules.Get(KEY_Player & DOT & KEY_Experience_Target)"
+						"max-speed": "Rules.Get(KEY_Player & DOT & KEY_MovementSpeed)"
+					}
+				},
+				{
+					"id": "set-acceleration",
+					"objectClass": "Player",
+					"sid": 300033388980964,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"acceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementAcceleration)"
+					}
+				},
+				{
+					"id": "set-deceleration",
+					"objectClass": "Player",
+					"sid": 414761694337799,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
 					}
 				},
 				{
@@ -986,6 +1029,15 @@
 					"sid": 232002924512385,
 					"parameters": {
 						"object": "Projectile",
+						"time-scale": "1"
+					}
+				},
+				{
+					"id": "set-object-time-scale",
+					"objectClass": "System",
+					"sid": 222741729041849,
+					"parameters": {
+						"object": "UI_TextSF_DamageNumber",
 						"time-scale": "1"
 					}
 				}

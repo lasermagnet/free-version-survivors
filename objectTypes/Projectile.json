@@ -6,7 +6,7 @@
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [
 		{
-			"name": "R_AngleOffset",
+			"name": "R_AngleOffset_todoRemove",
 			"type": "number",
 			"desc": "",
 			"show": true,
@@ -18,6 +18,20 @@
 			"desc": "",
 			"show": true,
 			"sid": 192151957466033
+		},
+		{
+			"name": "isDestroyed",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 116859992122150
+		},
+		{
+			"name": "piercedUIDs_SSV",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 259379892369156
 		}
 	],
 	"behaviorTypes": [

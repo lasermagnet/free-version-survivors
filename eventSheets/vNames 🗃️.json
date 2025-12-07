@@ -27,6 +27,20 @@
 		},
 		{
 			"eventType": "comment",
+			"text": "Image points"
+		},
+		{
+			"eventType": "variable",
+			"name": "IP_Enemy_DamageNumber",
+			"type": "string",
+			"initialValue": "DamageNumber",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 656461353568013
+		},
+		{
+			"eventType": "comment",
 			"text": "Layers"
 		},
 		{
@@ -274,6 +288,16 @@
 			"sid": 782715964468413
 		},
 		{
+			"eventType": "variable",
+			"name": "KEY_PierceLimit",
+			"type": "string",
+			"initialValue": "PierceLimit",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 874095317289260
+		},
+		{
 			"eventType": "comment",
 			"text": "Loops"
 		},
@@ -377,13 +401,27 @@
 		},
 		{
 			"eventType": "comment",
+			"text": "Timers"
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Enemy_SpawnDamageNumber",
+			"type": "string",
+			"initialValue": "SpawnDamageNumber",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 637711406716762
+		},
+		{
+			"eventType": "comment",
 			"text": "Tweens"
 		},
 		{
 			"eventType": "variable",
 			"name": "TWEEN_Projectile_Opacity_Lifetime",
 			"type": "string",
-			"initialValue": "Projectile_Opacity_Lifetime",
+			"initialValue": "Opacity_Lifetime",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -393,7 +431,7 @@
 			"eventType": "variable",
 			"name": "TWEEN_LevelUp_FadeIn",
 			"type": "string",
-			"initialValue": "LevelUp_FadeIn",
+			"initialValue": "FadeIn",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -403,11 +441,31 @@
 			"eventType": "variable",
 			"name": "TWEEN_LevelUp_FadeOut",
 			"type": "string",
-			"initialValue": "LevelUp_FadeOut",
+			"initialValue": "FadeOut",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 934132276170255
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_UI_TextSF_DamageNumber_Destroy",
+			"type": "string",
+			"initialValue": "Destroy",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 998609837446816
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_UI_TextSF_DamageNumber_Scale",
+			"type": "string",
+			"initialValue": "Scale",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 165491564316690
 		},
 		{
 			"eventType": "comment",
@@ -422,6 +480,36 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 558238686119792
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_MovementSpeed",
+			"type": "string",
+			"initialValue": "MovementSpeed",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 256298123319967
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_MovementAcceleration",
+			"type": "string",
+			"initialValue": "MovementAcceleration",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 324658635829456
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_MovementDeceleration",
+			"type": "string",
+			"initialValue": "MovementDeceleration",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 944617864240728
 		},
 		{
 			"eventType": "group",

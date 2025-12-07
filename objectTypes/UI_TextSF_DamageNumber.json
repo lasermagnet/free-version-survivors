@@ -1,0 +1,29 @@
+{
+	"name": "UI_TextSF_DamageNumber",
+	"plugin-id": "Spritefont2",
+	"sid": 982870579480649,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 617187567538322
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 40,
+		"height": 56,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 3298697,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

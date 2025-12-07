@@ -2,7 +2,7 @@
 	"name": "HTMLElement",
 	"plugin-id": "HTMLElement",
 	"sid": 842194121074806,
-	"isGlobal": false,
+	"isGlobal": true,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
 	"behaviorTypes": []

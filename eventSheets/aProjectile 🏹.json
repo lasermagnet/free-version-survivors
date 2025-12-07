@@ -51,7 +51,7 @@
 					"objectClass": "Projectile",
 					"sid": 223837270444088,
 					"parameters": {
-						"angle": "movementAngle + Self.R_AngleOffset"
+						"angle": "movementAngle + Self.R_AngleOffset_todoRemove"
 					}
 				},
 				{

@@ -19,8 +19,10 @@
 					"sid": 700222683177902,
 					"tags": "",
 					"instanceVariables": {
-						"R_AngleOffset": 45,
-						"damage": 0
+						"R_AngleOffset_todoRemove": 45,
+						"damage": 0,
+						"isDestroyed": 0,
+						"piercedUIDs_SSV": ""
 					},
 					"behaviors": {
 						"Bullet": {
@@ -79,6 +81,7 @@
 						"health": 0,
 						"damage": 0,
 						"experience": 0,
+						"damageTaken": 0,
 						"isDead": 0
 					},
 					"behaviors": {
@@ -100,6 +103,9 @@
 							"properties": {
 								"enabled": true
 							}
+						},
+						"Timer": {
+							"properties": {}
 						}
 					},
 					"instanceFolderItem": {
@@ -194,12 +200,13 @@
 						"cooldown_spawn_enemy": 0,
 						"queue_spawn_enemy": 0,
 						"experience": 0,
-						"isDead": 0
+						"isDead": 0,
+						"lastMovingAngle": 0
 					},
 					"behaviors": {
 						"8Direction": {
 							"properties": {
-								"max-speed": 60,
+								"max-speed": 0,
 								"acceleration": 2000,
 								"deceleration": 2000,
 								"directions": "dir-8",
@@ -454,6 +461,59 @@
 						"y": 72,
 						"width": 18,
 						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "UI_TextSF_DamageNumber",
+					"properties": {
+						"text": "1234567",
+						"enable-bbcode": true,
+						"character-width": 5,
+						"character-height": 7,
+						"character-set": "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.,;:?!-_~#\"'()[]|°%+*\\/=<> ",
+						"spacing-data": "[[4,\"ABCDEFGHJKLMNOPQRSTUVWXYZ1234567890?-_~#°%+*\\/=<>\"],[3,\",;()[] \"],[2,\"|I.:!'\"]]",
+						"scale": 0.75,
+						"character-spacing": 0,
+						"line-height": 1,
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"initially-visible": false,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 37,
+					"sid": 843334077670080,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 843334077670080,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 49,
+						"y": 48,
+						"width": 16,
+						"height": 8,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [

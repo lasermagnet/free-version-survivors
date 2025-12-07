@@ -76,13 +76,13 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 579439788878911,
+					"sid": 921526464494714,
 					"parameters": {
 						"object-to-create": "Enemy",
 						"layer": "LAYER_Main",
 						"x": "Player.X + cos(spawn_randomAngle) * R_Spawn_Distance",
 						"y": "Player.Y + sin(spawn_randomAngle) * R_Spawn_Distance",
-						"create-hierarchy": false,
+						"create-hierarchy": true,
 						"template-name": "\"\""
 					}
 				},
@@ -190,9 +190,28 @@
 							"parameters": {
 								"object": "Projectile"
 							}
+						},
+						{
+							"id": "is-on-screen",
+							"objectClass": "Projectile",
+							"sid": 250565518753538
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Projectile",
+							"sid": 682851023232220,
+							"parameters": {
+								"instance-variable": "isDestroyed",
+								"comparison": 0,
+								"value": "NO"
+							}
 						}
 					],
 					"actions": [
+						{
+							"type": "comment",
+							"text": "Damage enemy"
+						},
 						{
 							"id": "subtract-from-instvar",
 							"objectClass": "Enemy",
@@ -203,16 +222,290 @@
 							}
 						},
 						{
+							"id": "add-to-instvar",
+							"objectClass": "Enemy",
+							"sid": 785851037904608,
+							"parameters": {
+								"instance-variable": "damageTaken",
+								"value": "Projectile.damage * dt"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Show damage flash"
+						},
+						{
 							"id": "set-default-color",
 							"objectClass": "Enemy",
 							"sid": 485879420803582,
 							"parameters": {
 								"color": "rgbEx(500, 500, 500)"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "If projectile pierced a new enemy, add it to the list"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Projectile",
+							"sid": 589144911077692,
+							"parameters": {
+								"instance-variable": "piercedUIDs_SSV",
+								"value": "find(SPACE & Self.piercedUIDs_SSV & SPACE, str(Enemy.UID)) = NOTHING ? Self.piercedUIDs_SSV & SPACE & Enemy.UID : Self.piercedUIDs_SSV"
+							}
 						}
 					],
 					"sid": 465104577973746,
 					"children": [
+						{
+							"eventType": "comment",
+							"text": "Check projectile piercing limit & destroy projectile if reached"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 429591461669344,
+									"parameters": {
+										"object": "Projectile"
+									}
+								},
+								{
+									"id": "pick-by-comparison",
+									"objectClass": "System",
+									"sid": 995038679006034,
+									"parameters": {
+										"object": "Projectile",
+										"expression": "tokencount(trim(Projectile.piercedUIDs_SSV), SPACE)",
+										"comparison": 5,
+										"value": "Rules.Get(KEY_Weapons & DOT & Projectile.AnimationName & DOT & KEY_PierceLimit)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 988057123335795,
+									"parameters": {
+										"type": "log",
+										"message": "\"Projectile #\" & Projectile.UID & \" has pierced \" & tokencount(trim(Projectile.piercedUIDs_SSV), SPACE) & \" enemies, destroying.\""
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Projectile",
+									"sid": 151100235435201,
+									"parameters": {
+										"instance-variable": "isDestroyed",
+										"value": "YES"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "todo tween etc"
+								},
+								{
+									"id": "destroy",
+									"objectClass": "Projectile",
+									"sid": 452669270812600
+								}
+							],
+							"sid": 728908823243223
+						},
+						{
+							"eventType": "variable",
+							"name": "randomAngle",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 895032254930732
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Enemy",
+									"sid": 152429532726828,
+									"parameters": {
+										"instance-variable": "damageTaken",
+										"comparison": 5,
+										"value": "1"
+									}
+								},
+								{
+									"id": "has-children",
+									"objectClass": "Enemy",
+									"sid": 141796681604622,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 215321142275892,
+									"parameters": {
+										"variable": "randomAngle",
+										"value": "random(0, 360)"
+									}
+								},
+								{
+									"id": "spawn-another-object",
+									"objectClass": "Enemy",
+									"sid": 784961018944364,
+									"parameters": {
+										"object": "UI_TextSF_DamageNumber",
+										"layer": "Enemy.LayerName",
+										"image-point": "IP_Enemy_DamageNumber",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-x",
+									"objectClass": "UI_TextSF_DamageNumber",
+									"sid": 380455576936530,
+									"parameters": {
+										"x": "Self.X + 1"
+									}
+								},
+								{
+									"id": "add-child",
+									"objectClass": "Enemy",
+									"sid": 697475773580818,
+									"parameters": {
+										"child": "UI_TextSF_DamageNumber",
+										"transform-x": false,
+										"transform-y": false,
+										"transform-w": false,
+										"transform-h": false,
+										"transform-a": false,
+										"transform-o": false,
+										"transform-z-elevation": false,
+										"transform-visibility": false,
+										"destroy-with-parent": true
+									}
+								},
+								{
+									"id": "tween-value",
+									"objectClass": "UI_TextSF_DamageNumber",
+									"sid": 459783682704980,
+									"disabled": true,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "TWEEN_UI_TextSF_DamageNumber_Scale",
+										"start-value": "Self.CharacterScale",
+										"end-value": "Self.CharacterScale + 0.25",
+										"time": "0.2",
+										"ease": "easeoutcirc",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "yes",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "todo try slight movement in a random direction instead of scale tween"
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "UI_TextSF_DamageNumber",
+									"sid": 109127360225409,
+									"disabled": true,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "offsetY",
+										"end-value": "Self.Y - 2",
+										"time": "0.3",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "UI_TextSF_DamageNumber",
+									"sid": 787613074357709,
+									"disabled": true,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "position",
+										"end-x": "Self.X + cos(randomAngle) * 10",
+										"end-y": "Self.Y + sin(randomAngle) * 10",
+										"time": "0.3",
+										"ease": "easeoutexpo",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "UI_TextSF_DamageNumber",
+									"sid": 242393952289136,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "position",
+										"end-x": "Self.X + cos(angle(0, 0, Enemy.Physics.VelocityX, Enemy.Physics.VelocityY) + 180) * 10",
+										"end-y": "Self.Y + sin(angle(0, 0, Enemy.Physics.VelocityX, Enemy.Physics.VelocityY) + 180) * 10",
+										"time": "0.5",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "UI_TextSF_DamageNumber",
+									"sid": 995825742636294,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "offsetOpacity",
+										"end-value": "0",
+										"time": "0.5",
+										"ease": "easeinexpo",
+										"destroy-on-complete": "yes",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "UI_TextSF_DamageNumber",
+									"sid": 435503946897832,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "UI_TextSF_DamageNumber",
+									"sid": 676689008390364,
+									"parameters": {
+										"text": "round(Enemy.damageTaken)"
+									}
+								}
+							],
+							"sid": 768998235732742
+						},
 						{
 							"eventType": "block",
 							"conditions": [
