@@ -68,7 +68,6 @@ export const Weapons = {
         "PositionRandom1": 40,
         "PositionRandom2": 30,
     },
-    // todo_now
     "Ice": {
         "Cooldown": 5,
         "Amount": 0,

@@ -1587,144 +1587,134 @@
 					]
 				},
 				{
-					"eventType": "group",
-					"disabled": false,
-					"title": "Damage",
-					"description": "",
-					"isActiveOnStart": true,
-					"children": [
+					"eventType": "comment",
+					"text": "Take damage from all overlapping enemies"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
 						{
-							"eventType": "comment",
-							"text": "Take damage from all overlapping enemies"
+							"id": "is-overlapping-another-object",
+							"objectClass": "PlayerHurtbox",
+							"sid": 766574561772515,
+							"parameters": {
+								"object": "Enemy"
+							}
 						},
 						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-overlapping-another-object",
-									"objectClass": "PlayerHurtbox",
-									"sid": 295885904240679,
-									"parameters": {
-										"object": "Enemy"
-									}
-								},
-								{
-									"id": "is-timer-running",
-									"objectClass": "Player",
-									"sid": 150426683452162,
-									"behaviorType": "Timer",
-									"parameters": {
-										"tag": "TIMER_Freeze_All"
-									},
-									"isInverted": true
-								},
-								{
-									"id": "is-timer-running",
-									"objectClass": "Enemy",
-									"sid": 362324824824371,
-									"behaviorType": "Timer",
-									"parameters": {
-										"tag": "TIMER_Freeze"
-									},
-									"isInverted": true
-								},
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "Enemy",
-									"sid": 975687906808912,
-									"parameters": {
-										"instance-variable": "damage",
-										"comparison": 4,
-										"value": "0"
-									}
-								},
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "Enemy",
-									"sid": 475394358697937,
-									"parameters": {
-										"instance-variable": "isDead",
-										"comparison": 0,
-										"value": "NO"
-									}
-								},
-								{
-									"id": "for-each",
-									"objectClass": "System",
-									"sid": 226826882419403,
-									"parameters": {
-										"object": "Enemy"
-									}
-								}
-							],
-							"actions": [
-								{
-									"customAction": "playSFX",
-									"objectClass": "Audio",
-									"sid": 125886902660889,
-									"parameters": [
-										"SFX_PlayerDamaged",
-										"3",
-										"Enemy.damage > 0 ? 1 : 0"
-									]
-								},
-								{
-									"type": "comment",
-									"text": "Decrease player health"
-								},
-								{
-									"id": "set-value",
-									"objectClass": "Rules",
-									"sid": 280671135268126,
-									"parameters": {
-										"path": "KEY_Player & DOT & KEY_Health",
-										"value": "max(0, Rules.Get(KEY_Player & DOT & KEY_Health) - Enemy.damage * dt)"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Set player to hurting (for vignette UI effect)"
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Player",
-									"sid": 619213010105212,
-									"parameters": {
-										"instance-variable": "isHurt",
-										"value": "Enemy.damage > 0 ? YES : NO"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Start damage flash on & off timers if they are not running yet"
-								},
-								{
-									"id": "start-timer",
-									"objectClass": "Player",
-									"sid": 508694919754344,
-									"behaviorType": "Timer",
-									"parameters": {
-										"duration": "C_Damage_Flash_Interval",
-										"type": "once",
-										"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOn : EMPTY"
-									}
-								},
-								{
-									"id": "start-timer",
-									"objectClass": "Player",
-									"sid": 963881426102558,
-									"behaviorType": "Timer",
-									"parameters": {
-										"duration": "C_Damage_Flash_Interval * 2",
-										"type": "once",
-										"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
-									}
-								}
-							],
-							"sid": 527035194645239
+							"id": "is-timer-running",
+							"objectClass": "Player",
+							"sid": 615942382186523,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_Freeze_All"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-timer-running",
+							"objectClass": "Enemy",
+							"sid": 959342064623453,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "TIMER_Freeze"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemy",
+							"sid": 479189017002844,
+							"parameters": {
+								"instance-variable": "damage",
+								"comparison": 4,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemy",
+							"sid": 580702806611316,
+							"parameters": {
+								"instance-variable": "isDead",
+								"comparison": 0,
+								"value": "NO"
+							}
+						},
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 333691895605164,
+							"parameters": {
+								"object": "Enemy"
+							}
 						}
 					],
-					"sid": 375877904511764
+					"actions": [
+						{
+							"customAction": "playSFX",
+							"objectClass": "Audio",
+							"sid": 224359359293664,
+							"parameters": [
+								"SFX_PlayerDamaged",
+								"3",
+								"Enemy.damage > 0 ? 1 : 0"
+							]
+						},
+						{
+							"type": "comment",
+							"text": "Decrease player health"
+						},
+						{
+							"id": "set-value",
+							"objectClass": "Rules",
+							"sid": 301754234018953,
+							"parameters": {
+								"path": "KEY_Player & DOT & KEY_Health",
+								"value": "max(0, Rules.Get(KEY_Player & DOT & KEY_Health) - Enemy.damage * dt)"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Set player to hurting (for vignette UI effect)"
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 254658252485260,
+							"parameters": {
+								"instance-variable": "isHurt",
+								"value": "Enemy.damage > 0 ? YES : NO"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Start damage flash on & off timers if they are not running yet"
+						},
+						{
+							"id": "start-timer",
+							"objectClass": "Player",
+							"sid": 933427457769060,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "C_Damage_Flash_Interval",
+								"type": "once",
+								"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOn : EMPTY"
+							}
+						},
+						{
+							"id": "start-timer",
+							"objectClass": "Player",
+							"sid": 955757498722809,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "C_Damage_Flash_Interval * 2",
+								"type": "once",
+								"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
+							}
+						}
+					],
+					"sid": 188067803728793
 				},
 				{
 					"eventType": "comment",
@@ -2243,30 +2233,6 @@
 					"behaviorType": "8Direction",
 					"parameters": {
 						"max-speed": "Rules.Get(KEY_Player & DOT & KEY_MovementSpeed)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "todo_remove or implement acceleration/deceleration?"
-				},
-				{
-					"id": "set-acceleration",
-					"objectClass": "Player",
-					"sid": 300033388980964,
-					"disabled": true,
-					"behaviorType": "8Direction",
-					"parameters": {
-						"acceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementAcceleration)"
-					}
-				},
-				{
-					"id": "set-deceleration",
-					"objectClass": "Player",
-					"sid": 414761694337799,
-					"disabled": true,
-					"behaviorType": "8Direction",
-					"parameters": {
-						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
 					}
 				}
 			],

@@ -637,26 +637,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_MovementAcceleration",
-			"type": "string",
-			"initialValue": "MovementAcceleration",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 830534511767597
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_MovementDeceleration",
-			"type": "string",
-			"initialValue": "MovementDeceleration",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 982570091533426
-		},
-		{
-			"eventType": "variable",
 			"name": "KEY_MovementSpeed",
 			"type": "string",
 			"initialValue": "MovementSpeed",

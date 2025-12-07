@@ -9,9 +9,6 @@ export const Player = {
     "Experience_Target_Multiplier": 1.2,
 
     // Movement
-    // todo remove acc & deacc?
-    //"MovementAcceleration": 100,
-    //"MovementDeceleration": 100,
     "MovementSpeed": 70, // movement speed for the 8 Direction behaviour
 
     // Misc

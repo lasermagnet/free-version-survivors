@@ -1610,7 +1610,17 @@
 					"sid": 531211064942188,
 					"tags": "",
 					"instanceVariables": {},
-					"behaviors": {},
+					"behaviors": {
+						"Anchor": {
+							"properties": {
+								"left-edge": "none",
+								"top-edge": "window-top",
+								"right-edge": "none",
+								"bottom-edge": "none",
+								"enabled": true
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": null,
 						"uid": 56,
@@ -1797,7 +1807,17 @@
 					"sid": 866525616719543,
 					"tags": "",
 					"instanceVariables": {},
-					"behaviors": {},
+					"behaviors": {
+						"Anchor": {
+							"properties": {
+								"left-edge": "none",
+								"top-edge": "window-top",
+								"right-edge": "none",
+								"bottom-edge": "none",
+								"enabled": true
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": null,
 						"uid": 27,
@@ -1872,7 +1892,17 @@
 					"sid": 149710016146505,
 					"tags": "",
 					"instanceVariables": {},
-					"behaviors": {},
+					"behaviors": {
+						"Anchor": {
+							"properties": {
+								"left-edge": "none",
+								"top-edge": "window-top",
+								"right-edge": "none",
+								"bottom-edge": "none",
+								"enabled": true
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": null,
 						"uid": 49,
@@ -1956,7 +1986,52 @@
 		}
 	],
 	"scene-graphs-folder-root": {
-		"items": [],
+		"items": [
+			{
+				"sid": 748172629066057,
+				"expanded": true
+			},
+			{
+				"sid": 141403525181790,
+				"expanded": true
+			},
+			{
+				"sid": 435937737854602,
+				"expanded": true
+			},
+			{
+				"sid": 191170601076700,
+				"expanded": true
+			},
+			{
+				"sid": 525075646346244,
+				"expanded": true
+			},
+			{
+				"sid": 128748766113195,
+				"expanded": true
+			},
+			{
+				"sid": 531211064942188,
+				"expanded": true
+			},
+			{
+				"sid": 386180513126532,
+				"expanded": true
+			},
+			{
+				"sid": 439831986475336,
+				"expanded": true
+			},
+			{
+				"sid": 866525616719543,
+				"expanded": true
+			},
+			{
+				"sid": 149710016146505,
+				"expanded": true
+			}
+		],
 		"subfolders": []
 	},
 	"sid": 909227277418265,

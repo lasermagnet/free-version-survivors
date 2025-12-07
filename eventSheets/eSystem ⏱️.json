@@ -279,30 +279,6 @@
 				},
 				{
 					"type": "comment",
-					"text": "todo_remove or implement acceleration/deceleration?"
-				},
-				{
-					"id": "set-acceleration",
-					"objectClass": "Player",
-					"sid": 221202146104270,
-					"disabled": true,
-					"behaviorType": "8Direction",
-					"parameters": {
-						"acceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementAcceleration)"
-					}
-				},
-				{
-					"id": "set-deceleration",
-					"objectClass": "Player",
-					"sid": 993068735412028,
-					"disabled": true,
-					"behaviorType": "8Direction",
-					"parameters": {
-						"deceleration": "Rules.Get(KEY_Player & DOT & KEY_MovementDeceleration)"
-					}
-				},
-				{
-					"type": "comment",
 					"text": "Initalize UI"
 				},
 				{
