@@ -613,6 +613,14 @@
 					"sid": 403949667641976
 				},
 				{
+					"eventType": "comment",
+					"text": "Mirror enemies based on their position relative to the player"
+				},
+				{
+					"eventType": "comment",
+					"text": "todo_pack if enemies are horizontally symmetrical, thi"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{

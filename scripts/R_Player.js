@@ -15,6 +15,6 @@ export const Player = {
     "Bonus_Weapon_Damage_Multiplier": 1,
     "Bonus_Weapon_Cooldown_Multiplier": 1,
     "Bonus_Weapon_Size_Multiplier": 1,
-    "Bonus_Weapon_Amount_Add": 1,
+    "Bonus_Weapon_Amount_Add": 0,
     "Bonus_Item_Spawn_Cooldown_Multiplier": 1,
 }

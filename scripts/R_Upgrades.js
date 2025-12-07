@@ -24,6 +24,15 @@ export const Upgrades = {
         "Multiply": 1,
         "Add": 30
     },
+    "Heal2": {
+        "Label": "Major healing",
+        "Description": "Heal 100 points.",
+        "Icon": "HeartRed",
+        "Rule_Value": "Player.Health",
+        "Rule_Max": "Player.Health_Max",
+        "Multiply": 1,
+        "Add": 100
+    },
     "ItemSpawnCooldown": {
         "Label": "More items",
         "Description": "Reduce item spawn cooldown by 5%.",
@@ -46,7 +55,7 @@ export const Upgrades = {
         "Icon": "GoldArrowRight",
         "Rule_Value": "Player.MovementSpeed",
         "Multiply": 1,
-        "Add": 10
+        "Add": 5
     },
     "PickupDistance": {
         "Label": "Pickup power up",
@@ -78,10 +87,10 @@ export const Upgrades = {
         "Icon": "WeaponSize",
         "Rule_Value": "Player.Bonus_Weapon_Size_Multiplier",
         "Multiply": 1,
-        "Add": 0.4,
+        "Add": 0.15,
     },
     "Sword": {
-        "Label": "+1 GigaSword",
+        "Label": "+1 Sword",
         "Description": "Throw one more sword.",
         "Icon": "WeaponAmount",
         "Rule_Value": "Player.Bonus_Weapon_Amount_Add",

@@ -334,6 +334,11 @@
 					"text": "todo_pack remove CAs, stuff everything in here if it makes sense"
 				},
 				{
+					"customAction": "tick",
+					"objectClass": "Player",
+					"sid": 451834143784264
+				},
+				{
 					"customAction": "spawnFromQueue",
 					"objectClass": "Enemy",
 					"sid": 569763485951453
@@ -342,16 +347,6 @@
 					"customAction": "tick",
 					"objectClass": "Enemy",
 					"sid": 584880034086273
-				},
-				{
-					"customAction": "tick",
-					"objectClass": "Drop",
-					"sid": 355564617758422
-				},
-				{
-					"customAction": "tick",
-					"objectClass": "Player",
-					"sid": 486600605201489
 				},
 				{
 					"id": "set-scale",
@@ -367,6 +362,15 @@
 					"sid": 134933458583808,
 					"parameters": {
 						"opacity": "lerp(Self.Opacity, Player.isHurt = YES ? 100 : 0, 0.2)"
+					}
+				},
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "Drop",
+					"sid": 335552295184695,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"angle": "angle(Self.X, Self.Y, Player.X, Player.Y)"
 					}
 				}
 			],

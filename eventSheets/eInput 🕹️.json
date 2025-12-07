@@ -323,7 +323,56 @@
 		},
 		{
 			"eventType": "comment",
-			"text": "Global"
+			"text": "Level up UI"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 737310711360810
+				}
+			],
+			"actions": [
+				{
+					"customAction": "levelUpUpgrade",
+					"objectClass": "Player",
+					"sid": 259653661931330,
+					"parameters": [
+						"int(Keyboard.TypedKey)"
+					]
+				}
+			],
+			"sid": 382725593248600
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 912301770821748,
+					"parameters": {
+						"object": "UI_Button9P_Upgrade"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "levelUpUpgrade",
+					"objectClass": "Player",
+					"sid": 290858056116010,
+					"parameters": [
+						"UI_Button9P_Upgrade.option"
+					]
+				}
+			],
+			"sid": 446650543785782
+		},
+		{
+			"eventType": "comment",
+			"text": "Toggle full screen"
 		},
 		{
 			"eventType": "block",
@@ -364,52 +413,7 @@
 		},
 		{
 			"eventType": "comment",
-			"text": "Level up UI"
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-any-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 723514756394995
-				}
-			],
-			"actions": [
-				{
-					"customAction": "levelUpUpgrade",
-					"objectClass": "Player",
-					"sid": 803168892900854,
-					"parameters": [
-						"int(Keyboard.TypedKey)"
-					]
-				}
-			],
-			"sid": 491362048002243
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-tap-object",
-					"objectClass": "Touch",
-					"sid": 944622989378477,
-					"parameters": {
-						"object": "UI_Button9P_Upgrade"
-					}
-				}
-			],
-			"actions": [
-				{
-					"customAction": "levelUpUpgrade",
-					"objectClass": "Player",
-					"sid": 945703588425093,
-					"parameters": [
-						"UI_Button9P_Upgrade.option"
-					]
-				}
-			],
-			"sid": 511077247796427
+			"text": "Toggle pause"
 		},
 		{
 			"eventType": "block",
@@ -443,30 +447,12 @@
 			],
 			"actions": [
 				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 134135360552882,
-					"parameters": {
-						"type": "log",
-						"message": "\"Is paused before: \" & isPaused"
-					}
-				},
-				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
 					"sid": 898095459607257,
 					"parameters": {
 						"variable": "isPaused",
 						"value": "isLeveling = YES ? isPaused : (isPaused = YES ? NO : YES)"
-					}
-				},
-				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 230965184813951,
-					"parameters": {
-						"type": "log",
-						"message": "\"Is paused after: \" & isPaused"
 					}
 				},
 				{

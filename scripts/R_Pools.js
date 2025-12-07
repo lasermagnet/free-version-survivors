@@ -1,7 +1,8 @@
 export const Pools = {
     "Items": [
-        [1, "Sword"],
-        [4, "Health"],
+        [3, "Sword"],
+        [10, "Heal1"],
+        [1, "Heal2"],
     ],
 
     "Upgrades": [

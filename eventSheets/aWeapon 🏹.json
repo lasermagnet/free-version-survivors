@@ -45,10 +45,10 @@
 				{
 					"id": "for",
 					"objectClass": "System",
-					"sid": 232683009987832,
+					"sid": 756617946995276,
 					"parameters": {
 						"name": "\"\"",
-						"start-index": "1",
+						"start-index": "0",
 						"end-index": "amount"
 					}
 				}
@@ -81,16 +81,46 @@
 					}
 				},
 				{
+					"id": "add-child",
+					"objectClass": "Player",
+					"sid": 440649720785616,
+					"parameters": {
+						"child": "Weapon",
+						"transform-x": true,
+						"transform-y": true,
+						"transform-w": false,
+						"transform-h": false,
+						"transform-a": false,
+						"transform-o": false,
+						"transform-z-elevation": false,
+						"transform-visibility": false,
+						"destroy-with-parent": false
+					}
+				},
+				{
 					"type": "comment",
 					"text": "Set animation"
 				},
 				{
 					"id": "set-animation",
 					"objectClass": "Weapon",
-					"sid": 247029258936335,
+					"sid": 109321445146701,
 					"parameters": {
 						"animation": "weapon",
 						"from": "beginning"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set movement speed"
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "Weapon",
+					"sid": 654757644910132,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"speed": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_MovementSpeed)"
 					}
 				},
 				{

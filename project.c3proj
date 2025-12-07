@@ -187,7 +187,6 @@
 			"UI_Button9P_Upgrade",
 			"UI_Rectangle",
 			"UI_TextSF_DamageNumber",
-			"DamageNumber",
 			"UI_Icon",
 			"UI_Vignette9P",
 			"PlayerHurtbox"
@@ -221,7 +220,6 @@
 			"eInput 🕹️",
 			"aEnemy 😈",
 			"aPlayer 🧑",
-			"aDrop 💧",
 			"aMap 🌳",
 			"!Start 👋"
 		],
@@ -306,14 +304,6 @@
 					"name": "R_Weapons.js",
 					"type": "application/javascript",
 					"sid": 500156935729654,
-					"script-info": {
-						"purpose": "none"
-					}
-				},
-				{
-					"name": "R_Items.js",
-					"type": "application/javascript",
-					"sid": 409382410080374,
 					"script-info": {
 						"purpose": "none"
 					}
@@ -426,7 +416,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "13",
+		"version": "14",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

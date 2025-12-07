@@ -241,6 +241,59 @@
 				},
 				{
 					"eventType": "comment",
+					"text": "Attack: flame"
+				},
+				{
+					"bookmark": true,
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-value",
+							"objectClass": "Rules",
+							"sid": 960036263048766,
+							"parameters": {
+								"path": "KEY_Weapons & DOT & KEY_Weapon_Flame & DOT & KEY_Amount",
+								"cmp": 4,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 799064776369708,
+							"parameters": {
+								"instance-variable": "cooldown_weapon_sword",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 809486266762551,
+							"parameters": {
+								"instance-variable": "cooldown_weapon_sword",
+								"value": "Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)"
+							}
+						},
+						{
+							"customAction": "spawn",
+							"objectClass": "Weapon",
+							"sid": 676160813477601,
+							"parameters": [
+								"KEY_Weapon_Flame",
+								"Rules.Get(KEY_Weapons & DOT & KEY_Weapon_Flame & DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Add)",
+								"Player.lastMovingAngle",
+								"Rules.Get(KEY_Weapons & DOT & KEY_Weapon_Flame & DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)"
+							]
+						}
+					],
+					"sid": 294127959357210
+				},
+				{
+					"eventType": "comment",
 					"text": "Queue enemy spawn"
 				},
 				{
@@ -349,6 +402,95 @@
 				},
 				{
 					"eventType": "comment",
+					"text": "Attract / pick up drops"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Drop",
+							"sid": 497143461059446,
+							"parameters": {
+								"instance-variable": "isCollected",
+								"comparison": 0,
+								"value": "NO"
+							}
+						},
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 117652347320402,
+							"parameters": {
+								"object": "Drop",
+								"expression": "distance(Drop.X, Drop.Y, Player.X, Player.Y)",
+								"comparison": 2,
+								"value": "Rules.Get(KEY_Player & DOT & KEY_PickupDistance)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "Drop",
+							"sid": 811149408323897,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"state": "enabled"
+							}
+						}
+					],
+					"sid": 983656793334925,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-overlapping-point",
+									"objectClass": "System",
+									"sid": 630875946663587,
+									"parameters": {
+										"object": "Drop",
+										"x": "Player.X",
+										"y": "Player.Y"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Drop",
+									"sid": 166542007013569,
+									"parameters": {
+										"instance-variable": "isCollected",
+										"value": "YES"
+									}
+								},
+								{
+									"id": "destroy",
+									"objectClass": "Drop",
+									"sid": 162031479341671
+								},
+								{
+									"type": "comment",
+									"text": "Player: collect experience (with bonus applied)"
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 487070083361722,
+									"parameters": {
+										"instance-variable": "experience",
+										"value": "Drop.AnimationName = ROLE_Experience ? Self.experience + round(Drop.amount * Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier)) : Self.experience"
+									}
+								}
+							],
+							"sid": 563644976303548
+						}
+					]
+				},
+				{
+					"eventType": "comment",
 					"text": "Pick up item"
 				},
 				{
@@ -394,42 +536,19 @@
 						},
 						{
 							"type": "comment",
-							"text": "Apply item (multiply)"
+							"text": "Apply \"item\" (upgrade)"
 						},
 						{
-							"id": "set-value",
-							"objectClass": "Rules",
-							"sid": 277736828016472,
-							"parameters": {
-								"path": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)",
-								"value": "Rules.Get(Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)) * Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Multiply)"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "Apply item (add)"
-						},
-						{
-							"id": "add-to",
-							"objectClass": "Rules",
-							"sid": 637742095993104,
-							"parameters": {
-								"path": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)",
-								"value": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Add)"
-							}
+							"customAction": "applyUpgrade",
+							"objectClass": "Player",
+							"sid": 787050549987334,
+							"parameters": [
+								"Item.AnimationName"
+							]
 						},
 						{
 							"type": "comment",
-							"text": "Apply item (max)"
-						},
-						{
-							"id": "set-value",
-							"objectClass": "Rules",
-							"sid": 315518869748953,
-							"parameters": {
-								"path": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)",
-								"value": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Max) = 0 ? Rules.Get(Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)) : min(Rules.Get(Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)), Rules.Get(Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Max)))"
-							}
+							"text": "Flash and fade out item"
 						},
 						{
 							"id": "set-default-color",
@@ -1101,6 +1220,15 @@
 				{
 					"type": "comment",
 					"text": "Apply upgrade (multiply)"
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 273124568448496,
+					"parameters": {
+						"type": "log",
+						"message": "\"Applying upgrade: \" & upgrade"
+					}
 				},
 				{
 					"id": "set-value",

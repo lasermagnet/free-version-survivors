@@ -468,6 +468,16 @@
 			"sid": 577932868393958
 		},
 		{
+			"eventType": "variable",
+			"name": "KEY_Weapon_Flame",
+			"type": "string",
+			"initialValue": "Flame",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 737783282343000
+		},
+		{
 			"eventType": "comment",
 			"text": "Loops"
 		},
