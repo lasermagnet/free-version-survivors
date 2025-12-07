@@ -3,11 +3,11 @@
 	"events": [
 		{
 			"eventType": "comment",
-			"text": "Player input"
+			"text": "todo gamepad upgrade selection support"
 		},
 		{
 			"eventType": "comment",
-			"text": "todo_maybe: analog input (gamepad, mouse, touch?) - maybe with variable speed below a threshold"
+			"text": "todo touch & mouse input?"
 		},
 		{
 			"eventType": "comment",
@@ -54,8 +54,32 @@
 			"isOrBlock": true
 		},
 		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-button-pressed",
+					"objectClass": "Gamepad",
+					"sid": 486670448023265,
+					"parameters": {
+						"gamepad": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"customAction": "onSelectUpgrade",
+					"objectClass": "Player",
+					"sid": 120539116560620,
+					"parameters": [
+						"Gamepad.ButtonIndex + 1"
+					]
+				}
+			],
+			"sid": 279075834522245
+		},
+		{
 			"eventType": "comment",
-			"text": "Toggle full screen"
+			"text": "Enable full screen - because why waste two events on toggling :) user can cancel with Esc."
 		},
 		{
 			"eventType": "block",
@@ -80,7 +104,7 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Enable full screen, because why waste two events on toggling :) user can cancel with Esc."
+					"text": "Enable full screen"
 				},
 				{
 					"id": "request-fullscreen",
@@ -116,15 +140,6 @@
 					"parameters": {
 						"gamepad": "0",
 						"button": "start-menu"
-					}
-				},
-				{
-					"id": "on-button-pressed",
-					"objectClass": "Gamepad",
-					"sid": 666709096246933,
-					"parameters": {
-						"gamepad": "0",
-						"button": "back-view"
 					}
 				}
 			],
@@ -181,6 +196,15 @@
 					"sid": 291771175703523,
 					"parameters": {
 						"key": 82
+					}
+				},
+				{
+					"id": "on-button-pressed",
+					"objectClass": "Gamepad",
+					"sid": 590092787763305,
+					"parameters": {
+						"gamepad": "0",
+						"button": "back-view"
 					}
 				}
 			],

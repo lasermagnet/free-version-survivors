@@ -87,6 +87,27 @@
 					"initialValue": "0",
 					"comment": "",
 					"sid": 212053427248699
+				},
+				{
+					"name": "isPinnedToPlayer",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 729922475904683
+				},
+				{
+					"name": "orbitRadius",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 602882939538756
+				},
+				{
+					"name": "orbitSpeed",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 169564006755256
 				}
 			],
 			"eventType": "custom-ace-block",
@@ -233,12 +254,12 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-value",
-							"objectClass": "Rules",
-							"sid": 453830093049847,
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 187632530918798,
 							"parameters": {
-								"path": "KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_Pin",
-								"cmp": 0,
+								"variable": "isPinnedToPlayer",
+								"comparison": 0,
 								"value": "YES"
 							}
 						}
@@ -281,12 +302,12 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-value",
-							"objectClass": "Rules",
-							"sid": 261510604468762,
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 264699727686455,
 							"parameters": {
-								"path": "KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_OrbitRadius",
-								"cmp": 4,
+								"variable": "orbitRadius",
+								"comparison": 4,
 								"value": "0"
 							}
 						}
@@ -313,20 +334,20 @@
 						{
 							"id": "set-radius",
 							"objectClass": "Weapon",
-							"sid": 774168030408399,
+							"sid": 281487009748042,
 							"behaviorType": "Orbit",
 							"parameters": {
-								"primary": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_OrbitRadius)",
-								"secondary": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_OrbitRadius)"
+								"primary": "orbitRadius",
+								"secondary": "orbitRadius"
 							}
 						},
 						{
 							"id": "set-speed",
 							"objectClass": "Weapon",
-							"sid": 229163026732764,
+							"sid": 831296364898731,
 							"behaviorType": "Orbit",
 							"parameters": {
-								"speed": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_OrbitSpeed)"
+								"speed": "orbitSpeed"
 							}
 						}
 					],

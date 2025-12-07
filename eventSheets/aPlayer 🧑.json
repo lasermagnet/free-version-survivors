@@ -420,10 +420,6 @@
 					"text": "Gamepad"
 				},
 				{
-					"eventType": "comment",
-					"text": "todo optimize condition?"
-				},
-				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -747,7 +743,7 @@
 								{
 									"customAction": "spawn",
 									"objectClass": "Weapon",
-									"sid": 754110901370187,
+									"sid": 408879046172248,
 									"parameters": [
 										"Rules.CurrentKey",
 										"Rules.Get(DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
@@ -759,7 +755,10 @@
 										"Rules.Get(DOT & KEY_MovementAcceleration)",
 										"Rules.Get(DOT & KEY_Damage)",
 										"Rules.Get(DOT & KEY_Timeout)",
-										"Rules.Get(DOT & KEY_BlockMovement)"
+										"Rules.Get(DOT & KEY_BlockMovement)",
+										"Rules.Get(DOT & KEY_Pin)",
+										"Rules.Get(DOT & KEY_OrbitRadius)",
+										"Rules.Get(DOT & KEY_OrbitSpeed)"
 									]
 								}
 							],
@@ -1125,6 +1124,15 @@
 							"parameters": {
 								"variable": "isLeveling",
 								"value": "YES"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "Player",
+							"sid": 221051656413814,
+							"parameters": {
+								"instance-variable": "level",
+								"value": "1"
 							}
 						},
 						{

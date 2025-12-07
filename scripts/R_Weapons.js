@@ -9,7 +9,6 @@ export const Weapons = {
         "Timeout": 4,
         "MovementSpeed": 0,
         "MovementAcceleration": 0,
-        "Timer": 1,
         "Pin": 0,
         "OrbitRadius": 0,
         "OrbitSpeed": 0,
@@ -25,7 +24,6 @@ export const Weapons = {
         "Scale": 1,
         "Timeout": 4,
         "MovementSpeed": 85,
-        "Timer": 1,
     },
     "Flame": {
         "BlockMovement": 1,
@@ -36,7 +34,6 @@ export const Weapons = {
         "Scale": 1,
         "Timeout": 0.5,
         "MovementSpeed": 10,
-        "Timer": 1,
         "Pin": 1,
     },
     "Revolver": {
@@ -47,7 +44,6 @@ export const Weapons = {
         "PierceLimit": 1000,
         "Scale": 1,
         "Timeout": 4,
-        "Timer": 1,
         "Pin": 1,
         "OrbitRadius": 25,
         "OrbitSpeed": 120,
@@ -61,11 +57,9 @@ export const Weapons = {
         "Timeout": 3,
         "MovementSpeed": 10,
         "MovementAcceleration": -5,
-        "Timer": 1,
         "PositionRandom1": 40,
         "PositionRandom2": 30,
     },
 }
 
-// todo move timers out of weapon/other rules and into a Timers JSON object
-// todo remove * and + stuff (added for testing)
+// todo_prod remove * and + stuff (added for testing)

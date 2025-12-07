@@ -58,10 +58,6 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "todo use very short debounce timer instead of SFX exclusivity"
-				},
-				{
-					"type": "comment",
 					"text": "This custom action plays a sound effect by name, takes care of debouncing and optional variations"
 				},
 				{

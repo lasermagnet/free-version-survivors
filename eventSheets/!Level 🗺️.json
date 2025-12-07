@@ -3,7 +3,7 @@
 	"events": [
 		{
 			"eventType": "comment",
-			"text": "todo_pack move contents of event sheets here to save a couple events"
+			"text": "todo_pack move contents of event sheets here to save a couple events (or wait for next stable C3)"
 		},
 		{
 			"eventType": "include",
