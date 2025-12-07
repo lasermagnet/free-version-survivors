@@ -189,16 +189,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Level",
-			"type": "string",
-			"initialValue": "Level",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 769332779672486
-		},
-		{
-			"eventType": "variable",
 			"name": "KEY_Experience_Target",
 			"type": "string",
 			"initialValue": "Experience_Target",
@@ -306,6 +296,66 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 815565522830219
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_MovementSpeed",
+			"type": "string",
+			"initialValue": "MovementSpeed",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 419679795605069
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_MovementAcceleration",
+			"type": "string",
+			"initialValue": "MovementAcceleration",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 261523272078757
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_MovementDeceleration",
+			"type": "string",
+			"initialValue": "MovementDeceleration",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 890744415786530
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Scale",
+			"type": "string",
+			"initialValue": "Scale",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 976666608148276
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Weapon_Sword",
+			"type": "string",
+			"initialValue": "Sword",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 200576385417831
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Queues",
+			"type": "string",
+			"initialValue": "Queues",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 385362962184584
 		},
 		{
 			"eventType": "comment",
@@ -476,50 +526,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 165491564316690
-		},
-		{
-			"eventType": "comment",
-			"text": "Weapons"
-		},
-		{
-			"eventType": "variable",
-			"name": "WEAPON_Sword_todoRemove",
-			"type": "string",
-			"initialValue": "Sword",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 558238686119792
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_MovementSpeed",
-			"type": "string",
-			"initialValue": "MovementSpeed",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 256298123319967
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_MovementAcceleration",
-			"type": "string",
-			"initialValue": "MovementAcceleration",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 324658635829456
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_MovementDeceleration",
-			"type": "string",
-			"initialValue": "MovementDeceleration",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 944617864240728
 		},
 		{
 			"eventType": "group",

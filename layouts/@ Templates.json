@@ -7,7 +7,7 @@
 			"subLayers": [],
 			"instances": [
 				{
-					"type": "Projectile",
+					"type": "Weapon",
 					"properties": {
 						"initially-visible": true,
 						"initial-animation": "Sword",
@@ -19,7 +19,6 @@
 					"sid": 700222683177902,
 					"tags": "",
 					"instanceVariables": {
-						"R_AngleOffset_todoRemove": 45,
 						"damage": 0,
 						"isDestroyed": 0,
 						"piercedUIDs_SSV": ""
@@ -61,7 +60,7 @@
 							1,
 							1
 						],
-						"angle": 0.7853981633974483,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -429,10 +428,10 @@
 					}
 				},
 				{
-					"type": "Weapon",
+					"type": "Item",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Weapons",
+						"initial-animation": "Sword",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false

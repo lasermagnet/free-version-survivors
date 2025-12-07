@@ -1,0 +1,493 @@
+{
+	"name": "Item",
+	"plugin-id": "Sprite",
+	"sid": 289750603140296,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "isPickedUp",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 208991963690804
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 761978058966734
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9203981,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Sword"
+					}
+				],
+				"sid": 229029229384855,
+				"name": "Sword",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7700820,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Sword"
+					},
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8438991,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Shield"
+					},
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 1284264,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Orb"
+					},
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9279145,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Ring"
+					},
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7190788,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Axe"
+					},
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7494126,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Spear"
+					},
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 4428139,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Trident"
+					},
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8798380,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Bow"
+					},
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5468585,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Swirl"
+					},
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 481584,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Missile"
+					},
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8873268,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Ray"
+					},
+					{
+						"width": 18,
+						"height": 18,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 1422056,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "Explosion"
+					}
+				],
+				"sid": 266411733706729,
+				"name": "_All",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

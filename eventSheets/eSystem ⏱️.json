@@ -17,7 +17,7 @@
 				},
 				{
 					"id": "move-to-layer",
-					"objectClass": "HTMLElement",
+					"objectClass": "Editor",
 					"sid": 328131485641796,
 					"parameters": {
 						"layer": "LAYER_UI"
@@ -25,7 +25,7 @@
 				},
 				{
 					"id": "set-visible",
-					"objectClass": "HTMLElement",
+					"objectClass": "Editor",
 					"sid": 746445835537442,
 					"parameters": {
 						"visibility": "invisible"
@@ -263,7 +263,7 @@
 					"objectClass": "UI_TextSF",
 					"sid": 586361156603131,
 					"parameters": {
-						"text": "\"FPS: \" & round(fps) & newline &\nobjectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Projectile.Count & \" projectiles\""
+						"text": "\"FPS: \" & round(fps) & newline &\nobjectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Weapon.Count & \" projectiles\""
 					}
 				},
 				{

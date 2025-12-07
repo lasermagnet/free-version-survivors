@@ -87,15 +87,6 @@
 					}
 				},
 				{
-					"id": "set-animation-frame",
-					"objectClass": "Enemy",
-					"sid": 379658397591023,
-					"disabled": true,
-					"parameters": {
-						"frame-number": "random(0, Self.AnimationFrameCount)"
-					}
-				},
-				{
 					"id": "set-animation",
 					"objectClass": "Enemy",
 					"sid": 188179399128604,
@@ -188,17 +179,17 @@
 							"objectClass": "Enemy",
 							"sid": 807314407853475,
 							"parameters": {
-								"object": "Projectile"
+								"object": "Weapon"
 							}
 						},
 						{
 							"id": "is-on-screen",
-							"objectClass": "Projectile",
+							"objectClass": "Weapon",
 							"sid": 250565518753538
 						},
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "Projectile",
+							"objectClass": "Weapon",
 							"sid": 682851023232220,
 							"parameters": {
 								"instance-variable": "isDestroyed",
@@ -218,7 +209,7 @@
 							"sid": 285493070811282,
 							"parameters": {
 								"instance-variable": "health",
-								"value": "Projectile.damage * dt"
+								"value": "Weapon.damage * dt"
 							}
 						},
 						{
@@ -227,7 +218,7 @@
 							"sid": 785851037904608,
 							"parameters": {
 								"instance-variable": "damageTaken",
-								"value": "Projectile.damage * dt"
+								"value": "Weapon.damage * dt"
 							}
 						},
 						{
@@ -248,7 +239,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Projectile",
+							"objectClass": "Weapon",
 							"sid": 589144911077692,
 							"parameters": {
 								"instance-variable": "piercedUIDs_SSV",
@@ -270,7 +261,7 @@
 									"objectClass": "System",
 									"sid": 429591461669344,
 									"parameters": {
-										"object": "Projectile"
+										"object": "Weapon"
 									}
 								},
 								{
@@ -278,10 +269,10 @@
 									"objectClass": "System",
 									"sid": 995038679006034,
 									"parameters": {
-										"object": "Projectile",
-										"expression": "tokencount(trim(Projectile.piercedUIDs_SSV), SPACE)",
+										"object": "Weapon",
+										"expression": "tokencount(trim(Weapon.piercedUIDs_SSV), SPACE)",
 										"comparison": 5,
-										"value": "Rules.Get(KEY_Weapons & DOT & Projectile.AnimationName & DOT & KEY_PierceLimit)"
+										"value": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_PierceLimit)"
 									}
 								}
 							],
@@ -292,12 +283,12 @@
 									"sid": 988057123335795,
 									"parameters": {
 										"type": "log",
-										"message": "\"Projectile #\" & Projectile.UID & \" has pierced \" & tokencount(trim(Projectile.piercedUIDs_SSV), SPACE) & \" enemies, destroying.\""
+										"message": "\"Projectile #\" & Weapon.UID & \" has pierced \" & tokencount(trim(Weapon.piercedUIDs_SSV), SPACE) & \" enemies, destroying.\""
 									}
 								},
 								{
 									"id": "set-instvar-value",
-									"objectClass": "Projectile",
+									"objectClass": "Weapon",
 									"sid": 151100235435201,
 									"parameters": {
 										"instance-variable": "isDestroyed",
@@ -310,7 +301,7 @@
 								},
 								{
 									"id": "destroy",
-									"objectClass": "Projectile",
+									"objectClass": "Weapon",
 									"sid": 452669270812600
 								}
 							],
@@ -590,7 +581,7 @@
 							"objectClass": "Enemy",
 							"sid": 446909647721359,
 							"parameters": {
-								"object": "Projectile"
+								"object": "Weapon"
 							},
 							"isInverted": true
 						}

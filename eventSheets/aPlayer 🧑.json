@@ -72,7 +72,7 @@
 					"sid": 780833186605289,
 					"parameters": {
 						"instance-variable": "cooldown_weapon_sword",
-						"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Cooldown)"
+						"value": "Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Cooldown)"
 					}
 				},
 				{
@@ -169,14 +169,18 @@
 					"text": "Attack: Sword"
 				},
 				{
+					"eventType": "comment",
+					"text": "todo move cooldown to rules?"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
 							"id": "compare-value",
 							"objectClass": "Rules",
-							"sid": 202899305705582,
+							"sid": 109862083989288,
 							"parameters": {
-								"path": "KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level",
+								"path": "KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Amount",
 								"cmp": 4,
 								"value": "0"
 							}
@@ -199,7 +203,7 @@
 							"sid": 102200767806325,
 							"parameters": {
 								"instance-variable": "cooldown_weapon_sword",
-								"value": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Cooldown)"
+								"value": "Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Cooldown)"
 							}
 						}
 					],
@@ -211,22 +215,23 @@
 								{
 									"id": "for",
 									"objectClass": "System",
-									"sid": 831146062287362,
+									"sid": 608056707650086,
 									"parameters": {
 										"name": "\"\"",
 										"start-index": "1",
-										"end-index": "Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level)"
+										"end-index": "Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Amount)"
 									}
 								}
 							],
 							"actions": [
 								{
 									"customAction": "spawn",
-									"objectClass": "Projectile",
-									"sid": 815504127971766,
+									"objectClass": "Weapon",
+									"sid": 885853957694187,
 									"parameters": [
-										"Player.lastMovingAngle + (360 / Rules.Get(KEY_Weapons & DOT & WEAPON_Sword_todoRemove & DOT & KEY_Level) * loopindex)",
-										"WEAPON_Sword_todoRemove"
+										"Player.lastMovingAngle + (360 / Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Amount) * loopindex)",
+										"Key_Weapon_Sword",
+										"Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Scale)"
 									]
 								}
 							],
@@ -263,11 +268,15 @@
 							}
 						},
 						{
+							"type": "comment",
+							"text": "todo item type"
+						},
+						{
 							"id": "create-object",
 							"objectClass": "System",
 							"sid": 313628640848420,
 							"parameters": {
-								"object-to-create": "Weapon",
+								"object-to-create": "Item",
 								"layer": "LAYER_Main",
 								"x": "Player.X + cos(angle(Player.X, Player.Y, LayoutWidth * 0.5, LayoutHeight * 0.5)) * random(C_Item_Spawn_Distance_Min, C_Item_Spawn_Distance_Max)",
 								"y": "Player.Y + sin(angle(Player.X, Player.Y, LayoutWidth * 0.5, LayoutHeight * 0.5)) * random(C_Item_Spawn_Distance_Min, C_Item_Spawn_Distance_Max)",
@@ -281,7 +290,7 @@
 						},
 						{
 							"id": "tween-one-property",
-							"objectClass": "Weapon",
+							"objectClass": "Item",
 							"sid": 253088102355691,
 							"behaviorType": "Tween",
 							"parameters": {
@@ -302,8 +311,7 @@
 							"sid": 176612895163338
 						}
 					],
-					"sid": 129191214035208,
-					"disabled": true
+					"sid": 129191214035208
 				},
 				{
 					"eventType": "comment",
@@ -357,12 +365,12 @@
 							"objectClass": "Player",
 							"sid": 229852428941040,
 							"parameters": {
-								"object": "Weapon"
+								"object": "Item"
 							}
 						},
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "Weapon",
+							"objectClass": "Item",
 							"sid": 792888105578515,
 							"parameters": {
 								"instance-variable": "isPickedUp",
@@ -375,15 +383,15 @@
 						{
 							"id": "log",
 							"objectClass": "Browser",
-							"sid": 460470911981716,
+							"sid": 679558873454432,
 							"parameters": {
 								"type": "log",
-								"message": "\"Picked up item: \" & Weapon.AnimationFrameTag"
+								"message": "\"Picked up item: \" & Item.AnimationName"
 							}
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Weapon",
+							"objectClass": "Item",
 							"sid": 924526291743139,
 							"parameters": {
 								"instance-variable": "isPickedUp",
@@ -393,15 +401,15 @@
 						{
 							"id": "add-to",
 							"objectClass": "Rules",
-							"sid": 959073039623894,
+							"sid": 637742095993104,
 							"parameters": {
-								"path": "KEY_Weapons & DOT & Weapon.AnimationFrameTag & DOT & KEY_Level",
-								"value": "1"
+								"path": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Rule_Value)",
+								"value": "Rules.Get(KEY_Items & DOT & Item.AnimationName & DOT & KEY_Add)"
 							}
 						},
 						{
 							"id": "set-default-color",
-							"objectClass": "Weapon",
+							"objectClass": "Item",
 							"sid": 484277913474189,
 							"parameters": {
 								"color": "rgbEx(500, 500, 500)"
@@ -409,13 +417,13 @@
 						},
 						{
 							"id": "stop-all-tweens",
-							"objectClass": "Weapon",
+							"objectClass": "Item",
 							"sid": 207101199220881,
 							"behaviorType": "Tween"
 						},
 						{
 							"id": "set-opacity",
-							"objectClass": "Weapon",
+							"objectClass": "Item",
 							"sid": 722870505118830,
 							"parameters": {
 								"opacity": "100"
@@ -423,7 +431,7 @@
 						},
 						{
 							"id": "tween-one-property",
-							"objectClass": "Weapon",
+							"objectClass": "Item",
 							"sid": 865811529008529,
 							"behaviorType": "Tween",
 							"parameters": {
@@ -501,7 +509,7 @@
 							"objectClass": "System",
 							"sid": 672119175847318,
 							"parameters": {
-								"object": "Projectile",
+								"object": "Weapon",
 								"time-scale": "0"
 							}
 						},
@@ -1051,7 +1059,7 @@
 					"objectClass": "System",
 					"sid": 232002924512385,
 					"parameters": {
-						"object": "Projectile",
+						"object": "Weapon",
 						"time-scale": "1"
 					}
 				},

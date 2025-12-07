@@ -4,7 +4,7 @@
 		{
 			"aceType": "action",
 			"aceName": "spawn",
-			"objectClass": "Projectile",
+			"objectClass": "Weapon",
 			"functionDescription": "",
 			"functionCategory": "",
 			"functionReturnType": "none",
@@ -24,17 +24,28 @@
 					"initialValue": "",
 					"comment": "",
 					"sid": 535484699166720
+				},
+				{
+					"name": "scale",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 410210461955907
 				}
 			],
 			"eventType": "custom-ace-block",
 			"conditions": [],
 			"actions": [
 				{
+					"type": "comment",
+					"text": "Spawn projectile"
+				},
+				{
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 200482084576445,
 					"parameters": {
-						"object-to-create": "Projectile",
+						"object-to-create": "Weapon",
 						"layer": "LAYER_Main",
 						"x": "Player.X",
 						"y": "Player.Y",
@@ -44,13 +55,50 @@
 				},
 				{
 					"type": "comment",
-					"text": "Set sprite angle & movement angle"
+					"text": "Set animation"
 				},
 				{
-					"id": "set-angle-of-motion",
-					"objectClass": "Projectile",
-					"sid": 912607043352233,
-					"behaviorType": "Bullet",
+					"id": "set-animation",
+					"objectClass": "Weapon",
+					"sid": 247029258936335,
+					"parameters": {
+						"animation": "weapon",
+						"from": "beginning"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set scale"
+				},
+				{
+					"id": "set-scale",
+					"objectClass": "Weapon",
+					"sid": 850260846443921,
+					"parameters": {
+						"scale": "scale"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set IVs"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Weapon",
+					"sid": 439078326474503,
+					"parameters": {
+						"instance-variable": "damage",
+						"value": "Rules.Get(KEY_Weapons & DOT & weapon & DOT & KEY_Damage)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set sprite (movement) angle"
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "Weapon",
+					"sid": 700142642990439,
 					"parameters": {
 						"angle": "movementAngle"
 					}
@@ -60,8 +108,12 @@
 					"text": "Start \"garbage collector\" tween which fades out & destroys the projectile"
 				},
 				{
+					"type": "comment",
+					"text": "todo mn"
+				},
+				{
 					"id": "tween-one-property",
-					"objectClass": "Projectile",
+					"objectClass": "Weapon",
 					"sid": 202024646643991,
 					"behaviorType": "Tween",
 					"parameters": {
@@ -74,24 +126,6 @@
 						"loop": "no",
 						"ping-pong": "no",
 						"repeat-count": "1"
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Projectile",
-					"sid": 861384561382661,
-					"parameters": {
-						"instance-variable": "damage",
-						"value": "Rules.Get(KEY_Weapons & DOT & weapon & DOT & KEY_Damage)"
-					}
-				},
-				{
-					"id": "set-animation",
-					"objectClass": "Projectile",
-					"sid": 971516624268983,
-					"parameters": {
-						"animation": "weapon",
-						"from": "beginning"
 					}
 				}
 			],

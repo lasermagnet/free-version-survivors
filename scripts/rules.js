@@ -10,9 +10,15 @@ export const rules = {
         "MovementSpeed": 60
     },
 
+    "Queues": {
+        "Items": ["Sword"],
+        "Enemies": 10
+    },
+
     "Wave": { // Wave rules
         "Items": { // Item spawning
-            "Cooldown": 10
+            // todo visualize item cooldown
+            "Cooldown": 5
         },
         "Enemies": { // Enemy spawning
             "Cooldown": 3,
@@ -139,14 +145,21 @@ export const rules = {
 
     "Weapons": { // Weapon rules
         "Sword": {
-            //todo: animation name, "movement type"
-            // todo: use player direction
+            //todo: animation name, "movement type"...
             "Cooldown": 1,
-            "Level": 10,
+            "Amount": 4,
             "Damage": 10,
-            "PierceLimit": 10
+            "PierceLimit": 10,
+            "Scale": 1
         }
         // todo more weapons
+    },
+
+    "Items": {
+        "Sword": {
+            "Rule_Value": "Weapons.Sword.Amount",
+            "Add": 1
+        }
     }
 
 }
@@ -157,12 +170,14 @@ export const rules = {
 - audio
 - waves (with string names/labels)
 - enemy types: advanced spawning, damage and xp drop amounts
-- damage numbers
 - more weapons
 - show upgrade change amounts on level up ui
 - stat upgrades: player speed, player max health, pickup distance
 - weapon upgrades: level, cooldown
 - game over screen
+
+# maybe
+- restructure weapons so their behaviours are modifiable (not just properties)
 
 */
 
