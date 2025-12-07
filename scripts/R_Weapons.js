@@ -1,22 +1,41 @@
 export const Weapons = {
     "Sword": {
-        //todo: animation name, "movement type"... so behaviour based weapons.
         "Cooldown": 1,
-        "Amount": 1,
+        "Amount": 0,
         "Damage": 15,
         "PierceLimit": 10,
         "Scale": 1,
         "Timeout": 4,
-        "MovementSpeed": 85
+        "MovementSpeed": 85,
+        "Timer": 1,
+        "Pin": 0,
+        "OrbitRadius": 0,
+        "OrbitSpeed": 0,
     },
     "Flame": {
-        "Cooldown": 1,
+        "Cooldown": 3,
         "Amount": 2,
         "Damage": 15,
-        "PierceLimit": 100,
+        "PierceLimit": 1000,
         "Scale": 1,
         "Timeout": 0.5,
-        "MovementSpeed": 10
+        "MovementSpeed": 10,
+        "Timer": 1,
+        "Pin": 1,
+        "OrbitRadius": 0,
+        "OrbitSpeed": 0,
+    },
+    "Revolver": {
+        "Cooldown": 5,
+        "Amount": 2,
+        "Damage": 15,
+        "PierceLimit": 1000,
+        "Scale": 1,
+        "Timeout": 4,
+        "MovementSpeed": 20,
+        "Timer": 1,
+        "Pin": 1,
+        "OrbitRadius": 40,
+        "OrbitSpeed": 150,
     }
-    // todo more weapons
 }

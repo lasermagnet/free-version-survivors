@@ -64,16 +64,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "todo_maybe remove these IVs and keep data in Rules"
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
-					"sid": 780833186605289,
-					"parameters": {
-						"instance-variable": "cooldown_weapon_sword",
-						"value": "Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Cooldown)"
-					}
+					"text": "todo_maybe remove all cooldown IVs and keep data in Rules"
 				},
 				{
 					"id": "set-instvar-value",
@@ -147,15 +138,6 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
-					"sid": 678410323692335,
-					"parameters": {
-						"instance-variable": "cooldown_weapon_sword",
-						"value": "Self.cooldown_weapon_sword = NOTHING ? NOTHING : max(0, Self.cooldown_weapon_sword - dt)"
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
 					"sid": 880923047439531,
 					"parameters": {
 						"instance-variable": "cooldown_spawn_enemy",
@@ -172,6 +154,10 @@
 					}
 				},
 				{
+					"type": "comment",
+					"text": "Reset hurt state variable"
+				},
+				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
 					"sid": 259950020665446,
@@ -185,112 +171,118 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Attack: Sword"
-				},
-				{
-					"eventType": "comment",
-					"text": "todo move cooldown to rules?"
+					"text": "Stop player animation in standing position if player is not moving"
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-value",
-							"objectClass": "Rules",
-							"sid": 109862083989288,
+							"id": "is-moving",
+							"objectClass": "Player",
+							"sid": 815957691255878,
+							"behaviorType": "8Direction",
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Player",
+							"sid": 929243666119132,
 							"parameters": {
-								"path": "KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Amount",
-								"cmp": 4,
-								"value": "0"
+								"frame-number": "FRAME_Standing"
+							}
+						}
+					],
+					"sid": 105257302270069
+				},
+				{
+					"eventType": "comment",
+					"text": "Attack"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "Rules",
+							"sid": 793989520308754,
+							"parameters": {
+								"path": "KEY_Player & DOT & KEY_Weapons"
 							}
 						},
 						{
-							"id": "compare-instance-variable",
-							"objectClass": "Player",
-							"sid": 180896289172722,
+							"id": "compare-value",
+							"objectClass": "Rules",
+							"sid": 413757915216087,
 							"parameters": {
-								"instance-variable": "cooldown_weapon_sword",
-								"comparison": 0,
+								"path": "KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Amount",
+								"cmp": 4,
 								"value": "0"
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 608152032944310,
-							"parameters": {
-								"instance-variable": "cooldown_weapon_sword",
-								"value": "Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)"
-							}
-						},
-						{
-							"customAction": "spawn",
-							"objectClass": "Weapon",
-							"sid": 748740735832209,
-							"parameters": [
-								"Key_Weapon_Sword",
-								"Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Add)",
-								"Player.lastMovingAngle",
-								"Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)"
-							]
-						}
-					],
-					"sid": 135052668909848
-				},
-				{
-					"eventType": "comment",
-					"text": "Attack: flame"
-				},
-				{
-					"bookmark": true,
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-value",
+							"id": "set-value",
 							"objectClass": "Rules",
-							"sid": 960036263048766,
+							"sid": 507690793267307,
 							"parameters": {
-								"path": "KEY_Weapons & DOT & KEY_Weapon_Flame & DOT & KEY_Amount",
-								"cmp": 4,
-								"value": "0"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Player",
-							"sid": 799064776369708,
-							"parameters": {
-								"instance-variable": "cooldown_weapon_sword",
-								"comparison": 0,
-								"value": "0"
+								"path": "KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Timer",
+								"value": "max(0, Rules.Get(KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Timer) - dt)"
 							}
 						}
 					],
-					"actions": [
+					"sid": 135052668909848,
+					"children": [
 						{
-							"id": "set-instvar-value",
-							"objectClass": "Player",
-							"sid": 809486266762551,
-							"parameters": {
-								"instance-variable": "cooldown_weapon_sword",
-								"value": "Rules.Get(KEY_Weapons & DOT & Key_Weapon_Sword & DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)"
-							}
-						},
-						{
-							"customAction": "spawn",
-							"objectClass": "Weapon",
-							"sid": 676160813477601,
-							"parameters": [
-								"KEY_Weapon_Flame",
-								"Rules.Get(KEY_Weapons & DOT & KEY_Weapon_Flame & DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Add)",
-								"Player.lastMovingAngle",
-								"Rules.Get(KEY_Weapons & DOT & KEY_Weapon_Flame & DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)"
-							]
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-value",
+									"objectClass": "Rules",
+									"sid": 815488500474987,
+									"parameters": {
+										"path": "KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Timer",
+										"cmp": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-value",
+									"objectClass": "Rules",
+									"sid": 385769584468187,
+									"parameters": {
+										"path": "KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Timer",
+										"value": "Rules.Get(KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)"
+									}
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 622964289085077,
+									"parameters": {
+										"type": "log",
+										"message": "\"Spawning weapon(s): \" & Rules.CurrentValue"
+									}
+								},
+								{
+									"customAction": "spawn",
+									"objectClass": "Weapon",
+									"sid": 584341475092885,
+									"parameters": [
+										"Rules.CurrentValue",
+										"Rules.Get(KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Amount) + Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra)",
+										"Player.lastMovingAngle",
+										"Rules.Get(KEY_Weapons & DOT & Rules.CurrentValue & DOT & KEY_Scale) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier)"
+									]
+								}
+							],
+							"sid": 577702350018540
 						}
-					],
-					"sid": 294127959357210
+					]
 				},
 				{
 					"eventType": "comment",
@@ -955,12 +947,30 @@
 							}
 						},
 						{
+							"id": "set-acceleration",
+							"objectClass": "Drop",
+							"sid": 978137124524970,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"acceleration": "-Self.Bullet.Speed"
+							}
+						},
+						{
 							"id": "set-enabled",
 							"objectClass": "Player",
 							"sid": 574219236840102,
 							"behaviorType": "8Direction",
 							"parameters": {
 								"state": "disabled"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Player",
+							"sid": 783248802365482,
+							"behaviorType": "Physics",
+							"parameters": {
+								"mode": "disabled"
 							}
 						},
 						{

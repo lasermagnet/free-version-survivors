@@ -513,10 +513,6 @@
 									],
 									"actions": [
 										{
-											"type": "comment",
-											"text": "todo item type"
-										},
-										{
 											"id": "create-object",
 											"objectClass": "System",
 											"sid": 877116734688026,
@@ -568,6 +564,10 @@
 					]
 				},
 				{
+					"eventType": "comment",
+					"text": "Move enemies that are overlapping a weapon"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -581,10 +581,6 @@
 						}
 					],
 					"actions": [
-						{
-							"type": "comment",
-							"text": "todo mn"
-						},
 						{
 							"id": "apply-force-towards-position",
 							"objectClass": "Enemy",
@@ -618,7 +614,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "todo_pack if enemies are horizontally symmetrical, thi"
+					"text": "todo_pack maybe some ugly business"
 				},
 				{
 					"eventType": "block",

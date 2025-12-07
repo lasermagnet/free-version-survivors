@@ -120,6 +120,13 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Orbit",
+			"name": "Orbit",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "Physics",
 			"name": "Physics",
 			"author": "Scirra",
@@ -416,7 +423,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "14",
+		"version": "15",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

@@ -82,6 +82,15 @@
 						"instance-variable": "lastMovingAngle",
 						"value": "Self.8Direction.MovingAngle"
 					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Player",
+					"sid": 747955218840625,
+					"parameters": {
+						"animation": "ANIM_Default",
+						"from": "current-frame"
+					}
 				}
 			],
 			"sid": 652303209773959,
@@ -159,6 +168,15 @@
 					"parameters": {
 						"instance-variable": "lastMovingAngle",
 						"value": "Self.8Direction.MovingAngle"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Player",
+					"sid": 156331127230964,
+					"parameters": {
+						"animation": "ANIM_Default",
+						"from": "current-frame"
 					}
 				}
 			],
@@ -238,6 +256,23 @@
 						"instance-variable": "lastMovingAngle",
 						"value": "Self.8Direction.MovingAngle"
 					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Player",
+					"sid": 119752677104147,
+					"parameters": {
+						"animation": "ANIM_Default",
+						"from": "current-frame"
+					}
+				},
+				{
+					"id": "set-mirrored",
+					"objectClass": "Player",
+					"sid": 958177060829989,
+					"parameters": {
+						"state": "mirrored"
+					}
 				}
 			],
 			"sid": 341222706666554,
@@ -315,6 +350,23 @@
 					"parameters": {
 						"instance-variable": "lastMovingAngle",
 						"value": "Self.8Direction.MovingAngle"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Player",
+					"sid": 419745739974149,
+					"parameters": {
+						"animation": "ANIM_Default",
+						"from": "current-frame"
+					}
+				},
+				{
+					"id": "set-mirrored",
+					"objectClass": "Player",
+					"sid": 412207161788033,
+					"parameters": {
+						"state": "not-mirrored"
 					}
 				}
 			],
@@ -466,6 +518,35 @@
 			],
 			"sid": 988978364115935,
 			"isOrBlock": true
+		},
+		{
+			"eventType": "comment",
+			"text": "todo_remove"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 445813615887471,
+					"parameters": {
+						"key": 75
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-value",
+					"objectClass": "Rules",
+					"sid": 672545148097167,
+					"parameters": {
+						"path": "KEY_Player & DOT & KEY_Health",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 681916389816662
 		}
 	],
 	"sid": 909767790016851

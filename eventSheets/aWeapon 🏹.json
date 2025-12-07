@@ -59,15 +59,6 @@
 					"text": "Spawn projectile"
 				},
 				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 152729365321321,
-					"parameters": {
-						"type": "log",
-						"message": "\"weapon spawn! amount: \" & amount"
-					}
-				},
-				{
 					"id": "create-object",
 					"objectClass": "System",
 					"sid": 200482084576445,
@@ -78,23 +69,6 @@
 						"y": "Player.Y",
 						"create-hierarchy": false,
 						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "add-child",
-					"objectClass": "Player",
-					"sid": 440649720785616,
-					"parameters": {
-						"child": "Weapon",
-						"transform-x": true,
-						"transform-y": true,
-						"transform-w": false,
-						"transform-h": false,
-						"transform-a": false,
-						"transform-o": false,
-						"transform-z-elevation": false,
-						"transform-visibility": false,
-						"destroy-with-parent": false
 					}
 				},
 				{
@@ -182,7 +156,117 @@
 					}
 				}
 			],
-			"sid": 977922686671153
+			"sid": 977922686671153,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Optionally pin weapon to player"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-value",
+							"objectClass": "Rules",
+							"sid": 453830093049847,
+							"parameters": {
+								"path": "KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_Pin",
+								"cmp": 0,
+								"value": "YES"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-child",
+							"objectClass": "Player",
+							"sid": 574983200930596,
+							"parameters": {
+								"child": "Weapon",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": false,
+								"transform-visibility": false,
+								"destroy-with-parent": false
+							}
+						},
+						{
+							"id": "pin",
+							"objectClass": "Weapon",
+							"sid": 589528934870697,
+							"behaviorType": "Orbit",
+							"parameters": {
+								"target": "Player"
+							}
+						}
+					],
+					"sid": 287367267277474
+				},
+				{
+					"eventType": "comment",
+					"text": "Optionally enable orbit"
+				},
+				{
+					"bookmark": true,
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-value",
+							"objectClass": "Rules",
+							"sid": 261510604468762,
+							"parameters": {
+								"path": "KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_OrbitRadius",
+								"cmp": 4,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "Weapon",
+							"sid": 852566280552649,
+							"behaviorType": "Orbit",
+							"parameters": {
+								"state": "enabled"
+							}
+						},
+						{
+							"id": "set-rotation",
+							"objectClass": "Weapon",
+							"sid": 382273664765805,
+							"behaviorType": "Orbit",
+							"parameters": {
+								"angle": "firstAngle + (360 / amount * loopindex)"
+							}
+						},
+						{
+							"id": "set-radius",
+							"objectClass": "Weapon",
+							"sid": 774168030408399,
+							"behaviorType": "Orbit",
+							"parameters": {
+								"primary": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_OrbitRadius)",
+								"secondary": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_OrbitRadius)"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "Weapon",
+							"sid": 229163026732764,
+							"behaviorType": "Orbit",
+							"parameters": {
+								"speed": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_OrbitSpeed)"
+							}
+						}
+					],
+					"sid": 398192869315308
+				}
+			]
 		}
 	],
 	"sid": 567716810740424

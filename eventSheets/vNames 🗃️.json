@@ -3,6 +3,20 @@
 	"events": [
 		{
 			"eventType": "comment",
+			"text": "Animations"
+		},
+		{
+			"eventType": "variable",
+			"name": "ANIM_Default",
+			"type": "string",
+			"initialValue": "Default",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 926677348791607
+		},
+		{
+			"eventType": "comment",
 			"text": "Audio"
 		},
 		{
@@ -24,6 +38,20 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 980820014768865
+		},
+		{
+			"eventType": "comment",
+			"text": "Frames"
+		},
+		{
+			"eventType": "variable",
+			"name": "FRAME_Standing",
+			"type": "string",
+			"initialValue": "Standing",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 411425537465178
 		},
 		{
 			"eventType": "comment",
@@ -119,9 +147,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Bonus_Weapon_Amount_Add",
+			"name": "KEY_Bonus_Weapon_Amount_Extra",
 			"type": "string",
-			"initialValue": "Bonus_Weapon_Amount_Add",
+			"initialValue": "Bonus_Weapon_Amount_Extra",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -339,6 +367,26 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_OrbitRadius",
+			"type": "string",
+			"initialValue": "OrbitRadius",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 255225496856299
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_OrbitSpeed",
+			"type": "string",
+			"initialValue": "OrbitSpeed",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 321267012438618
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_PickupDistance",
 			"type": "string",
 			"initialValue": "PickupDistance",
@@ -356,6 +404,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 909545994641247
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Pin",
+			"type": "string",
+			"initialValue": "Pin",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 232825710843520
 		},
 		{
 			"eventType": "variable",
@@ -429,6 +487,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Timer",
+			"type": "string",
+			"initialValue": "Timer",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 752979570410370
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Upgrades",
 			"type": "string",
 			"initialValue": "Upgrades",
@@ -456,26 +524,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 488366486156130
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Weapon_Sword",
-			"type": "string",
-			"initialValue": "Sword",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 577932868393958
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Weapon_Flame",
-			"type": "string",
-			"initialValue": "Flame",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 737783282343000
 		},
 		{
 			"eventType": "comment",
@@ -591,20 +639,6 @@
 		},
 		{
 			"eventType": "comment",
-			"text": "Timers"
-		},
-		{
-			"eventType": "variable",
-			"name": "TIMER_Enemy_SpawnDamageNumber",
-			"type": "string",
-			"initialValue": "SpawnDamageNumber",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 637711406716762
-		},
-		{
-			"eventType": "comment",
 			"text": "Tweens"
 		},
 		{
@@ -656,16 +690,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 165491564316690
-		},
-		{
-			"eventType": "variable",
-			"name": "TWEEN_UI_Vignette9P_Opacity",
-			"type": "string",
-			"initialValue": "UI_Vignette9P_Opacity",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 109637739901070
 		},
 		{
 			"eventType": "group",

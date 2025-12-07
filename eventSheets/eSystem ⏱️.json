@@ -265,6 +265,15 @@
 					"parameters": {
 						"opacity": "0"
 					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 478337433040637,
+					"parameters": {
+						"type": "log",
+						"message": "\"Weapon count: \""
+					}
 				}
 			],
 			"sid": 448800525830597
@@ -292,9 +301,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_Devlog",
-					"sid": 636058736437787,
+					"sid": 441293905551017,
 					"parameters": {
-						"text": "round(fps) & \" FPS, \" & objectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Weapon.Count & \" weapon sprites\" & newline &\n\"XP gain bonus: +\" & (Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) - 1) * 100 & \"%\""
+						"text": "round(fps) & \" FPS, \" & objectcount & \" objects, \" & Enemy.Count & \" enemies, \" & Weapon.Count & \" weapon sprites\" & newline &\n\"Enemy spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Enemy_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Item spawn cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Item_Spawn_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"XP gain bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Experience_Multiplier) * 100 & \"%\" & newline &\n\"Weapon cooldown bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier) * 100 & \"%\" & newline &\n\"Weapon damage bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Damage_Multiplier) * 100 & \"%\" & newline &\n\"Weapon size bonus: \" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Size_Multiplier) * 100 & \"%\" & newline &\n\"Weapon amount bonus: +\" & Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Amount_Extra) & newline\n"
 					}
 				},
 				{

@@ -7,7 +7,6 @@ import { Upgrades } from "./R_Upgrades.js"
 import { Weapons } from "./R_Weapons.js"
 
 export const rules = {
-    // todo_maybe: Timers? with an array of timer tags
     "Enemies": Enemies,
     "Player": Player,
     "Pools": Pools,

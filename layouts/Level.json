@@ -750,7 +750,7 @@
 						"scale": 0.1,
 						"character-spacing": 0,
 						"line-height": 0,
-						"horizontal-alignment": "left",
+						"horizontal-alignment": "right",
 						"vertical-alignment": "top",
 						"wrapping": "word",
 						"initially-visible": true,
@@ -766,7 +766,7 @@
 							"properties": {
 								"left-edge": "window-left",
 								"top-edge": "window-top",
-								"right-edge": "none",
+								"right-edge": "window-right",
 								"bottom-edge": "none",
 								"enabled": true
 							}
