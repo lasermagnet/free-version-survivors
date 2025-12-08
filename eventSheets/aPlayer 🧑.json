@@ -1006,9 +1006,19 @@
 					"text": "Destroy enemy if it had the \"destroy on impact\" rule set"
 				},
 				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 730397620125423,
+					"parameters": {
+						"instance-variable": "health",
+						"value": "Self.isDestroyedOnImpact ? 0 : Self.health"
+					}
+				},
+				{
 					"id": "tween-one-property",
 					"objectClass": "Enemy",
 					"sid": 922059504456628,
+					"disabled": true,
 					"behaviorType": "Tween",
 					"parameters": {
 						"tags": "TWEEN_FadeOut",
@@ -2038,16 +2048,6 @@
 					}
 				},
 				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 949451974426900,
-					"disabled": true,
-					"parameters": {
-						"type": "log",
-						"message": "\"Wave #\" & waveId & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool)"
-					}
-				},
-				{
 					"type": "comment",
 					"text": "Initialize enemy spawn pool"
 				},
@@ -2058,16 +2058,6 @@
 					"parameters": {
 						"name": "PT_Enemies",
 						"json": "Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool)"
-					}
-				},
-				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 257884264819011,
-					"disabled": true,
-					"parameters": {
-						"type": "log",
-						"message": "\"Wave #\" & waveId & \" enemy pool: \" & Rules.GetAsCompactString(KEY_Waves & DOT & waveId & DOT & KEY_ItemSpawnPool)"
 					}
 				},
 				{

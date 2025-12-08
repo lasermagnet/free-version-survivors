@@ -4,13 +4,21 @@ Build 69
 - New: "ghost" enemies via Enemy.Ghost boolean. Ghosts move with Bullet behaviour instead of Physics. Ghosts go through enemies and the player, can be used as projectiles
 - New: "fixed angle" enemies via Enemy.FixedAngle boolean. They move in a fixed angle (set when spawned, toward the player)
 - New: enemy translucency support via Enemy.Translucency; 0 means fully opaque, 100 is invisible
+- New: optional enemy self-destruct timer via Enemy.Lifetime. If specified, enemy will selfd-destruct after the specified amount of seconds.
+- New: optional enemy self-destruct mode via Enemy.DestroyOnImpact; if specified, enemy will be destroyed (without drop) after the specified number of seconds
+- New: a "projectile" enemy, using most of the above properties.
+- New: enemies can spawn specific drop types via Enemy.Drop. If unspecified, a healing or experience drop will spawn if either of those values are non-zero.
+
+- todo FadeOutTime
+
+- Change: improved on the drop spawning logic, if enemy had no drop specified (by rule or based on experience or healing value), a self-destructing invisible drop will spawn
+- Change: magnet crates self destruct on spawn (thus only a magnet shows up)
+- Change: more attempts at balancing
+- Removed: unused Enemy.MovementAngle rule
 
 todo
-- New: enemies can spawn enemies
+- New: enemies can spawn enemies (or "projectiles")
 
-- New: enemies can spawn other enemies (or "projectiles")
-- Change: magnet crates self destruct on spawn (thus only a magnet shows up)
-- Removed: unused Enemy / MovementAngle rule
 
 Build 68
 - New: ability to activate a list of modifiers at the start of a wave. See ModifiersToApply in R_Waves.

@@ -242,8 +242,35 @@
 					}
 				},
 				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 190959767390394,
+					"parameters": {
+						"instance-variable": "dropName",
+						"value": "Rules.Type(KEY_Enemies & DOT & enemy & DOT & KEY_Drop) = NULL\n?\nSelf.healing > 0\n?\nANIM_Health\n:\n(\n  Self.experience > 0\n  ?\n  ANIM_Experience\n  :\n  EMPTY\n)\n:\nRules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Drop)\n"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 444579687279087,
+					"parameters": {
+						"instance-variable": "fadeOutTime",
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_FadeOutTime) > 0\n?\nRules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_FadeOutTime)\n:\nRules.Get(KEY_Enemies & DOT & EMPTY & DOT & KEY_FadeOutTime)\n"
+					}
+				},
+				{
 					"type": "comment",
 					"text": "Set fixed moving angle if specified"
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 438393378678524,
+					"parameters": {
+						"type": "log",
+						"message": "\"Enemy's drop name: \" & Enemy.dropName"
+					}
 				},
 				{
 					"id": "set-instvar-value",
@@ -383,7 +410,6 @@
 					"text": "If enemy is a \"ghost\" (doesn't collide with anything), disable physics behaviour, enable and initialize bullet behaviour"
 				},
 				{
-					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -947,10 +973,9 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "todo destroy projectile after it's colliding with nothing or an enemy other then the last one from the SSV"
+					"text": "todo destroy weapon after it's colliding with nothing or an enemy other then the last one from the SSV"
 				},
 				{
-					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -1271,7 +1296,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Disable physics (so dead enemies won't collide with alive ones)"
+					"text": "Disable movement behaviours (so dead enemies won't collide with alive ones)"
 				},
 				{
 					"id": "set-enabled",
@@ -1280,6 +1305,15 @@
 					"behaviorType": "Physics",
 					"parameters": {
 						"mode": "disabled"
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Enemy",
+					"sid": 893717032564587,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"state": "disabled"
 					}
 				},
 				{
@@ -1298,13 +1332,13 @@
 				{
 					"id": "tween-one-property",
 					"objectClass": "Enemy",
-					"sid": 556471551512952,
+					"sid": 127652752180800,
 					"behaviorType": "Tween",
 					"parameters": {
 						"tags": "\"\"",
 						"property": "offsetOpacity",
 						"end-value": "0",
-						"time": "0.5",
+						"time": "Self.fadeOutTime",
 						"ease": "easeinoutcubic",
 						"destroy-on-complete": "yes",
 						"loop": "no",
@@ -1356,14 +1390,14 @@
 				},
 				{
 					"type": "comment",
-					"text": "Set animation name for drop (this is... not great :)"
+					"text": "Set animation name for drop: should be experience, health, or whatever was specified in the enemy's drop rule (eg. magnet)"
 				},
 				{
 					"id": "set-animation",
 					"objectClass": "Drop",
-					"sid": 700717236841217,
+					"sid": 196090254020464,
 					"parameters": {
-						"animation": "Enemy.experience > 0 ? ANIM_Experience : (Enemy.healing > 0 ? ANIM_Health : ANIM_Magnet)",
+						"animation": "Enemy.dropName = EMPTY ? ANIM_Blank : Enemy.dropName",
 						"from": "beginning"
 					}
 				},
@@ -1381,18 +1415,27 @@
 				},
 				{
 					"type": "comment",
-					"text": "This is a real ugly workaround to hide the drop if it has no experience or healing value and is not a magnet."
+					"text": "Self-destruct if the enemy had no drop specified"
 				},
 				{
 					"type": "comment",
-					"text": "(This is horrendous, should be a sub event to check if a drop is even needed to spawn)"
+					"text": "(This is done this way to save a sub-event)"
 				},
 				{
-					"id": "set-opacity",
+					"id": "tween-value",
 					"objectClass": "Drop",
-					"sid": 158289321233136,
+					"sid": 565754429826003,
+					"behaviorType": "Tween",
 					"parameters": {
-						"opacity": "Self.AnimationName = ANIM_Magnet | Self.experience > 0 | Self.healing > 0 ? 100 : 0"
+						"tags": "TWEEN_Destroy",
+						"start-value": "0",
+						"end-value": "100",
+						"time": "Enemy.dropName = EMPTY ? 1 : C_BigNumber",
+						"ease": "default",
+						"destroy-on-complete": "yes",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
 					}
 				}
 			],
@@ -1759,10 +1802,6 @@
 				{
 					"type": "comment",
 					"text": "Apply force (normal movement or knockback)"
-				},
-				{
-					"type": "comment",
-					"text": "todo? remove unneccessary condition from action (testing for movementAngle = NOTHING)"
 				},
 				{
 					"id": "apply-force-at-angle",

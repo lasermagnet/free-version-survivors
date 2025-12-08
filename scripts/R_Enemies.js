@@ -1,64 +1,15 @@
-const _example = {
-    "": {
-        "Health": 1,
-        // Starting health. Enemy with 0 health self destructs on spawn.
-
-        "Damage": 1,
-        // damage per second while weapon is overlapping the player
-
-        "Healing": 0,
-        // healing drop value (for crates spawning health drops)
-
-        "Experience": 10,
-        // experience drop value
-
-        "MovementSpeed": 0,
-        // movement speed (0 = enemy is stationary, eg. crates)
-
-        /* // this is unused at the moment
-        "MovementAngle": null,
-        // if specified, enemy will move in this angle; -1 value is not supported
-        */
-
-        "Density": 1,
-        // physics density (defaults to 1 when unset or null)
-
-        "Scale": 1,
-        // sprite size multiplier (defaults to 1 when unset or null)
-
-        "Animation": "Beholder",
-        // (optional) custom animation name (by the default it's the enemy's name)
-
-        "ItemSpawnDisabled": false,
-        // whether the enemy can spawn an item (so containers don't spawn items, only drops)
-
-        "Ghost": false,
-        // If false or unset, enemy will move with Physics and collide. If true, enemy will move via Bullet and won't collide with enemies or the player, but can still be stopped by weapons with movement block or knockback
-
-        "FixedAngle": true,
-        // If false or unset, enemy keeps moving towards player. If true, enemy moves in a fixed angle (set when spawned, toward the player)
-
-        "Translucency": 0,
-        // Inverse opacity value, 0 = fully opaque, 100 = invisible
-
-        "Lifetime": 0,
-        // if unset / falsy, enemy doesn't expire; if set, enemy gets destroyed after this amount of seconds
-
-        "DestroyOnImpact": false,
-        // destroy enemy (with fade out) when colliding with the player
-    }
-}
+// See reference at the bottom
 
 export const Enemies = {
     "Projectile": {
-        "Health": 1,
+        "Health": 0.0001,
         "Damage": 40,
         "MovementSpeed": 3.5,
         "Ghost": true,
         "FixedAngle": true,
-        "Translucency": 20,
         "Lifetime": 8,
-        "DestroyOnImpact": true
+        "DestroyOnImpact": true,
+        "FadeOutTime": 0.2,
     },
     "HealingCrate": {
         "Health": 5,
@@ -66,7 +17,8 @@ export const Enemies = {
         "ItemSpawnDisabled": true,
     },
     "MagnetCrate": {
-        "Health": 0,
+        "Health": 0, // self-destruct on spawn
+        "Drop": "Magnet",
         "ItemSpawnDisabled": true,
     },
     "Slime": {
@@ -74,7 +26,6 @@ export const Enemies = {
         "Damage": 10,
         "Experience": 4,
         "MovementSpeed": 0.5,
-        //"Ghost": true, // todo remove
     },
     "Slime_Boss": {
         "Health": 50,
@@ -82,7 +33,6 @@ export const Enemies = {
         "Experience": 50,
         "MovementSpeed": 0.7,
         "Scale": 2.5,
-        //"FixedAngle": true // todo remove
     },
     "Rat": {
         "Health": 7,
@@ -168,5 +118,57 @@ export const Enemies = {
         "Scale": 3,
         "Animation": "Beholder",
         "Density": 10,
+    },
+
+    // Reference
+    // todo use these as defaults (and also do this for weapons!)
+    "": {
+        "Health": 0,
+        // Starting health. Enemy with 0 health self-destructs on spawn.
+
+        "Damage": 1,
+        // damage per second while weapon is overlapping the player
+
+        "Healing": 0,
+        // healing drop value (for crates spawning health drops)
+
+        "Experience": 0,
+        // experience drop value
+
+        "MovementSpeed": 0,
+        // movement speed (0 = enemy is stationary, eg. crates)
+
+        "Density": 1,
+        // physics density (defaults to 1 when unset or null)
+
+        "Scale": 1,
+        // sprite size multiplier (defaults to 1 when unset or null)
+
+        "Animation": "",
+        // (optional) custom animation name (by the default it's the enemy's name)
+
+        "ItemSpawnDisabled": false,
+        // whether the enemy can spawn an item (so containers don't spawn items, only drops)
+
+        "Ghost": false,
+        // If false or unset, enemy will move with Physics and collide. If true, enemy will move via Bullet and won't collide with enemies or the player, but can still be stopped by weapons with movement block or knockback
+
+        "FixedAngle": false,
+        // If false or unset, enemy keeps moving towards player. If true, enemy moves in a fixed angle (set when spawned, toward the player)
+
+        "Translucency": 0,
+        // Inverse opacity value, 0 = fully opaque, 100 = invisible
+
+        "Lifetime": 0,
+        // if unset / falsy, enemy doesn't expire; if set, enemy gets destroyed after this amount of seconds
+
+        "DestroyOnImpact": false,
+        // destroy enemy (with fade out) when colliding with the player
+
+        "Drop": "",
+        // optionally set the drop type (an animation name for the Drop sprite), eg. "Magnet". If not specified, it'll default to "Experience" or "Health", if either of those are not zero.
+
+        "FadeOutTime": 0.5,
+        // length for the fade out tween when the enemy destructs
     }
 }

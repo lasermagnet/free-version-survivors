@@ -184,8 +184,10 @@
 						"isFar": 0,
 						"isGhost": 0,
 						"isFixedAngle": 0,
+						"isDestroyedOnImpact": 0,
 						"enemyName": "",
-						"isDestroyedOnImpact": 0
+						"dropName": "",
+						"fadeOutTime": 0
 					},
 					"behaviors": {
 						"Physics": {
@@ -317,6 +319,11 @@
 								"set-angle": false,
 								"step": false,
 								"enabled": false
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
 							}
 						}
 					},

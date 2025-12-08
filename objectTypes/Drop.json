@@ -32,6 +32,11 @@
 			"behaviorId": "Bullet",
 			"name": "Bullet",
 			"sid": 716342073127116
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 625893770020500
 		}
 	],
 	"effectTypes": [],
@@ -48,7 +53,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 7562520,
+						"imageSpriteId": 4757626,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
@@ -56,6 +61,31 @@
 				],
 				"sid": 113813269316070,
 				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 1,
+						"height": 1,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 6223846,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 976968364186382,
+				"name": "Blank",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,

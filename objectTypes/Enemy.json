@@ -125,6 +125,13 @@
 			"sid": 605674922911102
 		},
 		{
+			"name": "isDestroyedOnImpact",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 475449005459102
+		},
+		{
 			"name": "enemyName",
 			"type": "string",
 			"desc": "",
@@ -132,11 +139,18 @@
 			"sid": 610219653701117
 		},
 		{
-			"name": "isDestroyedOnImpact",
+			"name": "dropName",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 318123725422069
+		},
+		{
+			"name": "fadeOutTime",
 			"type": "number",
 			"desc": "",
 			"show": true,
-			"sid": 475449005459102
+			"sid": 568718354920477
 		}
 	],
 	"behaviorTypes": [
@@ -175,7 +189,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 2055931,
+						"imageSpriteId": 1450324,
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{

@@ -38,7 +38,8 @@
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 909455077034720
+					"sid": 909455077034720,
+					"disabled": true
 				}
 			],
 			"actions": [

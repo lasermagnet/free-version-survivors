@@ -169,8 +169,8 @@
 			"eventType": "variable",
 			"name": "C_BigNumber",
 			"type": "number",
-			"initialValue": "99999999",
-			"comment": "",
+			"initialValue": "31560000001",
+			"comment": "A thousand years and one second. Yeah.",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 185966919577455

@@ -7,6 +7,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "ANIM_Blank",
+			"type": "string",
+			"initialValue": "Blank",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 110285356147589
+		},
+		{
+			"eventType": "variable",
 			"name": "ANIM_Default",
 			"type": "string",
 			"initialValue": "Default",
@@ -504,6 +514,26 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 257867451037635
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Drop",
+			"type": "string",
+			"initialValue": "Drop",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 126017493575691
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_FadeOutTime",
+			"type": "string",
+			"initialValue": "FadeOutTime",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 711360690391304
 		},
 		{
 			"eventType": "variable",
@@ -1308,6 +1338,16 @@
 		{
 			"eventType": "comment",
 			"text": "Tweens"
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_Destroy",
+			"type": "string",
+			"initialValue": "Destroy",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 543387723064312
 		},
 		{
 			"eventType": "variable",
