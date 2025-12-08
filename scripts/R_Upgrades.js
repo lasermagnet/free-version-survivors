@@ -70,6 +70,7 @@ export const Upgrades = {
     },
     "WeaponCooldown": {
         "Modifiers": ["WeaponCooldown", "WeaponCooldown", "WeaponCooldown", "WeaponCooldown"],
+        "Modifiers_Infinite": ["WeaponCooldown_Extra"],
     },
     "WeaponSize": {
         "Modifiers": ["WeaponSize", "WeaponSize", "WeaponSize", "WeaponSize"],

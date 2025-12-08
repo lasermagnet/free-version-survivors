@@ -1,5 +1,11 @@
 /*
 
+Build 69
+- New: enemies can spawn enemies
+- New: "ghost" enemies, which move with Bullet behaviour instead of Physics. Ghosts go through enemies and the player, can be used as projectiles
+- New: enemies can spawn other enemies (or "projectiles")
+- Change: magnet crates self destruct on spawn (thus only a magnet shows up)
+
 Build 68
 - New: ability to activate a list of modifiers at the start of a wave. See ModifiersToApply in R_Waves.
 - New: added "kills/s" (KPS) measurement & UI (shows when KPS is above 0)
@@ -7,7 +13,6 @@ Build 68
 - New (minor stuff): added dark background to pause and game over screens, enemies gradually stop moving after player is dead, added LabelTime property to Waves so it's possible to specify fade out interval of the label (defaults to 1 sec).
 - Change: Moved (back) player health bar to bottom of the screen, so it's visible on the upgrade screen and hopefully easier to read in intense situations :)
 - Change: level timer now pauses on the level up screen. Internally it was called timePassed, now it's timeSurvived.
-- Change: some random acts of refactoring and balancing.
 - Bugfix: kill count was inaccurate, as it was only increased by 1 per tick even if multiple enemies died in the same tick.
 
 Build 67

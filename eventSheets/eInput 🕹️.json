@@ -250,6 +250,22 @@
 					}
 				},
 				{
+					"id": "set-visible",
+					"objectClass": "Editor",
+					"sid": 106464108126459,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 248636676969624,
+					"parameters": {
+						"time-scale": "1"
+					}
+				},
+				{
 					"id": "go-to-layout",
 					"objectClass": "System",
 					"sid": 607688981422502,

@@ -203,6 +203,15 @@
 					}
 				},
 				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 389746106169444,
+					"parameters": {
+						"instance-variable": "isGhost",
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_ItemSpawnDisabled)"
+					}
+				},
+				{
 					"type": "comment",
 					"text": "Set fixed moving angle if specified"
 				},
@@ -242,7 +251,59 @@
 					}
 				}
 			],
-			"sid": 418646961252127
+			"sid": 418646961252127,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "If enemy is a \"ghost\" (doesn't collide with anything), disable physics behaviour & enable bullet behaviour"
+				},
+				{
+					"bookmark": true,
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemy",
+							"sid": 480003385439341,
+							"parameters": {
+								"instance-variable": "isGhost",
+								"comparison": 0,
+								"value": "YES"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "Enemy",
+							"sid": 340580762680735,
+							"behaviorType": "Physics",
+							"parameters": {
+								"mode": "disabled"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Enemy",
+							"sid": 106063950559763,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"state": "enabled"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "Enemy",
+							"sid": 932737806999620,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "Self.movementSpeed"
+							}
+						}
+					],
+					"sid": 928970444298592
+				}
+			]
 		},
 		{
 			"aceType": "action",
@@ -308,10 +369,10 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 847955216189725,
+					"sid": 846449302977582,
 					"parameters": {
 						"instance-variable": "movementSpeed",
-						"value": "Player.isDead = YES ? max(0, Self.movementSpeed - dt * 0.2) : Self.movementSpeed"
+						"value": "Player.isDead = YES ? max(0, Self.movementSpeed - Self.movementSpeed * dt * 1.5 ) : Self.movementSpeed"
 					}
 				},
 				{
@@ -742,6 +803,7 @@
 					"text": "todo destroy projectile after it's colliding with nothing or an enemy other then the last one from the SSV"
 				},
 				{
+					"bookmark": true,
 					"eventType": "block",
 					"conditions": [
 						{
@@ -803,14 +865,14 @@
 						{
 							"id": "tween-one-property",
 							"objectClass": "Weapon",
-							"sid": 976760720545752,
+							"sid": 459083108877259,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"\"",
 								"property": "offsetOpacity",
 								"end-value": "0",
-								"time": "0.5",
-								"ease": "easeoutquint",
+								"time": "0.2",
+								"ease": "easeoutsine",
 								"destroy-on-complete": "yes",
 								"loop": "no",
 								"ping-pong": "no",

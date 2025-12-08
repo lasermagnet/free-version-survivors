@@ -180,7 +180,8 @@
 						"initAnimationSpeed": 0,
 						"knockbackAngle": 0,
 						"knockbackSpeed": 0,
-						"isFar": 0
+						"isFar": 0,
+						"isGhost": 0
 					},
 					"behaviors": {
 						"Physics": {
@@ -204,6 +205,17 @@
 						},
 						"Timer": {
 							"properties": {}
+						},
+						"Bullet": {
+							"properties": {
+								"speed": 1,
+								"acceleration": 0,
+								"gravity": 0,
+								"bounce-off-solids": false,
+								"set-angle": false,
+								"step": false,
+								"enabled": false
+							}
 						}
 					},
 					"sceneGraphData": {

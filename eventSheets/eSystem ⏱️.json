@@ -312,9 +312,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_KPS",
-					"sid": 614946757545185,
+					"sid": 842130462880172,
 					"parameters": {
-						"text": "enemiesKilledperSecond"
+						"text": "EMPTY"
 					}
 				},
 				{
@@ -379,17 +379,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "UI_TextSF_KPS",
-					"sid": 969887783859005,
+					"sid": 776460056403267,
 					"parameters": {
-						"text": "int(timeSurvived) < int(timeSurvived + dt) ? enemiesKilledperSecond & (enemiesKilledperSecond = 1 ? \" kill/s\" : \" kills/s\") : Self.Text"
-					}
-				},
-				{
-					"id": "set-opacity",
-					"objectClass": "UI_TextSF_KPS",
-					"sid": 229635023311668,
-					"parameters": {
-						"opacity": "int(Self.Text) < 1 ? 0 : 100"
+						"text": "int(timeSurvived) < int(timeSurvived + dt)\n?\n\"[scale=0.3]\" & enemiesKilledperSecond & \"[/scale]\" & newline & \" kills/s\"\n:\nSelf.Text"
 					}
 				},
 				{

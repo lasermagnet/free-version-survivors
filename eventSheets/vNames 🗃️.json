@@ -1320,6 +1320,16 @@
 			"sid": 165491564316690
 		},
 		{
+			"eventType": "variable",
+			"name": "KEY_Ghost",
+			"type": "string",
+			"initialValue": "Ghost",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 216697943637396
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "Unused",

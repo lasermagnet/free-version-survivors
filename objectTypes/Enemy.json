@@ -102,6 +102,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 391290845555805
+		},
+		{
+			"name": "isGhost",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 712294952021980
 		}
 	],
 	"behaviorTypes": [
@@ -119,6 +126,11 @@
 			"behaviorId": "Timer",
 			"name": "Timer",
 			"sid": 271333952884408
+		},
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 372976531528054
 		}
 	],
 	"effectTypes": [],

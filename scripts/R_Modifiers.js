@@ -128,17 +128,17 @@ export const Modifiers = {
     },
     "WeaponCooldown": {
         "Label": "Attack faster",
-        "Description": "Reduce all weapon cooldowns by 5%.",
+        "Description": "Reduce all weapon cooldowns by 8%.",
         "Icon": "WeaponCooldown",
         "Rule_Value": "Player.Bonus_Weapon_Cooldown_Multiplier",
-        "Add": -0.05,
+        "Add": -0.08,
     },
     "WeaponCooldown_Extra": {
         "Label": "Attack a bit faster",
-        "Description": "Reduce all weapon cooldowns by 1%.",
+        "Description": "Reduce all weapon cooldowns by 2%.",
         "Icon": "WeaponCooldown",
         "Rule_Value": "Player.Bonus_Weapon_Cooldown_Multiplier",
-        "Add": -0.01,
+        "Add": -0.02,
     },
     "WeaponSize": {
         "Label": "Bigger weapons",

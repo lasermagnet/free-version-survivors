@@ -151,6 +151,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "enemiesKilledperSecond_fontScale",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 912549037758857
+		},
+		{
+			"eventType": "variable",
 			"name": "winStreak",
 			"type": "number",
 			"initialValue": "0",

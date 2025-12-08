@@ -567,7 +567,9 @@
 		"items": [],
 		"subfolders": [
 			{
-				"items": [],
+				"items": [
+					"In Hyper"
+				],
 				"subfolders": []
 			}
 		]
@@ -578,7 +580,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "68d",
+		"version": "69",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",

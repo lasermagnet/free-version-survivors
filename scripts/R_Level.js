@@ -23,14 +23,14 @@ export const Level = {
 
     "UpgradePool": [
         // list of available upgrades when leveling up
-        // touple format: [weight, upgrade name]
+        // tuple format: [weight, upgrade name]
 
         // One-off upgrades
         [1, "HealAll"],
 
         //  Weapon upgrades
-        [2, "Axe"],
-        [1, "Flame"],
+        [1, "Axe"],
+        [2, "Flame"],
         [1, "Chainsaw"],
         [1, "Spikes"],
         [1, "Sword"],

@@ -1,34 +1,37 @@
 const _example = {
     "": {
-        // starting health
         "Health": 1,
+        // Starting health. Enemy with 0 health self destructs on spawn.
 
-        // damage per second while weapon is overlapping the player
         "Damage": 1,
+        // damage per second while weapon is overlapping the player
 
-        // healing drop value (for crates spawning health drops)
         "Healing": 0,
+        // healing drop value (for crates spawning health drops)
 
-        // experience drop value
         "Experience": 10,
-
-        // movement speed (0 = enemy is stationary, eg. crates)
+        // experience drop value
+        
         "MovementSpeed": 0,
+        // movement speed (0 = enemy is stationary, eg. crates)
 
-        // if specified, enemy will move in this angle; -1 value is not supported
         "MovementAngle": null,
+        // if specified, enemy will move in this angle; -1 value is not supported
 
-        // physics density (defaults to 1 when unset or null)
         "Density": 1,
+        // physics density (defaults to 1 when unset or null)
 
-        // sprite size multiplier (defaults to 1 when unset or null)
         "Scale": 1,
+        // sprite size multiplier (defaults to 1 when unset or null)
 
-        // (optional) custom animation name (by the default it's the enemy's name)
         "Animation": "Beholder",
+        // (optional) custom animation name (by the default it's the enemy's name)
 
-        // whether the enemy can spawn an item (so containers don't spawn items, only drops)
         "ItemSpawnDisabled": false,
+        // whether the enemy can spawn an item (so containers don't spawn items, only drops)
+
+        "Ghost": false
+        // If false or unset, enemy will move with Physics and collide. If true, enemy will move via Bullet and won't collide with enemies or the player, but can still be stopped by weapons with movement block or knockback
     }
 }
 
@@ -39,7 +42,7 @@ export const Enemies = {
         "ItemSpawnDisabled": true,
     },
     "MagnetCrate": {
-        "Health": 5,
+        "Health": 0,
         "ItemSpawnDisabled": true,
     },
     "Slime": {
@@ -47,6 +50,7 @@ export const Enemies = {
         "Damage": 10,
         "Experience": 4,
         "MovementSpeed": 0.5,
+        "Ghost": true
     },
     "Slime_Boss": {
         "Health": 50,

@@ -64,7 +64,7 @@ const _example = {
 
 export const Weapons = {
     "Axe": {
-        "Amount": 1,
+        //"Amount": 0,
         "BlockMovement": false,
         "Cooldown": 1.5,
         "Damage": 30,
@@ -78,15 +78,16 @@ export const Weapons = {
         "KnockbackDuration": 0.1,
     },
     "Flame": {
+        //"Amount": 1,
         "BlockMovement": false,
         "Cooldown": 3,
         "Damage": 25,
         "PierceLimit": 1000,
         "RotationAngleOffset": 45,
         "Scale": 0.65,
-        "Duration": 0.7,
+        "Duration": 0.6,
         "Pin": true,
-        "KnockbackSpeed": 1,
+        "KnockbackSpeed": 0.6,
         "KnockbackDuration": 0.15,
     },
     "Chainsaw": {

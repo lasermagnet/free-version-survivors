@@ -1,0 +1,29 @@
+{
+	"name": "In Hyper",
+	"linear": false,
+	"purpose": "any",
+	"transitionKeyframes": [
+		{
+			"x": 0,
+			"y": 0,
+			"sax": 1,
+			"say": 0.012,
+			"eax": 0,
+			"eay": 0,
+			"se": true,
+			"ee": false,
+			"sm": "cubic"
+		},
+		{
+			"x": 1,
+			"y": 1,
+			"sax": 0,
+			"say": 0,
+			"eax": -0.294,
+			"eay": -0.977,
+			"se": false,
+			"ee": true,
+			"sm": "cubic"
+		}
+	]
+}

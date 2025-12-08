@@ -299,14 +299,50 @@
 				{
 					"id": "tween-one-property",
 					"objectClass": "Weapon",
-					"sid": 756080571815686,
+					"sid": 869819068427015,
 					"behaviorType": "Tween",
 					"parameters": {
 						"tags": "TWEEN_Projectile_Opacity_Lifetime",
 						"property": "offsetOpacity",
 						"end-value": "0",
 						"time": "duration",
-						"ease": "easeinexpo",
+						"ease": {
+							"name": "In Hyper",
+							"json": [
+								{
+									"folders": [],
+									"json": {
+										"name": "In Hyper",
+										"linear": false,
+										"purpose": "any",
+										"transitionKeyframes": [
+											{
+												"x": 0,
+												"y": 0,
+												"sax": 1,
+												"say": 0.012,
+												"eax": 0,
+												"eay": 0,
+												"se": true,
+												"ee": false,
+												"sm": "cubic"
+											},
+											{
+												"x": 1,
+												"y": 1,
+												"sax": 0,
+												"say": 0,
+												"eax": -0.294,
+												"eay": -0.977,
+												"se": false,
+												"ee": true,
+												"sm": "cubic"
+											}
+										]
+									}
+								}
+							]
+						},
 						"destroy-on-complete": "yes",
 						"loop": "no",
 						"ping-pong": "no",
