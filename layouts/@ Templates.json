@@ -177,11 +177,15 @@
 						"isMovementBlocked": 0,
 						"movementSpeed": 0,
 						"movementAngle": -1,
+						"movementAngle_init": 0,
 						"initAnimationSpeed": 0,
 						"knockbackAngle": 0,
 						"knockbackSpeed": 0,
 						"isFar": 0,
-						"isGhost": 0
+						"isGhost": 0,
+						"isFixedAngle": 0,
+						"enemyName": "",
+						"isDestroyedOnImpact": 0
 					},
 					"behaviors": {
 						"Physics": {
@@ -195,7 +199,7 @@
 								"linear-damping": 100,
 								"angular-damping": 1,
 								"bullet": false,
-								"enabled": true
+								"enabled": false
 							}
 						},
 						"Tween": {
@@ -208,13 +212,13 @@
 						},
 						"Bullet": {
 							"properties": {
-								"speed": 1,
+								"speed": 0,
 								"acceleration": 0,
 								"gravity": 0,
 								"bounce-off-solids": false,
 								"set-angle": false,
 								"step": false,
-								"enabled": false
+								"enabled": true
 							}
 						}
 					},

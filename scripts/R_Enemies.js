@@ -11,12 +11,14 @@ const _example = {
 
         "Experience": 10,
         // experience drop value
-        
+
         "MovementSpeed": 0,
         // movement speed (0 = enemy is stationary, eg. crates)
 
+        /* // this is unused at the moment
         "MovementAngle": null,
         // if specified, enemy will move in this angle; -1 value is not supported
+        */
 
         "Density": 1,
         // physics density (defaults to 1 when unset or null)
@@ -30,12 +32,34 @@ const _example = {
         "ItemSpawnDisabled": false,
         // whether the enemy can spawn an item (so containers don't spawn items, only drops)
 
-        "Ghost": false
+        "Ghost": false,
         // If false or unset, enemy will move with Physics and collide. If true, enemy will move via Bullet and won't collide with enemies or the player, but can still be stopped by weapons with movement block or knockback
+
+        "FixedAngle": true,
+        // If false or unset, enemy keeps moving towards player. If true, enemy moves in a fixed angle (set when spawned, toward the player)
+
+        "Translucency": 0,
+        // Inverse opacity value, 0 = fully opaque, 100 = invisible
+
+        "Lifetime": 0,
+        // if unset / falsy, enemy doesn't expire; if set, enemy gets destroyed after this amount of seconds
+
+        "DestroyOnImpact": false,
+        // destroy enemy (with fade out) when colliding with the player
     }
 }
 
 export const Enemies = {
+    "Projectile": {
+        "Health": 1,
+        "Damage": 40,
+        "MovementSpeed": 3.5,
+        "Ghost": true,
+        "FixedAngle": true,
+        "Translucency": 20,
+        "Lifetime": 8,
+        "DestroyOnImpact": true
+    },
     "HealingCrate": {
         "Health": 5,
         "Healing": 50,
@@ -50,7 +74,7 @@ export const Enemies = {
         "Damage": 10,
         "Experience": 4,
         "MovementSpeed": 0.5,
-        "Ghost": true
+        //"Ghost": true, // todo remove
     },
     "Slime_Boss": {
         "Health": 50,
@@ -58,6 +82,7 @@ export const Enemies = {
         "Experience": 50,
         "MovementSpeed": 0.7,
         "Scale": 2.5,
+        //"FixedAngle": true // todo remove
     },
     "Rat": {
         "Health": 7,

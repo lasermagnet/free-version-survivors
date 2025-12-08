@@ -30,14 +30,14 @@ export const Waves = [
     {
         "Label": "Hi there!",
         "Time": 2,
-        "EnemySpawnFixed": { "MagnetCrate": 1 },
+        "EnemySpawnFixed": { "MagnetCrate": 1, "HealingCrate": 1 },
     },
     {
         "Label": "And now: Slimes & Rats!",
         "LabelTime": 2,
         "EnemyAmount": 200,
         "Time": 60,
-        "EnemySpawnPool": [[2, "Slime"], [1, "Rat"]],
+        "EnemySpawnPool": [[2, "Slime"], [1, "Rat"], [1,"Projectile"]], // todo remove test
         "EnemySpawnFixed": { "Slime_Boss": 2 },
         "ItemSpawnPool": [[1, "Axe_Amount"], [1, "Flame_Amount"]],
         "ModifiersToApply": ["Flame_Amount"]

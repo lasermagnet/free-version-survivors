@@ -137,6 +137,18 @@
 				},
 				{
 					"type": "comment",
+					"text": "Set opacity"
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "Enemy",
+					"sid": 556791702321996,
+					"parameters": {
+						"opacity": "100 - (Rules.Type(KEY_Enemies & DOT & enemy & DOT & KEY_Translucency) = NULL ? 0 : Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Translucency))"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Initialize enemy IVs"
 				},
 				{
@@ -205,10 +217,28 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 389746106169444,
+					"sid": 372603671642313,
 					"parameters": {
 						"instance-variable": "isGhost",
-						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_ItemSpawnDisabled)"
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Ghost)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 601476309179716,
+					"parameters": {
+						"instance-variable": "isDestroyedOnImpact",
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_DestroyOnImpact)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 333271050281603,
+					"parameters": {
+						"instance-variable": "enemyName",
+						"value": "enemy"
 					}
 				},
 				{
@@ -218,10 +248,32 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 838597607628485,
+					"sid": 502297236352439,
+					"parameters": {
+						"instance-variable": "isFixedAngle",
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_FixedAngle)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Set moving angle"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 553557527066075,
 					"parameters": {
 						"instance-variable": "movementAngle",
-						"value": "Rules.Type(KEY_Enemies & DOT & Enemy & DOT & KEY_MovementAngle) = NULL ? NOTHING : Rules.Get(KEY_Enemies & DOT & Enemy & DOT & KEY_MovementAngle)"
+						"value": "angle(Self.X, Self.Y, Player.X, Player.Y)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 964721382141542,
+					"parameters": {
+						"instance-variable": "movementAngle_init",
+						"value": "Self.movementAngle"
 					}
 				},
 				{
@@ -229,17 +281,17 @@
 					"text": "Set density"
 				},
 				{
-					"type": "comment",
-					"text": "Set to immovable by default (containers will stay immovable)"
-				},
-				{
 					"id": "set-density",
 					"objectClass": "Enemy",
-					"sid": 298680940894841,
+					"sid": 707991987725774,
 					"behaviorType": "Physics",
 					"parameters": {
-						"density": "Rules.Type(KEY_Enemies & DOT & Enemy & DOT & KEY_Density) = NULL ? 1 : Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Density)"
+						"density": "Rules.Type(KEY_Enemies & DOT & enemy & DOT & KEY_Density) = NULL ? 1 : Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Density)"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Set to immovable by default (containers will stay immovable)"
 				},
 				{
 					"id": "set-immovable",
@@ -249,13 +301,86 @@
 					"parameters": {
 						"setting": "immovable"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Mirror enemies based on their position relative to the player"
+				},
+				{
+					"id": "set-width",
+					"objectClass": "Enemy",
+					"sid": 215269958462841,
+					"parameters": {
+						"width": "Self.X < Player.X - 5\n?\r\nabs(Self.Width)\n:\r\n(\r\n  Self.X > Player.X + 5\n  ?\r\n  -abs(Self.Width)\n  :\r\n  Self.Width\r\n)\n"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Start self destruct timer if needed"
+				},
+				{
+					"type": "comment",
+					"text": "(Yeah, I'm using a tween as a self destruct timer. Guess why :D)"
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "Enemy",
+					"sid": 648016567519051,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_FadeOut",
+						"property": "offsetOpacity",
+						"end-value": "0",
+						"time": "Rules.Type(KEY_Enemies & DOT & Self.enemyName & DOT & KEY_Lifetime) = NULL ? 999999999 : Rules.Get(KEY_Enemies & DOT & Self.enemyName & DOT & KEY_Lifetime)",
+						"ease": {
+							"name": "In Hyper",
+							"json": [
+								{
+									"folders": [],
+									"json": {
+										"name": "In Hyper",
+										"linear": false,
+										"purpose": "any",
+										"transitionKeyframes": [
+											{
+												"x": 0,
+												"y": 0,
+												"sax": 1,
+												"say": 0.012,
+												"eax": 0,
+												"eay": 0,
+												"se": true,
+												"ee": false,
+												"sm": "cubic"
+											},
+											{
+												"x": 1,
+												"y": 1,
+												"sax": 0,
+												"say": 0,
+												"eax": -0.294,
+												"eay": -0.977,
+												"se": false,
+												"ee": true,
+												"sm": "cubic"
+											}
+										]
+									}
+								}
+							]
+						},
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
 				}
 			],
 			"sid": 418646961252127,
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "If enemy is a \"ghost\" (doesn't collide with anything), disable physics behaviour & enable bullet behaviour"
+					"text": "If enemy is a \"ghost\" (doesn't collide with anything), disable physics behaviour, enable and initialize bullet behaviour"
 				},
 				{
 					"bookmark": true,
@@ -285,7 +410,7 @@
 						{
 							"id": "set-enabled",
 							"objectClass": "Enemy",
-							"sid": 106063950559763,
+							"sid": 465142541725902,
 							"behaviorType": "Bullet",
 							"parameters": {
 								"state": "enabled"
@@ -294,10 +419,19 @@
 						{
 							"id": "set-speed",
 							"objectClass": "Enemy",
-							"sid": 932737806999620,
+							"sid": 431521224340926,
 							"behaviorType": "Bullet",
 							"parameters": {
-								"speed": "Self.movementSpeed"
+								"speed": "Self.movementSpeed * C_MovementSpeed_Multiplier_Bullet"
+							}
+						},
+						{
+							"id": "set-angle-of-motion",
+							"objectClass": "Enemy",
+							"sid": 142734362444819,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"angle": "Self.movementAngle_init"
 							}
 						}
 					],
@@ -394,9 +528,9 @@
 				{
 					"id": "set-width",
 					"objectClass": "Enemy",
-					"sid": 302784389403893,
+					"sid": 736721933313653,
 					"parameters": {
-						"width": "(Player.Timer.CurrentTime(TIMER_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Freeze) > 0) ?\nSelf.Width :\n(\n  Self.X < Player.X - 5 ?\r\n  abs(Self.Width) :\r\n  (\r\n    Self.X > Player.X + 5 ?\r\n    -abs(Self.Width) :\r\n    Self.Width\r\n  )\n)"
+						"width": "(Player.Timer.CurrentTime(TIMER_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Freeze) > 0 | Self.isFixedAngle) ?\nSelf.Width :\n(\n  Self.X < Player.X - 5 ?\r\n  abs(Self.Width) :\r\n  (\r\n    Self.X > Player.X + 5 ?\r\n    -abs(Self.Width) :\r\n    Self.Width\r\n  )\n)"
 					}
 				},
 				{
@@ -409,6 +543,19 @@
 					"sid": 932390248167081,
 					"parameters": {
 						"speed": "Player.Timer.CurrentTime(TIMER_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Freeze) = 0 ? Self.initAnimationSpeed : 0"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Aim ghosts at player (moved by Bullet) if they are not fixed angle"
+				},
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "Enemy",
+					"sid": 993458042637366,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"angle": "Self.isFixedAngle ? Self.Bullet.AngleOfMotion : angle(Self.X, Self.Y, Player.X, Player.Y)"
 					}
 				},
 				{
@@ -683,7 +830,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "note the hilarious / disgusting conditional in the tag field"
+					"text": "(Note the hilarious / disgusting conditional in the tag field)"
 				},
 				{
 					"id": "start-timer",
@@ -1231,6 +1378,22 @@
 					"parameters": {
 						"frame-number": "min(floor(max(Self.experience, Self.healing) / max(1, Rules.Get(KEY_Level & DOT & KEY_Dividers & DOT & KEY_DropValueToFrame))), Self.AnimationFrameCount - 1)"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "This is a real ugly workaround to hide the drop if it has no experience or healing value and is not a magnet."
+				},
+				{
+					"type": "comment",
+					"text": "(This is horrendous, should be a sub event to check if a drop is even needed to spawn)"
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "Drop",
+					"sid": 158289321233136,
+					"parameters": {
+						"opacity": "Self.AnimationName = ANIM_Magnet | Self.experience > 0 | Self.healing > 0 ? 100 : 0"
+					}
 				}
 			],
 			"sid": 336510554154724,
@@ -1561,11 +1724,10 @@
 				},
 				{
 					"id": "compare-instance-variable",
-					"objectClass": "Player",
-					"sid": 777151504867871,
-					"disabled": true,
+					"objectClass": "Enemy",
+					"sid": 495968585895762,
 					"parameters": {
-						"instance-variable": "isDead",
+						"instance-variable": "isGhost",
 						"comparison": 0,
 						"value": "NO"
 					}
@@ -1574,7 +1736,7 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Make all enemies movable (they are immovable by default, so crates remain stationary)"
+					"text": "Make all enemies movable (they are immovable by default, so crates remain stationary) & enable physics (disabled by default)"
 				},
 				{
 					"id": "set-immovable",
@@ -1586,17 +1748,30 @@
 					}
 				},
 				{
+					"id": "set-enabled",
+					"objectClass": "Enemy",
+					"sid": 367702338311606,
+					"behaviorType": "Physics",
+					"parameters": {
+						"mode": "enabled"
+					}
+				},
+				{
 					"type": "comment",
 					"text": "Apply force (normal movement or knockback)"
 				},
 				{
+					"type": "comment",
+					"text": "todo? remove unneccessary condition from action (testing for movementAngle = NOTHING)"
+				},
+				{
 					"id": "apply-force-at-angle",
 					"objectClass": "Enemy",
-					"sid": 833686659136932,
+					"sid": 521417560189920,
 					"behaviorType": "Physics",
 					"parameters": {
 						"force": "Self.Timer.NormalizedProgress(TIMER_Knockback) > 0 ?\nSelf.knockbackSpeed * Self.Physics.Mass :\nSelf.movementSpeed * Self.Physics.Mass\n",
-						"angle": "Self.Timer.NormalizedProgress(TIMER_Knockback) > 0 ?\nSelf.knockbackAngle :\n(\n  Self.movementAngle = NOTHING ?\n  angle(Self.X, Self.Y, Player.X, Player.Y) :\n  Self.movementAngle\n)",
+						"angle": "Self.Timer.NormalizedProgress(TIMER_Knockback) > 0\n?\nSelf.knockbackAngle :\n(\n  Self.isFixedAngle = YES\n  ?\n  Self.movementAngle_init\n  :\n  angle(Self.X, Self.Y, Player.X, Player.Y)\n)\n",
 						"image-point": "0"
 					}
 				}

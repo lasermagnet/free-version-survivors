@@ -154,6 +154,26 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 359671948260733
+		},
+		{
+			"eventType": "variable",
+			"name": "C_MovementSpeed_Multiplier_Bullet",
+			"type": "number",
+			"initialValue": "20",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 411699779570723
+		},
+		{
+			"eventType": "variable",
+			"name": "C_BigNumber",
+			"type": "number",
+			"initialValue": "99999999",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 185966919577455
 		}
 	],
 	"sid": 900977153576648

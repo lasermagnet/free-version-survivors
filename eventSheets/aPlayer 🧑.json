@@ -1000,6 +1000,36 @@
 						"type": "once",
 						"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
 					}
+				},
+				{
+					"type": "comment",
+					"text": "Destroy enemy if it had the \"destroy on impact\" rule set"
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "Enemy",
+					"sid": 922059504456628,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "TWEEN_FadeOut",
+						"property": "offsetOpacity",
+						"end-value": "0",
+						"time": "Self.isDestroyedOnImpact ? 0.07 : C_BigNumber",
+						"ease": "easeoutquint",
+						"destroy-on-complete": "yes",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "Enemy",
+					"sid": 676368844568899,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"speed": "Self.isDestroyedOnImpact ? 0 : Self.Bullet.Speed"
+					}
 				}
 			],
 			"sid": 712392008794518

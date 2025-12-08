@@ -497,6 +497,26 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_DestroyOnImpact",
+			"type": "string",
+			"initialValue": "DestroyOnImpact",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 257867451037635
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_FixedAngle",
+			"type": "string",
+			"initialValue": "FixedAngle",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 912206056086974
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_FreezeTime",
 			"type": "string",
 			"initialValue": "FreezeTime",
@@ -504,6 +524,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 833993264545955
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Ghost",
+			"type": "string",
+			"initialValue": "Ghost",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 826443299278122
 		},
 		{
 			"eventType": "variable",
@@ -647,6 +677,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Lifetime",
+			"type": "string",
+			"initialValue": "Lifetime",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 706044875333626
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_Map",
 			"type": "string",
 			"initialValue": "Map",
@@ -684,16 +724,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 351280763027556
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_MovementAngle",
-			"type": "string",
-			"initialValue": "MovementAngle",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 676520396723900
 		},
 		{
 			"eventType": "variable",
@@ -894,6 +924,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 825015893634250
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_Translucency",
+			"type": "string",
+			"initialValue": "Translucency",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 738702346686010
 		},
 		{
 			"eventType": "variable",
@@ -1271,6 +1311,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "TWEEN_FadeOut",
+			"type": "string",
+			"initialValue": "FadeOut",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 693007767336693
+		},
+		{
+			"eventType": "variable",
 			"name": "TWEEN_LevelUp_FadeIn",
 			"type": "string",
 			"initialValue": "FadeIn",
@@ -1318,16 +1368,6 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 165491564316690
-		},
-		{
-			"eventType": "variable",
-			"name": "KEY_Ghost",
-			"type": "string",
-			"initialValue": "Ghost",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 216697943637396
 		},
 		{
 			"eventType": "group",

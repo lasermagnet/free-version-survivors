@@ -76,10 +76,17 @@
 			"sid": 209990879486126
 		},
 		{
-			"name": "initAnimationSpeed",
+			"name": "movementAngle_init",
 			"type": "number",
 			"desc": "",
 			"show": true,
+			"sid": 352588335497001
+		},
+		{
+			"name": "initAnimationSpeed",
+			"type": "number",
+			"desc": "",
+			"show": false,
 			"sid": 749526333859586
 		},
 		{
@@ -109,6 +116,27 @@
 			"desc": "",
 			"show": true,
 			"sid": 712294952021980
+		},
+		{
+			"name": "isFixedAngle",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 605674922911102
+		},
+		{
+			"name": "enemyName",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 610219653701117
+		},
+		{
+			"name": "isDestroyedOnImpact",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 475449005459102
 		}
 	],
 	"behaviorTypes": [
@@ -906,6 +934,50 @@
 				],
 				"sid": 248306599749963,
 				"name": "MagnetCrate",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 7,
+						"height": 7,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8216245,
+						"collisionPoly": {
+							"points": [
+								0.8571428571428571,
+								0.8571428571428571,
+								0.14285714285714285,
+								0.8571428571428571,
+								0.14285714285714285,
+								0.14285714285714285,
+								0.8571428571428571,
+								0.14285714285714285
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "DamageNumber",
+								"x": 0.5,
+								"y": 0.6428571428571429
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 477868071381455,
+				"name": "Projectile",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,
