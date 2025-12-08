@@ -1,25 +1,20 @@
 /*
 
 Build 69
-- New: "ghost" enemies via Enemy.Ghost boolean. Ghosts move with Bullet behaviour instead of Physics. Ghosts go through enemies and the player, can be used as projectiles
+- New: "projectile" enemy movement type via Enemy.Projectile boolean. Projectile enemies move with Bullet behaviour instead of Physics. Projectile enemies go through enemies and the player
 - New: "fixed angle" enemies via Enemy.FixedAngle boolean. They move in a fixed angle (set when spawned, toward the player)
 - New: enemy translucency support via Enemy.Translucency; 0 means fully opaque, 100 is invisible
 - New: optional enemy self-destruct timer via Enemy.Lifetime. If specified, enemy will selfd-destruct after the specified amount of seconds.
 - New: optional enemy self-destruct mode via Enemy.DestroyOnImpact; if specified, enemy will be killed (and its drop will spawn) after the specified number of seconds
-- New: a "projectile" enemy, using most of the above properties.
+- New: "Fireball" enemy, using most of the above properties.
 - New: enemies can spawn specific drop types via Enemy.Drop. If unspecified, a healing or experience drop will spawn if either of those values are non-zero.
-
-- todo FadeOutTime
-
+- New: enemy fade out tween time can be customized via Enemy.FadeOutTime (it's 0.5s by default)
+- New: enemies can spawn enemies (or "projectiles"). This is intended for spawning "projectile" enemies, I haven't tested non-projectile enemy spawning. Check Enemy.SpawnEnemy & Enemy.SpawnInterval rules for details.
 - Change: improved on the drop spawning logic, if enemy had no drop specified (by rule or based on experience or healing value), a self-destructing invisible drop will spawn
 - Change: magnet crates self destruct on spawn (thus only a magnet shows up)
 - Change: more attempts at balancing
-- Change: renamed / restructured timers
+- Change: renamed / restructured some global names (timers & tweens mostly)
 - Removed: unused Enemy.MovementAngle rule
-
-todo
-- New: enemies can spawn enemies (or "projectiles")
-
 
 Build 68
 - New: ability to activate a list of modifiers at the start of a wave. See ModifiersToApply in R_Waves.

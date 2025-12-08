@@ -294,7 +294,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "Start \"lifetime\" tween which fades out & destroys the projectile"
+					"text": "Start \"lifetime\" tween which fades out & destroys the weapon"
 				},
 				{
 					"id": "tween-one-property",
@@ -302,7 +302,7 @@
 					"sid": 869819068427015,
 					"behaviorType": "Tween",
 					"parameters": {
-						"tags": "TWEEN_Projectile_Opacity_Lifetime",
+						"tags": "TWEEN_Weapon_Opacity_Lifetime",
 						"property": "offsetOpacity",
 						"end-value": "0",
 						"time": "duration",

@@ -182,7 +182,7 @@
 						"knockbackAngle": 0,
 						"knockbackSpeed": 0,
 						"isFar": 0,
-						"isGhost": 0,
+						"isProjectile": 0,
 						"isFixedAngle": 0,
 						"isDestroyedOnImpact": 0,
 						"enemyName": "",

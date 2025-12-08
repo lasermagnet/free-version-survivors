@@ -182,9 +182,9 @@
 				{
 					"id": "set-opacity",
 					"objectClass": "UI_Rectangle_Background",
-					"sid": 433711698232672,
+					"sid": 638843562386325,
 					"parameters": {
-						"opacity": "isPaused * 50"
+						"opacity": "max(isPaused, Player.isDead) * 50"
 					}
 				}
 			],

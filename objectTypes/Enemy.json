@@ -111,7 +111,7 @@
 			"sid": 391290845555805
 		},
 		{
-			"name": "isGhost",
+			"name": "isProjectile",
 			"type": "number",
 			"desc": "",
 			"show": true,

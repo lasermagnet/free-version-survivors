@@ -4,7 +4,7 @@ The project uses the MIT licensed CodeMirror 5 library which is linked through e
 
 All other code (and events) in this project file are available under MIT license.
 
-Kenney art assets are CC0 licensed, other assets are copyright (C) by Tibor Kovács (Teebor9).
+Kenney art assets are CC0 licensed, other assets are CC-BY licensed by Tibor Kovács (Teebor9).
 
 MIT License
 

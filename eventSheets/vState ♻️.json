@@ -71,16 +71,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "enemiesKilled",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 543485991026452
-		},
-		{
-			"eventType": "variable",
 			"name": "enemySpawnQueue",
 			"type": "number",
 			"initialValue": "0",
@@ -138,6 +128,16 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 500098607238649
+		},
+		{
+			"eventType": "variable",
+			"name": "enemiesKilled",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 387217387397844
 		},
 		{
 			"eventType": "variable",

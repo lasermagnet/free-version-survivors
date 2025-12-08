@@ -117,13 +117,13 @@ export const Enemies = {
         "Health": 0.0001, // "destroy on hit"
         "Damage": 200,
         "MovementSpeed": 3.5,
-        "Ghost": true,
+        "Scale": 0.5,
+        "Projectile": true,
         "FixedAngle": true,
         "Lifetime": 8,
         "DestroyOnImpact": true,
         "FadeOutTime": 0.2,
         "Rotate": true,
-        "Scale": 0.5,
     },
 
     // Reference
@@ -156,7 +156,7 @@ export const Enemies = {
         "ItemSpawnDisabled": false,
         // whether the enemy can spawn an item (so containers don't spawn items, only drops)
 
-        "Ghost": false,
+        "Projectile": false,
         // If false or unset, enemy will move with Physics and collide. If true, enemy will move via Bullet and won't collide with enemies or the player, but can still be stopped by weapons with movement block or knockback
 
         "FixedAngle": false,
@@ -175,15 +175,15 @@ export const Enemies = {
         // optionally set the drop type (an animation name for the Drop sprite), eg. "Magnet". If not specified, it'll default to "Experience" or "Health", if either of those are not zero.
 
         "FadeOutTime": 0.5,
-        // length for the fade out tween when the enemy destructs
+        // length of the fade out tween when an enemy is killed
 
         "SpawnEnemy": "",
-        // todo
+        // optionally set a "child" enemy name to spawn by this "parent" enemy
 
         "SpawnInterval": 0,
-        // todo
+        // if SpawnEnemy is set, specify "child" enemy spawn frequency
 
         "Rotate": false
-        // todo
+        // if set to true, the enemy sprite will spawn rotated to the initial movement angle (eg. for "top view" projectiles)
     }
 }

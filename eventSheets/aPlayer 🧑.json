@@ -1021,7 +1021,7 @@
 					"disabled": true,
 					"behaviorType": "Tween",
 					"parameters": {
-						"tags": "TWEEN_FadeOut",
+						"tags": "TWEEN_Enemy_FadeOut",
 						"property": "offsetOpacity",
 						"end-value": "0",
 						"time": "Self.isDestroyedOnImpact ? 0.07 : C_BigNumber",

@@ -240,8 +240,8 @@
 					"objectClass": "Enemy",
 					"sid": 372603671642313,
 					"parameters": {
-						"instance-variable": "isGhost",
-						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Ghost)"
+						"instance-variable": "isProjectile",
+						"value": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Projectile)"
 					}
 				},
 				{
@@ -406,7 +406,7 @@
 					"sid": 184228273806618,
 					"behaviorType": "Tween",
 					"parameters": {
-						"tags": "TWEEN_Destroy",
+						"tags": "TWEEN_Enemy_Destroy",
 						"start-value": "100",
 						"end-value": "0",
 						"time": "Rules.Type(KEY_Enemies & DOT & Self.enemyName & DOT & KEY_Lifetime) = NULL ? C_BigNumber : Rules.Get(KEY_Enemies & DOT & Self.enemyName & DOT & KEY_Lifetime)",
@@ -437,7 +437,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "If enemy is a \"ghost\" (doesn't collide with anything), disable physics behaviour, enable and initialize bullet behaviour"
+					"text": "If enemy is a projectile (doesn't collide with anything), disable physics behaviour, enable and initialize bullet behaviour"
 				},
 				{
 					"eventType": "block",
@@ -447,7 +447,7 @@
 							"objectClass": "Enemy",
 							"sid": 480003385439341,
 							"parameters": {
-								"instance-variable": "isGhost",
+								"instance-variable": "isProjectile",
 								"comparison": 0,
 								"value": "YES"
 							}
@@ -554,15 +554,15 @@
 				},
 				{
 					"type": "comment",
-					"text": "Slow down gradually if player is dead"
+					"text": "Slow down non-projectile enemies gradually if player is dead"
 				},
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Enemy",
-					"sid": 846449302977582,
+					"sid": 907938727631435,
 					"parameters": {
 						"instance-variable": "movementSpeed",
-						"value": "Player.isDead = YES ? max(0, Self.movementSpeed - Self.movementSpeed * dt * 1.5 ) : Self.movementSpeed"
+						"value": "Player.isDead = YES & Self.isProjectile = NO ? max(0, Self.movementSpeed - Self.movementSpeed * dt * 1.5 ) : Self.movementSpeed"
 					}
 				},
 				{
@@ -603,15 +603,28 @@
 				},
 				{
 					"type": "comment",
-					"text": "Aim ghosts at player (moved by Bullet) if they are not fixed angle"
+					"text": "Aim projectiles at player (moved by Bullet) if they are not fixed angle"
 				},
 				{
 					"id": "set-angle-of-motion",
 					"objectClass": "Enemy",
-					"sid": 993458042637366,
+					"sid": 836109089781642,
 					"behaviorType": "Bullet",
 					"parameters": {
-						"angle": "Self.isFixedAngle ? Self.Bullet.AngleOfMotion : angle(Self.X, Self.Y, Player.X, Player.Y)"
+						"angle": "Self.isFixedAngle ? Self.movementAngle_init : angle(Self.X, Self.Y, Player.X, Player.Y)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Move / pause projectile enemies (moved by Bullet if enemy is frozen"
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "Enemy",
+					"sid": 351304355669991,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"speed": "Self.Timer.CurrentTime(TIMER_Enemy_Freeze) > 0 | Player.Timer.CurrentTime(TIMER_Player_Freeze_All) > 0 | Self.isProjectile = NO\n?\n0\n:\nSelf.movementSpeed * C_MovementSpeed_Multiplier_Bullet"
 					}
 				},
 				{
@@ -624,7 +637,7 @@
 					"sid": 363683652994257,
 					"parameters": {
 						"instance-variable": "health",
-						"value": "Self.Tween.Value(TWEEN_Destroy) = 0 ? 0 : Self.health"
+						"value": "Self.Tween.Value(TWEEN_Enemy_Destroy) = 0 ? 0 : Self.health"
 					}
 				},
 				{
@@ -652,7 +665,7 @@
 					"sid": 306638402884577
 				},
 				{
-					"customAction": "tick_health",
+					"customAction": "tick_healthCheck",
 					"objectClass": "Enemy",
 					"sid": 993507941977590
 				},
@@ -701,6 +714,16 @@
 						"tag": "TIMER_Enemy_SpawnEnemy"
 					},
 					"isInverted": true
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 819210532424284,
+					"parameters": {
+						"instance-variable": "isDead",
+						"comparison": 0,
+						"value": "NO"
+					}
 				}
 			],
 			"actions": [
@@ -948,7 +971,7 @@
 				},
 				{
 					"type": "comment",
-					"text": "If projectile pierced a new enemy, add it to the list"
+					"text": "If weapon pierced a new enemy, add it to the list"
 				},
 				{
 					"id": "set-instvar-value",
@@ -1078,11 +1101,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "If projectile has reached its piercing limit, destroy it"
-				},
-				{
-					"eventType": "comment",
-					"text": "todo destroy weapon after it's colliding with nothing or an enemy other then the last one from the SSV"
+					"text": "If weapon has reached its piercing limit, destroy it"
 				},
 				{
 					"eventType": "block",
@@ -1333,7 +1352,7 @@
 		},
 		{
 			"aceType": "action",
-			"aceName": "tick_health",
+			"aceName": "tick_healthCheck",
 			"objectClass": "Enemy",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -1420,6 +1439,7 @@
 					"id": "set-enabled",
 					"objectClass": "Enemy",
 					"sid": 893717032564587,
+					"disabled": true,
 					"behaviorType": "Bullet",
 					"parameters": {
 						"state": "disabled"
@@ -1444,7 +1464,7 @@
 					"sid": 398209379008222,
 					"behaviorType": "Tween",
 					"parameters": {
-						"tags": "TWEEN_FadeOut",
+						"tags": "TWEEN_Enemy_FadeOut",
 						"property": "offsetOpacity",
 						"end-value": "0",
 						"time": "Self.fadeOutTime",
@@ -1527,16 +1547,12 @@
 					"text": "Self-destruct if the enemy had no drop specified"
 				},
 				{
-					"type": "comment",
-					"text": "(This is done this way to save a sub-event)"
-				},
-				{
 					"id": "tween-value",
 					"objectClass": "Drop",
-					"sid": 604273192236175,
+					"sid": 438993130998846,
 					"behaviorType": "Tween",
 					"parameters": {
-						"tags": "TWEEN_Destroy",
+						"tags": "TWEEN_Drop_Destroy",
 						"start-value": "100",
 						"end-value": "0",
 						"time": "Enemy.dropName = EMPTY ? 1 : C_BigNumber",
@@ -1879,7 +1895,7 @@
 					"objectClass": "Enemy",
 					"sid": 495968585895762,
 					"parameters": {
-						"instance-variable": "isGhost",
+						"instance-variable": "isProjectile",
 						"comparison": 0,
 						"value": "NO"
 					}

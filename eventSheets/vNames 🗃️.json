@@ -557,9 +557,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "KEY_Ghost",
+			"name": "KEY_Projectile",
 			"type": "string",
-			"initialValue": "Ghost",
+			"initialValue": "Projectile",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -1391,7 +1391,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TWEEN_Destroy",
+			"name": "TWEEN_Enemy_Destroy",
 			"type": "string",
 			"initialValue": "Destroy",
 			"comment": "",
@@ -1401,7 +1401,17 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TWEEN_FadeOut",
+			"name": "TWEEN_Drop_Destroy",
+			"type": "string",
+			"initialValue": "Destroy",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 420488348852574
+		},
+		{
+			"eventType": "variable",
+			"name": "TWEEN_Enemy_FadeOut",
 			"type": "string",
 			"initialValue": "FadeOut",
 			"comment": "",
@@ -1431,7 +1441,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TWEEN_Projectile_Opacity_Lifetime",
+			"name": "TWEEN_Weapon_Opacity_Lifetime",
 			"type": "string",
 			"initialValue": "Opacity_Lifetime",
 			"comment": "",

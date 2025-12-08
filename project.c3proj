@@ -580,7 +580,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "69d",
+		"version": "69g",
 		"autoIncrementVersion": false,
 		"author": "Lasermagnet Games",
 		"authorEmail": "games@lasermagnet.com",
@@ -600,9 +600,9 @@
 			0
 		],
 		"splashColor": [
-			1,
-			1,
-			1,
+			0.10196078431372549,
+			0.19607843137254902,
+			0.14901960784313725,
 			0
 		],
 		"useThemeColor": false,
