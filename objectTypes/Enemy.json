@@ -151,6 +151,20 @@
 			"desc": "",
 			"show": true,
 			"sid": 568718354920477
+		},
+		{
+			"name": "spawnEnemy",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 513873050416240
+		},
+		{
+			"name": "spawnInterval",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 759513664513305
 		}
 	],
 	"behaviorTypes": [
@@ -957,25 +971,58 @@
 			{
 				"frames": [
 					{
-						"width": 7,
-						"height": 7,
+						"width": 16,
+						"height": 16,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 8216245,
+						"imageSpriteId": 1856635,
 						"collisionPoly": {
 							"points": [
-								0.8571428571428571,
-								0.8571428571428571,
-								0.14285714285714285,
-								0.8571428571428571,
-								0.14285714285714285,
-								0.14285714285714285,
-								0.8571428571428571,
-								0.14285714285714285
+								0.9375,
+								0.75,
+								0.3125,
+								0.75,
+								0.3125,
+								0.3125,
+								0.9375,
+								0.3125
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "DamageNumber",
+								"x": 0.5,
+								"y": 0.6428571428571429
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8771705,
+						"collisionPoly": {
+							"points": [
+								0.9375,
+								0.75,
+								0.3125,
+								0.75,
+								0.3125,
+								0.3125,
+								0.9375,
+								0.3125
 							]
 						},
 						"useCollisionPoly": true,
@@ -991,12 +1038,12 @@
 					}
 				],
 				"sid": 477868071381455,
-				"name": "Projectile",
-				"isLooping": false,
+				"name": "Fireball",
+				"isLooping": true,
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 0
+				"speed": 5
 			}
 		],
 		"subfolders": []

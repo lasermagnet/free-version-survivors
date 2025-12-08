@@ -1,16 +1,6 @@
 // See reference at the bottom
 
 export const Enemies = {
-    "Projectile": {
-        "Health": 0.0001,
-        "Damage": 40,
-        "MovementSpeed": 3.5,
-        "Ghost": true,
-        "FixedAngle": true,
-        "Lifetime": 8,
-        "DestroyOnImpact": true,
-        "FadeOutTime": 0.2,
-    },
     "HealingCrate": {
         "Health": 5,
         "Healing": 50,
@@ -102,6 +92,8 @@ export const Enemies = {
         "MovementSpeed": 2.5,
         "Scale": 2,
         "Density": 10,
+        "SpawnEnemy": "Fireball",
+        "SpawnInterval": 3,
     },
     "Beholder": {
         "Health": 500,
@@ -118,6 +110,20 @@ export const Enemies = {
         "Scale": 3,
         "Animation": "Beholder",
         "Density": 10,
+        "SpawnEnemy": "Fireball",
+        "SpawnInterval": 2,
+    },
+    "Fireball": {
+        "Health": 0.0001, // "destroy on hit"
+        "Damage": 200,
+        "MovementSpeed": 3.5,
+        "Ghost": true,
+        "FixedAngle": true,
+        "Lifetime": 8,
+        "DestroyOnImpact": true,
+        "FadeOutTime": 0.2,
+        "Rotate": true,
+        "Scale": 0.5,
     },
 
     // Reference
@@ -170,5 +176,14 @@ export const Enemies = {
 
         "FadeOutTime": 0.5,
         // length for the fade out tween when the enemy destructs
+
+        "SpawnEnemy": "",
+        // todo
+
+        "SpawnInterval": 0,
+        // todo
+
+        "Rotate": false
+        // todo
     }
 }

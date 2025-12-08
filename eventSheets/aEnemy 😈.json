@@ -24,6 +24,27 @@
 					"initialValue": "1",
 					"comment": "",
 					"sid": 244649095207517
+				},
+				{
+					"name": "usePosition",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 474856200492216
+				},
+				{
+					"name": "positionX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 188525364182333
+				},
+				{
+					"name": "positionY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 711764951731232
 				}
 			],
 			"eventType": "custom-ace-block",
@@ -100,12 +121,12 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 907921954282148,
+					"sid": 869936298370419,
 					"parameters": {
 						"object-to-create": "Enemy",
 						"layer": "LAYER_Main",
-						"x": "Player.X + (randomAxis = X ? random(OriginalViewportWidth * -0.5 - Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn), OriginalViewportWidth * 0.5 + Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)) : choose(-1, 1) * (OriginalViewportWidth * 0.5 + Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)))",
-						"y": "Player.Y + (randomAxis = Y ? random(OriginalViewportHeight * -0.5 - Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn), OriginalViewportHeight * 0.5 + Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)) : choose(-1, 1) * (OriginalViewportHeight * 0.5 + Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)))",
+						"x": "usePosition ? positionX :\nPlayer.X + (randomAxis = X ? random(OriginalViewportWidth * -0.5 - Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn), OriginalViewportWidth * 0.5 + Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)) : choose(-1, 1) * (OriginalViewportWidth * 0.5 + Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)))",
+						"y": "usePosition ? positionY :\nPlayer.Y + (randomAxis = Y ? random(OriginalViewportHeight * -0.5 - Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn), OriginalViewportHeight * 0.5 + Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)) : choose(-1, 1) * (OriginalViewportHeight * 0.5 + Rules.Get(KEY_Level & DOT & KEY_Distance & DOT & KEY_EnemySpawn)))",
 						"create-hierarchy": true,
 						"template-name": "\"\""
 					}
@@ -260,6 +281,24 @@
 					}
 				},
 				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 834002339839644,
+					"parameters": {
+						"instance-variable": "spawnEnemy",
+						"value": "Rules.Type(KEY_Enemies & DOT & enemy & DOT & KEY_SpawnEnemy) = NULL\n?\nEMPTY\n:\nRules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_SpawnEnemy)\n"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 223972023687371,
+					"parameters": {
+						"instance-variable": "spawnInterval",
+						"value": "Rules.Type(KEY_Enemies & DOT & enemy & DOT & KEY_SpawnInterval) = NULL\n?\n0\n:\nRules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_SpawnInterval)\n"
+					}
+				},
+				{
 					"type": "comment",
 					"text": "Set fixed moving angle if specified"
 				},
@@ -305,6 +344,18 @@
 				},
 				{
 					"type": "comment",
+					"text": "Set rotation angle (if needed)"
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "Enemy",
+					"sid": 944743477739661,
+					"parameters": {
+						"angle": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Rotate) = YES ? Self.movementAngle : 0"
+					}
+				},
+				{
+					"type": "comment",
 					"text": "Set density"
 				},
 				{
@@ -336,9 +387,9 @@
 				{
 					"id": "set-width",
 					"objectClass": "Enemy",
-					"sid": 215269958462841,
+					"sid": 627092171277451,
 					"parameters": {
-						"width": "Self.X < Player.X - 5\n?\r\nabs(Self.Width)\n:\r\n(\r\n  Self.X > Player.X + 5\n  ?\r\n  -abs(Self.Width)\n  :\r\n  Self.Width\r\n)\n"
+						"width": "Rules.Get(KEY_Enemies & DOT & enemy & DOT & KEY_Rotate) = YES\n?\nSelf.Width\n:\n(\n  Self.X < Player.X - 5\n  ?\r\n  abs(Self.Width)\n  :\r\n  (\r\n    Self.X > Player.X + 5\n    ?\r\n    -abs(Self.Width)\n    :\r\n    Self.Width\r\n  )\n)"
 					}
 				},
 				{
@@ -350,56 +401,35 @@
 					"text": "(Yeah, I'm using a tween as a self destruct timer. Guess why :D)"
 				},
 				{
-					"id": "tween-one-property",
+					"id": "tween-value",
 					"objectClass": "Enemy",
-					"sid": 648016567519051,
+					"sid": 184228273806618,
 					"behaviorType": "Tween",
 					"parameters": {
-						"tags": "TWEEN_FadeOut",
-						"property": "offsetOpacity",
+						"tags": "TWEEN_Destroy",
+						"start-value": "100",
 						"end-value": "0",
-						"time": "Rules.Type(KEY_Enemies & DOT & Self.enemyName & DOT & KEY_Lifetime) = NULL ? 999999999 : Rules.Get(KEY_Enemies & DOT & Self.enemyName & DOT & KEY_Lifetime)",
-						"ease": {
-							"name": "In Hyper",
-							"json": [
-								{
-									"folders": [],
-									"json": {
-										"name": "In Hyper",
-										"linear": false,
-										"purpose": "any",
-										"transitionKeyframes": [
-											{
-												"x": 0,
-												"y": 0,
-												"sax": 1,
-												"say": 0.012,
-												"eax": 0,
-												"eay": 0,
-												"se": true,
-												"ee": false,
-												"sm": "cubic"
-											},
-											{
-												"x": 1,
-												"y": 1,
-												"sax": 0,
-												"say": 0,
-												"eax": -0.294,
-												"eay": -0.977,
-												"se": false,
-												"ee": true,
-												"sm": "cubic"
-											}
-										]
-									}
-								}
-							]
-						},
+						"time": "Rules.Type(KEY_Enemies & DOT & Self.enemyName & DOT & KEY_Lifetime) = NULL ? C_BigNumber : Rules.Get(KEY_Enemies & DOT & Self.enemyName & DOT & KEY_Lifetime)",
+						"ease": "default",
 						"destroy-on-complete": "no",
 						"loop": "no",
 						"ping-pong": "no",
 						"repeat-count": "1"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Start enemy spawner timer"
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Enemy",
+					"sid": 971003308034738,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "Self.spawnInterval",
+						"type": "once",
+						"tag": "TIMER_Enemy_SpawnEnemy"
 					}
 				}
 			],
@@ -542,9 +572,9 @@
 				{
 					"id": "set-default-color",
 					"objectClass": "Enemy",
-					"sid": 731071060439983,
+					"sid": 472865338951210,
 					"parameters": {
-						"color": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500) :\n(\n  Player.Timer.CurrentTime(TIMER_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Freeze) = 0 ?\n  rgbEx(100, 100, 100) :\n  rgbEx(50, 50, 200)\n)\n"
+						"color": "Self.Timer.CurrentTime(TIMER_Enemy_FlashOn) > 0 ? rgbEx(500, 500, 500) :\n(\n  Player.Timer.CurrentTime(TIMER_Player_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Enemy_Freeze) = 0 ?\n  rgbEx(100, 100, 100) :\n  rgbEx(50, 50, 200)\n)\n"
 					}
 				},
 				{
@@ -556,7 +586,7 @@
 					"objectClass": "Enemy",
 					"sid": 736721933313653,
 					"parameters": {
-						"width": "(Player.Timer.CurrentTime(TIMER_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Freeze) > 0 | Self.isFixedAngle) ?\nSelf.Width :\n(\n  Self.X < Player.X - 5 ?\r\n  abs(Self.Width) :\r\n  (\r\n    Self.X > Player.X + 5 ?\r\n    -abs(Self.Width) :\r\n    Self.Width\r\n  )\n)"
+						"width": "(Player.Timer.CurrentTime(TIMER_Player_Freeze_All) > 0 | Self.Timer.CurrentTime(TIMER_Enemy_Freeze) > 0 | Self.isFixedAngle) ?\nSelf.Width :\n(\n  Self.X < Player.X - 5 ?\r\n  abs(Self.Width) :\r\n  (\r\n    Self.X > Player.X + 5 ?\r\n    -abs(Self.Width) :\r\n    Self.Width\r\n  )\n)"
 					}
 				},
 				{
@@ -568,7 +598,7 @@
 					"objectClass": "Enemy",
 					"sid": 932390248167081,
 					"parameters": {
-						"speed": "Player.Timer.CurrentTime(TIMER_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Freeze) = 0 ? Self.initAnimationSpeed : 0"
+						"speed": "Player.Timer.CurrentTime(TIMER_Player_Freeze_All) = 0 & Self.Timer.CurrentTime(TIMER_Enemy_Freeze) = 0 ? Self.initAnimationSpeed : 0"
 					}
 				},
 				{
@@ -582,6 +612,19 @@
 					"behaviorType": "Bullet",
 					"parameters": {
 						"angle": "Self.isFixedAngle ? Self.Bullet.AngleOfMotion : angle(Self.X, Self.Y, Player.X, Player.Y)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Check if enemy should self-destruct"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Enemy",
+					"sid": 363683652994257,
+					"parameters": {
+						"instance-variable": "health",
+						"value": "Self.Tween.Value(TWEEN_Destroy) = 0 ? 0 : Self.health"
 					}
 				},
 				{
@@ -617,9 +660,75 @@
 					"customAction": "tick_movement",
 					"objectClass": "Enemy",
 					"sid": 322189294551794
+				},
+				{
+					"customAction": "tick_spawnEnemies",
+					"objectClass": "Enemy",
+					"sid": 876607483366735
 				}
 			],
 			"sid": 189649208726275
+		},
+		{
+			"aceType": "action",
+			"aceName": "tick_spawnEnemies",
+			"objectClass": "Enemy",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"bookmark": true,
+			"eventType": "custom-ace-block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 808607371292385,
+					"parameters": {
+						"instance-variable": "spawnEnemy",
+						"comparison": 1,
+						"value": "EMPTY"
+					}
+				},
+				{
+					"id": "is-timer-running",
+					"objectClass": "Enemy",
+					"sid": 325011984129753,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "TIMER_Enemy_SpawnEnemy"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "start-timer",
+					"objectClass": "Enemy",
+					"sid": 971295229662400,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "Self.spawnInterval",
+						"type": "once",
+						"tag": "TIMER_Enemy_SpawnEnemy"
+					}
+				},
+				{
+					"customAction": "spawn",
+					"objectClass": "Enemy",
+					"sid": 865599306482982,
+					"parameters": [
+						"Enemy.spawnEnemy",
+						"1",
+						"YES",
+						"Enemy.X",
+						"Enemy.Y"
+					]
+				}
+			],
+			"sid": 530428620367925
 		},
 		{
 			"aceType": "action",
@@ -818,23 +927,23 @@
 				{
 					"id": "start-timer",
 					"objectClass": "Enemy",
-					"sid": 346578960389206,
+					"sid": 744037166145873,
 					"behaviorType": "Timer",
 					"parameters": {
 						"duration": "C_Damage_Flash_Interval",
 						"type": "once",
-						"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOn : EMPTY"
+						"tag": "Self.Timer.CurrentTime(TIMER_Enemy_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_Enemy_FlashOff) = 0\n? TIMER_Enemy_FlashOn : EMPTY"
 					}
 				},
 				{
 					"id": "start-timer",
 					"objectClass": "Enemy",
-					"sid": 505493171678698,
+					"sid": 102139082179788,
 					"behaviorType": "Timer",
 					"parameters": {
 						"duration": "C_Damage_Flash_Interval * 2",
 						"type": "once",
-						"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
+						"tag": "Self.Timer.CurrentTime(TIMER_Enemy_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_Enemy_FlashOff) = 0\n? TIMER_Enemy_FlashOff : EMPTY"
 					}
 				},
 				{
@@ -866,7 +975,7 @@
 					"parameters": {
 						"duration": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_FreezeTime)",
 						"type": "once",
-						"tag": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_FreezeTime) > 0 &\nSelf.Timer.CurrentTime(TIMER_Freeze) = 0 ?\nTIMER_Freeze :\nEMPTY"
+						"tag": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_FreezeTime) > 0 &\nSelf.Timer.CurrentTime(TIMER_Enemy_Freeze) = 0 ?\nTIMER_Enemy_Freeze :\nEMPTY"
 					}
 				},
 				{
@@ -919,7 +1028,7 @@
 							"sid": 649297989583263,
 							"behaviorType": "Timer",
 							"parameters": {
-								"tag": "TIMER_Knockback"
+								"tag": "TIMER_Enemy_Knockback"
 							},
 							"isInverted": true
 						}
@@ -933,7 +1042,7 @@
 							"parameters": {
 								"duration": "Rules.Get(KEY_Weapons & DOT & Weapon.AnimationName & DOT & KEY_KnockbackDuration)",
 								"type": "once",
-								"tag": "TIMER_Knockback"
+								"tag": "TIMER_Enemy_Knockback"
 							}
 						},
 						{
@@ -1332,10 +1441,10 @@
 				{
 					"id": "tween-one-property",
 					"objectClass": "Enemy",
-					"sid": 127652752180800,
+					"sid": 398209379008222,
 					"behaviorType": "Tween",
 					"parameters": {
-						"tags": "\"\"",
+						"tags": "TWEEN_FadeOut",
 						"property": "offsetOpacity",
 						"end-value": "0",
 						"time": "Self.fadeOutTime",
@@ -1424,12 +1533,12 @@
 				{
 					"id": "tween-value",
 					"objectClass": "Drop",
-					"sid": 565754429826003,
+					"sid": 604273192236175,
 					"behaviorType": "Tween",
 					"parameters": {
 						"tags": "TWEEN_Destroy",
-						"start-value": "0",
-						"end-value": "100",
+						"start-value": "100",
+						"end-value": "0",
 						"time": "Enemy.dropName = EMPTY ? 1 : C_BigNumber",
 						"ease": "default",
 						"destroy-on-complete": "yes",
@@ -1751,7 +1860,7 @@
 					"sid": 968123479097968,
 					"behaviorType": "Timer",
 					"parameters": {
-						"tag": "TIMER_Freeze"
+						"tag": "TIMER_Enemy_Freeze"
 					},
 					"isInverted": true
 				},
@@ -1761,7 +1870,7 @@
 					"sid": 826385697198461,
 					"behaviorType": "Timer",
 					"parameters": {
-						"tag": "TIMER_Freeze_All"
+						"tag": "TIMER_Player_Freeze_All"
 					},
 					"isInverted": true
 				},
@@ -1809,8 +1918,8 @@
 					"sid": 521417560189920,
 					"behaviorType": "Physics",
 					"parameters": {
-						"force": "Self.Timer.NormalizedProgress(TIMER_Knockback) > 0 ?\nSelf.knockbackSpeed * Self.Physics.Mass :\nSelf.movementSpeed * Self.Physics.Mass\n",
-						"angle": "Self.Timer.NormalizedProgress(TIMER_Knockback) > 0\n?\nSelf.knockbackAngle :\n(\n  Self.isFixedAngle = YES\n  ?\n  Self.movementAngle_init\n  :\n  angle(Self.X, Self.Y, Player.X, Player.Y)\n)\n",
+						"force": "Self.Timer.NormalizedProgress(TIMER_Enemy_Knockback) > 0 ?\nSelf.knockbackSpeed * Self.Physics.Mass :\nSelf.movementSpeed * Self.Physics.Mass\n",
+						"angle": "Self.Timer.NormalizedProgress(TIMER_Enemy_Knockback) > 0\n?\nSelf.knockbackAngle :\n(\n  Self.isFixedAngle = YES\n  ?\n  Self.movementAngle_init\n  :\n  angle(Self.X, Self.Y, Player.X, Player.Y)\n)\n",
 						"image-point": "0"
 					}
 				}

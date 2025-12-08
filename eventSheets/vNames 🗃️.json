@@ -867,6 +867,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "KEY_Rotate",
+			"type": "string",
+			"initialValue": "Rotate",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 975900576646991
+		},
+		{
+			"eventType": "variable",
 			"name": "KEY_RotationAngleOffset",
 			"type": "string",
 			"initialValue": "RotationAngleOffset",
@@ -934,6 +944,16 @@
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 411308709549892
+		},
+		{
+			"eventType": "variable",
+			"name": "KEY_SpawnEnemy",
+			"type": "string",
+			"initialValue": "SpawnEnemy",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 986466986493756
 		},
 		{
 			"eventType": "variable",
@@ -1257,7 +1277,87 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TIMER_FlashOn",
+			"name": "TIMER_Enemy_FlashOff",
+			"type": "string",
+			"initialValue": "FlashOff",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 143146947332869
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Enemy_FlashOn",
+			"type": "string",
+			"initialValue": "FlashOn",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 572476806236658
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Enemy_Freeze",
+			"type": "string",
+			"initialValue": "Freeze",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 790537481159048
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Enemy_Knockback",
+			"type": "string",
+			"initialValue": "Knockback",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 173894617426437
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Enemy_SpawnEnemy",
+			"type": "string",
+			"initialValue": "SpawnEnemy",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 681960698308662
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Level_SpawnCycle",
+			"type": "string",
+			"initialValue": "SpawnCycle",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 869800453001534
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Level_Wave",
+			"type": "string",
+			"initialValue": "Wave",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 398665390019639
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Player_FlashOff",
+			"type": "string",
+			"initialValue": "FlashOff",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 493482359504747
+		},
+		{
+			"eventType": "variable",
+			"name": "TIMER_Player_FlashOn",
 			"type": "string",
 			"initialValue": "FlashOn",
 			"comment": "",
@@ -1267,27 +1367,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TIMER_FlashOff",
-			"type": "string",
-			"initialValue": "FlashOff",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 631897334080321
-		},
-		{
-			"eventType": "variable",
-			"name": "TIMER_Freeze",
-			"type": "string",
-			"initialValue": "Freeze",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 334861571206058
-		},
-		{
-			"eventType": "variable",
-			"name": "TIMER_Freeze_All",
+			"name": "TIMER_Player_Freeze_All",
 			"type": "string",
 			"initialValue": "Freeze_All",
 			"comment": "",
@@ -1297,37 +1377,7 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "TIMER_Knockback",
-			"type": "string",
-			"initialValue": "Knockback",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 923129812449843
-		},
-		{
-			"eventType": "variable",
-			"name": "TIMER_SpawnCycle",
-			"type": "string",
-			"initialValue": "SpawnCycle",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 672536484083994
-		},
-		{
-			"eventType": "variable",
-			"name": "TIMER_Wave",
-			"type": "string",
-			"initialValue": "Wave",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 313021126891210
-		},
-		{
-			"eventType": "variable",
-			"name": "TIMER_Weapon_Attack_",
+			"name": "TIMER_Player_Weapon_Attack_",
 			"type": "string",
 			"initialValue": "Weapon_Attack_",
 			"comment": "",

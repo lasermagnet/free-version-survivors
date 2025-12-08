@@ -78,7 +78,7 @@ export const Waves = [
     {
         "EnemyAmount": 600,
         "Time": 60,
-        "EnemySpawnPool": [[0.5, "MagnetCrate"], [1, "HealingCrate"], [40, "Slime"], [20, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"], [10, "Projectile"]],
+        "EnemySpawnPool": [[0.5, "MagnetCrate"], [1, "HealingCrate"], [40, "Slime"], [20, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"], [10, "Fireball"]],
         "EnemySpawnFixed": {},
         "ItemSpawnPool": [[1, "Axe_Amount"], [1, "Flame_Amount"], [1, "Chainsaw_Amount"], [1, "Spikes_Amount"]],
     },
@@ -86,7 +86,7 @@ export const Waves = [
         "Label": "Boss time!",
         "EnemyAmount": 750,
         "Time": 60,
-        "EnemySpawnPool": [[0.5, "MagnetCrate"], [1, "HealingCrate"], [40, "Slime"], [20, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"], [10, "Projectile"]],
+        "EnemySpawnPool": [[0.5, "MagnetCrate"], [1, "HealingCrate"], [40, "Slime"], [20, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"], [10, "Fireball"]],
         "EnemySpawnFixed": { "Beholder_Boss": 1 },
         "ItemSpawnPool": [[1, "Axe_Amount"], [1, "Flame_Amount"], [1, "Chainsaw_Amount"], [1, "Spikes_Amount"]],
     },
@@ -105,7 +105,7 @@ export const Waves = [
         "EnemyAmount": 2000,
         "Time": 60,
         "EnemySpawnFixed": { "Beholder_Boss": 3 },
-        "EnemySpawnPool": [[0.2, "HealingCrate"], [10, "Slime"], [10, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"], [0.1, "Beholder_Boss"], [5, "Projectile"]],
+        "EnemySpawnPool": [[0.2, "HealingCrate"], [10, "Slime"], [10, "Rat"], [5, "Crab"], [5, "Snake"], [3, "Werewolf"], [2, "Ent"], [2, "Tentacle"], [2, "Dwarf"], [2, "Golem"], [2, "Ogre"], [1, "Cultist"], [1, "Beholder"], [0.1, "Beholder_Boss"], [5, "Fireball"]],
         "ModifiersToApply": ["EnemyMovementSpeedBig"],
     },
 ]

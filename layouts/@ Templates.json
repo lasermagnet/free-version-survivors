@@ -187,7 +187,9 @@
 						"isDestroyedOnImpact": 0,
 						"enemyName": "",
 						"dropName": "",
-						"fadeOutTime": 0
+						"fadeOutTime": 0,
+						"spawnEnemy": "",
+						"spawnInterval": 0
 					},
 					"behaviors": {
 						"Physics": {

@@ -5,7 +5,7 @@ Build 69
 - New: "fixed angle" enemies via Enemy.FixedAngle boolean. They move in a fixed angle (set when spawned, toward the player)
 - New: enemy translucency support via Enemy.Translucency; 0 means fully opaque, 100 is invisible
 - New: optional enemy self-destruct timer via Enemy.Lifetime. If specified, enemy will selfd-destruct after the specified amount of seconds.
-- New: optional enemy self-destruct mode via Enemy.DestroyOnImpact; if specified, enemy will be destroyed (without drop) after the specified number of seconds
+- New: optional enemy self-destruct mode via Enemy.DestroyOnImpact; if specified, enemy will be killed (and its drop will spawn) after the specified number of seconds
 - New: a "projectile" enemy, using most of the above properties.
 - New: enemies can spawn specific drop types via Enemy.Drop. If unspecified, a healing or experience drop will spawn if either of those values are non-zero.
 
@@ -14,6 +14,7 @@ Build 69
 - Change: improved on the drop spawning logic, if enemy had no drop specified (by rule or based on experience or healing value), a self-destructing invisible drop will spawn
 - Change: magnet crates self destruct on spawn (thus only a magnet shows up)
 - Change: more attempts at balancing
+- Change: renamed / restructured timers
 - Removed: unused Enemy.MovementAngle rule
 
 todo

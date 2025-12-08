@@ -162,7 +162,7 @@
 					"objectClass": "Player",
 					"sid": 904537207197884,
 					"parameters": {
-						"color": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)"
+						"color": "Self.Timer.CurrentTime(TIMER_Player_FlashOn) > 0 ? rgbEx(500, 500, 500): rgbEx(100, 100, 100)"
 					}
 				},
 				{
@@ -895,7 +895,7 @@
 					"sid": 276431174221574,
 					"behaviorType": "Timer",
 					"parameters": {
-						"tag": "TIMER_Freeze_All"
+						"tag": "TIMER_Player_Freeze_All"
 					},
 					"isInverted": true
 				},
@@ -905,7 +905,7 @@
 					"sid": 900749640864772,
 					"behaviorType": "Timer",
 					"parameters": {
-						"tag": "TIMER_Freeze"
+						"tag": "TIMER_Enemy_Freeze"
 					},
 					"isInverted": true
 				},
@@ -987,7 +987,7 @@
 					"parameters": {
 						"duration": "C_Damage_Flash_Interval",
 						"type": "once",
-						"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOn : EMPTY"
+						"tag": "Self.Timer.CurrentTime(TIMER_Player_FlashOn) = 0 &\nSelf.Timer.CurrentTime(TIMER_Player_FlashOff) = 0\n? TIMER_Player_FlashOn : EMPTY"
 					}
 				},
 				{
@@ -998,7 +998,7 @@
 					"parameters": {
 						"duration": "C_Damage_Flash_Interval * 2",
 						"type": "once",
-						"tag": "Self.Timer.CurrentTime(TIMER_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_FlashOff) = 0\n? TIMER_FlashOff : EMPTY"
+						"tag": "Self.Timer.CurrentTime(TIMER_Player_FlashOn) > 0 &\nSelf.Timer.CurrentTime(TIMER_Player_FlashOff) = 0\n? TIMER_Player_FlashOff : EMPTY"
 					}
 				},
 				{
@@ -1723,7 +1723,7 @@
 					"sid": 799821860525253,
 					"behaviorType": "Timer",
 					"parameters": {
-						"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
+						"tag": "TIMER_Player_Weapon_Attack_ & Rules.CurrentKey"
 					},
 					"isInverted": true
 				}
@@ -1745,7 +1745,7 @@
 					"parameters": {
 						"duration": "Rules.Get(DOT & KEY_Cooldown) * Rules.Get(KEY_Player & DOT & KEY_Bonus_Weapon_Cooldown_Multiplier)",
 						"type": "once",
-						"tag": "TIMER_Weapon_Attack_ & Rules.CurrentKey"
+						"tag": "TIMER_Player_Weapon_Attack_ & Rules.CurrentKey"
 					}
 				},
 				{
@@ -1798,7 +1798,7 @@
 					"sid": 846800341537685,
 					"behaviorType": "Timer",
 					"parameters": {
-						"tag": "TIMER_SpawnCycle"
+						"tag": "TIMER_Level_SpawnCycle"
 					},
 					"isInverted": true
 				}
@@ -1806,7 +1806,7 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "When the enemy spawn cooldown expires, reset it & add enemy amount to the spawn queue"
+					"text": "When the enemy spawn cycle expires, reset it & add enemy amount to the spawn queue"
 				},
 				{
 					"type": "comment",
@@ -1833,7 +1833,7 @@
 					"parameters": {
 						"duration": "Rules.Get(KEY_Level & DOT & KEY_SpawnInterval)",
 						"type": "once",
-						"tag": "TIMER_SpawnCycle"
+						"tag": "TIMER_Level_SpawnCycle"
 					}
 				},
 				{
@@ -1993,7 +1993,7 @@
 					"sid": 135498244222749,
 					"behaviorType": "Timer",
 					"parameters": {
-						"tag": "TIMER_Wave"
+						"tag": "TIMER_Level_Wave"
 					},
 					"isInverted": true
 				}
@@ -2085,7 +2085,7 @@
 					"parameters": {
 						"duration": "Rules.Get(KEY_Waves & DOT & waveId & DOT & KEY_Time)",
 						"type": "once",
-						"tag": "TIMER_Wave"
+						"tag": "TIMER_Level_Wave"
 					}
 				},
 				{
@@ -2210,10 +2210,13 @@
 						{
 							"customAction": "spawn",
 							"objectClass": "Enemy",
-							"sid": 919417429833895,
+							"sid": 968153324646008,
 							"parameters": [
 								"Rules.CurrentKey",
-								"Rules.CurrentValue"
+								"Rules.CurrentValue",
+								"NO",
+								"NOTHING",
+								"NOTHING"
 							]
 						}
 					],
@@ -2463,7 +2466,7 @@
 					"parameters": {
 						"duration": "Rules.Get(KEY_Player & DOT & KEY_LevelUpFreezeTime)",
 						"type": "once",
-						"tag": "TIMER_Freeze_All"
+						"tag": "TIMER_Player_Freeze_All"
 					}
 				},
 				{
@@ -2609,7 +2612,7 @@
 					"sid": 820544152948431,
 					"behaviorType": "Timer",
 					"parameters": {
-						"tag": "TIMER_Weapon_Attack_ & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Weapon)"
+						"tag": "TIMER_Player_Weapon_Attack_ & Rules.Get(KEY_Modifiers & DOT & modifier & DOT & KEY_Weapon)"
 					}
 				},
 				{

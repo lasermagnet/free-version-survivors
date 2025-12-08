@@ -438,10 +438,13 @@
 				{
 					"customAction": "spawn",
 					"objectClass": "Enemy",
-					"sid": 872104649170109,
+					"sid": 243649190342316,
 					"parameters": [
 						"EMPTY",
-						"enemySpawnQueue > 0 & Rules.ArraySize(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool) > 0 ? 1 : 0"
+						"enemySpawnQueue > 0 & Rules.ArraySize(KEY_Waves & DOT & waveId & DOT & KEY_EnemySpawnPool) > 0 ? 1 : 0",
+						"NO",
+						"NOTHING",
+						"NOTHING"
 					]
 				},
 				{
